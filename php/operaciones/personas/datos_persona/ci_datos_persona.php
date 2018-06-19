@@ -93,9 +93,23 @@ class ci_datos_persona extends escuela_ci
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */
 /* --------------------------------------------------------------------------- */
+	private function crearUsuario(){
+		$persona = $this->tabla('personas')->get();
+		
+		$perfiles_persona = toba::consulta_php('personas')->get_tipo_persona_perfiles("id_tipo_persona=".$persona['id_tipo_persona']); //perfiles que le tengo que asignar
+		$perfiles = array_column($perfiles_persona,'perfil');
+		//ei_arbol($perfiles);
+		$datos_actuales = $this->tabla('datos_actuales')->get();
+		$atributos = (count($datos_actuales)>0) ? array("email" => $datos_actuales['email']) : null;
+		
+		$crear_usuario = new CrearUsuario( toba_instancia::instancia()->get_db() );
+		$crear_usuario->crear($persona['dni'], $persona['nombre'].' '.$persona['apellido'], $persona['dni'], $atributos);
+	}
 	function guardar(){
 		try {
-			$this->relacion()->sincronizar();			
+			$this->crearUsuario();
+			$this->relacion()->sincronizar();
+			//$this->crearUsuario();
 		} catch (toba_error_db $e) {
 			toba::notificacion()->error("Error. No se pueden guardar los datos");
 		}

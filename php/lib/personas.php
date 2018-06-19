@@ -21,5 +21,8 @@ class personas extends comunes
 	function get_personas_por_usuario(){
 		$this->get_personas("usuario=".toba::usuario()->get_id());
 	}
+	function get_tipo_persona_perfiles($where=null, $order_by=null){
+		return $this->get_generico('tipo_persona_perfiles',$where, $order_by);
+	}	
 }
 ?>
