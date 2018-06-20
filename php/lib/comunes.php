@@ -31,6 +31,10 @@ class comunes
 			toba::vinculador()->navegar_a('escuela','3524');
 		}
 	}
+	
+	function tiene_perfil($perfil){
+		return in_array($perfil, toba::usuario()->get_perfiles_funcionales());
+	}
 
 }
 ?>

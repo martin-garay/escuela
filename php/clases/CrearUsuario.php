@@ -3,8 +3,8 @@
 class CrearUsuario{
 	protected $db;
 
-	function __construct($db){
-		$this->db = $db;
+	function __construct(){
+		$this->db = toba_instancia::instancia()->get_db();
 	}
 	function existeUsuario($usuario){
 		$usuario = addslashes($usuario);
@@ -17,9 +17,10 @@ class CrearUsuario{
 			toba::instancia()->agregar_usuario($usuario, $nombre, $pass, $atributos);
 			if(isset($perfiles) && is_array($perfiles))
 				$this->asignarPerfiles($usuario, $perfiles);
-		}else{
-			throw new toba_error("El usuario ya existe");
 		}
+		//else{
+		//	throw new toba_error("El usuario ya existe");
+		//}
 	}
 	function passwordValido($usuario,$password){
 		if(strtoupper($usuario)==strtoupper($password))

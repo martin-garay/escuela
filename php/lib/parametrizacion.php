@@ -31,6 +31,14 @@ class parametrizacion extends comunes
 
 	}
 	function get_anio_actual(){
-
+		
+	}
+	function get_perfiles($where=null, $order_by=null){
+		return $this->get_generico('perfiles',$where,$order_by);
+	}	
+	function get_perfiles_proyecto_en_toba(){
+		$proyecto = toba::proyecto()->get_id();
+		$sql = "SELECT usuario_grupo_acc as perfil FROM apex_usuario_grupo_acc WHERE proyecto='$proyecto'";
+		return toba::instancia()->get_db()->consultar($sql);
 	}	
 }

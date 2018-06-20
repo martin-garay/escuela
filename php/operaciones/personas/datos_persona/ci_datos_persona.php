@@ -32,12 +32,12 @@ class ci_datos_persona extends escuela_ci
 	//-----------------------------------------------------------------------------------
 
 	function conf__form_persona(escuela_ei_formulario $form)
-	{		
-		return $this->relacion()->tabla("personas")->get();	
+	{        
+		return $this->relacion()->tabla("personas")->get();    
 	}
 	function evt__form_persona__modificacion($datos)
-	{		
-		$this->relacion()->tabla("personas")->set($datos);		
+	{        
+		$this->relacion()->tabla("personas")->set($datos);        
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -45,11 +45,11 @@ class ci_datos_persona extends escuela_ci
 	//-----------------------------------------------------------------------------------
 
 	function conf__form_laboral(escuela_ei_formulario $form)
-	{				
-		return $this->relacion()->tabla("datos_laborales")->get();		
+	{                
+		return $this->relacion()->tabla("datos_laborales")->get();        
 	}
 	function evt__form_laboral__modificacion($datos)
-	{		
+	{        
 		$this->relacion()->tabla("datos_laborales")->set($datos);
 	}
 
@@ -57,11 +57,11 @@ class ci_datos_persona extends escuela_ci
 	//---- form_academicos --------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 	function conf__form_academicos(escuela_ei_formulario $form)
-	{			
-		return $this->relacion()->tabla("datos_academicos")->get();		
+	{            
+		return $this->relacion()->tabla("datos_academicos")->get();        
 	}
 	function evt__form_academicos__modificacion($datos)
-	{		
+	{        
 		$this->relacion()->tabla("datos_academicos")->set($datos);
 	}
 
@@ -69,11 +69,11 @@ class ci_datos_persona extends escuela_ci
 	//---- form_salud -------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 	function conf__form_salud(escuela_ei_formulario $form)
-	{				
+	{                
 		return $this->relacion()->tabla("datos_salud")->get();
 	}
 	function evt__form_salud__modificacion($datos)
-	{		
+	{        
 		$this->relacion()->tabla("datos_salud")->set($datos);
 	}
 
@@ -81,12 +81,12 @@ class ci_datos_persona extends escuela_ci
 	//---- form_datos_actuales ----------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 	function conf__form_datos_actuales(escuela_ei_formulario $form)
-	{				
-		return $this->relacion()->tabla("datos_actuales")->get();		
+	{                
+		return $this->relacion()->tabla("datos_actuales")->get();        
 	}
 
 	function evt__form_datos_actuales__modificacion($datos)
-	{		
+	{        
 		$this->relacion()->tabla("datos_actuales")->set($datos);
 	}
 
@@ -96,14 +96,15 @@ class ci_datos_persona extends escuela_ci
 	private function crearUsuario(){
 		$persona = $this->tabla('personas')->get();
 		
-		$perfiles_persona = toba::consulta_php('personas')->get_tipo_persona_perfiles("id_tipo_persona=".$persona['id_tipo_persona']); //perfiles que le tengo que asignar
+		//perfiles que le tengo que asignar
+		$perfiles_persona = toba::consulta_php('personas')->get_tipo_persona_perfiles("id_tipo_persona=".$persona['id_tipo_persona']); 
 		$perfiles = array_column($perfiles_persona,'perfil');
-		//ei_arbol($perfiles);
-		$datos_actuales = $this->tabla('datos_actuales')->get();
-		$atributos = (count($datos_actuales)>0) ? array("email" => $datos_actuales['email']) : null;
 		
-		$crear_usuario = new CrearUsuario( toba_instancia::instancia()->get_db() );
-		$crear_usuario->crear($persona['dni'], $persona['nombre'].' '.$persona['apellido'], $persona['dni'], $atributos);
+		$datos_actuales = $this->tabla('datos_actuales')->get();
+		$atributos = (isset($datos_actuales['email'])) ? array('email'=>$datos_actuales['email']) : array();
+		
+		$crear_usuario = new CrearUsuario();                
+		$crear_usuario->crear($persona['dni'], $persona['nombre'].' '.$persona['apellido'], $persona['dni'], $atributos, $perfiles);
 	}
 	function guardar(){
 		try {
@@ -114,18 +115,18 @@ class ci_datos_persona extends escuela_ci
 			toba::notificacion()->error("Error. No se pueden guardar los datos");
 		}
 	}
-	function borrar(){		
+	function borrar(){        
 		try{
-            $this->dep('datos')->eliminar_todo();
-            $this->dep('datos')->sincronizar();
+			$this->dep('datos')->eliminar_todo();
+			$this->dep('datos')->sincronizar();
 		}catch(toba_error_db $e){
 			if($e->get_sqlstate()=="db_23503"){
 				toba::notificacion()->agregar('ATENCION! El registro esta siendo utilizado');
-            }else{
+			}else{
 				toba::notificacion()->agregar('ERROR! El registro No puede eliminarse');
-            }
+			}
 		}
-        $this->dep('datos')->resetear();
+		$this->dep('datos')->resetear();
 	}
 	function imprimir(toba_vista_pdf $salida){
 		$salida->subtitulo('Datos Generales');
