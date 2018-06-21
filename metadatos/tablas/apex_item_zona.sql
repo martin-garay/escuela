@@ -14,3 +14,15 @@ INSERT INTO apex_item_zona (proyecto, zona, nombre, clave_editable, archivo, des
 	NULL, --consulta_metodo
 	'15'  --punto_montaje
 );
+INSERT INTO apex_item_zona (proyecto, zona, nombre, clave_editable, archivo, descripcion, consulta_archivo, consulta_clase, consulta_metodo, punto_montaje) VALUES (
+	'escuela', --proyecto
+	'zona_curso', --zona
+	'zona_curso', --nombre
+	NULL, --clave_editable
+	'zonas/zona_curso.php', --archivo
+	NULL, --descripcion
+	NULL, --consulta_archivo
+	NULL, --consulta_clase
+	NULL, --consulta_metodo
+	'15'  --punto_montaje
+);

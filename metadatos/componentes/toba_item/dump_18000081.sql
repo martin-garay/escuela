@@ -35,10 +35,10 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --solicitud_observacion
 	NULL, --solicitud_registrar_cron
 	NULL, --prueba_directorios
-	NULL, --zona_proyecto
-	NULL, --zona
-	NULL, --zona_orden
-	'0', --zona_listar
+	'escuela', --zona_proyecto
+	'zona_curso', --zona
+	'1', --zona_orden
+	'1', --zona_listar
 	'apex', --imagen_recurso_origen
 	NULL, --imagen
 	NULL, --parametro_a
