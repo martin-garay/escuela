@@ -1,15 +1,15 @@
 ------------------------------------------------------------
---[2626]--  DT - cursadas_profesores 
+--[18000473]--  DT - condiciones_alumno 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
 -- apex_objeto
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 0
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'escuela', --proyecto
-	'2626', --objeto
+	'18000473', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'DT - cursadas_profesores', --nombre
+	'DT - condiciones_alumno', --nombre
 	NULL, --titulo
 	NULL, --colapsable
 	NULL, --descripcion
@@ -36,24 +36,24 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2018-06-21 19:51:06', --creacion
+	'2018-06-22 10:13:59', --creacion
 	NULL  --posicion_botonera
 );
---- FIN Grupo de desarrollo 0
+--- FIN Grupo de desarrollo 18
 
 ------------------------------------------------------------
 -- apex_objeto_db_registros
 ------------------------------------------------------------
 INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, min_registros, punto_montaje, ap, ap_clase, ap_archivo, tabla, tabla_ext, alias, modificar_claves, fuente_datos_proyecto, fuente_datos, permite_actualizacion_automatica, esquema, esquema_ext) VALUES (
 	'escuela', --objeto_proyecto
-	'2626', --objeto
+	'18000473', --objeto
 	NULL, --max_registros
 	NULL, --min_registros
 	'15', --punto_montaje
 	'1', --ap
 	NULL, --ap_clase
 	NULL, --ap_archivo
-	'cursadas_profesores', --tabla
+	'condiciones_alumno', --tabla
 	NULL, --tabla_ext
 	NULL, --alias
 	'0', --modificar_claves
@@ -68,61 +68,33 @@ INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, mi
 -- apex_objeto_db_registros_col
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 0
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
-	'2626', --objeto
-	'1207', --col_id
+	'18000473', --objeto
+	'18000538', --col_id
 	'id', --columna
 	'E', --tipo
 	'1', --pk
-	'cursadas_profesores_id_seq', --secuencia
+	'condiciones_alumno_id_seq', --secuencia
 	NULL, --largo
 	NULL, --no_nulo
 	'1', --no_nulo_db
 	NULL, --externa
-	'cursadas_profesores'  --tabla
+	'condiciones_alumno'  --tabla
 );
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
-	'2626', --objeto
-	'1208', --col_id
-	'id_cursada', --columna
-	'E', --tipo
+	'18000473', --objeto
+	'18000539', --col_id
+	'descripcion', --columna
+	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	NULL, --largo
+	'60', --largo
 	NULL, --no_nulo
 	'1', --no_nulo_db
 	NULL, --externa
-	'cursadas_profesores'  --tabla
+	'condiciones_alumno'  --tabla
 );
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'escuela', --objeto_proyecto
-	'2626', --objeto
-	'1209', --col_id
-	'id_profesor', --columna
-	'E', --tipo
-	'0', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	NULL, --externa
-	'cursadas_profesores'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'escuela', --objeto_proyecto
-	'2626', --objeto
-	'1210', --col_id
-	'id_tipo_profesor', --columna
-	'E', --tipo
-	'0', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	NULL, --externa
-	'cursadas_profesores'  --tabla
-);
---- FIN Grupo de desarrollo 0
+--- FIN Grupo de desarrollo 18

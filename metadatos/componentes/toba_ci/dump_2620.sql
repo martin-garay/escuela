@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'15', --punto_montaje
-	'ci_datos_cursadas', --subclase
-	'operaciones/cursos/datos_cursadas/ci_datos_cursadas.php', --subclase_archivo
+	'ci_cursadas', --subclase
+	'operaciones/cursos/zona_curso/cursadas/ci_cursadas.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'datos_cursadas', --nombre
@@ -190,6 +190,24 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --inicializar
 	NULL  --orden
 );
+--- FIN Grupo de desarrollo 0
+
+--- INICIO Grupo de desarrollo 18
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
+	'18000517', --dep_id
+	'2620', --objeto_consumidor
+	'18000478', --objeto_proveedor
+	'datos_cursada', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+--- FIN Grupo de desarrollo 18
+
+--- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
 	'1484', --dep_id
@@ -307,25 +325,12 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'1289', --pantalla
 	'2620', --objeto_ci
 	'0', --orden
-	'1486'  --dep_id
-);
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'escuela', --proyecto
-	'1289', --pantalla
-	'2620', --objeto_ci
-	'1', --orden
-	'1491'  --dep_id
+	'18000517'  --dep_id
 );
 
 ------------------------------------------------------------
 -- apex_eventos_pantalla
 ------------------------------------------------------------
-INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
-	'1287', --pantalla
-	'2620', --objeto_ci
-	'1512', --evento_id
-	'escuela'  --proyecto
-);
 INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
 	'1289', --pantalla
 	'2620', --objeto_ci
