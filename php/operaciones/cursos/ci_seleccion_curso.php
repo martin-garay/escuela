@@ -13,8 +13,8 @@ class ci_seleccion_curso extends escuela_ci
 
 	function evt__form__seleccion($datos)
 	{
-		toba::zona()->cargar($datos['id_curso']);
-		toba::memoria()->set_dato('id_curso',$datos['id_curso']);
+		toba::zona()->cargar($datos['id']);
+		toba::memoria()->set_dato('id_curso',$datos['id']);
 	}
 
 	function get_cursos(){
@@ -39,7 +39,8 @@ class ci_seleccion_curso extends escuela_ci
 				  'position':'absolute',
 				  'margin-left':izq
 				});
-				$('#cuerpo_js_ci_2534').hide();
+				//$('#cuerpo_js_form_18000462_form').hide();
+				$('.ci-simple-cont').hide();
 
 			";
 		}

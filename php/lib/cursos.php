@@ -12,6 +12,9 @@ class cursos extends comunes
 	function get_clases($where=null, $order_by=null){
 		return $this->get_generico('v_clases', $where, $order_by);
 	}
+	function get_tipo_profesor($where=null, $order_by=null){
+		return $this->get_generico('tipo_profesor', $where, $order_by);	
+	}
 
 }
 ?>

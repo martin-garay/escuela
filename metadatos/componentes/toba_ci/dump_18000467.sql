@@ -17,7 +17,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba_ci', --clase
 	'15', --punto_montaje
 	'ci_datos_curso', --subclase
-	'operaciones/cursos/zona_curso/datos_curso/ci_datos_curso.php', --subclase_archivo
+	'operaciones/cursos/datos_curso/ci_datos_curso.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'datos_curso', --nombre
@@ -52,7 +52,7 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 	NULL, --ancho
 	NULL, --alto
 	NULL, --posicion_botonera
-	NULL, --tipo_navegacion
+	'tab_h', --tipo_navegacion
 	'0', --botonera_barra_item
 	'0', --con_toc
 	NULL, --incremental
@@ -74,18 +74,6 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'18000504', --dep_id
-	'18000467', --objeto_consumidor
-	'18000465', --objeto_proveedor
-	'datos', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	NULL  --orden
-);
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'escuela', --proyecto
 	'18000503', --dep_id
 	'18000467', --objeto_consumidor
 	'18000468', --objeto_proveedor
@@ -98,9 +86,58 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 --- FIN Grupo de desarrollo 18
 
+--- INICIO Grupo de desarrollo 0
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
+	'1495', --dep_id
+	'18000467', --objeto_consumidor
+	'2630', --objeto_proveedor
+	'form_ml', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
+	'1498', --dep_id
+	'18000467', --objeto_consumidor
+	'2631', --objeto_proveedor
+	'relacion', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+--- FIN Grupo de desarrollo 0
+
 ------------------------------------------------------------
 -- apex_objeto_ci_pantalla
 ------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 0
+INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
+	'escuela', --objeto_ci_proyecto
+	'18000467', --objeto_ci
+	'1290', --pantalla
+	'pant_correlativas', --identificador
+	'2', --orden
+	'Correlativas', --etiqueta
+	NULL, --descripcion
+	NULL, --tip
+	'apex', --imagen_recurso_origen
+	NULL, --imagen
+	NULL, --objetos
+	NULL, --eventos
+	NULL, --subclase
+	NULL, --subclase_archivo
+	NULL, --template
+	NULL, --template_impresion
+	NULL  --punto_montaje
+);
+--- FIN Grupo de desarrollo 0
 
 --- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
@@ -108,11 +145,11 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	'18000467', --objeto_ci
 	'18000171', --pantalla
 	'pant_inicial', --identificador
-	NULL, --orden
-	'Pantalla Inicial', --etiqueta
+	'1', --orden
+	'Datos Curso', --etiqueta
 	NULL, --descripcion
 	NULL, --tip
-	NULL, --imagen_recurso_origen
+	'apex', --imagen_recurso_origen
 	NULL, --imagen
 	NULL, --objetos
 	NULL, --eventos
@@ -127,6 +164,13 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 ------------------------------------------------------------
 -- apex_objetos_pantalla
 ------------------------------------------------------------
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'escuela', --proyecto
+	'1290', --pantalla
+	'18000467', --objeto_ci
+	'0', --orden
+	'1495'  --dep_id
+);
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'escuela', --proyecto
 	'18000171', --pantalla

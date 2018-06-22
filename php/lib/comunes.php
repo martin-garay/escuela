@@ -31,7 +31,13 @@ class comunes
 			toba::vinculador()->navegar_a('escuela','3524');
 		}
 	}
-	
+	function chequeo_zona_cursos(){
+		if(toba::memoria()->existe_dato('id_curso')){
+			toba::zona()->cargar(toba::memoria()->get_dato('id_curso'));
+		}else{
+			toba::vinculador()->navegar_a('escuela','18000081');
+		}
+	}
 	function tiene_perfil($perfil){
 		return in_array($perfil, toba::usuario()->get_perfiles_funcionales());
 	}

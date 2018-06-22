@@ -39,8 +39,8 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'zona_curso', --zona
 	'1', --zona_orden
 	'1', --zona_listar
-	'apex', --imagen_recurso_origen
-	NULL, --imagen
+	'proyecto', --imagen_recurso_origen
+	'buscar_carpeta.png', --imagen
 	NULL, --parametro_a
 	NULL, --parametro_b
 	NULL, --parametro_c
