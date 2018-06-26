@@ -13,17 +13,18 @@ class ci_cursadas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- eventos ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-	function evt__procesar(){
+	function evt__procesar(){		
 		$this->dep('datos_cursada')->guardar();
 	}
 
 	function evt__cancelar()
 	{
-		$this->dep('datos_curso')->resetear();		//deshago las modificaciones y vuevo a cargar	
-		if(toba::zona()->cargada()){
-			$curso = array('id'=>toba::zona()->get_editable_id());			
-			$this->dep('datos_curso')->cargar($curso);			
-		}
+		$this->dep('datos_cursada')->resetear();		//deshago las modificaciones y vuevo a cargar	
+		$this->set_pantalla('pant_inicial');
+	}
+	function evt__nuevo(){
+		$this->dep('datos_cursada')->set_curso(toba::zona()->get_editable_id()); //le paso el id del curso al ci hijo
+		$this->set_pantalla('pant_edicion');
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -57,18 +58,7 @@ class ci_cursadas extends escuela_ci
 	}
 	function evt__cuadro__eliminar($seleccion)
 	{
-		try{
-			$this->relacion()->cargar($seleccion);
-			$this->relacion()->eliminar_todo();
-			$this->relacion()->sincronizar();
-		}catch(toba_error_db $e){
-			if($e->get_sqlstate()=="db_23503"){
-				toba::notificacion()->agregar('ATENCION! El registro esta siendo utilizado');
-			}else{
-				toba::notificacion()->agregar('ERROR! El registro No puede eliminarse');
-			}
-		}
-		$this->relacion()->resetear();
+		$this->dep('datos_cursada')->borrar($seleccion);
 	}
 }
 ?>

@@ -1,14 +1,22 @@
 <?php
 class ci_datos_cursadas extends escuela_ci
 {
+	protected $id_curso;
+
+	function set_curso($id_curso){
+		$this->id_curso = $id_curso;
+	}
 	function conf__form_cursada(escuela_ei_formulario $form)
-	{        
-		if($this->tabla('cursadas')->esta_cargada())
-			return $this->tabla('cursadas')->get();    
+	{        		
+		$form->set_datos($this->tabla('cursadas')->get());
+		if(isset($this->id_curso))
+			$form->ef('id_curso')->set_estado($this->id_curso);		
 	}
 	function evt__form_cursada__modificacion($datos)
-	{        
-		$this->tabla('cursadas')->set($datos);        
+	{     
+		if(isset($this->id_curso))
+			$datos['id_curso'] = $this->id_curso; 
+		$this->tabla('cursadas')->set($datos);		
 	}
 
 	function conf__form_ml_profesores(escuela_ei_formulario_ml $form)
@@ -28,6 +36,15 @@ class ci_datos_cursadas extends escuela_ci
 	function evt__form_ml_alumnos__modificacion($datos){
 		$this->tabla('cursadas_alumnos')->procesar_filas($datos);
 	}
+	function conf__form_ml_modulos(escuela_ei_formulario_ml $form)
+	{        
+		if($this->tabla('cursadas_modulos')->esta_cargada())
+			return $this->tabla('cursadas_modulos')->get_filas();
+	}
+	function evt__form_ml_modulos__modificacion($datos){
+		$this->tabla('cursadas_modulos')->procesar_filas($datos);
+	}
+
 
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */

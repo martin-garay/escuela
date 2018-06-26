@@ -1,15 +1,15 @@
 ------------------------------------------------------------
---[18000479]--  datos_cursada - relacion 
+--[2642]--  datos_clase - relacion 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
 -- apex_objeto
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 18
+--- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'escuela', --proyecto
-	'18000479', --objeto
+	'2642', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'datos_cursada - relacion', --nombre
+	'datos_clase - relacion', --nombre
 	NULL, --titulo
 	NULL, --colapsable
 	NULL, --descripcion
@@ -36,17 +36,17 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2018-06-22 10:49:55', --creacion
+	'2018-06-24 15:27:59', --creacion
 	NULL  --posicion_botonera
 );
---- FIN Grupo de desarrollo 18
+--- FIN Grupo de desarrollo 0
 
 ------------------------------------------------------------
 -- apex_objeto_datos_rel
 ------------------------------------------------------------
 INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_montaje, ap_clase, ap_archivo, sinc_susp_constraints, sinc_orden_automatico, sinc_lock_optimista) VALUES (
 	'escuela', --proyecto
-	'18000479', --objeto
+	'2642', --objeto
 	'0', --debug
 	NULL, --clave
 	'2', --ap
@@ -62,13 +62,13 @@ INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_mon
 -- apex_objeto_dependencias
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 18
+--- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'18000510', --dep_id
-	'18000479', --objeto_consumidor
-	'2624', --objeto_proveedor
-	'cursadas', --identificador
+	'1505', --dep_id
+	'2642', --objeto_consumidor
+	'18000469', --objeto_proveedor
+	'clases', --identificador
 	'1', --parametros_a
 	'1', --parametros_b
 	NULL, --parametros_c
@@ -77,47 +77,29 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'18000512', --dep_id
-	'18000479', --objeto_consumidor
-	'18000472', --objeto_proveedor
-	'cursadas_alumnos', --identificador
+	'1507', --dep_id
+	'2642', --objeto_consumidor
+	'18000470', --objeto_proveedor
+	'clases_asistencia', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
 	NULL, --inicializar
 	'3'  --orden
 );
---- FIN Grupo de desarrollo 18
-
---- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'1517', --dep_id
-	'18000479', --objeto_consumidor
-	'2635', --objeto_proveedor
-	'cursadas_modulos', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	'4'  --orden
-);
---- FIN Grupo de desarrollo 0
-
---- INICIO Grupo de desarrollo 18
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'escuela', --proyecto
-	'18000511', --dep_id
-	'18000479', --objeto_consumidor
-	'2626', --objeto_proveedor
-	'cursadas_profesores', --identificador
+	'1506', --dep_id
+	'2642', --objeto_consumidor
+	'18000471', --objeto_proveedor
+	'clases_profesores', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
 	NULL, --inicializar
 	'2'  --orden
 );
---- FIN Grupo de desarrollo 18
+--- FIN Grupo de desarrollo 0
 
 ------------------------------------------------------------
 -- apex_objeto_datos_rel_asoc
@@ -126,84 +108,56 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
 	'escuela', --proyecto
-	'18000479', --objeto
-	'81', --asoc_id
+	'2642', --objeto
+	'79', --asoc_id
 	NULL, --identificador
 	'escuela', --padre_proyecto
-	'2624', --padre_objeto
-	'cursadas', --padre_id
+	'18000469', --padre_objeto
+	'clases', --padre_id
 	NULL, --padre_clave
 	'escuela', --hijo_proyecto
-	'2635', --hijo_objeto
-	'cursadas_modulos', --hijo_id
-	NULL, --hijo_clave
-	NULL, --cascada
-	'3'  --orden
-);
---- FIN Grupo de desarrollo 0
-
---- INICIO Grupo de desarrollo 18
-INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
-	'escuela', --proyecto
-	'18000479', --objeto
-	'18000104', --asoc_id
-	NULL, --identificador
-	'escuela', --padre_proyecto
-	'2624', --padre_objeto
-	'cursadas', --padre_id
-	NULL, --padre_clave
-	'escuela', --hijo_proyecto
-	'2626', --hijo_objeto
-	'cursadas_profesores', --hijo_id
+	'18000471', --hijo_objeto
+	'clases_profesores', --hijo_id
 	NULL, --hijo_clave
 	NULL, --cascada
 	'1'  --orden
 );
 INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
 	'escuela', --proyecto
-	'18000479', --objeto
-	'18000105', --asoc_id
+	'2642', --objeto
+	'80', --asoc_id
 	NULL, --identificador
 	'escuela', --padre_proyecto
-	'2624', --padre_objeto
-	'cursadas', --padre_id
+	'18000469', --padre_objeto
+	'clases', --padre_id
 	NULL, --padre_clave
 	'escuela', --hijo_proyecto
-	'18000472', --hijo_objeto
-	'cursadas_alumnos', --hijo_id
+	'18000470', --hijo_objeto
+	'clases_asistencia', --hijo_id
 	NULL, --hijo_clave
 	NULL, --cascada
 	'2'  --orden
 );
---- FIN Grupo de desarrollo 18
+--- FIN Grupo de desarrollo 0
 
 ------------------------------------------------------------
 -- apex_objeto_rel_columnas_asoc
 ------------------------------------------------------------
 INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
 	'escuela', --proyecto
-	'18000479', --objeto
-	'81', --asoc_id
-	'2624', --padre_objeto
-	'1202', --padre_clave
-	'2635', --hijo_objeto
-	'1231'  --hijo_clave
+	'2642', --objeto
+	'79', --asoc_id
+	'18000469', --padre_objeto
+	'18000519', --padre_clave
+	'18000471', --hijo_objeto
+	'18000533'  --hijo_clave
 );
 INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
 	'escuela', --proyecto
-	'18000479', --objeto
-	'18000104', --asoc_id
-	'2624', --padre_objeto
-	'1202', --padre_clave
-	'2626', --hijo_objeto
-	'1208'  --hijo_clave
-);
-INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
-	'escuela', --proyecto
-	'18000479', --objeto
-	'18000105', --asoc_id
-	'2624', --padre_objeto
-	'1202', --padre_clave
-	'18000472', --hijo_objeto
-	'18000535'  --hijo_clave
+	'2642', --objeto
+	'80', --asoc_id
+	'18000469', --padre_objeto
+	'18000519', --padre_clave
+	'18000470', --hijo_objeto
+	'18000530'  --hijo_clave
 );

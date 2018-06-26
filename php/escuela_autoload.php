@@ -18,6 +18,7 @@ class escuela_autoload
 	}
 
 	static protected $clases = array(
+		'FB' => '3ros/fb.php',
 		'CrearUsuario' => 'clases/CrearUsuario.php',
 		'escuela_autoload' => 'escuela_autoload.php',
 		'escuela_ci' => 'extension_toba/componentes/escuela_ci.php',

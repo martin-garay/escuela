@@ -12,6 +12,7 @@ define('apex_pa_proyecto', 'escuela');
 # Activa el logger en modo 'debug'. Para modo info pasar a '6'
 define('apex_pa_log_archivo', true);
 define('apex_pa_log_archivo_nivel', 7);
+ob_start();
 
 //--------------------------------------------------------------------------
 //------ Invocacion del nucleo del toba ------------------------------------

@@ -5,6 +5,7 @@ class comunes
 		$where = ($where) ? ' WHERE '.$where : '';
 		$order = ($order) ? ' ORDER BY '.$order : '';
 		$sql = "SELECT * FROM $tabla $where $order";
+		FB::info($sql);
 		return toba::db()->consultar($sql);
 	}
 

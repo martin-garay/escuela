@@ -33,6 +33,9 @@ class parametrizacion extends comunes
 	function get_anio_actual(){
 		
 	}
+	function get_tipos_clase($where=null, $order_by=null){
+		return $this->get_generico('tipo_clase',$where,$order_by);
+	}
 	function get_perfiles($where=null, $order_by=null){
 		return $this->get_generico('perfiles',$where,$order_by);
 	}	

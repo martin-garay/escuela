@@ -2,31 +2,12 @@
 class ci_datos_persona extends escuela_ci
 {
 
-
-	function ini()
-	{
-		//toba::consulta_php('comunes')->chequeo_zona_alumno();
-		/*
-		if( null !==(toba::zona()) ){
-			if(toba::zona()->cargada()){
-				$alumno = array('id'=>toba::zona()->get_editable_id());
-				$this->relacion()->cargar($alumno);
-			}
-		}*/
-	}
-
 	function relacion(){
 		return $this->dep('relacion');
 	}
 	function tabla($nombre){
 		return $this->relacion()->tabla($nombre);
 	}
-	//-----------------------------------------------------------------------------------
-	//---- Eventos ----------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
-	function evt__procesar(){}
-	function evt__cancelar(){}
-
 	//-----------------------------------------------------------------------------------
 	//---- form_persona ------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------

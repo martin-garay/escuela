@@ -21,6 +21,15 @@ class ci_datos_curso extends escuela_ci
 		$this->tabla('cursos_correlatividad')->procesar_filas($datos);
 	}
 
+	function conf__form_ml_modulos(escuela_ei_formulario_ml $form)
+	{        
+		if($this->tabla('cursos_modulos')->esta_cargada())
+			return $this->tabla('cursos_modulos')->get_filas();
+	}
+	function evt__form_ml_modulos__modificacion($datos){
+		$this->tabla('cursos_modulos')->procesar_filas($datos);
+	}
+
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */
 /* --------------------------------------------------------------------------- */
