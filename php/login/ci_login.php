@@ -320,51 +320,51 @@ class ci_login extends toba_ci
 	
 	function extender_objeto_js()
 	{
-		$escapador = toba::escaper();
-		if (toba::instalacion()->get_tipo_autenticacion() == 'openid') {
-			$personalizable = '';
-			foreach ($this->get_openid_providers() as $id => $provider) {
-				if (isset($provider['personalizable']) && $provider['personalizable']) {
-					$personalizable = $escapador->escapeJs($id);
-				}
-			}
-			echo $escapador->escapeJs($this->dep('openid')->objeto_js)
-				.".evt__provider__procesar = function(inicial) {
-					if (this.ef('provider').get_estado() == '$personalizable') {
-						this.ef('provider_url').mostrar();
-					} else {
-						this.ef('provider_url').ocultar();
-					}
-				}
-			";
-		}
+		// $escapador = toba::escaper();
+		// if (toba::instalacion()->get_tipo_autenticacion() == 'openid') {
+		// 	$personalizable = '';
+		// 	foreach ($this->get_openid_providers() as $id => $provider) {
+		// 		if (isset($provider['personalizable']) && $provider['personalizable']) {
+		// 			$personalizable = $escapador->escapeJs($id);
+		// 		}
+		// 	}
+		// 	echo $escapador->escapeJs($this->dep('openid')->objeto_js)
+		// 		.".evt__provider__procesar = function(inicial) {
+		// 			if (this.ef('provider').get_estado() == '$personalizable') {
+		// 				this.ef('provider_url').mostrar();
+		// 			} else {
+		// 				this.ef('provider_url').ocultar();
+		// 			}
+		// 		}
+		// 	";
+		// }
 				
-		$finalizar = toba::memoria()->get_parametro(apex_sesion_qs_finalizar);
-		if (is_null($finalizar)) {											//Sesion activa
-			if (toba::manejador_sesiones()->existe_usuario_activo()) {
-				//Si ya esta logueado y se abre el sistema en popup, abrirlo
-				if (isset($this->s__item_inicio)) {
-					list($proyecto, $item) = explode($this->s__item_inicio);
-				} else {
-					$proyecto = toba::proyecto()->get_id();
-					$item = toba::proyecto()->get_parametro('item_inicio_sesion');
-				}
-				$url = $escapador->escapeJs(toba::vinculador()->get_url($proyecto, $item));
+		// $finalizar = toba::memoria()->get_parametro(apex_sesion_qs_finalizar);
+		// if (is_null($finalizar)) {											//Sesion activa
+		// 	if (toba::manejador_sesiones()->existe_usuario_activo()) {
+		// 		//Si ya esta logueado y se abre el sistema en popup, abrirlo
+		// 		if (isset($this->s__item_inicio)) {
+		// 			list($proyecto, $item) = explode($this->s__item_inicio);
+		// 		} else {
+		// 			$proyecto = toba::proyecto()->get_id();
+		// 			$item = toba::proyecto()->get_parametro('item_inicio_sesion');
+		// 		}
+		// 		$url = $escapador->escapeJs(toba::vinculador()->get_url($proyecto, $item));
 				
-				if ($this->en_popup) {
-					echo " abrir_popup('sistema', '$url', {resizable: 1});	";
-				} else {
-					echo " window.location.href = '$url';";
-				}
-			}
-		} elseif ($this->en_popup) {									//Se finaliza la sesion
-				echo '
-					if (window.opener &&  window.opener.location) {
-						window.opener.location.href = window.opener.location.href; 
-					}
-					window.close();
-				';
-		}		
+		// 		if ($this->en_popup) {
+		// 			echo " abrir_popup('sistema', '$url', {resizable: 1});	";
+		// 		} else {
+		// 			echo " window.location.href = '$url';";
+		// 		}
+		// 	}
+		// } elseif ($this->en_popup) {									//Se finaliza la sesion
+		// 		echo '
+		// 			if (window.opener &&  window.opener.location) {
+		// 				window.opener.location.href = window.opener.location.href; 
+		// 			}
+		// 			window.close();
+		// 		';
+		// }		
 	}
 }
 ?>
