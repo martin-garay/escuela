@@ -40,6 +40,8 @@ class sedes extends comunes
 					$where";
 		return toba::db()->consultar($sql);
 	}
-	
+	function get_tipo_pago_sede($where=null, $order_by=null){
+		return $this->get_generico('tipo_pago_sede', $where, $order_by);
+	}	
 }
 ?>

@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[3539]--  Inscripcion a Cursadas 
+--[3539]--  Inscripcion a Cursos 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Inscripcion a Cursadas', --nombre
+	'Inscripcion a Cursos', --nombre
 	NULL, --descripcion
 	'15', --punto_montaje
 	NULL, --actividad_accion
@@ -52,3 +52,15 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'0'  --retrasar_headers
 );
 --- FIN Grupo de desarrollo 0
+
+------------------------------------------------------------
+-- apex_item_objeto
+------------------------------------------------------------
+INSERT INTO apex_item_objeto (item_id, proyecto, item, objeto, orden, inicializar) VALUES (
+	NULL, --item_id
+	'escuela', --proyecto
+	'3539', --item
+	'2648', --objeto
+	'0', --orden
+	NULL  --inicializar
+);

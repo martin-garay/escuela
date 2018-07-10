@@ -28,7 +28,21 @@ class ci_datos_sede extends escuela_ci
 		$this->tabla('aulas')->procesar_filas($datos);
 	}
 
-		
+	//-----------------------------------------------------------------------------------
+	//---- form_ml_formadores ----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+	function conf__form_ml_formadores(escuela_ei_formulario_ml $form_ml)
+	{
+		if( $this->tabla('formadores')->esta_cargada() )
+			$form_ml->set_datos( $this->tabla('formadores')->get_filas() );
+	}
+	function evt__form_ml_formadores__modificacion($datos)
+	{
+		$this->tabla('formadores')->procesar_filas($datos);
+	}
+	function get_combo_formadores(){
+		return toba::consulta_php('personas')->get_personas("id_tipo_persona=2","apellido, nombre");
+	}	
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */
 /* --------------------------------------------------------------------------- */
@@ -56,7 +70,7 @@ class ci_datos_sede extends escuela_ci
 		}
         $this->relacion()->resetear();
 	}
-	
+		
 
 }
 ?>
