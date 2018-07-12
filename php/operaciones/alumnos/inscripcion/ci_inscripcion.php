@@ -129,7 +129,9 @@ class ci_inscripcion extends escuela_ci
 		$this->relacion()->resetear();
 		$this->set_pantalla("pant_inicial");
 	}
-
+	function get_modulos_vigentes_de_cursada($id_cursada){
+		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada and modulo_vigente");
+	}
 	function get_modulos_vigentes(){
 		
 		if(isset($this->id_curso)){

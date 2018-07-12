@@ -90,8 +90,8 @@ class ci_alquiler_sede extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
-		$where = (isset($this->s__datos_filtro)) ? $this->dep('filtro')->get_sql_where() : '';				
-		$datos = toba::consulta_php('sedes')->get_alquiler_sede_detallado($where,'fecha_alta DESC');		
+		$where = (isset($this->s__datos_filtro)) ? $this->dep('filtro')->get_sql_where() : '';
+		$datos = toba::consulta_php('sedes')->get_alquiler_sede_detallado($where,'fecha_alta DESC');
 		$cuadro->set_datos($datos);
 	}
 	function evt__cuadro__seleccion($seleccion)
