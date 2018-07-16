@@ -1,3 +1,5 @@
+select * from personas
+
 BEGIN TRANSACTION; 
 --ROLLBACK
 /* personas */
@@ -47,3 +49,58 @@ from temp_personas
 where id IN (select id from personas )
 
 commit;
+
+
+
+
+
+
+
+
+
+
+
+
+select distinct(primario) from temp_personas --update temp_personas set primario='COMPLETO' where primario='COMP' or primario='COM'
+select distinct(secundario) from temp_personas --update temp_personas set secundario='INCOMPLETO' where secundario='INCOMP'
+select distinct(terciario) from temp_personas --begin transaction;update temp_personas set terciario='COMPLETO' where terciario='COMP';commit;
+select distinct(estudia) from temp_personas 
+
+
+
+
+create table temp_ciudades(
+id serial not null,
+ciudad character varying(200),
+id_localidad integer,
+constraint pk_temp_ciudades primary key (id));
+
+insert into temp_ciudades(ciudad)
+select distinct ciudad from temp_personas where ciudad is not null
+
+
+
+
+
+select *,(select id from ciudades c where p.codigo_postal=c.cp limit 1) as id_ciudad
+from temp_personas p 
+
+select cp,count(1) from ciudades group by cp having count(1)>1
+select * from v_ciudades where cp=3565
+
+
+
+select dni from temp_personas group by dni having count(1)>1
+
+
+select *,replace(dni,'.','') from temp_personas order by replace(dni,'.','')
+
+
+
+select * from temp_personas where id not in (select id from personas ) order by dni
+
+select *,dni from temp_personas where dni in (select dni from temp_personas group by dni having count(1)>1) order by dni
+
+select curso1,count(1) from temp_personas group by curso1
+select * from temp_personas order by replace(dni,'.','')
+select * from v_personas 

@@ -28,5 +28,11 @@ class cursos extends comunes
 	function get_cascada_modulos_cursada($id_cursada){
 		return $this->get_modulos_cursadas("id_cursada=$id_cursada");
 	}
+	function get_titulos($where=null, $order_by=null){
+		return $this->get_generico("v_titulos", $where, $order_by);	
+	}
+	function get_tipo_titulo($where=null, $order_by=null){
+		return $this->get_generico("tipo_titulo", $where, $order_by);	
+	}
 }
 ?>

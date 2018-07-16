@@ -29,6 +29,14 @@ class ci_datos_curso extends escuela_ci
 	function evt__form_ml_modulos__modificacion($datos){
 		$this->tabla('cursos_modulos')->procesar_filas($datos);
 	}
+	function conf__form_ml_titulos(escuela_ei_formulario_ml $form)
+	{        
+		if($this->tabla('cursos_titulos')->esta_cargada())
+			return $this->tabla('cursos_titulos')->get_filas();
+	}
+	function evt__form_ml_titulos__modificacion($datos){
+		$this->tabla('cursos_titulos')->procesar_filas($datos);
+	}
 
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */

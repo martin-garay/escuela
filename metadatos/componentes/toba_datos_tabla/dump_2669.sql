@@ -1,15 +1,15 @@
 ------------------------------------------------------------
---[18000473]--  DT - titulos 
+--[2669]--  DT - tipo_titulo 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
 -- apex_objeto
 ------------------------------------------------------------
 
---- INICIO Grupo de desarrollo 18
+--- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'escuela', --proyecto
-	'18000473', --objeto
+	'2669', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'DT - titulos', --nombre
+	'DT - tipo_titulo', --nombre
 	NULL, --titulo
 	NULL, --colapsable
 	NULL, --descripcion
@@ -36,24 +36,24 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2018-06-22 10:13:59', --creacion
+	'2018-07-15 00:27:53', --creacion
 	NULL  --posicion_botonera
 );
---- FIN Grupo de desarrollo 18
+--- FIN Grupo de desarrollo 0
 
 ------------------------------------------------------------
 -- apex_objeto_db_registros
 ------------------------------------------------------------
 INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, min_registros, punto_montaje, ap, ap_clase, ap_archivo, tabla, tabla_ext, alias, modificar_claves, fuente_datos_proyecto, fuente_datos, permite_actualizacion_automatica, esquema, esquema_ext) VALUES (
 	'escuela', --objeto_proyecto
-	'18000473', --objeto
+	'2669', --objeto
 	NULL, --max_registros
 	NULL, --min_registros
 	'15', --punto_montaje
 	'1', --ap
 	NULL, --ap_clase
 	NULL, --ap_archivo
-	'titulos', --tabla
+	'tipo_titulo', --tabla
 	NULL, --tabla_ext
 	NULL, --alias
 	'0', --modificar_claves
@@ -71,58 +71,30 @@ INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, mi
 --- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
-	'18000473', --objeto
-	'1272', --col_id
+	'2669', --objeto
+	'1278', --col_id
 	'id', --columna
 	'E', --tipo
 	'1', --pk
-	'titulos_id_seq', --secuencia
+	'tipo_titulo_id_seq', --secuencia
 	NULL, --largo
 	NULL, --no_nulo
 	'1', --no_nulo_db
 	NULL, --externa
-	'titulos'  --tabla
+	'tipo_titulo'  --tabla
 );
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
-	'18000473', --objeto
-	'1273', --col_id
-	'nombre', --columna
-	'C', --tipo
-	'0', --pk
-	'', --secuencia
-	'100', --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	NULL, --externa
-	'titulos'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'escuela', --objeto_proyecto
-	'18000473', --objeto
-	'1274', --col_id
+	'2669', --objeto
+	'1279', --col_id
 	'descripcion', --columna
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'500', --largo
+	'60', --largo
 	NULL, --no_nulo
 	'1', --no_nulo_db
 	NULL, --externa
-	'titulos'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'escuela', --objeto_proyecto
-	'18000473', --objeto
-	'1275', --col_id
-	'id_tipo_titulo', --columna
-	'E', --tipo
-	'0', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	NULL, --externa
-	'titulos'  --tabla
+	'tipo_titulo'  --tabla
 );
 --- FIN Grupo de desarrollo 0

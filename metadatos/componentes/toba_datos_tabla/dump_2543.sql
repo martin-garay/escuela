@@ -167,4 +167,32 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'0', --externa
 	'datos_academicos'  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'escuela', --objeto_proyecto
+	'2543', --objeto
+	'1265', --col_id
+	'titulo', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'100', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'datos_academicos'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'escuela', --objeto_proyecto
+	'2543', --objeto
+	'1266', --col_id
+	'estudia_descripcion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'200', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'datos_academicos'  --tabla
+);
 --- FIN Grupo de desarrollo 0
