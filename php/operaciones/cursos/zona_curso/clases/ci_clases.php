@@ -15,6 +15,8 @@ class ci_clases extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function evt__procesar(){		
 		$this->dep('datos_clase')->guardar();
+		$this->dep('datos_clase')->resetear();
+		$this->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()
@@ -23,6 +25,7 @@ class ci_clases extends escuela_ci
 		$this->set_pantalla('pant_inicial');
 	}
 	function evt__nuevo(){
+		$this->dep('datos_clase')->resetear();
 		$this->dep('datos_clase')->set_curso(toba::zona()->get_editable_id()); //le paso el id del curso al ci hijo
 		$this->set_pantalla('pant_edicion');
 	}

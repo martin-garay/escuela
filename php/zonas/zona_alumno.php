@@ -50,6 +50,10 @@ class zona_alumno extends toba_zona
 
 	function get_cursos(){
 
+	}
+
+	function get_cursos_vigentes(){
+
 	}		
 }
 ?>
