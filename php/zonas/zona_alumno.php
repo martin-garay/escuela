@@ -54,6 +54,9 @@ class zona_alumno extends toba_zona
 
 	function get_cursos_vigentes(){
 
+	}
+	function get_clases(){
+		return toba::consulta_php('alumnos')->get_clases("id_alumno=".$this->get_editable_id(),"fecha_clase,hora_inicio_clase");
 	}		
 }
 ?>

@@ -5,7 +5,7 @@
 -- Dumped from database version 9.4.9
 -- Dumped by pg_dump version 10.1
 
--- Started on 2018-07-13 14:51:44 ART
+-- Started on 2018-07-18 15:25:12 ART
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -25,7 +25,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2674 (class 0 OID 0)
+-- TOC entry 2727 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
@@ -36,7 +36,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 286 (class 1255 OID 968141)
+-- TOC entry 295 (class 1255 OID 976415)
 -- Name: sp_trg_ai_cursadas(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -54,7 +54,7 @@ $$;
 
 
 --
--- TOC entry 287 (class 1255 OID 968142)
+-- TOC entry 296 (class 1255 OID 976416)
 -- Name: sp_trg_ai_cursadas_alumnos(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -95,12 +95,10 @@ CREATE FUNCTION sp_trg_ai_cursadas_alumnos() RETURNS trigger
     $$;
 
 
-SET default_tablespace = '';
-
 SET default_with_oids = false;
 
 --
--- TOC entry 173 (class 1259 OID 968143)
+-- TOC entry 173 (class 1259 OID 976417)
 -- Name: alquiler_sede; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -116,7 +114,7 @@ CREATE TABLE alquiler_sede (
 
 
 --
--- TOC entry 174 (class 1259 OID 968147)
+-- TOC entry 174 (class 1259 OID 976421)
 -- Name: alquiler_sede_cabecera; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -133,7 +131,7 @@ CREATE TABLE alquiler_sede_cabecera (
 
 
 --
--- TOC entry 175 (class 1259 OID 968152)
+-- TOC entry 175 (class 1259 OID 976426)
 -- Name: alquiler_sede_cabecera_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -146,7 +144,7 @@ CREATE SEQUENCE alquiler_sede_cabecera_id_seq
 
 
 --
--- TOC entry 2675 (class 0 OID 0)
+-- TOC entry 2728 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: alquiler_sede_cabecera_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -155,7 +153,7 @@ ALTER SEQUENCE alquiler_sede_cabecera_id_seq OWNED BY alquiler_sede_cabecera.id;
 
 
 --
--- TOC entry 176 (class 1259 OID 968154)
+-- TOC entry 176 (class 1259 OID 976428)
 -- Name: alquiler_sede_detalle; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -173,7 +171,7 @@ CREATE TABLE alquiler_sede_detalle (
 
 
 --
--- TOC entry 177 (class 1259 OID 968158)
+-- TOC entry 177 (class 1259 OID 976432)
 -- Name: alquiler_sede_detalle_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -186,7 +184,7 @@ CREATE SEQUENCE alquiler_sede_detalle_id_seq
 
 
 --
--- TOC entry 2676 (class 0 OID 0)
+-- TOC entry 2729 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: alquiler_sede_detalle_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -195,7 +193,7 @@ ALTER SEQUENCE alquiler_sede_detalle_id_seq OWNED BY alquiler_sede_detalle.id;
 
 
 --
--- TOC entry 178 (class 1259 OID 968160)
+-- TOC entry 178 (class 1259 OID 976434)
 -- Name: alquiler_sede_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -208,7 +206,7 @@ CREATE SEQUENCE alquiler_sede_id_seq
 
 
 --
--- TOC entry 2677 (class 0 OID 0)
+-- TOC entry 2730 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: alquiler_sede_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -217,7 +215,7 @@ ALTER SEQUENCE alquiler_sede_id_seq OWNED BY alquiler_sede.id;
 
 
 --
--- TOC entry 179 (class 1259 OID 968162)
+-- TOC entry 179 (class 1259 OID 976436)
 -- Name: personas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -226,16 +224,16 @@ CREATE TABLE personas (
     nombre character varying(100) NOT NULL,
     apellido character varying(100) NOT NULL,
     fecha_nacimiento date NOT NULL,
-    dni numeric(8,0) NOT NULL,
+    dni numeric(8,0),
     foto_dni boolean DEFAULT false NOT NULL,
-    legajo integer NOT NULL,
+    legajo integer,
     id_tipo_persona integer NOT NULL,
     cuil character varying(11)
 );
 
 
 --
--- TOC entry 180 (class 1259 OID 968166)
+-- TOC entry 180 (class 1259 OID 976440)
 -- Name: alumnos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -248,7 +246,7 @@ CREATE SEQUENCE alumnos_id_seq
 
 
 --
--- TOC entry 2678 (class 0 OID 0)
+-- TOC entry 2731 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -257,7 +255,7 @@ ALTER SEQUENCE alumnos_id_seq OWNED BY personas.id;
 
 
 --
--- TOC entry 181 (class 1259 OID 968168)
+-- TOC entry 181 (class 1259 OID 976442)
 -- Name: alumnos_legajo_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -270,7 +268,7 @@ CREATE SEQUENCE alumnos_legajo_seq
 
 
 --
--- TOC entry 2679 (class 0 OID 0)
+-- TOC entry 2732 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: alumnos_legajo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -279,7 +277,7 @@ ALTER SEQUENCE alumnos_legajo_seq OWNED BY personas.legajo;
 
 
 --
--- TOC entry 182 (class 1259 OID 968170)
+-- TOC entry 182 (class 1259 OID 976444)
 -- Name: aulas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -293,7 +291,7 @@ CREATE TABLE aulas (
 
 
 --
--- TOC entry 183 (class 1259 OID 968173)
+-- TOC entry 183 (class 1259 OID 976447)
 -- Name: aulas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -306,7 +304,7 @@ CREATE SEQUENCE aulas_id_seq
 
 
 --
--- TOC entry 2680 (class 0 OID 0)
+-- TOC entry 2733 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: aulas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -315,7 +313,7 @@ ALTER SEQUENCE aulas_id_seq OWNED BY aulas.id;
 
 
 --
--- TOC entry 184 (class 1259 OID 968175)
+-- TOC entry 184 (class 1259 OID 976449)
 -- Name: ciudades; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -328,7 +326,7 @@ CREATE TABLE ciudades (
 
 
 --
--- TOC entry 185 (class 1259 OID 968178)
+-- TOC entry 185 (class 1259 OID 976452)
 -- Name: ciudades_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -341,7 +339,7 @@ CREATE SEQUENCE ciudades_id_seq
 
 
 --
--- TOC entry 2681 (class 0 OID 0)
+-- TOC entry 2734 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: ciudades_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -350,7 +348,7 @@ ALTER SEQUENCE ciudades_id_seq OWNED BY ciudades.id;
 
 
 --
--- TOC entry 186 (class 1259 OID 968180)
+-- TOC entry 186 (class 1259 OID 976454)
 -- Name: clases; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -368,7 +366,7 @@ CREATE TABLE clases (
 
 
 --
--- TOC entry 187 (class 1259 OID 968186)
+-- TOC entry 187 (class 1259 OID 976460)
 -- Name: clases_asistencia; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -380,7 +378,7 @@ CREATE TABLE clases_asistencia (
 
 
 --
--- TOC entry 188 (class 1259 OID 968189)
+-- TOC entry 188 (class 1259 OID 976463)
 -- Name: clases_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -393,7 +391,7 @@ CREATE SEQUENCE clases_id_seq
 
 
 --
--- TOC entry 2682 (class 0 OID 0)
+-- TOC entry 2735 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: clases_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -402,7 +400,7 @@ ALTER SEQUENCE clases_id_seq OWNED BY clases.id;
 
 
 --
--- TOC entry 189 (class 1259 OID 968191)
+-- TOC entry 189 (class 1259 OID 976465)
 -- Name: clases_profesores; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -414,7 +412,7 @@ CREATE TABLE clases_profesores (
 
 
 --
--- TOC entry 190 (class 1259 OID 968194)
+-- TOC entry 190 (class 1259 OID 976468)
 -- Name: clases_profesores_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -427,7 +425,7 @@ CREATE SEQUENCE clases_profesores_id_seq
 
 
 --
--- TOC entry 2683 (class 0 OID 0)
+-- TOC entry 2736 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: clases_profesores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -436,7 +434,7 @@ ALTER SEQUENCE clases_profesores_id_seq OWNED BY clases_profesores.id;
 
 
 --
--- TOC entry 191 (class 1259 OID 968196)
+-- TOC entry 191 (class 1259 OID 976470)
 -- Name: condiciones_alumno; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -447,7 +445,7 @@ CREATE TABLE condiciones_alumno (
 
 
 --
--- TOC entry 192 (class 1259 OID 968199)
+-- TOC entry 192 (class 1259 OID 976473)
 -- Name: condiciones_alumno_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -460,7 +458,7 @@ CREATE SEQUENCE condiciones_alumno_id_seq
 
 
 --
--- TOC entry 2684 (class 0 OID 0)
+-- TOC entry 2737 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: condiciones_alumno_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -469,7 +467,7 @@ ALTER SEQUENCE condiciones_alumno_id_seq OWNED BY condiciones_alumno.id;
 
 
 --
--- TOC entry 193 (class 1259 OID 968201)
+-- TOC entry 193 (class 1259 OID 976475)
 -- Name: cursadas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -485,7 +483,7 @@ CREATE TABLE cursadas (
 
 
 --
--- TOC entry 194 (class 1259 OID 968204)
+-- TOC entry 194 (class 1259 OID 976478)
 -- Name: cursadas_alumnos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -502,7 +500,7 @@ CREATE TABLE cursadas_alumnos (
 
 
 --
--- TOC entry 195 (class 1259 OID 968210)
+-- TOC entry 195 (class 1259 OID 976484)
 -- Name: cursadas_alumnos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -515,7 +513,7 @@ CREATE SEQUENCE cursadas_alumnos_id_seq
 
 
 --
--- TOC entry 2685 (class 0 OID 0)
+-- TOC entry 2738 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: cursadas_alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -524,7 +522,7 @@ ALTER SEQUENCE cursadas_alumnos_id_seq OWNED BY cursadas_alumnos.id;
 
 
 --
--- TOC entry 196 (class 1259 OID 968212)
+-- TOC entry 196 (class 1259 OID 976486)
 -- Name: cursadas_cuotas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -538,7 +536,7 @@ CREATE TABLE cursadas_cuotas (
 
 
 --
--- TOC entry 197 (class 1259 OID 968216)
+-- TOC entry 197 (class 1259 OID 976490)
 -- Name: cursadas_cuotas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -551,7 +549,7 @@ CREATE SEQUENCE cursadas_cuotas_id_seq
 
 
 --
--- TOC entry 2686 (class 0 OID 0)
+-- TOC entry 2739 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: cursadas_cuotas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -560,7 +558,7 @@ ALTER SEQUENCE cursadas_cuotas_id_seq OWNED BY cursadas_cuotas.id;
 
 
 --
--- TOC entry 198 (class 1259 OID 968218)
+-- TOC entry 198 (class 1259 OID 976492)
 -- Name: cursadas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -573,7 +571,7 @@ CREATE SEQUENCE cursadas_id_seq
 
 
 --
--- TOC entry 2687 (class 0 OID 0)
+-- TOC entry 2740 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: cursadas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -582,7 +580,7 @@ ALTER SEQUENCE cursadas_id_seq OWNED BY cursadas.id;
 
 
 --
--- TOC entry 199 (class 1259 OID 968220)
+-- TOC entry 199 (class 1259 OID 976494)
 -- Name: cursadas_modulos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -602,7 +600,7 @@ CREATE TABLE cursadas_modulos (
 
 
 --
--- TOC entry 200 (class 1259 OID 968226)
+-- TOC entry 200 (class 1259 OID 976500)
 -- Name: cursadas_modulos_alumnos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -615,7 +613,7 @@ CREATE TABLE cursadas_modulos_alumnos (
 
 
 --
--- TOC entry 201 (class 1259 OID 968229)
+-- TOC entry 201 (class 1259 OID 976503)
 -- Name: cursadas_modulos_alumnos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -628,7 +626,7 @@ CREATE SEQUENCE cursadas_modulos_alumnos_id_seq
 
 
 --
--- TOC entry 2688 (class 0 OID 0)
+-- TOC entry 2741 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: cursadas_modulos_alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -637,7 +635,7 @@ ALTER SEQUENCE cursadas_modulos_alumnos_id_seq OWNED BY cursadas_modulos_alumnos
 
 
 --
--- TOC entry 202 (class 1259 OID 968231)
+-- TOC entry 202 (class 1259 OID 976505)
 -- Name: cursadas_modulos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -650,7 +648,7 @@ CREATE SEQUENCE cursadas_modulos_id_seq
 
 
 --
--- TOC entry 2689 (class 0 OID 0)
+-- TOC entry 2742 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: cursadas_modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -659,7 +657,7 @@ ALTER SEQUENCE cursadas_modulos_id_seq OWNED BY cursadas_modulos.id;
 
 
 --
--- TOC entry 203 (class 1259 OID 968233)
+-- TOC entry 203 (class 1259 OID 976507)
 -- Name: cursadas_profesores; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -672,7 +670,7 @@ CREATE TABLE cursadas_profesores (
 
 
 --
--- TOC entry 204 (class 1259 OID 968236)
+-- TOC entry 204 (class 1259 OID 976510)
 -- Name: cursadas_profesores_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -685,7 +683,7 @@ CREATE SEQUENCE cursadas_profesores_id_seq
 
 
 --
--- TOC entry 2690 (class 0 OID 0)
+-- TOC entry 2743 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: cursadas_profesores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -694,7 +692,7 @@ ALTER SEQUENCE cursadas_profesores_id_seq OWNED BY cursadas_profesores.id;
 
 
 --
--- TOC entry 205 (class 1259 OID 968238)
+-- TOC entry 205 (class 1259 OID 976512)
 -- Name: cursos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -712,12 +710,14 @@ CREATE TABLE cursos (
     cant_clases_teoricas integer,
     certificado_incluido boolean NOT NULL,
     monto_certificado numeric(10,2),
-    orden integer
+    orden integer,
+    cant_minima_practicas integer,
+    cant_minima_teoricas integer
 );
 
 
 --
--- TOC entry 2691 (class 0 OID 0)
+-- TOC entry 2744 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: COLUMN cursos.porcentaje_correlativa; Type: COMMENT; Schema: public; Owner: -
 --
@@ -726,7 +726,7 @@ COMMENT ON COLUMN cursos.porcentaje_correlativa IS 'porcentaje necesario para po
 
 
 --
--- TOC entry 2692 (class 0 OID 0)
+-- TOC entry 2745 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: COLUMN cursos.certificado_incluido; Type: COMMENT; Schema: public; Owner: -
 --
@@ -735,7 +735,7 @@ COMMENT ON COLUMN cursos.certificado_incluido IS 'Si el certificado esta incluid
 
 
 --
--- TOC entry 206 (class 1259 OID 968243)
+-- TOC entry 206 (class 1259 OID 976517)
 -- Name: cursos_correlatividad; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -747,7 +747,7 @@ CREATE TABLE cursos_correlatividad (
 
 
 --
--- TOC entry 207 (class 1259 OID 968246)
+-- TOC entry 207 (class 1259 OID 976520)
 -- Name: cursos_correlatividad_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -760,7 +760,7 @@ CREATE SEQUENCE cursos_correlatividad_id_seq
 
 
 --
--- TOC entry 2693 (class 0 OID 0)
+-- TOC entry 2746 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: cursos_correlatividad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -769,7 +769,7 @@ ALTER SEQUENCE cursos_correlatividad_id_seq OWNED BY cursos_correlatividad.id;
 
 
 --
--- TOC entry 208 (class 1259 OID 968248)
+-- TOC entry 208 (class 1259 OID 976522)
 -- Name: cursos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -782,7 +782,7 @@ CREATE SEQUENCE cursos_id_seq
 
 
 --
--- TOC entry 2694 (class 0 OID 0)
+-- TOC entry 2747 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: cursos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -791,7 +791,7 @@ ALTER SEQUENCE cursos_id_seq OWNED BY cursos.id;
 
 
 --
--- TOC entry 209 (class 1259 OID 968250)
+-- TOC entry 209 (class 1259 OID 976524)
 -- Name: cursos_modulos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -808,7 +808,7 @@ CREATE TABLE cursos_modulos (
 
 
 --
--- TOC entry 210 (class 1259 OID 968256)
+-- TOC entry 210 (class 1259 OID 976530)
 -- Name: cursos_modulos_alumnos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -824,7 +824,7 @@ CREATE TABLE cursos_modulos_alumnos (
 
 
 --
--- TOC entry 211 (class 1259 OID 968259)
+-- TOC entry 211 (class 1259 OID 976533)
 -- Name: cursos_modulos_alumnos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -837,7 +837,7 @@ CREATE SEQUENCE cursos_modulos_alumnos_id_seq
 
 
 --
--- TOC entry 2695 (class 0 OID 0)
+-- TOC entry 2748 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: cursos_modulos_alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -846,7 +846,7 @@ ALTER SEQUENCE cursos_modulos_alumnos_id_seq OWNED BY cursos_modulos_alumnos.id;
 
 
 --
--- TOC entry 212 (class 1259 OID 968261)
+-- TOC entry 212 (class 1259 OID 976535)
 -- Name: cursos_modulos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -859,7 +859,7 @@ CREATE SEQUENCE cursos_modulos_id_seq
 
 
 --
--- TOC entry 2696 (class 0 OID 0)
+-- TOC entry 2749 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: cursos_modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -868,7 +868,41 @@ ALTER SEQUENCE cursos_modulos_id_seq OWNED BY cursos_modulos.id;
 
 
 --
--- TOC entry 213 (class 1259 OID 968263)
+-- TOC entry 213 (class 1259 OID 976537)
+-- Name: cursos_titulos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE cursos_titulos (
+    id integer NOT NULL,
+    id_titulo integer NOT NULL,
+    id_curso integer NOT NULL
+);
+
+
+--
+-- TOC entry 214 (class 1259 OID 976540)
+-- Name: cursos_titulos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cursos_titulos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2750 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: cursos_titulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cursos_titulos_id_seq OWNED BY cursos_titulos.id;
+
+
+--
+-- TOC entry 215 (class 1259 OID 976542)
 -- Name: databasechangeloglock; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -881,7 +915,7 @@ CREATE TABLE databasechangeloglock (
 
 
 --
--- TOC entry 214 (class 1259 OID 968266)
+-- TOC entry 216 (class 1259 OID 976545)
 -- Name: datos_academicos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -892,12 +926,14 @@ CREATE TABLE datos_academicos (
     institucion_estudia character varying(100),
     dias integer,
     horas integer,
-    id_persona integer NOT NULL
+    id_persona integer NOT NULL,
+    titulo character varying(100),
+    estudia_descripcion character varying(200)
 );
 
 
 --
--- TOC entry 215 (class 1259 OID 968269)
+-- TOC entry 217 (class 1259 OID 976548)
 -- Name: datos_academicos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -910,8 +946,8 @@ CREATE SEQUENCE datos_academicos_id_seq
 
 
 --
--- TOC entry 2697 (class 0 OID 0)
--- Dependencies: 215
+-- TOC entry 2751 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: datos_academicos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -919,7 +955,7 @@ ALTER SEQUENCE datos_academicos_id_seq OWNED BY datos_academicos.id;
 
 
 --
--- TOC entry 216 (class 1259 OID 968271)
+-- TOC entry 218 (class 1259 OID 976550)
 -- Name: datos_actuales; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -929,16 +965,17 @@ CREATE TABLE datos_actuales (
     altura integer,
     piso integer,
     id_ciudad integer,
-    telefono_particular character varying(15),
-    telefono_celular character varying(15),
-    telefono_mensaje character varying(15),
+    telefono_particular character varying(30),
+    telefono_celular character varying(30),
+    telefono_mensaje character varying(30),
     email character varying(100),
-    id_persona integer NOT NULL
+    id_persona integer NOT NULL,
+    altura2 character varying(100)
 );
 
 
 --
--- TOC entry 217 (class 1259 OID 968274)
+-- TOC entry 219 (class 1259 OID 976556)
 -- Name: datos_actuales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -951,8 +988,8 @@ CREATE SEQUENCE datos_actuales_id_seq
 
 
 --
--- TOC entry 2698 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 2752 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: datos_actuales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -960,7 +997,7 @@ ALTER SEQUENCE datos_actuales_id_seq OWNED BY datos_actuales.id;
 
 
 --
--- TOC entry 218 (class 1259 OID 968276)
+-- TOC entry 220 (class 1259 OID 976558)
 -- Name: datos_laborales; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -969,7 +1006,7 @@ CREATE TABLE datos_laborales (
     id_profesion integer,
     empresa_trabaja character varying(100),
     domicilio_trabaja character varying(500),
-    telefono_laboral character varying(15),
+    telefono_laboral character varying(30),
     email_laboral character varying(255),
     id_persona integer NOT NULL,
     profesion character varying(255)
@@ -977,7 +1014,7 @@ CREATE TABLE datos_laborales (
 
 
 --
--- TOC entry 219 (class 1259 OID 968282)
+-- TOC entry 221 (class 1259 OID 976564)
 -- Name: datos_laborales_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -990,8 +1027,8 @@ CREATE SEQUENCE datos_laborales_id_seq
 
 
 --
--- TOC entry 2699 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 2753 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: datos_laborales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -999,7 +1036,7 @@ ALTER SEQUENCE datos_laborales_id_seq OWNED BY datos_laborales.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 968284)
+-- TOC entry 222 (class 1259 OID 976566)
 -- Name: datos_salud; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1015,7 +1052,7 @@ CREATE TABLE datos_salud (
 
 
 --
--- TOC entry 221 (class 1259 OID 968287)
+-- TOC entry 223 (class 1259 OID 976569)
 -- Name: datos_salud_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1028,8 +1065,8 @@ CREATE SEQUENCE datos_salud_id_seq
 
 
 --
--- TOC entry 2700 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 2754 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: datos_salud_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1037,7 +1074,7 @@ ALTER SEQUENCE datos_salud_id_seq OWNED BY datos_salud.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 968289)
+-- TOC entry 224 (class 1259 OID 976571)
 -- Name: estados_pago; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1048,7 +1085,7 @@ CREATE TABLE estados_pago (
 
 
 --
--- TOC entry 223 (class 1259 OID 968292)
+-- TOC entry 225 (class 1259 OID 976574)
 -- Name: estados_pago_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1061,8 +1098,8 @@ CREATE SEQUENCE estados_pago_id_seq
 
 
 --
--- TOC entry 2701 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 2755 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: estados_pago_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1070,7 +1107,7 @@ ALTER SEQUENCE estados_pago_id_seq OWNED BY estados_pago.id;
 
 
 --
--- TOC entry 224 (class 1259 OID 968294)
+-- TOC entry 226 (class 1259 OID 976576)
 -- Name: grupos_sanguineos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1081,7 +1118,7 @@ CREATE TABLE grupos_sanguineos (
 
 
 --
--- TOC entry 225 (class 1259 OID 968297)
+-- TOC entry 227 (class 1259 OID 976579)
 -- Name: grupos_sanguineos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1094,8 +1131,8 @@ CREATE SEQUENCE grupos_sanguineos_id_seq
 
 
 --
--- TOC entry 2702 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 2756 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: grupos_sanguineos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1103,7 +1140,17 @@ ALTER SEQUENCE grupos_sanguineos_id_seq OWNED BY grupos_sanguineos.id;
 
 
 --
--- TOC entry 226 (class 1259 OID 968299)
+-- TOC entry 228 (class 1259 OID 976581)
+-- Name: ids; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ids (
+    id integer
+);
+
+
+--
+-- TOC entry 229 (class 1259 OID 976584)
 -- Name: inscripciones_modulos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1117,7 +1164,7 @@ CREATE TABLE inscripciones_modulos (
 
 
 --
--- TOC entry 227 (class 1259 OID 968302)
+-- TOC entry 230 (class 1259 OID 976587)
 -- Name: inscripciones_modulos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1130,8 +1177,8 @@ CREATE SEQUENCE inscripciones_modulos_id_seq
 
 
 --
--- TOC entry 2703 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 2757 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: inscripciones_modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1139,7 +1186,7 @@ ALTER SEQUENCE inscripciones_modulos_id_seq OWNED BY inscripciones_modulos.id;
 
 
 --
--- TOC entry 228 (class 1259 OID 968304)
+-- TOC entry 231 (class 1259 OID 976589)
 -- Name: modulos; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1153,7 +1200,7 @@ CREATE TABLE modulos (
 
 
 --
--- TOC entry 229 (class 1259 OID 968308)
+-- TOC entry 232 (class 1259 OID 976593)
 -- Name: modulos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1166,8 +1213,8 @@ CREATE SEQUENCE modulos_id_seq
 
 
 --
--- TOC entry 2704 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 2758 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1175,7 +1222,7 @@ ALTER SEQUENCE modulos_id_seq OWNED BY modulos.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 968310)
+-- TOC entry 233 (class 1259 OID 976595)
 -- Name: niveles_estudios; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1186,7 +1233,7 @@ CREATE TABLE niveles_estudios (
 
 
 --
--- TOC entry 231 (class 1259 OID 968313)
+-- TOC entry 234 (class 1259 OID 976598)
 -- Name: niveles_estudios_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1199,8 +1246,8 @@ CREATE SEQUENCE niveles_estudios_id_seq
 
 
 --
--- TOC entry 2705 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 2759 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: niveles_estudios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1208,7 +1255,7 @@ ALTER SEQUENCE niveles_estudios_id_seq OWNED BY niveles_estudios.id;
 
 
 --
--- TOC entry 232 (class 1259 OID 968315)
+-- TOC entry 235 (class 1259 OID 976600)
 -- Name: paises; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1220,7 +1267,7 @@ CREATE TABLE paises (
 
 
 --
--- TOC entry 233 (class 1259 OID 968318)
+-- TOC entry 236 (class 1259 OID 976603)
 -- Name: paises_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1233,8 +1280,8 @@ CREATE SEQUENCE paises_id_seq
 
 
 --
--- TOC entry 2706 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 2760 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: paises_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1242,7 +1289,7 @@ ALTER SEQUENCE paises_id_seq OWNED BY paises.id;
 
 
 --
--- TOC entry 234 (class 1259 OID 968320)
+-- TOC entry 237 (class 1259 OID 976605)
 -- Name: perfiles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1252,7 +1299,7 @@ CREATE TABLE perfiles (
 
 
 --
--- TOC entry 235 (class 1259 OID 968323)
+-- TOC entry 238 (class 1259 OID 976608)
 -- Name: profesiones; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1263,7 +1310,7 @@ CREATE TABLE profesiones (
 
 
 --
--- TOC entry 236 (class 1259 OID 968326)
+-- TOC entry 239 (class 1259 OID 976611)
 -- Name: profesiones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1276,8 +1323,8 @@ CREATE SEQUENCE profesiones_id_seq
 
 
 --
--- TOC entry 2707 (class 0 OID 0)
--- Dependencies: 236
+-- TOC entry 2761 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: profesiones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1285,7 +1332,7 @@ ALTER SEQUENCE profesiones_id_seq OWNED BY profesiones.id;
 
 
 --
--- TOC entry 237 (class 1259 OID 968328)
+-- TOC entry 240 (class 1259 OID 976613)
 -- Name: provincias; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1297,7 +1344,7 @@ CREATE TABLE provincias (
 
 
 --
--- TOC entry 238 (class 1259 OID 968334)
+-- TOC entry 241 (class 1259 OID 976619)
 -- Name: provincias_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1310,8 +1357,8 @@ CREATE SEQUENCE provincias_id_seq
 
 
 --
--- TOC entry 2708 (class 0 OID 0)
--- Dependencies: 238
+-- TOC entry 2762 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: provincias_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1319,7 +1366,7 @@ ALTER SEQUENCE provincias_id_seq OWNED BY provincias.id;
 
 
 --
--- TOC entry 239 (class 1259 OID 968336)
+-- TOC entry 242 (class 1259 OID 976621)
 -- Name: sedes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1342,7 +1389,7 @@ CREATE TABLE sedes (
 
 
 --
--- TOC entry 240 (class 1259 OID 968343)
+-- TOC entry 243 (class 1259 OID 976628)
 -- Name: sedes_formadores; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1354,7 +1401,7 @@ CREATE TABLE sedes_formadores (
 
 
 --
--- TOC entry 241 (class 1259 OID 968346)
+-- TOC entry 244 (class 1259 OID 976631)
 -- Name: sedes_formadores_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1367,8 +1414,8 @@ CREATE SEQUENCE sedes_formadores_id_seq
 
 
 --
--- TOC entry 2709 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 2763 (class 0 OID 0)
+-- Dependencies: 244
 -- Name: sedes_formadores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1376,7 +1423,7 @@ ALTER SEQUENCE sedes_formadores_id_seq OWNED BY sedes_formadores.id;
 
 
 --
--- TOC entry 242 (class 1259 OID 968348)
+-- TOC entry 245 (class 1259 OID 976633)
 -- Name: sedes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1389,8 +1436,8 @@ CREATE SEQUENCE sedes_id_seq
 
 
 --
--- TOC entry 2710 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 2764 (class 0 OID 0)
+-- Dependencies: 245
 -- Name: sedes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1398,7 +1445,7 @@ ALTER SEQUENCE sedes_id_seq OWNED BY sedes.id;
 
 
 --
--- TOC entry 273 (class 1259 OID 976408)
+-- TOC entry 246 (class 1259 OID 976635)
 -- Name: temp_ciudades; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1410,7 +1457,7 @@ CREATE TABLE temp_ciudades (
 
 
 --
--- TOC entry 272 (class 1259 OID 976406)
+-- TOC entry 247 (class 1259 OID 976638)
 -- Name: temp_ciudades_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1423,8 +1470,8 @@ CREATE SEQUENCE temp_ciudades_id_seq
 
 
 --
--- TOC entry 2711 (class 0 OID 0)
--- Dependencies: 272
+-- TOC entry 2765 (class 0 OID 0)
+-- Dependencies: 247
 -- Name: temp_ciudades_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1432,7 +1479,7 @@ ALTER SEQUENCE temp_ciudades_id_seq OWNED BY temp_ciudades.id;
 
 
 --
--- TOC entry 271 (class 1259 OID 976387)
+-- TOC entry 248 (class 1259 OID 976640)
 -- Name: temp_personas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1484,7 +1531,7 @@ CREATE TABLE temp_personas (
 
 
 --
--- TOC entry 269 (class 1259 OID 976379)
+-- TOC entry 249 (class 1259 OID 976646)
 -- Name: temp_personas2; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1535,7 +1582,7 @@ CREATE TABLE temp_personas2 (
 
 
 --
--- TOC entry 270 (class 1259 OID 976385)
+-- TOC entry 250 (class 1259 OID 976652)
 -- Name: temp_personas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1548,8 +1595,8 @@ CREATE SEQUENCE temp_personas_id_seq
 
 
 --
--- TOC entry 2712 (class 0 OID 0)
--- Dependencies: 270
+-- TOC entry 2766 (class 0 OID 0)
+-- Dependencies: 250
 -- Name: temp_personas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1557,7 +1604,7 @@ ALTER SEQUENCE temp_personas_id_seq OWNED BY temp_personas.id;
 
 
 --
--- TOC entry 243 (class 1259 OID 968350)
+-- TOC entry 251 (class 1259 OID 976654)
 -- Name: tipo_clase; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1568,7 +1615,7 @@ CREATE TABLE tipo_clase (
 
 
 --
--- TOC entry 244 (class 1259 OID 968353)
+-- TOC entry 252 (class 1259 OID 976657)
 -- Name: tipo_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1581,8 +1628,8 @@ CREATE SEQUENCE tipo_clase_id_seq
 
 
 --
--- TOC entry 2713 (class 0 OID 0)
--- Dependencies: 244
+-- TOC entry 2767 (class 0 OID 0)
+-- Dependencies: 252
 -- Name: tipo_clase_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1590,7 +1637,7 @@ ALTER SEQUENCE tipo_clase_id_seq OWNED BY tipo_clase.id;
 
 
 --
--- TOC entry 245 (class 1259 OID 968355)
+-- TOC entry 253 (class 1259 OID 976659)
 -- Name: tipo_pago; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1601,7 +1648,7 @@ CREATE TABLE tipo_pago (
 
 
 --
--- TOC entry 246 (class 1259 OID 968358)
+-- TOC entry 254 (class 1259 OID 976662)
 -- Name: tipo_pago_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1614,8 +1661,8 @@ CREATE SEQUENCE tipo_pago_id_seq
 
 
 --
--- TOC entry 2714 (class 0 OID 0)
--- Dependencies: 246
+-- TOC entry 2768 (class 0 OID 0)
+-- Dependencies: 254
 -- Name: tipo_pago_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1623,7 +1670,7 @@ ALTER SEQUENCE tipo_pago_id_seq OWNED BY tipo_pago.id;
 
 
 --
--- TOC entry 247 (class 1259 OID 968360)
+-- TOC entry 255 (class 1259 OID 976664)
 -- Name: tipo_pago_sede; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1634,7 +1681,7 @@ CREATE TABLE tipo_pago_sede (
 
 
 --
--- TOC entry 248 (class 1259 OID 968363)
+-- TOC entry 256 (class 1259 OID 976667)
 -- Name: tipo_pago_sede_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1647,8 +1694,8 @@ CREATE SEQUENCE tipo_pago_sede_id_seq
 
 
 --
--- TOC entry 2715 (class 0 OID 0)
--- Dependencies: 248
+-- TOC entry 2769 (class 0 OID 0)
+-- Dependencies: 256
 -- Name: tipo_pago_sede_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1656,7 +1703,7 @@ ALTER SEQUENCE tipo_pago_sede_id_seq OWNED BY tipo_pago_sede.id;
 
 
 --
--- TOC entry 249 (class 1259 OID 968365)
+-- TOC entry 257 (class 1259 OID 976669)
 -- Name: tipo_persona; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1667,7 +1714,7 @@ CREATE TABLE tipo_persona (
 
 
 --
--- TOC entry 250 (class 1259 OID 968368)
+-- TOC entry 258 (class 1259 OID 976672)
 -- Name: tipo_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1680,8 +1727,8 @@ CREATE SEQUENCE tipo_persona_id_seq
 
 
 --
--- TOC entry 2716 (class 0 OID 0)
--- Dependencies: 250
+-- TOC entry 2770 (class 0 OID 0)
+-- Dependencies: 258
 -- Name: tipo_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1689,7 +1736,7 @@ ALTER SEQUENCE tipo_persona_id_seq OWNED BY tipo_persona.id;
 
 
 --
--- TOC entry 251 (class 1259 OID 968370)
+-- TOC entry 259 (class 1259 OID 976674)
 -- Name: tipo_persona_perfiles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1701,8 +1748,8 @@ CREATE TABLE tipo_persona_perfiles (
 
 
 --
--- TOC entry 2717 (class 0 OID 0)
--- Dependencies: 251
+-- TOC entry 2771 (class 0 OID 0)
+-- Dependencies: 259
 -- Name: TABLE tipo_persona_perfiles; Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -1710,7 +1757,7 @@ COMMENT ON TABLE tipo_persona_perfiles IS 'Perfiles a asignar cuando se crea un 
 
 
 --
--- TOC entry 252 (class 1259 OID 968373)
+-- TOC entry 260 (class 1259 OID 976677)
 -- Name: tipo_persona_perfiles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1723,8 +1770,8 @@ CREATE SEQUENCE tipo_persona_perfiles_id_seq
 
 
 --
--- TOC entry 2718 (class 0 OID 0)
--- Dependencies: 252
+-- TOC entry 2772 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: tipo_persona_perfiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1732,7 +1779,7 @@ ALTER SEQUENCE tipo_persona_perfiles_id_seq OWNED BY tipo_persona_perfiles.id;
 
 
 --
--- TOC entry 253 (class 1259 OID 968375)
+-- TOC entry 261 (class 1259 OID 976679)
 -- Name: tipo_profesor; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1743,7 +1790,7 @@ CREATE TABLE tipo_profesor (
 
 
 --
--- TOC entry 254 (class 1259 OID 968378)
+-- TOC entry 262 (class 1259 OID 976682)
 -- Name: tipo_profesor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1756,8 +1803,8 @@ CREATE SEQUENCE tipo_profesor_id_seq
 
 
 --
--- TOC entry 2719 (class 0 OID 0)
--- Dependencies: 254
+-- TOC entry 2773 (class 0 OID 0)
+-- Dependencies: 262
 -- Name: tipo_profesor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1765,7 +1812,75 @@ ALTER SEQUENCE tipo_profesor_id_seq OWNED BY tipo_profesor.id;
 
 
 --
--- TOC entry 255 (class 1259 OID 968380)
+-- TOC entry 263 (class 1259 OID 976684)
+-- Name: tipo_titulo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tipo_titulo (
+    id integer NOT NULL,
+    descripcion character varying(60) NOT NULL
+);
+
+
+--
+-- TOC entry 264 (class 1259 OID 976687)
+-- Name: tipo_titulo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tipo_titulo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2774 (class 0 OID 0)
+-- Dependencies: 264
+-- Name: tipo_titulo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tipo_titulo_id_seq OWNED BY tipo_titulo.id;
+
+
+--
+-- TOC entry 265 (class 1259 OID 976689)
+-- Name: titulos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE titulos (
+    id integer NOT NULL,
+    nombre character varying(100) NOT NULL,
+    descripcion character varying(500) NOT NULL,
+    id_tipo_titulo integer NOT NULL
+);
+
+
+--
+-- TOC entry 266 (class 1259 OID 976695)
+-- Name: titulos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE titulos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2775 (class 0 OID 0)
+-- Dependencies: 266
+-- Name: titulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE titulos_id_seq OWNED BY titulos.id;
+
+
+--
+-- TOC entry 267 (class 1259 OID 976697)
 -- Name: usuario_persona; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1777,7 +1892,7 @@ CREATE TABLE usuario_persona (
 
 
 --
--- TOC entry 256 (class 1259 OID 968383)
+-- TOC entry 268 (class 1259 OID 976700)
 -- Name: usuario_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1790,8 +1905,8 @@ CREATE SEQUENCE usuario_persona_id_seq
 
 
 --
--- TOC entry 2720 (class 0 OID 0)
--- Dependencies: 256
+-- TOC entry 2776 (class 0 OID 0)
+-- Dependencies: 268
 -- Name: usuario_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1799,7 +1914,7 @@ ALTER SEQUENCE usuario_persona_id_seq OWNED BY usuario_persona.id;
 
 
 --
--- TOC entry 257 (class 1259 OID 968385)
+-- TOC entry 269 (class 1259 OID 976702)
 -- Name: v_sedes; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1828,7 +1943,7 @@ CREATE VIEW v_sedes AS
 
 
 --
--- TOC entry 258 (class 1259 OID 968390)
+-- TOC entry 270 (class 1259 OID 976707)
 -- Name: v_alquiler_cabecera; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1854,7 +1969,7 @@ CREATE VIEW v_alquiler_cabecera AS
 
 
 --
--- TOC entry 259 (class 1259 OID 968395)
+-- TOC entry 271 (class 1259 OID 976712)
 -- Name: v_aulas; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1883,7 +1998,7 @@ CREATE VIEW v_aulas AS
 
 
 --
--- TOC entry 260 (class 1259 OID 968400)
+-- TOC entry 272 (class 1259 OID 976717)
 -- Name: v_ciudades; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1908,7 +2023,7 @@ CREATE VIEW v_ciudades AS
 
 
 --
--- TOC entry 261 (class 1259 OID 968404)
+-- TOC entry 281 (class 1259 OID 977164)
 -- Name: v_clases; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1924,6 +2039,7 @@ CREATE VIEW v_clases AS
     cm.nombre AS nombre_modulo,
     cm.descripcion AS descripcion_modulo,
     cm.mes AS mes_modulo,
+    cm.anio AS anio_modulo,
     c.id_cursada,
     cu.descripcion AS cursada_descripcion,
     cu.fecha_inicio AS fecha_inicio_cursada,
@@ -1947,7 +2063,7 @@ CREATE VIEW v_clases AS
 
 
 --
--- TOC entry 262 (class 1259 OID 968409)
+-- TOC entry 273 (class 1259 OID 976726)
 -- Name: v_cursadas; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -1974,7 +2090,7 @@ CREATE VIEW v_cursadas AS
 
 
 --
--- TOC entry 263 (class 1259 OID 968414)
+-- TOC entry 274 (class 1259 OID 976731)
 -- Name: v_personas; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2036,7 +2152,7 @@ CREATE VIEW v_personas AS
 
 
 --
--- TOC entry 264 (class 1259 OID 968419)
+-- TOC entry 275 (class 1259 OID 976736)
 -- Name: v_cursadas_alumnos; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2072,7 +2188,7 @@ CREATE VIEW v_cursadas_alumnos AS
 
 
 --
--- TOC entry 265 (class 1259 OID 968424)
+-- TOC entry 276 (class 1259 OID 976741)
 -- Name: v_cursadas_modulos; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2100,7 +2216,55 @@ CREATE VIEW v_cursadas_modulos AS
 
 
 --
--- TOC entry 268 (class 1259 OID 968804)
+-- TOC entry 282 (class 1259 OID 977169)
+-- Name: v_clases_alumnos; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_clases_alumnos AS
+ SELECT c.id AS id_clase,
+    c.clase_descripcion,
+    c.fecha AS fecha_clase,
+    c.hora_inicio AS hora_inicio_clase,
+    c.hora_fin AS hora_fin_clase,
+    c.id_tipo_clase,
+    c.tipo_clase,
+    c.id_modulo,
+    c.nombre_modulo,
+    c.descripcion_modulo,
+    cm.nro_modulo,
+    c.mes_modulo,
+    c.anio_modulo,
+    c.activo AS curso_activo,
+    cm.modulo_vigente,
+    ca.id_alumno,
+    ca.id_condicion_alumno,
+    ca.nombre_alumno,
+    ca.apellido_alumno,
+    ca.dni,
+    ca.legajo,
+    ca.telefono_celular,
+    ca.telefono_mensaje,
+    ca.email,
+    ca.modulo_inicio,
+    ca.abono_matricula,
+    ca.fecha_inscripcion,
+    ca.id_curso,
+    ca.curso,
+    ca.descripcion_curso,
+    cm.id_cursada,
+    cm.cursada,
+    cm.periodo,
+    cm.id_sede,
+    cm.sede,
+    cm.orden AS orden_modulos
+   FROM (((v_clases c
+     JOIN cursadas_modulos_alumnos cma ON ((cma.id_modulo = c.id_modulo)))
+     LEFT JOIN v_cursadas_alumnos ca ON ((ca.id = cma.id_cursadas_alumnos)))
+     LEFT JOIN v_cursadas_modulos cm ON ((cm.id = cma.id_modulo)));
+
+
+--
+-- TOC entry 280 (class 1259 OID 977159)
 -- Name: v_cursadas_modulos_alumnos; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2125,6 +2289,7 @@ CREATE VIEW v_cursadas_modulos_alumnos AS
     cm.id_sede,
     cm.sede,
     ca.sede_descripcion,
+    ca.id_alumno,
     ca.id_condicion_alumno,
     ca.fecha_inscripcion,
     ca.nombre_alumno,
@@ -2142,7 +2307,7 @@ CREATE VIEW v_cursadas_modulos_alumnos AS
 
 
 --
--- TOC entry 266 (class 1259 OID 968429)
+-- TOC entry 277 (class 1259 OID 976751)
 -- Name: v_provincias; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2157,7 +2322,7 @@ CREATE VIEW v_provincias AS
 
 
 --
--- TOC entry 267 (class 1259 OID 968433)
+-- TOC entry 278 (class 1259 OID 976755)
 -- Name: v_tipo_persona_perfiles; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2171,7 +2336,22 @@ CREATE VIEW v_tipo_persona_perfiles AS
 
 
 --
--- TOC entry 2252 (class 2604 OID 968437)
+-- TOC entry 279 (class 1259 OID 976759)
+-- Name: v_titulos; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_titulos AS
+ SELECT t.id,
+    t.nombre,
+    t.descripcion,
+    t.id_tipo_titulo,
+    tt.descripcion AS tipo_titulo
+   FROM (titulos t
+     LEFT JOIN tipo_titulo tt ON ((tt.id = t.id_tipo_titulo)));
+
+
+--
+-- TOC entry 2284 (class 2604 OID 976763)
 -- Name: alquiler_sede id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2179,7 +2359,7 @@ ALTER TABLE ONLY alquiler_sede ALTER COLUMN id SET DEFAULT nextval('alquiler_sed
 
 
 --
--- TOC entry 2255 (class 2604 OID 968438)
+-- TOC entry 2287 (class 2604 OID 976764)
 -- Name: alquiler_sede_cabecera id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2187,7 +2367,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera ALTER COLUMN id SET DEFAULT nextval('alq
 
 
 --
--- TOC entry 2257 (class 2604 OID 968439)
+-- TOC entry 2289 (class 2604 OID 976765)
 -- Name: alquiler_sede_detalle id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2195,7 +2375,7 @@ ALTER TABLE ONLY alquiler_sede_detalle ALTER COLUMN id SET DEFAULT nextval('alqu
 
 
 --
--- TOC entry 2261 (class 2604 OID 968440)
+-- TOC entry 2293 (class 2604 OID 976766)
 -- Name: aulas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2203,7 +2383,7 @@ ALTER TABLE ONLY aulas ALTER COLUMN id SET DEFAULT nextval('aulas_id_seq'::regcl
 
 
 --
--- TOC entry 2262 (class 2604 OID 968441)
+-- TOC entry 2294 (class 2604 OID 976767)
 -- Name: ciudades id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2211,7 +2391,7 @@ ALTER TABLE ONLY ciudades ALTER COLUMN id SET DEFAULT nextval('ciudades_id_seq':
 
 
 --
--- TOC entry 2263 (class 2604 OID 968442)
+-- TOC entry 2295 (class 2604 OID 976768)
 -- Name: clases id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2219,7 +2399,7 @@ ALTER TABLE ONLY clases ALTER COLUMN id SET DEFAULT nextval('clases_id_seq'::reg
 
 
 --
--- TOC entry 2264 (class 2604 OID 968443)
+-- TOC entry 2296 (class 2604 OID 976769)
 -- Name: clases_profesores id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2227,7 +2407,7 @@ ALTER TABLE ONLY clases_profesores ALTER COLUMN id SET DEFAULT nextval('clases_p
 
 
 --
--- TOC entry 2265 (class 2604 OID 968444)
+-- TOC entry 2297 (class 2604 OID 976770)
 -- Name: condiciones_alumno id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2235,7 +2415,7 @@ ALTER TABLE ONLY condiciones_alumno ALTER COLUMN id SET DEFAULT nextval('condici
 
 
 --
--- TOC entry 2266 (class 2604 OID 968445)
+-- TOC entry 2298 (class 2604 OID 976771)
 -- Name: cursadas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2243,7 +2423,7 @@ ALTER TABLE ONLY cursadas ALTER COLUMN id SET DEFAULT nextval('cursadas_id_seq':
 
 
 --
--- TOC entry 2270 (class 2604 OID 968446)
+-- TOC entry 2302 (class 2604 OID 976772)
 -- Name: cursadas_alumnos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2251,7 +2431,7 @@ ALTER TABLE ONLY cursadas_alumnos ALTER COLUMN id SET DEFAULT nextval('cursadas_
 
 
 --
--- TOC entry 2272 (class 2604 OID 968447)
+-- TOC entry 2304 (class 2604 OID 976773)
 -- Name: cursadas_cuotas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2259,7 +2439,7 @@ ALTER TABLE ONLY cursadas_cuotas ALTER COLUMN id SET DEFAULT nextval('cursadas_c
 
 
 --
--- TOC entry 2273 (class 2604 OID 968448)
+-- TOC entry 2305 (class 2604 OID 976774)
 -- Name: cursadas_modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2267,7 +2447,7 @@ ALTER TABLE ONLY cursadas_modulos ALTER COLUMN id SET DEFAULT nextval('cursadas_
 
 
 --
--- TOC entry 2274 (class 2604 OID 968449)
+-- TOC entry 2306 (class 2604 OID 976775)
 -- Name: cursadas_modulos_alumnos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2275,7 +2455,7 @@ ALTER TABLE ONLY cursadas_modulos_alumnos ALTER COLUMN id SET DEFAULT nextval('c
 
 
 --
--- TOC entry 2275 (class 2604 OID 968450)
+-- TOC entry 2307 (class 2604 OID 976776)
 -- Name: cursadas_profesores id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2283,7 +2463,7 @@ ALTER TABLE ONLY cursadas_profesores ALTER COLUMN id SET DEFAULT nextval('cursad
 
 
 --
--- TOC entry 2278 (class 2604 OID 968451)
+-- TOC entry 2310 (class 2604 OID 976777)
 -- Name: cursos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2291,7 +2471,7 @@ ALTER TABLE ONLY cursos ALTER COLUMN id SET DEFAULT nextval('cursos_id_seq'::reg
 
 
 --
--- TOC entry 2279 (class 2604 OID 968452)
+-- TOC entry 2311 (class 2604 OID 976778)
 -- Name: cursos_correlatividad id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2299,7 +2479,7 @@ ALTER TABLE ONLY cursos_correlatividad ALTER COLUMN id SET DEFAULT nextval('curs
 
 
 --
--- TOC entry 2280 (class 2604 OID 968453)
+-- TOC entry 2312 (class 2604 OID 976779)
 -- Name: cursos_modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2307,7 +2487,7 @@ ALTER TABLE ONLY cursos_modulos ALTER COLUMN id SET DEFAULT nextval('cursos_modu
 
 
 --
--- TOC entry 2281 (class 2604 OID 968454)
+-- TOC entry 2313 (class 2604 OID 976780)
 -- Name: cursos_modulos_alumnos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2315,7 +2495,15 @@ ALTER TABLE ONLY cursos_modulos_alumnos ALTER COLUMN id SET DEFAULT nextval('cur
 
 
 --
--- TOC entry 2282 (class 2604 OID 968455)
+-- TOC entry 2314 (class 2604 OID 976781)
+-- Name: cursos_titulos id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cursos_titulos ALTER COLUMN id SET DEFAULT nextval('cursos_titulos_id_seq'::regclass);
+
+
+--
+-- TOC entry 2315 (class 2604 OID 976782)
 -- Name: datos_academicos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2323,7 +2511,7 @@ ALTER TABLE ONLY datos_academicos ALTER COLUMN id SET DEFAULT nextval('datos_aca
 
 
 --
--- TOC entry 2283 (class 2604 OID 968456)
+-- TOC entry 2316 (class 2604 OID 976783)
 -- Name: datos_actuales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2331,7 +2519,7 @@ ALTER TABLE ONLY datos_actuales ALTER COLUMN id SET DEFAULT nextval('datos_actua
 
 
 --
--- TOC entry 2284 (class 2604 OID 968457)
+-- TOC entry 2317 (class 2604 OID 976784)
 -- Name: datos_laborales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2339,7 +2527,7 @@ ALTER TABLE ONLY datos_laborales ALTER COLUMN id SET DEFAULT nextval('datos_labo
 
 
 --
--- TOC entry 2285 (class 2604 OID 968458)
+-- TOC entry 2318 (class 2604 OID 976785)
 -- Name: datos_salud id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2347,7 +2535,7 @@ ALTER TABLE ONLY datos_salud ALTER COLUMN id SET DEFAULT nextval('datos_salud_id
 
 
 --
--- TOC entry 2286 (class 2604 OID 968459)
+-- TOC entry 2319 (class 2604 OID 976786)
 -- Name: estados_pago id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2355,7 +2543,7 @@ ALTER TABLE ONLY estados_pago ALTER COLUMN id SET DEFAULT nextval('estados_pago_
 
 
 --
--- TOC entry 2287 (class 2604 OID 968460)
+-- TOC entry 2320 (class 2604 OID 976787)
 -- Name: grupos_sanguineos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2363,7 +2551,7 @@ ALTER TABLE ONLY grupos_sanguineos ALTER COLUMN id SET DEFAULT nextval('grupos_s
 
 
 --
--- TOC entry 2288 (class 2604 OID 968461)
+-- TOC entry 2321 (class 2604 OID 976788)
 -- Name: inscripciones_modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2371,7 +2559,7 @@ ALTER TABLE ONLY inscripciones_modulos ALTER COLUMN id SET DEFAULT nextval('insc
 
 
 --
--- TOC entry 2290 (class 2604 OID 968462)
+-- TOC entry 2323 (class 2604 OID 976789)
 -- Name: modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2379,7 +2567,7 @@ ALTER TABLE ONLY modulos ALTER COLUMN id SET DEFAULT nextval('modulos_id_seq'::r
 
 
 --
--- TOC entry 2291 (class 2604 OID 968463)
+-- TOC entry 2324 (class 2604 OID 976790)
 -- Name: niveles_estudios id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2387,7 +2575,7 @@ ALTER TABLE ONLY niveles_estudios ALTER COLUMN id SET DEFAULT nextval('niveles_e
 
 
 --
--- TOC entry 2292 (class 2604 OID 968464)
+-- TOC entry 2325 (class 2604 OID 976791)
 -- Name: paises id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2395,7 +2583,7 @@ ALTER TABLE ONLY paises ALTER COLUMN id SET DEFAULT nextval('paises_id_seq'::reg
 
 
 --
--- TOC entry 2259 (class 2604 OID 968465)
+-- TOC entry 2291 (class 2604 OID 976792)
 -- Name: personas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2403,7 +2591,7 @@ ALTER TABLE ONLY personas ALTER COLUMN id SET DEFAULT nextval('alumnos_id_seq'::
 
 
 --
--- TOC entry 2260 (class 2604 OID 968466)
+-- TOC entry 2292 (class 2604 OID 976793)
 -- Name: personas legajo; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2411,7 +2599,7 @@ ALTER TABLE ONLY personas ALTER COLUMN legajo SET DEFAULT nextval('alumnos_legaj
 
 
 --
--- TOC entry 2293 (class 2604 OID 968467)
+-- TOC entry 2326 (class 2604 OID 976794)
 -- Name: profesiones id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2419,7 +2607,7 @@ ALTER TABLE ONLY profesiones ALTER COLUMN id SET DEFAULT nextval('profesiones_id
 
 
 --
--- TOC entry 2294 (class 2604 OID 968468)
+-- TOC entry 2327 (class 2604 OID 976795)
 -- Name: provincias id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2427,7 +2615,7 @@ ALTER TABLE ONLY provincias ALTER COLUMN id SET DEFAULT nextval('provincias_id_s
 
 
 --
--- TOC entry 2296 (class 2604 OID 968469)
+-- TOC entry 2329 (class 2604 OID 976796)
 -- Name: sedes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2435,7 +2623,7 @@ ALTER TABLE ONLY sedes ALTER COLUMN id SET DEFAULT nextval('sedes_id_seq'::regcl
 
 
 --
--- TOC entry 2297 (class 2604 OID 968470)
+-- TOC entry 2330 (class 2604 OID 976797)
 -- Name: sedes_formadores id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2443,7 +2631,7 @@ ALTER TABLE ONLY sedes_formadores ALTER COLUMN id SET DEFAULT nextval('sedes_for
 
 
 --
--- TOC entry 2306 (class 2604 OID 976411)
+-- TOC entry 2331 (class 2604 OID 976798)
 -- Name: temp_ciudades id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2451,7 +2639,7 @@ ALTER TABLE ONLY temp_ciudades ALTER COLUMN id SET DEFAULT nextval('temp_ciudade
 
 
 --
--- TOC entry 2305 (class 2604 OID 976390)
+-- TOC entry 2332 (class 2604 OID 976799)
 -- Name: temp_personas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2459,7 +2647,7 @@ ALTER TABLE ONLY temp_personas ALTER COLUMN id SET DEFAULT nextval('temp_persona
 
 
 --
--- TOC entry 2298 (class 2604 OID 968471)
+-- TOC entry 2333 (class 2604 OID 976800)
 -- Name: tipo_clase id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2467,7 +2655,7 @@ ALTER TABLE ONLY tipo_clase ALTER COLUMN id SET DEFAULT nextval('tipo_clase_id_s
 
 
 --
--- TOC entry 2299 (class 2604 OID 968472)
+-- TOC entry 2334 (class 2604 OID 976801)
 -- Name: tipo_pago id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2475,7 +2663,7 @@ ALTER TABLE ONLY tipo_pago ALTER COLUMN id SET DEFAULT nextval('tipo_pago_id_seq
 
 
 --
--- TOC entry 2300 (class 2604 OID 968473)
+-- TOC entry 2335 (class 2604 OID 976802)
 -- Name: tipo_pago_sede id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2483,7 +2671,7 @@ ALTER TABLE ONLY tipo_pago_sede ALTER COLUMN id SET DEFAULT nextval('tipo_pago_s
 
 
 --
--- TOC entry 2301 (class 2604 OID 968474)
+-- TOC entry 2336 (class 2604 OID 976803)
 -- Name: tipo_persona id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2491,7 +2679,7 @@ ALTER TABLE ONLY tipo_persona ALTER COLUMN id SET DEFAULT nextval('tipo_persona_
 
 
 --
--- TOC entry 2302 (class 2604 OID 968475)
+-- TOC entry 2337 (class 2604 OID 976804)
 -- Name: tipo_persona_perfiles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2499,7 +2687,7 @@ ALTER TABLE ONLY tipo_persona_perfiles ALTER COLUMN id SET DEFAULT nextval('tipo
 
 
 --
--- TOC entry 2303 (class 2604 OID 968476)
+-- TOC entry 2338 (class 2604 OID 976805)
 -- Name: tipo_profesor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2507,7 +2695,23 @@ ALTER TABLE ONLY tipo_profesor ALTER COLUMN id SET DEFAULT nextval('tipo_profeso
 
 
 --
--- TOC entry 2304 (class 2604 OID 968477)
+-- TOC entry 2339 (class 2604 OID 976806)
+-- Name: tipo_titulo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipo_titulo ALTER COLUMN id SET DEFAULT nextval('tipo_titulo_id_seq'::regclass);
+
+
+--
+-- TOC entry 2340 (class 2604 OID 976807)
+-- Name: titulos id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY titulos ALTER COLUMN id SET DEFAULT nextval('titulos_id_seq'::regclass);
+
+
+--
+-- TOC entry 2341 (class 2604 OID 976808)
 -- Name: usuario_persona id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2515,7 +2719,7 @@ ALTER TABLE ONLY usuario_persona ALTER COLUMN id SET DEFAULT nextval('usuario_pe
 
 
 --
--- TOC entry 2578 (class 0 OID 968143)
+-- TOC entry 2625 (class 0 OID 976417)
 -- Dependencies: 173
 -- Data for Name: alquiler_sede; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2524,7 +2728,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2579 (class 0 OID 968147)
+-- TOC entry 2626 (class 0 OID 976421)
 -- Dependencies: 174
 -- Data for Name: alquiler_sede_cabecera; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2532,7 +2736,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2581 (class 0 OID 968154)
+-- TOC entry 2628 (class 0 OID 976428)
 -- Dependencies: 176
 -- Data for Name: alquiler_sede_detalle; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2540,7 +2744,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2587 (class 0 OID 968170)
+-- TOC entry 2634 (class 0 OID 976444)
 -- Dependencies: 182
 -- Data for Name: aulas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2548,7 +2752,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2589 (class 0 OID 968175)
+-- TOC entry 2636 (class 0 OID 976449)
 -- Dependencies: 184
 -- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25519,15 +25723,19 @@ INSERT INTO ciudades VALUES (27857, 'LAS VEGAS', 5549, 13);
 
 
 --
--- TOC entry 2591 (class 0 OID 968180)
+-- TOC entry 2638 (class 0 OID 976454)
 -- Dependencies: 186
 -- Data for Name: clases; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO clases VALUES (4, 'Clase de presentacion', 11, 53, 1, '2018-07-17', '10:00:00', '12:00:00', NULL);
+INSERT INTO clases VALUES (6, 'asdasdasd', 11, 60, 2, '2018-07-24', '10:00:00', '12:00:00', NULL);
+INSERT INTO clases VALUES (5, 'adadadd', 11, 60, 1, '2018-07-24', '10:00:00', '12:00:00', NULL);
+INSERT INTO clases VALUES (7, 'Primer clase del modulo 1 en la cursada 2019', 12, 63, 1, '2019-01-05', '14:00:00', '16:00:00', NULL);
 
 
 --
--- TOC entry 2592 (class 0 OID 968186)
+-- TOC entry 2639 (class 0 OID 976460)
 -- Dependencies: 187
 -- Data for Name: clases_asistencia; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25535,7 +25743,7 @@ INSERT INTO ciudades VALUES (27857, 'LAS VEGAS', 5549, 13);
 
 
 --
--- TOC entry 2594 (class 0 OID 968191)
+-- TOC entry 2641 (class 0 OID 976465)
 -- Dependencies: 189
 -- Data for Name: clases_profesores; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25543,7 +25751,7 @@ INSERT INTO ciudades VALUES (27857, 'LAS VEGAS', 5549, 13);
 
 
 --
--- TOC entry 2596 (class 0 OID 968196)
+-- TOC entry 2643 (class 0 OID 976470)
 -- Dependencies: 191
 -- Data for Name: condiciones_alumno; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25553,7 +25761,7 @@ INSERT INTO condiciones_alumno VALUES (2, 'REGULAR');
 
 
 --
--- TOC entry 2598 (class 0 OID 968201)
+-- TOC entry 2645 (class 0 OID 976475)
 -- Dependencies: 193
 -- Data for Name: cursadas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25566,17 +25774,16 @@ INSERT INTO cursadas VALUES (12, 'Cursada 2019', '2019-01-01', '2019-02-10', 2, 
 
 
 --
--- TOC entry 2599 (class 0 OID 968204)
+-- TOC entry 2646 (class 0 OID 976478)
 -- Dependencies: 194
 -- Data for Name: cursadas_alumnos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO cursadas_alumnos VALUES (13, 5, 6, 2, 12, false, '2018-07-10', 2);
-INSERT INTO cursadas_alumnos VALUES (14, 11, 6, 2, 61, false, '2018-07-12', 2);
+INSERT INTO cursadas_alumnos VALUES (16, 11, 254, 2, 60, false, '2018-07-17', 2);
 
 
 --
--- TOC entry 2601 (class 0 OID 968212)
+-- TOC entry 2648 (class 0 OID 976486)
 -- Dependencies: 196
 -- Data for Name: cursadas_cuotas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25584,7 +25791,7 @@ INSERT INTO cursadas_alumnos VALUES (14, 11, 6, 2, 61, false, '2018-07-12', 2);
 
 
 --
--- TOC entry 2604 (class 0 OID 968220)
+-- TOC entry 2651 (class 0 OID 976494)
 -- Dependencies: 199
 -- Data for Name: cursadas_modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25634,25 +25841,25 @@ INSERT INTO cursadas_modulos VALUES (62, 'Modulo 10', 10, NULL, 'Modulo 10', 11,
 
 
 --
--- TOC entry 2605 (class 0 OID 968226)
+-- TOC entry 2652 (class 0 OID 976500)
 -- Dependencies: 200
 -- Data for Name: cursadas_modulos_alumnos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO cursadas_modulos_alumnos VALUES (31, 61, 14, 1);
-INSERT INTO cursadas_modulos_alumnos VALUES (32, 62, 14, 2);
-INSERT INTO cursadas_modulos_alumnos VALUES (33, 63, 14, 3);
-INSERT INTO cursadas_modulos_alumnos VALUES (34, 64, 14, 4);
-INSERT INTO cursadas_modulos_alumnos VALUES (35, 65, 14, 5);
-INSERT INTO cursadas_modulos_alumnos VALUES (36, 66, 14, 6);
-INSERT INTO cursadas_modulos_alumnos VALUES (37, 67, 14, 7);
-INSERT INTO cursadas_modulos_alumnos VALUES (38, 68, 14, 8);
-INSERT INTO cursadas_modulos_alumnos VALUES (39, 69, 14, 9);
-INSERT INTO cursadas_modulos_alumnos VALUES (40, 70, 14, 10);
+INSERT INTO cursadas_modulos_alumnos VALUES (51, 60, 16, 1);
+INSERT INTO cursadas_modulos_alumnos VALUES (52, 61, 16, 2);
+INSERT INTO cursadas_modulos_alumnos VALUES (53, 62, 16, 3);
+INSERT INTO cursadas_modulos_alumnos VALUES (54, 63, 16, 4);
+INSERT INTO cursadas_modulos_alumnos VALUES (55, 64, 16, 5);
+INSERT INTO cursadas_modulos_alumnos VALUES (56, 65, 16, 6);
+INSERT INTO cursadas_modulos_alumnos VALUES (57, 66, 16, 7);
+INSERT INTO cursadas_modulos_alumnos VALUES (58, 67, 16, 8);
+INSERT INTO cursadas_modulos_alumnos VALUES (59, 68, 16, 9);
+INSERT INTO cursadas_modulos_alumnos VALUES (60, 69, 16, 10);
 
 
 --
--- TOC entry 2608 (class 0 OID 968233)
+-- TOC entry 2655 (class 0 OID 976507)
 -- Dependencies: 203
 -- Data for Name: cursadas_profesores; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25660,16 +25867,16 @@ INSERT INTO cursadas_modulos_alumnos VALUES (40, 70, 14, 10);
 
 
 --
--- TOC entry 2610 (class 0 OID 968238)
+-- TOC entry 2657 (class 0 OID 976512)
 -- Dependencies: 205
 -- Data for Name: cursos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO cursos VALUES (2, 'PROF YOGA', 'PROF YOGA', 10, 100.00, 10, 10, 10, true, NULL, NULL, false, 1000.00, NULL);
+INSERT INTO cursos VALUES (2, 'PROF YOGA', 'PROF YOGA', 10, 100.00, 10, 10, 10, true, NULL, NULL, false, 1000.00, NULL, NULL, NULL);
 
 
 --
--- TOC entry 2611 (class 0 OID 968243)
+-- TOC entry 2658 (class 0 OID 976517)
 -- Dependencies: 206
 -- Data for Name: cursos_correlatividad; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25678,7 +25885,7 @@ INSERT INTO cursos_correlatividad VALUES (2, 2, 2);
 
 
 --
--- TOC entry 2614 (class 0 OID 968250)
+-- TOC entry 2661 (class 0 OID 976524)
 -- Dependencies: 209
 -- Data for Name: cursos_modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25696,7 +25903,7 @@ INSERT INTO cursos_modulos VALUES (10, 'Modulo 10', 10, NULL, 'Modulo 10', 2, 10
 
 
 --
--- TOC entry 2615 (class 0 OID 968256)
+-- TOC entry 2662 (class 0 OID 976530)
 -- Dependencies: 210
 -- Data for Name: cursos_modulos_alumnos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25716,8 +25923,17 @@ INSERT INTO cursos_modulos_alumnos VALUES (13, 2, 6, 9, 2019, 10, 1);
 
 
 --
--- TOC entry 2618 (class 0 OID 968263)
+-- TOC entry 2665 (class 0 OID 976537)
 -- Dependencies: 213
+-- Data for Name: cursos_titulos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO cursos_titulos VALUES (1, 1, 2);
+
+
+--
+-- TOC entry 2667 (class 0 OID 976542)
+-- Dependencies: 215
 -- Data for Name: databasechangeloglock; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25725,42 +25941,2180 @@ INSERT INTO databasechangeloglock VALUES (1, false, NULL, NULL);
 
 
 --
--- TOC entry 2619 (class 0 OID 968266)
--- Dependencies: 214
+-- TOC entry 2668 (class 0 OID 976545)
+-- Dependencies: 216
 -- Data for Name: datos_academicos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO datos_academicos VALUES (4, 2, false, NULL, NULL, NULL, 1, 'Terciario: INCOMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (5, NULL, false, NULL, NULL, NULL, 2, '', NULL);
+INSERT INTO datos_academicos VALUES (6, NULL, false, NULL, NULL, NULL, 14, '', NULL);
+INSERT INTO datos_academicos VALUES (7, NULL, false, NULL, NULL, NULL, 25, '', NULL);
+INSERT INTO datos_academicos VALUES (8, 3, true, 'ISFTD N36', NULL, NULL, 3, 'Terciario: PROFESORADO DE BIOLOGIA', 'SI');
+INSERT INTO datos_academicos VALUES (9, 3, false, NULL, NULL, NULL, 92, 'Terciario: iNGLES', NULL);
+INSERT INTO datos_academicos VALUES (10, NULL, false, NULL, NULL, NULL, 94, '', NULL);
+INSERT INTO datos_academicos VALUES (11, 3, false, NULL, NULL, NULL, 101, 'Terciario: DOCENTE', NULL);
+INSERT INTO datos_academicos VALUES (12, 3, false, NULL, NULL, NULL, 95, 'Terciario: COMPLETO', NULL);
+INSERT INTO datos_academicos VALUES (13, NULL, false, NULL, NULL, NULL, 110, '', NULL);
+INSERT INTO datos_academicos VALUES (14, 3, false, NULL, NULL, NULL, 113, 'Terciario: ABOGADA', 'No');
+INSERT INTO datos_academicos VALUES (15, 3, false, NULL, NULL, NULL, 117, 'Terciario: PROFESOR DE SORDOS E HIPOACUSICOS', NULL);
+INSERT INTO datos_academicos VALUES (16, 3, false, NULL, NULL, NULL, 27, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (17, 3, false, NULL, NULL, NULL, 21, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (18, 3, false, NULL, NULL, NULL, 38, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (19, 3, false, NULL, NULL, NULL, 119, 'Terciario: INSTRUMENTADORA QUIRÚRGICA', 'No');
+INSERT INTO datos_academicos VALUES (20, 3, false, NULL, NULL, NULL, 126, 'Terciario: ABOGACIA', NULL);
+INSERT INTO datos_academicos VALUES (21, NULL, false, NULL, NULL, NULL, 138, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (22, NULL, false, NULL, NULL, NULL, 139, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (23, NULL, false, NULL, NULL, NULL, 141, '', NULL);
+INSERT INTO datos_academicos VALUES (24, NULL, false, NULL, NULL, NULL, 143, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (25, NULL, false, NULL, NULL, NULL, 145, '', NULL);
+INSERT INTO datos_academicos VALUES (26, NULL, false, NULL, NULL, NULL, 29, '', 'No');
+INSERT INTO datos_academicos VALUES (27, NULL, false, NULL, NULL, NULL, 46, '', 'No');
+INSERT INTO datos_academicos VALUES (28, 3, false, NULL, NULL, NULL, 44, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (29, 3, false, NULL, NULL, NULL, 45, 'Terciario: LIC ADMINISTRACION USAL', 'No');
+INSERT INTO datos_academicos VALUES (30, NULL, false, NULL, NULL, NULL, 146, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (31, NULL, false, NULL, NULL, NULL, 147, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (32, NULL, false, NULL, NULL, NULL, 148, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (33, NULL, false, NULL, NULL, NULL, 149, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (34, NULL, false, NULL, NULL, NULL, 154, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (35, NULL, false, NULL, NULL, NULL, 157, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (36, NULL, false, NULL, NULL, NULL, 160, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (37, NULL, false, NULL, NULL, NULL, 161, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (38, NULL, false, NULL, NULL, NULL, 162, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (39, NULL, false, NULL, NULL, NULL, 163, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (40, NULL, false, NULL, NULL, NULL, 164, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (41, NULL, false, NULL, NULL, NULL, 169, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (42, NULL, false, NULL, NULL, NULL, 173, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (43, NULL, false, NULL, NULL, NULL, 242, '', NULL);
+INSERT INTO datos_academicos VALUES (44, NULL, false, NULL, NULL, NULL, 175, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (45, 2, false, NULL, NULL, NULL, 16, '', NULL);
+INSERT INTO datos_academicos VALUES (46, 3, false, NULL, NULL, NULL, 51, 'Terciario: LIC EN EDUCACION ESPECIAL UNSAM', 'No');
+INSERT INTO datos_academicos VALUES (47, 3, false, NULL, NULL, NULL, 60, 'Terciario: DISEÑADORA DE INTERIORES', NULL);
+INSERT INTO datos_academicos VALUES (48, 3, false, NULL, NULL, NULL, 62, 'Terciario: PROFESORA DE INGLES', 'No');
+INSERT INTO datos_academicos VALUES (49, 3, false, NULL, NULL, NULL, 67, 'Terciario: LIC ACTIVIDAD FISICA Y DEP', NULL);
+INSERT INTO datos_academicos VALUES (50, 3, false, NULL, NULL, NULL, 61, 'Terciario: VETERINARIA', NULL);
+INSERT INTO datos_academicos VALUES (51, 3, false, NULL, NULL, NULL, 63, 'Terciario: LIC RR HH', NULL);
+INSERT INTO datos_academicos VALUES (52, NULL, false, NULL, NULL, NULL, 64, '', NULL);
+INSERT INTO datos_academicos VALUES (53, 2, false, NULL, NULL, NULL, 26, '', 'No');
+INSERT INTO datos_academicos VALUES (54, 3, false, NULL, NULL, NULL, 28, 'Terciario: USAL LIC PSICOLOGIA', 'No');
+INSERT INTO datos_academicos VALUES (55, 3, false, NULL, NULL, NULL, 5, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (56, 3, true, 'ISTITUTO SUPERIOR FEDERICO CHOPIN ', NULL, NULL, 10, 'Terciario: EN CURSO', 'SI');
+INSERT INTO datos_academicos VALUES (57, 2, true, NULL, NULL, NULL, 23, '', 'SI');
+INSERT INTO datos_academicos VALUES (58, 2, false, NULL, NULL, NULL, 22, 'Terciario: INCOMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (59, 3, false, NULL, NULL, NULL, 6, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (60, NULL, false, NULL, NULL, NULL, 57, '', NULL);
+INSERT INTO datos_academicos VALUES (61, 3, false, NULL, NULL, NULL, 78, 'Terciario: PSICOLOGIA SOCIAL', NULL);
+INSERT INTO datos_academicos VALUES (62, 3, false, NULL, NULL, NULL, 76, 'Terciario: SI', 'No');
+INSERT INTO datos_academicos VALUES (63, 3, false, NULL, NULL, NULL, 77, 'Terciario: DOCENTE', 'No');
+INSERT INTO datos_academicos VALUES (64, 3, false, NULL, NULL, NULL, 79, 'Terciario: DISEÑADORA DE INDUMENTARIA', 'No');
+INSERT INTO datos_academicos VALUES (65, NULL, false, NULL, NULL, NULL, 82, '', NULL);
+INSERT INTO datos_academicos VALUES (66, 3, false, NULL, NULL, NULL, 83, 'Terciario: UADE CONTADORA PUBLICA', 'No');
+INSERT INTO datos_academicos VALUES (67, NULL, false, NULL, NULL, NULL, 86, '', NULL);
+INSERT INTO datos_academicos VALUES (68, NULL, false, NULL, NULL, NULL, 93, '', NULL);
+INSERT INTO datos_academicos VALUES (69, NULL, false, NULL, NULL, NULL, 97, '', NULL);
+INSERT INTO datos_academicos VALUES (70, 3, false, NULL, NULL, NULL, 106, 'Terciario: DOCENTE', NULL);
+INSERT INTO datos_academicos VALUES (71, 3, false, NULL, NULL, NULL, 107, 'Terciario: DOCENTE', NULL);
+INSERT INTO datos_academicos VALUES (72, 3, false, NULL, NULL, NULL, 118, 'Terciario: DISEÑADORA GRAFICA Y PROFESORA DE ARTES VISUALES', NULL);
+INSERT INTO datos_academicos VALUES (73, 3, false, NULL, NULL, NULL, 120, 'Terciario: DOCENTE', NULL);
+INSERT INTO datos_academicos VALUES (74, 3, false, NULL, NULL, NULL, 121, 'Terciario: LIC EN RECURSOS HUMANOS', NULL);
+INSERT INTO datos_academicos VALUES (75, 3, false, NULL, NULL, NULL, 122, 'Terciario: DOCENTE', NULL);
+INSERT INTO datos_academicos VALUES (76, 3, false, NULL, NULL, NULL, 123, 'Terciario: LIC EN NUTRICION', NULL);
+INSERT INTO datos_academicos VALUES (77, NULL, false, NULL, NULL, NULL, 125, '', NULL);
+INSERT INTO datos_academicos VALUES (78, NULL, false, NULL, NULL, NULL, 128, '', NULL);
+INSERT INTO datos_academicos VALUES (79, NULL, false, NULL, NULL, NULL, 130, '', NULL);
+INSERT INTO datos_academicos VALUES (80, 3, false, NULL, NULL, NULL, 8, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (81, 3, false, NULL, NULL, NULL, 9, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (82, NULL, false, NULL, NULL, NULL, 105, '', NULL);
+INSERT INTO datos_academicos VALUES (83, NULL, false, NULL, NULL, NULL, 133, '', NULL);
+INSERT INTO datos_academicos VALUES (84, NULL, false, NULL, NULL, NULL, 136, '', NULL);
+INSERT INTO datos_academicos VALUES (85, NULL, false, NULL, NULL, NULL, 132, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (86, NULL, false, NULL, NULL, NULL, 134, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (87, NULL, false, NULL, NULL, NULL, 135, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (88, NULL, false, NULL, NULL, NULL, 137, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (89, NULL, false, NULL, NULL, NULL, 131, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (90, NULL, false, NULL, NULL, NULL, 159, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (91, 3, false, NULL, NULL, NULL, 18, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (92, 3, true, 'INST SUP CULTURAL BRITANICO', NULL, NULL, 41, 'Terciario: INGLES', 'SI');
+INSERT INTO datos_academicos VALUES (93, 3, true, 'LICENCIATURA LENGUA INGLESA UNSAM', NULL, NULL, 35, 'Terciario: COMPLETO', 'SI');
+INSERT INTO datos_academicos VALUES (94, NULL, false, NULL, NULL, NULL, 144, '', NULL);
+INSERT INTO datos_academicos VALUES (95, 3, false, NULL, NULL, NULL, 68, 'Terciario: DOCENTE', NULL);
+INSERT INTO datos_academicos VALUES (96, 3, false, NULL, NULL, NULL, 69, 'Terciario: LIC PSICOLOGIAUBA', 'No');
+INSERT INTO datos_academicos VALUES (97, NULL, false, NULL, NULL, NULL, 72, '', NULL);
+INSERT INTO datos_academicos VALUES (98, 3, false, NULL, NULL, NULL, 74, 'Terciario: LIC EN RR PP', NULL);
+INSERT INTO datos_academicos VALUES (99, 2, false, NULL, NULL, NULL, 65, '', NULL);
+INSERT INTO datos_academicos VALUES (100, 2, false, NULL, NULL, NULL, 66, '', NULL);
+INSERT INTO datos_academicos VALUES (101, 2, false, NULL, NULL, NULL, 71, '', NULL);
+INSERT INTO datos_academicos VALUES (102, 3, false, NULL, NULL, NULL, 54, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (103, NULL, false, NULL, NULL, NULL, 155, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (104, NULL, false, NULL, NULL, NULL, 166, '', 'Gestora');
+INSERT INTO datos_academicos VALUES (105, NULL, false, NULL, NULL, NULL, 177, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (106, NULL, false, NULL, NULL, NULL, 183, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (107, 3, true, 'UTN', NULL, NULL, 56, 'Terciario: CURSANDO UTN', 'SI');
+INSERT INTO datos_academicos VALUES (108, 3, false, NULL, NULL, NULL, 102, 'Terciario: MAESTRA', NULL);
+INSERT INTO datos_academicos VALUES (109, NULL, false, NULL, NULL, NULL, 186, '', NULL);
+INSERT INTO datos_academicos VALUES (110, NULL, false, NULL, NULL, NULL, 240, '', NULL);
+INSERT INTO datos_academicos VALUES (111, NULL, false, NULL, NULL, NULL, 241, '', NULL);
+INSERT INTO datos_academicos VALUES (112, NULL, false, NULL, NULL, NULL, 165, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (113, NULL, false, NULL, NULL, NULL, 184, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (114, NULL, false, NULL, NULL, NULL, 185, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (115, NULL, false, NULL, NULL, NULL, 187, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (116, NULL, false, NULL, NULL, NULL, 189, '', 'ULACIT');
+INSERT INTO datos_academicos VALUES (117, NULL, false, NULL, NULL, NULL, 194, '', NULL);
+INSERT INTO datos_academicos VALUES (118, NULL, false, NULL, NULL, NULL, 195, '', NULL);
+INSERT INTO datos_academicos VALUES (119, NULL, false, NULL, NULL, NULL, 196, '', NULL);
+INSERT INTO datos_academicos VALUES (120, NULL, false, NULL, NULL, NULL, 198, '', NULL);
+INSERT INTO datos_academicos VALUES (121, NULL, false, NULL, NULL, NULL, 199, '', NULL);
+INSERT INTO datos_academicos VALUES (122, NULL, false, NULL, NULL, NULL, 203, '', NULL);
+INSERT INTO datos_academicos VALUES (123, NULL, false, NULL, NULL, NULL, 208, '', NULL);
+INSERT INTO datos_academicos VALUES (124, NULL, false, NULL, NULL, NULL, 210, '', NULL);
+INSERT INTO datos_academicos VALUES (125, NULL, false, NULL, NULL, NULL, 211, '', NULL);
+INSERT INTO datos_academicos VALUES (126, NULL, false, NULL, NULL, NULL, 212, '', NULL);
+INSERT INTO datos_academicos VALUES (127, NULL, false, NULL, NULL, NULL, 213, '', NULL);
+INSERT INTO datos_academicos VALUES (128, NULL, false, NULL, NULL, NULL, 215, '', NULL);
+INSERT INTO datos_academicos VALUES (129, NULL, false, NULL, NULL, NULL, 217, '', NULL);
+INSERT INTO datos_academicos VALUES (130, NULL, false, NULL, NULL, NULL, 218, '', NULL);
+INSERT INTO datos_academicos VALUES (131, NULL, false, NULL, NULL, NULL, 220, '', NULL);
+INSERT INTO datos_academicos VALUES (132, NULL, false, NULL, NULL, NULL, 221, '', NULL);
+INSERT INTO datos_academicos VALUES (133, NULL, false, NULL, NULL, NULL, 222, '', NULL);
+INSERT INTO datos_academicos VALUES (134, NULL, false, NULL, NULL, NULL, 224, '', NULL);
+INSERT INTO datos_academicos VALUES (135, NULL, false, NULL, NULL, NULL, 225, '', NULL);
+INSERT INTO datos_academicos VALUES (136, NULL, false, NULL, NULL, NULL, 226, '', NULL);
+INSERT INTO datos_academicos VALUES (137, NULL, false, NULL, NULL, NULL, 229, '', NULL);
+INSERT INTO datos_academicos VALUES (138, NULL, false, NULL, NULL, NULL, 230, '', NULL);
+INSERT INTO datos_academicos VALUES (139, NULL, false, NULL, NULL, NULL, 232, '', NULL);
+INSERT INTO datos_academicos VALUES (140, NULL, false, NULL, NULL, NULL, 234, '', NULL);
+INSERT INTO datos_academicos VALUES (141, NULL, false, NULL, NULL, NULL, 235, '', NULL);
+INSERT INTO datos_academicos VALUES (142, NULL, false, NULL, NULL, NULL, 192, '', 'Ter/Univ completo');
+INSERT INTO datos_academicos VALUES (143, NULL, false, NULL, NULL, NULL, 243, '', NULL);
+INSERT INTO datos_academicos VALUES (144, NULL, false, NULL, NULL, NULL, 245, '', NULL);
+INSERT INTO datos_academicos VALUES (145, NULL, false, NULL, NULL, NULL, 248, '', NULL);
+INSERT INTO datos_academicos VALUES (146, NULL, false, NULL, NULL, NULL, 249, '', NULL);
+INSERT INTO datos_academicos VALUES (147, NULL, false, NULL, NULL, NULL, 251, '', NULL);
+INSERT INTO datos_academicos VALUES (148, NULL, false, NULL, NULL, NULL, 252, '', NULL);
+INSERT INTO datos_academicos VALUES (149, NULL, false, NULL, NULL, NULL, 255, '', NULL);
+INSERT INTO datos_academicos VALUES (150, NULL, false, NULL, NULL, NULL, 257, '', NULL);
+INSERT INTO datos_academicos VALUES (151, NULL, false, NULL, NULL, NULL, 258, '', NULL);
+INSERT INTO datos_academicos VALUES (152, NULL, false, NULL, NULL, NULL, 262, '', NULL);
+INSERT INTO datos_academicos VALUES (153, NULL, false, NULL, NULL, NULL, 263, '', NULL);
+INSERT INTO datos_academicos VALUES (154, NULL, false, NULL, NULL, NULL, 264, '', NULL);
+INSERT INTO datos_academicos VALUES (155, NULL, false, NULL, NULL, NULL, 267, '', NULL);
+INSERT INTO datos_academicos VALUES (156, NULL, false, NULL, NULL, NULL, 273, '', NULL);
+INSERT INTO datos_academicos VALUES (157, NULL, false, NULL, NULL, NULL, 274, '', NULL);
+INSERT INTO datos_academicos VALUES (158, NULL, false, NULL, NULL, NULL, 276, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (159, NULL, false, NULL, NULL, NULL, 278, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (160, NULL, false, NULL, NULL, NULL, 290, '', 'Profesora');
+INSERT INTO datos_academicos VALUES (161, NULL, false, NULL, NULL, NULL, 291, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (162, NULL, false, NULL, NULL, NULL, 294, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (163, NULL, false, NULL, NULL, NULL, 297, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (164, NULL, false, NULL, NULL, NULL, 298, '', 'Contador Público');
+INSERT INTO datos_academicos VALUES (165, NULL, false, NULL, NULL, NULL, 302, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (166, NULL, false, NULL, NULL, NULL, 305, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (167, NULL, false, NULL, NULL, NULL, 307, '', 'Prof y Traductora Ingles');
+INSERT INTO datos_academicos VALUES (168, NULL, false, NULL, NULL, NULL, 321, '', 'Contador Público');
+INSERT INTO datos_academicos VALUES (169, NULL, false, NULL, NULL, NULL, 323, '', 'Prof Educación Física');
+INSERT INTO datos_academicos VALUES (170, NULL, false, NULL, NULL, NULL, 327, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (171, NULL, false, NULL, NULL, NULL, 329, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (172, NULL, false, NULL, NULL, NULL, 355, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (173, NULL, false, NULL, NULL, NULL, 356, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (174, NULL, false, NULL, NULL, NULL, 389, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (175, NULL, false, NULL, NULL, NULL, 390, '', 'U.N. Quilmes');
+INSERT INTO datos_academicos VALUES (176, NULL, false, NULL, NULL, NULL, 393, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (177, NULL, false, NULL, NULL, NULL, 419, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (178, NULL, false, NULL, NULL, NULL, 422, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (179, NULL, false, NULL, NULL, NULL, 423, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (180, NULL, false, NULL, NULL, NULL, 456, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (181, NULL, false, NULL, NULL, NULL, 458, '', 'Cursando Psicología');
+INSERT INTO datos_academicos VALUES (182, NULL, false, NULL, NULL, NULL, 459, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (183, NULL, false, NULL, NULL, NULL, 461, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (184, NULL, false, NULL, NULL, NULL, 462, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (185, NULL, false, NULL, NULL, NULL, 463, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (186, NULL, false, NULL, NULL, NULL, 487, '', 'Lic en Adm de Empresas');
+INSERT INTO datos_academicos VALUES (187, NULL, false, NULL, NULL, NULL, 489, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (188, NULL, false, NULL, NULL, NULL, 521, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (189, NULL, false, NULL, NULL, NULL, 523, '', 'Profesora Educ Física');
+INSERT INTO datos_academicos VALUES (190, NULL, false, NULL, NULL, NULL, 524, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (191, NULL, false, NULL, NULL, NULL, 527, '', 'Escenografa');
+INSERT INTO datos_academicos VALUES (192, NULL, false, NULL, NULL, NULL, 528, '', 'Magisterio Doc Inicial');
+INSERT INTO datos_academicos VALUES (193, NULL, false, NULL, NULL, NULL, 529, '', 'Ter/ Univ');
+INSERT INTO datos_academicos VALUES (194, NULL, false, NULL, NULL, NULL, 554, '', 'Universidad Psicología de Palermo');
+INSERT INTO datos_academicos VALUES (195, NULL, false, NULL, NULL, NULL, 555, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (196, NULL, false, NULL, NULL, NULL, 556, '', 'Lic en Cs Políticas');
+INSERT INTO datos_academicos VALUES (197, NULL, false, NULL, NULL, NULL, 557, '', 'Estudiando en USAL');
+INSERT INTO datos_academicos VALUES (198, NULL, false, NULL, NULL, NULL, 558, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (199, NULL, false, NULL, NULL, NULL, 560, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (200, NULL, false, NULL, NULL, NULL, 565, '', 'Docente');
+INSERT INTO datos_academicos VALUES (201, NULL, false, NULL, NULL, NULL, 593, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (202, NULL, false, NULL, NULL, NULL, 594, '', 'Licenciatura en Publicidad');
+INSERT INTO datos_academicos VALUES (203, NULL, false, NULL, NULL, NULL, 596, '', 'Instrumentacion Quirurgica');
+INSERT INTO datos_academicos VALUES (204, NULL, false, NULL, NULL, NULL, 597, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (205, NULL, false, NULL, NULL, NULL, 598, '', 'Secundario EGEOR');
+INSERT INTO datos_academicos VALUES (206, NULL, false, NULL, NULL, NULL, 170, '', 'UNIVERSITARIO INCOMPLETO');
+INSERT INTO datos_academicos VALUES (207, NULL, false, NULL, NULL, NULL, 171, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (208, NULL, false, NULL, NULL, NULL, 629, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (209, NULL, false, NULL, NULL, NULL, 630, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (210, NULL, false, NULL, NULL, NULL, 631, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (211, NULL, false, NULL, NULL, NULL, 632, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (212, NULL, false, NULL, NULL, NULL, 634, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (213, NULL, false, NULL, NULL, NULL, 635, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (214, NULL, false, NULL, NULL, NULL, 639, '', 'Terciario');
+INSERT INTO datos_academicos VALUES (215, NULL, false, NULL, NULL, NULL, 646, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (216, 1, false, NULL, NULL, NULL, 50, '', NULL);
+INSERT INTO datos_academicos VALUES (217, 1, false, NULL, NULL, NULL, 53, '', NULL);
+INSERT INTO datos_academicos VALUES (218, 2, false, NULL, NULL, NULL, 75, '', NULL);
+INSERT INTO datos_academicos VALUES (219, 2, false, NULL, NULL, NULL, 96, '', NULL);
+INSERT INTO datos_academicos VALUES (220, 2, false, NULL, NULL, NULL, 108, '', NULL);
+INSERT INTO datos_academicos VALUES (221, 2, false, NULL, NULL, NULL, 127, '', NULL);
+INSERT INTO datos_academicos VALUES (222, 2, false, NULL, NULL, NULL, 129, '', NULL);
+INSERT INTO datos_academicos VALUES (223, 2, false, NULL, NULL, NULL, 112, '', NULL);
+INSERT INTO datos_academicos VALUES (224, 3, false, NULL, NULL, NULL, 15, 'Terciario: DISEÑADORA TEXTIL', 'No');
+INSERT INTO datos_academicos VALUES (225, 2, false, NULL, NULL, NULL, 31, '', 'No');
+INSERT INTO datos_academicos VALUES (226, 2, false, NULL, NULL, NULL, 7, '', 'No');
+INSERT INTO datos_academicos VALUES (227, 3, false, NULL, NULL, NULL, 11, 'Terciario: UNIVERSIDAD NAC DE LUJAN', 'No');
+INSERT INTO datos_academicos VALUES (228, 3, false, NULL, NULL, NULL, 12, 'Terciario: UNIVERSIDAD SANTA MARIA', 'No');
+INSERT INTO datos_academicos VALUES (229, 3, false, NULL, NULL, NULL, 13, 'Terciario: USAL', 'No');
+INSERT INTO datos_academicos VALUES (230, 3, true, NULL, NULL, NULL, 19, 'Terciario: DERECHO LABORAL UBA', 'SI');
+INSERT INTO datos_academicos VALUES (231, 2, true, 'ASOCIACION INTALIANA', NULL, NULL, 24, '', 'SI');
+INSERT INTO datos_academicos VALUES (232, 3, false, NULL, NULL, NULL, 32, 'Terciario: INGENIERO UBA', 'No');
+INSERT INTO datos_academicos VALUES (233, 3, false, NULL, NULL, NULL, 33, 'Terciario: ABOGADA UBA', 'No');
+INSERT INTO datos_academicos VALUES (234, 3, false, NULL, NULL, NULL, 34, 'Terciario: PROFESORA DE EDUCACION FISICA', 'No');
+INSERT INTO datos_academicos VALUES (235, 2, false, NULL, NULL, NULL, 47, '', 'No');
+INSERT INTO datos_academicos VALUES (236, 2, false, NULL, NULL, NULL, 42, '', NULL);
+INSERT INTO datos_academicos VALUES (237, 3, false, NULL, NULL, NULL, 43, 'Terciario: ABOGADA', 'No');
+INSERT INTO datos_academicos VALUES (238, 2, false, NULL, NULL, NULL, 48, '', 'No');
+INSERT INTO datos_academicos VALUES (239, 3, false, NULL, NULL, NULL, 55, 'Terciario: EN CURSO UNLU', NULL);
+INSERT INTO datos_academicos VALUES (240, 2, false, NULL, NULL, NULL, 4, 'Terciario: INCOMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (241, 3, false, NULL, NULL, NULL, 98, 'Terciario: COMPLETO', NULL);
+INSERT INTO datos_academicos VALUES (242, 2, true, 'CEREMONIAL', NULL, NULL, 52, '', 'SI');
+INSERT INTO datos_academicos VALUES (243, 3, false, NULL, NULL, NULL, 20, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (244, 3, false, NULL, NULL, NULL, 58, 'Terciario: COMPLETO', NULL);
+INSERT INTO datos_academicos VALUES (245, 2, false, NULL, NULL, NULL, 81, '', NULL);
+INSERT INTO datos_academicos VALUES (246, 3, false, NULL, NULL, NULL, 88, 'Terciario: PROFESORA DE EDUCACION INICIAL', NULL);
+INSERT INTO datos_academicos VALUES (247, 3, false, NULL, NULL, NULL, 115, 'Terciario: DISEÑADORA MULTIMEDIAL', NULL);
+INSERT INTO datos_academicos VALUES (248, NULL, false, NULL, NULL, NULL, 90, '', NULL);
+INSERT INTO datos_academicos VALUES (249, 3, false, NULL, NULL, NULL, 99, 'Terciario: PROFESORA', NULL);
+INSERT INTO datos_academicos VALUES (250, 3, false, NULL, NULL, NULL, 111, 'Terciario: COMPLETO', NULL);
+INSERT INTO datos_academicos VALUES (251, NULL, false, NULL, NULL, NULL, 140, '', NULL);
+INSERT INTO datos_academicos VALUES (252, NULL, false, NULL, NULL, NULL, 142, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (253, NULL, false, NULL, NULL, NULL, 152, '', 'SECUNDARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (254, NULL, false, NULL, NULL, NULL, 153, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (255, NULL, false, NULL, NULL, NULL, 156, '', 'UNIVERSITARIO COMPLETO DANZAS');
+INSERT INTO datos_academicos VALUES (256, NULL, false, NULL, NULL, NULL, 158, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (257, NULL, false, NULL, NULL, NULL, 167, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (258, NULL, false, NULL, NULL, NULL, 172, '', 'UNIVERSITARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (259, NULL, false, NULL, NULL, NULL, 174, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (260, NULL, false, NULL, NULL, NULL, 176, '', 'TERCIARIO COMPLETO');
+INSERT INTO datos_academicos VALUES (261, NULL, false, NULL, NULL, NULL, 179, '', 'Analista de Sistemas');
+INSERT INTO datos_academicos VALUES (262, NULL, false, NULL, NULL, NULL, 180, '', 'Cursando en Universidad');
+INSERT INTO datos_academicos VALUES (263, NULL, false, NULL, NULL, NULL, 280, '', 'Terciario: IFD N°45');
+INSERT INTO datos_academicos VALUES (264, NULL, false, NULL, NULL, NULL, 283, '', 'Productora de TV');
+INSERT INTO datos_academicos VALUES (265, NULL, false, NULL, NULL, NULL, 288, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (266, NULL, false, NULL, NULL, NULL, 289, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (267, NULL, false, NULL, NULL, NULL, 292, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (268, NULL, false, NULL, NULL, NULL, 293, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (269, NULL, false, NULL, NULL, NULL, 295, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (270, NULL, false, NULL, NULL, NULL, 299, '', 'Psicologa social en curso');
+INSERT INTO datos_academicos VALUES (271, NULL, false, NULL, NULL, NULL, 303, '', 'Fotografía Creativa Esc. A. Goldstein');
+INSERT INTO datos_academicos VALUES (272, NULL, false, NULL, NULL, NULL, 306, '', 'Univ. UNLA');
+INSERT INTO datos_academicos VALUES (273, NULL, false, NULL, NULL, NULL, 322, '', 'Tecnica Optica - Contactologa');
+INSERT INTO datos_academicos VALUES (274, NULL, false, NULL, NULL, NULL, 325, '', 'Lic en Trabajo Social en curso');
+INSERT INTO datos_academicos VALUES (275, NULL, false, NULL, NULL, NULL, 328, '', 'Religiones comparadas en curso');
+INSERT INTO datos_academicos VALUES (276, NULL, false, NULL, NULL, NULL, 337, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (277, NULL, false, NULL, NULL, NULL, 351, '', 'en curso USAL Lic en RRHH');
+INSERT INTO datos_academicos VALUES (278, NULL, false, NULL, NULL, NULL, 357, '', 'Terc/Univ en curso');
+INSERT INTO datos_academicos VALUES (279, NULL, false, NULL, NULL, NULL, 360, '', 'Prof Educación Especial');
+INSERT INTO datos_academicos VALUES (280, NULL, false, NULL, NULL, NULL, 377, '', 'Terciario');
+INSERT INTO datos_academicos VALUES (281, NULL, false, NULL, NULL, NULL, 392, '', 'Ter/Univ incompleto');
+INSERT INTO datos_academicos VALUES (282, NULL, false, NULL, NULL, NULL, 395, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (283, NULL, false, NULL, NULL, NULL, 396, '', 'Terciario');
+INSERT INTO datos_academicos VALUES (284, NULL, false, NULL, NULL, NULL, 398, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (285, NULL, false, NULL, NULL, NULL, 402, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (286, NULL, false, NULL, NULL, NULL, 420, '', 'Terciario/Universidad');
+INSERT INTO datos_academicos VALUES (287, NULL, false, NULL, NULL, NULL, 438, '', 'Tecnica en Laboratorio');
+INSERT INTO datos_academicos VALUES (288, NULL, false, NULL, NULL, NULL, 449, '', 'Secundario Compl; Ter/Univ incompl');
+INSERT INTO datos_academicos VALUES (289, NULL, false, NULL, NULL, NULL, 452, '', 'Estetica Corporal');
+INSERT INTO datos_academicos VALUES (290, NULL, false, NULL, NULL, NULL, 460, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (291, NULL, false, NULL, NULL, NULL, 467, '', 'Tecnica en Turismo');
+INSERT INTO datos_academicos VALUES (292, NULL, false, NULL, NULL, NULL, 474, '', 'Ter/Univ incompl');
+INSERT INTO datos_academicos VALUES (293, NULL, false, NULL, NULL, NULL, 481, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (294, NULL, false, NULL, NULL, NULL, 491, '', 'Terciario: Diseño de Indumentaria');
+INSERT INTO datos_academicos VALUES (295, NULL, false, NULL, NULL, NULL, 496, '', 'Universidad');
+INSERT INTO datos_academicos VALUES (296, NULL, false, NULL, NULL, NULL, 516, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (297, NULL, false, NULL, NULL, NULL, 525, '', 'Ter/Univ incompleto');
+INSERT INTO datos_academicos VALUES (298, NULL, false, NULL, NULL, NULL, 532, '', 'Prof Educación Física');
+INSERT INTO datos_academicos VALUES (299, NULL, false, NULL, NULL, NULL, 545, '', 'Psicopedagoga');
+INSERT INTO datos_academicos VALUES (300, NULL, false, NULL, NULL, NULL, 548, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (301, NULL, false, NULL, NULL, NULL, 559, '', 'RRPP, Coord Rel Publ y Cerem.y Protocolo, Ter: Instrum.Quirurgica');
+INSERT INTO datos_academicos VALUES (302, NULL, false, NULL, NULL, NULL, 574, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (303, NULL, false, NULL, NULL, NULL, 581, '', 'Lic en Turismo y Hoteleria');
+INSERT INTO datos_academicos VALUES (304, NULL, false, NULL, NULL, NULL, 595, '', 'ISEC');
+INSERT INTO datos_academicos VALUES (305, NULL, false, NULL, NULL, NULL, 599, '', 'Profesora de Educación Especial');
+INSERT INTO datos_academicos VALUES (306, NULL, false, NULL, NULL, NULL, 604, '', 'Hoteleria');
+INSERT INTO datos_academicos VALUES (307, NULL, false, NULL, NULL, NULL, 605, '', 'Ter/Univ completo');
+INSERT INTO datos_academicos VALUES (308, NULL, false, NULL, NULL, NULL, 606, '', 'UBA');
+INSERT INTO datos_academicos VALUES (309, NULL, false, NULL, NULL, NULL, 607, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (310, NULL, false, NULL, NULL, NULL, 624, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (311, NULL, false, NULL, NULL, NULL, 625, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (312, NULL, false, NULL, NULL, NULL, 626, '', 'Arquitecta UBA');
+INSERT INTO datos_academicos VALUES (313, NULL, false, NULL, NULL, NULL, 627, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (314, NULL, false, NULL, NULL, NULL, 633, '', 'Universidad');
+INSERT INTO datos_academicos VALUES (315, NULL, false, NULL, NULL, NULL, 636, '', 'Univ: Medicina UBA');
+INSERT INTO datos_academicos VALUES (316, NULL, false, NULL, NULL, NULL, 652, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (317, NULL, false, NULL, NULL, NULL, 522, '', 'Ter/Univ incompleto');
+INSERT INTO datos_academicos VALUES (318, 3, false, NULL, NULL, NULL, 70, 'Terciario: PROFESORA EDUC PRIMARIA', NULL);
+INSERT INTO datos_academicos VALUES (319, 3, false, NULL, NULL, NULL, 73, 'Terciario: LIC FONOAUDIOLOGIA UBA', NULL);
+INSERT INTO datos_academicos VALUES (320, 3, true, 'FAVALORO', NULL, NULL, 59, 'Terciario: PSICOLOGIA', 'SI');
+INSERT INTO datos_academicos VALUES (321, NULL, true, 'COACHING ESPIRITUAL ESCUELA DHARMA YOEL', NULL, NULL, 103, '', 'SI');
+INSERT INTO datos_academicos VALUES (322, NULL, false, NULL, NULL, NULL, 190, '', 'Adm. De Empresas incompleto. Secretariado terciario completo');
+INSERT INTO datos_academicos VALUES (323, NULL, false, NULL, NULL, NULL, 191, '', 'Relaciones Internacionales');
+INSERT INTO datos_academicos VALUES (324, NULL, false, NULL, NULL, NULL, 214, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (325, NULL, false, NULL, NULL, NULL, 277, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (326, NULL, false, NULL, NULL, NULL, 279, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (327, NULL, false, NULL, NULL, NULL, 281, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (328, NULL, false, NULL, NULL, NULL, 282, '', 'Lic en Marketing');
+INSERT INTO datos_academicos VALUES (329, NULL, false, NULL, NULL, NULL, 284, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (330, NULL, false, NULL, NULL, NULL, 285, '', 'Comunicación - UBA');
+INSERT INTO datos_academicos VALUES (331, NULL, false, NULL, NULL, NULL, 286, '', 'Analista de Sistemas');
+INSERT INTO datos_academicos VALUES (332, NULL, false, NULL, NULL, NULL, 320, '', 'UCES');
+INSERT INTO datos_academicos VALUES (333, NULL, false, NULL, NULL, NULL, 308, '', 'Instructor de Pilates');
+INSERT INTO datos_academicos VALUES (334, NULL, false, NULL, NULL, NULL, 309, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (335, NULL, false, NULL, NULL, NULL, 310, '', 'Veterinaria');
+INSERT INTO datos_academicos VALUES (336, NULL, false, NULL, NULL, NULL, 311, '', 'Universitario');
+INSERT INTO datos_academicos VALUES (337, NULL, false, NULL, NULL, NULL, 312, '', 'Tecnico en Sonido');
+INSERT INTO datos_academicos VALUES (338, NULL, false, NULL, NULL, NULL, 313, '', 'Univ: Lic en Administración');
+INSERT INTO datos_academicos VALUES (339, NULL, false, NULL, NULL, NULL, 315, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (340, NULL, false, NULL, NULL, NULL, 316, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (341, NULL, false, NULL, NULL, NULL, 317, '', 'Adm de Empresas hasta 3° año');
+INSERT INTO datos_academicos VALUES (342, NULL, false, NULL, NULL, NULL, 318, '', 'Lic en Tecnología de los Alimentos');
+INSERT INTO datos_academicos VALUES (343, NULL, false, NULL, NULL, NULL, 319, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (344, NULL, false, NULL, NULL, NULL, 330, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (345, NULL, false, NULL, NULL, NULL, 332, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (346, NULL, false, NULL, NULL, NULL, 333, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (347, NULL, false, NULL, NULL, NULL, 334, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (348, NULL, false, NULL, NULL, NULL, 335, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (349, NULL, false, NULL, NULL, NULL, 336, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (350, NULL, false, NULL, NULL, NULL, 338, '', 'Psicologa');
+INSERT INTO datos_academicos VALUES (351, NULL, false, NULL, NULL, NULL, 339, '', 'Abogada');
+INSERT INTO datos_academicos VALUES (352, NULL, false, NULL, NULL, NULL, 340, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (353, NULL, false, NULL, NULL, NULL, 341, '', 'Univ');
+INSERT INTO datos_academicos VALUES (354, NULL, false, NULL, NULL, NULL, 342, '', 'Martillero Público');
+INSERT INTO datos_academicos VALUES (355, NULL, false, NULL, NULL, NULL, 343, '', 'Lic Nutricion / Diseño Humano / Biodescodificación');
+INSERT INTO datos_academicos VALUES (356, NULL, false, NULL, NULL, NULL, 344, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (357, NULL, false, NULL, NULL, NULL, 345, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (358, NULL, false, NULL, NULL, NULL, 346, '', 'Ter/Univ completo');
+INSERT INTO datos_academicos VALUES (359, NULL, false, NULL, NULL, NULL, 348, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (360, NULL, false, NULL, NULL, NULL, 352, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (361, NULL, false, NULL, NULL, NULL, 353, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (362, NULL, false, NULL, NULL, NULL, 358, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (363, NULL, false, NULL, NULL, NULL, 359, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (364, NULL, false, NULL, NULL, NULL, 361, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (365, NULL, false, NULL, NULL, NULL, 362, '', 'USAL');
+INSERT INTO datos_academicos VALUES (366, NULL, false, NULL, NULL, NULL, 363, '', 'Universidad en curso');
+INSERT INTO datos_academicos VALUES (367, NULL, false, NULL, NULL, NULL, 364, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (368, NULL, false, NULL, NULL, NULL, 365, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (369, NULL, false, NULL, NULL, NULL, 366, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (370, NULL, false, NULL, NULL, NULL, 367, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (371, NULL, false, NULL, NULL, NULL, 368, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (372, NULL, false, NULL, NULL, NULL, 369, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (373, NULL, false, NULL, NULL, NULL, 370, '', 'Traductorado');
+INSERT INTO datos_academicos VALUES (374, NULL, false, NULL, NULL, NULL, 371, '', 'Locutora');
+INSERT INTO datos_academicos VALUES (375, NULL, false, NULL, NULL, NULL, 372, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (376, NULL, false, NULL, NULL, NULL, 373, '', 'Lic Administración');
+INSERT INTO datos_academicos VALUES (377, NULL, false, NULL, NULL, NULL, 375, '', 'U. San Andres - Economía');
+INSERT INTO datos_academicos VALUES (378, NULL, false, NULL, NULL, NULL, 378, '', 'Docente');
+INSERT INTO datos_academicos VALUES (379, NULL, false, NULL, NULL, NULL, 379, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (380, NULL, false, NULL, NULL, NULL, 380, '', 'Primario completo');
+INSERT INTO datos_academicos VALUES (381, NULL, false, NULL, NULL, NULL, 382, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (382, NULL, false, NULL, NULL, NULL, 383, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (383, NULL, false, NULL, NULL, NULL, 384, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (384, NULL, false, NULL, NULL, NULL, 385, '', 'Profesor de Historia');
+INSERT INTO datos_academicos VALUES (385, NULL, false, NULL, NULL, NULL, 387, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (386, NULL, false, NULL, NULL, NULL, 397, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (387, NULL, false, NULL, NULL, NULL, 399, '', 'Terciario completo');
+INSERT INTO datos_academicos VALUES (388, NULL, false, NULL, NULL, NULL, 401, '', 'Lic en Arte Dramático, Prof de Inglés');
+INSERT INTO datos_academicos VALUES (389, NULL, false, NULL, NULL, NULL, 403, '', 'Universitario');
+INSERT INTO datos_academicos VALUES (390, NULL, false, NULL, NULL, NULL, 404, '', 'Psicologa Clínica');
+INSERT INTO datos_academicos VALUES (391, NULL, false, NULL, NULL, NULL, 405, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (392, NULL, false, NULL, NULL, NULL, 406, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (393, NULL, false, NULL, NULL, NULL, 407, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (394, NULL, false, NULL, NULL, NULL, 408, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (395, NULL, false, NULL, NULL, NULL, 409, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (396, NULL, false, NULL, NULL, NULL, 410, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (397, NULL, false, NULL, NULL, NULL, 411, '', 'Secundario incompleto');
+INSERT INTO datos_academicos VALUES (398, NULL, false, NULL, NULL, NULL, 413, '', 'Docente de Italiano');
+INSERT INTO datos_academicos VALUES (399, NULL, false, NULL, NULL, NULL, 414, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (400, NULL, false, NULL, NULL, NULL, 416, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (401, NULL, false, NULL, NULL, NULL, 417, '', 'Ingenieria');
+INSERT INTO datos_academicos VALUES (402, NULL, false, NULL, NULL, NULL, 418, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (403, NULL, false, NULL, NULL, NULL, 426, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (404, NULL, false, NULL, NULL, NULL, 428, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (405, NULL, false, NULL, NULL, NULL, 431, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (406, NULL, false, NULL, NULL, NULL, 432, '', 'Ingeniera');
+INSERT INTO datos_academicos VALUES (407, NULL, false, NULL, NULL, NULL, 434, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (408, NULL, false, NULL, NULL, NULL, 436, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (409, NULL, false, NULL, NULL, NULL, 437, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (410, NULL, false, NULL, NULL, NULL, 441, '', 'Profesora de Biología');
+INSERT INTO datos_academicos VALUES (411, NULL, false, NULL, NULL, NULL, 442, '', 'Analista Quimico Univ');
+INSERT INTO datos_academicos VALUES (412, NULL, false, NULL, NULL, NULL, 443, '', 'Obstetricia');
+INSERT INTO datos_academicos VALUES (413, NULL, false, NULL, NULL, NULL, 445, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (414, NULL, false, NULL, NULL, NULL, 447, '', 'Terciario');
+INSERT INTO datos_academicos VALUES (415, NULL, false, NULL, NULL, NULL, 450, '', 'Primario');
+INSERT INTO datos_academicos VALUES (416, NULL, false, NULL, NULL, NULL, 451, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (417, NULL, false, NULL, NULL, NULL, 453, '', 'Prof de Gimnasia, Meditación');
+INSERT INTO datos_academicos VALUES (418, NULL, false, NULL, NULL, NULL, 454, '', 'Abogada');
+INSERT INTO datos_academicos VALUES (419, NULL, false, NULL, NULL, NULL, 520, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (420, NULL, false, NULL, NULL, NULL, 469, '', 'Biologa');
+INSERT INTO datos_academicos VALUES (421, NULL, false, NULL, NULL, NULL, 470, '', 'Docente');
+INSERT INTO datos_academicos VALUES (422, NULL, false, NULL, NULL, NULL, 471, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (423, NULL, false, NULL, NULL, NULL, 473, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (424, NULL, false, NULL, NULL, NULL, 475, '', 'Docente');
+INSERT INTO datos_academicos VALUES (425, NULL, false, NULL, NULL, NULL, 476, '', 'Ingeniera en Alimentos');
+INSERT INTO datos_academicos VALUES (426, NULL, false, NULL, NULL, NULL, 477, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (427, NULL, false, NULL, NULL, NULL, 478, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (428, NULL, false, NULL, NULL, NULL, 480, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (429, NULL, false, NULL, NULL, NULL, 482, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (430, NULL, false, NULL, NULL, NULL, 483, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (431, NULL, false, NULL, NULL, NULL, 484, '', 'Abogacía');
+INSERT INTO datos_academicos VALUES (432, NULL, false, NULL, NULL, NULL, 486, '', 'Terciario: Yoga - Teatro - Inglés');
+INSERT INTO datos_academicos VALUES (433, NULL, false, NULL, NULL, NULL, 490, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (434, NULL, false, NULL, NULL, NULL, 493, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (435, NULL, false, NULL, NULL, NULL, 494, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (436, NULL, false, NULL, NULL, NULL, 495, '', 'Abogada');
+INSERT INTO datos_academicos VALUES (437, NULL, false, NULL, NULL, NULL, 497, '', 'Univ de Morón');
+INSERT INTO datos_academicos VALUES (438, NULL, false, NULL, NULL, NULL, 498, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (439, NULL, false, NULL, NULL, NULL, 499, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (440, NULL, false, NULL, NULL, NULL, 501, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (441, NULL, false, NULL, NULL, NULL, 502, '', 'V. Médico, Fotografa, T Social');
+INSERT INTO datos_academicos VALUES (442, NULL, false, NULL, NULL, NULL, 503, '', 'Terciario completo');
+INSERT INTO datos_academicos VALUES (443, NULL, false, NULL, NULL, NULL, 504, '', 'Veterinaria');
+INSERT INTO datos_academicos VALUES (444, NULL, false, NULL, NULL, NULL, 505, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (445, NULL, false, NULL, NULL, NULL, 506, '', 'Psicologa Holística');
+INSERT INTO datos_academicos VALUES (446, NULL, false, NULL, NULL, NULL, 507, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (447, NULL, false, NULL, NULL, NULL, 508, '', 'Abogada');
+INSERT INTO datos_academicos VALUES (448, NULL, false, NULL, NULL, NULL, 509, '', 'Univ en curso');
+INSERT INTO datos_academicos VALUES (449, NULL, false, NULL, NULL, NULL, 510, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (450, NULL, false, NULL, NULL, NULL, 512, '', 'Bibliotecaria');
+INSERT INTO datos_academicos VALUES (451, NULL, false, NULL, NULL, NULL, 513, '', 'Secundario Completo');
+INSERT INTO datos_academicos VALUES (452, NULL, false, NULL, NULL, NULL, 514, '', 'Fonoaudiologa');
+INSERT INTO datos_academicos VALUES (453, NULL, false, NULL, NULL, NULL, 515, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (454, NULL, false, NULL, NULL, NULL, 517, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (455, NULL, false, NULL, NULL, NULL, 518, '', 'UBA Arquitecta');
+INSERT INTO datos_academicos VALUES (456, NULL, false, NULL, NULL, NULL, 531, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (457, NULL, false, NULL, NULL, NULL, 534, '', 'Abogacia incompleto');
+INSERT INTO datos_academicos VALUES (458, NULL, false, NULL, NULL, NULL, 535, '', 'Profesorado Sup "Sarah C. Eccleston"');
+INSERT INTO datos_academicos VALUES (459, NULL, false, NULL, NULL, NULL, 536, '', 'Estudiando en el Inst. Independencia de Pilar (nivel secundario)');
+INSERT INTO datos_academicos VALUES (460, NULL, false, NULL, NULL, NULL, 537, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (461, NULL, false, NULL, NULL, NULL, 538, '', 'Bachiller');
+INSERT INTO datos_academicos VALUES (462, NULL, false, NULL, NULL, NULL, 539, '', 'Terciario');
+INSERT INTO datos_academicos VALUES (463, NULL, false, NULL, NULL, NULL, 540, '', 'Acompañante Terapéutico');
+INSERT INTO datos_academicos VALUES (464, NULL, false, NULL, NULL, NULL, 542, '', 'Terapista Ocupacional');
+INSERT INTO datos_academicos VALUES (465, NULL, false, NULL, NULL, NULL, 543, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (466, NULL, false, NULL, NULL, NULL, 549, '', 'Universidad');
+INSERT INTO datos_academicos VALUES (467, NULL, false, NULL, NULL, NULL, 551, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (468, NULL, false, NULL, NULL, NULL, 552, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (469, NULL, false, NULL, NULL, NULL, 562, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (470, NULL, false, NULL, NULL, NULL, 563, '', 'Prof de Psic.y Cs de la educación');
+INSERT INTO datos_academicos VALUES (471, NULL, false, NULL, NULL, NULL, 564, '', 'Terciario: IGI - Pastelera');
+INSERT INTO datos_academicos VALUES (472, NULL, false, NULL, NULL, NULL, 566, '', 'Terciario completo');
+INSERT INTO datos_academicos VALUES (473, NULL, false, NULL, NULL, NULL, 567, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (474, NULL, false, NULL, NULL, NULL, 568, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (475, NULL, false, NULL, NULL, NULL, 570, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (476, NULL, false, NULL, NULL, NULL, 572, '', 'Lic Administracion de Empresas');
+INSERT INTO datos_academicos VALUES (477, NULL, false, NULL, NULL, NULL, 575, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (478, NULL, false, NULL, NULL, NULL, 576, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (479, NULL, false, NULL, NULL, NULL, 577, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (480, NULL, false, NULL, NULL, NULL, 578, '', 'Primario');
+INSERT INTO datos_academicos VALUES (481, NULL, false, NULL, NULL, NULL, 580, '', 'Ter/ Univ');
+INSERT INTO datos_academicos VALUES (482, NULL, false, NULL, NULL, NULL, 583, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (483, NULL, false, NULL, NULL, NULL, 586, '', 'Terciario inc: Teatro / Danzas');
+INSERT INTO datos_academicos VALUES (484, NULL, false, NULL, NULL, NULL, 587, '', 'Terapeuta Artística / Artísta Plástica');
+INSERT INTO datos_academicos VALUES (485, NULL, false, NULL, NULL, NULL, 588, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (486, NULL, false, NULL, NULL, NULL, 589, '', 'Ter/Univ completo');
+INSERT INTO datos_academicos VALUES (487, NULL, false, NULL, NULL, NULL, 600, '', 'Univ: Comercio Exterior');
+INSERT INTO datos_academicos VALUES (488, NULL, false, NULL, NULL, NULL, 601, '', 'Universidad');
+INSERT INTO datos_academicos VALUES (489, NULL, false, NULL, NULL, NULL, 602, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (490, NULL, false, NULL, NULL, NULL, 603, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (491, NULL, false, NULL, NULL, NULL, 609, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (492, NULL, false, NULL, NULL, NULL, 610, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (493, NULL, false, NULL, NULL, NULL, 612, '', 'Profesora de Ed Física');
+INSERT INTO datos_academicos VALUES (494, NULL, false, NULL, NULL, NULL, 614, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (495, NULL, false, NULL, NULL, NULL, 615, '', 'Asistente de RRHH');
+INSERT INTO datos_academicos VALUES (496, NULL, false, NULL, NULL, NULL, 616, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (497, NULL, false, NULL, NULL, NULL, 618, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (498, NULL, false, NULL, NULL, NULL, 620, '', 'USAL (cursando)');
+INSERT INTO datos_academicos VALUES (499, NULL, false, NULL, NULL, NULL, 621, '', 'Lic en Gestión de RRHH');
+INSERT INTO datos_academicos VALUES (500, NULL, false, NULL, NULL, NULL, 623, '', 'Abogada');
+INSERT INTO datos_academicos VALUES (501, NULL, false, NULL, NULL, NULL, 640, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (502, NULL, false, NULL, NULL, NULL, 641, '', 'Diseñadora');
+INSERT INTO datos_academicos VALUES (503, NULL, false, NULL, NULL, NULL, 642, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (504, NULL, false, NULL, NULL, NULL, 643, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (505, NULL, false, NULL, NULL, NULL, 644, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (506, NULL, false, NULL, NULL, NULL, 645, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (507, NULL, false, NULL, NULL, NULL, 647, '', 'Prof de Educación Inicial');
+INSERT INTO datos_academicos VALUES (508, NULL, false, NULL, NULL, NULL, 648, '', 'Lic en Psicologia incompleto');
+INSERT INTO datos_academicos VALUES (509, NULL, false, NULL, NULL, NULL, 650, '', 'Maestra Jardinera');
+INSERT INTO datos_academicos VALUES (510, NULL, false, NULL, NULL, NULL, 651, '', 'Adm. Emp en curso / Psicología en curso');
+INSERT INTO datos_academicos VALUES (511, NULL, false, NULL, NULL, NULL, 653, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (512, 3, false, NULL, NULL, NULL, 40, 'Terciario: COMPLETO', 'No');
+INSERT INTO datos_academicos VALUES (513, 3, false, NULL, NULL, NULL, 49, 'Terciario: COMPLETO', NULL);
+INSERT INTO datos_academicos VALUES (514, NULL, false, NULL, NULL, NULL, 216, '', NULL);
+INSERT INTO datos_academicos VALUES (515, NULL, false, NULL, NULL, NULL, 219, '', NULL);
+INSERT INTO datos_academicos VALUES (516, NULL, false, NULL, NULL, NULL, 236, '', NULL);
+INSERT INTO datos_academicos VALUES (517, NULL, false, NULL, NULL, NULL, 253, '', NULL);
+INSERT INTO datos_academicos VALUES (518, NULL, false, NULL, NULL, NULL, 254, '', NULL);
+INSERT INTO datos_academicos VALUES (519, NULL, false, NULL, NULL, NULL, 261, '', NULL);
+INSERT INTO datos_academicos VALUES (520, NULL, false, NULL, NULL, NULL, 269, '', NULL);
+INSERT INTO datos_academicos VALUES (521, NULL, false, NULL, NULL, NULL, 300, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (522, NULL, false, NULL, NULL, NULL, 391, '', 'Universidad');
+INSERT INTO datos_academicos VALUES (523, NULL, false, NULL, NULL, NULL, 465, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (524, NULL, false, NULL, NULL, NULL, 488, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (525, NULL, false, NULL, NULL, NULL, 530, '', 'Diplomada en Cs Humanas');
+INSERT INTO datos_academicos VALUES (526, NULL, false, NULL, NULL, NULL, 455, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (527, NULL, false, NULL, NULL, NULL, 457, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (528, NULL, false, NULL, NULL, NULL, 464, '', 'Terapeuta de Sonido y Color - Rel Laborales');
+INSERT INTO datos_academicos VALUES (529, NULL, false, NULL, NULL, NULL, 472, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (530, NULL, false, NULL, NULL, NULL, 591, '', 'Primario: Diego U. Broel (Tucumán)');
+INSERT INTO datos_academicos VALUES (531, NULL, false, NULL, NULL, NULL, 553, '', 'Univ en curso');
+INSERT INTO datos_academicos VALUES (532, NULL, false, NULL, NULL, NULL, 611, '', 'Lic Cs. De la Comunicación Social');
+INSERT INTO datos_academicos VALUES (533, NULL, false, NULL, NULL, NULL, 400, '', 'Terciario inc');
+INSERT INTO datos_academicos VALUES (534, NULL, false, NULL, NULL, NULL, 412, '', 'Primario; Secundario; Terciario; Universidad');
+INSERT INTO datos_academicos VALUES (535, NULL, false, NULL, NULL, NULL, 415, '', 'Secundario completo');
+INSERT INTO datos_academicos VALUES (536, NULL, false, NULL, NULL, NULL, 485, '', 'Ter/Univ');
+INSERT INTO datos_academicos VALUES (537, NULL, false, NULL, NULL, NULL, 492, '', 'Instr. En Salud, Alim y Ed Física/Prof Yoga');
+INSERT INTO datos_academicos VALUES (538, NULL, false, NULL, NULL, NULL, 613, '', 'Primario; Secundario; Terciario; Universidad');
 
 
 --
--- TOC entry 2621 (class 0 OID 968271)
--- Dependencies: 216
+-- TOC entry 2670 (class 0 OID 976550)
+-- Dependencies: 218
 -- Data for Name: datos_actuales; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO datos_actuales VALUES (3, '18', 665, 0, 4152, '01122777025', '01122777025', NULL, 'martingaray_12@hotmail.com', 6);
+INSERT INTO datos_actuales VALUES (4546, 'Isla Victoria 1219 (1669) Del Viso', NULL, NULL, NULL, NULL, '0111567283144', NULL, 'barbara64mb@gmail.com', 216, NULL);
+INSERT INTO datos_actuales VALUES (4547, 'Necochea 1085 (2804) Campana', NULL, NULL, NULL, NULL, '034815548153', NULL, 'sonia_bordisso@hotmail.com', 219, NULL);
+INSERT INTO datos_actuales VALUES (4548, 'Bo Cuyo calle 4 nro 31 (1619) Garin', NULL, NULL, NULL, NULL, '0111565937679', NULL, 'figueroa.cintia@hotmail.com', 236, NULL);
+INSERT INTO datos_actuales VALUES (4549, 'Miguel Cane 3815 CABA', NULL, NULL, NULL, NULL, '0111555158703', NULL, 'gabymugneco@hotmail.com', 253, NULL);
+INSERT INTO datos_actuales VALUES (4550, 'Caamaño 3000 Lote 90 (1631) Villa Rosa Pilar', NULL, NULL, NULL, NULL, '011-1538700507', NULL, 'bygla@hotmail.com', 254, NULL);
+INSERT INTO datos_actuales VALUES (4551, 'Belgrano 960 2°6° (1629) Pilar', NULL, NULL, NULL, NULL, '15 3047 3030', NULL, 'vanegise82@hotmail.com', 261, NULL);
+INSERT INTO datos_actuales VALUES (4552, 'El Pericon 251 Capilla del Señor', NULL, NULL, NULL, NULL, '0111554168246', NULL, 'soleservera@gmail.com', 269, NULL);
+INSERT INTO datos_actuales VALUES (4553, 'Quintanilla 1445 (1611) Don Torcuato', NULL, NULL, NULL, NULL, NULL, NULL, 'cristian.barcia@hotmail.com', 300, NULL);
+INSERT INTO datos_actuales VALUES (4554, 'Zebruno 910 - Del Viso', NULL, NULL, NULL, NULL, '15 3258 4494', '15 3258 4494', 'florenciafafian@gmail.com', 391, NULL);
+INSERT INTO datos_actuales VALUES (4555, 'Miero 1969 (1744) Moreno Bs As', NULL, NULL, NULL, NULL, '011-15-67133205', NULL, 'carola.kuzmik@gmail.com', 465, NULL);
+INSERT INTO datos_actuales VALUES (4556, NULL, NULL, NULL, NULL, NULL, '011 15 61776606', NULL, 'sol_marchesan@hotmail.com', 488, NULL);
+INSERT INTO datos_actuales VALUES (4557, 'Labardere 4069 (1667) Tortuguitas Bs As', NULL, NULL, NULL, NULL, '15 6798 1705', '15 5618 7642', 'danielanuttini@hotmail.com', 530, NULL);
+INSERT INTO datos_actuales VALUES (4558, 'FALTA FICHA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 455, NULL);
+INSERT INTO datos_actuales VALUES (4559, 'Rosario Golf Club 2193 (1669) Del Viso', NULL, NULL, NULL, '0230-657560', '15 6682 6187', '15 6682 6187', 'claumariba@hotmail.com', 457, NULL);
+INSERT INTO datos_actuales VALUES (4560, 'Agüero 1909 piso 8°24 (1425) CABA', NULL, NULL, NULL, '4826-3855', '15-5120-5982', NULL, 'andreakucich@live.com.ar', 464, NULL);
+INSERT INTO datos_actuales VALUES (4561, 'Vergara 1851 PB6 (1828) Banfield', NULL, NULL, NULL, '20702681', '1564340185', NULL, 'milizondo@telecentro.com.ar', 472, NULL);
+INSERT INTO datos_actuales VALUES (4562, 'Bataglia 252 (1629) Pilar', NULL, NULL, NULL, '0230-4563318', '0230 456 3318', NULL, 'padma@outlook.com', 591, NULL);
+INSERT INTO datos_actuales VALUES (4563, 'Entre Ríos 1755 (1623) I. Maschwitz', NULL, NULL, NULL, '0348-4444775', '15 5969 7731', '15 5969 7731', 'elibetper@yahoo.com.ar', 553, NULL);
+INSERT INTO datos_actuales VALUES (4564, 'Niceto Vega 5841 4°A (1414) CABA', NULL, NULL, NULL, NULL, '11-6202-5446', NULL, 'maschnorr@gmail.com', 611, NULL);
+INSERT INTO datos_actuales VALUES (4565, 'Argerich 342 8B CABA', NULL, NULL, NULL, NULL, '15-4178-0236', NULL, 'belenfernandez477@gmail.com', 400, NULL);
+INSERT INTO datos_actuales VALUES (4566, 'Guiraldes 3973 (1714) Ituzaingo', NULL, NULL, NULL, '46218694', '15-6252 -1734', NULL, 'natifreile@hotmail.com', 412, NULL);
+INSERT INTO datos_actuales VALUES (4567, 'Cnel Vilela 2826 (1618) Gral Pacheco', NULL, NULL, NULL, '03327-457660', '15 3226 1671', '15 3226 1671', 'cintia_gaitan@hotmail.com', 415, NULL);
+INSERT INTO datos_actuales VALUES (4568, 'Chubut 2400 Vfi 154 - Villa Rosa (1631) Pilar', NULL, NULL, NULL, '0230-4315408', '15-2645 9443', NULL, 'bertamancuso@hotmail.com', 485, NULL);
+INSERT INTO datos_actuales VALUES (4569, 'Alte Brown 1139 (6700) Lujan', NULL, NULL, NULL, '2323-438173', '011-15-69751815', NULL, 'marinjoselina@gmail.com', 492, NULL);
+INSERT INTO datos_actuales VALUES (4570, 'De la Visitación 671 (1629) Pilar', NULL, NULL, NULL, '0230-4430316', '011 15 54773068', NULL, 'silusci-17@hotmail.com', 613, NULL);
+INSERT INTO datos_actuales VALUES (3479, '18 DE OCTUBRE', NULL, NULL, 16516, '2320439426', '1539119452', NULL, 'FLORR.M@HOTMAIL.COM', 1, '914');
+INSERT INTO datos_actuales VALUES (3480, 'RUTA 8', NULL, NULL, 4386, '2304423221', '111569551440', NULL, 'CECIPOSSE@YAHOO.COM.AR', 2, 'KM 51,5');
+INSERT INTO datos_actuales VALUES (3481, 'POTOSI', NULL, NULL, 4404, NULL, '111521695523', NULL, 'PATRIMARCEL@HOTMAIL.COM', 14, '359');
+INSERT INTO datos_actuales VALUES (3482, 'J M PAZ', NULL, NULL, 21725, NULL, '111537595689', NULL, '111537595689', 25, '3906');
+INSERT INTO datos_actuales VALUES (3483, 'MATIENZO', NULL, NULL, 16526, '2320451431', '1156390479', NULL, 'MARINAGUSTAVINO@GMAIL.COM', 3, '5451');
+INSERT INTO datos_actuales VALUES (3484, 'ARE QUIPA', NULL, NULL, 16532, '3484627133', NULL, '111558474644', 'LUCIARUGGIERO@HOTMAIL.COM', 92, '1180');
+INSERT INTO datos_actuales VALUES (3485, 'AV MITRE S/N B* SOLES DEL PILAR LOTE', NULL, NULL, 4386, NULL, '1566881746', NULL, 'mariaadelapiaggi@yahoo.es', 94, '6');
+INSERT INTO datos_actuales VALUES (3486, 'SANTA FE', NULL, NULL, 3231, '348154226628', NULL, NULL, 'ESPACIOROSASDEABRIL@GMAIL.COM', 101, '385');
+INSERT INTO datos_actuales VALUES (3487, 'ARGUIÑANO', NULL, NULL, 2918, '3489447373', '03489-15693109', NULL, 'nataldsn@hotmail.com', 95, '2855');
+INSERT INTO datos_actuales VALUES (3488, '9 DE JULIO', NULL, NULL, 4386, NULL, '1130599168', NULL, 'URSULA_OCHOA@HOTMAIL.COM', 110, '2948');
+INSERT INTO datos_actuales VALUES (3489, 'ARMENIA', NULL, 6, NULL, '1148336154', '111541921168', NULL, 'VALKOKO@HOTMAIL.COM', 113, '1502');
+INSERT INTO datos_actuales VALUES (3490, 'BUENOS AIRES ', NULL, NULL, 16434, '46272303', '1559225836', NULL, 'GABRIELANASTASI@HOTMAIL.COM', 117, '834');
+INSERT INTO datos_actuales VALUES (3491, 'ANICETO FERNANDEZ', NULL, NULL, 3885, NULL, '232315618384', '232315678080', 'SILGARRAZA@GMAIL.COM', 27, '1260');
+INSERT INTO datos_actuales VALUES (3492, 'CHAMPAGNAT', NULL, 281, 4386, NULL, '1161988355', '1161988355', 'BALSMO.SIL@GMAIL.COM', 21, '740');
+INSERT INTO datos_actuales VALUES (3493, 'HIPOLITOYRIGOYEN ', NULL, NULL, 3231, '3484424184', '111563667882', '111563667882', 'SUSANA.EGIANEZ@GMAIL.COM', 38, '366');
+INSERT INTO datos_actuales VALUES (3494, 'JORGE NEWBERY ', NULL, 0, 3885, NULL, '111540912829', NULL, 'CARLAGRANDE25@GMAIL.COM', 119, '2075');
+INSERT INTO datos_actuales VALUES (3495, 'PUJOL', NULL, 14, NULL, NULL, '1540974810', NULL, 'SILVANABATLLE@HOTMAIL.COM', 126, '1435');
+INSERT INTO datos_actuales VALUES (3496, 'Dr Muñiz 965 Luján', NULL, NULL, NULL, '422192', '111551412259', NULL, 'gracecarino2004@yahoo.com.ar', 138, NULL);
+INSERT INTO datos_actuales VALUES (3497, 'Dr Muñiz 965 Luján', NULL, NULL, 3885, '2323422192', '0', NULL, 'MARCELOCARINO@YAHOO.COM.AR', 139, NULL);
+INSERT INTO datos_actuales VALUES (3498, '33 Orientales n° 2065 dto 4 (1257) CABA', NULL, NULL, NULL, NULL, '0111561349518', NULL, 'valexbrian@hotmail.com', 141, NULL);
+INSERT INTO datos_actuales VALUES (3499, 'Av Las Heras 3451 14 D CABA', NULL, NULL, NULL, NULL, '0111530462871', NULL, 'f3rchulina@hotmail.com', 143, NULL);
+INSERT INTO datos_actuales VALUES (3500, 'E. de Vedia 1825 PB dto 4 CABA', NULL, NULL, NULL, '46397499', '0111554225859', NULL, 'yami.iametti@gmail.com', 145, NULL);
+INSERT INTO datos_actuales VALUES (3501, 'CONAE', NULL, NULL, 3231, NULL, '111557476997', NULL, 'LORE.F.LOPES@GMAIL.COM', 29, '899');
+INSERT INTO datos_actuales VALUES (3502, 'LAS AMAPOLAS', NULL, NULL, 16537, NULL, '1170893269', '1170893269', 'MARIAFB@HOTMAIL.COM', 46, '2318');
+INSERT INTO datos_actuales VALUES (3503, 'LAS HAYAS ', NULL, NULL, 5001, '2320550641', '1551064387', NULL, 'FLOPEN13@YAHOO.COM.AR', 44, '1210');
+INSERT INTO datos_actuales VALUES (3504, 'CAFAYATE', NULL, NULL, 4386, NULL, '111569806444', '2304440560', 'NADIAPFERNANDEZ@HOTMAIL.COM', 45, '324');
+INSERT INTO datos_actuales VALUES (3505, 'Giribone 883 6°A CABA', NULL, NULL, NULL, NULL, '0111533300617', NULL, 'riveroflorencia@gmail.com', 146, NULL);
+INSERT INTO datos_actuales VALUES (3506, 'Roseti 1073 PB CABA', NULL, NULL, NULL, '45533692', '0111550537739', NULL, 'm_mlm03@yahoo.com.ar', 147, NULL);
+INSERT INTO datos_actuales VALUES (3507, 'Beauchef 476 piso 2 CABA', NULL, NULL, NULL, '49030618', '0111569307265', NULL, 'mbelenpaz@yahoo.com.ar', 148, NULL);
+INSERT INTO datos_actuales VALUES (3508, 'Acevedo 888 p4 CABA', NULL, NULL, NULL, '47751945', '0111569120439', NULL, 'segalmaia@gmail.com', 149, NULL);
+INSERT INTO datos_actuales VALUES (3509, 'Azul 1483 Moron', NULL, NULL, NULL, '21169341', '0111526968204', NULL, 'vittonandrea@hotmail.com', 154, NULL);
+INSERT INTO datos_actuales VALUES (3510, 'Dean Funes 2099 Castelar', NULL, NULL, NULL, '54354086', '0111554998654', NULL, 'jackie_berdun@hotmail.com', 157, NULL);
+INSERT INTO datos_actuales VALUES (3511, 'El Rancho 474 Hurlingham', NULL, NULL, NULL, '44595610', '0111530002912', NULL, 'carlaromeo10@hotmail.com', 160, NULL);
+INSERT INTO datos_actuales VALUES (3512, 'M de Salcedo 1538 Castelar', NULL, NULL, NULL, '20951149', '0111534512424', NULL, 'micaela_donofrio@hotmail.com', 161, NULL);
+INSERT INTO datos_actuales VALUES (3513, 'Tebicuay 2050 Castelar', NULL, NULL, NULL, '46236405', '0111537841534', NULL, 'galerti@hotmail.com.ar', 162, NULL);
+INSERT INTO datos_actuales VALUES (3514, 'Rosales 418 1°C Ramos Mejía', NULL, NULL, NULL, '46588348', '0111536936682', '1558121831', 'paula_seijo@yahoo.com.ar', 163, NULL);
+INSERT INTO datos_actuales VALUES (3515, 'Berutti 408 Moron', NULL, NULL, NULL, '46242572', '0111540940071', NULL, 'fernandasog@hotmail.com.ar', 164, NULL);
+INSERT INTO datos_actuales VALUES (3516, 'Ayacucho 233 San Antonio de Padua', NULL, NULL, NULL, NULL, '0111557046222', NULL, 'agustina.asteriti@gmail.com', 169, NULL);
+INSERT INTO datos_actuales VALUES (3517, 'Lacarra 1236 Castelar', NULL, NULL, NULL, '46233398', '0111568215833', NULL, 'sadz30@hotmail.com', 173, NULL);
+INSERT INTO datos_actuales VALUES (3518, 'El Recuerdo 65 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 242, NULL);
+INSERT INTO datos_actuales VALUES (3519, 'Ranchos 1888 Castelar', NULL, NULL, NULL, '44892649', '0111560334337', NULL, 'analiagodoy31@gmail.com', 175, NULL);
+INSERT INTO datos_actuales VALUES (3520, 'C. COLON', NULL, NULL, 4386, '1121169345', '230154574075', NULL, 'sofiadepo@gmail.com', 16, '1784');
+INSERT INTO datos_actuales VALUES (3521, 'LOS NARCISOS', NULL, NULL, 4393, '2304473567', '111554782186', NULL, 'CAROLA_QUINTANA@HOTMAIL.COM', 51, '539');
+INSERT INTO datos_actuales VALUES (3522, 'LAGO HUEMUL', NULL, NULL, 4389, NULL, '354615408571', '3546408571', 'MARIANA_DAMIANI13@HOTMAIL.COM', 60, '1590');
+INSERT INTO datos_actuales VALUES (3523, 'SAAVEDRA', NULL, 1, 4389, NULL, '111527003126', '111527003126', 'SOTOROMINA.89@GMAIL.COM', 62, '2710');
+INSERT INTO datos_actuales VALUES (3524, 'GRAL GUIDO', NULL, NULL, 4386, '2320424074', '1156915183', NULL, '0', 67, '1192');
+INSERT INTO datos_actuales VALUES (3525, 'ESTANCIAS DEL RIO KM ', NULL, NULL, 4386, NULL, '227215402389', NULL, 'JULICAR@ME.COM', 61, '56.5');
+INSERT INTO datos_actuales VALUES (3526, 'AV BARTOLOME MITRE', NULL, NULL, 4386, NULL, '111530666216', NULL, 'AGUS-FERRERIA@HOTMAIL.COM', 63, '684');
+INSERT INTO datos_actuales VALUES (3527, 'G MISTRAL', NULL, NULL, 4386, NULL, '111551499051', NULL, 'ROMEADRI@YAHOO.COM.AR', 64, '1256');
+INSERT INTO datos_actuales VALUES (3528, 'POLONIA', NULL, NULL, NULL, NULL, '111568762009', '111568762009', 'GMANSILL@EDENOR.COM', 26, '5768');
+INSERT INTO datos_actuales VALUES (3529, 'H YRIGOYEN', NULL, NULL, 4395, '2320479479', '111523495576', '111523495576', 'BARBARA.KEXEL@GMAIL.COM', 28, '1754');
+INSERT INTO datos_actuales VALUES (3530, 'LOS ALERCES', NULL, NULL, 4389, NULL, '111557878084', '1157878084', 'delpilipka@hotmail.com', 5, '1212');
+INSERT INTO datos_actuales VALUES (3531, 'SAN JUAN', NULL, NULL, 3480, '2323492854', '111530983008', '11153093008', 'EVELINGGALARZA@HOTMAIL.COM', 10, '1281');
+INSERT INTO datos_actuales VALUES (3532, 'SANTIAGO DEL ESTERO', NULL, NULL, 4386, '2304427132', '1136067682', '1136067682', 'alesangiacomo@hotmail.com', 23, '349');
+INSERT INTO datos_actuales VALUES (3533, 'KENEDY', NULL, NULL, 3231, NULL, '11550496694', '1150496694', 'INESCUBELLI@YAHOO.COM.AR', 22, '2490');
+INSERT INTO datos_actuales VALUES (3534, 'AV CHAMPAGNAT BARRIO LAS MERCEDES', NULL, NULL, NULL, NULL, '1144367588', NULL, 'PAT.MOYANO@GMAIL.COM', 6, '0');
+INSERT INTO datos_actuales VALUES (3535, 'ASBORNO', NULL, 3, 3231, NULL, '348915514271', NULL, 'MELINATARABURELLI@OUTLOOK.COM', 57, '157');
+INSERT INTO datos_actuales VALUES (3536, 'Corbeta Beifast', NULL, NULL, 4386, NULL, '1130570606', NULL, 'CF7573169@GMAIL.COM', 78, '1737');
+INSERT INTO datos_actuales VALUES (3537, 'VIAMONTE', NULL, NULL, 4393, NULL, '111523369104', NULL, 'MIIAPROFARTE@HOTMAIL.COM', 76, '412');
+INSERT INTO datos_actuales VALUES (3538, 'ENTRE RIOS', NULL, NULL, 4393, NULL, '111562542296', NULL, 'CARMABELES@HOTMAIL.COM', 77, '1302');
+INSERT INTO datos_actuales VALUES (3539, 'BARRIO EL LAUQUEN RUTA 58 KM 10', NULL, 9, 5001, '20505679', '1130714630', '42417065', 'RODRIGUEZGABRIELA34@GMAIL.COM', 79, '17');
+INSERT INTO datos_actuales VALUES (3540, 'CRUCERO GRAL BELGRANO', NULL, NULL, 4386, '2304430208', '111524984944', NULL, 'pacificomariaelena@gmail.com', 82, '1837');
+INSERT INTO datos_actuales VALUES (3541, 'ARISTOBULO DEL VALLE (BARRIO SANTA CATARINA LOTE 412))', NULL, NULL, 3233, '3484626146', '1556395992', NULL, 'ANABELLACORVALAN@YAHOO.COM.AR', 83, '5601');
+INSERT INTO datos_actuales VALUES (3542, 'CERVANTES ', NULL, NULL, 25773, NULL, '111535891064', NULL, 'LILIANAINSFRAN@GMAIL.COM', 86, '1326');
+INSERT INTO datos_actuales VALUES (3543, 'CHUBUT ', NULL, NULL, 4386, NULL, '1544080686', NULL, 'MAQUI.2610@GMAIL.COM', 93, '401');
+INSERT INTO datos_actuales VALUES (3544, 'ALVAREZ THOMAS', NULL, NULL, 4404, NULL, '1536934438', NULL, 'clauditadvr@hotmail.com', 97, '536');
+INSERT INTO datos_actuales VALUES (3545, 'EL CASCO', NULL, NULL, 4982, NULL, '348715631002', NULL, 'SEAAUN@HOTMAIL.COM', 106, '0');
+INSERT INTO datos_actuales VALUES (3546, 'CHAMPAGNAT', NULL, NULL, 4386, '2304663971', '111550387928', NULL, 'JULIKOHEN_76@HOTMAIL.COM', 107, '1600');
+INSERT INTO datos_actuales VALUES (3547, 'ROUX', NULL, NULL, 3885, NULL, '2323333579', NULL, 'ANAHIPEANO@GMAIL.COM', 118, '1551');
+INSERT INTO datos_actuales VALUES (3548, 'FRANCIA', NULL, NULL, 4661, NULL, '232515473539', NULL, 'JUDITHCARDOSO1975@HOTMAIL.COM', 120, '877');
+INSERT INTO datos_actuales VALUES (3549, 'ITUZAINGO', NULL, NULL, 3885, '422196', '2323633460', NULL, 'FLORENCIA.CARELLI@HOTMAIL.COM', 121, '672');
+INSERT INTO datos_actuales VALUES (3550, 'VICENTE LOPEZ', NULL, NULL, 3885, NULL, '2323447235', NULL, 'SANISACOMP71@HOTMAIL.COM', 122, '1160');
+INSERT INTO datos_actuales VALUES (3551, 'PASTEUR', NULL, NULL, 16434, '46288497', '0351-152245969', '3512245969', 'TAMARA_DTA@HOTMAIL.COM', 123, '2476');
+INSERT INTO datos_actuales VALUES (3552, 'GARCIA LOPEZ DE LA VEGA', NULL, NULL, 3480, '2323470784', '111558684443', NULL, 'P_BARUZZI@HOTMAIL.COM', 125, '4619');
+INSERT INTO datos_actuales VALUES (3553, 'CHUBUT', NULL, NULL, 4386, NULL, '1558664212', NULL, 'BULLRICHSILVANA@GMAIL.COM', 128, '415');
+INSERT INTO datos_actuales VALUES (3554, 'GENERAL BELGRANO', NULL, 8, 16380, NULL, '1135739738', NULL, 'ROSANA_1502@HOTMAIL.COM', 130, '3015');
+INSERT INTO datos_actuales VALUES (3555, 'CAMARANO 915 (BARRIO LA PRADERA)', NULL, 1057, 4404, '2304458288', '3413080444', NULL, 'MARIANA.BENI@GMAIL.COM', 8, '915');
+INSERT INTO datos_actuales VALUES (3556, 'LOS LAZARISTAS', NULL, NULL, 3231, NULL, '345154568408', '348154568408', 'MASOLESU@GMAIL.COM', 9, '462');
+INSERT INTO datos_actuales VALUES (3557, 'CARABOBO', NULL, NULL, 16516, NULL, '1121739926', NULL, 'ELENA.FRNDZ@GMAIL.COM', 105, '3230');
+INSERT INTO datos_actuales VALUES (3558, 'POLONIA', NULL, NULL, 26305, NULL, '1524317471', NULL, 'belenenriquez802@gmail.com', 133, '2470');
+INSERT INTO datos_actuales VALUES (3559, '34', NULL, NULL, 4767, '2224472755', '1166833376', NULL, 'FLORDURAND@LIVE.COM', 136, '968');
+INSERT INTO datos_actuales VALUES (3560, 'Ramon Franco', NULL, NULL, 3765, '42924479', '1569269012', NULL, 'luisoscar40@gmail.com', 132, '4062');
+INSERT INTO datos_actuales VALUES (3561, '34', NULL, NULL, 4767, '2224472755', '1157374729', NULL, 'ANDREA.DURAND@LIVE.COM', 134, '968');
+INSERT INTO datos_actuales VALUES (3562, 'CATAMARCA', NULL, NULL, 16450, NULL, '1549275202', NULL, 'mariacurci32@gmail.com', 135, '905');
+INSERT INTO datos_actuales VALUES (3563, 'Moreno 1070 dpto 4b Lujan', NULL, NULL, NULL, '2323435460', '232315482641', NULL, 'vansua35@hotmail.com', 137, NULL);
+INSERT INTO datos_actuales VALUES (3564, '25 DE MAYO', NULL, NULL, 16380, '39649529', '1162708760', '1162708460', 'CAMARGOGABY@HOTMAIL.COM', 131, '748');
+INSERT INTO datos_actuales VALUES (3565, 'Espora 42 3°C Ramos Mejía', NULL, NULL, NULL, '6542956', '0111564035025', NULL, 'ceciliagabrielapaz@gmail.com', 159, NULL);
+INSERT INTO datos_actuales VALUES (3566, 'BALBASTRO', NULL, NULL, 16534, NULL, '1541499682', NULL, 'miriampicon669@hotmail.com', 18, '1609');
+INSERT INTO datos_actuales VALUES (3567, 'GREGORIA MATORRAS', NULL, NULL, 16472, NULL, '1534655693', NULL, 'CECILIAN84@YAHOO.COM', 41, '2714');
+INSERT INTO datos_actuales VALUES (3568, 'ROQUE S PEÑA', NULL, NULL, 16516, '2320436476', '1136495104', '1136495104', 'SOLE.JOHA@HOTMAIL.COM', 35, '3987');
+INSERT INTO datos_actuales VALUES (3569, 'Hidalgo 1039 1°D CABA', NULL, NULL, NULL, '39710008', '0111567157491', NULL, 'daniposadas.70@gmail.com', 144, NULL);
+INSERT INTO datos_actuales VALUES (3570, 'MATEO CASCO', NULL, NULL, 3480, '2323491865', '11155958714', NULL, 'GABY_IDERLA@HOTMAIL.COM', 68, '1009');
+INSERT INTO datos_actuales VALUES (3571, 'CASTELLI', NULL, NULL, NULL, '20712273', '1140609977', NULL, 'SILVANA.BONETTO@GMAIL.COM', 69, '6387');
+INSERT INTO datos_actuales VALUES (3572, 'ECHEVERRIA', NULL, NULL, 4386, '2304671482', '1130544541', NULL, 'ALICIACHRISTIANI@HOTMAIL.COM.AR', 72, '17');
+INSERT INTO datos_actuales VALUES (3573, 'MENDOZA', NULL, NULL, 4386, NULL, '111557171863', NULL, 'RO.LEGUIZAMON@HOTMAIL.COM', 74, '1224');
+INSERT INTO datos_actuales VALUES (3574, 'ITUZAINGO 346', NULL, NULL, 4386, NULL, '1565695152', '31212588', 'ROMERONASO@HOTMAIL.COM', 65, '346');
+INSERT INTO datos_actuales VALUES (3575, 'LEVENE', NULL, NULL, 4386, NULL, '2304568931', '230154568931', 'SUSANAVVALLEJOS@HOTMAIL.COM', 66, '599');
+INSERT INTO datos_actuales VALUES (3576, 'C COSTA', NULL, NULL, 4386, NULL, '1140840076', NULL, 'ROSALIAZALAZAR@HOTMAIL.COM', 71, '375');
+INSERT INTO datos_actuales VALUES (3577, 'SARAVI', NULL, NULL, 4386, NULL, '111551396368', NULL, 'JUANIAQUINO@HOTMAIL.COM', 54, '1084');
+INSERT INTO datos_actuales VALUES (3578, 'Salcedo 2131 Castelar', NULL, NULL, NULL, '44833412', '0111551768609', NULL, 'lauritacarr10@gmail.com', 155, NULL);
+INSERT INTO datos_actuales VALUES (3579, 'El Pampero 5652 González Catán ', NULL, NULL, NULL, NULL, '0111556194820', NULL, 'claudia_brown@hotmail.com', 166, NULL);
+INSERT INTO datos_actuales VALUES (3580, 'GASPAR CAMPOS', NULL, NULL, 16522, '46674516', '1551107428', NULL, 'JULIETASALVIECOYOGA@GMAIL.COM', 177, '2263');
+INSERT INTO datos_actuales VALUES (3581, 'Malvinas Arg N°22 3°B (1619) Escobar', NULL, NULL, NULL, '02320-497823', '11 34232445', NULL, 'marce.64@hotmail.com', 183, NULL);
+INSERT INTO datos_actuales VALUES (3582, 'LOS CRISANTEMOS', NULL, NULL, 4389, NULL, '111526872744', NULL, 'FLAVIADENISALOBOS@GMAIL.COM', 56, '1515');
+INSERT INTO datos_actuales VALUES (3583, 'MAGALLANES', NULL, 2, 3236, '3484218515', '1569513826', NULL, 'PATRIMOS2004@YAHOO.COM.AR', 102, '1433');
+INSERT INTO datos_actuales VALUES (3584, 'Las Malvinas 1020 (1625) Escobar', NULL, NULL, NULL, '0348-4426327', '0348-154533915', NULL, 'mirtasusanacordero@gmail.com', 186, NULL);
+INSERT INTO datos_actuales VALUES (3585, 'Maipu 1584 (1629) Pilar', NULL, NULL, NULL, NULL, '0111567996450', NULL, 'susanalargo15@gmail.com', 240, NULL);
+INSERT INTO datos_actuales VALUES (3586, 'Cervantes 320 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, 'juliaalciralopez@hotmail.com', 241, NULL);
+INSERT INTO datos_actuales VALUES (3587, 'Cura Bronchero 1778 Ituzaingó', NULL, NULL, NULL, '46239777', '0111556652515', NULL, 'julieta29cobos@hotmail.com', 165, NULL);
+INSERT INTO datos_actuales VALUES (3588, 'Mitre 710 Barrio la Cuesta 110 (1629) Pilar', NULL, NULL, NULL, NULL, '011 15 5853 1205', NULL, 'orietaalejandra@hotmail.com', 184, NULL);
+INSERT INTO datos_actuales VALUES (3589, 'Mitre s/n (1629) Manzanares', NULL, NULL, NULL, NULL, '03492- 15 581318', NULL, 'rosanaromera14@gmail.com', 185, NULL);
+INSERT INTO datos_actuales VALUES (3590, 'Pj Lomas de Zamora 2412 (1417) CABA', NULL, NULL, NULL, NULL, '15-51645033', '46628119', 'silpires77@hotmail.com', 187, NULL);
+INSERT INTO datos_actuales VALUES (3591, 'Rawson 181 Piso 2 (1182) CABA', NULL, NULL, NULL, '2057-4819', '11 6838 9097', NULL, 'jermainsito@gmail.com', 189, NULL);
+INSERT INTO datos_actuales VALUES (3592, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ortegaenzoariel@hotmail.com', 194, NULL);
+INSERT INTO datos_actuales VALUES (3593, 'Bouchard 1265 Dto 2 CABA', NULL, NULL, NULL, NULL, '0111538689334', NULL, 'maria.toledo.1971@gmail.com', 195, NULL);
+INSERT INTO datos_actuales VALUES (3594, 'Aristobulo del Valle 2267- Moreno', NULL, NULL, NULL, NULL, '111568875091', NULL, 'cicala.leonela@gmail.com', 196, NULL);
+INSERT INTO datos_actuales VALUES (3595, 'Saavedra 694 piso 3 (1224) CABA', NULL, NULL, NULL, NULL, '0111564920383', NULL, 'bisetcynthia@gmail.com', 198, NULL);
+INSERT INTO datos_actuales VALUES (3596, 'Gorritti 3552 (1172) CABA', NULL, NULL, NULL, NULL, '0111559609400', NULL, 'gwecam62@hotmail.com', 199, NULL);
+INSERT INTO datos_actuales VALUES (3597, 'El Litoral 3143 CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 203, NULL);
+INSERT INTO datos_actuales VALUES (3598, 'Piedras 1785 Hab 29 CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 208, NULL);
+INSERT INTO datos_actuales VALUES (3599, 'Suipacha 2380 (1620) Maschwitz', NULL, NULL, NULL, NULL, '0111523242318', NULL, 'aguirre-karina@hotmail.com', 210, NULL);
+INSERT INTO datos_actuales VALUES (3600, 'Peirano 2564 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 211, NULL);
+INSERT INTO datos_actuales VALUES (3601, 'Ramos Mejia 2850 La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 212, NULL);
+INSERT INTO datos_actuales VALUES (3602, 'Portesuelo 49 Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 213, NULL);
+INSERT INTO datos_actuales VALUES (3603, 'B° La Pradera Lote 95 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 215, NULL);
+INSERT INTO datos_actuales VALUES (3604, 'Alsina 2737 Del Viso', NULL, NULL, NULL, NULL, '0111559540747', NULL, 'nancybarello@hotmail.com', 217, NULL);
+INSERT INTO datos_actuales VALUES (3605, 'Potosi 359 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 218, NULL);
+INSERT INTO datos_actuales VALUES (3606, 'Dalton 2131 (1615) Grand Bourg', NULL, NULL, NULL, NULL, '0111549478321', NULL, 'marta__brie@hotmail.com', 220, NULL);
+INSERT INTO datos_actuales VALUES (3607, 'Guatemala 3951 (1669) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 221, NULL);
+INSERT INTO datos_actuales VALUES (3608, 'Las Heras 353 1° p 31 - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 222, NULL);
+INSERT INTO datos_actuales VALUES (3609, 'Spadaccini 1951 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 224, NULL);
+INSERT INTO datos_actuales VALUES (3610, 'Las Acacias 1470 Benavidez', NULL, NULL, NULL, NULL, '0348154330038', NULL, 'romina.delorenzo@hotmail.com', 225, NULL);
+INSERT INTO datos_actuales VALUES (3611, 'Los Arrayanes 1222 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 226, NULL);
+INSERT INTO datos_actuales VALUES (3612, 'Canel y Neuquén (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 229, NULL);
+INSERT INTO datos_actuales VALUES (3613, 'Serrano 2711 4°C (1663) San Miguel', NULL, NULL, NULL, NULL, '0111569738173', NULL, 'fabbrilaura4@gmail.com', 230, NULL);
+INSERT INTO datos_actuales VALUES (3614, 'Hindu Club 2842 (1667) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 232, NULL);
+INSERT INTO datos_actuales VALUES (3615, 'Ayres del Pilar km 43,5 - Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 234, NULL);
+INSERT INTO datos_actuales VALUES (3616, '25 de Mayo 714 (2804) Campana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 235, NULL);
+INSERT INTO datos_actuales VALUES (3617, 'Santa Eulalia 2352 (1629) M Alberti', NULL, NULL, NULL, NULL, '011 15 40700256', NULL, 'baltet@hotmail.com', 192, NULL);
+INSERT INTO datos_actuales VALUES (3618, 'B° La Campiña Lote 66 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 243, NULL);
+INSERT INTO datos_actuales VALUES (3619, 'Marcelo Fitte 4354 (1612) Adolfo Sordeaux', NULL, NULL, NULL, NULL, '0111561081718', NULL, 'mairalunarrhh@yahoo.com', 245, NULL);
+INSERT INTO datos_actuales VALUES (3620, 'Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 248, NULL);
+INSERT INTO datos_actuales VALUES (3621, 'Las Heras 331 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 249, NULL);
+INSERT INTO datos_actuales VALUES (3622, '7 de Julio 41 p3 d5 (1619) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 251, NULL);
+INSERT INTO datos_actuales VALUES (3623, 'Santa Rita 3160 - Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 252, NULL);
+INSERT INTO datos_actuales VALUES (3624, 'Ruta 4 km4 n°430 (2814) Campana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 255, NULL);
+INSERT INTO datos_actuales VALUES (3625, 'Av Pte Peron 4113 - Pte Derqui', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 257, NULL);
+INSERT INTO datos_actuales VALUES (3626, 'Sta Rita 974 San Isidro', NULL, NULL, NULL, NULL, '0111565399999', NULL, 'mirianpenyy@hotmail.com', 258, NULL);
+INSERT INTO datos_actuales VALUES (3627, 'Los Olivos 3301 (1629) La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, 'mica_ale812@hotmail.com', 262, NULL);
+INSERT INTO datos_actuales VALUES (3628, 'Pergamino 188 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, 'sofiapazrodriguez@gmail.com', 263, NULL);
+INSERT INTO datos_actuales VALUES (3629, 'Caamaño Bo Palmas del Sol 2B (1669) Pilar', NULL, NULL, NULL, NULL, '0111536543801', NULL, 'draflorenciarosso@hotmail.com', 264, NULL);
+INSERT INTO datos_actuales VALUES (3630, 'Casacuberta 545 (1663) San Miguel', NULL, NULL, NULL, NULL, '0111562410530', NULL, 'silvanalsantillan@hotmail.com', 267, NULL);
+INSERT INTO datos_actuales VALUES (3631, 'Guiraldes 196 (2760) S. A de Areco', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 273, NULL);
+INSERT INTO datos_actuales VALUES (3632, 'Emilio Mitre 1454 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 274, NULL);
+INSERT INTO datos_actuales VALUES (3633, 'M. Miguens 5879 Fdo (1682) Bs As', NULL, NULL, NULL, '4844-4843', '11-40449012', NULL, 'ness-pop@outlook.com', 276, NULL);
+INSERT INTO datos_actuales VALUES (3634, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 278, NULL);
+INSERT INTO datos_actuales VALUES (3635, '9 de Julio 450 (2740) Arrecifes', NULL, NULL, NULL, '0248-450781', '02478 15 407713', NULL, 'andreaametller@hotmail.com', 290, NULL);
+INSERT INTO datos_actuales VALUES (3636, 'Falucho 1518 (1623) Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, 'caradchimba@gmail.com', 291, NULL);
+INSERT INTO datos_actuales VALUES (3637, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 294, NULL);
+INSERT INTO datos_actuales VALUES (3638, 'Champagnat 1600 Lote 13 (1629) Pilar', NULL, NULL, NULL, '023044663913', '1557721973', NULL, 'juliobaio@hotmail.com.ar', 297, NULL);
+INSERT INTO datos_actuales VALUES (3639, 'Ruta 9 km 86 UF 36 (2800) Zarate', NULL, NULL, NULL, '03487-570740', '011-15-5151-8643', NULL, 'gbalduzzi@toyota.com.ar', 298, NULL);
+INSERT INTO datos_actuales VALUES (3640, 'Vivaldi 4145 (1629) Pilar Bs As', NULL, NULL, NULL, '0230-4385125', '1558254044', NULL, 'silvibarrios@live.com.ar', 302, NULL);
+INSERT INTO datos_actuales VALUES (3641, 'Sabogal 1680 (1669) Del Viso', NULL, NULL, NULL, '02320407673', '0111564888136', NULL, 'yesi_b21@hotmail.com', 305, NULL);
+INSERT INTO datos_actuales VALUES (3642, 'Golfers GC 2950 UF D6 (1667) M. Alberti Bs As', NULL, NULL, NULL, '0348-4639192', '011-15-50149987', NULL, 'luz.bassetto@gmail.com', 307, NULL);
+INSERT INTO datos_actuales VALUES (3643, 'Moreno 1831 (3202) Concordia - Entre Ríos', NULL, NULL, NULL, '0345-431-0144', '0345-154053075', NULL, 'martinburaglia@gmail.com', 321, NULL);
+INSERT INTO datos_actuales VALUES (3644, 'Urcelay 1005 (2812) Exaltación de la Cruz', NULL, NULL, NULL, '02304585512', NULL, NULL, 'celes_teb@hotmail.com', 323, NULL);
+INSERT INTO datos_actuales VALUES (3645, 'Ruta 8 km 56,5 Estancias del Rio lote3 (1629) Pilar', NULL, NULL, NULL, '02304404563', NULL, NULL, 'cabaleiromaricel@gmail.com', 327, NULL);
+INSERT INTO datos_actuales VALUES (3646, NULL, NULL, NULL, NULL, NULL, '1565390909', NULL, NULL, 329, NULL);
+INSERT INTO datos_actuales VALUES (3647, 'Sarmiento 1075 (1667) M Alberti Pilar', NULL, NULL, NULL, NULL, '15 5669 1147', NULL, 'clauchis_05@hotmail.com', 355, NULL);
+INSERT INTO datos_actuales VALUES (3648, 'Pedro Cabral 1281 (1629) Pilar', NULL, NULL, NULL, NULL, '15 5177 1811', '15 5177 1811', 'antoniojmcr@hotmail.com', 356, NULL);
+INSERT INTO datos_actuales VALUES (3649, 'Chubut 415 (1631) Villa Rosa - Pilar', NULL, NULL, NULL, NULL, '1560524429', NULL, 'agustina.espana@hotmail.com', 389, NULL);
+INSERT INTO datos_actuales VALUES (3650, 'Champagnat 740 Las Calandrias 11C - Pilar', NULL, NULL, NULL, NULL, '1544184927', '1561691025', 'antonela.faces@hotmail.com', 390, NULL);
+INSERT INTO datos_actuales VALUES (3651, 'Parana 1243 11B (1018) CABA', NULL, NULL, NULL, '4382-0973', '1544936977', NULL, 'emfavierdubois@favierdubois *', 393, NULL);
+INSERT INTO datos_actuales VALUES (3652, 'Las Margaritas 678 PB2 (1669)', NULL, NULL, NULL, NULL, '15 5924 7112', '15 5924 7112', 'ceecil.g@gmail.com', 419, NULL);
+INSERT INTO datos_actuales VALUES (3653, 'Frias 7503 (1655) JLSuarez Bs As', NULL, NULL, NULL, NULL, '15 6786 9001', '15 6786 9001', 'flor.gilio@gmail.com', 422, NULL);
+INSERT INTO datos_actuales VALUES (3654, 'Paunero 4470 (1665) Jose C Paz Bs As', NULL, NULL, NULL, NULL, '011-6700-9765', NULL, 'liliangimenez2012@gmail.com', 423, NULL);
+INSERT INTO datos_actuales VALUES (3655, 'M. Alberti 889 (1714) Ituzaingó', NULL, NULL, NULL, '4624-2329', '15 4974 2466', NULL, 'ana-fiore@hotmail.com', 456, NULL);
+INSERT INTO datos_actuales VALUES (3656, 'Asuncion 1204 (1631) Pilar', NULL, NULL, NULL, NULL, '0230 15 4350678', NULL, 'lorena_insaurralde75@hotmail.com', 458, NULL);
+INSERT INTO datos_actuales VALUES (3657, 'Davabe 2830 Del Viso', NULL, NULL, NULL, NULL, '011-15-5581-2078', NULL, 'paolaitxassa@gmail.com', 459, NULL);
+INSERT INTO datos_actuales VALUES (3658, 'Finochietto 4846 (1663) José C Paz', NULL, NULL, NULL, '02320-441613', '15 5042 7563', NULL, 'gabrieljc869@gmail.com', 461, NULL);
+INSERT INTO datos_actuales VALUES (3659, 'Los Crisantemos 475 E110 (1657) Pilar', NULL, NULL, NULL, NULL, '15 3097 9058', '15 3097 9058', 'paukier@hotmail.com', 462, NULL);
+INSERT INTO datos_actuales VALUES (3660, 'La Rioja 1551 UF n°23 Villa Rosa', NULL, NULL, NULL, NULL, '1550442005', NULL, 'gabykiv@gmail.com', 463, NULL);
+INSERT INTO datos_actuales VALUES (3661, 'Santa Rosa Esq Magallanes S/N (1919) Garín', NULL, NULL, NULL, NULL, '15 4029 6395', NULL, 'manso_laura@yahoo.com.ar', 487, NULL);
+INSERT INTO datos_actuales VALUES (3662, 'Juan F. Segui 3926 (1667) Tortuguitas', NULL, NULL, NULL, '02320-625753', '0113473-1464', NULL, 'mymimarchetti@hotmail.com', 489, NULL);
+INSERT INTO datos_actuales VALUES (3663, 'Av Congreso 4891 1°P (1431) CABA', NULL, NULL, NULL, '4542-1266', '15-3380-4661', NULL, 'mnatalia.mnz@gmail.com', 521, NULL);
+INSERT INTO datos_actuales VALUES (3664, 'Milan 1802 (1706) Haedo Buenos Aires', NULL, NULL, NULL, NULL, '1158740440', NULL, 'irisnerina@yahoo.com', 523, NULL);
+INSERT INTO datos_actuales VALUES (3665, 'Sourgnes 1736 (1684) El Palomar', NULL, NULL, NULL, '54332897', '1539152199', '46503405', 'cristinamuotri29@hotmail.com', 524, NULL);
+INSERT INTO datos_actuales VALUES (3666, 'Chile y Jose Verdi s/n uf 19 La Lonja', NULL, NULL, NULL, '0204300457', '15 4538 4438', '15 4538 4438', 'marianitanel@yahoo.com.ar', 527, NULL);
+INSERT INTO datos_actuales VALUES (3667, 'Chubut 1353 UF 18 (1631) Pilar', NULL, NULL, NULL, '0230-4494364', '15- 5455 5047', NULL, 'fabiananicolosi@hotmail.com', 528, NULL);
+INSERT INTO datos_actuales VALUES (3668, 'Av. Mitre s/n Lote j1 (1629) Pilar', NULL, NULL, NULL, NULL, '1151488111', NULL, 'yaninaleandra@hotmail.com', 529, NULL);
+INSERT INTO datos_actuales VALUES (3669, 'Calle Santa Rosa Condominio Tortugas2 Piso 202 (1619) Garin', NULL, NULL, NULL, NULL, '1566230481', NULL, 'vicoperez@gmail.com', 554, NULL);
+INSERT INTO datos_actuales VALUES (3670, 'Vedia 2435 (1429) CABA', NULL, NULL, NULL, '0230-4464125', '011-15-5015-5541', NULL, 'inesale2008@yahoo.com', 555, NULL);
+INSERT INTO datos_actuales VALUES (3671, 'San José de Calasanz 838 1°D (1424) CABA', NULL, NULL, NULL, '4921-3609', '15- 55829152', NULL, 'flaviapesce@yahoo.com.ar', 556, NULL);
+INSERT INTO datos_actuales VALUES (3672, 'Tordillo - Highland Park CC 600 (1669) Pilar', NULL, NULL, NULL, NULL, '011-15-5576-7586', NULL, 'sol.petrina@hotmail.com', 557, NULL);
+INSERT INTO datos_actuales VALUES (3673, 'Tucuman 914 (1629) Pilar', NULL, NULL, NULL, NULL, '011-15-67951681', NULL, 'ladelosojosabiertos@gmail.com', 558, NULL);
+INSERT INTO datos_actuales VALUES (3674, 'Chubut 600 Lote 412 Pilar', NULL, NULL, NULL, NULL, '011-5014-1700', NULL, 'luis@piendibene.com.ar', 560, NULL);
+INSERT INTO datos_actuales VALUES (3675, 'Panamericana Km 48,500 (1629)', NULL, NULL, NULL, '0230-4470706', NULL, NULL, 'carlajosefinaponce@hotmail.com', 565, NULL);
+INSERT INTO datos_actuales VALUES (3676, 'Viamonte 1874 (1669) Bs As', NULL, NULL, NULL, '02320-658118', '01115-56901481', NULL, 'fedra_r@yahoo.com.ar', 593, NULL);
+INSERT INTO datos_actuales VALUES (3677, 'Mario Bravo 1165 (1186) CABA', NULL, NULL, NULL, NULL, '15 3689 7440', NULL, 'fitandrearotondo@gmail.com', 594, NULL);
+INSERT INTO datos_actuales VALUES (3678, 'Acc Oeste Km 50,5 Country Las Lajas UF185 (1748) GralRodrigu', NULL, NULL, NULL, NULL, '11-5836-5745', NULL, 'silvinarusinol@hotmail.com', 596, NULL);
+INSERT INTO datos_actuales VALUES (3679, 'Salta 928 (1629) Pilar', NULL, NULL, NULL, NULL, '15 6427 3098', '15 6427 3098', 'valeria.saglietti@hotmail.com', 597, NULL);
+INSERT INTO datos_actuales VALUES (3680, 'Paraguay 5500 4ºC (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, 'lusalandria@gmail.com', 598, NULL);
+INSERT INTO datos_actuales VALUES (3681, 'Av Pte Perón 2432 2°A Haedo', NULL, NULL, NULL, NULL, '0111531283828', NULL, 'favotperla@hotmail.com', 170, NULL);
+INSERT INTO datos_actuales VALUES (3682, 'Pasaje Bayardi 2552 1D Castelar', NULL, NULL, NULL, NULL, '0111568832938', NULL, 'fernanda.lorena.aragon@gmail.com', 171, NULL);
+INSERT INTO datos_actuales VALUES (3683, 'Uruguay 3877 1° (1849) Claypole Bs As', NULL, NULL, NULL, '42366172', '1557174443', NULL, 'claudiatejeda@gmail.com', 629, NULL);
+INSERT INTO datos_actuales VALUES (3684, 'Francia 96 (1635) Derqui - Pilar', NULL, NULL, NULL, NULL, '1541925747', NULL, 'fabitezza@gmail.com', 630, NULL);
+INSERT INTO datos_actuales VALUES (3685, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 631, NULL);
+INSERT INTO datos_actuales VALUES (3686, 'Ecuador 4745 (1669) Del Viso Bo Solares del Norte', NULL, NULL, NULL, '02320-659871', '11 55743358', NULL, 'ferrostar-mym@hotmail.com', 632, NULL);
+INSERT INTO datos_actuales VALUES (3687, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 634, NULL);
+INSERT INTO datos_actuales VALUES (3688, 'Barrio Los Jasmines lote 190 - Pilar del Este (1629) Pilar', NULL, NULL, NULL, NULL, '15-4445-7681', NULL, 'anamariavanelli@yahoo.com.ar', 635, NULL);
+INSERT INTO datos_actuales VALUES (3689, 'Avellaneda 1043 (6720) San Andres de Giles', NULL, NULL, NULL, NULL, '0232515687959', '0232515685646', 'marchevermi@hotmail.com', 639, NULL);
+INSERT INTO datos_actuales VALUES (3690, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 646, NULL);
+INSERT INTO datos_actuales VALUES (3691, 'SANTA FE', NULL, NULL, 3236, NULL, '111540616399', NULL, 'EDITHCORIA@HOTMAIL.COM', 50, '1804');
+INSERT INTO datos_actuales VALUES (3692, 'COMBATE DE ITUZAINGO', NULL, NULL, 4389, '2320402047', '1157644022', NULL, 'CARINALEDERHOS@GMAIL.COM', 53, '274');
+INSERT INTO datos_actuales VALUES (3693, 'TORRA', NULL, NULL, 4404, NULL, '111551105361', NULL, 'NALESOCA@GMAIL.COM', 75, '1851');
+INSERT INTO datos_actuales VALUES (3694, 'TAPIA DE CRUZ', NULL, NULL, 3231, '3484681046', '1165853775', NULL, 'NATURADIVINA@HOTMAIL.COM', 96, '313');
+INSERT INTO datos_actuales VALUES (3695, 'WHASHINGTON', NULL, NULL, 16516, '2320627580', NULL, '1164797404', 'STEPHI_MENDOZA@YAHOO.ES', 108, '3471');
+INSERT INTO datos_actuales VALUES (3696, 'ESTANISLAO LOPEZ', NULL, 6, 16434, NULL, '1560212055', NULL, 'JEZABELBOGANI@HOTMAIL.COM', 127, '928');
+INSERT INTO datos_actuales VALUES (3697, 'SOLER', NULL, NULL, 4982, '3487430628', '348715662424', '3487430628', 'APBUSCALIA@HOTMAIL.COM', 129, '1382');
+INSERT INTO datos_actuales VALUES (3698, 'LOS LIRIOS', NULL, NULL, 4386, '2304429756', '111554900374', NULL, 'SHANTIACCESORIOS@HOTMAIL.COM', 112, '825');
+INSERT INTO datos_actuales VALUES (3699, 'DOLORES', NULL, 18, 4386, NULL, '1531170321', NULL, 'LETICIA_MORONI@HOTMAIL.COM', 15, '15');
+INSERT INTO datos_actuales VALUES (3700, 'MINERAL', NULL, NULL, 3231, NULL, '1115533063472', '111533063472', 'DOMINIQUEH@OUTLOOK.COM.AR', 31, '1');
+INSERT INTO datos_actuales VALUES (3701, 'NAZCA', NULL, 3, 2461, '1146134504', '232615424422', '2326154422', 'NO ESTA CLARO', 7, '948');
+INSERT INTO datos_actuales VALUES (3702, 'PASTEUR', NULL, NULL, 4386, NULL, '111533352319', NULL, 'PATRICIA.KRYSIAK@HOTMAIL.COM', 11, '807');
+INSERT INTO datos_actuales VALUES (3703, 'VILLA MARIA GOLF CLUB', NULL, NULL, 4389, NULL, '3484639057', NULL, 'NATACHAMONTANO@GMAIL.COM', 12, '2461');
+INSERT INTO datos_actuales VALUES (3704, 'RUTA 226 Y LOS OLMOS  (BARRIO PRIVADO LA CELINA))', NULL, NULL, 3233, NULL, '1568463653', NULL, 'SOLEGARCIA@GMAIL.COM', 13, '1');
+INSERT INTO datos_actuales VALUES (3705, 'EL MAROTE', NULL, NULL, 3483, '232347115', '111568471020', '111568471020', 'VIVIMILLO@GMAIL.COM', 19, '1948');
+INSERT INTO datos_actuales VALUES (3706, 'BARRIO CERRADO LA DELFINA', NULL, NULL, 4386, NULL, '0111562417070', '4480003', 'lucrepenayo@gmail.com', 24, '115');
+INSERT INTO datos_actuales VALUES (3707, 'GELLY', NULL, 2, NULL, '48019677', '1162602396', NULL, 'ALBERTOIGLINO@GMAIL.COM', 32, '3434');
+INSERT INTO datos_actuales VALUES (3708, 'FLORIDA S/N Y ARROYO PINAZO ', NULL, NULL, NULL, '666962', '114474560', NULL, 'CANGRIANI@GMAIL.COM', 33, '165');
+INSERT INTO datos_actuales VALUES (3709, 'BARRIO LAS ESTANCIAS DEL PILAR', NULL, NULL, 4386, NULL, '111630698579', '111530698579', 'sinimadelos@yahoo.com.ar', 34, '56');
+INSERT INTO datos_actuales VALUES (3710, 'VILEGRA', NULL, NULL, 4386, '2304426949', '1522722282', NULL, 'JORGE.A.REQUENA@GMAIL.COM', 47, '1164');
+INSERT INTO datos_actuales VALUES (3711, 'SAN FERNANDO', NULL, NULL, 4389, '2320478063', '1130184483', NULL, 'SUSYCOLLOCA@GMAIL.COM', 42, '1850');
+INSERT INTO datos_actuales VALUES (3712, 'BELGICA', NULL, NULL, NULL, NULL, '1564194392', NULL, 'lmarcelamolina@yahoo.com.ar', 43, '1716');
+INSERT INTO datos_actuales VALUES (3713, 'CHILE (BARRIO AYRES PLAZA)', NULL, NULL, 4386, NULL, '1565590526', NULL, 'LASPIRULAS@HOTMAIL.COM', 48, '879');
+INSERT INTO datos_actuales VALUES (3714, 'LAS HERAS', NULL, NULL, 3231, '3484425909', '0348154395782', '0348154395782', 'YANELAVALOS@HOTMAIL.COM', 55, '1640');
+INSERT INTO datos_actuales VALUES (3715, 'LORENZO LOPEZ', NULL, 15, 4386, '2320400877', '1169913644', NULL, 'LEICHNERJUDITH@HOTMAIL.COM', 4, '1081');
+INSERT INTO datos_actuales VALUES (3716, 'ENRIQUE LARREA', NULL, NULL, 4389, NULL, '1168710474', NULL, 'VIVIANETRAMUJAS@YAHOO.COM.BR', 98, '1248');
+INSERT INTO datos_actuales VALUES (3717, 'EL HORNERO', NULL, 43, 4386, '2304421466', '1566472927', NULL, 'espiritucreativo@gmail.com', 52, '101');
+INSERT INTO datos_actuales VALUES (3718, 'JUAN GARCIA', NULL, NULL, 4389, NULL, '1115352288', NULL, 'YANTON@OUTLOOK.ES', 20, '1628');
+INSERT INTO datos_actuales VALUES (3719, 'RUTA 8 KM 84 EL MALAKATE LOTE', NULL, NULL, 3480, NULL, '1155822941', NULL, 'ESREVAH@GMAIL.COM', 58, '135');
+INSERT INTO datos_actuales VALUES (3720, 'ALEXANDER FLEMING', NULL, NULL, 4404, NULL, '111568213314', NULL, 'LIZENVEGA@GMAIL.COM', 81, '1848');
+INSERT INTO datos_actuales VALUES (3721, 'COMODORO PASSIO', NULL, NULL, 25773, '2374842893', '111530105540', NULL, 'VERONICA.VAZQUEZ48@YAHOO.COM.AR', 88, '447');
+INSERT INTO datos_actuales VALUES (3722, 'CORDOBA', NULL, NULL, 4386, NULL, '111537878907', NULL, 'NORILOPEZ2005@HOTMAIL.COM', 115, '834');
+INSERT INTO datos_actuales VALUES (3723, 'ASCASUBI', NULL, NULL, 4386, '2304420824', '111556554447', NULL, 'LOO.NAN.72@HOTMAIL.COM', 90, '114');
+INSERT INTO datos_actuales VALUES (3724, 'BRASIL', NULL, 2, 16535, '47263566', '1558263907', NULL, 'motisengchi@icloud.com', 99, '1048');
+INSERT INTO datos_actuales VALUES (3725, 'MAIPU', NULL, NULL, NULL, NULL, '111522855876', NULL, 'LORENAONTIVEROS@HOTMAIL.COM', 111, '74');
+INSERT INTO datos_actuales VALUES (3726, 'HIPLITO YRIGOYEN', NULL, 6, 16439, NULL, '1121923199', NULL, 'sofylb01@gmail.com', 140, '2516');
+INSERT INTO datos_actuales VALUES (3727, 'Ciudad de la Paz3755 (1429) CABA', NULL, NULL, NULL, NULL, '0111521761568', NULL, 'mariaflorencia.sw@gmail.com', 142, NULL);
+INSERT INTO datos_actuales VALUES (3728, 'Avellaneda 988 6°B (1217) Castelar', NULL, NULL, NULL, NULL, '0111567120203', NULL, 'ameliafer2000@hotmail.com', 152, NULL);
+INSERT INTO datos_actuales VALUES (3729, 'Los Incas 2559 Castelar', NULL, NULL, NULL, '46288293', '0111523415773', NULL, 'mt_fernandez@hotmail.com', 153, NULL);
+INSERT INTO datos_actuales VALUES (3730, 'Las Heras 1495 (1714)', NULL, NULL, NULL, '46241009', '0111541996564', NULL, 'floroli78@yahoo.com.ar', 156, NULL);
+INSERT INTO datos_actuales VALUES (3731, 'Bahía Blanca 333 Castelar', NULL, NULL, NULL, '1146283957', '0111565400515', NULL, 'suclausi@gmail.com', 158, NULL);
+INSERT INTO datos_actuales VALUES (3732, 'Pehuajo 819 Castelar', NULL, NULL, NULL, NULL, '0111558095887', NULL, 'paulateo@speedy.com.ar', 167, NULL);
+INSERT INTO datos_actuales VALUES (3733, 'Heine 620 1° y 2° Castelar', NULL, NULL, NULL, '46289894', NULL, NULL, 'noli.cfernandez61@gmail.com', 172, NULL);
+INSERT INTO datos_actuales VALUES (3734, 'Oribe 324 Ituzaingó', NULL, NULL, NULL, '46232190', '0111567149381', NULL, NULL, 174, NULL);
+INSERT INTO datos_actuales VALUES (3735, 'Castelli 1063 Ciudadela ', NULL, NULL, NULL, NULL, '0111569270028', NULL, NULL, 176, NULL);
+INSERT INTO datos_actuales VALUES (3736, 'Manuel Ugarte 2261 7C (1428) CABA', NULL, NULL, NULL, NULL, '15 4782 1895', NULL, ' andres_ramos88@yahoo.com', 179, NULL);
+INSERT INTO datos_actuales VALUES (3737, 'Ramón Franco 4062 (1826) Rem. de Escalada Bs As.', NULL, NULL, NULL, NULL, '15  5707 3087', NULL, 'silvinamhernandez16@gmail.com', 180, NULL);
+INSERT INTO datos_actuales VALUES (3738, 'Lisboa 712 (1765) V. Luzuriaga', NULL, NULL, NULL, '4485-0948', '1564650426', NULL, 'merce_acevedo@outlook.com', 280, NULL);
+INSERT INTO datos_actuales VALUES (3739, 'Haiti 4143 (1407) CABA', NULL, NULL, NULL, NULL, '1163051004', NULL, 'aguirreluciana@gmail.com', 283, NULL);
+INSERT INTO datos_actuales VALUES (3740, 'Sarmiento 4347 Dto 10 Almagro CABA', NULL, NULL, NULL, NULL, '1538630570', NULL, 'emilio_alvarez@hotmail.com', 288, NULL);
+INSERT INTO datos_actuales VALUES (3741, 'Juan M. Rosas 750 (1629) Pilar Bs As', NULL, NULL, NULL, NULL, '15 3080 3241', '15 3080 3241', 'modeultra@hotmail.com', 289, NULL);
+INSERT INTO datos_actuales VALUES (3742, 'Pte Peron 1137 (1631) Villa Rosa, Pilar', NULL, NULL, NULL, NULL, '15 6161 4275', '15 6161 4275', 'rominaanitori@gmail.com', 292, NULL);
+INSERT INTO datos_actuales VALUES (3743, 'Av del Libertador 108 1°A (1001) CABA', NULL, NULL, NULL, '432200310', '15 4445 0718', '15 4445 0718', 'pantogna@gmail.com', 293, NULL);
+INSERT INTO datos_actuales VALUES (3744, 'San Blas 3175 (1416) CABA', NULL, NULL, NULL, NULL, '15 6589 0374', NULL, 'barbaraaveiro@gmail.com', 295, NULL);
+INSERT INTO datos_actuales VALUES (3745, 'Australia 2409 (1614) El Talar - Tigre', NULL, NULL, NULL, NULL, '15 2300 9601', '15 2300 9601', 'paula.barbieri.2@volvo.com', 299, NULL);
+INSERT INTO datos_actuales VALUES (3746, 'French 30441 (1425) CABA', NULL, NULL, NULL, '4805-2998', '1567664491', NULL, 'luciabartoletti@gmail.com', 303, NULL);
+INSERT INTO datos_actuales VALUES (3747, '20 de Septiembre 2835 PB (1824) Lanus Oeste', NULL, NULL, NULL, '2056-4615', '155 4986552', NULL, 'aliciabassano@yahoo.com.ar', 306, NULL);
+INSERT INTO datos_actuales VALUES (3748, 'Esteban Bonorino 1750 (1406) CABA', NULL, NULL, NULL, '4631-8640', '15 3219 0124', NULL, 'giselalburatti@hotmail.es', 322, NULL);
+INSERT INTO datos_actuales VALUES (3749, 'Portela 2921 (1437) CABA', NULL, NULL, NULL, '49199431', '15 6487 2323', NULL, ' noelia.buzeta@gmail.com', 325, NULL);
+INSERT INTO datos_actuales VALUES (3750, 'Beiro 3324 1C (1419) CABA', NULL, NULL, NULL, '45046375', '15 6416 9178', NULL, 'mcallaey@hotmail.com', 328, NULL);
+INSERT INTO datos_actuales VALUES (3751, 'Camino de Los Angeles 204 Pilar C Campo Grande', NULL, NULL, NULL, '0348-4638174', '0111562203220', NULL, 'daniela.carrara@hotmail.com', 337, NULL);
+INSERT INTO datos_actuales VALUES (3752, 'San José 931 (1631) Villa Rosa', NULL, NULL, NULL, '02304498671', '011-6587-7748', NULL, 'becisterna@gmail.com', 351, NULL);
+INSERT INTO datos_actuales VALUES (3753, 'Sanabria 1616 4 D (1407) CABA', NULL, NULL, NULL, NULL, '15 6650 9309', NULL, 'nicolascosta78@hotmail.com', 357, NULL);
+INSERT INTO datos_actuales VALUES (3754, 'Necochea 1493 (1629) Pilar', NULL, NULL, NULL, '0230-4433567', '0230-15-4556016', NULL, 'pachipatri15@gmail.com', 360, NULL);
+INSERT INTO datos_actuales VALUES (3755, 'Peron 2505 B Springdale Lote 48 BsAs', NULL, NULL, NULL, NULL, '15 6926 4714', '15 6926 4714', 'victoriadiorio82@gmail.com', 377, NULL);
+INSERT INTO datos_actuales VALUES (3756, 'Castroman 2292 (1712) Castelar', NULL, NULL, NULL, '4627-2136', '1557007917', NULL, 'nataliafavano@gmail.com', 392, NULL);
+INSERT INTO datos_actuales VALUES (3757, 'Cadiz 2996 (1712) Castelar', NULL, NULL, NULL, '4623-0893', '1565181372', NULL, 'aliciafedyszyn@gmail.com', 395, NULL);
+INSERT INTO datos_actuales VALUES (3758, 'Los Jazmines 3264 (1669) Del Viso', NULL, NULL, NULL, NULL, '15 5937 9831', NULL, 'quantica2004@yahoo.com.ar', 396, NULL);
+INSERT INTO datos_actuales VALUES (3759, 'Los Fresnos y Congreve Bo El Aromo Escobar', NULL, NULL, NULL, NULL, '011-15-66351454', NULL, 'serpientegalactica1974@yahoo.com.ar', 398, NULL);
+INSERT INTO datos_actuales VALUES (3760, 'Blanco Encalada 3155 Tortuguitas', NULL, NULL, NULL, '02320556845', '0111538515641', NULL, 'emichiqui@hotmail.com', 402, NULL);
+INSERT INTO datos_actuales VALUES (3761, 'Arredondo 2686 (1712) Castelar', NULL, NULL, NULL, '4623-1193', '15 6716 8555', NULL, 'mariagianello@hotmail.com', 420, NULL);
+INSERT INTO datos_actuales VALUES (3762, 'Moreno 860 (2760) San Antonio de Areco', NULL, NULL, NULL, NULL, '15 6596 6565', '15 6596 6565', 'inesitagranero30@hotmail.com', 438, NULL);
+INSERT INTO datos_actuales VALUES (3763, 'Echeverria 616 (1137) Don Torcuato', NULL, NULL, NULL, '27219817822', '15 6280 5946', NULL, 'claudia_guzman70@hotmail.com', 449, NULL);
+INSERT INTO datos_actuales VALUES (3764, 'Libertador 14539 (1640) Acassuso Bs As', NULL, NULL, NULL, '47921044', '1561493363', NULL, 'clau10.03@hotmail.com', 452, NULL);
+INSERT INTO datos_actuales VALUES (3765, 'Almafuerte 803 (1625) Escobar', NULL, NULL, NULL, NULL, '15-5431 0350', '15-5431 0350', 'elyk.sabet@gmail.com', 460, NULL);
+INSERT INTO datos_actuales VALUES (3766, 'Gregorio Pomar 3680 PB1 (1437) CABA', NULL, NULL, NULL, NULL, '15 6154 3487', NULL, 'mariaalejandralarraza@hotmail.com', 467, NULL);
+INSERT INTO datos_actuales VALUES (3767, 'Revori 1069 (1852) Alte Brown Burzaco', NULL, NULL, NULL, '4299-7284', '15 5865 0080', NULL, 'vandermaru@hotmail.com', 474, NULL);
+INSERT INTO datos_actuales VALUES (3768, 'Ing Bergallo 1190 2H (1642) San Isidro', NULL, NULL, NULL, NULL, '15 4157 5422', '15 4157 5422', 'claudiomaione@hotmail.com', 481, NULL);
+INSERT INTO datos_actuales VALUES (3769, NULL, NULL, NULL, NULL, NULL, '1505248 1648', '1505248 1648', 'ambar.luz@live.com', 491, NULL);
+INSERT INTO datos_actuales VALUES (3770, 'Tucuman 1964 (1635) Pilar', NULL, NULL, NULL, NULL, '15-3138-5799', NULL, 'lorenamartinez1587@hotmail.com', 496, NULL);
+INSERT INTO datos_actuales VALUES (3771, 'Sgo del Estero 2909 (1824) Lanus Bs As', NULL, NULL, NULL, NULL, '1541688790', NULL, 'lolimontez@hotmail.com', 516, NULL);
+INSERT INTO datos_actuales VALUES (3772, 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, NULL, '15 4414 1975', '15 4414 1975', 'maynapoli@yahoo.com.ar', 525, NULL);
+INSERT INTO datos_actuales VALUES (3773, 'Carrion 480 (1627) Pilar', NULL, NULL, NULL, '0348-449-1015', '011-15-6039-9017', NULL, 'aoliverio@imagenes.com.ar', 532, NULL);
+INSERT INTO datos_actuales VALUES (3774, 'Bordabehere 2894 (1417) CABA', NULL, NULL, NULL, '39782378', '15 6351 1307', NULL, 'anapatera@hotmail.com', 545, NULL);
+INSERT INTO datos_actuales VALUES (3775, 'Pueyrredn 2123 (1664) José C. Paz', NULL, NULL, NULL, '02320-423701', '112636-6907', NULL, 'fiore.pellegrino@hotmail.com', 548, NULL);
+INSERT INTO datos_actuales VALUES (3776, 'Calle 111 n° 754 E/10 y 10 bis (6605) Navarro Bs As', NULL, NULL, NULL, '02227420028', '02227 15 418323', NULL, 'marpey333@hotmail.com', 559, NULL);
+INSERT INTO datos_actuales VALUES (3777, 'Los Lirios 2491 (1625) Escobar', NULL, NULL, NULL, NULL, '0348 15 4348519', '0348 15 4348519', 'vale_1972@hotmail.com', 574, NULL);
+INSERT INTO datos_actuales VALUES (3778, 'Av Independencia 4261 1°C (1226) CABA', NULL, NULL, NULL, '4981-4876', '15 4171 9834', NULL, 'evangelina_rodriguez@hotmail.com', 581, NULL);
+INSERT INTO datos_actuales VALUES (3779, 'Marquez de Loreto 1861 (1712) Castelar', NULL, NULL, NULL, NULL, '011-15-5146-9197', NULL, 'ruiz.sofia@hotmail.com', 595, NULL);
+INSERT INTO datos_actuales VALUES (3780, 'H. Yrigoyen 2147 1°D (1089) CABA', NULL, NULL, NULL, '49529520', '15 6541 2457', NULL, 'mirsalotti@yahoo.com.ar', 599, NULL);
+INSERT INTO datos_actuales VALUES (3781, 'Formosa 283 3° 6 (1424)', NULL, NULL, NULL, '49034409', '15 3933 9876', NULL, ' martasantagada@gmail.com', 604, NULL);
+INSERT INTO datos_actuales VALUES (3782, 'Curapaligüe 441 18 H (1406) CABA', NULL, NULL, NULL, '27284511137', '297-4012733', NULL, 'yukonsanti@Yahoo.com.ar', 605, NULL);
+INSERT INTO datos_actuales VALUES (3783, 'Sara Maqueda 6788 (1669) Del Viso', NULL, NULL, NULL, NULL, '1166215888', NULL, 'monicasaquetamelo@gmail.com', 606, NULL);
+INSERT INTO datos_actuales VALUES (3784, 'Paso de los Andes 3687 (1667) Tortuguitas', NULL, NULL, NULL, '02320-556218', '15-64114020', NULL, 'amelia.sardo@gmail.com', 607, NULL);
+INSERT INTO datos_actuales VALUES (3785, 'Trole 1108 (1714) Ituzaingo', NULL, NULL, NULL, '4623-2034', '15-3810-0559', NULL, 'mf.stelluto@gmail.com', 624, NULL);
+INSERT INTO datos_actuales VALUES (3786, 'Buen Viaje 460 (1708) Moron', NULL, NULL, NULL, '11-4629-9213', NULL, NULL, 'stuartignacio@gmail.com', 625, NULL);
+INSERT INTO datos_actuales VALUES (3787, 'Brasil 123 loft 28 1º piso (1063) CABA', NULL, NULL, NULL, NULL, '15-50498241', NULL, 'laurasuares@gmail.com', 626, NULL);
+INSERT INTO datos_actuales VALUES (3788, 'Barrio El Jagüel - Pilar', NULL, NULL, NULL, NULL, '15-6132-8822', NULL, 'veronicasulle4@gmail.com', 627, NULL);
+INSERT INTO datos_actuales VALUES (3789, 'M. Orientales 716 (1714) Ituzaingó', NULL, NULL, NULL, '4661-5036', '15 5416 3656', NULL, 'nataliatoscani@hotmailcom', 633, NULL);
+INSERT INTO datos_actuales VALUES (3790, 'Italia 2173 2°A Avellaneda', NULL, NULL, NULL, NULL, '1541610320', NULL, 'varascarolina@hotmail.com', 636, NULL);
+INSERT INTO datos_actuales VALUES (3791, 'Calle 505 entre 524 y 526 (6608) Mercedes', NULL, NULL, NULL, '02324-430166', '02324-15-474967', NULL, 'gabriel2425@hotmail.com', 652, NULL);
+INSERT INTO datos_actuales VALUES (3792, 'Sargento Palma 1049 1°A (1682) Villa Bosch', NULL, NULL, NULL, '2195-3929', '1538910691', NULL, 'militernura@hotmail.com', 522, NULL);
+INSERT INTO datos_actuales VALUES (3793, '15 E 30 Y 32', NULL, NULL, 4116, NULL, NULL, NULL, 'CANDELACHICHA@GMAIL.COM', 70, '0');
+INSERT INTO datos_actuales VALUES (3794, 'ALFREDO NOBEL', NULL, NULL, 4389, '2320409614', '111569345326', '111569345326', 'LORELI_CARDOSO@HOTMAIL.COM', 73, '6020');
+INSERT INTO datos_actuales VALUES (3795, 'RUTA 8 KM 56.5 LA PAZ', NULL, NULL, 4386, '2304404854', '111558714724', NULL, 'CLAUDIA.CRISANTA@GMAIL.COM', 59, '141');
+INSERT INTO datos_actuales VALUES (3796, 'CASTRO BARROS', NULL, NULL, 16431, NULL, '1522432016', NULL, 'ESTRELLADELUZ@GMAIL.COM', 103, '1742');
+INSERT INTO datos_actuales VALUES (3797, 'Eva Duarte de P. 437 (1629) Villa Rosa', NULL, NULL, NULL, '0230-4519449', '011 15 30795703', NULL, 'valeria_chilabert@hotmail.com', 190, NULL);
+INSERT INTO datos_actuales VALUES (3798, 'F. Fader 2959 (1629) Pilar', NULL, NULL, NULL, '0230-46444912', '011 57711545', NULL, 'profeshakti@hotmail.com', 191, NULL);
+INSERT INTO datos_actuales VALUES (3799, 'Polonia 3545 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, 'praa1212@outlook.es', 214, NULL);
+INSERT INTO datos_actuales VALUES (3800, 'Charlone 602 P12 (1663) San Miguel', NULL, NULL, NULL, '4664-4995', '15 31691936', '15 31691936', 'abatehernan@yahoo.com.ar', 277, NULL);
+INSERT INTO datos_actuales VALUES (3801, 'Misiones 11 piso 1° (1663) Bella Vista Bs As', NULL, NULL, NULL, NULL, '15-3119 3586', NULL, 'ceci_accardo@gmail.com', 279, NULL);
+INSERT INTO datos_actuales VALUES (3802, 'Av Mitre 1000 (1633) Fatima - Pilar', NULL, NULL, NULL, '02304441569', '011158254042', NULL, 'acokarina@gmail.com', 281, NULL);
+INSERT INTO datos_actuales VALUES (3803, 'Bancalari 3902 piso 627 (1617) Pacheco', NULL, NULL, NULL, '41013627', '15 6150 9975', '15 6150 9975', 'judithaguera@gmail.com', 282, NULL);
+INSERT INTO datos_actuales VALUES (3804, 'Cabarden 8100 (1669) Del Viso', NULL, NULL, NULL, NULL, '011-  1554906830', '02320-474336', 'melodysax_06@hotmail.com', 284, NULL);
+INSERT INTO datos_actuales VALUES (3805, 'Av. Mosconi 3115 11°B (1419) CABA', NULL, NULL, NULL, NULL, '15 5422 1307', NULL, 'albertijesica@gmail.com', 285, NULL);
+INSERT INTO datos_actuales VALUES (3806, 'E. de Israel 4717 10°B (1185) CABA', NULL, NULL, NULL, '4856-5043', '15 5821 6111', NULL, 'saruman@hotmail.com', 286, NULL);
+INSERT INTO datos_actuales VALUES (3807, 'Saravi s/n Los Fresnos (1629) Pilar', NULL, NULL, NULL, NULL, '1131814403', NULL, NULL, 320, NULL);
+INSERT INTO datos_actuales VALUES (3808, 'Ayacucho 4036 (7600) Mar del Plata', NULL, NULL, NULL, NULL, '0223 15520611', '0223 15520611', 'norbelli@hotmail.com', 308, NULL);
+INSERT INTO datos_actuales VALUES (3809, 'Yerbal 2357 piso 3 (1408) CABA', NULL, NULL, NULL, NULL, '15 6752 2072', NULL, 'danielberardi@yahoo.com', 309, NULL);
+INSERT INTO datos_actuales VALUES (3810, 'Palliere 800 - Villa Rosa', NULL, NULL, NULL, NULL, '15-6244-8320', NULL, 'natibernard@hotmail.com', 310, NULL);
+INSERT INTO datos_actuales VALUES (3811, 'Eucaliptus 1716 - Exaltación de la Cruz', NULL, NULL, NULL, NULL, '011-15-56549006', NULL, NULL, 311, NULL);
+INSERT INTO datos_actuales VALUES (3812, 'Av Tucumán 867 6°B (1629) Pilar', NULL, NULL, NULL, NULL, '011 15 59986338', NULL, 'leandrobertolini@gmail.com', 312, NULL);
+INSERT INTO datos_actuales VALUES (3813, 'Rio Hondo 500 (1629) Manzanares, Pilar', NULL, NULL, NULL, '0230-4441051', '15 4475 6913', '15 4475 6913', 'felibidonde@hotmail.com', 313, NULL);
+INSERT INTO datos_actuales VALUES (3814, 'Carlos Calvo 1802 (1629) La Lonja', NULL, NULL, NULL, '0230-4473059', '11-57697200', NULL, 'silviaboskovich@gmail.com', 315, NULL);
+INSERT INTO datos_actuales VALUES (3815, 'Colihue 29 Pilar', NULL, NULL, NULL, NULL, '15-6299-8432', NULL, 'obozzari@gmail.com', 316, NULL);
+INSERT INTO datos_actuales VALUES (3816, 'Meisner 1259 (1635) Bs As', NULL, NULL, NULL, '02304483849', '15 3274 9801', '15 3274 9801', 'ana_vibm@yahoo.com.ar', 317, NULL);
+INSERT INTO datos_actuales VALUES (3817, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brz.luisa@gmail.com', 318, NULL);
+INSERT INTO datos_actuales VALUES (3818, 'Chile 1900 Bo Las Araucarias (1629) Pilar', NULL, NULL, NULL, NULL, '1563359141', NULL, 'calubuchanan@hotmail.com', 319, NULL);
+INSERT INTO datos_actuales VALUES (3819, 'Las Gardeñas 1534 (1669) Del Viso', NULL, NULL, NULL, '02320-475315', '15 5468 3862', '15 5468 3862', 'valcampora@gmail.com', 330, NULL);
+INSERT INTO datos_actuales VALUES (3820, 'Alejandro Korn 304 (1629) Pilar', NULL, NULL, NULL, '0230-4432217', '011-15-31203255', NULL, 'marcecandela@hotmail.com', 332, NULL);
+INSERT INTO datos_actuales VALUES (3821, 'Mitre S/N Lote I 15 (1624) Pilar', NULL, NULL, NULL, '0230-4499060', '15 3772 1297', NULL, 'manuelacdl@hotmail.com', 333, NULL);
+INSERT INTO datos_actuales VALUES (3822, 'Amapolas 1000 PB D1 (1669) Del Viso', NULL, NULL, NULL, NULL, '1166946915', NULL, 'alejandracapurro@hotmail.com', 334, NULL);
+INSERT INTO datos_actuales VALUES (3823, 'Saravi s/n Los Fresnos (1629) Pilar', NULL, NULL, NULL, NULL, '1131814402', NULL, 'lundi40@hotmail.com', 335, NULL);
+INSERT INTO datos_actuales VALUES (3824, 'Los Lagartos n°6 piso 17/18 Pilar', NULL, NULL, NULL, NULL, '1561801317', NULL, 'carlucciana@gmail.com', 336, NULL);
+INSERT INTO datos_actuales VALUES (3825, 'B° La Casualidad UF 23 - Derqui', NULL, NULL, NULL, '0230-4480466', '011-15-5820-0790', NULL, 'marcela.d.carro@gmail.com', 338, NULL);
+INSERT INTO datos_actuales VALUES (3826, 'Chubut 610 Casa 15 Bo Pilar Village(1629) Pilar', NULL, NULL, NULL, NULL, '15 5929 7980', NULL, 'beacastello@telviso.com.ar', 339, NULL);
+INSERT INTO datos_actuales VALUES (3827, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 340, NULL);
+INSERT INTO datos_actuales VALUES (3828, 'Chile s/n HD Bo Molino 199 (1629) Pilar', NULL, NULL, NULL, '4472217', '0111541906771', NULL, 'marilucaviglia@yahoo.com.ar', 341, NULL);
+INSERT INTO datos_actuales VALUES (3829, 'Perón 174 (1667) Tortuguitas', NULL, NULL, NULL, '02320-492181', '011-15-68786943', NULL, 'amecerezo@yahoo.com.ar', 342, NULL);
+INSERT INTO datos_actuales VALUES (3830, 'Barrio La Campiña Lote 70 (1629) Pilar', NULL, NULL, NULL, '0230-4431291', '011-15577098633', NULL, 'cesarini69@yahoo.com.ar', 343, NULL);
+INSERT INTO datos_actuales VALUES (3831, 'Uruguay 1635 (1629) Pilar', NULL, NULL, NULL, NULL, '011-15-37619833', NULL, 'cheuque_90@hotmail.com', 344, NULL);
+INSERT INTO datos_actuales VALUES (3832, 'Av. Patricios 3593 Lote 41 B. La Montura (1667) Bs As', NULL, NULL, NULL, '03484-639792', '15-4071-6133', NULL, 'sebaschicou@hotmail.com', 345, NULL);
+INSERT INTO datos_actuales VALUES (3833, 'Bo del Mirador 530 5 D10 14 Nordelta - Tigre', NULL, NULL, NULL, NULL, '15 6966 3817', NULL, 'juana.magali@gmail.com', 346, NULL);
+INSERT INTO datos_actuales VALUES (3834, 'Maroni y Alte Brown s/n (1629) Pilar', NULL, NULL, NULL, NULL, '1562376723', NULL, 'daniciar@hotmail.com', 348, NULL);
+INSERT INTO datos_actuales VALUES (3835, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 352, NULL);
+INSERT INTO datos_actuales VALUES (3836, '14 esq 31 y 33 N° 786 (6600) Mercedes', NULL, NULL, NULL, '02324-427716', '15645001', NULL, 'gabriel2425@hotmail.com', 353, NULL);
+INSERT INTO datos_actuales VALUES (3837, NULL, NULL, NULL, NULL, '011 4644-6670', '15-3094-6670', NULL, 'mahatma.luis@hotmail.com', 358, NULL);
+INSERT INTO datos_actuales VALUES (3838, 'Humaita 4705 Bs As', NULL, NULL, NULL, NULL, '15 3401 4248', NULL, 'vickycourtis@hotmail.com', 359, NULL);
+INSERT INTO datos_actuales VALUES (3839, 'Dardo Rocha Ruta 25 km 7 (1629) Pilar', NULL, NULL, NULL, NULL, '1162920014', NULL, 'gastonsergio28@gmail.com', 361, NULL);
+INSERT INTO datos_actuales VALUES (3840, 'Los Fresnos 359 Campo Chico (1627) Escobar', NULL, NULL, NULL, NULL, '1139387765', NULL, 'bren.danti@outlook.com', 362, NULL);
+INSERT INTO datos_actuales VALUES (3841, 'Estomba 2135 3D Buenos Aires', NULL, NULL, NULL, '4746-3340', '011-15-6996-2510', NULL, 'solangemdavid@gmail.com', 363, NULL);
+INSERT INTO datos_actuales VALUES (3842, 'Mansilla 1501 (1714) Ituzaingo', NULL, NULL, NULL, NULL, '15-31202462', NULL, 'mflor_deluca@hotmail.com', 364, NULL);
+INSERT INTO datos_actuales VALUES (3843, 'Sanguinetti 256 2ºA (1629) Pilar', NULL, NULL, NULL, NULL, '011-15-5009-0671', NULL, 'kdematte@gmail.com', 365, NULL);
+INSERT INTO datos_actuales VALUES (3844, 'Florida s/n Lote 26 Bo Los Pilares - Villa Rosa', NULL, NULL, NULL, '03484-638726', '011-15-5939-7300', NULL, 'edesouza_frade@hotmail.com', 366, NULL);
+INSERT INTO datos_actuales VALUES (3845, 'Chile 1068 (1696) Tortuguitas', NULL, NULL, NULL, NULL, '15-3109-7892', NULL, 'mario.a.decker@live.com.ar', 367, NULL);
+INSERT INTO datos_actuales VALUES (3846, 'Av. Mitre s/n (1629) Manzanares', NULL, NULL, NULL, NULL, '011-15-6273-5001', NULL, 'ddelbrutto@hotmail.com', 368, NULL);
+INSERT INTO datos_actuales VALUES (3847, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 369, NULL);
+INSERT INTO datos_actuales VALUES (3848, 'Mayling Club de Campo (1629) Pilar', NULL, NULL, NULL, '0230-4464049', '15-4188-0324', NULL, 'adr964@hotmail.com', 370, NULL);
+INSERT INTO datos_actuales VALUES (3849, 'C.C. Pueyrredon 146 (1629) Pilar', NULL, NULL, NULL, '02304667146', '15-5951-2293', NULL, 'soy.fla@hotmail.com', 371, NULL);
+INSERT INTO datos_actuales VALUES (3850, NULL, NULL, NULL, NULL, NULL, '011-15-5610-3289', NULL, 'yanina.didolich@hotmail.com', 372, NULL);
+INSERT INTO datos_actuales VALUES (3851, 'San Martin 375 (2814) Los Cardales', NULL, NULL, NULL, NULL, '0230-15-4560640', NULL, 'crisdiez1973@gmail.com', 373, NULL);
+INSERT INTO datos_actuales VALUES (3852, 'Del Viso', NULL, NULL, NULL, NULL, '1553361382', NULL, 'jessie.dinger@hotmail.com', 375, NULL);
+INSERT INTO datos_actuales VALUES (3853, 'Calle 117 N° 353 (1862) Guernica Bs As', NULL, NULL, NULL, NULL, '02224-15521393', '02224-471116', 'etnias-1967_@hotmail.com', 378, NULL);
+INSERT INTO datos_actuales VALUES (3854, 'La Rocha 504 4°C (1708) Morón', NULL, NULL, NULL, NULL, '11 6803 3615', NULL, 'dollingermauro@gmail.com', 379, NULL);
+INSERT INTO datos_actuales VALUES (3855, 'Pcia de Bs as N°235 - Tortuguitas', NULL, NULL, NULL, '02320-497924', '011 65691165', NULL, 'irisperla.domiguez@outlook.com', 380, NULL);
+INSERT INTO datos_actuales VALUES (3856, 'Bo el Molino 123 (1629) Pilar', NULL, NULL, NULL, '0230-4473570', '15 5 467 9754', NULL, 'cdmoreno@fibertel.com.ar', 382, NULL);
+INSERT INTO datos_actuales VALUES (3857, 'Gainza 505 PB (1405) CABA', NULL, NULL, NULL, '4988-9658', '011 15 4417 8478', NULL, 'soldubois@hotmail.com', 383, NULL);
+INSERT INTO datos_actuales VALUES (3858, 'Saravi 1896 (1629) La Lonja Pilar', NULL, NULL, NULL, '20441327', '15-60932739', NULL, 'carlodure@hotmail.com', 384, NULL);
+INSERT INTO datos_actuales VALUES (3859, 'Hipólito Yrigoyen 181 (6530) Carlos Casares', NULL, NULL, NULL, '02395-406996', NULL, NULL, 'vascoecheberz@hotmail.com', 385, NULL);
+INSERT INTO datos_actuales VALUES (3860, 'Mayling cc UF 28', NULL, NULL, NULL, NULL, '1550641474', NULL, 'cescobar@iae.edu.ar', 387, NULL);
+INSERT INTO datos_actuales VALUES (3861, 'Dardo Rocha 1150 (1718) San Antonio de Padua', NULL, NULL, NULL, '0220-4855758', '1566253437', NULL, 'alejandra@mcailuminacion.com.ar', 397, NULL);
+INSERT INTO datos_actuales VALUES (3862, 'Anatole France 1325 (1824) Lanus', NULL, NULL, NULL, '4240-6784', '15-5484-4080', NULL, 'magdalena.p.fernandez@gmail.com', 399, NULL);
+INSERT INTO datos_actuales VALUES (3863, 'Suipacha 209 2°D (1706) Haedo', NULL, NULL, NULL, NULL, '11-56583374', NULL, 'mbfa85@hotmail.com', 401, NULL);
+INSERT INTO datos_actuales VALUES (3864, 'Av. La Plata 3241 7°A (1184) CABA', NULL, NULL, NULL, '4903-8267', '15 5637 7175', NULL, 'ceferrari@fibertel.com.ar', 403, NULL);
+INSERT INTO datos_actuales VALUES (3865, 'Av. Patricias Argentinas 2009 Lote 125 (1619) Garin', NULL, NULL, NULL, NULL, '15-5745-0330', NULL, 'ferreyra.mar@gmail.com', 404, NULL);
+INSERT INTO datos_actuales VALUES (3866, NULL, NULL, NULL, NULL, NULL, '1569043395', NULL, 'yaninafigliolo@hotmail.com', 405, NULL);
+INSERT INTO datos_actuales VALUES (3867, 'Fragata Hercules 1430 (1629) Pilar', NULL, NULL, NULL, NULL, '11  1565999666', NULL, 'yo_22_yas@hotmail.com', 406, NULL);
+INSERT INTO datos_actuales VALUES (3868, 'Champagnat 1500 BC La Candela UF 94 (1629) Pilar', NULL, NULL, NULL, '0230-4375101', '15-4973-4728', NULL, 'fontanakarina@yahoo.com.ar', 407, NULL);
+INSERT INTO datos_actuales VALUES (3869, 'Chile 1820 La Herradura', NULL, NULL, NULL, NULL, '011-3829-4749', NULL, 'leticelu@gmail.com', 408, NULL);
+INSERT INTO datos_actuales VALUES (3870, 'Los Pinos 2153 (1614) Villa de Mayo Bs As', NULL, NULL, NULL, '4660-3105', '01115-69452101', NULL, 'mforchie@cas.austral.edu.ar', 409, NULL);
+INSERT INTO datos_actuales VALUES (3871, 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, '02304434837', '0111540753693', NULL, 'evangelina_del_valle@hotmail.com', 410, NULL);
+INSERT INTO datos_actuales VALUES (3872, 'Jose Ingenieros 640 - Exaltacion de la Cruz', NULL, NULL, NULL, '02323-470709', '15 2237 8539', '15 2237 8539', 'veronica_frattani@hotmail.com', 411, NULL);
+INSERT INTO datos_actuales VALUES (3873, 'Calle 104 n° 1133 (1625) Escobar Bs As', NULL, NULL, NULL, '0348-4494110', '011-15-39144976', NULL, 'nora_ga03@hotmail.com', 413, NULL);
+INSERT INTO datos_actuales VALUES (3874, 'Tucumán 194 (1667) Tortuguitas', NULL, NULL, NULL, '02320-622255', '011-15-61432413', NULL, 'andreagabusi@yahoo.com.ar', 414, NULL);
+INSERT INTO datos_actuales VALUES (3875, 'Dr Trani 1921 (1625) B de Escobar', NULL, NULL, NULL, NULL, '0348154556490', NULL, 'karinaa_gaitan@hotmail.com', 416, NULL);
+INSERT INTO datos_actuales VALUES (3876, 'Fincas de Maschwitz Manz 8 Lote 16, Mw, Escobar', NULL, NULL, NULL, '0348 4405136', '1121612259', NULL, 'vane.galicia.martinez@gmail.com', 417, NULL);
+INSERT INTO datos_actuales VALUES (3877, 'Carlos Calvo 590 (1631) Pilar', NULL, NULL, NULL, NULL, '11 15 5690 8617', NULL, 'juliroga@hotmail.com', 418, NULL);
+INSERT INTO datos_actuales VALUES (3878, NULL, NULL, NULL, NULL, NULL, '2323 533458', NULL, NULL, 426, NULL);
+INSERT INTO datos_actuales VALUES (3879, 'Suipacha 578 (2814) Los Cardales', NULL, NULL, NULL, '0230-4462100', '15 44019287', '15 44019287', 'violnik@hotmail.com', 428, NULL);
+INSERT INTO datos_actuales VALUES (3880, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'viajeradelalma@gmail.com', 431, NULL);
+INSERT INTO datos_actuales VALUES (3881, 'Champagnat 1600 (1630) Pilar', NULL, NULL, NULL, NULL, '1563500659', NULL, 'gonzalez1503@gmail.com', 432, NULL);
+INSERT INTO datos_actuales VALUES (3882, 'O´Connor (1629) Pilar', NULL, NULL, NULL, NULL, '0230-44384111', '0230-44384111', 'dagonzalez@megatlon.com.ar', 434, NULL);
+INSERT INTO datos_actuales VALUES (3883, 'Musladini 1773 (1629) Pilar', NULL, NULL, NULL, '0230-4663067', '15-68032096', NULL, 'rocbel_2096@hotmail.com', 436, NULL);
+INSERT INTO datos_actuales VALUES (3884, 'Tupac Amaru 1096 (1836) Llavallol', NULL, NULL, NULL, NULL, '1133133416', NULL, 'sukhabhavantu@gmail.com', 437, NULL);
+INSERT INTO datos_actuales VALUES (3885, 'Matienzo 5451 (1744) Moreno', NULL, NULL, NULL, '02320-451431', '11-5639-0479', NULL, 'marianguastavino@gmail.com', 441, NULL);
+INSERT INTO datos_actuales VALUES (3886, '26 de Abril 3666 (1714) Ituzaingó', NULL, NULL, NULL, '4481-1078', '15 5060 4311', NULL, 'maria_emilia232@hotmail.com', 442, NULL);
+INSERT INTO datos_actuales VALUES (3887, 'Carlos Calvo 02 (1629) Pilar', NULL, NULL, NULL, NULL, '01169792576', NULL, 'mguiniazu@yahoo.com.ar', 443, NULL);
+INSERT INTO datos_actuales VALUES (3888, 'Tucuman 867 3°Dto D (1629) Pilar', NULL, NULL, NULL, NULL, '1126578735', '1126578735', 'vic.gussoni@hotmail.com', 445, NULL);
+INSERT INTO datos_actuales VALUES (3889, 'Las Madreselvas 3026 (1667) Alberti', NULL, NULL, NULL, '02320-478657', '1533237173', NULL, 'andrea.gutierrez@laboratoriohidalgo.com', 447, NULL);
+INSERT INTO datos_actuales VALUES (3890, 'San Martín 1477 (1629) Villa Rosa', NULL, NULL, NULL, '0230-4495915', '0121-15-5501-1607', NULL, 'noemiham@hotmail.com', 450, NULL);
+INSERT INTO datos_actuales VALUES (3891, 'Rosario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 451, NULL);
+INSERT INTO datos_actuales VALUES (3892, 'Bolivar 446 - 3 dto 7 II cuerpo (1704) Ramos Mejía', NULL, NULL, NULL, '4469-1377', '11-6522-1634', NULL, 'marinhicoff@yahoo.com.ar', 453, NULL);
+INSERT INTO datos_actuales VALUES (3893, 'Rio de Janeiro N°2 Lote 26 (1629) Bo Cerrado Las Orquideas', NULL, NULL, NULL, '02304535018', '1567160660', NULL, 'mhortalsueldo@yahoo.com', 454, NULL);
+INSERT INTO datos_actuales VALUES (3894, 'San Cayetano 1194 (1669) Del Viso', NULL, NULL, NULL, NULL, '011-15-57349479', NULL, NULL, 520, NULL);
+INSERT INTO datos_actuales VALUES (3895, 'Tortugas c.c. Lte 368 (1667)', NULL, NULL, NULL, NULL, '15 4438 2232', '15 4438 2232', 'candileiguarda@hotmail.com', 469, NULL);
+INSERT INTO datos_actuales VALUES (3896, 'Carlos Gardel 218 PB (1824) Lanus', NULL, NULL, NULL, '4240-4644', '1136878017', NULL, 'gracielamarialeo@yahoo.com.ar', 470, NULL);
+INSERT INTO datos_actuales VALUES (3897, NULL, NULL, NULL, NULL, '011 4644-6670', '15-5517-4972', NULL, 'mahatma.luis@hotmail.com', 471, NULL);
+INSERT INTO datos_actuales VALUES (3898, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 473, NULL);
+INSERT INTO datos_actuales VALUES (3899, 'manzanares', NULL, NULL, NULL, NULL, '011 15- 40747482', NULL, 'veritolopezm@hotmail.com', 475, NULL);
+INSERT INTO datos_actuales VALUES (3900, 'Jorge Newbery 380 (6700) Lujan', NULL, NULL, NULL, NULL, '15 3648 5521', NULL, 'mica_ludovico@hotmail.com', 476, NULL);
+INSERT INTO datos_actuales VALUES (3901, 'Saravi 1684 Piso 1 (1631) Pilar', NULL, NULL, NULL, NULL, '2332-404418', NULL, 'eugenialuis2003@hotmail.com', 477, NULL);
+INSERT INTO datos_actuales VALUES (3902, 'Costa Rica 228 (1874) Guernica - Partido Pte Perón', NULL, NULL, NULL, NULL, '011-6665-2854', NULL, 'esmeralma@yahoo.com.ar', 478, NULL);
+INSERT INTO datos_actuales VALUES (3903, 'Santa Ana 2572 (1669) Del Viso', NULL, NULL, NULL, '02320-400529', '011-15-6572-1989', NULL, 'maidanagb@hotmail.com', 480, NULL);
+INSERT INTO datos_actuales VALUES (3904, 'Sgo del Estero 5624 (1605) Vicente Lopez', NULL, NULL, NULL, NULL, '15 6786 9003', '15 6786 9003', 'gerardo.maiterth@gmail.com', 482, NULL);
+INSERT INTO datos_actuales VALUES (3905, 'Champagnat 740 - El Zorzal 9C (1629) Pilar', NULL, NULL, NULL, NULL, '15 5163 4021', '15 5163 4021', 'maru.laru4@gmail.com', 483, NULL);
+INSERT INTO datos_actuales VALUES (3906, 'Av Juan B. Alberdi 250 7° piso (1424) CABA', NULL, NULL, NULL, '4924-1537', '15-30913234', NULL, 'ai.lo@hotmail.com', 484, NULL);
+INSERT INTO datos_actuales VALUES (3907, 'JB Alberdi 250 piso 7 (1424) CABA', NULL, NULL, NULL, '4924-1537', '11-5452-7075', NULL, 'cinthiamango@gmail.com', 486, NULL);
+INSERT INTO datos_actuales VALUES (3908, 'Juan Jose Paso 940 (1629) Pilar', NULL, NULL, NULL, '0230-4427-314', '011-15-64606774', NULL, 'mariela.marianacci7@gmail.com', 490, NULL);
+INSERT INTO datos_actuales VALUES (3909, 'Johann Strauss 2822 Bo Parque El Cazador (1625) Escobar', NULL, NULL, NULL, '03484489451', '011-15-552913165', NULL, 'nelymarsico@yahoo.com.ar', 493, NULL);
+INSERT INTO datos_actuales VALUES (3910, 'Capitan Martinez 1149 (1665) José C Paz', NULL, NULL, NULL, NULL, '1136101361', NULL, 'mballicillos@hotmail.com', 494, NULL);
+INSERT INTO datos_actuales VALUES (3911, 'Estrada 122 PB (1625) B. de Escobar', NULL, NULL, NULL, NULL, '0348 15 4632907', '0348 15 4632907', 'martieru@hotmail.com', 495, NULL);
+INSERT INTO datos_actuales VALUES (3912, 'Tandil 1083 (1629) Pilar', NULL, NULL, NULL, '0230-4421269', '15-5044-7556', NULL, 'mj_martitegui@hotmail.com', 497, NULL);
+INSERT INTO datos_actuales VALUES (3913, 'Club Univ Bs As 3150 (1669) Del Viso', NULL, NULL, NULL, '03484-457-486', '011 15 4 0822199', NULL, 'lucilamascaros@gmail.com', 498, NULL);
+INSERT INTO datos_actuales VALUES (3914, 'Haras del Pilar - La Pradera Lote 2125 Pilar Bs As', NULL, NULL, NULL, '0230-4458349', '15-6202-4612', NULL, 'familia08@live.com', 499, NULL);
+INSERT INTO datos_actuales VALUES (3915, 'Ayacucho 3566 (1665) José C. Paz', NULL, NULL, NULL, '02320-454954', '15-5920-2803', NULL, 'mjimena_ffhotmail.com', 501, NULL);
+INSERT INTO datos_actuales VALUES (3916, 'Almafuerte 2534 (1754) La Matanza', NULL, NULL, NULL, '4482-5424', NULL, NULL, 'danajuliamehle@gmail.com', 502, NULL);
+INSERT INTO datos_actuales VALUES (3917, 'Salto 913 (1629)', NULL, NULL, NULL, NULL, NULL, NULL, 'nancy.mena72@gmail.com', 503, NULL);
+INSERT INTO datos_actuales VALUES (3918, 'Calle 28 N° 647 (6660) 25 de Mayo Bs As', NULL, NULL, NULL, NULL, '02345 15562893', NULL, 'laumenghini@hotmail.com', 504, NULL);
+INSERT INTO datos_actuales VALUES (3919, 'Mar del Plata Golf Club n°3351 UF63 (1667) Pilar Bs As', NULL, NULL, NULL, '0348-4475179', '1558472166', NULL, 'pato_nel@yahoo.com.ar', 505, NULL);
+INSERT INTO datos_actuales VALUES (3920, 'Necochea 1487 (1629) Pilar', NULL, NULL, NULL, '0230-444897', '15-65272334', NULL, 'veromiche77@hotmail.com', 506, NULL);
+INSERT INTO datos_actuales VALUES (3921, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 507, NULL);
+INSERT INTO datos_actuales VALUES (3922, 'Olivos Golf Club Km 32 Panamericana', NULL, NULL, NULL, NULL, '15 4169 6652', '45871131', 'minetto_monica@yahoo.com.ar', 508, NULL);
+INSERT INTO datos_actuales VALUES (3923, 'Florida S/N Bo Los Pilares Lote 26 (16312) Villa Rosa - Pila', NULL, NULL, NULL, '03484-638726', '011-15-36124729', NULL, 'ailen.miramontes@gmail.com', 509, NULL);
+INSERT INTO datos_actuales VALUES (3924, 'Alberdi 1222 (1617) Pacheco', NULL, NULL, NULL, '011-2077-2737', '011-15-3305-8574', NULL, 'lorenamiranda29@gmail.com', 510, NULL);
+INSERT INTO datos_actuales VALUES (3925, 'Pio XII 2652 (1742) Paso del Rey', NULL, NULL, NULL, '02374636483', NULL, NULL, 'florenciamolina.r9@gmail.com', 512, NULL);
+INSERT INTO datos_actuales VALUES (3926, 'Bariloche 2233 (1643) Beccar Bs As', NULL, NULL, NULL, '47371273', '15 4079 2133', NULL, 'nancymolina259@gmail.com', 513, NULL);
+INSERT INTO datos_actuales VALUES (3927, 'Barrio La Pradera 1134 Bs As', NULL, NULL, NULL, '02304458695', '15 4076 1533', NULL, 'carla_molinari@hotmail.com', 514, NULL);
+INSERT INTO datos_actuales VALUES (3928, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 515, NULL);
+INSERT INTO datos_actuales VALUES (3929, 'Dolores 15 (1629) Pilar', NULL, NULL, NULL, '0230-4533028', '11 15 3488 4400', '11 15 3488 4400', 'mmaggioalejandra@gmail.com', 517, NULL);
+INSERT INTO datos_actuales VALUES (3930, 'Chubut 610 Lote 31 (1629) Pilar', NULL, NULL, NULL, '02304693037', '0111534311709', NULL, 'arqmariamoreno@gmail.com', 518, NULL);
+INSERT INTO datos_actuales VALUES (3931, 'Jujuy 232 (1631) Villa Rosa', NULL, NULL, NULL, NULL, '15-5934-5986', NULL, 'nativo@hotmail.com', 531, NULL);
+INSERT INTO datos_actuales VALUES (3932, 'Agüero 2843 PB dto 1 (1678) Caseros CABA', NULL, NULL, NULL, '4734-8546', '15 53796166', NULL, 'maossia@yahoo.com.ar', 534, NULL);
+INSERT INTO datos_actuales VALUES (3933, 'C.C. Pueyrredon L99 (1629) Pilar', NULL, NULL, NULL, '0230-4667244', '15-67901777', NULL, NULL, 535, NULL);
+INSERT INTO datos_actuales VALUES (3934, 'C. de C. Pueyrredon L99 (1628) Pilar', NULL, NULL, NULL, '0230-4667244', '1530900902', NULL, 'cataoyharzabal@hotmail.com', 536, NULL);
+INSERT INTO datos_actuales VALUES (3935, 'Km 49 Club de Campo Pueyrredon (1629) Pilar', NULL, NULL, NULL, '02304667244', NULL, NULL, 'milagrosoyharzabal@hotmail.com', 537, NULL);
+INSERT INTO datos_actuales VALUES (3936, 'Valparaiso390 (1629) Pilar', NULL, NULL, NULL, '0230-4663881', '15 5827 5634', NULL, 'santiagohernanpaez@hotmail.com', 538, NULL);
+INSERT INTO datos_actuales VALUES (3937, 'Los Nardos 1331 (1669) Del Viso', NULL, NULL, NULL, '02320-477811', '0111554964256', NULL, 'm311063@hotmail.com', 539, NULL);
+INSERT INTO datos_actuales VALUES (3938, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brian.bit@hotmail.com', 540, NULL);
+INSERT INTO datos_actuales VALUES (3939, 'Mexico 668 3ºB CABA', NULL, NULL, NULL, NULL, '15-6893-7233', NULL, 'daniela_palmeiro@hotmail.com', 542, NULL);
+INSERT INTO datos_actuales VALUES (3940, 'Luis M Campos 1119 Bernal Oeste', NULL, NULL, NULL, '4259-3610', NULL, NULL, NULL, 543, NULL);
+INSERT INTO datos_actuales VALUES (3941, 'Ceretti 2815 7° Diagonal (1431) CABA', NULL, NULL, NULL, '4752-1107', '1568772123', NULL, 'edithmarisapenia@yahoo.com.ar', 549, NULL);
+INSERT INTO datos_actuales VALUES (3942, 'Catrilo 1587 (1667) Bs As', NULL, NULL, NULL, NULL, '15 6808 6361', '15 6808 6361', 'pereyrasnadia@gmail.com', 551, NULL);
+INSERT INTO datos_actuales VALUES (3943, 'Sanguinetti 475 (1629) Pilar', NULL, NULL, NULL, '0230-4429055', '111558490044', NULL, 'normapereyra1959@gmail.com', 552, NULL);
+INSERT INTO datos_actuales VALUES (3944, 'Saravi 1896 (1629) La Lonja Pilar', NULL, NULL, NULL, '20441327', '15-60932739', NULL, 'mpogrebaj@yahoo.com.ar', 562, NULL);
+INSERT INTO datos_actuales VALUES (3945, 'Serrano 1637 4°C (1663) San Miguel', NULL, NULL, NULL, '011-4667-2262', '15 5641 9559', NULL, 'polastrellimarina@yahoo.com.ar', 563, NULL);
+INSERT INTO datos_actuales VALUES (3946, 'Anchorena 1754 (1629) Pilar', NULL, NULL, NULL, NULL, '15-57357186', NULL, 'laupomar@gmail.com', 564, NULL);
+INSERT INTO datos_actuales VALUES (3947, NULL, NULL, NULL, NULL, NULL, '15 2256 6963', '15 2256 6963', 'moni-1108@hotmail.com', 566, NULL);
+INSERT INTO datos_actuales VALUES (3948, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 567, NULL);
+INSERT INTO datos_actuales VALUES (3949, 'Bo La Retama L38 (1629) Manzanares', NULL, NULL, NULL, '0230-4499706', '011-15-4447-5225', NULL, 'gproietto1970@gmail.com', 568, NULL);
+INSERT INTO datos_actuales VALUES (3950, NULL, NULL, NULL, NULL, NULL, '1567016916', NULL, 'ismymvp@yahoo.com.ar', 570, NULL);
+INSERT INTO datos_actuales VALUES (3951, 'Lomada Del Viso', NULL, NULL, NULL, NULL, '1544075975', NULL, 'silviaquiroga_1@hotmail.com', 572, NULL);
+INSERT INTO datos_actuales VALUES (3952, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 575, NULL);
+INSERT INTO datos_actuales VALUES (3953, 'Bolivar 2790 ( 1686) Hurlingam', NULL, NULL, NULL, NULL, '1562741637', NULL, 'lucilareyes81@hotmail.com', 576, NULL);
+INSERT INTO datos_actuales VALUES (3954, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 577, NULL);
+INSERT INTO datos_actuales VALUES (3955, 'Mendoza 1825 (1631) Pilar', NULL, NULL, NULL, '0230-4495437', '0111553793215', NULL, NULL, 578, NULL);
+INSERT INTO datos_actuales VALUES (3956, 'Ruta 25 km 75 Country San Diego Mza16 Lote03 - Moreno Bs As', NULL, NULL, NULL, NULL, '1526558948', '1526558952', 'elenarobacio@hotmail.com', 580, NULL);
+INSERT INTO datos_actuales VALUES (3957, NULL, NULL, NULL, NULL, NULL, '1531805228', NULL, NULL, 583, NULL);
+INSERT INTO datos_actuales VALUES (3958, 'Zamudio 4680 3°A CABA', NULL, NULL, NULL, NULL, '011-15-53853396', NULL, 'yamilairodriguez@gmail.com', 586, NULL);
+INSERT INTO datos_actuales VALUES (3959, 'Vedia 1650 11° (1429) CABA', NULL, NULL, NULL, NULL, '011-15-6335 2610', NULL, 'artefusion2014@gmail.com', 587, NULL);
+INSERT INTO datos_actuales VALUES (3960, 'Juan F Seguí 3935 (1667) Tortuguitas', NULL, NULL, NULL, '02320-493757', '011 39451744', NULL, 'abril_01@hotmail.com', 588, NULL);
+INSERT INTO datos_actuales VALUES (3961, 'Necochea 526 (2300) Rafaela Santa Fe', NULL, NULL, NULL, NULL, '0341 15 5141288', '0341 15 5141288', 'kariromera@hotmail.com', 589, NULL);
+INSERT INTO datos_actuales VALUES (3962, 'San Isidro 1011 Villa Rosa - Pilar', NULL, NULL, NULL, '0230-4426746', '15 2450 0061', '15 2450 0061', 'valeryasalvador@yahoo.com.ar', 600, NULL);
+INSERT INTO datos_actuales VALUES (3963, 'Conde Zeppelin 6515 (1684) Palomar', NULL, NULL, NULL, NULL, '15 23203054', NULL, 'sanchez_camila@hotmail.com', 601, NULL);
+INSERT INTO datos_actuales VALUES (3964, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'paulavaleriasanchez@yahoo.com.ar', 602, NULL);
+INSERT INTO datos_actuales VALUES (3965, 'Champagnat 1600 Lote 13 (1629) Pilar', NULL, NULL, NULL, '02304663913', '0111557721973', NULL, 'zulema-59@hotmail.com', 603, NULL);
+INSERT INTO datos_actuales VALUES (3966, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 609, NULL);
+INSERT INTO datos_actuales VALUES (3967, NULL, NULL, NULL, NULL, NULL, '0341-156372089', NULL, 'mcschiratti@yahoo.com.ar', 610, NULL);
+INSERT INTO datos_actuales VALUES (3968, 'San Miguel 1335 (1669) Del Viso', NULL, NULL, NULL, '02320-407380', '011-15-65225549', NULL, 'ireschupak@gmail.com', 612, NULL);
+INSERT INTO datos_actuales VALUES (3969, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 614, NULL);
+INSERT INTO datos_actuales VALUES (3970, 'Chiclana 7157 (1669) Del Viso', NULL, NULL, NULL, '02320-653370', '1550555379', NULL, 'darqui_89@hotmail.com', 615, NULL);
+INSERT INTO datos_actuales VALUES (3971, 'E. Mitre 1163 (1824) Lanus', NULL, NULL, NULL, '42473566', '1133925235', NULL, 'martinezines841@yahoo.com.ar', 616, NULL);
+INSERT INTO datos_actuales VALUES (3972, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dianasilvafranco@yahoo.com', 618, NULL);
+INSERT INTO datos_actuales VALUES (3973, 'Ruta 4 km4 Country C Los Cardales n° 430 (2314) Campana', NULL, NULL, NULL, '02304525383', '15 5049 0797', '15 5049 0797', 'candesoengas@gmail.com', 620, NULL);
+INSERT INTO datos_actuales VALUES (3974, 'Schubert 5888 (1669) Del Viso', NULL, NULL, NULL, '02320-472361', '15-59428411', NULL, 'mariainsosa@gmail.com', 621, NULL);
+INSERT INTO datos_actuales VALUES (3975, 'Ruta 4 km 5,5 Los Robles L101 - Village Cardales', NULL, NULL, NULL, NULL, '011-15-6465-1977', NULL, 'karynasteckler@hotmail.com', 623, NULL);
+INSERT INTO datos_actuales VALUES (3976, 'Necochea 3464 (1667) Bs As', NULL, NULL, NULL, '03484639212', '11 49496208', NULL, 'trama_co@hotmail.com', 640, NULL);
+INSERT INTO datos_actuales VALUES (3977, '2° Rivadavia 19375 (1712) Castelar', NULL, NULL, NULL, '4629-5196', '1538126429', NULL, 'victovi36@gmail.com', 641, NULL);
+INSERT INTO datos_actuales VALUES (3978, 'Valentin Gomez 775 Derqui', NULL, NULL, NULL, NULL, '011-61313817', NULL, 'veronicapilates@hotmail.com', 642, NULL);
+INSERT INTO datos_actuales VALUES (3979, 'O´Connor 1175 Derqui', NULL, NULL, NULL, NULL, '15 3690 4346', '15 3690 4346', 'c.villadangos1979@gmail.com', 643, NULL);
+INSERT INTO datos_actuales VALUES (3980, 'Suipacha 156 (1620) M Sabio Bs As', NULL, NULL, NULL, NULL, '11 5248 0162', NULL, 'mililopez123123@gmail.com', 644, NULL);
+INSERT INTO datos_actuales VALUES (3981, 'Saravi 2951 B. PilarJoven, La Lonja', NULL, NULL, NULL, '0230--474060', NULL, NULL, 'magdalenavillars@gmail.com', 645, NULL);
+INSERT INTO datos_actuales VALUES (3982, 'Lago Lacar 156 (1629) Manzanares - Pilar', NULL, NULL, NULL, '02304499161', '15-34684098', NULL, 'legolascay@hotmail.com', 647, NULL);
+INSERT INTO datos_actuales VALUES (3983, 'Valparaiso 390 (1629) Pilar', NULL, NULL, NULL, '0230-4663881', '15 63073548', NULL, 'mlujanw@outlook.com', 648, NULL);
+INSERT INTO datos_actuales VALUES (3984, 'Chile 1891 casa 10 (1629) Pilar', NULL, NULL, NULL, NULL, '01167058596', '2304644903', 'algaro@usa.com', 650, NULL);
+INSERT INTO datos_actuales VALUES (3985, 'Tortugas Golf C. 1953 (1669) Del Viso', NULL, NULL, NULL, '02320-476335', '15-38050600', NULL, 'romipdl@hotmail.com', 651, NULL);
+INSERT INTO datos_actuales VALUES (3986, 'Ruben Dario 786 PB (2813) Pavon Bs As', NULL, NULL, NULL, '02304482379', '0111562818582', NULL, 'jesicazeballos@gmail.com', 653, NULL);
+INSERT INTO datos_actuales VALUES (3987, 'CARLOS PELLEGRINI', NULL, 121, 3231, NULL, '1140382222', NULL, 'MARIELADAMIANI@HOTMAIL.COM', 40, '157');
+INSERT INTO datos_actuales VALUES (3988, 'PARQUE MAPUCHE', NULL, NULL, 3231, '2304470586', '111523608198', NULL, 'ISABELSENOSIAIN@GMAIL.COM', 49, '26');
 
 
 --
--- TOC entry 2623 (class 0 OID 968276)
--- Dependencies: 218
+-- TOC entry 2672 (class 0 OID 976558)
+-- Dependencies: 220
 -- Data for Name: datos_laborales; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO datos_laborales VALUES (2192, NULL, NULL, NULL, NULL, NULL, 216, NULL);
+INSERT INTO datos_laborales VALUES (2193, NULL, NULL, NULL, NULL, NULL, 219, NULL);
+INSERT INTO datos_laborales VALUES (2194, NULL, NULL, NULL, NULL, NULL, 236, NULL);
+INSERT INTO datos_laborales VALUES (2195, NULL, NULL, NULL, NULL, NULL, 253, NULL);
+INSERT INTO datos_laborales VALUES (2196, NULL, NULL, NULL, NULL, NULL, 254, NULL);
+INSERT INTO datos_laborales VALUES (2197, NULL, NULL, NULL, NULL, NULL, 261, NULL);
+INSERT INTO datos_laborales VALUES (2198, NULL, NULL, NULL, NULL, NULL, 269, NULL);
+INSERT INTO datos_laborales VALUES (2199, NULL, NULL, NULL, NULL, NULL, 300, NULL);
+INSERT INTO datos_laborales VALUES (2200, NULL, NULL, NULL, NULL, NULL, 391, 'Diseño de Interiores');
+INSERT INTO datos_laborales VALUES (2201, NULL, NULL, NULL, NULL, NULL, 465, 'Instructora de Yoga');
+INSERT INTO datos_laborales VALUES (2202, NULL, NULL, NULL, NULL, NULL, 488, NULL);
+INSERT INTO datos_laborales VALUES (2203, NULL, 'MA Servicios SA', NULL, '011-47113600/33', 'dnuttini@maserviciossa.com.ar', 530, 'Ejecutiva de Cuentas');
+INSERT INTO datos_laborales VALUES (2204, NULL, NULL, NULL, NULL, NULL, 455, NULL);
+INSERT INTO datos_laborales VALUES (2205, NULL, NULL, NULL, NULL, NULL, 457, 'ama de casa');
+INSERT INTO datos_laborales VALUES (2206, NULL, 'Estudio Swiecicki Arq', NULL, NULL, 'kucich@esarq.com.ar', 464, 'Secretaria, Terapeuta de Sonido y Color');
+INSERT INTO datos_laborales VALUES (2207, NULL, NULL, NULL, NULL, NULL, 472, 'Admin/Reflexologa Podal');
+INSERT INTO datos_laborales VALUES (2208, NULL, NULL, NULL, NULL, NULL, 591, 'Profesora de Yoga');
+INSERT INTO datos_laborales VALUES (2209, NULL, NULL, NULL, NULL, NULL, 553, 'Niñera / Vendedora');
+INSERT INTO datos_laborales VALUES (2210, NULL, NULL, NULL, NULL, NULL, 611, 'Prof de Yoga');
+INSERT INTO datos_laborales VALUES (2211, NULL, NULL, NULL, NULL, NULL, 400, 'Actriz, Comerciante');
+INSERT INTO datos_laborales VALUES (2212, NULL, 'Minist. De Justicia y Derechos Humanos', NULL, NULL, NULL, 412, 'Trabajadora Social');
+INSERT INTO datos_laborales VALUES (2213, NULL, 'Sushi Club', NULL, '0348-4629590', NULL, 415, 'Camarera');
+INSERT INTO datos_laborales VALUES (2214, NULL, NULL, NULL, NULL, NULL, 485, 'Decoradora de Interiore');
+INSERT INTO datos_laborales VALUES (2215, NULL, NULL, NULL, NULL, NULL, 492, NULL);
+INSERT INTO datos_laborales VALUES (2216, NULL, 'Imágenes Concord', NULL, NULL, NULL, 613, 'Técnica Radiologa');
+INSERT INTO datos_laborales VALUES (1720, NULL, NULL, NULL, NULL, NULL, 86, NULL);
+INSERT INTO datos_laborales VALUES (1657, NULL, NULL, NULL, NULL, NULL, 1, NULL);
+INSERT INTO datos_laborales VALUES (1658, NULL, NULL, NULL, NULL, NULL, 2, NULL);
+INSERT INTO datos_laborales VALUES (1659, NULL, NULL, NULL, NULL, NULL, 14, NULL);
+INSERT INTO datos_laborales VALUES (1660, NULL, NULL, NULL, NULL, NULL, 25, 'AMA DE CASA');
+INSERT INTO datos_laborales VALUES (1661, NULL, 'JUMBO', NULL, NULL, NULL, 3, 'VENDEDORA');
+INSERT INTO datos_laborales VALUES (1662, NULL, NULL, NULL, NULL, NULL, 92, NULL);
+INSERT INTO datos_laborales VALUES (1663, NULL, NULL, NULL, NULL, NULL, 94, 'GASTRONOMIA');
+INSERT INTO datos_laborales VALUES (1664, NULL, NULL, NULL, NULL, NULL, 101, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1665, NULL, NULL, NULL, NULL, NULL, 95, 'DISEÑADORA');
+INSERT INTO datos_laborales VALUES (1666, NULL, NULL, NULL, NULL, NULL, 110, NULL);
+INSERT INTO datos_laborales VALUES (1667, NULL, NULL, NULL, NULL, NULL, 113, NULL);
+INSERT INTO datos_laborales VALUES (1668, NULL, NULL, NULL, NULL, NULL, 117, NULL);
+INSERT INTO datos_laborales VALUES (1669, NULL, 'ORGANIZACION CALVO', 'LAVALLE 648 LUJAN', '2323420508', 'INFO@CALVOSEGUROS.COM.AR', 27, 'ADMINISTRATIVA');
+INSERT INTO datos_laborales VALUES (1670, NULL, 'VENDEDORA', NULL, NULL, NULL, 21, 'LICENCIADA EN ENFERMERIA');
+INSERT INTO datos_laborales VALUES (1671, NULL, NULL, NULL, NULL, NULL, 38, 'COSMIATRA');
+INSERT INTO datos_laborales VALUES (1672, NULL, 'HOSPITAL DE LUJAN', NULL, NULL, NULL, 119, NULL);
+INSERT INTO datos_laborales VALUES (1673, NULL, NULL, NULL, NULL, NULL, 126, 'ABOGADA');
+INSERT INTO datos_laborales VALUES (1674, NULL, NULL, NULL, NULL, NULL, 138, NULL);
+INSERT INTO datos_laborales VALUES (1675, NULL, NULL, NULL, NULL, NULL, 139, NULL);
+INSERT INTO datos_laborales VALUES (1676, NULL, NULL, NULL, NULL, NULL, 141, 'PEDICURA');
+INSERT INTO datos_laborales VALUES (1677, NULL, NULL, NULL, NULL, NULL, 143, 'KINESIOLOGA');
+INSERT INTO datos_laborales VALUES (1678, NULL, NULL, NULL, NULL, NULL, 145, 'SECRETARIA');
+INSERT INTO datos_laborales VALUES (1679, NULL, NULL, NULL, NULL, NULL, 29, NULL);
+INSERT INTO datos_laborales VALUES (1680, NULL, 'INSTITUTO EL TALAR', 'PERU 979', '47361884', NULL, 46, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1681, NULL, NULL, NULL, NULL, NULL, 44, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1682, NULL, 'DUAS RODAS ARG SA', 'GRAL SAVIO 685 -GARIN', '1160916900', 'NADIA.FERNANDEZ@DUASRODAS.COM', 45, 'LIC EN ADMINISTRACION');
+INSERT INTO datos_laborales VALUES (1683, NULL, 'GARBARINO VIAJES', NULL, NULL, NULL, 146, 'AGENTE DE VIAJES');
+INSERT INTO datos_laborales VALUES (1684, NULL, NULL, NULL, NULL, NULL, 147, 'LOCUTORA');
+INSERT INTO datos_laborales VALUES (1685, NULL, NULL, NULL, NULL, NULL, 148, 'EMPLEADA ADMINISTRATIVA');
+INSERT INTO datos_laborales VALUES (1686, NULL, NULL, NULL, NULL, NULL, 149, 'COREOGRAFO');
+INSERT INTO datos_laborales VALUES (1687, NULL, NULL, NULL, NULL, NULL, 154, 'EMPLEADA ADMINISTRATIVA');
+INSERT INTO datos_laborales VALUES (1688, NULL, NULL, NULL, NULL, NULL, 157, NULL);
+INSERT INTO datos_laborales VALUES (1689, NULL, NULL, NULL, NULL, NULL, 160, 'TERAPEUTA COMPLEMENTARIA');
+INSERT INTO datos_laborales VALUES (1690, NULL, 'ALMUNDO.COM', NULL, NULL, NULL, 161, 'LICENCIADA EN TURISMO');
+INSERT INTO datos_laborales VALUES (1691, NULL, NULL, NULL, NULL, NULL, 162, NULL);
+INSERT INTO datos_laborales VALUES (1692, NULL, 'SANTANDER', NULL, NULL, NULL, 163, 'INGENIERA INFORMATICA');
+INSERT INTO datos_laborales VALUES (1693, NULL, NULL, NULL, NULL, NULL, 164, 'MAESTRA');
+INSERT INTO datos_laborales VALUES (1694, NULL, NULL, NULL, NULL, NULL, 169, 'INTERPRETE DE DANZA CONTEMPORANEA');
+INSERT INTO datos_laborales VALUES (1695, NULL, NULL, NULL, NULL, NULL, 173, NULL);
+INSERT INTO datos_laborales VALUES (1696, NULL, NULL, NULL, NULL, NULL, 242, NULL);
+INSERT INTO datos_laborales VALUES (1697, NULL, NULL, NULL, NULL, NULL, 175, 'PILATES');
+INSERT INTO datos_laborales VALUES (1698, NULL, 'DECORADORA', NULL, NULL, NULL, 16, 'EMPLEADA');
+INSERT INTO datos_laborales VALUES (1699, NULL, NULL, NULL, NULL, NULL, 51, 'LIC EN ED ESPECIAL');
+INSERT INTO datos_laborales VALUES (1700, NULL, 'ROCHE', 'LAGO HUEMUL 1590, DEL VISO', '1564578334', 'MARIANA.DAMIANI.MD1@ROCHE.COM', 60, 'ASISTENTE ADMINISTRATIVA');
+INSERT INTO datos_laborales VALUES (1701, NULL, 'BRICK TOWERS COLLEGE NORBRIDGE', NULL, NULL, NULL, 62, 'PROFESORA DE INGLES');
+INSERT INTO datos_laborales VALUES (1702, NULL, 'SAN JUAN', NULL, NULL, NULL, 67, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1703, NULL, NULL, NULL, NULL, NULL, 61, NULL);
+INSERT INTO datos_laborales VALUES (1704, NULL, 'TOTAL CARGO', NULL, NULL, 'AGUSTINAFERRERIA@TOTALCARGO.COM.AR', 63, 'LIC RRHH');
+INSERT INTO datos_laborales VALUES (1705, NULL, NULL, NULL, NULL, NULL, 64, 'ACOMPAÑANTE TERAPEUTICO');
+INSERT INTO datos_laborales VALUES (1706, NULL, 'EDENOR', 'CHACABUCO 450 PILAR', '2304439399', 'GMANSILLA@EDENOR.COM', 26, 'EMPLEADA');
+INSERT INTO datos_laborales VALUES (1707, NULL, 'CENTRO MOEBIUS Y PARTICULAR', 'LAS HERAS 850, ESCOBAR', NULL, NULL, 28, 'PSICOLOGA CLINICA');
+INSERT INTO datos_laborales VALUES (1708, NULL, 'HOSPITAL FEDERICO FALCON', 'POLONIA Y ARATA', '2320423795', NULL, 5, 'MEDICA RESIDENTE');
+INSERT INTO datos_laborales VALUES (1709, NULL, NULL, NULL, NULL, NULL, 10, NULL);
+INSERT INTO datos_laborales VALUES (1710, NULL, NULL, NULL, NULL, NULL, 23, 'PEDICURA AMA DE CASA');
+INSERT INTO datos_laborales VALUES (1711, NULL, 'TIZADO', 'RUTA 25 Y CAMAÑO', '2304458000', 'ICUBELLI@TIZADO.COM', 22, 'ADMINISTRATIVA');
+INSERT INTO datos_laborales VALUES (1712, NULL, NULL, NULL, NULL, NULL, 6, 'CONSULTORA PSICOLOGICA');
+INSERT INTO datos_laborales VALUES (1713, NULL, NULL, NULL, NULL, NULL, 57, NULL);
+INSERT INTO datos_laborales VALUES (1714, NULL, NULL, NULL, NULL, NULL, 78, NULL);
+INSERT INTO datos_laborales VALUES (1715, NULL, 'ESCUELA PUBLICA', NULL, NULL, NULL, 76, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1716, NULL, NULL, NULL, NULL, NULL, 77, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1717, NULL, 'CHUCHOMANUCHO', 'JOAQUIN V GONZALEZ 1451', '42417065', 'GABRIELA.RODRIGUEZ@CHUCHOMANUCHO.COM.AR', 79, 'DISEÑADORA DE INDUMENTARIA');
+INSERT INTO datos_laborales VALUES (1718, NULL, NULL, NULL, NULL, NULL, 82, NULL);
+INSERT INTO datos_laborales VALUES (1719, NULL, NULL, NULL, NULL, NULL, 83, 'CONTADORA');
+INSERT INTO datos_laborales VALUES (1721, NULL, NULL, NULL, NULL, NULL, 93, NULL);
+INSERT INTO datos_laborales VALUES (1722, NULL, NULL, NULL, NULL, NULL, 97, 'ESTILISTA');
+INSERT INTO datos_laborales VALUES (1723, NULL, NULL, NULL, NULL, NULL, 106, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1724, NULL, NULL, NULL, NULL, NULL, 107, NULL);
+INSERT INTO datos_laborales VALUES (1725, NULL, NULL, NULL, NULL, NULL, 118, NULL);
+INSERT INTO datos_laborales VALUES (1726, NULL, NULL, NULL, NULL, NULL, 120, NULL);
+INSERT INTO datos_laborales VALUES (1727, NULL, 'ESTAMPADOS ROTATIVOS', NULL, NULL, 'FLORENCIA@ROTATIVOS.COM.AR', 121, 'LIC EN RRHH');
+INSERT INTO datos_laborales VALUES (1728, NULL, NULL, NULL, NULL, NULL, 122, NULL);
+INSERT INTO datos_laborales VALUES (1729, NULL, 'FUERZA AEREA ARGENTINA', NULL, NULL, NULL, 123, 'LIC EN NUTRICION');
+INSERT INTO datos_laborales VALUES (1730, NULL, NULL, NULL, NULL, NULL, 125, NULL);
+INSERT INTO datos_laborales VALUES (1731, NULL, NULL, NULL, NULL, NULL, 128, NULL);
+INSERT INTO datos_laborales VALUES (1732, NULL, NULL, NULL, NULL, NULL, 130, NULL);
+INSERT INTO datos_laborales VALUES (1733, NULL, NULL, NULL, NULL, NULL, 8, 'TRADUCTORA');
+INSERT INTO datos_laborales VALUES (1734, NULL, 'AFIP', 'RTA PANAMERICANA KM 54.500 PILAR', '23224423385', 'MASOLESUAREZ@AFIP.GOV.AR', 9, 'LIC EN ADMINSTRACION');
+INSERT INTO datos_laborales VALUES (1735, NULL, NULL, NULL, NULL, NULL, 105, NULL);
+INSERT INTO datos_laborales VALUES (1736, NULL, NULL, NULL, NULL, NULL, 133, NULL);
+INSERT INTO datos_laborales VALUES (1737, NULL, NULL, NULL, NULL, NULL, 136, NULL);
+INSERT INTO datos_laborales VALUES (1738, NULL, NULL, NULL, NULL, NULL, 132, NULL);
+INSERT INTO datos_laborales VALUES (1739, NULL, NULL, NULL, NULL, NULL, 134, NULL);
+INSERT INTO datos_laborales VALUES (1740, NULL, NULL, NULL, NULL, NULL, 135, 'GUARDAVIDAS');
+INSERT INTO datos_laborales VALUES (1741, NULL, 'OSDE', NULL, NULL, NULL, 137, NULL);
+INSERT INTO datos_laborales VALUES (1742, NULL, NULL, NULL, NULL, NULL, 131, 'Empleada Administrativa Local de Decoración');
+INSERT INTO datos_laborales VALUES (1743, NULL, NULL, NULL, NULL, NULL, 159, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1744, NULL, NULL, NULL, NULL, NULL, 18, 'ARTESANA');
+INSERT INTO datos_laborales VALUES (1745, NULL, 'CLINICA DE OJOS DR NANO', 'BLAS PARERA 4201', '47174000', 'CECILIAN@CLINICANANO.COM.AR', 41, 'SECRETARIA');
+INSERT INTO datos_laborales VALUES (1746, NULL, 'DGCYE', NULL, NULL, NULL, 35, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1747, NULL, NULL, NULL, NULL, NULL, 144, 'MUSICOTERAPEUTA');
+INSERT INTO datos_laborales VALUES (1748, NULL, NULL, NULL, NULL, NULL, 68, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1749, NULL, NULL, NULL, NULL, NULL, 69, 'ORIENTADORA SOCIAL');
+INSERT INTO datos_laborales VALUES (1750, NULL, NULL, NULL, NULL, NULL, 72, NULL);
+INSERT INTO datos_laborales VALUES (1751, NULL, 'ESTANCIAS DEL RIO SSA', NULL, NULL, NULL, 74, 'SECRETARIA EN CLUB ESTANCIAS');
+INSERT INTO datos_laborales VALUES (1752, NULL, NULL, NULL, NULL, NULL, 65, 'DECORADORA DE INTERIORES');
+INSERT INTO datos_laborales VALUES (1753, NULL, NULL, NULL, NULL, NULL, 66, 'ESTETISISTA');
+INSERT INTO datos_laborales VALUES (1754, NULL, 'CORREO ARGENTINO', NULL, NULL, NULL, 71, 'ATENCIONAL PUBLICO');
+INSERT INTO datos_laborales VALUES (1755, NULL, 'AMERICAN BROKER SA', 'PANAMERICANA KM 42.5', NULL, NULL, 54, NULL);
+INSERT INTO datos_laborales VALUES (1756, NULL, NULL, NULL, NULL, NULL, 155, 'TERAPEUTA FLORAL');
+INSERT INTO datos_laborales VALUES (1757, NULL, NULL, NULL, NULL, NULL, 166, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1758, NULL, NULL, NULL, NULL, NULL, 177, NULL);
+INSERT INTO datos_laborales VALUES (1759, NULL, 'transporte escolar', NULL, NULL, NULL, 183, 'Acompañante terapéutica');
+INSERT INTO datos_laborales VALUES (1760, NULL, 'UNILEVER', NULL, NULL, NULL, 56, 'ADMINISTRATIVA');
+INSERT INTO datos_laborales VALUES (1761, NULL, NULL, NULL, NULL, NULL, 102, NULL);
+INSERT INTO datos_laborales VALUES (1762, NULL, NULL, NULL, NULL, NULL, 186, NULL);
+INSERT INTO datos_laborales VALUES (1763, NULL, NULL, NULL, NULL, NULL, 240, NULL);
+INSERT INTO datos_laborales VALUES (1764, NULL, NULL, NULL, NULL, NULL, 241, NULL);
+INSERT INTO datos_laborales VALUES (1765, NULL, NULL, NULL, NULL, NULL, 165, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1766, NULL, NULL, NULL, NULL, NULL, 184, 'terapeuta holistica');
+INSERT INTO datos_laborales VALUES (1767, NULL, NULL, NULL, NULL, NULL, 185, 'Docente');
+INSERT INTO datos_laborales VALUES (1768, NULL, NULL, NULL, NULL, NULL, 187, 'autonomo');
+INSERT INTO datos_laborales VALUES (1769, NULL, 'Jermaine´s Yogatherapystudio', NULL, '1165389097', 'ganapatiomyoga@gmail.com', 189, 'Yogaterapeuta - Adm de Empresa');
+INSERT INTO datos_laborales VALUES (1770, NULL, NULL, NULL, NULL, NULL, 194, NULL);
+INSERT INTO datos_laborales VALUES (1771, NULL, NULL, NULL, NULL, NULL, 195, NULL);
+INSERT INTO datos_laborales VALUES (1772, NULL, NULL, NULL, NULL, NULL, 196, NULL);
+INSERT INTO datos_laborales VALUES (1773, NULL, NULL, NULL, NULL, NULL, 198, NULL);
+INSERT INTO datos_laborales VALUES (1774, NULL, NULL, NULL, NULL, NULL, 199, NULL);
+INSERT INTO datos_laborales VALUES (1775, NULL, NULL, NULL, NULL, NULL, 203, NULL);
+INSERT INTO datos_laborales VALUES (1776, NULL, NULL, NULL, NULL, NULL, 208, NULL);
+INSERT INTO datos_laborales VALUES (1777, NULL, NULL, NULL, NULL, NULL, 210, NULL);
+INSERT INTO datos_laborales VALUES (1778, NULL, NULL, NULL, NULL, NULL, 211, NULL);
+INSERT INTO datos_laborales VALUES (1779, NULL, NULL, NULL, NULL, NULL, 212, NULL);
+INSERT INTO datos_laborales VALUES (1780, NULL, NULL, NULL, NULL, NULL, 213, NULL);
+INSERT INTO datos_laborales VALUES (1781, NULL, NULL, NULL, NULL, NULL, 215, NULL);
+INSERT INTO datos_laborales VALUES (1782, NULL, NULL, NULL, NULL, NULL, 217, NULL);
+INSERT INTO datos_laborales VALUES (1783, NULL, NULL, NULL, NULL, NULL, 218, NULL);
+INSERT INTO datos_laborales VALUES (1784, NULL, NULL, NULL, NULL, NULL, 220, NULL);
+INSERT INTO datos_laborales VALUES (1785, NULL, NULL, NULL, NULL, NULL, 221, NULL);
+INSERT INTO datos_laborales VALUES (1786, NULL, NULL, NULL, NULL, NULL, 222, NULL);
+INSERT INTO datos_laborales VALUES (1787, NULL, NULL, NULL, NULL, NULL, 224, NULL);
+INSERT INTO datos_laborales VALUES (1788, NULL, NULL, NULL, NULL, NULL, 225, NULL);
+INSERT INTO datos_laborales VALUES (1789, NULL, NULL, NULL, NULL, NULL, 226, NULL);
+INSERT INTO datos_laborales VALUES (1790, NULL, NULL, NULL, NULL, NULL, 229, NULL);
+INSERT INTO datos_laborales VALUES (1791, NULL, NULL, NULL, NULL, NULL, 230, NULL);
+INSERT INTO datos_laborales VALUES (1792, NULL, NULL, NULL, NULL, NULL, 232, NULL);
+INSERT INTO datos_laborales VALUES (1793, NULL, NULL, NULL, NULL, NULL, 234, NULL);
+INSERT INTO datos_laborales VALUES (1794, NULL, NULL, NULL, NULL, NULL, 235, NULL);
+INSERT INTO datos_laborales VALUES (1795, NULL, 'Jardin 907 - Jardin 917', NULL, NULL, NULL, 192, 'Directora y Vicedirectora');
+INSERT INTO datos_laborales VALUES (1796, NULL, NULL, NULL, NULL, NULL, 243, NULL);
+INSERT INTO datos_laborales VALUES (1797, NULL, NULL, NULL, NULL, NULL, 245, NULL);
+INSERT INTO datos_laborales VALUES (1798, NULL, NULL, NULL, NULL, NULL, 248, NULL);
+INSERT INTO datos_laborales VALUES (1799, NULL, NULL, NULL, NULL, NULL, 249, NULL);
+INSERT INTO datos_laborales VALUES (1800, NULL, NULL, NULL, NULL, NULL, 251, NULL);
+INSERT INTO datos_laborales VALUES (1801, NULL, NULL, NULL, NULL, NULL, 252, NULL);
+INSERT INTO datos_laborales VALUES (1802, NULL, NULL, NULL, NULL, NULL, 255, NULL);
+INSERT INTO datos_laborales VALUES (1803, NULL, NULL, NULL, NULL, NULL, 257, NULL);
+INSERT INTO datos_laborales VALUES (1804, NULL, NULL, NULL, NULL, NULL, 258, NULL);
+INSERT INTO datos_laborales VALUES (1805, NULL, NULL, NULL, NULL, NULL, 262, NULL);
+INSERT INTO datos_laborales VALUES (1806, NULL, NULL, NULL, NULL, NULL, 263, NULL);
+INSERT INTO datos_laborales VALUES (1807, NULL, NULL, NULL, NULL, NULL, 264, NULL);
+INSERT INTO datos_laborales VALUES (1808, NULL, NULL, NULL, NULL, NULL, 267, NULL);
+INSERT INTO datos_laborales VALUES (1809, NULL, NULL, NULL, NULL, NULL, 273, NULL);
+INSERT INTO datos_laborales VALUES (1810, NULL, NULL, NULL, NULL, NULL, 274, NULL);
+INSERT INTO datos_laborales VALUES (1811, NULL, NULL, NULL, NULL, 'nabalos@penguinargentina.com.ar', 276, 'Auxiliar A Textil');
+INSERT INTO datos_laborales VALUES (1812, NULL, NULL, NULL, NULL, NULL, 278, NULL);
+INSERT INTO datos_laborales VALUES (1813, NULL, NULL, NULL, NULL, NULL, 290, 'Profesora');
+INSERT INTO datos_laborales VALUES (1814, NULL, NULL, NULL, NULL, NULL, 291, 'Comerciante / Artesana');
+INSERT INTO datos_laborales VALUES (1815, NULL, NULL, NULL, NULL, NULL, 294, NULL);
+INSERT INTO datos_laborales VALUES (1816, NULL, NULL, NULL, NULL, NULL, 297, NULL);
+INSERT INTO datos_laborales VALUES (1817, NULL, 'Toyota', NULL, NULL, 'gbalduzzi@toyota.com.ar', 298, 'Adm en Toyota');
+INSERT INTO datos_laborales VALUES (1818, NULL, 'Grasatto Pilar', NULL, NULL, NULL, 302, 'Empleada');
+INSERT INTO datos_laborales VALUES (1819, NULL, NULL, NULL, NULL, NULL, 305, NULL);
+INSERT INTO datos_laborales VALUES (1820, NULL, NULL, NULL, NULL, NULL, 307, 'Traductora');
+INSERT INTO datos_laborales VALUES (1821, NULL, NULL, NULL, '0345-431-0144', NULL, 321, 'Contador Público');
+INSERT INTO datos_laborales VALUES (1822, NULL, NULL, NULL, NULL, NULL, 323, 'Independiente');
+INSERT INTO datos_laborales VALUES (1823, NULL, NULL, NULL, NULL, NULL, 327, NULL);
+INSERT INTO datos_laborales VALUES (1824, NULL, NULL, NULL, NULL, NULL, 329, NULL);
+INSERT INTO datos_laborales VALUES (1825, NULL, NULL, NULL, NULL, NULL, 355, NULL);
+INSERT INTO datos_laborales VALUES (1826, NULL, 'CCU Arg', NULL, NULL, NULL, 356, 'Operador');
+INSERT INTO datos_laborales VALUES (1827, NULL, NULL, NULL, NULL, NULL, 389, NULL);
+INSERT INTO datos_laborales VALUES (1828, NULL, 'Mahle Arg (Garin)', NULL, NULL, 'antonela.faces@ar.mahle.com', 390, 'Lic en Comercio Exterior');
+INSERT INTO datos_laborales VALUES (1829, NULL, NULL, NULL, NULL, NULL, 393, NULL);
+INSERT INTO datos_laborales VALUES (1830, NULL, 'Third Time SA', NULL, NULL, NULL, 419, 'Encargada de Local');
+INSERT INTO datos_laborales VALUES (1831, NULL, NULL, NULL, NULL, NULL, 422, NULL);
+INSERT INTO datos_laborales VALUES (1832, NULL, NULL, NULL, NULL, NULL, 423, NULL);
+INSERT INTO datos_laborales VALUES (1833, NULL, 'Ruedas Hofer', NULL, '4443-1462', 'ana@ruedashofer.com.ar', 456, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1834, NULL, NULL, NULL, NULL, NULL, 458, NULL);
+INSERT INTO datos_laborales VALUES (1835, NULL, NULL, NULL, NULL, NULL, 459, 'Ama de Casa');
+INSERT INTO datos_laborales VALUES (1836, NULL, NULL, NULL, NULL, NULL, 461, NULL);
+INSERT INTO datos_laborales VALUES (1837, NULL, NULL, NULL, NULL, NULL, 462, NULL);
+INSERT INTO datos_laborales VALUES (1838, NULL, NULL, NULL, NULL, NULL, 463, 'independiente');
+INSERT INTO datos_laborales VALUES (1839, NULL, '3M', NULL, NULL, NULL, 487, 'Lic en Adm de Empresas');
+INSERT INTO datos_laborales VALUES (1840, NULL, NULL, NULL, NULL, NULL, 489, 'Docente');
+INSERT INTO datos_laborales VALUES (1841, NULL, 'Dalde Blindajes', NULL, '4544-4763', 'nmunoz@dalde.com.ar', 521, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1842, NULL, NULL, NULL, NULL, NULL, 523, 'Docente');
+INSERT INTO datos_laborales VALUES (1843, NULL, NULL, NULL, NULL, NULL, 524, NULL);
+INSERT INTO datos_laborales VALUES (1844, NULL, NULL, NULL, NULL, 'info@mariananelson.com.ar', 527, 'Escenografa');
+INSERT INTO datos_laborales VALUES (1845, NULL, NULL, NULL, NULL, NULL, 528, NULL);
+INSERT INTO datos_laborales VALUES (1846, NULL, 'Top3', NULL, NULL, 'top3pilar@gmail.com', 529, 'Profesora de Teatro');
+INSERT INTO datos_laborales VALUES (1847, NULL, NULL, NULL, NULL, NULL, 554, 'Psicologa');
+INSERT INTO datos_laborales VALUES (1848, NULL, NULL, NULL, NULL, NULL, 555, NULL);
+INSERT INTO datos_laborales VALUES (1849, NULL, 'OSDE', NULL, NULL, 'flavia.pesce@osde.com.ar', 556, 'Empleada');
+INSERT INTO datos_laborales VALUES (1850, NULL, NULL, NULL, NULL, NULL, 557, NULL);
+INSERT INTO datos_laborales VALUES (1851, NULL, NULL, NULL, NULL, NULL, 558, NULL);
+INSERT INTO datos_laborales VALUES (1852, NULL, NULL, NULL, NULL, NULL, 560, NULL);
+INSERT INTO datos_laborales VALUES (1853, NULL, NULL, NULL, NULL, NULL, 565, 'Secretaria EE 501');
+INSERT INTO datos_laborales VALUES (1854, NULL, NULL, NULL, NULL, NULL, 593, NULL);
+INSERT INTO datos_laborales VALUES (1855, NULL, NULL, NULL, NULL, NULL, 594, 'Instr. Pilates');
+INSERT INTO datos_laborales VALUES (1856, NULL, NULL, NULL, NULL, NULL, 596, 'Ama de Casa');
+INSERT INTO datos_laborales VALUES (1857, NULL, NULL, NULL, NULL, NULL, 597, NULL);
+INSERT INTO datos_laborales VALUES (1858, NULL, 'Chevrolet', NULL, NULL, NULL, 598, 'Administrativo');
+INSERT INTO datos_laborales VALUES (1859, NULL, NULL, NULL, NULL, NULL, 170, NULL);
+INSERT INTO datos_laborales VALUES (1860, NULL, 'TGV', NULL, NULL, NULL, 171, 'INGENIERA INFORMATICA');
+INSERT INTO datos_laborales VALUES (1861, NULL, 'Cablevision', NULL, NULL, NULL, 629, 'Atencion al cliente');
+INSERT INTO datos_laborales VALUES (1862, NULL, NULL, NULL, NULL, NULL, 630, NULL);
+INSERT INTO datos_laborales VALUES (1863, NULL, NULL, NULL, NULL, NULL, 631, NULL);
+INSERT INTO datos_laborales VALUES (1864, NULL, 'Ferrostar', NULL, '1135427638', NULL, 632, 'Comerciante');
+INSERT INTO datos_laborales VALUES (1865, NULL, NULL, NULL, NULL, NULL, 634, NULL);
+INSERT INTO datos_laborales VALUES (1866, NULL, NULL, NULL, NULL, NULL, 635, NULL);
+INSERT INTO datos_laborales VALUES (1867, NULL, 'DGCyE', NULL, NULL, NULL, 639, 'Docente');
+INSERT INTO datos_laborales VALUES (1868, NULL, NULL, NULL, NULL, NULL, 646, NULL);
+INSERT INTO datos_laborales VALUES (1869, NULL, NULL, NULL, NULL, NULL, 50, 'MASOTERAPEUTA');
+INSERT INTO datos_laborales VALUES (1870, NULL, NULL, NULL, NULL, NULL, 53, NULL);
+INSERT INTO datos_laborales VALUES (1871, NULL, NULL, NULL, NULL, NULL, 75, 'VENDEDORA');
+INSERT INTO datos_laborales VALUES (1872, NULL, NULL, NULL, NULL, NULL, 96, NULL);
+INSERT INTO datos_laborales VALUES (1873, NULL, NULL, NULL, NULL, NULL, 108, NULL);
+INSERT INTO datos_laborales VALUES (1874, NULL, NULL, NULL, NULL, NULL, 127, NULL);
+INSERT INTO datos_laborales VALUES (1875, NULL, NULL, NULL, NULL, NULL, 129, NULL);
+INSERT INTO datos_laborales VALUES (1876, NULL, NULL, NULL, NULL, NULL, 112, NULL);
+INSERT INTO datos_laborales VALUES (1877, NULL, 'CAR SRL', NULL, NULL, 'INFO_CARSRL@GMAIL.COM', 15, 'SOCIA GERENTE');
+INSERT INTO datos_laborales VALUES (1878, NULL, NULL, NULL, NULL, NULL, 31, 'ACOMPAÑANTE TERAPEUTICO');
+INSERT INTO datos_laborales VALUES (1879, NULL, NULL, NULL, NULL, NULL, 7, 'COMERCIANTE');
+INSERT INTO datos_laborales VALUES (1880, NULL, 'DGCYE', NULL, NULL, NULL, 11, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1881, NULL, NULL, NULL, NULL, NULL, 12, 'CONTADOR PUBLICO');
+INSERT INTO datos_laborales VALUES (1882, NULL, NULL, NULL, NULL, NULL, 13, 'COSMETOLOGIA');
+INSERT INTO datos_laborales VALUES (1883, NULL, NULL, NULL, NULL, NULL, 19, NULL);
+INSERT INTO datos_laborales VALUES (1884, NULL, NULL, NULL, NULL, NULL, 24, 'AMA DE CASA');
+INSERT INTO datos_laborales VALUES (2015, NULL, NULL, NULL, NULL, NULL, 358, NULL);
+INSERT INTO datos_laborales VALUES (1885, NULL, 'IVICON SA', 'CUCHA CUCHA 770', '1148889498', 'ALBERTOIGLINO@GMAIL.COM', 32, 'INGENIERO');
+INSERT INTO datos_laborales VALUES (1886, NULL, NULL, NULL, NULL, NULL, 33, 'ABOGADA');
+INSERT INTO datos_laborales VALUES (1887, NULL, NULL, NULL, NULL, NULL, 34, NULL);
+INSERT INTO datos_laborales VALUES (1888, NULL, NULL, NULL, NULL, NULL, 47, 'MASAJES');
+INSERT INTO datos_laborales VALUES (1889, NULL, NULL, NULL, NULL, NULL, 42, 'AMA DE CASA');
+INSERT INTO datos_laborales VALUES (1890, NULL, 'DOSUBA', 'URIBURU 860', '52875807', NULL, 43, 'ABOGADA');
+INSERT INTO datos_laborales VALUES (1891, NULL, NULL, NULL, NULL, NULL, 48, NULL);
+INSERT INTO datos_laborales VALUES (1892, NULL, 'AMERICAN BROKER SA', NULL, NULL, NULL, 55, 'EMPLEADA ADMI');
+INSERT INTO datos_laborales VALUES (1893, NULL, NULL, NULL, NULL, NULL, 4, 'COMERCIANTE');
+INSERT INTO datos_laborales VALUES (1894, NULL, NULL, NULL, NULL, NULL, 98, NULL);
+INSERT INTO datos_laborales VALUES (1895, NULL, NULL, NULL, NULL, NULL, 52, 'PROFESORA DE PINTURA DECORATIVA');
+INSERT INTO datos_laborales VALUES (1896, NULL, 'PROFESORA DE TEATRO', NULL, NULL, NULL, 20, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1897, NULL, 'UNIVERSIDAD DE LA MATANZA', 'F VARELA 1912 SAN JUSTO', '44808959', NULL, 58, 'LIC EN TRABAJO SOCIAL');
+INSERT INTO datos_laborales VALUES (1898, NULL, NULL, NULL, NULL, NULL, 81, NULL);
+INSERT INTO datos_laborales VALUES (1899, NULL, NULL, NULL, NULL, NULL, 88, NULL);
+INSERT INTO datos_laborales VALUES (1900, NULL, NULL, NULL, NULL, NULL, 115, NULL);
+INSERT INTO datos_laborales VALUES (1901, NULL, NULL, NULL, NULL, NULL, 90, NULL);
+INSERT INTO datos_laborales VALUES (1902, NULL, NULL, NULL, NULL, NULL, 99, NULL);
+INSERT INTO datos_laborales VALUES (1903, NULL, NULL, NULL, NULL, NULL, 111, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1904, NULL, NULL, NULL, NULL, NULL, 140, NULL);
+INSERT INTO datos_laborales VALUES (1905, NULL, NULL, NULL, NULL, NULL, 142, NULL);
+INSERT INTO datos_laborales VALUES (1906, NULL, NULL, NULL, NULL, NULL, 152, NULL);
+INSERT INTO datos_laborales VALUES (1907, NULL, NULL, NULL, NULL, NULL, 153, 'PROFESORA DE INGLES');
+INSERT INTO datos_laborales VALUES (1908, NULL, NULL, NULL, NULL, NULL, 156, 'PILATES');
+INSERT INTO datos_laborales VALUES (1909, NULL, NULL, NULL, NULL, NULL, 158, 'MASOTERAPEUTA');
+INSERT INTO datos_laborales VALUES (1910, NULL, NULL, NULL, NULL, NULL, 167, 'FONOAUDIOLOGA');
+INSERT INTO datos_laborales VALUES (1911, NULL, NULL, NULL, NULL, NULL, 172, 'PROFESORA DE EDUCACION FISICA');
+INSERT INTO datos_laborales VALUES (1912, NULL, NULL, NULL, NULL, NULL, 174, 'DOCENTE');
+INSERT INTO datos_laborales VALUES (1913, NULL, NULL, NULL, NULL, NULL, 176, 'GRAFOANALISTA');
+INSERT INTO datos_laborales VALUES (1914, NULL, 'Telefónica', NULL, '43323854', 'andres.ramos@telefonica.com', 179, 'Consultor');
+INSERT INTO datos_laborales VALUES (1915, NULL, NULL, NULL, NULL, NULL, 180, 'Contador Publico');
+INSERT INTO datos_laborales VALUES (1916, NULL, NULL, NULL, NULL, NULL, 280, 'Docente');
+INSERT INTO datos_laborales VALUES (1917, NULL, 'Fox', NULL, NULL, NULL, 283, 'Productora de TV');
+INSERT INTO datos_laborales VALUES (1918, NULL, 'INEBA', NULL, NULL, 'ealvarez@ineba.net', 288, 'gastronomico');
+INSERT INTO datos_laborales VALUES (1919, NULL, 'My3 Inversiones', NULL, '02304300125', 'namaya@my3.com.ar', 289, 'Administrativas');
+INSERT INTO datos_laborales VALUES (1920, NULL, 'Hospital Austral', NULL, '0230-4482069', NULL, 292, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1921, NULL, 'Servicare SRL', NULL, NULL, NULL, 293, 'Empresaria');
+INSERT INTO datos_laborales VALUES (1922, NULL, NULL, NULL, NULL, NULL, 295, NULL);
+INSERT INTO datos_laborales VALUES (1923, NULL, 'Volvo Trucks y Buses Arg', NULL, '03327-415667', 'paula.barbieri.2@volvo.com', 299, 'Recepcionista');
+INSERT INTO datos_laborales VALUES (1924, NULL, 'Instituto Psicosomático', NULL, NULL, 'psicosomatica.ipba@gmail.com', 303, 'Secretaria - Fotografa');
+INSERT INTO datos_laborales VALUES (1925, NULL, 'D.G.C y ED/Sect Ed CABA', NULL, '4247-2916', NULL, 306, 'Docente');
+INSERT INTO datos_laborales VALUES (1926, NULL, NULL, NULL, NULL, NULL, 322, NULL);
+INSERT INTO datos_laborales VALUES (1927, NULL, 'SEDRONAR (Presidencia de la Nación)', NULL, '4320-1200 int 1113', 'nbuzeta@sedronar.gov.ar', 325, NULL);
+INSERT INTO datos_laborales VALUES (1928, NULL, NULL, NULL, NULL, 'andrealuna.consultorio@gmail.com', 328, 'Dermatocosmiatra');
+INSERT INTO datos_laborales VALUES (1929, NULL, NULL, NULL, NULL, NULL, 337, NULL);
+INSERT INTO datos_laborales VALUES (1930, NULL, NULL, NULL, NULL, NULL, 351, NULL);
+INSERT INTO datos_laborales VALUES (1931, NULL, 'INTA', NULL, NULL, 'costaleandro@inta.gov.ar', 357, 'Empleado');
+INSERT INTO datos_laborales VALUES (1932, NULL, NULL, NULL, NULL, NULL, 360, 'Terapeuta Floral');
+INSERT INTO datos_laborales VALUES (1933, NULL, 'Colegio Santa María', NULL, NULL, NULL, 377, 'Maestra');
+INSERT INTO datos_laborales VALUES (1934, NULL, 'Independiente', NULL, NULL, 'nataliafavanomakeup@gmail.com', 392, 'Maquilladora Profesional');
+INSERT INTO datos_laborales VALUES (1935, NULL, NULL, NULL, NULL, NULL, 395, NULL);
+INSERT INTO datos_laborales VALUES (1936, NULL, NULL, NULL, NULL, NULL, 396, 'Docente de Media');
+INSERT INTO datos_laborales VALUES (1937, NULL, NULL, NULL, NULL, NULL, 398, NULL);
+INSERT INTO datos_laborales VALUES (1938, NULL, NULL, NULL, NULL, NULL, 402, NULL);
+INSERT INTO datos_laborales VALUES (1939, NULL, NULL, NULL, NULL, NULL, 420, 'Independiente');
+INSERT INTO datos_laborales VALUES (1940, NULL, NULL, NULL, NULL, NULL, 438, 'Tecnica en Laboratorio');
+INSERT INTO datos_laborales VALUES (1941, NULL, NULL, NULL, '49194547', 'kitoc@hotmail.com', 449, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1942, NULL, NULL, NULL, NULL, NULL, 452, NULL);
+INSERT INTO datos_laborales VALUES (1943, NULL, NULL, NULL, NULL, NULL, 460, NULL);
+INSERT INTO datos_laborales VALUES (1944, NULL, 'Edesur', NULL, '4370-3861', 'malarraza@edesur.com.ar', 467, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1945, NULL, 'Arba', NULL, NULL, 'melopez@arba.gov.ar', 474, 'Empleada Pública / Personal Trainer');
+INSERT INTO datos_laborales VALUES (1946, NULL, NULL, NULL, NULL, NULL, 481, 'Personal Trainer');
+INSERT INTO datos_laborales VALUES (1947, NULL, 'Maria Cher', NULL, NULL, NULL, 491, 'Encargada de Local de Indumentaria');
+INSERT INTO datos_laborales VALUES (1948, NULL, NULL, NULL, NULL, NULL, 496, 'Lic. Enfermeria');
+INSERT INTO datos_laborales VALUES (1949, NULL, NULL, NULL, NULL, NULL, 516, 'Vendedora');
+INSERT INTO datos_laborales VALUES (1950, NULL, 'Granja Tres Arroyos', NULL, '0230-4471282', 'mnapoli@gta.com.ar', 525, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1951, NULL, NULL, NULL, NULL, NULL, 532, 'Ama de Casa');
+INSERT INTO datos_laborales VALUES (1952, NULL, 'Escuela Infantil', NULL, NULL, 'ana.patera@yahoo.com.ar', 545, 'Psicopedagoga');
+INSERT INTO datos_laborales VALUES (1953, NULL, NULL, NULL, NULL, NULL, 548, 'Masajista - Niñera');
+INSERT INTO datos_laborales VALUES (1954, NULL, NULL, NULL, NULL, NULL, 559, NULL);
+INSERT INTO datos_laborales VALUES (1955, NULL, 'Municipalidad de Escobar', NULL, '0348-4430496', NULL, 574, 'Empl. Administrativa / Instr. Fitness');
+INSERT INTO datos_laborales VALUES (1956, NULL, NULL, NULL, NULL, NULL, 581, NULL);
+INSERT INTO datos_laborales VALUES (1957, NULL, 'Big Ben', NULL, NULL, 'info@bigbendesarrollos.com', 595, 'Administración');
+INSERT INTO datos_laborales VALUES (1958, NULL, 'Instituto Don Orirone', NULL, NULL, NULL, 599, 'Orient. Gabinete Psicoped./ Resp integrac escolar');
+INSERT INTO datos_laborales VALUES (1959, NULL, NULL, NULL, NULL, NULL, 604, 'Reservations');
+INSERT INTO datos_laborales VALUES (1960, NULL, NULL, NULL, NULL, NULL, 605, 'Administrativa - Cdor Publ.');
+INSERT INTO datos_laborales VALUES (1961, NULL, 'Munic Malvinas Argentinas / OSPIT', NULL, NULL, NULL, 606, 'Medica Pediatra');
+INSERT INTO datos_laborales VALUES (1962, NULL, NULL, NULL, NULL, NULL, 607, NULL);
+INSERT INTO datos_laborales VALUES (1963, NULL, NULL, NULL, NULL, NULL, 624, NULL);
+INSERT INTO datos_laborales VALUES (1964, NULL, NULL, NULL, NULL, NULL, 625, NULL);
+INSERT INTO datos_laborales VALUES (1965, NULL, NULL, NULL, NULL, NULL, 626, 'Profesora de Yoga');
+INSERT INTO datos_laborales VALUES (1966, NULL, 'Independiente', NULL, NULL, NULL, 627, 'Terapeuta');
+INSERT INTO datos_laborales VALUES (1967, NULL, 'Independiente', NULL, NULL, NULL, 633, 'Arquitecta');
+INSERT INTO datos_laborales VALUES (1968, NULL, 'Itra', NULL, '4775-7992', 'info@institutoarticular.com', 636, 'Emp. Administrativa');
+INSERT INTO datos_laborales VALUES (1969, NULL, NULL, NULL, NULL, NULL, 652, NULL);
+INSERT INTO datos_laborales VALUES (1970, NULL, 'propia', NULL, NULL, 'centroholisticvolveralaesencia@gmail.com', 522, 'terapeuta e instructora');
+INSERT INTO datos_laborales VALUES (1971, NULL, NULL, NULL, NULL, NULL, 70, NULL);
+INSERT INTO datos_laborales VALUES (1972, NULL, NULL, NULL, NULL, NULL, 73, 'FONOAUDIOLOGA');
+INSERT INTO datos_laborales VALUES (1973, NULL, NULL, NULL, NULL, NULL, 59, 'PSICOLOGA');
+INSERT INTO datos_laborales VALUES (1974, NULL, NULL, NULL, NULL, NULL, 103, NULL);
+INSERT INTO datos_laborales VALUES (1975, NULL, 'Escuela de Yoga Hari Om SRL', NULL, NULL, NULL, 190, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1976, NULL, 'Ministerio de Justicia y DDHH', NULL, '1153004000 int 76013', 'deluca@jus.gov.ar', 191, 'Administración Pública');
+INSERT INTO datos_laborales VALUES (1977, NULL, NULL, NULL, NULL, NULL, 214, 'Comerciante');
+INSERT INTO datos_laborales VALUES (1978, NULL, NULL, NULL, NULL, NULL, 277, 'Acompañante terapeutico');
+INSERT INTO datos_laborales VALUES (1979, NULL, 'Textil Bally', NULL, '4666-9791', NULL, 279, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1980, NULL, NULL, NULL, NULL, NULL, 281, NULL);
+INSERT INTO datos_laborales VALUES (1981, NULL, 'El Dorado Bambú', NULL, NULL, NULL, 282, 'Comercial');
+INSERT INTO datos_laborales VALUES (1982, NULL, NULL, NULL, NULL, NULL, 284, 'Artesana - Prof de Musica');
+INSERT INTO datos_laborales VALUES (1983, NULL, 'B-MS', NULL, '5198-8204', 'jesica.alberti@bms.com', 285, 'Marketing - Asociada de Producto');
+INSERT INTO datos_laborales VALUES (1984, NULL, NULL, NULL, NULL, NULL, 286, NULL);
+INSERT INTO datos_laborales VALUES (1985, NULL, NULL, NULL, NULL, NULL, 320, NULL);
+INSERT INTO datos_laborales VALUES (1986, NULL, 'Pilates Urbano', NULL, NULL, NULL, 308, 'Instructor de Pilates');
+INSERT INTO datos_laborales VALUES (1987, NULL, NULL, NULL, NULL, NULL, 309, 'Profesor de yoga');
+INSERT INTO datos_laborales VALUES (1988, NULL, NULL, NULL, NULL, NULL, 310, 'Veterinaria');
+INSERT INTO datos_laborales VALUES (1989, NULL, NULL, NULL, NULL, NULL, 311, 'Ingeniera');
+INSERT INTO datos_laborales VALUES (1990, NULL, 'Municipalidad de Pilar', NULL, NULL, NULL, 312, 'Camarografo y Editor');
+INSERT INTO datos_laborales VALUES (1991, NULL, NULL, NULL, NULL, NULL, 313, 'Asistente Administrativa');
+INSERT INTO datos_laborales VALUES (1992, NULL, NULL, NULL, NULL, NULL, 315, NULL);
+INSERT INTO datos_laborales VALUES (1993, NULL, NULL, NULL, NULL, NULL, 316, NULL);
+INSERT INTO datos_laborales VALUES (1994, NULL, 'Centro Med Pueyrredon', NULL, '08009993556', NULL, 317, 'Administrativa');
+INSERT INTO datos_laborales VALUES (1995, NULL, 'Lab de Análisis Ambientales', NULL, NULL, NULL, 318, 'Codirectora Técnica Lab Ambiental');
+INSERT INTO datos_laborales VALUES (1996, NULL, NULL, NULL, NULL, NULL, 319, NULL);
+INSERT INTO datos_laborales VALUES (1997, NULL, 'Sheraton Pilar', NULL, '02304385080', 'vcampora@pilar.sheraton.com.ar', 330, 'Supervisora');
+INSERT INTO datos_laborales VALUES (1998, NULL, NULL, NULL, NULL, NULL, 332, NULL);
+INSERT INTO datos_laborales VALUES (1999, NULL, 'independiente', NULL, NULL, NULL, 333, 'Diseño Ind Textil');
+INSERT INTO datos_laborales VALUES (2000, NULL, NULL, NULL, NULL, NULL, 334, 'Arquitecta');
+INSERT INTO datos_laborales VALUES (2001, NULL, NULL, NULL, NULL, NULL, 335, 'Museologa');
+INSERT INTO datos_laborales VALUES (2002, NULL, NULL, NULL, NULL, NULL, 336, NULL);
+INSERT INTO datos_laborales VALUES (2003, NULL, 'Particular', NULL, NULL, NULL, 338, 'Psicologa');
+INSERT INTO datos_laborales VALUES (2004, NULL, NULL, NULL, NULL, NULL, 339, 'Abogada Penalista');
+INSERT INTO datos_laborales VALUES (2005, NULL, NULL, NULL, NULL, NULL, 340, NULL);
+INSERT INTO datos_laborales VALUES (2006, NULL, NULL, NULL, NULL, NULL, 341, 'Jubilada');
+INSERT INTO datos_laborales VALUES (2007, NULL, 'Cerezo Propiedades', NULL, '02320-494879', 'info@cerezopropiedades.com.ar', 342, NULL);
+INSERT INTO datos_laborales VALUES (2008, NULL, NULL, NULL, NULL, NULL, 343, NULL);
+INSERT INTO datos_laborales VALUES (2009, NULL, NULL, NULL, NULL, NULL, 344, 'Analista de calidad');
+INSERT INTO datos_laborales VALUES (2010, NULL, NULL, NULL, NULL, NULL, 345, NULL);
+INSERT INTO datos_laborales VALUES (2011, NULL, NULL, NULL, NULL, NULL, 346, 'Administrativa');
+INSERT INTO datos_laborales VALUES (2012, NULL, NULL, NULL, NULL, NULL, 348, NULL);
+INSERT INTO datos_laborales VALUES (2013, NULL, NULL, NULL, NULL, NULL, 352, NULL);
+INSERT INTO datos_laborales VALUES (2014, NULL, NULL, NULL, NULL, NULL, 353, 'Asistente de Peluquería');
+INSERT INTO datos_laborales VALUES (2016, NULL, 'Poster', NULL, NULL, NULL, 359, 'Administrativa');
+INSERT INTO datos_laborales VALUES (2017, NULL, NULL, NULL, NULL, NULL, 361, NULL);
+INSERT INTO datos_laborales VALUES (2018, NULL, NULL, NULL, NULL, NULL, 362, NULL);
+INSERT INTO datos_laborales VALUES (2019, NULL, NULL, NULL, NULL, NULL, 363, 'Analista de control de calidad');
+INSERT INTO datos_laborales VALUES (2020, NULL, NULL, NULL, NULL, NULL, 364, 'Administrativa');
+INSERT INTO datos_laborales VALUES (2021, NULL, NULL, NULL, NULL, NULL, 365, NULL);
+INSERT INTO datos_laborales VALUES (2022, NULL, NULL, NULL, NULL, NULL, 366, NULL);
+INSERT INTO datos_laborales VALUES (2023, NULL, NULL, NULL, NULL, NULL, 367, NULL);
+INSERT INTO datos_laborales VALUES (2024, NULL, NULL, NULL, NULL, NULL, 368, NULL);
+INSERT INTO datos_laborales VALUES (2025, NULL, NULL, NULL, NULL, NULL, 369, NULL);
+INSERT INTO datos_laborales VALUES (2026, NULL, 'Embajada de Italia', NULL, NULL, NULL, 370, 'Empleada Administrativa');
+INSERT INTO datos_laborales VALUES (2027, NULL, NULL, NULL, NULL, NULL, 371, 'Administración');
+INSERT INTO datos_laborales VALUES (2028, NULL, NULL, NULL, NULL, NULL, 372, NULL);
+INSERT INTO datos_laborales VALUES (2029, NULL, 'Materiales CyG SRL (corralón)', NULL, NULL, 'corralondiez@bbt.net.ar', 373, 'Administración/Contaduría');
+INSERT INTO datos_laborales VALUES (2030, NULL, NULL, NULL, NULL, NULL, 375, NULL);
+INSERT INTO datos_laborales VALUES (2031, NULL, NULL, NULL, '02224-470590/470769', NULL, 378, 'Docente');
+INSERT INTO datos_laborales VALUES (2032, NULL, NULL, NULL, NULL, NULL, 379, NULL);
+INSERT INTO datos_laborales VALUES (2033, NULL, NULL, NULL, NULL, NULL, 380, 'Peluquera');
+INSERT INTO datos_laborales VALUES (2034, NULL, NULL, NULL, NULL, NULL, 382, 'Artista Plastica');
+INSERT INTO datos_laborales VALUES (2035, NULL, 'Net Broker', NULL, NULL, 'sol.dubois@netbroker.com.ar', 383, 'Ejecutiva de Cuentas ART');
+INSERT INTO datos_laborales VALUES (2036, NULL, 'Independiente', NULL, NULL, NULL, 384, 'Maestro Mayor de Obra');
+INSERT INTO datos_laborales VALUES (2037, NULL, NULL, NULL, NULL, NULL, 385, 'Docente');
+INSERT INTO datos_laborales VALUES (2038, NULL, NULL, NULL, NULL, NULL, 387, NULL);
+INSERT INTO datos_laborales VALUES (2039, NULL, NULL, NULL, NULL, NULL, 397, NULL);
+INSERT INTO datos_laborales VALUES (2040, NULL, NULL, NULL, NULL, NULL, 399, 'Gua de Turismo');
+INSERT INTO datos_laborales VALUES (2041, NULL, NULL, NULL, NULL, NULL, 401, 'Actriz, Animadora en Eventos, Docente');
+INSERT INTO datos_laborales VALUES (2042, NULL, 'Tribunal Sup de Justicia CABA', NULL, '4370-8500 int 1305', 'cferrari@tsjbaires.gov.ar', 403, 'Abogada');
+INSERT INTO datos_laborales VALUES (2043, NULL, NULL, NULL, NULL, NULL, 404, 'OSDE');
+INSERT INTO datos_laborales VALUES (2044, NULL, NULL, NULL, NULL, NULL, 405, NULL);
+INSERT INTO datos_laborales VALUES (2045, NULL, NULL, NULL, NULL, NULL, 406, 'Mc Donals');
+INSERT INTO datos_laborales VALUES (2046, NULL, NULL, NULL, NULL, NULL, 407, NULL);
+INSERT INTO datos_laborales VALUES (2047, NULL, NULL, NULL, NULL, NULL, 408, 'Ama de casa');
+INSERT INTO datos_laborales VALUES (2048, NULL, NULL, NULL, NULL, NULL, 409, NULL);
+INSERT INTO datos_laborales VALUES (2049, NULL, NULL, NULL, NULL, NULL, 410, NULL);
+INSERT INTO datos_laborales VALUES (2050, NULL, 'Herbalife', NULL, NULL, NULL, 411, 'Comerciante');
+INSERT INTO datos_laborales VALUES (2051, NULL, 'Manuli SA', NULL, NULL, NULL, 413, NULL);
+INSERT INTO datos_laborales VALUES (2052, NULL, 'Dirección Gral de Escuelas Pcia BsAs', NULL, NULL, NULL, 414, 'Docente');
+INSERT INTO datos_laborales VALUES (2053, NULL, 'Yazaki', NULL, NULL, NULL, 416, 'Operaria');
+INSERT INTO datos_laborales VALUES (2054, NULL, NULL, NULL, NULL, NULL, 417, 'Comerciante');
+INSERT INTO datos_laborales VALUES (2055, NULL, NULL, NULL, NULL, NULL, 418, 'Docente');
+INSERT INTO datos_laborales VALUES (2056, NULL, NULL, NULL, NULL, NULL, 426, NULL);
+INSERT INTO datos_laborales VALUES (2057, NULL, 'La Segunda', NULL, '0230-4492302', 'rhrodriguez@lasegunda.com.ar', 428, 'Administrativa');
+INSERT INTO datos_laborales VALUES (2058, NULL, NULL, NULL, NULL, NULL, 431, NULL);
+INSERT INTO datos_laborales VALUES (2059, NULL, 'Sinopec', NULL, NULL, NULL, 432, 'Ingeniera');
+INSERT INTO datos_laborales VALUES (2060, NULL, 'Megatlon', NULL, '0230-44384111', NULL, 434, NULL);
+INSERT INTO datos_laborales VALUES (2061, NULL, NULL, NULL, NULL, NULL, 436, NULL);
+INSERT INTO datos_laborales VALUES (2062, NULL, NULL, NULL, NULL, NULL, 437, NULL);
+INSERT INTO datos_laborales VALUES (2063, NULL, 'Jumbo Retail', NULL, NULL, NULL, 441, 'Vendedora');
+INSERT INTO datos_laborales VALUES (2064, NULL, 'Rapsa SA', NULL, NULL, NULL, 442, 'Analista Quimico Univ');
+INSERT INTO datos_laborales VALUES (2065, NULL, NULL, NULL, NULL, NULL, 443, NULL);
+INSERT INTO datos_laborales VALUES (2066, NULL, NULL, NULL, NULL, NULL, 445, NULL);
+INSERT INTO datos_laborales VALUES (2067, NULL, 'Laboratorio Hidalgo', NULL, '01148985300', 'andrea.gutierrez@laboratoriohidalgo.com', 447, 'Tecnica en Laboratorio');
+INSERT INTO datos_laborales VALUES (2068, NULL, NULL, NULL, NULL, NULL, 450, 'Ama de Casa');
+INSERT INTO datos_laborales VALUES (2069, NULL, NULL, NULL, NULL, NULL, 451, NULL);
+INSERT INTO datos_laborales VALUES (2070, NULL, NULL, NULL, NULL, NULL, 453, 'independiente');
+INSERT INTO datos_laborales VALUES (2071, NULL, NULL, NULL, NULL, NULL, 454, 'Abogada');
+INSERT INTO datos_laborales VALUES (2072, NULL, NULL, NULL, NULL, NULL, 520, NULL);
+INSERT INTO datos_laborales VALUES (2073, NULL, 'Austral - Conicet', NULL, NULL, 'candelarialeiguarda@gmail.com', 469, 'Becaria Investigadora del Conicet');
+INSERT INTO datos_laborales VALUES (2074, NULL, NULL, NULL, NULL, NULL, 470, 'Profesora de Educ Plastica');
+INSERT INTO datos_laborales VALUES (2075, NULL, NULL, NULL, NULL, NULL, 471, NULL);
+INSERT INTO datos_laborales VALUES (2076, NULL, NULL, NULL, NULL, NULL, 473, NULL);
+INSERT INTO datos_laborales VALUES (2077, NULL, 'Centro de Apoyo Escolar en Pilar', NULL, '02304420571', NULL, 475, 'Directora en Centro de Apoyo Escolar');
+INSERT INTO datos_laborales VALUES (2078, NULL, 'AFB International', NULL, NULL, 'mludovico@afbinternational.com.ar', 476, 'Calidad y Aseguramiento en AFB');
+INSERT INTO datos_laborales VALUES (2079, NULL, NULL, NULL, NULL, NULL, 477, 'Docente');
+INSERT INTO datos_laborales VALUES (2080, NULL, NULL, NULL, NULL, NULL, 478, 'Niñera');
+INSERT INTO datos_laborales VALUES (2081, NULL, 'Estudio Prado', NULL, NULL, NULL, 480, 'Empleada Administrativa');
+INSERT INTO datos_laborales VALUES (2082, NULL, NULL, NULL, NULL, NULL, 482, 'Docente');
+INSERT INTO datos_laborales VALUES (2083, NULL, 'Il Giardino Di Maru', NULL, NULL, 'maru@ilgiardinodimaru.com.ar', 483, 'Polisajista');
+INSERT INTO datos_laborales VALUES (2084, NULL, NULL, NULL, NULL, NULL, 484, 'Profesora de Yoga');
+INSERT INTO datos_laborales VALUES (2085, NULL, NULL, NULL, NULL, NULL, 486, 'Profesora de Gimnasia');
+INSERT INTO datos_laborales VALUES (2086, NULL, 'Hospital Austral', NULL, '4482165', 'mmariana@cas.austral.edu.ar', 490, 'Empleada administrativa');
+INSERT INTO datos_laborales VALUES (2087, NULL, NULL, NULL, NULL, NULL, 493, 'Docente nivel Primario');
+INSERT INTO datos_laborales VALUES (2088, NULL, NULL, NULL, NULL, NULL, 494, 'Administrativa');
+INSERT INTO datos_laborales VALUES (2089, NULL, NULL, NULL, '0328-4420478', NULL, 495, 'Abogada');
+INSERT INTO datos_laborales VALUES (2090, NULL, 'Arcor - Vendedora Comercial', NULL, NULL, NULL, 497, 'Comercial / Ventas');
+INSERT INTO datos_laborales VALUES (2091, NULL, NULL, NULL, NULL, NULL, 498, 'Instr. De Yoga / Diseñadora de Tejidos Manuales');
+INSERT INTO datos_laborales VALUES (2092, NULL, NULL, NULL, NULL, NULL, 499, NULL);
+INSERT INTO datos_laborales VALUES (2093, NULL, NULL, NULL, NULL, NULL, 501, NULL);
+INSERT INTO datos_laborales VALUES (2094, NULL, NULL, NULL, NULL, NULL, 502, 'Administrativa Empresarial');
+INSERT INTO datos_laborales VALUES (2095, NULL, NULL, NULL, NULL, NULL, 503, 'Docente - Prof de Plástica');
+INSERT INTO datos_laborales VALUES (2096, NULL, NULL, NULL, NULL, NULL, 504, 'Veterinaria');
+INSERT INTO datos_laborales VALUES (2097, NULL, NULL, NULL, NULL, NULL, 505, NULL);
+INSERT INTO datos_laborales VALUES (2098, NULL, NULL, NULL, NULL, NULL, 506, 'Independiente');
+INSERT INTO datos_laborales VALUES (2099, NULL, NULL, NULL, NULL, NULL, 507, NULL);
+INSERT INTO datos_laborales VALUES (2100, NULL, 'Independiente', NULL, NULL, NULL, 508, 'Abogada');
+INSERT INTO datos_laborales VALUES (2101, NULL, NULL, NULL, NULL, NULL, 509, 'Diseño de indumentaria');
+INSERT INTO datos_laborales VALUES (2102, NULL, NULL, NULL, NULL, NULL, 510, '-');
+INSERT INTO datos_laborales VALUES (2103, NULL, NULL, NULL, NULL, NULL, 512, NULL);
+INSERT INTO datos_laborales VALUES (2104, NULL, NULL, NULL, NULL, NULL, 513, 'independiente');
+INSERT INTO datos_laborales VALUES (2105, NULL, 'independiente', NULL, NULL, NULL, 514, 'Fonoaudiologa');
+INSERT INTO datos_laborales VALUES (2106, NULL, NULL, NULL, NULL, NULL, 515, NULL);
+INSERT INTO datos_laborales VALUES (2107, NULL, NULL, NULL, NULL, NULL, 517, NULL);
+INSERT INTO datos_laborales VALUES (2108, NULL, 'independiente', NULL, NULL, NULL, 518, 'Arquitecta');
+INSERT INTO datos_laborales VALUES (2109, NULL, NULL, NULL, NULL, NULL, 531, 'Traductora');
+INSERT INTO datos_laborales VALUES (2110, NULL, 'Escribania Mihura', NULL, '4393-0024/1549', 'angeles@escribaniamihura.com.ar', 534, 'Carpetista');
+INSERT INTO datos_laborales VALUES (2111, NULL, 'Brick Towers College', NULL, NULL, NULL, 535, 'Docente');
+INSERT INTO datos_laborales VALUES (2112, NULL, NULL, NULL, NULL, NULL, 536, NULL);
+INSERT INTO datos_laborales VALUES (2113, NULL, NULL, NULL, NULL, NULL, 537, NULL);
+INSERT INTO datos_laborales VALUES (2114, NULL, 'Ferroclor SA - Parque Ind Pilar', NULL, NULL, NULL, 538, 'Operario Quimico');
+INSERT INTO datos_laborales VALUES (2115, NULL, 'Esc. Secundaria n°15', NULL, '02320-479077', 'sec_15pilar_@hotmail.com.ar', 539, 'Docente');
+INSERT INTO datos_laborales VALUES (2116, NULL, NULL, NULL, NULL, NULL, 540, NULL);
+INSERT INTO datos_laborales VALUES (2117, NULL, NULL, NULL, NULL, NULL, 542, NULL);
+INSERT INTO datos_laborales VALUES (2118, NULL, NULL, NULL, NULL, NULL, 543, NULL);
+INSERT INTO datos_laborales VALUES (2119, NULL, NULL, NULL, NULL, NULL, 549, 'Abogada');
+INSERT INTO datos_laborales VALUES (2120, NULL, 'Norfoods SA', NULL, '02320620880', NULL, 551, 'Empleada');
+INSERT INTO datos_laborales VALUES (2121, NULL, 'Extramedica', NULL, NULL, NULL, 552, 'Administrativa');
+INSERT INTO datos_laborales VALUES (2122, NULL, NULL, NULL, NULL, NULL, 562, 'Trabajadora Social');
+INSERT INTO datos_laborales VALUES (2123, NULL, NULL, NULL, NULL, NULL, 563, 'Docente');
+INSERT INTO datos_laborales VALUES (2124, NULL, 'Independiente', NULL, NULL, NULL, 564, 'Pastelera');
+INSERT INTO datos_laborales VALUES (2125, NULL, NULL, NULL, NULL, NULL, 566, 'Docente');
+INSERT INTO datos_laborales VALUES (2126, NULL, NULL, NULL, NULL, NULL, 567, NULL);
+INSERT INTO datos_laborales VALUES (2127, NULL, NULL, NULL, NULL, NULL, 568, NULL);
+INSERT INTO datos_laborales VALUES (2128, NULL, NULL, NULL, NULL, NULL, 570, NULL);
+INSERT INTO datos_laborales VALUES (2129, NULL, NULL, NULL, NULL, NULL, 572, 'Ama de Casa');
+INSERT INTO datos_laborales VALUES (2130, NULL, NULL, NULL, NULL, NULL, 575, NULL);
+INSERT INTO datos_laborales VALUES (2131, NULL, NULL, NULL, NULL, NULL, 576, NULL);
+INSERT INTO datos_laborales VALUES (2132, NULL, NULL, NULL, NULL, NULL, 577, NULL);
+INSERT INTO datos_laborales VALUES (2133, NULL, 'Mayling', NULL, '0230-4464033', NULL, 578, 'Empleada domestica');
+INSERT INTO datos_laborales VALUES (2134, NULL, NULL, NULL, NULL, 'paisajeverdearq@hotmail.com', 580, 'Paisajista');
+INSERT INTO datos_laborales VALUES (2135, NULL, NULL, NULL, NULL, NULL, 583, NULL);
+INSERT INTO datos_laborales VALUES (2136, NULL, NULL, NULL, NULL, NULL, 586, 'Actriz');
+INSERT INTO datos_laborales VALUES (2137, NULL, NULL, NULL, NULL, NULL, 587, 'Terapeuta');
+INSERT INTO datos_laborales VALUES (2138, NULL, NULL, NULL, NULL, NULL, 588, NULL);
+INSERT INTO datos_laborales VALUES (2139, NULL, NULL, NULL, NULL, NULL, 589, NULL);
+INSERT INTO datos_laborales VALUES (2140, NULL, 'Pilar Cargo', NULL, '0230-4490800', 'vsalvador@pilarcargo.com.ar', 600, 'Administración');
+INSERT INTO datos_laborales VALUES (2141, NULL, 'Defensoría Penal Poder Judicial', NULL, '4629-1331 int 104', 'casanchez@mpba.gov.ar', 601, 'Abogada');
+INSERT INTO datos_laborales VALUES (2142, NULL, NULL, NULL, NULL, NULL, 602, NULL);
+INSERT INTO datos_laborales VALUES (2143, NULL, NULL, NULL, NULL, NULL, 603, NULL);
+INSERT INTO datos_laborales VALUES (2144, NULL, NULL, NULL, NULL, NULL, 609, NULL);
+INSERT INTO datos_laborales VALUES (2145, NULL, NULL, NULL, NULL, NULL, 610, NULL);
+INSERT INTO datos_laborales VALUES (2146, NULL, NULL, NULL, NULL, NULL, 612, NULL);
+INSERT INTO datos_laborales VALUES (2147, NULL, NULL, NULL, NULL, NULL, 614, NULL);
+INSERT INTO datos_laborales VALUES (2148, NULL, 'Dieser San Miguel', NULL, NULL, 'lamercedpilar@lamercedpilar.com', 615, 'Recepcionista');
+INSERT INTO datos_laborales VALUES (2149, NULL, NULL, NULL, NULL, NULL, 616, NULL);
+INSERT INTO datos_laborales VALUES (2150, NULL, NULL, NULL, NULL, NULL, 618, NULL);
+INSERT INTO datos_laborales VALUES (2151, NULL, NULL, NULL, NULL, NULL, 620, NULL);
+INSERT INTO datos_laborales VALUES (2152, NULL, NULL, NULL, NULL, 'misosa@klabin.com.ar', 621, 'Analista Sr de RRHH');
+INSERT INTO datos_laborales VALUES (2153, NULL, NULL, NULL, NULL, NULL, 623, NULL);
+INSERT INTO datos_laborales VALUES (2154, NULL, NULL, NULL, NULL, NULL, 640, 'Maestra');
+INSERT INTO datos_laborales VALUES (2155, NULL, NULL, NULL, NULL, NULL, 641, 'Enseñanza Artística');
+INSERT INTO datos_laborales VALUES (2156, NULL, 'Sport Club Megatlon', NULL, NULL, NULL, 642, 'Instructora Técnicas de Gimnasia');
+INSERT INTO datos_laborales VALUES (2157, NULL, 'Sheraton Hotel', NULL, NULL, NULL, 643, 'Masajista');
+INSERT INTO datos_laborales VALUES (2158, NULL, NULL, NULL, NULL, NULL, 644, NULL);
+INSERT INTO datos_laborales VALUES (2159, NULL, NULL, NULL, NULL, NULL, 645, NULL);
+INSERT INTO datos_laborales VALUES (2160, NULL, NULL, NULL, NULL, NULL, 647, 'Prof de Educación Inicial');
+INSERT INTO datos_laborales VALUES (2161, NULL, NULL, NULL, NULL, NULL, 648, NULL);
+INSERT INTO datos_laborales VALUES (2162, NULL, NULL, NULL, NULL, NULL, 650, 'Jubilada - Ama de Casa');
+INSERT INTO datos_laborales VALUES (2163, NULL, NULL, NULL, NULL, NULL, 651, 'Ama de casa');
+INSERT INTO datos_laborales VALUES (2164, NULL, NULL, NULL, NULL, NULL, 653, NULL);
+INSERT INTO datos_laborales VALUES (2165, NULL, NULL, NULL, NULL, NULL, 40, NULL);
+INSERT INTO datos_laborales VALUES (2166, NULL, 'SELVATICA PILAR', NULL, NULL, NULL, 49, 'ANALISTA EN SERVICIOS GASTRONOMICOS');
 
 
 --
--- TOC entry 2625 (class 0 OID 968284)
--- Dependencies: 220
+-- TOC entry 2674 (class 0 OID 976566)
+-- Dependencies: 222
 -- Data for Name: datos_salud; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO datos_salud VALUES (2, 'asd', false, NULL, false, 6, NULL);
+INSERT INTO datos_salud VALUES (5, 'ACCORD 310', true, NULL, true, 1, 16);
+INSERT INTO datos_salud VALUES (6, 'MEDIFE', true, NULL, true, 2, 11);
+INSERT INTO datos_salud VALUES (7, 'OSECAC', true, NULL, true, 14, 13);
+INSERT INTO datos_salud VALUES (8, 'OCORD SALUD', true, NULL, true, 25, 11);
+INSERT INTO datos_salud VALUES (9, 'GALENO', true, NULL, true, 3, NULL);
+INSERT INTO datos_salud VALUES (10, 'ACCORD SALUD', true, NULL, true, 92, 16);
+INSERT INTO datos_salud VALUES (11, 'OSDE', true, NULL, true, 94, 11);
+INSERT INTO datos_salud VALUES (12, 'SWISS MEDICAL', true, NULL, true, 101, 16);
+INSERT INTO datos_salud VALUES (13, 'IOMA', true, NULL, true, 95, 11);
+INSERT INTO datos_salud VALUES (14, NULL, true, NULL, true, 110, NULL);
+INSERT INTO datos_salud VALUES (15, 'OSPIC', true, NULL, true, 113, 10);
+INSERT INTO datos_salud VALUES (16, 'IOMA', true, NULL, true, 117, 3);
+INSERT INTO datos_salud VALUES (17, 'MEDIFE', true, NULL, true, 27, 16);
+INSERT INTO datos_salud VALUES (18, 'PODER JUDICIAL', true, NULL, NULL, 21, NULL);
+INSERT INTO datos_salud VALUES (19, 'GALENO', true, NULL, NULL, 38, NULL);
+INSERT INTO datos_salud VALUES (20, 'IOMA', true, NULL, true, 119, 16);
+INSERT INTO datos_salud VALUES (21, NULL, true, NULL, true, 126, 10);
+INSERT INTO datos_salud VALUES (22, 'OSDE', true, NULL, true, 138, NULL);
+INSERT INTO datos_salud VALUES (23, 'OSDE', true, NULL, true, 139, 11);
+INSERT INTO datos_salud VALUES (24, 'AMEPBA', true, NULL, true, 141, NULL);
+INSERT INTO datos_salud VALUES (25, 'CEMIC', true, NULL, true, 143, 8);
+INSERT INTO datos_salud VALUES (26, 'OSDE', true, NULL, true, 145, 14);
+INSERT INTO datos_salud VALUES (27, 'ACORD', true, NULL, true, 29, NULL);
+INSERT INTO datos_salud VALUES (28, NULL, true, NULL, true, 46, 11);
+INSERT INTO datos_salud VALUES (29, 'MEDICUS', true, NULL, true, 44, 16);
+INSERT INTO datos_salud VALUES (30, 'OSDE', true, NULL, NULL, 45, 16);
+INSERT INTO datos_salud VALUES (31, 'OSMECON', true, NULL, true, 146, 11);
+INSERT INTO datos_salud VALUES (32, 'OSPEDYC', true, NULL, true, 147, 11);
+INSERT INTO datos_salud VALUES (33, 'ACCORD', true, 'COLESTEROL TIROIDES', true, 148, 16);
+INSERT INTO datos_salud VALUES (34, 'OSDE', true, NULL, true, 149, 16);
+INSERT INTO datos_salud VALUES (35, 'OSDE', true, 'ESCOLIOSIS', true, 154, 11);
+INSERT INTO datos_salud VALUES (36, 'IOMA', true, NULL, true, 157, 16);
+INSERT INTO datos_salud VALUES (37, 'OSDE', true, NULL, true, 160, 11);
+INSERT INTO datos_salud VALUES (38, 'OMINT', true, NULL, true, 161, 8);
+INSERT INTO datos_salud VALUES (39, 'AUI SALUD', true, NULL, true, 162, 16);
+INSERT INTO datos_salud VALUES (40, 'OSDE', true, 'PINZAMIENTO LUMBAR', true, 163, 16);
+INSERT INTO datos_salud VALUES (41, 'OSDE', true, NULL, true, 164, 16);
+INSERT INTO datos_salud VALUES (42, 'ACCORD SALUD', true, 'FIBROMIALGIA', true, 169, 8);
+INSERT INTO datos_salud VALUES (43, 'OSECAC', true, 'CISTITIS INTERSTICIAL', true, 173, 11);
+INSERT INTO datos_salud VALUES (44, NULL, NULL, NULL, NULL, 242, NULL);
+INSERT INTO datos_salud VALUES (45, 'OSDE', true, NULL, true, 175, NULL);
+INSERT INTO datos_salud VALUES (46, 'OSMATA', true, NULL, true, 16, 16);
+INSERT INTO datos_salud VALUES (47, 'OSDE', true, 'HIPOTIROIDISMO (NO TIENE COMPROMISO FIRMADO)', NULL, 51, 10);
+INSERT INTO datos_salud VALUES (48, 'OSDE', true, NULL, true, 60, 11);
+INSERT INTO datos_salud VALUES (49, 'OSDE', true, NULL, true, 62, 11);
+INSERT INTO datos_salud VALUES (50, 'OSDE', true, 'NO TIENE MAIL', true, 67, 16);
+INSERT INTO datos_salud VALUES (51, 'OSDE', true, NULL, NULL, 61, 16);
+INSERT INTO datos_salud VALUES (52, 'OSDE', true, 'TITOIDITIS DE HASHIMOTO', NULL, 63, 13);
+INSERT INTO datos_salud VALUES (53, 'CTRO MEDICO PUEYRREDON', true, NULL, NULL, 64, 8);
+INSERT INTO datos_salud VALUES (54, NULL, true, 'ENDOMETROSIS EPILEPSIA FOCAL', true, 26, 11);
+INSERT INTO datos_salud VALUES (55, 'OSDE', true, NULL, true, 28, 7);
+INSERT INTO datos_salud VALUES (56, 'OSDE', true, 'CIFOSIS DORSAL Y LORDOSIS LUMBAR', true, 5, 16);
+INSERT INTO datos_salud VALUES (57, 'IOMA', true, NULL, true, 10, 8);
+INSERT INTO datos_salud VALUES (58, 'AUSTRAL SALUD', true, NULL, true, 23, 13);
+INSERT INTO datos_salud VALUES (59, 'OSECAC', true, 'HERNIAS DE DISCO', true, 22, 11);
+INSERT INTO datos_salud VALUES (60, 'SWISS MEDICAL', true, NULL, true, 6, NULL);
+INSERT INTO datos_salud VALUES (61, 'OSDE', NULL, NULL, NULL, 57, NULL);
+INSERT INTO datos_salud VALUES (62, NULL, true, NULL, NULL, 78, 3);
+INSERT INTO datos_salud VALUES (63, 'IOMA', true, NULL, true, 76, 16);
+INSERT INTO datos_salud VALUES (64, 'IOMA', true, NULL, true, 77, 11);
+INSERT INTO datos_salud VALUES (65, 'OSDE', true, NULL, NULL, 79, 11);
+INSERT INTO datos_salud VALUES (66, 'IOMA', true, NULL, NULL, 82, 12);
+INSERT INTO datos_salud VALUES (67, 'SINECO', true, NULL, NULL, 83, 11);
+INSERT INTO datos_salud VALUES (68, 'OSECAC', true, NULL, NULL, 86, 11);
+INSERT INTO datos_salud VALUES (69, 'OSDIPP', true, NULL, NULL, 93, NULL);
+INSERT INTO datos_salud VALUES (70, NULL, NULL, NULL, NULL, 97, 10);
+INSERT INTO datos_salud VALUES (71, 'SWISS MEDICAL', true, NULL, NULL, 106, 3);
+INSERT INTO datos_salud VALUES (72, 'OSDE', true, NULL, true, 107, 11);
+INSERT INTO datos_salud VALUES (73, 'OSDE', true, NULL, NULL, 118, 11);
+INSERT INTO datos_salud VALUES (74, 'IOMA', true, NULL, NULL, 120, 11);
+INSERT INTO datos_salud VALUES (75, 'ACCORD SALUD', true, NULL, NULL, 121, 16);
+INSERT INTO datos_salud VALUES (76, 'IOMA', true, 'CELIACA, HIPOTIROIDISMO, PREDIABETES', NULL, 122, 11);
+INSERT INTO datos_salud VALUES (77, 'DIBFA', true, NULL, NULL, 123, 16);
+INSERT INTO datos_salud VALUES (78, 'ACA SALUD', true, 'RECTIFICACION CERVICAL', NULL, 125, 3);
+INSERT INTO datos_salud VALUES (79, 'GALENO', true, NULL, NULL, 128, 5);
+INSERT INTO datos_salud VALUES (80, NULL, true, 'MEÑISCO', NULL, 130, 11);
+INSERT INTO datos_salud VALUES (81, 'OSDE', true, NULL, true, 8, 11);
+INSERT INTO datos_salud VALUES (82, 'OSDE', true, 'OPERADA DE LOS PIES', true, 9, 2);
+INSERT INTO datos_salud VALUES (83, NULL, NULL, NULL, true, 105, 11);
+INSERT INTO datos_salud VALUES (84, NULL, NULL, NULL, NULL, 133, 3);
+INSERT INTO datos_salud VALUES (85, NULL, NULL, NULL, NULL, 136, 13);
+INSERT INTO datos_salud VALUES (86, 'PUEYREDON', true, NULL, NULL, 132, 16);
+INSERT INTO datos_salud VALUES (87, NULL, true, 'RINITIS ALERGICA - LUMBALGIA', NULL, 134, NULL);
+INSERT INTO datos_salud VALUES (88, NULL, true, NULL, NULL, 135, NULL);
+INSERT INTO datos_salud VALUES (89, 'OSDE', true, NULL, true, 137, 16);
+INSERT INTO datos_salud VALUES (90, 'UNION PERSONAL', true, NULL, NULL, 131, 8);
+INSERT INTO datos_salud VALUES (91, 'IOMA', true, 'VARICES', NULL, 159, 11);
+INSERT INTO datos_salud VALUES (92, 'OSDE', true, NULL, true, 18, 16);
+INSERT INTO datos_salud VALUES (93, 'OSDE', true, 'TUMORES EN RIÑONES', true, 41, NULL);
+INSERT INTO datos_salud VALUES (94, 'IOMA', true, 'ESCOLIOSIS', true, 35, NULL);
+INSERT INTO datos_salud VALUES (95, 'OBSBA', true, NULL, true, 144, 16);
+INSERT INTO datos_salud VALUES (96, 'OSDIPP', true, 'NO TIENE COMPROMISO FIRMADO', NULL, 68, 16);
+INSERT INTO datos_salud VALUES (97, 'CEMIC', true, 'HERNIA DISCO LUMBAR L4-L5 - RECTIFICACION CERVICAL -HIPOTIROIDISMO (NO TIENE COMPROMISO FIRMADO)', NULL, 69, 11);
+INSERT INTO datos_salud VALUES (98, NULL, true, NULL, NULL, 72, 11);
+INSERT INTO datos_salud VALUES (99, 'MEDIFE', true, 'NO TIENE COMPROMISO FIRMADO', NULL, 74, 11);
+INSERT INTO datos_salud VALUES (100, 'MEDIFE', true, NULL, NULL, 65, 16);
+INSERT INTO datos_salud VALUES (101, 'MEDIFE', true, NULL, NULL, 66, 16);
+INSERT INTO datos_salud VALUES (102, 'SWISS MEDICAL', true, 'NO TIENE COMPROMISO FIRMADO', NULL, 71, 11);
+INSERT INTO datos_salud VALUES (103, 'GALENO', true, NULL, NULL, 54, NULL);
+INSERT INTO datos_salud VALUES (104, 'IOMA', NULL, NULL, NULL, 155, 16);
+INSERT INTO datos_salud VALUES (105, 'OSPEP', true, NULL, NULL, 166, 16);
+INSERT INTO datos_salud VALUES (106, NULL, true, NULL, NULL, 177, 16);
+INSERT INTO datos_salud VALUES (107, 'OSECAC', true, 'HERNIA DE DISCO', NULL, 183, NULL);
+INSERT INTO datos_salud VALUES (108, 'OSECAC', true, NULL, NULL, 56, 11);
+INSERT INTO datos_salud VALUES (109, 'IOMA', true, NULL, NULL, 102, 16);
+INSERT INTO datos_salud VALUES (110, NULL, NULL, NULL, NULL, 186, NULL);
+INSERT INTO datos_salud VALUES (111, NULL, NULL, NULL, NULL, 240, NULL);
+INSERT INTO datos_salud VALUES (112, NULL, NULL, NULL, NULL, 241, NULL);
+INSERT INTO datos_salud VALUES (113, 'IOMA', NULL, NULL, NULL, 165, NULL);
+INSERT INTO datos_salud VALUES (114, NULL, NULL, NULL, NULL, 184, 10);
+INSERT INTO datos_salud VALUES (115, 'AMUR', NULL, NULL, NULL, 185, 11);
+INSERT INTO datos_salud VALUES (116, 'Churuca', NULL, NULL, NULL, 187, 11);
+INSERT INTO datos_salud VALUES (117, NULL, NULL, NULL, NULL, 189, 7);
+INSERT INTO datos_salud VALUES (118, NULL, NULL, NULL, NULL, 194, NULL);
+INSERT INTO datos_salud VALUES (119, NULL, NULL, NULL, NULL, 195, NULL);
+INSERT INTO datos_salud VALUES (120, NULL, NULL, NULL, NULL, 196, NULL);
+INSERT INTO datos_salud VALUES (121, NULL, NULL, NULL, NULL, 198, NULL);
+INSERT INTO datos_salud VALUES (122, NULL, NULL, NULL, NULL, 199, NULL);
+INSERT INTO datos_salud VALUES (123, NULL, NULL, NULL, NULL, 203, NULL);
+INSERT INTO datos_salud VALUES (124, NULL, NULL, NULL, NULL, 208, NULL);
+INSERT INTO datos_salud VALUES (125, NULL, NULL, NULL, NULL, 210, NULL);
+INSERT INTO datos_salud VALUES (126, NULL, NULL, NULL, NULL, 211, NULL);
+INSERT INTO datos_salud VALUES (127, NULL, NULL, NULL, NULL, 212, NULL);
+INSERT INTO datos_salud VALUES (128, NULL, NULL, NULL, NULL, 213, NULL);
+INSERT INTO datos_salud VALUES (129, NULL, NULL, NULL, NULL, 215, NULL);
+INSERT INTO datos_salud VALUES (130, NULL, NULL, NULL, NULL, 217, NULL);
+INSERT INTO datos_salud VALUES (131, NULL, NULL, NULL, NULL, 218, NULL);
+INSERT INTO datos_salud VALUES (132, NULL, NULL, NULL, NULL, 220, NULL);
+INSERT INTO datos_salud VALUES (133, NULL, NULL, NULL, NULL, 221, NULL);
+INSERT INTO datos_salud VALUES (134, NULL, NULL, NULL, NULL, 222, NULL);
+INSERT INTO datos_salud VALUES (135, NULL, NULL, NULL, NULL, 224, NULL);
+INSERT INTO datos_salud VALUES (136, NULL, NULL, NULL, NULL, 225, NULL);
+INSERT INTO datos_salud VALUES (137, NULL, NULL, NULL, NULL, 226, NULL);
+INSERT INTO datos_salud VALUES (138, NULL, NULL, NULL, NULL, 229, NULL);
+INSERT INTO datos_salud VALUES (139, NULL, NULL, NULL, NULL, 230, NULL);
+INSERT INTO datos_salud VALUES (140, NULL, NULL, NULL, NULL, 232, NULL);
+INSERT INTO datos_salud VALUES (141, NULL, NULL, NULL, NULL, 234, NULL);
+INSERT INTO datos_salud VALUES (142, NULL, NULL, NULL, NULL, 235, NULL);
+INSERT INTO datos_salud VALUES (143, 'Ioma', NULL, NULL, NULL, 192, 11);
+INSERT INTO datos_salud VALUES (144, NULL, NULL, NULL, NULL, 243, NULL);
+INSERT INTO datos_salud VALUES (145, NULL, NULL, NULL, NULL, 245, NULL);
+INSERT INTO datos_salud VALUES (146, NULL, NULL, NULL, NULL, 248, NULL);
+INSERT INTO datos_salud VALUES (147, NULL, NULL, NULL, NULL, 249, NULL);
+INSERT INTO datos_salud VALUES (148, NULL, NULL, NULL, NULL, 251, NULL);
+INSERT INTO datos_salud VALUES (149, NULL, NULL, NULL, NULL, 252, NULL);
+INSERT INTO datos_salud VALUES (150, NULL, NULL, NULL, NULL, 255, NULL);
+INSERT INTO datos_salud VALUES (151, NULL, NULL, NULL, NULL, 257, NULL);
+INSERT INTO datos_salud VALUES (152, NULL, NULL, NULL, NULL, 258, NULL);
+INSERT INTO datos_salud VALUES (153, NULL, NULL, NULL, NULL, 262, NULL);
+INSERT INTO datos_salud VALUES (154, NULL, NULL, NULL, NULL, 263, NULL);
+INSERT INTO datos_salud VALUES (155, NULL, NULL, NULL, NULL, 264, NULL);
+INSERT INTO datos_salud VALUES (156, NULL, NULL, NULL, NULL, 267, NULL);
+INSERT INTO datos_salud VALUES (157, NULL, NULL, NULL, NULL, 273, NULL);
+INSERT INTO datos_salud VALUES (158, NULL, NULL, NULL, NULL, 274, NULL);
+INSERT INTO datos_salud VALUES (159, 'Medicus', NULL, NULL, NULL, 276, 11);
+INSERT INTO datos_salud VALUES (160, NULL, NULL, NULL, NULL, 278, NULL);
+INSERT INTO datos_salud VALUES (161, 'OSAM', NULL, NULL, NULL, 290, 16);
+INSERT INTO datos_salud VALUES (162, 'Accord Salud', NULL, NULL, NULL, 291, NULL);
+INSERT INTO datos_salud VALUES (163, NULL, NULL, NULL, NULL, 294, NULL);
+INSERT INTO datos_salud VALUES (164, 'Osde 210', NULL, NULL, NULL, 297, 16);
+INSERT INTO datos_salud VALUES (165, 'OSDE', NULL, NULL, NULL, 298, 13);
+INSERT INTO datos_salud VALUES (166, 'Medife', NULL, NULL, NULL, 302, NULL);
+INSERT INTO datos_salud VALUES (167, 'Swiss Med/Docthos', NULL, NULL, NULL, 305, 16);
+INSERT INTO datos_salud VALUES (168, 'Osde', NULL, NULL, NULL, 307, 16);
+INSERT INTO datos_salud VALUES (169, NULL, NULL, NULL, NULL, 321, NULL);
+INSERT INTO datos_salud VALUES (170, '-', NULL, NULL, NULL, 323, 16);
+INSERT INTO datos_salud VALUES (171, 'Osde 310', NULL, NULL, NULL, 327, 13);
+INSERT INTO datos_salud VALUES (172, NULL, NULL, NULL, NULL, 329, NULL);
+INSERT INTO datos_salud VALUES (173, NULL, NULL, NULL, NULL, 355, NULL);
+INSERT INTO datos_salud VALUES (174, 'Galeno', NULL, NULL, NULL, 356, 13);
+INSERT INTO datos_salud VALUES (175, 'OSDE', NULL, NULL, NULL, 389, 11);
+INSERT INTO datos_salud VALUES (176, NULL, NULL, NULL, NULL, 390, NULL);
+INSERT INTO datos_salud VALUES (177, 'Poder Judicial', NULL, NULL, NULL, 393, 16);
+INSERT INTO datos_salud VALUES (178, 'Sancor Salud', NULL, NULL, NULL, 419, 11);
+INSERT INTO datos_salud VALUES (179, 'Osde', NULL, NULL, NULL, 422, 11);
+INSERT INTO datos_salud VALUES (180, 'Swiss Medical', NULL, NULL, NULL, 423, 11);
+INSERT INTO datos_salud VALUES (181, 'OSECAC', NULL, NULL, NULL, 456, 16);
+INSERT INTO datos_salud VALUES (182, 'OSECAC', NULL, NULL, NULL, 458, 11);
+INSERT INTO datos_salud VALUES (183, 'APSOT', NULL, NULL, NULL, 459, NULL);
+INSERT INTO datos_salud VALUES (184, NULL, NULL, NULL, NULL, 461, NULL);
+INSERT INTO datos_salud VALUES (185, 'Austral Salud', NULL, NULL, NULL, 462, 11);
+INSERT INTO datos_salud VALUES (186, 'Docthos', NULL, NULL, NULL, 463, NULL);
+INSERT INTO datos_salud VALUES (187, 'W. Hope', NULL, NULL, NULL, 487, NULL);
+INSERT INTO datos_salud VALUES (188, NULL, NULL, NULL, NULL, 489, 16);
+INSERT INTO datos_salud VALUES (189, 'Hospital Italiano', NULL, NULL, true, 521, 11);
+INSERT INTO datos_salud VALUES (190, 'IOMA', NULL, NULL, NULL, 523, NULL);
+INSERT INTO datos_salud VALUES (191, NULL, NULL, NULL, NULL, 524, NULL);
+INSERT INTO datos_salud VALUES (192, 'Swiss Medical', NULL, NULL, NULL, 527, 11);
+INSERT INTO datos_salud VALUES (193, 'Medicus', NULL, NULL, NULL, 528, 11);
+INSERT INTO datos_salud VALUES (194, 'Galeno', NULL, NULL, NULL, 529, 10);
+INSERT INTO datos_salud VALUES (195, 'OSDE', NULL, NULL, NULL, 554, 8);
+INSERT INTO datos_salud VALUES (196, 'Poder Judicial', NULL, NULL, NULL, 555, 11);
+INSERT INTO datos_salud VALUES (197, 'OSDE 410', NULL, NULL, NULL, 556, 7);
+INSERT INTO datos_salud VALUES (198, 'Medicul', NULL, NULL, NULL, 557, 16);
+INSERT INTO datos_salud VALUES (199, 'OSDE', NULL, NULL, NULL, 558, 11);
+INSERT INTO datos_salud VALUES (200, 'Staff Medico', NULL, NULL, NULL, 560, 11);
+INSERT INTO datos_salud VALUES (201, 'OSDE', NULL, NULL, NULL, 565, 8);
+INSERT INTO datos_salud VALUES (202, 'Accord Salud 310', NULL, NULL, NULL, 593, 11);
+INSERT INTO datos_salud VALUES (203, 'Osde', NULL, NULL, NULL, 594, 15);
+INSERT INTO datos_salud VALUES (204, 'Accord Salud', NULL, NULL, NULL, 596, 16);
+INSERT INTO datos_salud VALUES (205, 'Osde 210', NULL, NULL, NULL, 597, NULL);
+INSERT INTO datos_salud VALUES (206, 'OSMATA', NULL, NULL, NULL, 598, NULL);
+INSERT INTO datos_salud VALUES (207, 'SWISS MEDICAL', true, NULL, true, 170, 8);
+INSERT INTO datos_salud VALUES (208, 'OSDE', true, NULL, true, 171, NULL);
+INSERT INTO datos_salud VALUES (209, 'Medicus', NULL, NULL, NULL, 629, 8);
+INSERT INTO datos_salud VALUES (210, NULL, NULL, NULL, NULL, 630, 16);
+INSERT INTO datos_salud VALUES (211, NULL, NULL, NULL, NULL, 631, NULL);
+INSERT INTO datos_salud VALUES (212, 'OSDE', NULL, NULL, NULL, 632, 6);
+INSERT INTO datos_salud VALUES (213, NULL, NULL, NULL, NULL, 634, NULL);
+INSERT INTO datos_salud VALUES (214, 'Swiss Medical', NULL, NULL, NULL, 635, NULL);
+INSERT INTO datos_salud VALUES (215, 'IOMA', NULL, NULL, NULL, 639, 16);
+INSERT INTO datos_salud VALUES (216, NULL, NULL, NULL, NULL, 646, NULL);
+INSERT INTO datos_salud VALUES (217, 'OSECAC', true, 'NO TIENE COMPROMISO FIRMADO', NULL, 50, 16);
+INSERT INTO datos_salud VALUES (218, 'TV-SALUD', true, NULL, true, 53, NULL);
+INSERT INTO datos_salud VALUES (219, 'GALENO', true, NULL, true, 75, 8);
+INSERT INTO datos_salud VALUES (220, 'OSECAC', true, NULL, true, 96, 11);
+INSERT INTO datos_salud VALUES (221, NULL, true, 'ALERGIA ACAROS', NULL, 108, NULL);
+INSERT INTO datos_salud VALUES (222, 'OSDE', true, NULL, NULL, 127, 11);
+INSERT INTO datos_salud VALUES (223, 'OSDE', true, NULL, NULL, 129, 11);
+INSERT INTO datos_salud VALUES (224, 'MEDIFE', NULL, NULL, NULL, 112, 8);
+INSERT INTO datos_salud VALUES (225, 'OSDE', true, NULL, NULL, 15, 16);
+INSERT INTO datos_salud VALUES (226, NULL, true, NULL, NULL, 31, 11);
+INSERT INTO datos_salud VALUES (227, 'OSECAC', true, 'TIROIDES T4', true, 7, 11);
+INSERT INTO datos_salud VALUES (228, 'IOMA', true, NULL, true, 11, 11);
+INSERT INTO datos_salud VALUES (229, NULL, true, NULL, true, 12, 11);
+INSERT INTO datos_salud VALUES (230, 'OSDE', true, NULL, true, 13, 16);
+INSERT INTO datos_salud VALUES (231, 'SWISS MEDICAL', true, 'FIBROMIALGIA', NULL, 19, 16);
+INSERT INTO datos_salud VALUES (232, 'OSDE', true, NULL, NULL, 24, 11);
+INSERT INTO datos_salud VALUES (233, 'GALENO', true, NULL, NULL, 32, 11);
+INSERT INTO datos_salud VALUES (234, 'OSDE', true, NULL, true, 33, 11);
+INSERT INTO datos_salud VALUES (235, 'IOMA', true, NULL, true, 34, 13);
+INSERT INTO datos_salud VALUES (236, 'OSDE', true, 'NO TIENE COMPROMISO FIRMADO', true, 47, 11);
+INSERT INTO datos_salud VALUES (237, NULL, true, NULL, NULL, 42, 11);
+INSERT INTO datos_salud VALUES (238, 'DOSUBA', true, NULL, NULL, 43, NULL);
+INSERT INTO datos_salud VALUES (239, 'OSDE', true, 'NO TIENE EL COMPROMISO FIRMADO', NULL, 48, 11);
+INSERT INTO datos_salud VALUES (240, 'OSDE', true, NULL, NULL, 55, 16);
+INSERT INTO datos_salud VALUES (241, 'NO', true, NULL, NULL, 4, 16);
+INSERT INTO datos_salud VALUES (242, 'OSDEPYM', true, NULL, NULL, 98, 10);
+INSERT INTO datos_salud VALUES (243, 'PREMEDIC', true, NULL, NULL, 52, NULL);
+INSERT INTO datos_salud VALUES (244, NULL, true, NULL, NULL, 20, NULL);
+INSERT INTO datos_salud VALUES (245, 'OSDE', true, 'HIPERTENSION ARTERIAL', true, 58, 11);
+INSERT INTO datos_salud VALUES (246, NULL, true, NULL, true, 81, NULL);
+INSERT INTO datos_salud VALUES (247, 'IOMA', true, 'HIPOTIROIDISMO', true, 88, 8);
+INSERT INTO datos_salud VALUES (248, NULL, NULL, NULL, true, 115, NULL);
+INSERT INTO datos_salud VALUES (249, 'OSPE', true, 'PIE PLANO- HIPOTIROIDISMO', true, 90, NULL);
+INSERT INTO datos_salud VALUES (250, 'IOMA', true, NULL, true, 99, 8);
+INSERT INTO datos_salud VALUES (251, 'IOMA', NULL, NULL, true, 111, 16);
+INSERT INTO datos_salud VALUES (252, NULL, NULL, NULL, true, 140, NULL);
+INSERT INTO datos_salud VALUES (253, NULL, NULL, NULL, true, 142, NULL);
+INSERT INTO datos_salud VALUES (254, NULL, NULL, NULL, true, 152, 3);
+INSERT INTO datos_salud VALUES (255, 'IOMA', NULL, NULL, true, 153, 16);
+INSERT INTO datos_salud VALUES (256, 'IOMA', NULL, NULL, true, 156, 11);
+INSERT INTO datos_salud VALUES (257, 'OMINT', NULL, 'SINDROME METABOLICO- HIPERTENSION - COLESTEROL - DIABETES', true, 158, 13);
+INSERT INTO datos_salud VALUES (258, NULL, NULL, NULL, true, 167, NULL);
+INSERT INTO datos_salud VALUES (259, NULL, NULL, NULL, true, 172, 16);
+INSERT INTO datos_salud VALUES (260, 'OSDE', NULL, 'TIROIDES', true, 174, 16);
+INSERT INTO datos_salud VALUES (261, 'OSDE', NULL, 'CANCER DE OVARIOS HACE 26 AÑOS, VACIARION, NO QUIMIO', true, 176, 8);
+INSERT INTO datos_salud VALUES (262, 'Swiss Medical', NULL, NULL, true, 179, NULL);
+INSERT INTO datos_salud VALUES (263, 'Emersur', NULL, NULL, true, 180, 16);
+INSERT INTO datos_salud VALUES (264, NULL, NULL, NULL, true, 280, NULL);
+INSERT INTO datos_salud VALUES (265, 'OSDE', NULL, NULL, true, 283, 11);
+INSERT INTO datos_salud VALUES (266, 'Swiss Medical', NULL, NULL, true, 288, 11);
+INSERT INTO datos_salud VALUES (267, 'Medife', NULL, NULL, true, 289, NULL);
+INSERT INTO datos_salud VALUES (268, 'SMG-Docthos', NULL, NULL, true, 292, NULL);
+INSERT INTO datos_salud VALUES (269, 'Hospital Italiano', NULL, NULL, true, 293, 16);
+INSERT INTO datos_salud VALUES (270, 'Galeno', NULL, NULL, true, 295, NULL);
+INSERT INTO datos_salud VALUES (271, 'Osde 210', NULL, NULL, true, 299, 16);
+INSERT INTO datos_salud VALUES (272, NULL, NULL, NULL, true, 303, NULL);
+INSERT INTO datos_salud VALUES (273, 'IOMA', NULL, NULL, true, 306, NULL);
+INSERT INTO datos_salud VALUES (274, 'OMINT', NULL, NULL, true, 322, 16);
+INSERT INTO datos_salud VALUES (275, 'OSOCNA (Com Navales)', NULL, NULL, true, 325, 11);
+INSERT INTO datos_salud VALUES (276, 'Galeno Oro', NULL, NULL, true, 328, 8);
+INSERT INTO datos_salud VALUES (277, 'Docthos Premium', NULL, NULL, true, 337, NULL);
+INSERT INTO datos_salud VALUES (278, NULL, NULL, NULL, true, 351, 8);
+INSERT INTO datos_salud VALUES (279, 'UP', NULL, NULL, true, 357, NULL);
+INSERT INTO datos_salud VALUES (280, 'IOMA', NULL, NULL, true, 360, 8);
+INSERT INTO datos_salud VALUES (281, 'Osde', NULL, NULL, true, 377, 10);
+INSERT INTO datos_salud VALUES (282, 'OMINT', NULL, NULL, true, 392, 7);
+INSERT INTO datos_salud VALUES (283, NULL, NULL, NULL, true, 395, NULL);
+INSERT INTO datos_salud VALUES (284, NULL, NULL, NULL, NULL, 396, NULL);
+INSERT INTO datos_salud VALUES (285, 'IOMA', NULL, NULL, true, 398, 11);
+INSERT INTO datos_salud VALUES (286, 'Ctro Med Pueyrredon', NULL, NULL, true, 402, 3);
+INSERT INTO datos_salud VALUES (287, 'Andar', NULL, NULL, true, 420, 10);
+INSERT INTO datos_salud VALUES (288, 'Galeno', NULL, NULL, true, 438, NULL);
+INSERT INTO datos_salud VALUES (289, 'OSDE', NULL, NULL, true, 449, NULL);
+INSERT INTO datos_salud VALUES (290, 'Union Personal', NULL, NULL, true, 452, NULL);
+INSERT INTO datos_salud VALUES (291, 'ASIMRRA', NULL, NULL, true, 460, 11);
+INSERT INTO datos_salud VALUES (292, 'OSECAC', NULL, NULL, true, 467, 16);
+INSERT INTO datos_salud VALUES (293, 'IOMA', NULL, NULL, true, 474, NULL);
+INSERT INTO datos_salud VALUES (294, NULL, NULL, NULL, true, 481, 11);
+INSERT INTO datos_salud VALUES (295, NULL, NULL, NULL, true, 491, NULL);
+INSERT INTO datos_salud VALUES (296, 'Docthos-Swiss Med', NULL, NULL, true, 496, NULL);
+INSERT INTO datos_salud VALUES (297, 'OSECAC', NULL, NULL, true, 516, NULL);
+INSERT INTO datos_salud VALUES (298, 'Galeno', NULL, NULL, true, 525, 11);
+INSERT INTO datos_salud VALUES (299, 'Galeno', NULL, NULL, true, 532, 3);
+INSERT INTO datos_salud VALUES (300, 'Hospital Italiano', NULL, NULL, true, 545, 11);
+INSERT INTO datos_salud VALUES (301, 'Swiff Medical', NULL, NULL, true, 548, 16);
+INSERT INTO datos_salud VALUES (302, NULL, NULL, NULL, true, 559, 11);
+INSERT INTO datos_salud VALUES (303, 'IOMA / OSSEG', NULL, NULL, true, 574, 8);
+INSERT INTO datos_salud VALUES (304, 'Osde 310', NULL, NULL, true, 581, 13);
+INSERT INTO datos_salud VALUES (305, 'UAI Salud', NULL, NULL, true, 595, 8);
+INSERT INTO datos_salud VALUES (306, 'OSPOCE', NULL, NULL, true, 599, 11);
+INSERT INTO datos_salud VALUES (307, 'Accord 210', NULL, NULL, true, 604, 16);
+INSERT INTO datos_salud VALUES (308, 'Osde 310', NULL, NULL, true, 605, 16);
+INSERT INTO datos_salud VALUES (309, 'Centro Med. Pueyrred', NULL, NULL, true, 606, 16);
+INSERT INTO datos_salud VALUES (310, NULL, NULL, NULL, true, 607, NULL);
+INSERT INTO datos_salud VALUES (311, 'Osecac', NULL, NULL, true, 624, 16);
+INSERT INTO datos_salud VALUES (312, NULL, NULL, NULL, true, 625, 16);
+INSERT INTO datos_salud VALUES (313, 'Hospital Aleman', NULL, NULL, true, 626, NULL);
+INSERT INTO datos_salud VALUES (314, NULL, NULL, NULL, true, 627, NULL);
+INSERT INTO datos_salud VALUES (315, 'Swiss Medical', NULL, NULL, true, 633, 8);
+INSERT INTO datos_salud VALUES (316, 'OSDE Binario', NULL, NULL, true, 636, 16);
+INSERT INTO datos_salud VALUES (317, NULL, NULL, NULL, true, 652, NULL);
+INSERT INTO datos_salud VALUES (318, 'Asi', NULL, NULL, true, 522, 14);
+INSERT INTO datos_salud VALUES (319, NULL, NULL, NULL, NULL, 70, NULL);
+INSERT INTO datos_salud VALUES (320, 'MEDICUS', NULL, NULL, NULL, 73, 8);
+INSERT INTO datos_salud VALUES (321, NULL, NULL, 'GLAUCOMA (NO ESTA CORRECTO EL EMAIL)', NULL, 59, NULL);
+INSERT INTO datos_salud VALUES (322, 'OSECAC', NULL, NULL, NULL, 103, 16);
+INSERT INTO datos_salud VALUES (323, 'Austral Salud', NULL, NULL, NULL, 190, 13);
+INSERT INTO datos_salud VALUES (324, 'Accord 310', NULL, NULL, NULL, 191, 16);
+INSERT INTO datos_salud VALUES (325, NULL, NULL, NULL, NULL, 214, 16);
+INSERT INTO datos_salud VALUES (326, NULL, NULL, NULL, NULL, 277, NULL);
+INSERT INTO datos_salud VALUES (327, 'OSDE', NULL, NULL, NULL, 279, 13);
+INSERT INTO datos_salud VALUES (328, 'Medife', NULL, NULL, NULL, 281, 16);
+INSERT INTO datos_salud VALUES (329, 'Osde', NULL, NULL, NULL, 282, 16);
+INSERT INTO datos_salud VALUES (330, '-', NULL, NULL, NULL, 284, 16);
+INSERT INTO datos_salud VALUES (331, 'OSDE', NULL, NULL, NULL, 285, 16);
+INSERT INTO datos_salud VALUES (332, 'Swiss', NULL, NULL, NULL, 286, NULL);
+INSERT INTO datos_salud VALUES (333, 'OSDE', NULL, NULL, NULL, 320, 13);
+INSERT INTO datos_salud VALUES (334, NULL, NULL, NULL, NULL, 308, 10);
+INSERT INTO datos_salud VALUES (335, 'Hospital Aleman', NULL, NULL, NULL, 309, 11);
+INSERT INTO datos_salud VALUES (336, 'Osde', NULL, NULL, NULL, 310, 16);
+INSERT INTO datos_salud VALUES (337, 'Osde 310', NULL, NULL, NULL, 311, NULL);
+INSERT INTO datos_salud VALUES (338, NULL, NULL, NULL, NULL, 312, 4);
+INSERT INTO datos_salud VALUES (339, 'Medife Plata', NULL, NULL, NULL, 313, NULL);
+INSERT INTO datos_salud VALUES (340, 'Swiss Medical', NULL, NULL, NULL, 315, 11);
+INSERT INTO datos_salud VALUES (341, 'OSDE', NULL, NULL, NULL, 316, NULL);
+INSERT INTO datos_salud VALUES (342, 'Ctro Med Pueyrredon', NULL, NULL, NULL, 317, 3);
+INSERT INTO datos_salud VALUES (343, 'IOMA', NULL, NULL, NULL, 318, 3);
+INSERT INTO datos_salud VALUES (344, 'OSDE 310', NULL, NULL, NULL, 319, 10);
+INSERT INTO datos_salud VALUES (345, 'Osde', NULL, NULL, NULL, 330, NULL);
+INSERT INTO datos_salud VALUES (346, NULL, NULL, NULL, NULL, 332, NULL);
+INSERT INTO datos_salud VALUES (347, 'Osde 210', NULL, NULL, NULL, 333, NULL);
+INSERT INTO datos_salud VALUES (348, 'Visitar Salud', NULL, NULL, NULL, 334, 8);
+INSERT INTO datos_salud VALUES (349, NULL, NULL, NULL, NULL, 335, NULL);
+INSERT INTO datos_salud VALUES (350, 'OMINT', NULL, NULL, NULL, 336, 16);
+INSERT INTO datos_salud VALUES (351, 'OSDE 450', NULL, NULL, NULL, 338, 16);
+INSERT INTO datos_salud VALUES (352, 'OSDE 210', NULL, NULL, NULL, 339, 16);
+INSERT INTO datos_salud VALUES (353, NULL, NULL, NULL, NULL, 340, NULL);
+INSERT INTO datos_salud VALUES (354, 'Poder Judicial', NULL, NULL, NULL, 341, 11);
+INSERT INTO datos_salud VALUES (355, NULL, NULL, NULL, NULL, 342, NULL);
+INSERT INTO datos_salud VALUES (356, 'Qualitas', NULL, NULL, NULL, 343, 16);
+INSERT INTO datos_salud VALUES (357, 'Galeno', NULL, NULL, NULL, 344, NULL);
+INSERT INTO datos_salud VALUES (358, 'OMINT', NULL, NULL, NULL, 345, NULL);
+INSERT INTO datos_salud VALUES (359, NULL, NULL, NULL, NULL, 346, NULL);
+INSERT INTO datos_salud VALUES (360, 'OSDE', NULL, NULL, NULL, 348, NULL);
+INSERT INTO datos_salud VALUES (361, NULL, NULL, NULL, NULL, 352, NULL);
+INSERT INTO datos_salud VALUES (362, '-', NULL, NULL, NULL, 353, 16);
+INSERT INTO datos_salud VALUES (363, NULL, NULL, NULL, NULL, 358, NULL);
+INSERT INTO datos_salud VALUES (364, 'Staff Medico', NULL, NULL, NULL, 359, 16);
+INSERT INTO datos_salud VALUES (365, NULL, NULL, NULL, NULL, 361, 3);
+INSERT INTO datos_salud VALUES (366, 'Osde 310', NULL, NULL, NULL, 362, 16);
+INSERT INTO datos_salud VALUES (367, 'Luis Pasteur', NULL, NULL, NULL, 363, NULL);
+INSERT INTO datos_salud VALUES (368, 'Galeno', NULL, NULL, NULL, 364, 16);
+INSERT INTO datos_salud VALUES (369, NULL, NULL, NULL, NULL, 365, NULL);
+INSERT INTO datos_salud VALUES (370, NULL, NULL, NULL, NULL, 366, NULL);
+INSERT INTO datos_salud VALUES (371, 'HOPE', NULL, NULL, NULL, 367, 13);
+INSERT INTO datos_salud VALUES (372, 'OSDE', NULL, NULL, NULL, 368, 16);
+INSERT INTO datos_salud VALUES (373, NULL, NULL, NULL, NULL, 369, NULL);
+INSERT INTO datos_salud VALUES (374, 'OSDE 310', NULL, NULL, NULL, 370, 16);
+INSERT INTO datos_salud VALUES (375, 'C.Med Pueyrredon', NULL, NULL, NULL, 371, 16);
+INSERT INTO datos_salud VALUES (376, NULL, NULL, NULL, NULL, 372, NULL);
+INSERT INTO datos_salud VALUES (377, 'Medifé', NULL, NULL, NULL, 373, 11);
+INSERT INTO datos_salud VALUES (378, 'OSDE 310', NULL, NULL, NULL, 375, 11);
+INSERT INTO datos_salud VALUES (379, 'IOMA', NULL, NULL, NULL, 378, 11);
+INSERT INTO datos_salud VALUES (380, 'Banco Provincia', NULL, NULL, NULL, 379, 16);
+INSERT INTO datos_salud VALUES (381, NULL, NULL, NULL, NULL, 380, 16);
+INSERT INTO datos_salud VALUES (382, 'OSDE', NULL, NULL, NULL, 382, NULL);
+INSERT INTO datos_salud VALUES (383, 'Swiss Medical', NULL, NULL, NULL, 383, NULL);
+INSERT INTO datos_salud VALUES (384, 'Accord', NULL, NULL, NULL, 384, NULL);
+INSERT INTO datos_salud VALUES (385, 'IOMA', NULL, NULL, NULL, 385, NULL);
+INSERT INTO datos_salud VALUES (386, 'OSDE 310', NULL, NULL, NULL, 387, 16);
+INSERT INTO datos_salud VALUES (387, 'OSDE', NULL, NULL, NULL, 397, 11);
+INSERT INTO datos_salud VALUES (388, 'OMINT', NULL, NULL, NULL, 399, 11);
+INSERT INTO datos_salud VALUES (389, 'Osde', NULL, NULL, NULL, 401, 10);
+INSERT INTO datos_salud VALUES (390, NULL, NULL, NULL, NULL, 403, NULL);
+INSERT INTO datos_salud VALUES (391, 'OSDE', NULL, NULL, NULL, 404, 13);
+INSERT INTO datos_salud VALUES (392, NULL, NULL, NULL, NULL, 405, NULL);
+INSERT INTO datos_salud VALUES (393, 'Principal Plan', NULL, NULL, NULL, 406, NULL);
+INSERT INTO datos_salud VALUES (394, 'OSDE 210', NULL, NULL, NULL, 407, 16);
+INSERT INTO datos_salud VALUES (395, 'Swiss Medical', NULL, NULL, NULL, 408, 13);
+INSERT INTO datos_salud VALUES (396, NULL, NULL, NULL, NULL, 409, 11);
+INSERT INTO datos_salud VALUES (397, 'OSDE', NULL, NULL, NULL, 410, NULL);
+INSERT INTO datos_salud VALUES (398, NULL, NULL, NULL, NULL, 411, NULL);
+INSERT INTO datos_salud VALUES (399, 'OSDE', NULL, NULL, NULL, 413, 11);
+INSERT INTO datos_salud VALUES (400, 'IOMA', NULL, NULL, NULL, 414, 16);
+INSERT INTO datos_salud VALUES (401, 'Galeno Azul', NULL, NULL, NULL, 416, 16);
+INSERT INTO datos_salud VALUES (402, NULL, NULL, NULL, NULL, 417, 11);
+INSERT INTO datos_salud VALUES (403, 'OSDE', NULL, NULL, NULL, 418, 16);
+INSERT INTO datos_salud VALUES (404, NULL, NULL, NULL, NULL, 426, NULL);
+INSERT INTO datos_salud VALUES (405, 'OSDE', NULL, NULL, NULL, 428, 8);
+INSERT INTO datos_salud VALUES (406, NULL, NULL, NULL, NULL, 431, NULL);
+INSERT INTO datos_salud VALUES (407, 'Osde 310', NULL, NULL, NULL, 432, 13);
+INSERT INTO datos_salud VALUES (408, NULL, NULL, NULL, NULL, 434, NULL);
+INSERT INTO datos_salud VALUES (409, NULL, NULL, NULL, NULL, 436, NULL);
+INSERT INTO datos_salud VALUES (410, NULL, NULL, NULL, NULL, 437, NULL);
+INSERT INTO datos_salud VALUES (411, 'Galeno Blanco', NULL, NULL, NULL, 441, NULL);
+INSERT INTO datos_salud VALUES (412, NULL, NULL, NULL, NULL, 442, 16);
+INSERT INTO datos_salud VALUES (413, 'PAMI', NULL, NULL, NULL, 443, NULL);
+INSERT INTO datos_salud VALUES (414, 'OSDE', NULL, NULL, NULL, 445, NULL);
+INSERT INTO datos_salud VALUES (415, 'Swiss Medical Nubial', NULL, NULL, NULL, 447, 11);
+INSERT INTO datos_salud VALUES (416, 'Plaza Salud dEscobar', NULL, NULL, NULL, 450, 16);
+INSERT INTO datos_salud VALUES (417, NULL, NULL, NULL, NULL, 451, NULL);
+INSERT INTO datos_salud VALUES (418, 'DASUTEN', NULL, NULL, NULL, 453, 16);
+INSERT INTO datos_salud VALUES (419, 'Docthos / Swiss Med.', NULL, NULL, NULL, 454, 11);
+INSERT INTO datos_salud VALUES (420, 'PAMI', NULL, NULL, NULL, 520, NULL);
+INSERT INTO datos_salud VALUES (421, 'Osde Plan210', NULL, NULL, NULL, 469, 7);
+INSERT INTO datos_salud VALUES (422, 'OSDE', NULL, NULL, NULL, 470, 11);
+INSERT INTO datos_salud VALUES (423, NULL, NULL, NULL, NULL, 471, NULL);
+INSERT INTO datos_salud VALUES (424, NULL, NULL, NULL, NULL, 473, NULL);
+INSERT INTO datos_salud VALUES (425, 'Omint Plan I', NULL, NULL, NULL, 475, 6);
+INSERT INTO datos_salud VALUES (426, 'OSDE 310', NULL, NULL, NULL, 476, 11);
+INSERT INTO datos_salud VALUES (427, 'OSDE', NULL, NULL, NULL, 477, NULL);
+INSERT INTO datos_salud VALUES (428, '-', NULL, NULL, NULL, 478, NULL);
+INSERT INTO datos_salud VALUES (429, NULL, NULL, NULL, NULL, 480, NULL);
+INSERT INTO datos_salud VALUES (430, NULL, NULL, NULL, NULL, 482, 16);
+INSERT INTO datos_salud VALUES (431, 'Medife', NULL, NULL, NULL, 483, NULL);
+INSERT INTO datos_salud VALUES (432, 'Swiss Medical', NULL, NULL, NULL, 484, 3);
+INSERT INTO datos_salud VALUES (433, 'Swiss Medical', NULL, NULL, NULL, 486, 3);
+INSERT INTO datos_salud VALUES (434, 'Swiss Medical', NULL, NULL, NULL, 490, NULL);
+INSERT INTO datos_salud VALUES (435, 'IOMA', NULL, NULL, NULL, 493, 11);
+INSERT INTO datos_salud VALUES (436, 'IOMA', NULL, NULL, NULL, 494, 10);
+INSERT INTO datos_salud VALUES (437, 'IOMA y Luis Pasteur', NULL, NULL, NULL, 495, 9);
+INSERT INTO datos_salud VALUES (438, 'Accord Salud', NULL, NULL, NULL, 497, 6);
+INSERT INTO datos_salud VALUES (439, 'OSDE 310', NULL, NULL, NULL, 498, NULL);
+INSERT INTO datos_salud VALUES (440, 'Swiss Medical', NULL, NULL, NULL, 499, 11);
+INSERT INTO datos_salud VALUES (441, 'Galeno', NULL, NULL, NULL, 501, NULL);
+INSERT INTO datos_salud VALUES (442, NULL, NULL, NULL, NULL, 502, 4);
+INSERT INTO datos_salud VALUES (443, 'IOMA', NULL, NULL, NULL, 503, 11);
+INSERT INTO datos_salud VALUES (444, 'OSDE', NULL, NULL, NULL, 504, 11);
+INSERT INTO datos_salud VALUES (445, 'Docthos/Swiss Med', NULL, NULL, NULL, 505, NULL);
+INSERT INTO datos_salud VALUES (446, 'OSDE 210', NULL, NULL, NULL, 506, 11);
+INSERT INTO datos_salud VALUES (447, NULL, NULL, NULL, NULL, 507, NULL);
+INSERT INTO datos_salud VALUES (448, 'Hospital Británico', NULL, NULL, NULL, 508, NULL);
+INSERT INTO datos_salud VALUES (449, 'Osde 310', NULL, NULL, NULL, 509, 16);
+INSERT INTO datos_salud VALUES (450, 'OSDE', NULL, NULL, NULL, 510, 16);
+INSERT INTO datos_salud VALUES (451, 'IOMA', NULL, NULL, NULL, 512, 16);
+INSERT INTO datos_salud VALUES (452, 'Galeno', NULL, NULL, NULL, 513, NULL);
+INSERT INTO datos_salud VALUES (453, 'Luis Pasteur', NULL, NULL, NULL, 514, 16);
+INSERT INTO datos_salud VALUES (454, NULL, NULL, NULL, NULL, 515, NULL);
+INSERT INTO datos_salud VALUES (455, 'Union Personal', NULL, NULL, NULL, 517, 11);
+INSERT INTO datos_salud VALUES (456, NULL, NULL, NULL, NULL, 518, NULL);
+INSERT INTO datos_salud VALUES (457, 'Osde', NULL, NULL, NULL, 531, NULL);
+INSERT INTO datos_salud VALUES (458, 'Accord Salud Plan310', NULL, NULL, NULL, 534, 11);
+INSERT INTO datos_salud VALUES (459, 'OSDE', NULL, NULL, NULL, 535, 13);
+INSERT INTO datos_salud VALUES (460, 'OSDE', NULL, NULL, NULL, 536, NULL);
+INSERT INTO datos_salud VALUES (461, 'OSDE', NULL, NULL, NULL, 537, 11);
+INSERT INTO datos_salud VALUES (462, 'Centro Med Pueyrredo', NULL, NULL, NULL, 538, 16);
+INSERT INTO datos_salud VALUES (463, 'IOMA', NULL, NULL, NULL, 539, 16);
+INSERT INTO datos_salud VALUES (464, NULL, NULL, NULL, NULL, 540, NULL);
+INSERT INTO datos_salud VALUES (465, 'OSDE', NULL, NULL, NULL, 542, NULL);
+INSERT INTO datos_salud VALUES (466, NULL, NULL, NULL, NULL, 543, NULL);
+INSERT INTO datos_salud VALUES (467, 'Osde 210', NULL, NULL, NULL, 549, 8);
+INSERT INTO datos_salud VALUES (468, 'Osde 210', NULL, NULL, NULL, 551, NULL);
+INSERT INTO datos_salud VALUES (469, 'OSDE', NULL, NULL, NULL, 552, 16);
+INSERT INTO datos_salud VALUES (470, 'Accord', NULL, NULL, NULL, 562, 11);
+INSERT INTO datos_salud VALUES (471, 'Galeno', NULL, NULL, NULL, 563, 13);
+INSERT INTO datos_salud VALUES (472, 'OSDE', NULL, NULL, NULL, 564, NULL);
+INSERT INTO datos_salud VALUES (473, 'IOMA', NULL, NULL, NULL, 566, NULL);
+INSERT INTO datos_salud VALUES (474, NULL, NULL, NULL, NULL, 567, NULL);
+INSERT INTO datos_salud VALUES (475, 'OSDE 210', NULL, NULL, NULL, 568, 16);
+INSERT INTO datos_salud VALUES (476, NULL, NULL, NULL, NULL, 570, NULL);
+INSERT INTO datos_salud VALUES (477, 'OSDE', NULL, NULL, NULL, 572, NULL);
+INSERT INTO datos_salud VALUES (478, NULL, NULL, NULL, NULL, 575, NULL);
+INSERT INTO datos_salud VALUES (479, 'GALENO', NULL, NULL, NULL, 576, 16);
+INSERT INTO datos_salud VALUES (480, NULL, NULL, NULL, NULL, 577, NULL);
+INSERT INTO datos_salud VALUES (481, 'Maestranza', NULL, NULL, NULL, 578, NULL);
+INSERT INTO datos_salud VALUES (482, 'Swiss Medical', NULL, NULL, NULL, 580, 13);
+INSERT INTO datos_salud VALUES (483, NULL, NULL, NULL, NULL, 583, NULL);
+INSERT INTO datos_salud VALUES (484, 'OSDE 210', NULL, NULL, NULL, 586, 10);
+INSERT INTO datos_salud VALUES (485, 'Medife', NULL, NULL, NULL, 587, 16);
+INSERT INTO datos_salud VALUES (486, NULL, NULL, NULL, NULL, 588, 11);
+INSERT INTO datos_salud VALUES (487, NULL, NULL, NULL, NULL, 589, NULL);
+INSERT INTO datos_salud VALUES (488, 'Accord Salud 310', NULL, NULL, NULL, 600, 3);
+INSERT INTO datos_salud VALUES (489, 'OSDE 210', NULL, NULL, NULL, 601, 11);
+INSERT INTO datos_salud VALUES (490, NULL, NULL, NULL, NULL, 602, NULL);
+INSERT INTO datos_salud VALUES (491, 'Osde 210', NULL, NULL, NULL, 603, 16);
+INSERT INTO datos_salud VALUES (492, NULL, NULL, NULL, NULL, 609, NULL);
+INSERT INTO datos_salud VALUES (493, NULL, NULL, NULL, NULL, 610, NULL);
+INSERT INTO datos_salud VALUES (494, 'Union Personal', NULL, NULL, NULL, 612, NULL);
+INSERT INTO datos_salud VALUES (495, NULL, NULL, NULL, NULL, 614, NULL);
+INSERT INTO datos_salud VALUES (496, 'OSPE A604', NULL, NULL, NULL, 615, 3);
+INSERT INTO datos_salud VALUES (497, 'Cobermed', NULL, NULL, NULL, 616, 16);
+INSERT INTO datos_salud VALUES (498, NULL, NULL, NULL, NULL, 618, NULL);
+INSERT INTO datos_salud VALUES (499, 'OSDE', NULL, NULL, NULL, 620, 11);
+INSERT INTO datos_salud VALUES (500, 'OSDE 310', NULL, NULL, NULL, 621, 16);
+INSERT INTO datos_salud VALUES (501, NULL, NULL, NULL, NULL, 623, NULL);
+INSERT INTO datos_salud VALUES (502, 'OSDE', NULL, NULL, NULL, 640, 11);
+INSERT INTO datos_salud VALUES (503, 'OCECAC', NULL, NULL, NULL, 641, 11);
+INSERT INTO datos_salud VALUES (504, 'MEDICUS', NULL, NULL, NULL, 642, NULL);
+INSERT INTO datos_salud VALUES (505, 'UTGRA', NULL, NULL, NULL, 643, 11);
+INSERT INTO datos_salud VALUES (506, NULL, NULL, NULL, NULL, 644, 6);
+INSERT INTO datos_salud VALUES (507, 'OSDE', NULL, NULL, NULL, 645, 11);
+INSERT INTO datos_salud VALUES (508, 'IOMA', NULL, NULL, NULL, 647, 16);
+INSERT INTO datos_salud VALUES (509, 'C. Médico Pueyrredon', NULL, NULL, NULL, 648, 16);
+INSERT INTO datos_salud VALUES (510, 'Osde 210', NULL, NULL, NULL, 650, 5);
+INSERT INTO datos_salud VALUES (511, 'Banco  Provincia', NULL, NULL, NULL, 651, 16);
+INSERT INTO datos_salud VALUES (512, 'OSDE', NULL, NULL, NULL, 653, 16);
+INSERT INTO datos_salud VALUES (513, 'AUSTRAL ', true, 'NO TIENE COMPROMISO FIRMADO', NULL, 40, 16);
+INSERT INTO datos_salud VALUES (514, 'HOSPITAL ALEMAN', true, 'NO TIENE EL COMPROMISO FIRMADO', NULL, 49, NULL);
+INSERT INTO datos_salud VALUES (515, NULL, NULL, NULL, NULL, 216, NULL);
+INSERT INTO datos_salud VALUES (516, NULL, NULL, NULL, NULL, 219, NULL);
+INSERT INTO datos_salud VALUES (517, NULL, NULL, NULL, NULL, 236, NULL);
+INSERT INTO datos_salud VALUES (518, NULL, NULL, NULL, NULL, 253, NULL);
+INSERT INTO datos_salud VALUES (519, NULL, NULL, NULL, NULL, 254, NULL);
+INSERT INTO datos_salud VALUES (520, NULL, NULL, NULL, NULL, 261, NULL);
+INSERT INTO datos_salud VALUES (521, NULL, NULL, NULL, NULL, 269, NULL);
+INSERT INTO datos_salud VALUES (522, NULL, NULL, NULL, NULL, 300, NULL);
+INSERT INTO datos_salud VALUES (523, 'Hospital Italiano', NULL, NULL, NULL, 391, NULL);
+INSERT INTO datos_salud VALUES (524, 'IOMA', NULL, NULL, NULL, 465, 11);
+INSERT INTO datos_salud VALUES (525, NULL, NULL, NULL, NULL, 488, NULL);
+INSERT INTO datos_salud VALUES (526, 'Maestranza', NULL, NULL, NULL, 530, 11);
+INSERT INTO datos_salud VALUES (527, NULL, NULL, NULL, true, 455, NULL);
+INSERT INTO datos_salud VALUES (528, 'OSDE', NULL, NULL, true, 457, 11);
+INSERT INTO datos_salud VALUES (529, 'OMINT', NULL, NULL, true, 464, 8);
+INSERT INTO datos_salud VALUES (530, NULL, NULL, NULL, true, 472, 11);
+INSERT INTO datos_salud VALUES (531, NULL, NULL, NULL, NULL, 591, 16);
+INSERT INTO datos_salud VALUES (532, NULL, NULL, NULL, true, 553, 11);
+INSERT INTO datos_salud VALUES (533, 'OSDEPYM', NULL, NULL, true, 611, 16);
+INSERT INTO datos_salud VALUES (534, 'Hosp Alvarez', NULL, NULL, NULL, 400, 8);
+INSERT INTO datos_salud VALUES (535, 'OSDE', NULL, NULL, NULL, 412, NULL);
+INSERT INTO datos_salud VALUES (536, 'OSMECON', NULL, NULL, NULL, 415, 13);
+INSERT INTO datos_salud VALUES (537, 'Osde 410', NULL, NULL, NULL, 485, 16);
+INSERT INTO datos_salud VALUES (538, 'OSDE', NULL, NULL, NULL, 492, 11);
+INSERT INTO datos_salud VALUES (539, 'OSDE', NULL, NULL, NULL, 613, 11);
 
 
 --
--- TOC entry 2627 (class 0 OID 968289)
--- Dependencies: 222
+-- TOC entry 2676 (class 0 OID 976571)
+-- Dependencies: 224
 -- Data for Name: estados_pago; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25769,32 +28123,80 @@ INSERT INTO estados_pago VALUES (2, 'PAGO');
 
 
 --
--- TOC entry 2629 (class 0 OID 968294)
--- Dependencies: 224
+-- TOC entry 2678 (class 0 OID 976576)
+-- Dependencies: 226
 -- Data for Name: grupos_sanguineos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO grupos_sanguineos VALUES (2, 'RH-');
+INSERT INTO grupos_sanguineos VALUES (3, '+');
+INSERT INTO grupos_sanguineos VALUES (4, 'AB+');
+INSERT INTO grupos_sanguineos VALUES (5, '-');
+INSERT INTO grupos_sanguineos VALUES (6, 'Rh+');
+INSERT INTO grupos_sanguineos VALUES (7, 'B-');
+INSERT INTO grupos_sanguineos VALUES (8, 'B+');
+INSERT INTO grupos_sanguineos VALUES (9, 'AB-');
+INSERT INTO grupos_sanguineos VALUES (10, 'A-');
+INSERT INTO grupos_sanguineos VALUES (11, '0+');
+INSERT INTO grupos_sanguineos VALUES (12, '0');
+INSERT INTO grupos_sanguineos VALUES (13, '0-');
+INSERT INTO grupos_sanguineos VALUES (14, 'O+');
+INSERT INTO grupos_sanguineos VALUES (15, 'A');
+INSERT INTO grupos_sanguineos VALUES (16, 'A+');
 
 
 --
--- TOC entry 2631 (class 0 OID 968299)
--- Dependencies: 226
+-- TOC entry 2680 (class 0 OID 976581)
+-- Dependencies: 228
+-- Data for Name: ids; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO ids VALUES (530);
+INSERT INTO ids VALUES (219);
+INSERT INTO ids VALUES (216);
+INSERT INTO ids VALUES (472);
+INSERT INTO ids VALUES (254);
+INSERT INTO ids VALUES (253);
+INSERT INTO ids VALUES (457);
+INSERT INTO ids VALUES (269);
+INSERT INTO ids VALUES (465);
+INSERT INTO ids VALUES (492);
+INSERT INTO ids VALUES (485);
+INSERT INTO ids VALUES (391);
+INSERT INTO ids VALUES (412);
+INSERT INTO ids VALUES (464);
+INSERT INTO ids VALUES (591);
+INSERT INTO ids VALUES (455);
+INSERT INTO ids VALUES (415);
+INSERT INTO ids VALUES (613);
+INSERT INTO ids VALUES (261);
+INSERT INTO ids VALUES (553);
+INSERT INTO ids VALUES (611);
+INSERT INTO ids VALUES (400);
+INSERT INTO ids VALUES (488);
+INSERT INTO ids VALUES (300);
+INSERT INTO ids VALUES (236);
+
+
+--
+-- TOC entry 2681 (class 0 OID 976584)
+-- Dependencies: 229
 -- Data for Name: inscripciones_modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 2633 (class 0 OID 968304)
--- Dependencies: 228
+-- TOC entry 2683 (class 0 OID 976589)
+-- Dependencies: 231
 -- Data for Name: modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 2635 (class 0 OID 968310)
--- Dependencies: 230
+-- TOC entry 2685 (class 0 OID 976595)
+-- Dependencies: 233
 -- Data for Name: niveles_estudios; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25805,8 +28207,8 @@ INSERT INTO niveles_estudios VALUES (4, 'UNIVERSITARIO');
 
 
 --
--- TOC entry 2637 (class 0 OID 968315)
--- Dependencies: 232
+-- TOC entry 2687 (class 0 OID 976600)
+-- Dependencies: 235
 -- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25814,8 +28216,8 @@ INSERT INTO paises VALUES (1, 'Argentina', 'Argentino');
 
 
 --
--- TOC entry 2639 (class 0 OID 968320)
--- Dependencies: 234
+-- TOC entry 2689 (class 0 OID 976605)
+-- Dependencies: 237
 -- Data for Name: perfiles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25823,25 +28225,559 @@ INSERT INTO perfiles VALUES ('alumno');
 
 
 --
--- TOC entry 2584 (class 0 OID 968162)
+-- TOC entry 2631 (class 0 OID 976436)
 -- Dependencies: 179
 -- Data for Name: personas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO personas VALUES (6, 'Martin', 'Garay', '1989-05-11', 34555008, true, 3, 1, '23345550089');
+INSERT INTO personas VALUES (216, 'Barbara Marcela ', 'Baguear', '1900-01-01', 17332534, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (219, 'Sonia Viviana ', 'Bordisso', '1900-01-01', 17234258, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (236, 'Cintia Susana ', 'Iñiguez Figueroa', '1900-01-01', 35352146, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (253, 'Gabriela Viviana ', 'Mugneco', '1900-01-01', 20383859, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (254, 'Gladys Esther ', 'Müller', '1900-01-01', 20019430, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (261, 'Gisela Vanesa ', 'Rivero', '1900-01-01', 29117199, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (269, 'Maria Soledad ', 'Servera', '1900-01-01', 22592727, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (300, 'Cristian Daniel ', 'Barcia', '1900-01-01', 35143390, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (391, 'Florencia Paula ', 'Fafian', '1976-11-20', 25578127, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (465, 'Carola Marina ', 'Kuzmik', '1972-05-01', 22702289, false, NULL, 1, '27227022898');
+INSERT INTO personas VALUES (488, 'Solana Victoria ', 'Marchesan', '1900-01-01', 35094578, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (530, 'Daniela  ', 'Nuttini', '1965-01-12', 17226965, false, NULL, 1, '27172269651');
+INSERT INTO personas VALUES (455, 'Laura Vanesa ', 'Iannini', '1900-01-01', 26475163, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (457, 'Claudia Marcela ', 'Ibarra', '1971-03-21', 22083518, false, NULL, 1, '27220835184');
+INSERT INTO personas VALUES (464, 'Lombardi Andrea Cristina', 'Kucich', '1977-09-11', 26081114, false, NULL, 1, '27260811148');
+INSERT INTO personas VALUES (472, 'María Inés ', 'Lizondo', '1966-10-06', 18213893, false, NULL, 1, '27182138938');
+INSERT INTO personas VALUES (591, 'Maria Rosa ', 'Rosalez', '1977-07-23', 26104928, false, NULL, 1, '27261049282');
+INSERT INTO personas VALUES (553, 'Elizabet Natalia ', 'Perez', '1981-12-20', 29183232, false, NULL, 1, '27291832321');
+INSERT INTO personas VALUES (611, 'Maria Alejandra ', 'Schnorr', '1983-05-15', 30326610, false, NULL, 1, '27303266106');
+INSERT INTO personas VALUES (400, 'Maria Belen ', 'Fernandez', '1988-06-28', 33813676, false, NULL, 1, '27338136760');
+INSERT INTO personas VALUES (412, 'Natalia  ', 'Freile', '1976-09-27', 25600002, false, NULL, 1, '23256000024');
+INSERT INTO personas VALUES (415, 'Cintia Mariana ', 'Gaitan', '1981-03-17', 28725391, false, NULL, 1, '27287253910');
+INSERT INTO personas VALUES (485, 'Berta Andrea ', 'Mancuso', '1975-06-28', 24694469, false, NULL, 1, '27246944690');
+INSERT INTO personas VALUES (492, 'Joselina Carol ', 'Marin', '1974-04-16', 23775580, false, NULL, 1, '23237755804');
+INSERT INTO personas VALUES (613, 'Silvana Lucia ', 'Scifo', '1981-10-09', 28873354, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (1, 'FIORELLA', 'MARITATO', '1992-07-16', 35428439, true, 1, 1, '27354284397');
+INSERT INTO personas VALUES (2, 'CECILIA', 'POSSE', '1973-02-09', 23103400, true, 2, 1, '27231034004');
+INSERT INTO personas VALUES (14, 'PATRICIA MARCELA', 'FARAONE', '1970-05-31', 21671056, true, 14, 1, NULL);
+INSERT INTO personas VALUES (25, 'NORMA YRENE', 'CARDOZO', '1969-11-16', 92321140, true, 25, 1, NULL);
+INSERT INTO personas VALUES (3, 'MARIANA', 'GUSTAVINO', '1980-03-05', 28030991, true, 3, 1, NULL);
+INSERT INTO personas VALUES (92, 'LUCIA ANGELICA', 'RUGGIERO', '1957-02-17', 12661924, true, 92, 1, NULL);
+INSERT INTO personas VALUES (94, 'MARIA ADELA', 'PIAGGI', '1972-03-08', 22578651, true, 94, 1, '27225786513');
+INSERT INTO personas VALUES (101, 'NATALIA LORENA', 'MAZA', '1976-10-24', 25612302, true, 101, 1, '27256123024');
+INSERT INTO personas VALUES (95, 'NATALIA ROMINA', 'ARNODO', '1977-09-27', 25691703, true, 95, 1, '27256917039');
+INSERT INTO personas VALUES (110, 'URSULA ARACELI', 'OCHOA', '1984-03-04', 30647903, true, 110, 1, '27306479038');
+INSERT INTO personas VALUES (113, 'VALERIA', 'KOKOZKA', '1973-10-29', 23473690, true, 113, 1, '27234736901');
+INSERT INTO personas VALUES (117, 'MARIA GABRIELA', 'ANASTASI', '1970-02-15', 21440559, true, 117, 1, '27214405593');
+INSERT INTO personas VALUES (27, 'SILVIA ANDREA', 'GARRAZA', '1985-04-24', 31138495, true, 27, 1, '27311384959');
+INSERT INTO personas VALUES (21, 'SILVIA', 'BALSAMO', '1971-12-17', 22436270, true, 21, 1, '22436270');
+INSERT INTO personas VALUES (38, 'SUSANA', 'EGIANEZ', '1956-04-14', 11948244, true, 38, 1, '27119482440');
+INSERT INTO personas VALUES (119, 'CARLA GISELLE', 'GRANDE', '1991-05-19', 36076827, false, 119, 1, '31360768244');
+INSERT INTO personas VALUES (126, 'SILVINA PAULA', 'BATLLE', '1979-03-08', 27203270, true, 126, 1, '27272032705');
+INSERT INTO personas VALUES (138, 'Graciela  ', 'Perez', '1961-09-08', 14847940, true, 138, 1, NULL);
+INSERT INTO personas VALUES (139, 'Rene Marcelo ', 'Carino', '1962-04-29', 14965437, true, 139, 1, NULL);
+INSERT INTO personas VALUES (141, 'Laura Valeria', 'Lacruz Correa', '1981-02-24', 92652838, true, 141, 1, '27926528381');
+INSERT INTO personas VALUES (143, 'Maria Fernanda ', 'Maccione', '1984-05-21', 30980718, true, 143, 1, '27309807184');
+INSERT INTO personas VALUES (145, 'Yamila Andrea ', 'Iametti', '1988-07-20', 33597906, true, 145, 1, '27335979066');
+INSERT INTO personas VALUES (29, 'LORENA FERNANDA', 'LOPES', '1976-10-23', 25512614, true, 29, 1, '20255126140');
+INSERT INTO personas VALUES (46, 'MARIA FABIANA', 'GOMEZ', '1986-02-09', 32005378, true, 46, 1, '27320053787');
+INSERT INTO personas VALUES (44, 'FLORENCIA', 'PEÑA', '2017-03-17', 22081092, true, 44, 1, NULL);
+INSERT INTO personas VALUES (45, 'NATALIA PAOLA', 'FERNANDEZ', '1982-08-10', 29633432, true, 45, 1, NULL);
+INSERT INTO personas VALUES (146, 'Maria Florencia ', 'Rivero', '1989-01-25', 34321943, false, 146, 1, '27343219437');
+INSERT INTO personas VALUES (147, 'Melisa Laura ', 'Machado', '1984-11-12', 3146742, false, 147, 1, '23310464724');
+INSERT INTO personas VALUES (148, 'Maria Belen ', 'Paz', '1992-03-03', 36790210, false, 148, 1, '27367902103');
+INSERT INTO personas VALUES (149, 'Maia', 'Segal Sabó', '1992-08-07', 94494878, false, 149, 1, '27944948789');
+INSERT INTO personas VALUES (154, 'Andrea Cecilia ', 'Vitton', '1957-06-10', 33115837, false, 154, 1, '27331158378');
+INSERT INTO personas VALUES (157, 'Jacqueline Elizabeth ', 'Berdun', '1976-11-15', 25595920, false, 157, 1, '27256959203');
+INSERT INTO personas VALUES (160, 'Carla  ', 'Romeo', '1972-08-18', 22913351, false, 160, 1, NULL);
+INSERT INTO personas VALUES (161, 'Micaela  ', 'D''Onofrio', '1992-03-27', 36822184, false, 161, 1, '27368221843');
+INSERT INTO personas VALUES (162, 'Sofia Moira ', 'Galerti', '1996-03-13', 41581965, false, 162, 1, NULL);
+INSERT INTO personas VALUES (163, 'Paula Valeria ', 'Seijo', '1982-03-25', 29438033, false, 163, 1, '27294380332');
+INSERT INTO personas VALUES (164, 'Fernanda  ', 'Sogni', '1975-06-06', 24690580, false, 164, 1, '27246905806');
+INSERT INTO personas VALUES (169, 'Agustina  ', 'Asteriti', '1989-08-25', 34380845, false, 170, 1, '27343808459');
+INSERT INTO personas VALUES (173, 'Sabrina Alejandra ', 'Diaz', '1984-09-10', 30963528, false, 174, 1, '27309635286');
+INSERT INTO personas VALUES (242, 'Vanesa Cecilia ', 'Lucero', '1900-01-01', 24312463, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (175, 'Analia Vanesa ', 'Godoy', '1978-07-20', 26725576, false, 176, 1, '27267255763');
+INSERT INTO personas VALUES (16, 'VIVIANA DORA', 'ROBLES', '1967-03-12', 18302354, true, 16, 1, NULL);
+INSERT INTO personas VALUES (51, 'CAROLINA', 'QUINTANA', '1979-12-28', 18829322, true, 51, 1, NULL);
+INSERT INTO personas VALUES (60, 'MARIANA', 'DAMIANI', '1990-06-12', 35147356, true, 60, 1, '27351473563');
+INSERT INTO personas VALUES (62, 'ROMINA LEONOR', 'SOTO', '1989-06-01', 34332500, false, 62, 1, '27343325008');
+INSERT INTO personas VALUES (67, 'FACUNDO GONZALO', 'ANGIER', '1984-02-14', 30736634, false, 67, 1, NULL);
+INSERT INTO personas VALUES (61, 'MARIA JULIA', 'CARPINETI', '1983-08-30', 30450331, true, 61, 1, NULL);
+INSERT INTO personas VALUES (63, 'MARIA AGUSTINA', 'FERRERIA', '1989-01-02', 34257986, true, 63, 1, '342579863');
+INSERT INTO personas VALUES (64, 'SANDRA ADRIANA', 'ROMERO', '1972-12-13', 23009127, true, 64, 1, NULL);
+INSERT INTO personas VALUES (26, 'GISELA VANINA ELIZABETH', 'MANSILLA', '1976-10-16', 25445123, true, 26, 1, '27254451237');
+INSERT INTO personas VALUES (28, 'BARBARA MARIA LAURA', 'KEXEL', '1990-01-31', 34917140, true, 28, 1, '27349171401');
+INSERT INTO personas VALUES (5, 'MARIA DELFINA', 'LIPKA', '1986-09-23', 32592749, true, 5, 1, '27325927491');
+INSERT INTO personas VALUES (10, 'EVELIN GISELE', 'VERA', '1993-11-20', 37845556, true, 10, 1, '27378455567');
+INSERT INTO personas VALUES (23, 'GRACIELA ALEJANDRA', 'SANGIACOMO', '1963-02-19', 16285935, true, 23, 1, NULL);
+INSERT INTO personas VALUES (22, 'MARIA INES', 'CUBELLI', '1971-06-08', 22269055, true, 22, 1, NULL);
+INSERT INTO personas VALUES (6, 'PATRICIA', 'MOYANO', '1961-04-18', 14563021, true, 6, 1, NULL);
+INSERT INTO personas VALUES (57, 'MELINA', 'TARABURELLI', '1980-05-08', 28342341, true, 57, 1, '27283423412');
+INSERT INTO personas VALUES (78, 'CRISTIAN TOMAS', 'FIGUEROA', '1977-10-18', 26083669, true, 78, 1, NULL);
+INSERT INTO personas VALUES (76, 'NOELIA', 'LOPEZ', '1982-05-14', 29405389, true, 76, 1, '27294053897');
+INSERT INTO personas VALUES (77, 'CARMEN MABEL', 'ESPINOZA', '1970-04-20', 21496429, true, 77, 1, NULL);
+INSERT INTO personas VALUES (79, 'GABRIELA', 'RODRIGUEZ', '1969-05-07', 20954064, true, 79, 1, '27209540644');
+INSERT INTO personas VALUES (82, 'MARIA ELENA', 'PACIFICO', '1962-12-30', 16452083, true, 82, 1, '2716452083');
+INSERT INTO personas VALUES (83, 'ANABELLA LILIAN', 'CORVALAN', '1975-05-18', 24623907, true, 83, 1, '27246239075');
+INSERT INTO personas VALUES (86, 'LILIANA', 'INSFRAM', '1974-09-25', 24139684, true, 86, 1, '2724139684');
+INSERT INTO personas VALUES (93, 'LAURA', 'GARCIA', '1961-10-26', 14768743, true, 93, 1, NULL);
+INSERT INTO personas VALUES (97, 'CLAUDIA', 'NUÑEZ', '1980-03-05', 28045695, true, 97, 1, '27280456956');
+INSERT INTO personas VALUES (106, 'SANDRA ELIZABETH', 'ALONSO', '1970-06-03', 21508887, false, 106, 1, NULL);
+INSERT INTO personas VALUES (107, 'JULIETA', 'KOHEN', '1976-07-30', 25393189, true, 107, 1, NULL);
+INSERT INTO personas VALUES (118, 'VALERIA ANAHÍ', 'PEANO', '1985-02-13', 31489475, false, 118, 1, '27314894753');
+INSERT INTO personas VALUES (120, 'BARBARA JUDITH', 'CARDOSO', '1975-05-21', 23725869, false, 120, 1, '27237258695');
+INSERT INTO personas VALUES (121, 'MARIA FLORENCIA', 'CARELLI', '1991-03-14', 35722041, false, 121, 1, '27357220411');
+INSERT INTO personas VALUES (122, 'SANDRA', 'RAMOS', '1971-08-29', 22318619, false, 122, 1, '27223186195');
+INSERT INTO personas VALUES (123, 'MARILINA', 'APECETCHE', '1988-07-15', 33905012, true, 123, 1, '27339050216');
+INSERT INTO personas VALUES (125, 'PAMELA ADRIANA', 'BARUZZI', '1981-07-02', 28932729, false, 125, 1, '27289327296');
+INSERT INTO personas VALUES (128, 'SILVINA', 'BULLRICH', '1962-12-22', 16557074, false, 128, 1, '27165570745');
+INSERT INTO personas VALUES (130, 'ROSANA ADRIANA', 'CALANDRONI', '1969-02-15', 23068949, false, 130, 1, '27230684494');
+INSERT INTO personas VALUES (8, 'MARIANA', 'BENI', '1966-11-07', 18074383, true, 8, 1, NULL);
+INSERT INTO personas VALUES (9, 'MARIA SOLEDA', 'SUAREZ', '1975-09-30', 24565398, true, 9, 1, '27245653986');
+INSERT INTO personas VALUES (105, 'ELENA', 'FERNANDEZ', '1975-01-21', 24182792, true, 105, 1, '27241827920');
+INSERT INTO personas VALUES (133, 'Belen Alejandra ', 'Enriquez', '1977-10-17', 26299687, false, 133, 1, NULL);
+INSERT INTO personas VALUES (136, 'Florencia  ', 'Durand', '1993-06-26', 37022305, false, 136, 1, NULL);
+INSERT INTO personas VALUES (132, 'Luiz Oscar ', 'Valiño', '1968-02-24', 20009800, false, 132, 1, '24200098001');
+INSERT INTO personas VALUES (134, 'Andrea Agostina ', 'Durand', '1995-01-06', 38681512, false, 134, 1, '27386815122');
+INSERT INTO personas VALUES (135, 'Maria Jose ', 'Curci', '1984-01-03', 30663091, false, 135, 1, '27306630917');
+INSERT INTO personas VALUES (137, 'Vanesa Esther ', 'Suarez', '1972-03-04', 22647086, true, 137, 1, '27226470866');
+INSERT INTO personas VALUES (131, 'GABRIELA FERNANDA', 'CAMARGO', '1978-09-15', 26826206, false, 131, 1, '27268262062');
+INSERT INTO personas VALUES (159, 'Cecilia Gabriela ', 'Paz', '1973-12-30', 23572893, false, 159, 1, '2723572893');
+INSERT INTO personas VALUES (18, 'MIRAM ELIZABETH', 'PICON', '1969-01-08', 20434220, true, 18, 1, '27204342208');
+INSERT INTO personas VALUES (41, 'LAURA', 'NUÑEZ', '1982-04-02', 29380822, true, 41, 1, NULL);
+INSERT INTO personas VALUES (35, 'JOHANA SOLEDAD', 'MARUCCI', '1988-05-23', 33896056, true, 35, 1, '2733890560');
+INSERT INTO personas VALUES (144, 'Daniela Alejandra ', 'Posadas', '1970-09-18', 21981066, true, 144, 1, '27219810666');
+INSERT INTO personas VALUES (68, 'GABRIELA', 'FELIX', '1972-06-21', 22150935, true, 68, 1, '27221509353');
+INSERT INTO personas VALUES (69, 'SILVANA ANDREA', 'BONETTO', '1978-07-08', 2414347, true, 69, 1, '27240143475');
+INSERT INTO personas VALUES (72, 'ALICIA ESTHER', 'CHRISTIANI', '2018-12-15', 16714442, true, 72, 1, '27167144425');
+INSERT INTO personas VALUES (74, 'MARIA DEL ROSARIO', 'LEGUIZAMON', '1988-08-20', 36072980, true, 74, 1, '27360729805');
+INSERT INTO personas VALUES (65, 'NATALIA SOLEDAD', 'ROMERO', '1979-01-02', 26979621, true, 65, 1, '27269796214');
+INSERT INTO personas VALUES (66, 'SUSANA VILMA', 'VALLEJOS', '1970-08-25', 21636317, true, 66, 1, NULL);
+INSERT INTO personas VALUES (71, 'ROSALIA', 'ZALAZAR', '1979-09-28', 25578845, true, 71, 1, '27275788452');
+INSERT INTO personas VALUES (54, 'JUANA BEATRIZ', 'AQUINO', '1989-04-10', 34479696, true, 54, 1, NULL);
+INSERT INTO personas VALUES (155, 'Adriana Laura', 'Carracedo Bosch', '1959-02-01', 12975926, false, 155, 1, '27129759262');
+INSERT INTO personas VALUES (166, 'Claudia Noemi ', 'Brown', '1967-11-06', 18492476, false, 167, 1, '27184924760');
+INSERT INTO personas VALUES (177, 'MARIA JULIETA', 'SALVI', '1975-11-07', 25021309, false, 178, 1, '27250213099');
+INSERT INTO personas VALUES (183, 'Marcela Alejandra ', 'Naveira', '1964-12-27', 17332083, false, 184, 1, '27173320839');
+INSERT INTO personas VALUES (56, 'FLAVIA DENISA', 'LOBOS', '1987-04-22', 32993194, true, 56, 1, '27329931949');
+INSERT INTO personas VALUES (102, 'PATRICIA LILIANA JUANA', 'MOSQUERA', '1959-06-07', 12046456, true, 102, 1, '27120464561');
+INSERT INTO personas VALUES (186, 'Mirta Susana ', 'Cordero', '1968-05-22', 20055033, false, 187, 1, '27200550337');
+INSERT INTO personas VALUES (240, 'Susana Alejandra ', 'Largo', '1900-01-01', 17702432, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (241, 'Julia Alcira ', 'Lopez', '1900-01-01', 6245667, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (165, 'Julieta Elizabeth ', 'Cobos', '1973-03-16', 23328837, false, 165, 1, '27233288379');
+INSERT INTO personas VALUES (184, 'Alejandra Mariela ', 'Orieta', '1975-05-16', 24350972, false, 185, 1, '27243509721');
+INSERT INTO personas VALUES (185, 'Rosana Beatriz Maria', 'Pieruccioni', '1960-07-12', 14338323, false, 186, 1, '27143383232');
+INSERT INTO personas VALUES (187, 'Da Silva Silvana', 'Pires', '1976-03-08', 94080283, false, 188, 1, '27940802836');
+INSERT INTO personas VALUES (189, 'Jermaine Xavier ', 'Isaac Modestin', '1980-12-10', 94153598, false, 190, 1, '20941535985');
+INSERT INTO personas VALUES (194, 'Enzo Ariel ', 'Ortega', '1900-01-01', 39913612, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (195, 'Maria del Carmen', 'Toledo', '1900-01-01', 21875562, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (196, 'Leonela  ', 'Cicala', '1900-01-01', 34641467, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (198, 'Cynthia Yanina ', 'Biset', '1900-01-01', 37247316, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (199, 'Maria Gwendoline ', 'Campbell', '1900-01-01', 33314907, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (203, 'Pablo Alejandro ', 'Melana', '1900-01-01', 32872396, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (208, 'Gabriela Analia ', 'Senno', '1900-01-01', 23668857, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (210, '  ', 'Aguirre', '1900-01-01', 30679640, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (211, 'Johanna Elizabeth ', 'Altabelo', '1900-01-01', 36413448, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (212, 'Maria del Rocio', 'Ampuero', '1900-01-01', 32879794, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (213, 'Axel Gabriel ', 'Arce', '1900-01-01', 39625811, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (215, 'Marisa  ', 'Arnaudo', '1900-01-01', 13694728, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (217, 'Nancy Graciela ', 'Barello', '1900-01-01', 17839862, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (218, 'Claudio Roberto ', 'Barreira', '1900-01-01', 22293481, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (220, 'Maria Marta ', 'Brie', '1900-01-01', 11836014, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (221, 'Natalia Irene ', 'Cicchino', '1900-01-01', 32692638, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (222, 'Betina Laura ', 'Cocola', '1900-01-01', 25863144, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (224, 'Carolina Elisabet ', 'Coyette', '1900-01-01', 17983780, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (225, 'Romina Paula', 'De Lorenzo ', '1900-01-01', 27940082, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (226, 'Silvia Gabriela ', 'Delcauce', '1900-01-01', 23774529, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (229, 'Agostina  ', 'Dries', '1900-01-01', 40998005, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (230, 'Laura Veronica ', 'Fabbri', '1900-01-01', 23774701, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (232, 'Ruth Noemi ', 'Flamenco', '1900-01-01', 33342933, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (234, 'Angeles  ', 'Furlan', '1900-01-01', 39916351, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (235, 'Adrian Ezequiel ', 'Galan', '1900-01-01', 34587534, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (192, 'Silvia Monica ', 'Curuli', '1968-01-13', 20010572, false, 193, 1, '27200105724');
+INSERT INTO personas VALUES (243, 'Sabrina Valeria ', 'Ludueña', '1900-01-01', 27121697, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (245, 'Maira Carina ', 'Luna', '1900-01-01', 35392358, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (248, 'Florencia  ', 'Marrocco', '1900-01-01', 40496081, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (249, 'Miriam Marcela ', 'Mateo', '1900-01-01', 16804161, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (251, 'Gustavo Javier ', 'Mensi', '1900-01-01', 18217828, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (252, 'Elisabet Susana ', 'Milla', '1900-01-01', 25635225, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (255, 'Julia Laura ', 'Muñiz', '1900-01-01', 16397622, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (257, 'Lucia Belen ', 'Pastor', '1900-01-01', 34372778, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (258, 'Ramos Mirian Ruth', 'Penyy', '1900-01-01', 27938780, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (262, 'Micaela Alejandrina ', 'Rodriguez', '1900-01-01', 42358880, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (263, 'Sofia Paz ', 'Rodriguez', '1900-01-01', 38561704, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (264, 'Maria Florencia ', 'Rosso', '1900-01-01', 29986726, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (267, 'Silvana Laura ', 'Santillan', '1900-01-01', 27049761, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (273, 'Rafelghem Valeria Maria', 'Van', '1900-01-01', 92346462, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (274, 'Hilda Olga ', 'Villasboa', '1900-01-01', 20859745, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (276, 'Nestor Ariel ', 'Abalos', '1987-03-06', 28772648, false, NULL, 1, '20287726482');
+INSERT INTO personas VALUES (278, 'Soledad  ', 'Abeijon', '1900-01-01', 25492690, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (290, 'Andrea Fabiana ', 'Ametller', '1972-02-23', 22444059, false, NULL, 1, '27224440591');
+INSERT INTO personas VALUES (291, 'Soledad  ', 'Aneiros', '1981-07-12', 28929604, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (294, 'Silvina Antonella ', 'Arias', '1900-01-01', 36696786, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (297, 'Ernesto Julio ', 'Baiocchini', '1963-09-12', 16809803, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (298, 'Graciela Beatriz ', 'Balduzzi', '1968-01-31', 20019878, false, NULL, 1, '27200198781');
+INSERT INTO personas VALUES (302, 'Silvina  ', 'Barrios', '1978-02-22', 26567272, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (305, 'Jesica  ', 'Basabe', '1988-01-26', 33633774, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (307, 'Luz Maria ', 'Bassetto', '1971-04-27', 22001266, false, NULL, 1, '27220012668');
+INSERT INTO personas VALUES (321, 'Alejandro Martin ', 'Buraglia', '1971-12-17', 22402394, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (323, 'Celeste Agustina ', 'Burgos', '1992-08-17', 37346744, false, NULL, 1, '27373467443');
+INSERT INTO personas VALUES (327, 'Maricel  ', 'Cabaleiro', '1978-11-27', 27215355, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (329, 'Paola  ', 'Callealta', '1900-01-01', 20619227, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (355, 'Claudia Alejandra ', 'Correa', '1981-07-26', 28756463, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (356, 'Antonio Jose Manuel', 'Cortes Ripoll', '1989-03-15', 34472124, false, NULL, 1, '20344721247');
+INSERT INTO personas VALUES (389, 'Agustina  ', 'España', '1991-03-26', 35657497, false, NULL, 1, '27356574970');
+INSERT INTO personas VALUES (390, 'Antonela Laura ', 'Faces', '1988-02-18', 33489875, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (393, 'Dubois Eduardo Mario', 'Favier', '1952-04-18', 10373256, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (419, 'Cecilia Ana Inés', 'Gavilán', '2015-10-01', 36529275, false, NULL, 1, '27365292758');
+INSERT INTO personas VALUES (422, 'Florencia Valeria ', 'Gilio', '1989-08-02', 34671245, false, NULL, 1, '27346712452');
+INSERT INTO personas VALUES (423, 'Lilian Edith ', 'Gimenez', '1959-02-08', 13124549, false, NULL, 1, '27131245497');
+INSERT INTO personas VALUES (456, 'Ana Lorena ', 'Ibañez', '1972-10-28', 23046967, false, NULL, 1, '27230469674');
+INSERT INTO personas VALUES (458, 'Lorena Esther ', 'Insaurralde', '1975-01-22', 24366814, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (459, 'Paola Edith ', 'Itxassa', '1974-10-10', 23709758, false, NULL, 1, '27237097586');
+INSERT INTO personas VALUES (461, 'Jara Gabriel ', 'Kamerer', '1988-09-05', 94610016, false, NULL, 1, '20946100162');
+INSERT INTO personas VALUES (462, 'Paula  ', 'Kierniki', '1991-03-08', 35970015, false, NULL, 1, '27359700151');
+INSERT INTO personas VALUES (463, 'Gabriela  ', 'Kiverling', '1962-07-26', 16126381, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (487, 'Laura Soledad ', 'Manso', '1986-05-08', 32250603, false, NULL, 1, '27322506037');
+INSERT INTO personas VALUES (489, 'Myriam Beatriz ', 'Marchetti', '1964-12-28', 17424402, false, NULL, 1, '27174244028');
+INSERT INTO personas VALUES (521, 'Maria Natalia ', 'Muñoz', '1980-11-21', 28479033, false, NULL, 1, '27284790338');
+INSERT INTO personas VALUES (523, 'Nerina Iris ', 'Muñoz', '1979-12-21', 27704136, false, NULL, 1, '27277041362');
+INSERT INTO personas VALUES (524, 'Maria Cristina ', 'Muotri', '1970-03-29', 21569543, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (527, 'Mariana Lorena ', 'Nelson', '1980-09-05', 28307854, false, NULL, 1, '27283078545');
+INSERT INTO personas VALUES (528, 'Fabiana Alejandra ', 'Nicolosi', '1975-03-17', 24434635, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (529, 'Yanina Leandra ', 'Noejovich', '1978-06-24', 27085845, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (554, 'Victoria  ', 'Perez', '1981-04-12', 28810789, false, NULL, 1, '27288107896');
+INSERT INTO personas VALUES (555, 'Ines  ', 'Perotti', '1951-03-29', 6711601, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (556, 'Flavia Lorena ', 'Pesce', '1975-06-09', 24529723, false, NULL, 1, '27245297233');
+INSERT INTO personas VALUES (557, 'Sol  ', 'Petrina', '1992-08-05', 36948212, false, NULL, 1, '27369482122');
+INSERT INTO personas VALUES (558, 'Alpor María ', 'Peverelli', '1989-01-05', 34372007, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (560, 'Luis  ', 'Piendibene', '1954-05-30', 10965444, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (565, 'Carla Josefina ', 'Ponce', '1966-08-25', 17962340, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (593, 'Remon Fedra ', 'Rosso', '1983-10-26', 93518319, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (594, 'Aida Andrea ', 'Rotondo', '1973-06-22', 23469278, false, NULL, 1, '27234692785');
+INSERT INTO personas VALUES (596, 'Silvina Andrea ', 'Rusiñol', '1966-09-23', 18098378, false, NULL, 1, '27180983789');
+INSERT INTO personas VALUES (597, 'Valeria  ', 'Saglietti', '1988-07-08', 33448406, false, NULL, 1, '27334484063');
+INSERT INTO personas VALUES (598, 'Luciana Noemi ', 'Salandria', '1985-11-02', 31934413, false, NULL, 1, '27319344131');
+INSERT INTO personas VALUES (170, 'Perla Rosina', 'Ludueña Favot ', '1987-01-07', 32808791, false, 171, 1, '27328087915');
+INSERT INTO personas VALUES (171, 'Fernanda Lorena ', 'Aragon', '1985-08-10', 32017935, false, 172, 1, '27320179357');
+INSERT INTO personas VALUES (629, 'Claudia Noemi ', 'Tejeda', '1983-06-07', 31329068, false, NULL, 1, '27313290684');
+INSERT INTO personas VALUES (630, 'Fabiana  ', 'Tezza', '1964-11-26', 17203522, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (631, 'Alicia  ', 'Torre', '1900-01-01', 14335974, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (632, 'Marcelo Eduardo ', 'Torres', '1977-12-17', 26331913, false, NULL, 1, '20263319134');
+INSERT INTO personas VALUES (634, 'Romina  ', 'Valente', '1900-01-01', 27086642, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (635, 'Ana Maria ', 'Vanelli', '1958-12-12', 12714253, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (639, 'Marcela Fabiana ', 'Verminetti', '1976-09-05', 25525027, false, NULL, 1, '27255250278');
+INSERT INTO personas VALUES (646, 'María Laura ', 'Viscosa', '1900-01-01', 24747891, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (50, 'EDITH GABRIELA', 'CORIA', '1968-04-12', 20056920, true, 50, 1, NULL);
+INSERT INTO personas VALUES (53, 'CARINA LORENA', 'LEDERHOS', '1975-01-23', 24352013, true, 53, 1, '23243520134');
+INSERT INTO personas VALUES (75, 'ALEJANDRA', 'SOCA', '1977-06-17', 25865473, true, 75, 1, NULL);
+INSERT INTO personas VALUES (96, 'GISELA', 'SARLINGA', '1986-03-18', 31789087, true, 96, 1, '27317890872');
+INSERT INTO personas VALUES (108, 'STEPHANIE AYELEN', 'MENDOZA', '1996-11-12', 39986452, false, 108, 1, '27399864521');
+INSERT INTO personas VALUES (127, 'JEZABEL VANINA', 'BOGANI', '1982-01-03', 29238880, false, 127, 1, '27292388808');
+INSERT INTO personas VALUES (129, 'PAULA', 'BUSCALIA', '1970-11-09', 21960529, false, 129, 1, NULL);
+INSERT INTO personas VALUES (112, 'YANEL', 'KELLY', '1899-12-31', 26254270, true, 112, 1, NULL);
+INSERT INTO personas VALUES (15, 'LETICIA', 'MORONI', '1983-01-25', 30081866, true, 15, 1, '27300818663');
+INSERT INTO personas VALUES (31, 'DOMINIQUE', 'HUYGENS', '1986-05-20', 32320882, true, 31, 1, '23323208824');
+INSERT INTO personas VALUES (7, 'VANINA LILIAN', 'DOMENIGHETTI', '1981-02-09', 28714604, true, 7, 1, '20287146049');
+INSERT INTO personas VALUES (11, 'PATRICIA', 'KRYSIAK', '1964-10-11', 18026099, true, 11, 1, NULL);
+INSERT INTO personas VALUES (12, 'NATACHA', 'MONTAÑO', '1966-07-24', 95663581, true, 12, 1, NULL);
+INSERT INTO personas VALUES (13, 'MARIA SOLEDA', 'GARCIA', '1978-05-28', 26520808, true, 13, 1, '27565208083');
+INSERT INTO personas VALUES (19, 'VIVIANA PATRICIA', 'MALINOVSKI', '1973-08-31', 23414771, true, 19, 1, '23234147714');
+INSERT INTO personas VALUES (24, 'Lucrecia Amada ', 'BOVE', '1970-06-14', 21681489, true, 24, 1, NULL);
+INSERT INTO personas VALUES (32, 'ALBERTO', 'VIGLINO', '1959-03-02', 11635825, true, 32, 1, '20116358256');
+INSERT INTO personas VALUES (33, 'CECILIA GRACIELA', 'ANGRIGIANI', '1956-07-31', 12447789, true, 33, 1, '27124477897');
+INSERT INTO personas VALUES (34, 'MARIA DE LOS ANGELES', 'SINIGAGLIA', '1971-12-21', 22501604, true, 34, 1, NULL);
+INSERT INTO personas VALUES (47, 'MARIA ROSA', 'QUIROZ', '1966-10-31', 15097515, true, 47, 1, NULL);
+INSERT INTO personas VALUES (42, 'SUSANA ELIDA', 'COLLOCA', '1959-03-06', 12968299, true, 42, 1, NULL);
+INSERT INTO personas VALUES (43, 'LAURA MARCELA', 'MOLINA', '1970-04-17', 21587765, true, 43, 1, '27215877650');
+INSERT INTO personas VALUES (48, 'DELFINA', 'TARASIDO', '1982-08-14', 29697833, true, 48, 1, NULL);
+INSERT INTO personas VALUES (55, 'YANEL FLAVIA PATRICIA', 'AVALOS', '1986-05-30', 32419552, true, 55, 1, '27324195527');
+INSERT INTO personas VALUES (4, 'JUDITH EVANGELINA', 'LEICHNER', '1979-12-06', 27777117, true, 4, 1, NULL);
+INSERT INTO personas VALUES (98, 'VIVIANE APARECIDA', 'AAL', '1966-12-07', 95635277, true, 98, 1, NULL);
+INSERT INTO personas VALUES (52, 'MARIANA', 'MARTINEZ', '1975-06-04', 24804051, true, 52, 1, NULL);
+INSERT INTO personas VALUES (20, 'YANINA ALEJANDRA BEATRIZ', 'ANTON', '1989-08-10', 34716381, true, 20, 1, '27347163819');
+INSERT INTO personas VALUES (58, 'EMA SILVANA', 'REVAH', '1955-05-20', 11755502, true, 58, 1, '27117555025');
+INSERT INTO personas VALUES (81, 'ELIZABETH ALEJANDRA', 'MOSCHENI', '1982-05-10', 29467732, true, 81, 1, '27294677327');
+INSERT INTO personas VALUES (88, 'VERONICA LAURA', 'VAZQUEZ', '1970-04-25', 21499814, true, 88, 1, '27214998144');
+INSERT INTO personas VALUES (115, 'NORA ANALIA', 'LOPEZ', '1976-02-07', 25179635, true, 115, 1, '27251796357');
+INSERT INTO personas VALUES (90, 'NANCY CARINA', 'LOOSE', '1972-08-26', 22690682, true, 90, 1, '27226906823');
+INSERT INTO personas VALUES (99, 'LAURA MARIA', 'ALVAREZ', '1975-12-24', 24552241, true, 99, 1, NULL);
+INSERT INTO personas VALUES (111, 'LORENA PAOLA', 'ONTIVEROS', '1899-12-31', 30079095, false, 111, 1, '27300790955');
+INSERT INTO personas VALUES (140, 'Sofia Dulce', 'Lopez Bravo', '2001-01-07', 42960701, true, 140, 1, '27429607014');
+INSERT INTO personas VALUES (142, 'Maria Florencia', 'Silva Werbach ', '1989-10-17', 34600389, true, 142, 1, '27346003893');
+INSERT INTO personas VALUES (152, 'Amelia  ', 'Fernandez', '1956-03-06', 12021400, false, 152, 1, NULL);
+INSERT INTO personas VALUES (153, 'Maria Teresa ', 'Fernandez', '1984-03-26', 30823863, false, 153, 1, '27308238631');
+INSERT INTO personas VALUES (156, 'Florencia Sofia ', 'Olivera', '1978-11-25', 26942890, false, 156, 1, '27269428908');
+INSERT INTO personas VALUES (158, 'Susana Noemi ', 'Clausi', '1957-12-08', 13724019, false, 158, 1, '27137240195');
+INSERT INTO personas VALUES (167, 'Maria Paula ', 'Teodori', '1968-11-20', 20477364, false, 168, 1, '27204773640');
+INSERT INTO personas VALUES (172, 'Noelia Carolina ', 'Fernandez', '1988-01-06', 33304998, false, 173, 1, NULL);
+INSERT INTO personas VALUES (174, 'Elizabet Viviana ', 'Kobzistyj', '1980-06-11', 28191076, false, 175, 1, '27281910766');
+INSERT INTO personas VALUES (176, 'Espinola Clara ', 'Marin', '1976-11-25', 25675510, false, 177, 1, NULL);
+INSERT INTO personas VALUES (179, 'Andres Horacio ', 'Ramos', '1972-03-09', 22653674, false, 180, 1, '20226536745');
+INSERT INTO personas VALUES (180, 'Marta Silvina ', 'Hernandez', '1971-05-27', 22152331, false, 181, 1, '27221523313');
+INSERT INTO personas VALUES (280, 'Mercedes Viviana  ', 'Acevedo', '1975-07-19', 24814112, false, NULL, 1, '27248141129');
+INSERT INTO personas VALUES (283, 'Luciana Valeria ', 'Aguirre', '1978-12-07', 27039558, false, NULL, 1, '27270395584');
+INSERT INTO personas VALUES (288, 'Emilio Sergio ', 'Alvarez', '1971-11-03', 22241670, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (289, 'Natalia Soledad ', 'Amaya', '1984-03-19', 30732970, false, NULL, 1, '27307329706');
+INSERT INTO personas VALUES (292, 'Romina Gisela ', 'Anitori', '1977-02-25', 25802704, false, NULL, 1, '27258027049');
+INSERT INTO personas VALUES (293, 'Patricia Fermina ', 'Antognazza', '1956-01-01', 12079301, false, NULL, 1, '27120793018');
+INSERT INTO personas VALUES (295, 'Barbara Regina ', 'Aveiro', '1985-01-28', 31464887, false, NULL, 1, '27314648876');
+INSERT INTO personas VALUES (299, 'Paula Andrea ', 'Barbieri', '1979-05-07', 27333276, false, NULL, 1, '27273332761');
+INSERT INTO personas VALUES (303, 'Lucia  ', 'Bartoletti', '1981-01-20', 28643224, false, NULL, 1, '27286432242');
+INSERT INTO personas VALUES (306, 'Alicia Matilde ', 'Bassano', '1966-08-08', 17951713, false, NULL, 1, '27179517138');
+INSERT INTO personas VALUES (322, 'Gisela Lorena ', 'Buratti', '1979-11-30', 27768821, false, NULL, 1, '27277688218');
+INSERT INTO personas VALUES (325, 'Noelia Florencia ', 'Buzeta', '1990-07-01', 35255430, false, NULL, 1, '27352554303');
+INSERT INTO personas VALUES (328, 'Maria Del Carmen', 'Callaey', '1962-04-27', 14902880, false, NULL, 1, '27149028809');
+INSERT INTO personas VALUES (337, 'Ferreira M Daniela', 'Carrada', '1963-04-18', 16245928, false, NULL, 1, '27162459282');
+INSERT INTO personas VALUES (351, 'Belén  ', 'Cisterna', '1994-06-03', 38294353, false, NULL, 1, '27382943533');
+INSERT INTO personas VALUES (357, 'Leandro Nicolas ', 'Costa', '1978-10-19', 26953185, false, NULL, 1, '20269531852');
+INSERT INTO personas VALUES (360, 'Patricia Elizabeht ', 'Crottollini', '1959-04-15', 12929258, false, NULL, 1, '27129292585');
+INSERT INTO personas VALUES (377, 'Maria Victoria ', 'Diorio', '1982-02-21', 29331531, false, NULL, 1, '27293315316');
+INSERT INTO personas VALUES (392, 'Natalia  ', 'Favano', '1977-11-15', 26169887, false, NULL, 1, '27261698876');
+INSERT INTO personas VALUES (395, 'Alicia Cristina ', 'Fedyszyn', '1956-05-17', 12021592, false, NULL, 1, '27120215928');
+INSERT INTO personas VALUES (396, 'Silvia Monica ', 'Fente', '1967-12-09', 18585093, false, NULL, 1, '27185850930');
+INSERT INTO personas VALUES (398, 'Edit Carina ', 'Fernandez', '1974-04-13', 23585987, false, NULL, 1, '23235859874');
+INSERT INTO personas VALUES (402, 'Moreno Emiliane ', 'Fernandez', '1994-04-27', 94056296, false, NULL, 1, '27940562967');
+INSERT INTO personas VALUES (420, 'Perez Maria Gabriela', 'Gianello', '1978-04-04', 92703893, false, NULL, 1, '27927038930');
+INSERT INTO personas VALUES (438, 'Maria Ines ', 'Granero', '1977-06-13', 25026535, false, NULL, 1, '27250265358');
+INSERT INTO personas VALUES (449, 'Claudia Beatriz ', 'Guzman', '1970-12-31', 21981782, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (452, 'Claudia Alejandra ', 'Herrera', '1967-03-10', 18375352, false, NULL, 1, '27183753520');
+INSERT INTO personas VALUES (460, 'Elisabet Rosalia ', 'Ivan', '1982-06-22', 29489606, false, NULL, 1, '27294896061');
+INSERT INTO personas VALUES (467, 'Mariana Alejandra ', 'Larraza', '1972-08-19', 22913394, false, NULL, 1, '27229133948');
+INSERT INTO personas VALUES (474, 'Marina Edith ', 'Lopez', '1976-04-13', 25103813, false, NULL, 1, '27251038134');
+INSERT INTO personas VALUES (481, 'Claudio Omar ', 'Maione', '1977-06-24', 25797659, false, NULL, 1, '23257976599');
+INSERT INTO personas VALUES (491, 'Maria Laura ', 'Mariani', '1975-07-30', 24800241, false, NULL, 1, '27248002412');
+INSERT INTO personas VALUES (496, 'Yolanda Lorena ', 'Martinez', '1987-06-15', 33219099, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (516, 'Lorena  ', 'Montesanti', '1976-05-20', 25358725, false, NULL, 1, '27253587259');
+INSERT INTO personas VALUES (525, 'Frattani Mayra Yanina', 'Napoli', '1978-05-31', 33189872, false, NULL, 1, '23331898724');
+INSERT INTO personas VALUES (532, 'Andrea Alicia ', 'Oliverio', '1975-04-04', 24307871, false, NULL, 1, '20243078712');
+INSERT INTO personas VALUES (545, 'Ana Beatriz ', 'Patera', '1967-03-07', 18151921, false, NULL, 1, '27181519210');
+INSERT INTO personas VALUES (548, 'Fiorella  ', 'Pellegrino', '1993-02-08', 37249037, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (559, 'Elina Marcela ', 'Peyron', '1963-03-05', 16834452, false, NULL, 1, '27168344525');
+INSERT INTO personas VALUES (574, 'Valeria  ', 'Razquin', '1972-12-14', 22861993, false, NULL, 1, '27228619936');
+INSERT INTO personas VALUES (581, 'Evangelina Maria Noel', 'Rodriguez', '1981-06-21', 28911029, false, NULL, 1, '27289110297');
+INSERT INTO personas VALUES (595, 'Sofia Belen ', 'Ruiz', '1987-01-01', 32743092, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (599, 'Mirna Vanesa ', 'Salotti', '1971-04-06', 22147301, false, NULL, 1, '27221473014');
+INSERT INTO personas VALUES (604, 'Marta Elena ', 'Santagada', '1979-09-07', 27464354, false, NULL, 1, '23274643544');
+INSERT INTO personas VALUES (605, 'Silvia Andrea ', 'Santiago', '1980-11-21', 28451113, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (606, 'Melo Monica Beatriz', 'Saqueta', '1974-12-08', 24037667, false, NULL, 1, '27240376674');
+INSERT INTO personas VALUES (607, 'Amelia Margarita ', 'Sardo', '1948-03-14', 5765157, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (624, 'Maria Florencia ', 'Stelluto', '1991-01-09', 35532450, false, NULL, 1, '27355324503');
+INSERT INTO personas VALUES (625, 'Ignacio Sabas ', 'Stuart', '1900-01-01', 28735358, false, NULL, 1, '20287353589');
+INSERT INTO personas VALUES (626, 'Maria Laura ', 'Suares', '1965-03-19', 17603127, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (627, 'Veronica Evangelina ', 'Sulle', '1973-08-13', 23529823, false, NULL, 1, '27235298231');
+INSERT INTO personas VALUES (633, 'Natalia Raquel ', 'Toscani', '1973-12-05', 23572807, false, NULL, 1, '27235728074');
+INSERT INTO personas VALUES (636, 'Carolina  ', 'Varas', '1982-03-03', 29091587, false, NULL, 1, '27290915878');
+INSERT INTO personas VALUES (652, 'Marta Esther ', 'Zanni', '1963-01-25', 16146640, false, NULL, 1, '27161466407');
+INSERT INTO personas VALUES (522, 'Maria Soledad ', 'Muñoz', '1978-04-30', 26939222, false, NULL, 1, '27269392229');
+INSERT INTO personas VALUES (70, 'CANDELA MARIA BELEN', 'GARCIA', '1990-05-14', 35101129, true, 70, 1, NULL);
+INSERT INTO personas VALUES (73, 'LORENA ELIZABETH', 'CARDOSO', '1977-11-30', 26248092, true, 73, 1, '27262480920');
+INSERT INTO personas VALUES (59, 'CLAUDIA INES', 'SANTAMARINA', '1962-11-16', 14952434, true, 59, 1, NULL);
+INSERT INTO personas VALUES (103, 'STELLA MARIS', 'URRUTIBEHETY', '1967-09-12', 18572735, true, 103, 1, '27185727357');
+INSERT INTO personas VALUES (190, 'Maria Valeria ', 'Chilabert', '1977-06-03', 25612935, false, 191, 1, '27256129359');
+INSERT INTO personas VALUES (191, 'Juana Maria', 'De Luca', '1971-05-10', 22225202, false, 192, 1, '23222252024');
+INSERT INTO personas VALUES (214, 'Lorena Gabriela ', 'Arias', '1900-01-01', 26096639, false, NULL, 1, '27260966397');
+INSERT INTO personas VALUES (277, 'Hernan Andres ', 'Abate', '1978-12-04', 26865518, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (279, 'Cecilia Veronica ', 'Accardo', '1980-05-15', 28108458, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (281, 'Karina  ', 'Acosta', '1975-01-06', 24142582, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (282, 'Judith Fabiana ', 'Agüera', '1972-05-23', 22822769, false, NULL, 1, '27228227698');
+INSERT INTO personas VALUES (284, 'Yanina Beatriz ', 'Agustin', '1982-04-26', 29380883, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (285, 'Jesica Daniela ', 'Alberti', '1984-09-26', 31251311, false, NULL, 1, '27312513116');
+INSERT INTO personas VALUES (286, 'Pablo Martin ', 'Alberto', '1967-03-08', 18209591, false, NULL, 1, '20182095916');
+INSERT INTO personas VALUES (320, 'Florencia  ', 'Buonasena', '1992-02-19', 36728750, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (308, 'Norberto  ', 'Belli', '1961-05-01', 14338485, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (309, 'Daniel Salvador ', 'Berardi', '1969-12-19', 20736931, false, NULL, 1, '20207369315');
+INSERT INTO personas VALUES (310, 'Natalia Agustina', 'Bernard Mazzucchi', '1984-08-27', 31206410, false, NULL, 1, '27312064109');
+INSERT INTO personas VALUES (311, 'Constanza  ', 'Bertagna', '1982-04-22', 29431332, false, NULL, 1, '27294313325');
+INSERT INTO personas VALUES (312, 'Leandro Martin ', 'Bertolini', '1985-04-23', 31649964, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (313, 'Felicitas  ', 'Bidonde', '1988-07-29', 33980878, false, NULL, 1, '27339808789');
+INSERT INTO personas VALUES (315, 'Silvia Estela ', 'Boskovich', '1960-12-24', 13731517, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (316, 'Omar  ', 'Bozzari', '1949-02-18', 6151574, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (317, 'Analia Viviana Ines', 'Brandolini Morales', '1974-06-16', 23995677, false, NULL, 1, '27239956772');
+INSERT INTO personas VALUES (318, 'Luisa Edith ', 'Brizuela', '1982-06-07', 29490796, false, NULL, 1, '27294907969');
+INSERT INTO personas VALUES (319, 'Clara  ', 'Buchanan', '1983-12-13', 30653149, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (330, 'Valeria Noely ', 'Campora', '1982-02-07', 29117273, false, NULL, 1, '27291172739');
+INSERT INTO personas VALUES (332, 'Marcela  ', 'Candela', '1985-06-20', 32037222, false, NULL, 1, '23320372224');
+INSERT INTO personas VALUES (333, 'Manuela', 'Canellada De Luca', '1980-08-10', 28381684, false, NULL, 1, '27283816848');
+INSERT INTO personas VALUES (334, 'Eliana Alejandra ', 'Capurro', '1976-07-30', 23705979, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (335, 'Alejandra  ', 'Carbone', '1957-01-17', 13120013, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (336, 'Ana  ', 'Carlucci', '1960-07-15', 14198999, false, NULL, 1, '27141989990');
+INSERT INTO personas VALUES (338, 'Marcela Debora ', 'Carro', '1966-06-11', 18153425, false, NULL, 1, '27181534252');
+INSERT INTO personas VALUES (339, 'Romero Beatriz ', 'Castelló', '1967-08-27', 18459056, false, NULL, 1, '27184590560');
+INSERT INTO personas VALUES (340, 'Maria Agustina ', 'Castro', '1900-01-01', 35216068, false, NULL, 1, '27352160682');
+INSERT INTO personas VALUES (341, 'Marilu  ', 'Caviglia', '1945-07-26', 5263503, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (342, 'Amelia Cristina ', 'Cerezo', '1953-06-12', 10861960, false, NULL, 1, '27108619606');
+INSERT INTO personas VALUES (343, 'Elisa  ', 'Cesarini', '1969-07-22', 20820976, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (344, 'Barrios Daniel Alejandro', 'Cheuquepil', '1990-10-06', 35944252, false, NULL, 1, '20359442522');
+INSERT INTO personas VALUES (345, 'Sebastián  ', 'Chicou', '1973-10-27', 23511334, false, NULL, 1, '20235113342');
+INSERT INTO personas VALUES (346, 'Juana Magali ', 'Chinchilla', '1975-09-18', 24581671, false, NULL, 1, '27245816710');
+INSERT INTO personas VALUES (348, 'Daniela  ', 'Ciarfaglia', '1975-08-18', 24734395, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (352, 'Sofía Belén ', 'Coca', '1900-01-01', 37102479, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (353, 'Veronica Cecilia ', 'Colicigno', '1988-10-19', 33827718, false, NULL, 1, '27338277186');
+INSERT INTO personas VALUES (358, 'Amelia  ', 'Costoya', '1900-01-01', 13285972, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (359, 'Maria Victoria ', 'Courtis', '1977-07-06', 25966109, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (361, 'Sergio Gastón ', 'D´Amico', '1985-07-30', 31775754, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (362, 'Brenda  ', 'Danti', '1988-03-05', 33597533, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (363, 'Solange Maricel ', 'David', '1990-02-10', 35098532, false, NULL, 1, '27350985323');
+INSERT INTO personas VALUES (364, 'Maria Florencia', 'De Luca', '1985-04-27', 31554314, false, NULL, 1, '27315543148');
+INSERT INTO personas VALUES (365, 'Andrea Karina', 'De Matteis', '1971-06-15', 22196829, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (366, 'Elena Maria', 'De Souza Frade', '1967-05-25', 18564734, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (367, 'Mario Agustin ', 'Decker', '1977-10-31', 26382605, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (368, ' David Gaston', 'Del Brutto', '1980-11-26', 28452889, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (369, 'Leylen  ', 'Delgado', '1900-01-01', 27320705, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (370, 'Rawson Alejandra ', 'Dellepiane', '1964-05-09', 17109396, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (371, 'Flavia ', 'Di Diego ', '1966-09-03', 18118207, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (372, 'Silvana Yanina ', 'Didolich', '1983-05-17', 30611232, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (373, 'Cristina  ', 'Diez', '1973-11-14', 23500808, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (375, 'Jessica Beatriz ', 'Dinger', '1993-11-27', 37993348, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (378, 'Claudia Alejandra ', 'Dodino', '1967-08-26', 18076989, false, NULL, 1, '27180769892');
+INSERT INTO personas VALUES (379, 'Mauro  ', 'Dollinger', '1988-04-06', 33605229, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (380, 'Iris Perla ', 'Dominguez', '1964-03-03', 16849430, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (382, 'Moreno Constanza ', 'Dozo', '1968-12-13', 20540067, false, NULL, 1, '27205400678');
+INSERT INTO personas VALUES (383, 'Sol  ', 'Dubois', '1983-04-24', 30220314, false, NULL, 1, '27302203143');
+INSERT INTO personas VALUES (384, 'Carlos Miguel ', 'Dure', '1972-02-14', 92416270, false, NULL, 1, '20924162709');
+INSERT INTO personas VALUES (385, 'German Jorge ', 'Echeberz', '1984-05-16', 30553231, false, NULL, 1, '20305532313');
+INSERT INTO personas VALUES (387, 'Carlos  ', 'Escobar', '1967-05-06', 18278618, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (397, 'Alejandra Cristina ', 'Fernandez', '1970-04-30', 21552791, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (399, 'Magdalena Paola ', 'Fernandez', '1987-03-30', 32997105, false, NULL, 1, '27329971053');
+INSERT INTO personas VALUES (401, 'Maria Belen2 ', 'Fernandez', '1985-02-03', 31453172, false, NULL, 1, '27314531723');
+INSERT INTO personas VALUES (403, 'Cecilia Elena ', 'Ferrari', '1975-10-24', 24886203, false, NULL, 1, '27248862039');
+INSERT INTO personas VALUES (404, 'Marcela Ulma Carolina', 'Ferreyra', '1982-01-08', 29299205, false, NULL, 1, '27292992055');
+INSERT INTO personas VALUES (405, 'Yanina Vanesa ', 'Figliolo', '1900-01-01', 32850482, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (406, 'Rocio Yasmin ', 'Figueroa', '1995-01-26', 38822701, false, NULL, 1, '27388227015');
+INSERT INTO personas VALUES (407, 'Karina  ', 'Fontana', '1977-06-10', 25778703, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (408, 'Leticia Carla ', 'Fookes', '1978-10-07', 26807849, false, NULL, 1, '27268078490');
+INSERT INTO personas VALUES (409, 'Maria Veronica ', 'Forchieri', '1965-06-03', 17765730, false, NULL, 1, '27177657307');
+INSERT INTO personas VALUES (410, 'Evangelina del Valle', 'Frattani', '1970-01-23', 21319568, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (411, 'Veronica Fernanda ', 'Frattani', '1978-06-27', 26603473, false, NULL, 1, '27266034739');
+INSERT INTO personas VALUES (413, 'Nora Gabriela ', 'Freschi', '1965-10-28', 17749169, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (414, 'Andrea Laura ', 'Gabusi', '1965-10-20', 17715402, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (416, 'Karina Alejandra ', 'Gaitan', '1979-06-12', 27313346, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (417, 'Martinez Laura Vanessa', 'Galicia', '1980-11-20', 95455400, false, NULL, 1, '27954554002');
+INSERT INTO personas VALUES (418, 'Julieta Romina ', 'Garcia', '1973-02-20', 23229705, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (426, 'Lorena Elisabeth ', 'Gobbi', '1900-01-01', 29651936, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (428, 'Violeta Guadalupe ', 'Godoy', '1988-08-01', 33862727, false, NULL, 1, '27338627276');
+INSERT INTO personas VALUES (431, 'Alicia Ester ', 'Gonzalez', '1900-01-01', 13400499, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (432, 'Jenny  ', 'Gonzalez', '1974-10-07', 94180534, false, NULL, 1, '27941805340');
+INSERT INTO personas VALUES (434, 'Teran Daniela ', 'Gonzalez', '1990-06-08', 35405222, false, NULL, 1, '27354052224');
+INSERT INTO personas VALUES (436, 'Belen  ', 'Gorocito', '1996-09-20', 43870380, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (437, 'Laura Edith ', 'Graciano', '1965-07-20', 17302382, false, NULL, 1, '27173023826');
+INSERT INTO personas VALUES (441, 'Mariana del Valle', 'Guastavino', '1980-03-05', 28030994, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (442, 'Maria Emilia ', 'Guazzaroni', '1989-11-23', 34834404, false, NULL, 1, '27348344043');
+INSERT INTO personas VALUES (443, 'Mirta  ', 'Guiñazu', '1943-07-27', 4666429, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (445, 'Maria Victoria ', 'Gussoni', '1989-01-19', 34372047, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (447, 'Andrea  ', 'Gutierrez', '1967-01-28', 18165446, false, NULL, 1, '27181654460');
+INSERT INTO personas VALUES (450, 'Clara Noemi ', 'Hamm', '1954-08-17', 11016986, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (451, 'Luciana  ', 'Hernando', '1900-01-01', 27616552, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (453, '  ', 'Hicoff Marina', '1971-12-09', 22539664, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (454, 'Sueldo Mariana ', 'Hortal', '1968-10-30', 20404511, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (520, 'Maria Consuelo ', 'Muiños', '1948-12-25', 5738349, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (469, 'Candelaria  ', 'Leiguarda', '1900-01-01', 34098203, false, NULL, 1, '27340982032');
+INSERT INTO personas VALUES (470, 'Graciela María ', 'Leo', '1957-08-14', 13739255, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (471, 'Luis Hector ', 'Linares', '1900-01-01', 11876386, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (473, 'Lorena  ', 'Lopez', '1900-01-01', 27712928, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (475, 'Veronica Lorena ', 'Lopez', '1972-03-14', 22577676, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (476, 'Micaela Ivana ', 'Ludovico', '1985-07-11', 31775061, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (477, 'Maria Eugenia ', 'Luis', '1980-05-28', 27623133, false, NULL, 1, '27276231338');
+INSERT INTO personas VALUES (478, 'Maria Angelica ', 'Maciel', '1968-06-30', 24890981, false, NULL, 1, '27248909817');
+INSERT INTO personas VALUES (480, 'Gladys Beatriz ', 'Maidana', '1974-07-29', 23799052, false, NULL, 1, '20237990529');
+INSERT INTO personas VALUES (482, 'Gerardo Martin ', 'Maiterth', '1986-01-26', 32091680, false, NULL, 1, '20320916802');
+INSERT INTO personas VALUES (483, 'Sonia Marisa ', 'Makk', '1970-11-04', 21749364, false, NULL, 1, '27217493647');
+INSERT INTO personas VALUES (484, 'Ailin Johana ', 'Malimowcka', '1990-10-03', 35363624, false, NULL, 1, '27353636249');
+INSERT INTO personas VALUES (486, 'Cinthia Carla Mariel', 'Mango', '1964-03-18', 16895975, false, NULL, 1, '27168959759');
+INSERT INTO personas VALUES (490, 'Mariela Beatriz ', 'Marianacci', '1972-03-14', 22689097, false, NULL, 1, '27226890977');
+INSERT INTO personas VALUES (493, 'Nelida Beatriz ', 'Marsico', '1966-03-31', 17674270, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (494, 'Ballicillos María Macarena', 'Martinez', '1989-01-10', 34154591, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (495, 'Erica  ', 'Martinez', '1981-03-23', 29056252, false, NULL, 1, '27290562525');
+INSERT INTO personas VALUES (497, 'Maria Jose ', 'Martitegui', '1983-02-03', 30378467, false, NULL, 1, '27303784670');
+INSERT INTO personas VALUES (498, 'Lucila  ', 'Mascaros', '1973-03-18', 23292644, false, NULL, 1, '27232926444');
+INSERT INTO personas VALUES (499, 'Evangelina  ', 'Matas', '1949-04-10', 6199370, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (501, 'Maria Jimena ', 'Medina', '1979-02-15', 27108496, false, NULL, 1, '27271084965');
+INSERT INTO personas VALUES (502, 'Dana Julia ', 'Mehle', '1989-07-01', 34738669, false, NULL, 1, '27347386699');
+INSERT INTO personas VALUES (503, 'Edith Nancy ', 'Mena', '1972-10-16', 22927804, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (504, 'Maria Laura ', 'Menghini', '1981-06-14', 28549829, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (505, 'Patricia Susana ', 'Merlo', '1953-10-17', 10889023, false, NULL, 1, '27108890237');
+INSERT INTO personas VALUES (506, 'Veronica Andrea ', 'Micheletti', '1900-01-01', 23124577, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (507, 'Romina  ', 'Milacher', '1900-01-01', 30265437, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (508, 'Monica Liliana ', 'Minetto', '1958-12-24', 13645195, false, NULL, 1, '27136451958');
+INSERT INTO personas VALUES (509, 'Ailen  ', 'Miramontes', '1991-07-17', 36397195, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (510, 'Lorena Jorgelina ', 'Miranda', '1975-04-25', 24463321, false, NULL, 1, '27244633213');
+INSERT INTO personas VALUES (512, 'Maria Florencia ', 'Molina', '1982-03-10', 29382206, false, NULL, 1, '27293822064');
+INSERT INTO personas VALUES (513, 'Rosa Nancy ', 'Molina', '1976-04-17', 93920564, false, NULL, 1, '27939205646');
+INSERT INTO personas VALUES (514, 'Carla  ', 'Molinari', '1972-08-30', 22849437, false, NULL, 1, '27228494378');
+INSERT INTO personas VALUES (515, 'Jesica  ', 'Mondino', '1900-01-01', 32735315, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (517, 'Maggio Alejandra ', 'Montigel', '1987-04-03', 33024886, false, NULL, 1, '27330248861');
+INSERT INTO personas VALUES (518, 'María  ', 'Moreno', '1962-12-01', 16054418, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (531, 'Natalia  ', 'Occhiuzzi', '1973-12-24', 23567868, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (534, 'Maria de los Angeles  ', 'Ossia', '1978-07-18', 26688315, false, NULL, 1, '27266883159');
+INSERT INTO personas VALUES (535, 'Castro Candelaria ', 'Oyharzabal', '1992-08-20', 30721245, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (536, 'Castro Catalina ', 'Oyharzabal', '1999-02-09', 41710447, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (537, 'Milagros  ', 'Oyharzabal', '2000-05-29', 42660375, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (538, 'Santiago Hernan ', 'Paez', '1973-07-29', 23278495, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (539, 'Miriam Noemi ', 'Paiber', '1900-01-01', 16638800, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (540, 'Claudio Alberto Braian', 'Palavecino', '1989-08-16', 34459228, false, NULL, 1, '2034459228');
+INSERT INTO personas VALUES (542, 'Daniela  ', 'Palmeiro', '1979-01-31', 27144116, false, NULL, 1, '27271441164');
+INSERT INTO personas VALUES (543, 'Mirta Beatriz ', 'Panza', '1900-01-01', 5475445, false, NULL, 1, '27054754456');
+INSERT INTO personas VALUES (549, 'Edith Marisa ', 'Peña', '1967-04-02', 18204656, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (551, 'Nadia Soledad ', 'Pereyra', '1984-12-07', 31381095, false, NULL, 1, '27313810955');
+INSERT INTO personas VALUES (552, 'Norma Susana ', 'Pereyra', '1959-06-23', 13450215, false, NULL, 1, '27134502155');
+INSERT INTO personas VALUES (562, 'Miriam Ines ', 'Pogrebaj', '1966-01-15', 18003362, false, NULL, 1, '27180033624');
+INSERT INTO personas VALUES (563, 'Marina  ', 'Polastrelli', '1963-10-25', 16354093, false, NULL, 1, '27163540938');
+INSERT INTO personas VALUES (564, 'Laura  ', 'Pomar', '1991-10-03', 36411434, false, NULL, 1, '27364114341');
+INSERT INTO personas VALUES (566, 'Monica Elsa ', 'Portillo', '1958-08-11', 12844312, false, NULL, 1, '27128443121');
+INSERT INTO personas VALUES (567, 'Joana Natalia ', 'Primolano', '1900-01-01', 35643737, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (568, 'Guillermo  ', 'Proietto', '1970-12-11', 21919007, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (570, 'Mariana Veronica ', 'Pungitore', '1974-03-25', 23771839, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (572, 'Silvia  ', 'Quiroga', '1900-01-01', 16040259, false, NULL, 1, '27160402593');
+INSERT INTO personas VALUES (575, 'Marcos  ', 'Redoni', '1900-01-01', 16742274, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (576, 'Lucila  ', 'Reyes', '1981-12-23', 29093104, false, NULL, 1, '27290931040');
+INSERT INTO personas VALUES (577, 'Ana Noelia ', 'Riestra', '1900-01-01', 33021235, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (578, 'Carina Maria ', 'Rivas', '1972-01-15', 18721654, false, NULL, 1, '27187216546');
+INSERT INTO personas VALUES (580, 'Elena Haydee ', 'Robacio', '1961-08-18', 16145179, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (583, 'Pablo  ', 'Rodriguez', '1964-08-03', 17030696, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (586, 'Yamila Ines ', 'Rodriguez', '1984-04-05', 30927303, false, NULL, 1, '27309273031');
+INSERT INTO personas VALUES (587, 'Silvana Judith ', 'Roidzaid', '1973-07-11', 23297198, false, NULL, 1, '27232971989');
+INSERT INTO personas VALUES (588, 'Mirian Adriana ', 'Rojas', '1979-04-01', 27357349, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (589, 'Carina  ', 'Romera', '1984-09-17', 31200025, false, NULL, 1, '27312000259');
+INSERT INTO personas VALUES (600, 'Valeria  ', 'Salvador', '1983-06-16', 30065686, false, NULL, 1, '27300656868');
+INSERT INTO personas VALUES (601, 'Camila  ', 'Sanchez', '1986-03-05', 32191615, false, NULL, 1, '27321916150');
+INSERT INTO personas VALUES (602, 'Paula Valeria ', 'Sanchez', '1900-01-01', 30158407, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (603, 'Zulema Noemí ', 'Sanchez', '1959-01-27', 12928002, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (609, 'Cinthya Verónica ', 'Scachi', '1900-01-01', 20392030, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (610, 'Maria Cristina ', 'Schiratti', '1900-01-01', 16852626, false, NULL, 1, '27168526267');
+INSERT INTO personas VALUES (612, 'Irene Rocío ', 'Schupak', '1985-03-24', 31375017, false, NULL, 1, '27313750170');
+INSERT INTO personas VALUES (614, 'María Cecilia ', 'Seguer', '1900-01-01', 34933878, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (615, 'Daniela Clases Viviana', 'Senn', '1991-04-11', 36236940, false, NULL, 1, '27362369407');
+INSERT INTO personas VALUES (616, 'Sanchez Ingrid Rocío', 'Serna', '1968-10-03', 94704220, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (618, 'Franco Diana Lucia', 'Silva', '1900-01-01', 94641707, false, NULL, 1, '27946417071');
+INSERT INTO personas VALUES (620, 'Muñiz Candela ', 'Soengas', '1995-08-17', 39095447, false, NULL, 1, '27390954471');
+INSERT INTO personas VALUES (621, 'María Ines ', 'Sosa', '1979-02-26', 27086944, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (623, 'Karina Vanessa ', 'Steckler', '1977-12-25', 26663425, false, NULL, 1, '27266634256');
+INSERT INTO personas VALUES (640, 'Maria Alejandra ', 'Vezzuci', '1960-10-26', 14188644, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (641, 'Maria Victoria ', 'Vignati', '1963-08-09', 16520648, false, NULL, 1, '27165206482');
+INSERT INTO personas VALUES (642, 'Veronica Vivian ', 'Vilar', '1961-02-05', 17606196, false, NULL, 1, '27176061966');
+INSERT INTO personas VALUES (643, 'Cintia  ', 'Villadangos', '1979-03-28', 27271584, false, NULL, 1, '27272715845');
+INSERT INTO personas VALUES (644, 'Lopez Emilia ', 'Villalba', '1965-05-22', 92659529, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (645, 'Magdalena  ', 'Villar', '1997-01-19', 40133963, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (647, 'Perez Debora Anabella', 'Voigt', '1987-07-02', 32861498, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (648, 'Maria Lujan ', 'Wagner', '1975-09-22', 24786271, false, NULL, 1, '23247862714');
+INSERT INTO personas VALUES (650, 'Rosemarie  ', 'Woschnagg', '1942-03-01', 4453111, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (651, 'Romina Silvana ', 'Zabala', '1977-03-09', 25879152, false, NULL, 1, NULL);
+INSERT INTO personas VALUES (653, 'Jesica  ', 'Zeballos', '1988-10-03', 34136040, false, NULL, 1, '23341360404');
+INSERT INTO personas VALUES (40, 'MARIELA', 'DAMIANO', '1978-12-22', 27088023, true, 40, 1, NULL);
+INSERT INTO personas VALUES (49, 'MARIA ISABEL', 'SENOSIAIN', '1984-03-15', 30923290, true, 49, 1, NULL);
 
 
 --
--- TOC entry 2640 (class 0 OID 968323)
--- Dependencies: 235
+-- TOC entry 2690 (class 0 OID 976608)
+-- Dependencies: 238
 -- Data for Name: profesiones; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 2642 (class 0 OID 968328)
--- Dependencies: 237
+-- TOC entry 2692 (class 0 OID 976613)
+-- Dependencies: 240
 -- Data for Name: provincias; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25872,8 +28808,8 @@ INSERT INTO provincias VALUES (24, 'Tucumán', 1);
 
 
 --
--- TOC entry 2644 (class 0 OID 968336)
--- Dependencies: 239
+-- TOC entry 2694 (class 0 OID 976621)
+-- Dependencies: 242
 -- Data for Name: sedes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25884,16 +28820,16 @@ INSERT INTO sedes VALUES (12, 'Congreso', 'Estudio Atenea', 'Veronica', '0', '11
 
 
 --
--- TOC entry 2645 (class 0 OID 968343)
--- Dependencies: 240
+-- TOC entry 2695 (class 0 OID 976628)
+-- Dependencies: 243
 -- Data for Name: sedes_formadores; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 2666 (class 0 OID 976408)
--- Dependencies: 273
+-- TOC entry 2698 (class 0 OID 976635)
+-- Dependencies: 246
 -- Data for Name: temp_ciudades; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -25943,212 +28879,154 @@ INSERT INTO temp_ciudades VALUES (1, 'MALVINAS ARGENTINAS', 26311);
 
 
 --
--- TOC entry 2664 (class 0 OID 976387)
--- Dependencies: 271
+-- TOC entry 2700 (class 0 OID 976640)
+-- Dependencies: 248
 -- Data for Name: temp_personas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO temp_personas VALUES (1, 1, 'Pilar', 'MARITATO', 'FIORELLA', '1992-07-16', 'ARGENTIA', '35428439', '27354284397', '18 DE OCTUBRE', '914', NULL, 1665, 'JOSE C PAZ', 'BUENOS AIRES', 'ARGENTINA', '2320439426', '1539119452', NULL, 'FLORR.M@HOTMAIL.COM', 'A+', 'ACCORD 310', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'INCOMPLETO', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-16', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (2, 2, 'Pilar', 'POSSE', 'CECILIA', '1973-02-09', 'ARG', '23103400', '27231034004', 'RUTA 8', 'KM 51,5', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304423221', '111569551440', NULL, 'CECIPOSSE@YAHOO.COM.AR', '0+', 'MEDIFE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (3, 3, 'Otros', 'GUSTAVINO', 'MARIANA', '1980-03-05', 'ARG', '28030991', NULL, 'MATIENZO', '5451', NULL, 1744, 'MORENO', 'BS AS', 'ARG', '2320451431', '1156390479', NULL, 'MARINAGUSTAVINO@GMAIL.COM', NULL, 'GALENO', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'PROFESORADO DE BIOLOGIA', 'S­', 'ISFTD N36', 'VENDEDORA', 'JUMBO', NULL, NULL, NULL, 'NO', 'Si', 'Si', 'Si', 'No', '1900-01-01', 'SI', '2016-05-14', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (4, 4, 'Pilar', 'LEICHNER', 'JUDITH EVANGELINA', '1979-12-06', 'ARG', '27777117', NULL, 'LORENZO LOPEZ', '1081', '15', 1629, 'PILAR', 'BS AS', 'ARG', '2320400877', '1169913644', NULL, 'LEICHNERJUDITH@HOTMAIL.COM', 'A+', 'NO', 'SI', NULL, 'COMP', 'COMP', 'INCOMP', 'No', NULL, 'COMERCIANTE', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (5, 5, 'Pilar', 'LIPKA', 'MARIA DELFINA', '1986-09-23', 'ARG', '32592749', '27325927491', 'LOS ALERCES', '1212', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111557878084', '1157878084', 'delpilipka@hotmail.com', 'A+', 'OSDE', 'SI', 'CIFOSIS DORSAL Y LORDOSIS LUMBAR', 'COMP', 'COMP', 'COMP', 'No', NULL, 'MEDICA RESIDENTE', 'HOSPITAL FEDERICO FALCON', 'POLONIA Y ARATA', '2320423795', NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (6, 6, 'Pilar', 'MOYANO', 'PATRICIA', '1961-04-18', 'ARG', '14563021', NULL, 'AV CHAMPAGNAT BARRIO LAS MERCEDES', '0', NULL, 1620, 'PILAR', 'BS AS', 'ARG', NULL, '1144367588', NULL, 'PAT.MOYANO@GMAIL.COM', NULL, 'SWISS MEDICAL', 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'CONSULTORA PSICOLOGICA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (7, 7, 'Pilar', 'DOMENIGHETTI', 'VANINA LILIAN', '1981-02-09', 'ARG', '28714604', '20287146049', 'NAZCA', '948', '3', 1872, 'CABA', 'BS AS', 'ARG', '1146134504', '232615424422', '2326154422', 'NO ESTA CLARO', '0+', 'OSECAC', 'SI', 'TIROIDES T4', 'COMP', 'COMP', NULL, 'No', NULL, 'COMERCIANTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (8, 8, 'Pilar', 'BENI', 'MARIANA', '1966-11-07', 'ARG', '18074383', NULL, 'CAMARANO 915 (BARRIO LA PRADERA)', '915', '1057', 1631, 'PILAR', 'BS AS', 'ARG', '2304458288', '3413080444', NULL, 'MARIANA.BENI@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'TRADUCTORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (9, 9, 'Pilar', 'SUAREZ', 'MARIA SOLEDA', '1975-09-30', 'ARG', '24565398', '27245653986', 'LOS LAZARISTAS', '462', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '345154568408', '348154568408', 'MASOLESU@GMAIL.COM', 'RH-', 'OSDE', 'SI', 'OPERADA DE LOS PIES', 'COMP', 'COMP', 'COMP', 'No', NULL, 'LIC EN ADMINSTRACION', 'AFIP', 'RTA PANAMERICANA KM 54.500 PILAR', '23224423385', 'MASOLESUAREZ@AFIP.GOV.AR', 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-10', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (10, 10, 'Pilar', 'VERA', 'EVELIN GISELE', '1993-11-20', 'ARG', '37845556', '27378455567', 'SAN JUAN', '1281', NULL, 2812, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', '2323492854', '111530983008', '11153093008', 'EVELINGGALARZA@HOTMAIL.COM', 'B+', 'IOMA', 'SI', NULL, 'COMP', 'COMP', 'EN CURSO', 'S­', 'ISTITUTO SUPERIOR FEDERICO CHOPIN ', NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-08', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (11, 11, 'Pilar', 'KRYSIAK', 'PATRICIA', '1964-10-11', 'ARG', '18026099', NULL, 'PASTEUR', '807', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111533352319', NULL, 'PATRICIA.KRYSIAK@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, 'COMP', 'COMP', 'UNIVERSIDAD NAC DE LUJAN', 'No', NULL, 'DOCENTE', 'DGCYE', NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-15', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (12, 12, 'Pilar', 'MONTAÑO', 'NATACHA', '1966-07-24', 'VENEZOLANA', '95663581', NULL, 'VILLA MARIA GOLF CLUB', '2461', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '3484639057', NULL, 'NATACHAMONTANO@GMAIL.COM', '0+', NULL, 'SI', NULL, 'COMP', 'COMP', 'UNIVERSIDAD SANTA MARIA', 'No', NULL, 'CONTADOR PUBLICO', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-06', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (13, 13, 'Pilar', 'GARCIA', 'MARIA SOLEDA', '1978-05-28', 'ARG', '26520808', '27565208083', 'RUTA 226 Y LOS OLMOS  (BARRIO PRIVADO LA CELINA))', '1', NULL, 1623, 'ESCOBAR', 'BS AS', 'ARG', NULL, '1568463653', NULL, 'SOLEGARCIA@GMAIL.COM', 'A+', 'OSDE', 'SI', NULL, 'COMP', 'COMP', 'USAL', 'No', NULL, 'COSMETOLOGIA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (14, 14, 'Pilar', 'FARAONE', 'PATRICIA MARCELA', '1970-05-31', 'ARG', '21671056', NULL, 'POTOSI', '359', NULL, 1631, 'PILAR', 'BS AS', 'ARG', NULL, '111521695523', NULL, 'PATRIMARCEL@HOTMAIL.COM', '0-', 'OSECAC', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (15, 15, 'Pilar', 'MORONI', 'LETICIA', '1983-01-25', 'ARG', '30081866', '27300818663', 'DOLORES', '15', '18', 1629, 'PILAR', 'BS AS ', 'ARG', NULL, '1531170321', NULL, 'LETICIA_MORONI@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, 'COMP', 'COMP', 'DISEÑADORA TEXTIL', 'No', NULL, 'SOCIA GERENTE', 'CAR SRL', NULL, NULL, 'INFO_CARSRL@GMAIL.COM', 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (16, 16, 'Pilar', 'ROBLES', 'VIVIANA DORA', '1967-03-12', 'ARG', '18302354', NULL, 'C. COLON', '1784', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '1121169345', '230154574075', NULL, 'sofiadepo@gmail.com', 'A+', 'OSMATA', 'SI', NULL, 'COMP', 'COMP', NULL, NULL, NULL, 'EMPLEADA', 'DECORADORA', NULL, NULL, NULL, 'NO', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-05', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (17, 17, 'Pilar', 'CUSTIRIANO', 'NORMA BEATRIZ', '1972-06-22', 'ARG', '229259197', NULL, 'OLIDEN', '7085', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '1558464183', '0111558464183', NULL, 'norcust@hotmail.com', NULL, 'OSECAP', 'SI', NULL, 'COMP', 'COMP', NULL, 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-12', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (18, 18, 'Pilar', 'PICON', 'MIRAM ELIZABETH', '1969-01-08', 'ARG', '20434220', '27204342208', 'BALBASTRO', '1609', NULL, 1611, 'DONTORCUATO', 'BS AS', 'ARG', NULL, '1541499682', NULL, 'miriampicon669@hotmail.com', 'A+', 'OSDE', 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'ARTESANA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (19, 19, 'Pilar', 'MALINOVSKI', 'VIVIANA PATRICIA', '1973-08-31', 'ARG', '23414771', '23234147714', 'EL MAROTE', '1948', NULL, 6703, 'PARADA ROBLES', 'BS AS', 'ARG', '232347115', '111568471020', '111568471020', 'VIVIMILLO@GMAIL.COM', 'A+', 'SWISS MEDICAL', 'SI', 'FIBROMIALGIA', 'COMP', 'COMP', 'DERECHO LABORAL UBA', 'S­', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '1900-01-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (20, 20, 'Pilar', 'ANTON', 'YANINA ALEJANDRA BEATRIZ', '1989-08-10', 'ARG', '34716381', '27347163819', 'JUAN GARCIA', '1628', NULL, 1669, 'PILAR', 'BUENOS AIRES', 'ARG', NULL, '1115352288', NULL, 'YANTON@OUTLOOK.ES', NULL, NULL, 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'DOCENTE', 'PROFESORA DE TEATRO', NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-06', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (21, 21, 'Pilar', 'BALSAMO', 'SILVIA', '1971-12-17', 'ARG', '22436270', '22436270', 'CHAMPAGNAT', '740', '281', 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1161988355', '1161988355', 'BALSMO.SIL@GMAIL.COM', NULL, 'PODER JUDICIAL', 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'LICENCIADA EN ENFERMERIA', 'VENDEDORA', NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-07-31', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (22, 22, 'Pilar', 'CUBELLI', 'MARIA INES', '1971-06-08', 'ARG', '22269055', NULL, 'KENEDY', '2490', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '11550496694', '1150496694', 'INESCUBELLI@YAHOO.COM.AR', '0+', 'OSECAC', 'SI', 'HERNIAS DE DISCO', 'COMP', 'COMP', 'INCOMP', 'No', NULL, 'ADMINISTRATIVA', 'TIZADO', 'RUTA 25 Y CAMAÑO', '2304458000', 'ICUBELLI@TIZADO.COM', 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-03', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (23, 23, 'Pilar', 'SANGIACOMO', 'GRACIELA ALEJANDRA', '1963-02-19', 'ARG', '16285935', NULL, 'SANTIAGO DEL ESTERO', '349', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304427132', '1136067682', '1136067682', 'alesangiacomo@hotmail.com', '0-', 'AUSTRAL SALUD', 'SI', NULL, 'COMP', 'COMP', NULL, 'S­', NULL, 'PEDICURA AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-03', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (24, 24, 'Pilar', 'BOVE', 'Lucrecia Amada ', '1970-06-14', 'ARG', '21681489', NULL, 'BARRIO CERRADO LA DELFINA', '115', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '0111562417070', '4480003', 'lucrepenayo@gmail.com', '0+', 'OSDE', 'SI', NULL, 'COMP', 'COMP', NULL, 'S­', 'ASOCIACION INTALIANA', 'AMA DE CASA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'CURSA', '1900-01-01', 'SI', '2017-08-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (25, 25, 'Pilar', 'CARDOZO', 'NORMA YRENE', '1969-11-16', 'URUGUAYA', '92321140', NULL, 'J M PAZ', '3906', NULL, 1636, 'OLIVOS', 'BS AS', 'ARG', NULL, '111537595689', NULL, '111537595689', '0+', 'OCORD SALUD', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-03', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (50, 50, 'Pilar', 'CORIA', 'EDITH GABRIELA', '1968-04-12', 'ARG', '20056920', NULL, 'SANTA FE', '1804', NULL, 1619, 'GARIN', 'BS AS', 'ARG', NULL, '111540616399', NULL, 'EDITHCORIA@HOTMAIL.COM', 'A+', 'OSECAC', 'SI', 'NO TIENE COMPROMISO FIRMADO', 'COMP', NULL, NULL, NULL, NULL, 'MASOTERAPEUTA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-09', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (26, 26, 'Pilar', 'MANSILLA', 'GISELA VANINA ELIZABETH', '1976-10-16', 'ARG', '25445123', '27254451237', 'POLONIA', '5768', NULL, 1169, 'DEL VISO', 'BUENOS AIRES', 'ARG', NULL, '111568762009', '111568762009', 'GMANSILL@EDENOR.COM', '0+', NULL, 'SI', 'ENDOMETROSIS EPILEPSIA FOCAL', 'COMP', 'COMP', NULL, 'No', NULL, 'EMPLEADA', 'EDENOR', 'CHACABUCO 450 PILAR', '2304439399', 'GMANSILLA@EDENOR.COM', 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-09', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (27, 27, 'Pilar', 'GARRAZA', 'SILVIA ANDREA', '1985-04-24', 'ARG', '31138495', '27311384959', 'ANICETO FERNANDEZ', '1260', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '232315618384', '232315678080', 'SILGARRAZA@GMAIL.COM', 'A+', 'MEDIFE', 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'ADMINISTRATIVA', 'ORGANIZACION CALVO', 'LAVALLE 648 LUJAN', '2323420508', 'INFO@CALVOSEGUROS.COM.AR', 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-10', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (28, 28, 'Pilar', 'KEXEL', 'BARBARA MARIA LAURA', '1990-01-31', 'ARG', '34917140', '27349171401', 'H YRIGOYEN', '1754', NULL, 1667, 'PILAR', 'BS AS', 'ARG', '2320479479', '111523495576', '111523495576', 'BARBARA.KEXEL@GMAIL.COM', 'B-', 'OSDE', 'SI', NULL, 'COMP', 'COM', 'USAL LIC PSICOLOGIA', 'No', NULL, 'PSICOLOGA CLINICA', 'CENTRO MOEBIUS Y PARTICULAR', 'LAS HERAS 850, ESCOBAR', NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (29, 29, 'Pilar', 'LOPES', 'LORENA FERNANDA', '1976-10-23', 'ARG', '25512614', '20255126140', 'CONAE', '899', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '111557476997', NULL, 'LORE.F.LOPES@GMAIL.COM', NULL, 'ACORD', 'SI', NULL, NULL, NULL, NULL, 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (30, 30, 'Pilar', 'Iñħiguez', 'Cintia Susana', '1990-08-18', 'ARG', '35352146', NULL, 'BARRIO CUYO', '4 - 31', NULL, 1619, 'GARIN', 'BS AS', 'ARG', NULL, '1165937679', '1165937679', 'FIGUEROA.CINTIA@HOTMAIL.COM', NULL, 'SWISS MEDICAL', 'SI', NULL, 'COMP', 'COMP', 'TECNICO EN TURISMO', 'No', NULL, 'DIVULGADOR RECREATIVO', 'TEMAIKEN', NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (31, 31, 'Pilar', 'HUYGENS', 'DOMINIQUE', '1986-05-20', 'ARG', '32320882', '23323208824', 'MINERAL', '1', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '1115533063472', '111533063472', 'DOMINIQUEH@OUTLOOK.COM.AR', '0+', NULL, 'SI', NULL, 'COMP', 'COMP', NULL, 'No', NULL, 'ACOMPAÑANTE TERAPEUTICO', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (32, 32, 'Pilar', 'VIGLINO', 'ALBERTO', '1959-03-02', 'ARG', '11635825', '20116358256', 'GELLY', '3434', '2', 1425, 'CABA', 'BS AS', 'ARG', '48019677', '1162602396', NULL, 'ALBERTOIGLINO@GMAIL.COM', '0+', 'GALENO', 'SI', NULL, 'COMP', 'COMP', 'INGENIERO UBA', 'No', NULL, 'INGENIERO', 'IVICON SA', 'CUCHA CUCHA 770', '1148889498', 'ALBERTOIGLINO@GMAIL.COM', 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (33, 33, 'Pilar', 'ANGRIGIANI', 'CECILIA GRACIELA', '1956-07-31', 'ARG', '12447789', '27124477897', 'FLORIDA S/N Y ARROYO PINAZO ', '165', NULL, 1628, 'DEL VISO', 'BS AS', 'ARG', '666962', '114474560', NULL, 'CANGRIANI@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, 'COMP', 'COMP', 'ABOGADA UBA', 'No', NULL, 'ABOGADA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (34, 34, 'Pilar', 'SINIGAGLIA', 'MARIA DE LOS ANGELES', '1971-12-21', 'ARG', '22501604', NULL, 'BARRIO LAS ESTANCIAS DEL PILAR', '56', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111630698579', '111530698579', 'sinimadelos@yahoo.com.ar', '0-', 'IOMA', 'SI', NULL, 'COMP', 'COMP', 'PROFESORA DE EDUCACION FISICA', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-09-07', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (35, 35, 'Pilar', 'MARUCCI', 'JOHANA SOLEDAD', '1988-05-23', 'ARG', '33896056', '2733890560', 'ROQUE S PEÑA', '3987', NULL, 1665, 'JOSE C PAZ', 'BS AS', 'ARG', '2320436476', '1136495104', '1136495104', 'SOLE.JOHA@HOTMAIL.COM', NULL, 'IOMA', 'SI', 'ESCOLIOSIS', 'COMP', 'COMP', 'COMP', 'S­', 'LICENCIATURA LENGUA INGLESA UNSAM', 'DOCENTE', 'DGCYE', NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '2017-01-01', 'SI', '2017-09-07', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (36, 36, 'Pilar', 'SERVERA', 'MARIA SOLEDAD', '2017-03-07', 'ARG', '22592727', '27225927273', 'EL PERICON', '251', NULL, 0, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', '111554168246', '111554168246', '3487430022', 'SOLESERVERA@GMAIL.COM', NULL, 'SWISS MEDICAL', 'SI', NULL, 'COMP', 'COMP', NULL, NULL, NULL, 'COMERCIANTE', 'TRANSIP SRL', 'ACCESO PARQUE INDUSTRIAL KM 4.5 ZARATE', NULL, 'VENTASTRANSIP@GMAIL.COM', 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-09-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (37, 37, 'Pilar', 'BORDISO', 'SONIA VIVIANA', '1965-05-28', 'ARG', '17234258', '27172342588', 'NECOCHEA', '1085', NULL, 2804, 'CAMPANA', 'BS AS', 'ARG', '3489427018', '348915548153', '3489548153', 'SONIA_BORDISO@HOTMAIL.COM', 'A-', 'SWISS MEDICAL', 'SI', NULL, 'COMP', 'COMP', 'GIMNASIA INTEGRAL', 'No', NULL, 'PROF ACQUA GIM', 'HIDROKIN', 'NECOCHEA 1085', '3489427018', NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-09-14', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (38, 38, 'Pilar', 'EGIANEZ', 'SUSANA', '1956-04-14', 'ARG', '11948244', '27119482440', 'HIPOLITOYRIGOYEN ', '366', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '3484424184', '111563667882', '111563667882', 'SUSANA.EGIANEZ@GMAIL.COM', NULL, 'GALENO', 'SI', NULL, 'COMP', 'COMP', 'COMP', 'No', NULL, 'COSMIATRA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '2017-01-01', 'SI', '2017-10-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (39, 39, 'Pilar', 'BAQUEAR', 'BARBARA', '1964-11-29', 'ARG', '17332534', NULL, 'ISLA VICTORIA', '1219', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111567283144', NULL, 'BARBARA64MB@GMAIL.COM', '0-', 'AUSTRAL SALUD', 'SI', 'NO TIENE EL COMPROMISO FIRMADO', 'COMP', 'COMP', 'COMP', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-11', 'SI', '2017-10-05', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (40, 40, 'Pilar', 'DAMIANO', 'MARIELA', '1978-12-22', 'ARG', '27088023', NULL, 'CARLOS PELLEGRINI', '157', '121', 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '1140382222', NULL, 'MARIELADAMIANI@HOTMAIL.COM', 'A+', 'AUSTRAL ', 'SI', 'NO TIENE COMPROMISO FIRMADO', 'COMP', 'COMP', 'COMP', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (41, 41, 'Pilar', 'NUÑEZ', 'LAURA', '1982-04-02', 'ARG', '29380822', NULL, 'GREGORIA MATORRAS', '2714', NULL, 1613, 'MALVINAS ARGENTINAS', 'BS AS', 'ARG', NULL, '1534655693', NULL, 'CECILIAN84@YAHOO.COM', NULL, 'OSDE', 'SI', 'TUMORES EN RIÑONES', 'COMP', 'COMP', 'INGLES', 'S­', 'INST SUP CULTURAL BRITANICO', 'SECRETARIA', 'CLINICA DE OJOS DR NANO', 'BLAS PARERA 4201', '47174000', 'CECILIAN@CLINICANANO.COM.AR', 'Si', 'Si', 'Si', 'Si', 'SI', '2017-01-01', 'SI', '2017-10-07', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (42, 42, 'Pilar', 'COLLOCA', 'SUSANA ELIDA', '1959-03-06', 'ARG', '12968299', NULL, 'SAN FERNANDO', '1850', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '2320478063', '1130184483', NULL, 'SUSYCOLLOCA@GMAIL.COM', '0+', NULL, 'SI', NULL, 'COM', 'COMP', NULL, NULL, NULL, 'AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-09', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (43, 43, 'Pilar', 'MOLINA', 'LAURA MARCELA', '1970-04-17', 'ARG', '21587765', '27215877650', 'BELGICA', '1716', NULL, 1426, 'DERQUI', 'BS AS', 'ARG', NULL, '1564194392', NULL, 'lmarcelamolina@yahoo.com.ar', NULL, 'DOSUBA', 'SI', NULL, 'COMP', 'COMP', 'ABOGADA', 'No', NULL, 'ABOGADA', 'DOSUBA', 'URIBURU 860', '52875807', NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-09', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (44, 44, 'Pilar', 'PEÑA', 'FLORENCIA', '2017-03-17', 'ARG', '22081092', NULL, 'LAS HAYAS ', '1210', NULL, 0, '0', 'BS AS', 'ARG', '2320550641', '1551064387', NULL, 'FLOPEN13@YAHOO.COM.AR', 'A+', 'MEDICUS', 'SI', NULL, NULL, NULL, 'COMP', 'No', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'NO', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-14', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (45, 45, 'Pilar', 'FERNANDEZ', 'NATALIA PAOLA', '1982-08-10', 'ARG', '29633432', NULL, 'CAFAYATE', '324', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111569806444', '2304440560', 'NADIAPFERNANDEZ@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, 'LIC ADMINISTRACION USAL', 'No', NULL, 'LIC EN ADMINISTRACION', 'DUAS RODAS ARG SA', 'GRAL SAVIO 685 -GARIN', '1160916900', 'NADIA.FERNANDEZ@DUASRODAS.COM', 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (46, 46, 'Pilar', 'GOMEZ', 'MARIA FABIANA', '1986-02-09', 'ARG', '32005378', '27320053787', 'LAS AMAPOLAS', '2318', NULL, 1618, 'EL TALAR', 'BS AS', 'ARG', NULL, '1170893269', '1170893269', 'MARIAFB@HOTMAIL.COM', '0+', NULL, 'SI', NULL, NULL, NULL, NULL, 'No', NULL, 'DOCENTE', 'INSTITUTO EL TALAR', 'PERU 979', '47361884', NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (47, 47, 'Pilar', 'QUIROZ', 'MARIA ROSA', '1966-10-31', 'PARAGUAYA', '15097515', NULL, 'VILEGRA', '1164', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304426949', '1522722282', NULL, 'JORGE.A.REQUENA@GMAIL.COM', '0+', 'OSDE', 'SI', 'NO TIENE COMPROMISO FIRMADO', 'COMP', 'COMP', NULL, 'No', NULL, 'MASAJES', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-08', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (48, 48, 'Pilar', 'TARASIDO', 'DELFINA', '1982-08-14', 'ARG', '29697833', NULL, 'CHILE (BARRIO AYRES PLAZA)', '879', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1565590526', NULL, 'LASPIRULAS@HOTMAIL.COM', '0+', 'OSDE', 'SI', 'NO TIENE EL COMPROMISO FIRMADO', 'COMP', 'COMP', NULL, 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-13', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (49, 49, 'Pilar', 'SENOSIAIN', 'MARIA ISABEL', '1984-03-15', 'ARG', '30923290', NULL, 'PARQUE MAPUCHE', '26', NULL, 1625, 'LA LONJA PILAR', 'BS AS', 'ARG', '2304470586', '111523608198', NULL, 'ISABELSENOSIAIN@GMAIL.COM', NULL, 'HOSPITAL ALEMAN', 'SI', 'NO TIENE EL COMPROMISO FIRMADO', 'COMP', 'COMP', 'COMP', NULL, NULL, 'ANALISTA EN SERVICIOS GASTRONOMICOS', 'SELVATICA PILAR', NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2017-12-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (242, NULL, 'PILAR', 'Lucero', 'Vanesa Cecilia ', NULL, NULL, '24312463', NULL, 'El Recuerdo 65 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (51, 51, 'Pilar', 'QUINTANA', 'CAROLINA', '1979-12-28', 'ARG', '18829322', NULL, 'LOS NARCISOS', '539', NULL, 1635, 'PILAR', 'BS AS', 'ARG', '2304473567', '111554782186', NULL, 'CAROLA_QUINTANA@HOTMAIL.COM', 'A-', 'OSDE', 'SI', 'HIPOTIROIDISMO (NO TIENE COMPROMISO FIRMADO)', NULL, NULL, 'LIC EN EDUCACION ESPECIAL UNSAM', 'No', NULL, 'LIC EN ED ESPECIAL', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-04-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (52, 52, 'Pilar', 'MARTINEZ', 'MARIANA', '1975-06-04', 'ARG', '24804051', NULL, 'EL HORNERO', '101', '43', 1629, 'PILAR', 'BS AS', 'ARG', '2304421466', '1566472927', NULL, 'espiritucreativo@gmail.com', NULL, 'PREMEDIC', 'SI', NULL, 'COMP', 'COMP', NULL, 'S­', 'CEREMONIAL', 'PROFESORA DE PINTURA DECORATIVA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2017-12-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (53, 53, 'Pilar', 'LEDERHOS', 'CARINA LORENA', '1975-01-23', 'ARG', '24352013', '23243520134', 'COMBATE DE ITUZAINGO', '274', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '2320402047', '1157644022', NULL, 'CARINALEDERHOS@GMAIL.COM', NULL, 'TV-SALUD', 'SI', NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2017-12-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (54, 54, 'Pilar', 'AQUINO', 'JUANA BEATRIZ', '1989-04-10', 'ARG', '34479696', NULL, 'SARAVI', '1084', NULL, 1629, 'LA LONJA PILAR', 'BS AS', 'ARG', NULL, '111551396368', NULL, 'JUANIAQUINO@HOTMAIL.COM', NULL, 'GALENO', 'SI', NULL, NULL, NULL, 'COMP', 'No', NULL, NULL, 'AMERICAN BROKER SA', 'PANAMERICANA KM 42.5', NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-04', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (55, 55, 'Pilar', 'AVALOS', 'YANEL FLAVIA PATRICIA', '1986-05-30', 'ARG', '32419552', '27324195527', 'LAS HERAS', '1640', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '3484425909', '0348154395782', '0348154395782', 'YANELAVALOS@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, 'COMP', 'COM', 'EN CURSO UNLU', NULL, NULL, 'EMPLEADA ADMI', 'AMERICAN BROKER SA', NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (56, 56, 'Pilar', 'LOBOS', 'FLAVIA DENISA', '1987-04-22', 'ARG', '32993194', '27329931949', 'LOS CRISANTEMOS', '1515', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111526872744', NULL, 'FLAVIADENISALOBOS@GMAIL.COM', '0+', 'OSECAC', 'SI', NULL, NULL, NULL, 'CURSANDO UTN', 'S­', 'UTN', 'ADMINISTRATIVA', 'UNILEVER', NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (57, 57, 'Pilar', 'TARABURELLI', 'MELINA', '1980-05-08', 'ARG', '28342341', '27283423412', 'ASBORNO', '157', '3', 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '348915514271', NULL, 'MELINATARABURELLI@OUTLOOK.COM', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-11', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (58, 58, 'Pilar', 'REVAH', 'EMA SILVANA', '1955-05-20', 'ARG', '11755502', '27117555025', 'RUTA 8 KM 84 EL MALAKATE LOTE', '135', NULL, 2812, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', NULL, '1155822941', NULL, 'ESREVAH@GMAIL.COM', '0+', 'OSDE', 'SI', 'HIPERTENSION ARTERIAL', NULL, NULL, 'COMP', NULL, NULL, 'LIC EN TRABAJO SOCIAL', 'UNIVERSIDAD DE LA MATANZA', 'F VARELA 1912 SAN JUSTO', '44808959', NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-13', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (59, 59, 'Pilar', 'SANTAMARINA', 'CLAUDIA INES', '1962-11-16', 'ARG', '14952434', NULL, 'RUTA 8 KM 56.5 LA PAZ', '141', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304404854', '111558714724', NULL, 'CLAUDIA.CRISANTA@GMAIL.COM', NULL, NULL, NULL, 'GLAUCOMA (NO ESTA CORRECTO EL EMAIL)', NULL, NULL, 'PSICOLOGIA', 'S­', 'FAVALORO', 'PSICOLOGA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-02-08', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (60, 60, 'Pilar', 'DAMIANI', 'MARIANA', '1990-06-12', 'ARG', '35147356', '27351473563', 'LAGO HUEMUL', '1590', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '354615408571', '3546408571', 'MARIANA_DAMIANI13@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA DE INTERIORES', NULL, NULL, 'ASISTENTE ADMINISTRATIVA', 'ROCHE', 'LAGO HUEMUL 1590, DEL VISO', '1564578334', 'MARIANA.DAMIANI.MD1@ROCHE.COM', 'Si', 'Si', 'Si', 'Si', 'SI', '1990-01-01', 'SI', '2018-02-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (61, 61, 'Pilar', 'CARPINETI', 'MARIA JULIA', '1983-08-30', 'ARG', '30450331', NULL, 'ESTANCIAS DEL RIO KM ', '56.5', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '227215402389', NULL, 'JULICAR@ME.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, 'VETERINARIA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1990-01-01', 'SI', '2018-02-08', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (62, 62, 'Pilar', 'SOTO', 'ROMINA LEONOR', '1989-06-01', 'ARG', '34332500', '27343325008', 'SAAVEDRA', '2710', '1', 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111527003126', '111527003126', 'SOTOROMINA.89@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'PROFESORA DE INGLES', 'No', NULL, 'PROFESORA DE INGLES', 'BRICK TOWERS COLLEGE NORBRIDGE', NULL, NULL, NULL, 'NO', 'No', 'Si', 'Si', 'SI', '1900-01-01', 'SI', '2018-02-21', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (63, 63, 'Pilar', 'FERRERIA', 'MARIA AGUSTINA', '1989-01-02', 'ARG', '34257986', '342579863', 'AV BARTOLOME MITRE', '684', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111530666216', NULL, 'AGUS-FERRERIA@HOTMAIL.COM', '0-', 'OSDE', 'SI', 'TITOIDITIS DE HASHIMOTO', NULL, NULL, 'LIC RR HH', NULL, NULL, 'LIC RRHH', 'TOTAL CARGO', NULL, NULL, 'AGUSTINAFERRERIA@TOTALCARGO.COM.AR', 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-07', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (64, 64, 'Pilar', 'ROMERO', 'SANDRA ADRIANA', '1972-12-13', 'ARG', '23009127', NULL, 'G MISTRAL', '1256', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111551499051', NULL, 'ROMEADRI@YAHOO.COM.AR', 'B+', 'CTRO MEDICO PUEYRREDON', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'ACOMPAÑANTE TERAPEUTICO', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'SI', '2018-03-08', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (65, 65, 'Pilar', 'ROMERO', 'NATALIA SOLEDAD', '1979-01-02', 'ARG', '26979621', '27269796214', 'ITUZAINGO 346', '346', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1565695152', '31212588', 'ROMERONASO@HOTMAIL.COM', 'A+', 'MEDIFE', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, 'DECORADORA DE INTERIORES', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-08', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (66, 66, 'Pilar', 'VALLEJOS', 'SUSANA VILMA', '25/8/1970', 'ARG', '21636317', NULL, 'LEVENE', '599', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '2304568931', '230154568931', 'SUSANAVVALLEJOS@HOTMAIL.COM', 'A+', 'MEDIFE', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, 'ESTETISISTA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'SI', 'NO', '1900-01-01', 'No', '1/3/2018', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (67, 67, 'Pilar', 'ANGIER', 'FACUNDO GONZALO', '1984-02-14', 'ARG', '30736634', NULL, 'GRAL GUIDO', '1192', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2320424074', '1156915183', NULL, '0', 'A+', 'OSDE', 'SI', 'NO TIENE MAIL', NULL, NULL, 'LIC ACTIVIDAD FISICA Y DEP', NULL, NULL, 'DOCENTE', 'SAN JUAN', NULL, NULL, NULL, 'Si', 'No', 'Si', 'Si', 'No', '1900-01-01', 'No', '2018-03-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (68, 68, 'Pilar', 'FELIX', 'GABRIELA', '1972-06-21', 'ARG', '22150935', '27221509353', 'MATEO CASCO', '1009', NULL, 2812, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', '2323491865', '11155958714', NULL, 'GABY_IDERLA@HOTMAIL.COM', 'A+', 'OSDIPP', 'SI', 'NO TIENE COMPROMISO FIRMADO', NULL, NULL, 'DOCENTE', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (69, 69, 'Pilar', 'BONETTO', 'SILVANA ANDREA', '1978-07-08', 'ARG', '2414347', '27240143475', 'CASTELLI', '6387', NULL, 1606, 'VICENTE LOPEZ', 'BS AS', 'ARG', '20712273', '1140609977', NULL, 'SILVANA.BONETTO@GMAIL.COM', '0+', 'CEMIC', 'SI', 'HERNIA DISCO LUMBAR L4-L5 - RECTIFICACION CERVICAL -HIPOTIROIDISMO (NO TIENE COMPROMISO FIRMADO)', NULL, NULL, 'LIC PSICOLOGIAUBA', 'No', NULL, 'ORIENTADORA SOCIAL', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-10', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (70, 70, 'Pilar', 'GARCIA', 'CANDELA MARIA BELEN', '1990-05-14', 'ARG', '35101129', NULL, '15 E 30 Y 32', '0', NULL, 6600, 'MERCEDES', 'BS AS ', 'ARG', NULL, NULL, NULL, 'CANDELACHICHA@GMAIL.COM', NULL, NULL, NULL, NULL, NULL, NULL, 'PROFESORA EDUC PRIMARIA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-10', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (71, 71, 'Pilar', 'ZALAZAR', 'ROSALIA', '1979-09-28', 'ARG', '25578845', '27275788452', 'C COSTA', '375', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1140840076', NULL, 'ROSALIAZALAZAR@HOTMAIL.COM', '0+', 'SWISS MEDICAL', 'SI', 'NO TIENE COMPROMISO FIRMADO', NULL, 'COMP', NULL, NULL, NULL, 'ATENCIONAL PUBLICO', 'CORREO ARGENTINO', NULL, NULL, NULL, 'Si', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-15', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (72, 72, 'Pilar', 'CHRISTIANI', 'ALICIA ESTHER', '2018-12-15', 'ARG', '16714442', '27167144425', 'ECHEVERRIA', '17', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304671482', '1130544541', NULL, 'ALICIACHRISTIANI@HOTMAIL.COM.AR', '0+', NULL, 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-02-18', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (73, 73, 'Pilar', 'CARDOSO', 'LORENA ELIZABETH', '1977-11-30', 'ARG', '26248092', '27262480920', 'ALFREDO NOBEL', '6020', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '2320409614', '111569345326', '111569345326', 'LORELI_CARDOSO@HOTMAIL.COM', 'B+', 'MEDICUS', NULL, NULL, NULL, NULL, 'LIC FONOAUDIOLOGIA UBA', NULL, NULL, 'FONOAUDIOLOGA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-01', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (74, 74, 'Pilar', 'LEGUIZAMON', 'MARIA DEL ROSARIO', '1988-08-20', 'ARG', '36072980', '27360729805', 'MENDOZA', '1224', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111557171863', NULL, 'RO.LEGUIZAMON@HOTMAIL.COM', '0+', 'MEDIFE', 'SI', 'NO TIENE COMPROMISO FIRMADO', NULL, NULL, 'LIC EN RR PP', NULL, NULL, 'SECRETARIA EN CLUB ESTANCIAS', 'ESTANCIAS DEL RIO SSA', NULL, NULL, NULL, 'NO', 'Si', 'No', 'Si', 'SI', '1900-01-01', 'No', '2018-03-21', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (75, 75, 'Pilar', 'SOCA', 'ALEJANDRA', '1977-06-17', 'ARG', '25865473', NULL, 'TORRA', '1851', NULL, 1631, 'VILLA ROSA', 'BS AS', 'ARG', NULL, '111551105361', NULL, 'NALESOCA@GMAIL.COM', 'B+', 'GALENO', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, 'VENDEDORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'No', '2018-04-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (1, 1, 'Pilar', 'MARITATO', 'FIORELLA', '1992-07-16', 'ARGENTIA', '35428439', '27354284397', '18 DE OCTUBRE', '914', NULL, 1665, 'JOSE C PAZ', 'BUENOS AIRES', 'ARGENTINA', '2320439426', '1539119452', NULL, 'FLORR.M@HOTMAIL.COM', 'A+', 'ACCORD 310', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'INCOMPLETO', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-16', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (2, 2, 'Pilar', 'POSSE', 'CECILIA', '1973-02-09', 'ARG', '23103400', '27231034004', 'RUTA 8', 'KM 51,5', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304423221', '111569551440', NULL, 'CECIPOSSE@YAHOO.COM.AR', '0+', 'MEDIFE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (14, 14, 'Pilar', 'FARAONE', 'PATRICIA MARCELA', '1970-05-31', 'ARG', '21671056', NULL, 'POTOSI', '359', NULL, 1631, 'PILAR', 'BS AS', 'ARG', NULL, '111521695523', NULL, 'PATRIMARCEL@HOTMAIL.COM', '0-', 'OSECAC', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (25, 25, 'Pilar', 'CARDOZO', 'NORMA YRENE', '1969-11-16', 'URUGUAYA', '92321140', NULL, 'J M PAZ', '3906', NULL, 1636, 'OLIVOS', 'BS AS', 'ARG', NULL, '111537595689', NULL, '111537595689', '0+', 'OCORD SALUD', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-03', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (3, 3, 'Otros', 'GUSTAVINO', 'MARIANA', '1980-03-05', 'ARG', '28030991', NULL, 'MATIENZO', '5451', NULL, 1744, 'MORENO', 'BS AS', 'ARG', '2320451431', '1156390479', NULL, 'MARINAGUSTAVINO@GMAIL.COM', NULL, 'GALENO', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'PROFESORADO DE BIOLOGIA', 'SI', 'ISFTD N36', 'VENDEDORA', 'JUMBO', NULL, NULL, NULL, 'NO', 'Si', 'SI', 'Si', 'No', '1900-01-01', 'SI', '2016-05-14', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (29, 29, 'Pilar', 'LOPES', 'LORENA FERNANDA', '1976-10-23', 'ARG', '25512614', '20255126140', 'CONAE', '899', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '111557476997', NULL, 'LORE.F.LOPES@GMAIL.COM', NULL, 'ACORD', 'SI', NULL, NULL, NULL, NULL, 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (46, 46, 'Pilar', 'GOMEZ', 'MARIA FABIANA', '1986-02-09', 'ARG', '32005378', '27320053787', 'LAS AMAPOLAS', '2318', NULL, 1618, 'EL TALAR', 'BS AS', 'ARG', NULL, '1170893269', '1170893269', 'MARIAFB@HOTMAIL.COM', '0+', NULL, 'SI', NULL, NULL, NULL, NULL, 'No', NULL, 'DOCENTE', 'INSTITUTO EL TALAR', 'PERU 979', '47361884', NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (44, 44, 'Pilar', 'PEÑA', 'FLORENCIA', '2017-03-17', 'ARG', '22081092', NULL, 'LAS HAYAS ', '1210', NULL, 0, '0', 'BS AS', 'ARG', '2320550641', '1551064387', NULL, 'FLOPEN13@YAHOO.COM.AR', 'A+', 'MEDICUS', 'SI', NULL, NULL, NULL, 'COMPLETO', 'No', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-14', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (45, 45, 'Pilar', 'FERNANDEZ', 'NATALIA PAOLA', '1982-08-10', 'ARG', '29633432', NULL, 'CAFAYATE', '324', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111569806444', '2304440560', 'NADIAPFERNANDEZ@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, 'LIC ADMINISTRACION USAL', 'No', NULL, 'LIC EN ADMINISTRACION', 'DUAS RODAS ARG SA', 'GRAL SAVIO 685 -GARIN', '1160916900', 'NADIA.FERNANDEZ@DUASRODAS.COM', 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (51, 51, 'Pilar', 'QUINTANA', 'CAROLINA', '1979-12-28', 'ARG', '18829322', NULL, 'LOS NARCISOS', '539', NULL, 1635, 'PILAR', 'BS AS', 'ARG', '2304473567', '111554782186', NULL, 'CAROLA_QUINTANA@HOTMAIL.COM', 'A-', 'OSDE', 'SI', 'HIPOTIROIDISMO (NO TIENE COMPROMISO FIRMADO)', NULL, NULL, 'LIC EN EDUCACION ESPECIAL UNSAM', 'No', NULL, 'LIC EN ED ESPECIAL', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-04-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (60, 60, 'Pilar', 'DAMIANI', 'MARIANA', '1990-06-12', 'ARG', '35147356', '27351473563', 'LAGO HUEMUL', '1590', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '354615408571', '3546408571', 'MARIANA_DAMIANI13@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA DE INTERIORES', NULL, NULL, 'ASISTENTE ADMINISTRATIVA', 'ROCHE', 'LAGO HUEMUL 1590, DEL VISO', '1564578334', 'MARIANA.DAMIANI.MD1@ROCHE.COM', 'Si', 'Si', 'SI', 'Si', 'SI', '1990-01-01', 'SI', '2018-02-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (62, 62, 'Pilar', 'SOTO', 'ROMINA LEONOR', '1989-06-01', 'ARG', '34332500', '27343325008', 'SAAVEDRA', '2710', '1', 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111527003126', '111527003126', 'SOTOROMINA.89@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'PROFESORA DE INGLES', 'No', NULL, 'PROFESORA DE INGLES', 'BRICK TOWERS COLLEGE NORBRIDGE', NULL, NULL, NULL, 'NO', 'No', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2018-02-21', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (67, 67, 'Pilar', 'ANGIER', 'FACUNDO GONZALO', '1984-02-14', 'ARG', '30736634', NULL, 'GRAL GUIDO', '1192', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2320424074', '1156915183', NULL, '0', 'A+', 'OSDE', 'SI', 'NO TIENE MAIL', NULL, NULL, 'LIC ACTIVIDAD FISICA Y DEP', NULL, NULL, 'DOCENTE', 'SAN JUAN', NULL, NULL, NULL, 'Si', 'No', 'SI', 'Si', 'No', '1900-01-01', 'No', '2018-03-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (61, 61, 'Pilar', 'CARPINETI', 'MARIA JULIA', '1983-08-30', 'ARG', '30450331', NULL, 'ESTANCIAS DEL RIO KM ', '56.5', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '227215402389', NULL, 'JULICAR@ME.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, 'VETERINARIA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1990-01-01', 'SI', '2018-02-08', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (63, 63, 'Pilar', 'FERRERIA', 'MARIA AGUSTINA', '1989-01-02', 'ARG', '34257986', '342579863', 'AV BARTOLOME MITRE', '684', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111530666216', NULL, 'AGUS-FERRERIA@HOTMAIL.COM', '0-', 'OSDE', 'SI', 'TITOIDITIS DE HASHIMOTO', NULL, NULL, 'LIC RR HH', NULL, NULL, 'LIC RRHH', 'TOTAL CARGO', NULL, NULL, 'AGUSTINAFERRERIA@TOTALCARGO.COM.AR', 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-07', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (64, 64, 'Pilar', 'ROMERO', 'SANDRA ADRIANA', '1972-12-13', 'ARG', '23009127', NULL, 'G MISTRAL', '1256', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111551499051', NULL, 'ROMEADRI@YAHOO.COM.AR', 'B+', 'CTRO MEDICO PUEYRREDON', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'ACOMPAÑANTE TERAPEUTICO', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-03-08', 'Profesorado de Yoga');
 INSERT INTO temp_personas VALUES (238, NULL, 'PILAR', 'Lamaison', 'Sears Mariana ', NULL, NULL, NULL, '27240686711', 'Bean 694 (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, '2017-may', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (76, 76, 'Pilar', 'LOPEZ', 'NOELIA', '14/5/1982', 'ARG', '29405389', '27294053897', 'VIAMONTE', '412', NULL, 1635, 'DERQUI', 'BS AS', 'ARG', NULL, '111523369104', NULL, 'MIIAPROFARTE@HOTMAIL.COM', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'SI', 'No', NULL, 'DOCENTE', 'ESCUELA PUBLICA', NULL, NULL, NULL, 'Si', 'Si', 'Si', 'SI', '1/1/1900', 'SI', 'No', '7/9/2017', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (77, 77, 'Pilar', 'ESPINOZA', 'CARMEN MABEL', '20/4/1970', 'ARG', '21496429', NULL, 'ENTRE RIOS', '1302', NULL, 1635, 'DERQUI', 'BS AS', 'ARG', NULL, '111562542296', NULL, 'CARMABELES@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'DOCENTE', 'No', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'SI', '1/1/1900', 'SI', 'No', '3/8/2017', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (78, 78, 'Pilar', 'FIGUEROA', 'CRISTIAN TOMAS', '18/10/1977', 'ARG', '26083669', NULL, 'Corbeta Beifast', '1737', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1130570606', NULL, 'CF7573169@GMAIL.COM', '+', NULL, 'SI', NULL, NULL, NULL, 'PSICOLOGIA SOCIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'CURSA', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (79, 79, 'Pilar', 'RODRIGUEZ', 'GABRIELA', '7/5/1969', 'ARG', '20954064', '27209540644', 'BARRIO EL LAUQUEN RUTA 58 KM 10', '17', '9', 0, 'CANNING', 'BS AS', 'ARG', '20505679', '1130714630', '42417065', 'RODRIGUEZGABRIELA34@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA DE INDUMENTARIA', 'No', NULL, 'DISEÑADORA DE INDUMENTARIA', 'CHUCHOMANUCHO', 'JOAQUIN V GONZALEZ 1451', '42417065', 'GABRIELA.RODRIGUEZ@CHUCHOMANUCHO.COM.AR', 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '4/11/2017', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (80, 80, 'Pilar', 'FIFIAN', 'FLORENCIA PAULA', '1/1/1900', 'ARG', '25578127', NULL, 'ZEBRUNO', '910', NULL, 0, 'DEL VISO', 'BS AS', 'ARG', NULL, '1132584494', NULL, 'FLORENCIAFAFIAN@GMAIL.COM', NULL, 'HOSP ITALIANO', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'DISEÑO DE INTERIORES', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '11/4/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (81, 81, 'Pilar', 'MOSCHENI', 'ELIZABETH ALEJANDRA', '10/5/1982', 'ARG', '29467732', '27294677327', 'ALEXANDER FLEMING', '1848', NULL, 1631, 'PILAR', 'BS AS', 'ARG', NULL, '111568213314', NULL, 'LIZENVEGA@GMAIL.COM', NULL, NULL, 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'ABANDONÓ', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (82, 82, 'Pilar', 'PACIFICO', 'MARIA ELENA', '30/12/1962', 'ARG', '16452083', '2716452083', 'CRUCERO GRAL BELGRANO', '1837', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304430208', '111524984944', NULL, 'pacificomariaelena@gmail.com', '0', 'IOMA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'ABANDONÓ', '1/1/1900', 'SI', '11/5/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (83, 83, 'Pilar', 'CORVALAN', 'ANABELLA LILIAN', '18/5/1975', 'ARG', '24623907', '27246239075', 'ARISTOBULO DEL VALLE (BARRIO SANTA CATARINA LOTE 412))', '5601', NULL, 1623, 'DIQUE LUJAN', 'BS AS', 'ARG', '3484626146', '1556395992', NULL, 'ANABELLACORVALAN@YAHOO.COM.AR', '0+', 'SINECO', 'SI', NULL, NULL, NULL, 'UADE CONTADORA PUBLICA', 'No', NULL, 'CONTADORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'No', '5/2/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (84, 84, 'Pilar', 'IBARRA', 'CLAUDIA MARCELA', '21/3/1971', 'ARG', '22083518', '27220835184', 'ROSARIO GOLF CLUB', '2149', NULL, 1669, 'DEL VISO', 'BS AS', 'ARH', '2320657560', '111566826187', NULL, 'CLAUMARIBA@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, 'COMPLETO', NULL, 'No', NULL, 'AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'EGRESÓ', '1/1/1900', 'No', '4/5/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (85, 85, 'Pilar', 'MANCUSO', 'BERTA', '28/6/1975', 'ARG', '24694469', NULL, 'CHUBUT UF 154 BARRIO VILLA ROSA', '2400', NULL, 1631, 'PILAR', 'BS AS', 'ARG', '4315408', '1126459443', NULL, 'BERTAMANCUSO@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, 'DECORADORA DE INTERIORES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (86, 86, 'Pilar', 'INSFRAM', 'LILIANA', '25/9/1974', 'ARG', '24139684', '2724139684', 'CERVANTES ', '1326', NULL, 1748, 'GRAL RODRIGUEZ', 'BA AS', 'ARG', NULL, '111535891064', NULL, 'LILIANAINSFRAN@GMAIL.COM', '0+', 'OSECAC', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (87, 87, 'Pilar', 'KUZMIK', 'CAROLA MARINA', '1/5/1972', 'ARG', '22702289', NULL, 'MIERO', '1969', NULL, 1744, 'MORENO', 'BS AS', 'ARG', NULL, '111567133205', NULL, 'CAROLA.KUZMIK@GMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'No', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (88, 88, 'Pilar', 'VAZQUEZ', 'VERONICA LAURA', '25/4/1970', 'ARG', '21499814', '27214998144', 'COMODORO PASSIO', '447', NULL, 1748, 'GRAL RODRIGUEZ', 'BS AS', 'ARG', '2374842893', '111530105540', NULL, 'VERONICA.VAZQUEZ48@YAHOO.COM.AR', 'B+', 'IOMA', 'SI', 'HIPOTIROIDISMO', NULL, NULL, 'PROFESORA DE EDUCACION INICIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'NO SE', '1/1/1900', 'SI', '9/12/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (89, 89, 'Pilar', 'MARIN', 'JOSELINA CAROL', '16/4/1974', 'ARG', '23775580', NULL, 'ALTE BROWN', '1939', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', '2323438173', '111569751815', NULL, 'MARINJOSELINA@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (90, 90, 'Pilar', 'LOOSE', 'NANCY CARINA', '26/8/1972', 'ARG', '22690682', '27226906823', 'ASCASUBI', '114', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304420824', '111556554447', NULL, 'LOO.NAN.72@HOTMAIL.COM', NULL, 'OSPE', 'SI', 'PIE PLANO- HIPOTIROIDISMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'NO SE', '1/1/1900', 'SI', '6/5/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (91, 91, 'Pilar', 'GAITAN', 'CINTIA MARIANA', '17/3/1981', 'ARG', '28725391', NULL, 'CORONEL VIDELA', '2826', NULL, 1618, 'GRAL PACHECO', 'BS AS', 'ARG', '3327457660', '1532261571', NULL, 'CINTIA_GAITAN@HOTMAIL.COM', '0-', 'OSMECON', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, 'CAMARERA', 'SUSHI CLUB', NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'No', '4/2/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (92, 92, 'Pilar', 'RUGGIERO', 'LUCIA ANGELICA', '17/2/1957', 'ARG', '12661924', NULL, 'ARE QUIPA', '1180', NULL, 1621, 'BENAVIDEZ', 'BS AS', 'ARG', '3484627133', NULL, '111558474644', 'LUCIARUGGIERO@HOTMAIL.COM', 'A+', 'ACCORD SALUD', 'SI', NULL, NULL, NULL, 'iNGLES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'EGRESÓ', '5/5/2018', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (93, 93, 'Pilar', 'GARCIA', 'LAURA', '26/10/1961', 'ARG', '14768743', NULL, 'CHUBUT ', '401', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1544080686', NULL, 'MAQUI.2610@GMAIL.COM', NULL, 'OSDIPP', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'CURSA', '1/1/1900', 'SI', '13/2/2017', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (94, 94, 'Pilar', 'PIAGGI', 'MARIA ADELA', '8/3/1972', 'ARG', '22578651', '27225786513', 'AV MITRE S/N B* SOLES DEL PILAR LOTE', '6', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1566881746', NULL, 'mariaadelapiaggi@yahoo.es', '0+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'GASTRONOMIA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'CURSA', '1/1/1900', 'SI', '26/11/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (95, 95, 'Pilar', 'ARNODO', 'NATALIA ROMINA', '27/9/1977', 'ARG', '25691703', '27256917039', 'ARGUIÑANO', '2855', NULL, 2804, 'CAMPANA', 'BS AS', 'ARG', '3489447373', '03489-15693109', NULL, 'nataldsn@hotmail.com', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'COMP', NULL, NULL, 'DISEÑADORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'CURSA', '1/1/1900', 'SI', '2/2/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (96, 96, 'Pilar', 'SARLINGA', 'GISELA', '18/3/1986', 'ARG', '31789087', '27317890872', 'TAPIA DE CRUZ', '313', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '3484681046', '1165853775', NULL, 'NATURADIVINA@HOTMAIL.COM', '0+', 'OSECAC', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'Si', NULL, 'NO SE', '1/1/1900', 'SI', '5/6/2017', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (97, 97, 'Pilar', 'NUÑEZ', 'CLAUDIA', '5/3/1980', 'ARG', '28045695', '27280456956', 'ALVAREZ THOMAS', '536', NULL, 1631, 'PILAR', 'BS AS', 'ARG', NULL, '1536934438', NULL, 'clauditadvr@hotmail.com', 'A-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ESTILISTA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '5/5/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (98, 98, 'Pilar', 'AAL', 'VIVIANE APARECIDA', '7/12/1966', 'BR', '95635277', NULL, 'ENRIQUE LARREA', '1248', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '1168710474', NULL, 'VIVIANETRAMUJAS@YAHOO.COM.BR', 'A-', 'OSDEPYM', 'SI', NULL, NULL, NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '2017-abr', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (99, 99, 'Pilar', 'ALVAREZ', 'LAURA MARIA', '24/12/1975', 'ARG', '24552241', NULL, 'BRASIL', '1048', '2', 1617, 'EL TALAR', 'BS AS', 'ARG', '47263566', '1558263907', NULL, 'motisengchi@icloud.com', 'B+', 'IOMA', 'SI', NULL, NULL, NULL, 'PROFESORA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'CURSA', '1/1/1900', 'SI', '13/8/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (100, 100, 'Pilar', 'KUCICH', 'ANDREA CRISTINA', '11/9/1977', 'ARG', '26081114', NULL, 'AGUERO', '1909', '8', 1425, 'CABA', 'BS AS', 'ARG', '1148263855', '1551205982', NULL, 'ANDREAKUCICH@LIVE.COM.AR', 'B+', 'OMINT', 'SI', NULL, NULL, NULL, 'TERAPEUTA DEL SONIDO - RELACIONES LABORALES', 'No', NULL, NULL, 'ESTUIDO SUMIECIKI ARQ', 'SALGUERO 2533 2 B', '48081293', 'KUCICH@ESARQ.COM.AR', 'Si', 'Si', 'Si', NULL, 'EGRESÓ', '5/5/2018', 'SI', '5/4/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (101, 101, 'Pilar', 'MAZA', 'NATALIA LORENA', '24/10/1976', 'ARG', '25612302', '27256123024', 'SANTA FE', '385', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '348154226628', NULL, NULL, 'ESPACIOROSASDEABRIL@GMAIL.COM', 'A+', 'SWISS MEDICAL', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'CURSA', '1/1/1900', 'SI', '11/9/2017', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (102, 102, 'Pilar', 'MOSQUERA', 'PATRICIA LILIANA JUANA', '7/6/1959', 'ARG', '12046456', '27120464561', 'MAGALLANES', '1433', '2', 1619, 'GARIN', 'BS AS', 'ARG', '3484218515', '1569513826', NULL, 'PATRIMOS2004@YAHOO.COM.AR', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'MAESTRA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'CURSA', '1/1/1900', 'SI', '11/4/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (103, 103, 'Pilar', 'URRUTIBEHETY', 'STELLA MARIS', '12/9/1967', 'ARG', '18572735', '27185727357', 'CASTRO BARROS', '1742', NULL, 1686, 'HURLINGAM', 'BS AS', 'ARG', NULL, '1522432016', NULL, 'ESTRELLADELUZ@GMAIL.COM', 'A+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Sí', 'COACHING ESPIRITUAL ESCUELA DHARMA YOEL', NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'CURSA', '1/1/1900', 'No', '1/1/2018', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (104, 104, 'Pilar', 'MÜLLER', 'GLADYS ESTHER', '23/1/1968', 'ARG', '20019430', '27200194301', 'CAMAÑO ', '3000', '90', 1631, 'VILLA ROSA', 'BS AS', 'ARG', '2304471845', '111538700507', NULL, 'BYGLA@HOTMAIL.COM', 'A-', 'OSDE 210', 'SI', 'HERNIA DISCAL Y PINZAMIENTO', NULL, 'INCOMP', NULL, NULL, NULL, 'DECORADODRA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '19/4/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (105, 105, 'Pilar', 'FERNANDEZ', 'ELENA', '21/1/1975', 'ARG', '24182792', '27241827920', 'CARABOBO', '3230', NULL, 1665, 'JOSE C PAZ', 'BS AS', 'ARG', NULL, '1121739926', NULL, 'ELENA.FRNDZ@GMAIL.COM', '0+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'CURSA', '1/1/1900', 'SI', '3/11/2016', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (106, 106, 'Pilar', 'ALONSO', 'SANDRA ELIZABETH', '3/6/1970', 'ARG', '21508887', NULL, 'EL CASCO', '0', NULL, 2800, 'ZARATE', 'BS AS', 'ARG', NULL, '348715631002', NULL, 'SEAAUN@HOTMAIL.COM', '+', 'SWISS MEDICAL', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'NO', 'No', 'No', NULL, 'NO SE', '1/1/1900', 'No', '2/2/2018', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (107, 107, 'Pilar', 'KOHEN', 'JULIETA', '30/7/1976', 'ARG', '25393189', NULL, 'CHAMPAGNAT', '1600', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304663971', '111550387928', NULL, 'JULIKOHEN_76@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', NULL, 'NO SE', '1/1/1900', 'SI', '3/3/2015', 'Profesorado Superior de Yogaterapia');
-INSERT INTO temp_personas VALUES (108, 108, 'Pilar', 'MENDOZA', 'STEPHANIE AYELEN', '12/11/1996', 'ARG', '39986452', '27399864521', 'WHASHINGTON', '3471', NULL, 1665, 'JOSE C PAZ', 'BS AS', 'ARG', '2320627580', NULL, '1164797404', 'STEPHI_MENDOZA@YAHOO.ES', NULL, NULL, 'SI', 'ALERGIA ACAROS', NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (109, 109, 'Pilar', 'NUTTINI', 'DORA DANIELA', '12/01/2014', 'ARG', '17226965', NULL, 'LABARDENE', '4069', NULL, 1667, 'TORTUGUITAS', 'BS AS', 'ARG', NULL, '111567981705', '111565187642', 'DANIELAMUTTINI@HOTMAIL.COM', NULL, NULL, 'SI', NULL, NULL, NULL, 'DIPLOMATURA EN CIENCIAS HUMANAS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (110, 110, 'Pilar', 'OCHOA', 'URSULA ARACELI', '04/03/1984', 'ARG', '30647903', '27306479038', '9 DE JULIO', '2948', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1130599168', NULL, 'URSULA_OCHOA@HOTMAIL.COM', NULL, NULL, 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'NO SE', '31/12/1899', 'SI', NULL, '25/02/2016', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (111, 111, 'Pilar', 'ONTIVEROS', 'LORENA PAOLA', '31/12/1899', 'ARG', '300790958', '27300790955', 'MAIPU', '74', NULL, 1620, 'MAQUINISTA SAVIO', 'BS AS', 'ARG', NULL, '111522855876', NULL, 'LORENAONTIVEROS@HOTMAIL.COM', 'A+', 'IOMA', NULL, NULL, NULL, NULL, 'COMP', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'No', 'Si', 'NO SE', '31/12/1899', 'SI', NULL, '01/04/2016', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (112, 112, 'Pilar', 'KELLY', 'YANEL', '31/12/1899', 'ARG', '26254270', NULL, 'LOS LIRIOS', '825', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304429756', '111554900374', NULL, 'SHANTIACCESORIOS@HOTMAIL.COM', 'B+', 'MEDIFE', NULL, NULL, NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', 'EGRESÓ', '31/12/1899', 'SI', NULL, '27/05/2014', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (113, 113, 'Palermo', 'KOKOZKA', 'VALERIA', '29/10/1973', 'ARG', '23473690', '27234736901', 'ARMENIA', '1502', '6', 1414, 'CABA', 'BS AS', 'ARG', '1148336154', '111541921168', NULL, 'VALKOKO@HOTMAIL.COM', 'A-', 'OSPIC', 'SI', NULL, NULL, NULL, 'ABOGADA', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (114, 114, 'Otros', 'LOZONDO', 'MARIA INÉS', '06/10/1966', 'ARG', '18213893', NULL, 'VERGARA', '1851', '6', 1828, 'BANFIELD', 'BS AS', 'ARG', '20702681', '1564340185', NULL, 'MLIZONDO@TELECENTRO.COM.AR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', 'EGRESÓ', '31/12/1899', 'SI', NULL, '20/02/2016', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (115, 115, 'Pilar', 'LOPEZ', 'NORA ANALIA', '07/02/1976', 'ARG', '25179635', '27251796357', 'CORDOBA', '834', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111537878907', NULL, 'NORILOPEZ2005@HOTMAIL.COM', NULL, NULL, NULL, NULL, NULL, NULL, 'DISEÑADORA MULTIMEDIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (116, 116, 'Pilar', 'AGUSTIN', 'YANINA BEATRIZ', '26/04/1982', 'ARG', '290380883', NULL, 'CABAPIDEN', '8100', NULL, 1669, 'DEL VISO', 'BA AS', 'ARG', NULL, '111554906830', NULL, 'MELODYSAX_06@HOTMAIL.COM', NULL, NULL, 'SI', 'ASMA', NULL, NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (117, 117, 'Castelar', 'ANASTASI', 'MARIA GABRIELA', '15/02/1970', 'ARG', '21440559', '27214405593', 'BUENOS AIRES ', '834', NULL, 1712, 'CASTELAR', 'BS AS', 'ARG', '46272303', '1559225836', NULL, 'GABRIELANASTASI@HOTMAIL.COM', '+', 'IOMA', 'SI', NULL, NULL, NULL, 'PROFESOR DE SORDOS E HIPOACUSICOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'NO SE', '31/12/1899', 'SI', NULL, '16/07/2016', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (118, 118, 'Luján', 'PEANO', 'VALERIA ANAHÍ', '13/02/1985', 'ARG', '31489475', '27314894753', 'ROUX', '1551', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '2323333579', NULL, 'ANAHIPEANO@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA GRAFICA Y PROFESORA DE ARTES VISUALES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', 'CURSA', '31/12/1899', 'SI', NULL, '24/02/2018', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (119, 119, 'Luján', 'GRANDE', 'CARLA GISELLE', '19/05/1991', 'ARG', '36076827', '31360768244', 'JORGE NEWBERY ', '2075', '0', 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '111540912829', NULL, 'CARLAGRANDE25@GMAIL.COM', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'INSTRUMENTADORA QUIRÚRGICA', 'No', NULL, NULL, 'HOSPITAL DE LUJAN', NULL, NULL, NULL, 'NO', 'No', 'Si', 'CURSA', '31/12/1899', 'SI', NULL, '19/02/2018', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (120, 120, 'Luján', 'CARDOSO', 'BARBARA JUDITH', '21/05/1975', 'ARG', '23725869', '27237258695', 'FRANCIA', '877', NULL, 6720, 'SAN ANDRES DE GILES', 'BS AS', 'ARG', NULL, '232515473539', NULL, 'JUDITHCARDOSO1975@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', 'CURSA', '31/12/1899', 'SI', NULL, '14/02/2018', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (121, 121, 'Luján', 'CARELLI', 'MARIA FLORENCIA', '14/03/1991', 'ARG', '35722041', '27357220411', 'ITUZAINGO', '672', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', '422196', '2323633460', NULL, 'FLORENCIA.CARELLI@HOTMAIL.COM', 'A+', 'ACCORD SALUD', 'SI', NULL, NULL, NULL, 'LIC EN RECURSOS HUMANOS', NULL, NULL, 'LIC EN RRHH', 'ESTAMPADOS ROTATIVOS', NULL, NULL, 'FLORENCIA@ROTATIVOS.COM.AR', 'NO', 'No', 'No', 'CURSA', '31/12/1899', 'SI', NULL, '05/04/2018', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (122, 122, 'Luján', 'RAMOS', 'SANDRA', '29/08/1971', 'ARG', '22318619', '27223186195', 'VICENTE LOPEZ', '1160', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '2323447235', NULL, 'SANISACOMP71@HOTMAIL.COM', '0+', 'IOMA', 'SI', 'CELIACA, HIPOTIROIDISMO, PREDIABETES', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'CURSA', '31/12/1899', 'SI', NULL, '05/03/2018', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (123, 123, 'Castelar', 'APECETCHE', 'MARILINA', '15/07/1988', 'ARG', '33905012', '27339050216', 'PASTEUR', '2476', NULL, 1712, 'CASTELAR', 'BS AS', 'ARG', '46288497', '0351-152245969', '3512245969', 'TAMARA_DTA@HOTMAIL.COM', 'A+', 'DIBFA', 'SI', NULL, NULL, NULL, 'LIC EN NUTRICION', NULL, NULL, 'LIC EN NUTRICION', 'FUERZA AEREA ARGENTINA', NULL, NULL, NULL, 'NO', 'Si', 'No', 'NO SE', '31/12/1899', 'SI', 'SI', '15/08/2015', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (124, 124, 'Pilar', 'BARCIA', 'CRISTIAN DANIEL', '16/04/1990', 'ARG', '35143390', NULL, 'QUINTANA', '1445', NULL, 1611, 'DON TORCUATO', 'BS AS', 'ARG', NULL, '1150411985', NULL, 'CRISTIAN.BARCIA@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'Sí', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'FALSO', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (125, 125, 'Pilar', 'BARUZZI', 'PAMELA ADRIANA', '02/07/1981', 'ARG', '28932729', '27289327296', 'GARCIA LOPEZ DE LA VEGA', '4619', NULL, 2812, 'BS AS', 'BS AS', 'ARG', '2323470784', '111558684443', NULL, 'P_BARUZZI@HOTMAIL.COM', '+', 'ACA SALUD', 'SI', 'RECTIFICACION CERVICAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '03/03/2015', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (126, 126, 'Pilar', 'BATLLE', 'SILVINA PAULA', '08/03/1979', 'ARG', '27203270', '27272032705', 'PUJOL', '1435', '14', 1416, 'CABA', 'BS AS', 'ARG', NULL, '1540974810', NULL, 'SILVANABATLLE@HOTMAIL.COM', 'A-', NULL, 'SI', NULL, NULL, NULL, 'ABOGACIA', NULL, NULL, 'ABOGADA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'NO SE', '31/12/1899', 'SI', NULL, '01/07/2016', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (127, 127, 'Castelar', 'BOGANI', 'JEZABEL VANINA', '03/01/1982', 'ARG', '29238880', '27292388808', 'ESTANISLAO LOPEZ', '928', '6', 1712, 'CASTELAR', 'BS AS', 'ARG', NULL, '1560212055', NULL, 'JEZABELBOGANI@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (128, 128, 'Pilar', 'BULLRICH', 'SILVINA', '22/12/1962', 'ARG', '16557074', '27165570745', 'CHUBUT', '415', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1558664212', NULL, 'BULLRICHSILVANA@GMAIL.COM', '-', 'GALENO', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (129, 129, 'Pilar', 'BUSCALIA', 'PAULA', '09/11/1970', 'ARG', '21960529', NULL, 'SOLER', '1382', NULL, 2800, 'ZARATE', 'BS AS', 'ARG', '3487430628', '348715662424', '3487430628', 'APBUSCALIA@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '07/05/2014', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (130, 130, 'Castelar', 'CALANDRONI', 'ROSANA ADRIANA', '15/02/1969', 'ARG', '23068949', '27230684494', 'GENERAL BELGRANO', '3015', '8', 1824, 'LANUS', 'BS AS', 'ARG', NULL, '1135739738', NULL, 'ROSANA_1502@HOTMAIL.COM', '0+', NULL, 'SI', 'MEÑISCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (78, 78, 'Pilar', 'FIGUEROA', 'CRISTIAN TOMAS', '18/10/1977', 'ARG', '26083669', NULL, 'Corbeta Beifast', '1737', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1130570606', NULL, 'CF7573169@GMAIL.COM', '+', NULL, 'SI', NULL, NULL, NULL, 'PSICOLOGIA SOCIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', NULL, 'CURSA', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (76, 76, 'Pilar', 'LOPEZ', 'NOELIA', '14/5/1982', 'ARG', '29405389', '27294053897', 'VIAMONTE', '412', NULL, 1635, 'DERQUI', 'BS AS', 'ARG', NULL, '111523369104', NULL, 'MIIAPROFARTE@HOTMAIL.COM', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'SI', 'No', NULL, 'DOCENTE', 'ESCUELA PUBLICA', NULL, NULL, NULL, 'Si', 'Si', 'SI', 'SI', '1/1/1900', 'SI', 'No', '7/9/2017', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (77, 77, 'Pilar', 'ESPINOZA', 'CARMEN MABEL', '20/4/1970', 'ARG', '21496429', NULL, 'ENTRE RIOS', '1302', NULL, 1635, 'DERQUI', 'BS AS', 'ARG', NULL, '111562542296', NULL, 'CARMABELES@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'DOCENTE', 'No', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'SI', '1/1/1900', 'SI', 'No', '3/8/2017', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (79, 79, 'Pilar', 'RODRIGUEZ', 'GABRIELA', '7/5/1969', 'ARG', '20954064', '27209540644', 'BARRIO EL LAUQUEN RUTA 58 KM 10', '17', '9', 0, 'CANNING', 'BS AS', 'ARG', '20505679', '1130714630', '42417065', 'RODRIGUEZGABRIELA34@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA DE INDUMENTARIA', 'No', NULL, 'DISEÑADORA DE INDUMENTARIA', 'CHUCHOMANUCHO', 'JOAQUIN V GONZALEZ 1451', '42417065', 'GABRIELA.RODRIGUEZ@CHUCHOMANUCHO.COM.AR', 'NO', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '4/11/2017', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (80, 80, 'Pilar', 'FIFIAN', 'FLORENCIA PAULA', '1/1/1900', 'ARG', '25578127', NULL, 'ZEBRUNO', '910', NULL, 0, 'DEL VISO', 'BS AS', 'ARG', NULL, '1132584494', NULL, 'FLORENCIAFAFIAN@GMAIL.COM', NULL, 'HOSP ITALIANO', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'DISEÑO DE INTERIORES', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '11/4/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (82, 82, 'Pilar', 'PACIFICO', 'MARIA ELENA', '30/12/1962', 'ARG', '16452083', '2716452083', 'CRUCERO GRAL BELGRANO', '1837', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304430208', '111524984944', NULL, 'pacificomariaelena@gmail.com', '0', 'IOMA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'ABANDONÓ', '1/1/1900', 'SI', '11/5/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (83, 83, 'Pilar', 'CORVALAN', 'ANABELLA LILIAN', '18/5/1975', 'ARG', '24623907', '27246239075', 'ARISTOBULO DEL VALLE (BARRIO SANTA CATARINA LOTE 412))', '5601', NULL, 1623, 'DIQUE LUJAN', 'BS AS', 'ARG', '3484626146', '1556395992', NULL, 'ANABELLACORVALAN@YAHOO.COM.AR', '0+', 'SINECO', 'SI', NULL, NULL, NULL, 'UADE CONTADORA PUBLICA', 'No', NULL, 'CONTADORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'No', '5/2/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (85, 85, 'Pilar', 'MANCUSO', 'BERTA', '28/6/1975', 'ARG', '24694469', NULL, 'CHUBUT UF 154 BARRIO VILLA ROSA', '2400', NULL, 1631, 'PILAR', 'BS AS', 'ARG', '4315408', '1126459443', NULL, 'BERTAMANCUSO@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, 'DECORADORA DE INTERIORES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (86, 86, 'Pilar', 'INSFRAM', 'LILIANA', '25/9/1974', 'ARG', '24139684', '2724139684', 'CERVANTES ', '1326', NULL, 1748, 'GRAL RODRIGUEZ', 'BA AS', 'ARG', NULL, '111535891064', NULL, 'LILIANAINSFRAN@GMAIL.COM', '0+', 'OSECAC', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (87, 87, 'Pilar', 'KUZMIK', 'CAROLA MARINA', '1/5/1972', 'ARG', '22702289', NULL, 'MIERO', '1969', NULL, 1744, 'MORENO', 'BS AS', 'ARG', NULL, '111567133205', NULL, 'CAROLA.KUZMIK@GMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'No', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (89, 89, 'Pilar', 'MARIN', 'JOSELINA CAROL', '16/4/1974', 'ARG', '23775580', NULL, 'ALTE BROWN', '1939', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', '2323438173', '111569751815', NULL, 'MARINJOSELINA@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (91, 91, 'Pilar', 'GAITAN', 'CINTIA MARIANA', '17/3/1981', 'ARG', '28725391', NULL, 'CORONEL VIDELA', '2826', NULL, 1618, 'GRAL PACHECO', 'BS AS', 'ARG', '3327457660', '1532261571', NULL, 'CINTIA_GAITAN@HOTMAIL.COM', '0-', 'OSMECON', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, 'CAMARERA', 'SUSHI CLUB', NULL, NULL, NULL, 'Si', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'No', '4/2/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (93, 93, 'Pilar', 'GARCIA', 'LAURA', '26/10/1961', 'ARG', '14768743', NULL, 'CHUBUT ', '401', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1544080686', NULL, 'MAQUI.2610@GMAIL.COM', NULL, 'OSDIPP', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'CURSA', '1/1/1900', 'SI', '13/2/2017', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (649, NULL, NULL, 'White', 'Benjamin  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'benjaminwhite89@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (106, 106, 'Pilar', 'ALONSO', 'SANDRA ELIZABETH', '3/6/1970', 'ARG', '21508887', NULL, 'EL CASCO', '0', NULL, 2800, 'ZARATE', 'BS AS', 'ARG', NULL, '348715631002', NULL, 'SEAAUN@HOTMAIL.COM', '+', 'SWISS MEDICAL', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', NULL, 'NO SE', '1/1/1900', 'No', '2/2/2018', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (107, 107, 'Pilar', 'KOHEN', 'JULIETA', '30/7/1976', 'ARG', '25393189', NULL, 'CHAMPAGNAT', '1600', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304663971', '111550387928', NULL, 'JULIKOHEN_76@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'NO SE', '1/1/1900', 'SI', '3/3/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (109, 109, 'Pilar', 'NUTTINI', 'DORA DANIELA', '12/01/2014', 'ARG', '17226965', NULL, 'LABARDENE', '4069', NULL, 1667, 'TORTUGUITAS', 'BS AS', 'ARG', NULL, '111567981705', '111565187642', 'DANIELAMUTTINI@HOTMAIL.COM', NULL, NULL, 'SI', NULL, NULL, NULL, 'DIPLOMATURA EN CIENCIAS HUMANAS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (118, 118, 'Luján', 'PEANO', 'VALERIA ANAHÍ', '13/02/1985', 'ARG', '31489475', '27314894753', 'ROUX', '1551', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '2323333579', NULL, 'ANAHIPEANO@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA GRAFICA Y PROFESORA DE ARTES VISUALES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', 'CURSA', '31/12/1899', 'SI', NULL, '24/02/2018', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (120, 120, 'Luján', 'CARDOSO', 'BARBARA JUDITH', '21/05/1975', 'ARG', '23725869', '27237258695', 'FRANCIA', '877', NULL, 6720, 'SAN ANDRES DE GILES', 'BS AS', 'ARG', NULL, '232515473539', NULL, 'JUDITHCARDOSO1975@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', 'CURSA', '31/12/1899', 'SI', NULL, '14/02/2018', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (121, 121, 'Luján', 'CARELLI', 'MARIA FLORENCIA', '14/03/1991', 'ARG', '35722041', '27357220411', 'ITUZAINGO', '672', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', '422196', '2323633460', NULL, 'FLORENCIA.CARELLI@HOTMAIL.COM', 'A+', 'ACCORD SALUD', 'SI', NULL, NULL, NULL, 'LIC EN RECURSOS HUMANOS', NULL, NULL, 'LIC EN RRHH', 'ESTAMPADOS ROTATIVOS', NULL, NULL, 'FLORENCIA@ROTATIVOS.COM.AR', 'NO', 'No', 'NO', 'CURSA', '31/12/1899', 'SI', NULL, '05/04/2018', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (122, 122, 'Luján', 'RAMOS', 'SANDRA', '29/08/1971', 'ARG', '22318619', '27223186195', 'VICENTE LOPEZ', '1160', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '2323447235', NULL, 'SANISACOMP71@HOTMAIL.COM', '0+', 'IOMA', 'SI', 'CELIACA, HIPOTIROIDISMO, PREDIABETES', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'NO', 'CURSA', '31/12/1899', 'SI', NULL, '05/03/2018', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (123, 123, 'Castelar', 'APECETCHE', 'MARILINA', '15/07/1988', 'ARG', '33905012', '27339050216', 'PASTEUR', '2476', NULL, 1712, 'CASTELAR', 'BS AS', 'ARG', '46288497', '0351-152245969', '3512245969', 'TAMARA_DTA@HOTMAIL.COM', 'A+', 'DIBFA', 'SI', NULL, NULL, NULL, 'LIC EN NUTRICION', NULL, NULL, 'LIC EN NUTRICION', 'FUERZA AEREA ARGENTINA', NULL, NULL, NULL, 'NO', 'Si', 'NO', 'NO SE', '31/12/1899', 'SI', 'SI', '15/08/2015', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (125, 125, 'Pilar', 'BARUZZI', 'PAMELA ADRIANA', '02/07/1981', 'ARG', '28932729', '27289327296', 'GARCIA LOPEZ DE LA VEGA', '4619', NULL, 2812, 'BS AS', 'BS AS', 'ARG', '2323470784', '111558684443', NULL, 'P_BARUZZI@HOTMAIL.COM', '+', 'ACA SALUD', 'SI', 'RECTIFICACION CERVICAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '03/03/2015', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (128, 128, 'Pilar', 'BULLRICH', 'SILVINA', '22/12/1962', 'ARG', '16557074', '27165570745', 'CHUBUT', '415', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1558664212', NULL, 'BULLRICHSILVANA@GMAIL.COM', '-', 'GALENO', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (130, 130, 'Castelar', 'CALANDRONI', 'ROSANA ADRIANA', '15/02/1969', 'ARG', '23068949', '27230684494', 'GENERAL BELGRANO', '3015', '8', 1824, 'LANUS', 'BS AS', 'ARG', NULL, '1135739738', NULL, 'ROSANA_1502@HOTMAIL.COM', '0+', NULL, 'SI', 'MEÑISCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
 INSERT INTO temp_personas VALUES (239, NULL, 'PILAR', 'Lambertini', 'Maria Eugenia ', NULL, NULL, NULL, '27329198702', 'Acacias 304 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (131, 131, 'Castelar', 'CAMARGO', 'GABRIELA FERNANDA', '15/09/1978', 'ARG', '26826206', '27268262062', '25 DE MAYO', '748', NULL, 1824, 'LANUS', 'BS AS', 'ARG', '39649529', '1162708760', '1162708460', 'CAMARGOGABY@HOTMAIL.COM', 'B+', 'UNION PERSONAL', 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada Administrativa Local de Decoración', NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '16/04/2016', 'Profesorado de Yoga');
-INSERT INTO temp_personas VALUES (132, 132, 'ADROGUE', 'Valiño', 'Luiz Oscar ', '24/02/1968', 'Arg', '20009800', '24200098001', 'Ramon Franco', '4062', NULL, 1826, 'Remedios de Escalada', 'Bs As', 'Arg', '42924479', '1569269012', NULL, 'luisoscar40@gmail.com', 'A+', 'PUEYREDON', 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (133, 133, 'ADROGUE', 'Enriquez', 'Belen Alejandra ', '17/10/1977', 'Arg', '26299687', NULL, 'POLONIA', '2470', NULL, 1846, 'ADROGUE', NULL, NULL, NULL, '1524317471', NULL, 'belenenriquez802@gmail.com', '+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (136, 136, 'ADROGUE', 'Durand', 'Florencia  ', '26/06/1993', 'ARG', '37022305', NULL, '34', '968', NULL, 1862, 'GUERNICA', 'BS AS', 'ARG', '2224472755', '1166833376', NULL, 'FLORDURAND@LIVE.COM', '0-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (132, 132, 'ADROGUE', 'Valiño', 'Luiz Oscar ', '24/02/1968', 'Arg', '20009800', '24200098001', 'Ramon Franco', '4062', NULL, 1826, 'Remedios de Escalada', 'Bs As', 'Arg', '42924479', '1569269012', NULL, 'luisoscar40@gmail.com', 'A+', 'PUEYREDON', 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (134, 134, 'ADROGUE', 'Durand', 'Andrea Agostina ', '06/01/1995', 'ARG', '38681512', '27386815122', '34', '968', NULL, 1862, 'GUERNICA', 'BS AS', 'ARG', '2224472755', '1157374729', NULL, 'ANDREA.DURAND@LIVE.COM', NULL, NULL, 'SI', 'RINITIS ALERGICA - LUMBALGIA', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (135, 135, 'ADROGUE', 'Curci', 'Maria Jose ', '03/01/1984', 'ARG', '30663091', '27306630917', 'CATAMARCA', '905', NULL, 1832, 'BS AS', 'BS AS', 'ARG', NULL, '1549275202', NULL, 'mariacurci32@gmail.com', NULL, NULL, 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'GUARDAVIDAS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (136, 136, 'ADROGUE', 'Durand', 'Florencia  ', '26/06/1993', 'ARG', '37022305', NULL, '34', '968', NULL, 1862, 'GUERNICA', 'BS AS', 'ARG', '2224472755', '1166833376', NULL, 'FLORDURAND@LIVE.COM', '0-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (137, 137, 'LUJAN', 'Suarez', 'Vanesa Esther ', '04/03/1972', 'ARG', '22647086', '27226470866', 'Moreno 1070 dpto 4b Lujan', NULL, NULL, NULL, NULL, 'BS AS', 'ARG', '2323435460', '232315482641', NULL, 'vansua35@hotmail.com', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, 'OSDE', NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (131, 131, 'Castelar', 'CAMARGO', 'GABRIELA FERNANDA', '15/09/1978', 'ARG', '26826206', '27268262062', '25 DE MAYO', '748', NULL, 1824, 'LANUS', 'BS AS', 'ARG', '39649529', '1162708760', '1162708460', 'CAMARGOGABY@HOTMAIL.COM', 'B+', 'UNION PERSONAL', 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada Administrativa Local de Decoración', NULL, NULL, NULL, NULL, 'Si', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '16/04/2016', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (166, 167, 'CASTELAR', 'Brown', 'Claudia Noemi ', '06/11/1967', 'ARG', '18492476', '27184924760', 'El Pampero 5652 González Catán ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111556194820', NULL, 'claudia_brown@hotmail.com', 'A+', 'OSPEP', 'SI', NULL, NULL, NULL, NULL, 'Gestora', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, 'EGRESÓ', NULL, 'VERDADERO', '2017-jun', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (177, 178, 'Pilar', 'SALVI', 'MARIA JULIETA', '07/11/1975', 'ARG', '25021309', '27250213099', 'GASPAR CAMPOS', '2263', NULL, 1661, 'MUÑIZ', 'BS AS', 'ARG', '46674516', '1551107428', NULL, 'JULIETASALVIECOYOGA@GMAIL.COM', 'A+', NULL, 'SI', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'N', 'NO', 'NO', 'CURSA', NULL, NULL, NULL, NULL);
+INSERT INTO temp_personas VALUES (178, 179, 'PILAR', 'LANZA', 'LAURA', '05/12/1974', 'ARG', NULL, '2724190375', 'MOUNE', '1976', NULL, 1661, 'BELLA VISTA', 'BS AS ', 'ARG', '46661451', '1551239120', NULL, 'URNAESTUDIO@OUTLOOK.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'S', 'NO', 'N', 'CURSA', NULL, NULL, NULL, NULL);
+INSERT INTO temp_personas VALUES (183, 184, 'PILAR', 'Naveira', 'Marcela Alejandra ', '27/12/1964', 'Arg', '17332083', '27173320839', 'Malvinas Arg N°22 3°B (1619) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '02320-497823', '11 34232445', NULL, 'marce.64@hotmail.com', NULL, 'OSECAC', 'SI', 'HERNIA DE DISCO', NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Acompañante terapéutica', 'transporte escolar', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (56, 56, 'Pilar', 'LOBOS', 'FLAVIA DENISA', '1987-04-22', 'ARG', '32993194', '27329931949', 'LOS CRISANTEMOS', '1515', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111526872744', NULL, 'FLAVIADENISALOBOS@GMAIL.COM', '0+', 'OSECAC', 'SI', NULL, NULL, NULL, 'CURSANDO UTN', 'SI', 'UTN', 'ADMINISTRATIVA', 'UNILEVER', NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (102, 102, 'Pilar', 'MOSQUERA', 'PATRICIA LILIANA JUANA', '7/6/1959', 'ARG', '12046456', '27120464561', 'MAGALLANES', '1433', '2', 1619, 'GARIN', 'BS AS', 'ARG', '3484218515', '1569513826', NULL, 'PATRIMOS2004@YAHOO.COM.AR', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'MAESTRA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'CURSA', '1/1/1900', 'SI', '11/4/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (92, 92, 'Pilar', 'RUGGIERO', 'LUCIA ANGELICA', '17/2/1957', 'ARG', '12661924', NULL, 'ARE QUIPA', '1180', NULL, 1621, 'BENAVIDEZ', 'BS AS', 'ARG', '3484627133', NULL, '111558474644', 'LUCIARUGGIERO@HOTMAIL.COM', 'A+', 'ACCORD SALUD', 'SI', NULL, NULL, NULL, 'iNGLES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'EGRESÓ', '5/5/2018', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (94, 94, 'Pilar', 'PIAGGI', 'MARIA ADELA', '8/3/1972', 'ARG', '22578651', '27225786513', 'AV MITRE S/N B* SOLES DEL PILAR LOTE', '6', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1566881746', NULL, 'mariaadelapiaggi@yahoo.es', '0+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'GASTRONOMIA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'CURSA', '1/1/1900', 'SI', '26/11/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (100, 100, 'Pilar', 'KUCICH', 'ANDREA CRISTINA', '11/9/1977', 'ARG', '26081114', NULL, 'AGUERO', '1909', '8', 1425, 'CABA', 'BS AS', 'ARG', '1148263855', '1551205982', NULL, 'ANDREAKUCICH@LIVE.COM.AR', 'B+', 'OMINT', 'SI', NULL, NULL, NULL, 'TERAPEUTA DEL SONIDO - RELACIONES LABORALES', 'No', NULL, NULL, 'ESTUIDO SUMIECIKI ARQ', 'SALGUERO 2533 2 B', '48081293', 'KUCICH@ESARQ.COM.AR', 'Si', 'Si', 'SI', NULL, 'EGRESÓ', '5/5/2018', 'SI', '5/4/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (193, 194, 'PILAR', 'Rosalez', 'Maria Rosa ', '23/07/1977', 'ARG', '26104928', NULL, 'Bataglia 252 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230 456 3318', NULL, 'padma@outlook.com', 'A+', NULL, 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'P.S. YOGA DINAMICO');
+INSERT INTO temp_personas VALUES (101, 101, 'Pilar', 'MAZA', 'NATALIA LORENA', '24/10/1976', 'ARG', '25612302', '27256123024', 'SANTA FE', '385', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '348154226628', NULL, NULL, 'ESPACIOROSASDEABRIL@GMAIL.COM', 'A+', 'SWISS MEDICAL', 'SI', NULL, NULL, NULL, 'DOCENTE', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'CURSA', '1/1/1900', 'SI', '11/9/2017', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (95, 95, 'Pilar', 'ARNODO', 'NATALIA ROMINA', '27/9/1977', 'ARG', '25691703', '27256917039', 'ARGUIÑANO', '2855', NULL, 2804, 'CAMPANA', 'BS AS', 'ARG', '3489447373', '03489-15693109', NULL, 'nataldsn@hotmail.com', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'COMPLETO', NULL, NULL, 'DISEÑADORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'CURSA', '1/1/1900', 'SI', '2/2/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (110, 110, 'Pilar', 'OCHOA', 'URSULA ARACELI', '04/03/1984', 'ARG', '30647903', '27306479038', '9 DE JULIO', '2948', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1130599168', NULL, 'URSULA_OCHOA@HOTMAIL.COM', NULL, NULL, 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'NO SE', '31/12/1899', 'SI', NULL, '25/02/2016', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (113, 113, 'Palermo', 'KOKOZKA', 'VALERIA', '29/10/1973', 'ARG', '23473690', '27234736901', 'ARMENIA', '1502', '6', 1414, 'CABA', 'BS AS', 'ARG', '1148336154', '111541921168', NULL, 'VALKOKO@HOTMAIL.COM', 'A-', 'OSPIC', 'SI', NULL, NULL, NULL, 'ABOGADA', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (117, 117, 'Castelar', 'ANASTASI', 'MARIA GABRIELA', '15/02/1970', 'ARG', '21440559', '27214405593', 'BUENOS AIRES ', '834', NULL, 1712, 'CASTELAR', 'BS AS', 'ARG', '46272303', '1559225836', NULL, 'GABRIELANASTASI@HOTMAIL.COM', '+', 'IOMA', 'SI', NULL, NULL, NULL, 'PROFESOR DE SORDOS E HIPOACUSICOS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'NO SE', '31/12/1899', 'SI', NULL, '16/07/2016', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (27, 27, 'Pilar', 'GARRAZA', 'SILVIA ANDREA', '1985-04-24', 'ARG', '31138495', '27311384959', 'ANICETO FERNANDEZ', '1260', NULL, 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '232315618384', '232315678080', 'SILGARRAZA@GMAIL.COM', 'A+', 'MEDIFE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'ADMINISTRATIVA', 'ORGANIZACION CALVO', 'LAVALLE 648 LUJAN', '2323420508', 'INFO@CALVOSEGUROS.COM.AR', 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-10', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (21, 21, 'Pilar', 'BALSAMO', 'SILVIA', '1971-12-17', 'ARG', '22436270', '22436270', 'CHAMPAGNAT', '740', '281', 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1161988355', '1161988355', 'BALSMO.SIL@GMAIL.COM', NULL, 'PODER JUDICIAL', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'LICENCIADA EN ENFERMERIA', 'VENDEDORA', NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-07-31', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (38, 38, 'Pilar', 'EGIANEZ', 'SUSANA', '1956-04-14', 'ARG', '11948244', '27119482440', 'HIPOLITOYRIGOYEN ', '366', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '3484424184', '111563667882', '111563667882', 'SUSANA.EGIANEZ@GMAIL.COM', NULL, 'GALENO', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'COSMIATRA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '2017-01-01', 'SI', '2017-10-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (243, NULL, 'PILAR', 'Ludueña', 'Sabrina Valeria ', NULL, NULL, '27121697', NULL, 'B° La Campiña Lote 66 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, NULL, 'PROF YOGA');
+INSERT INTO temp_personas VALUES (244, NULL, 'PILAR', 'Lujan', 'Gabriela Andrea ', NULL, NULL, NULL, '27253557279', 'Castelli 735 (2804) Campana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-jun', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (119, 119, 'Luján', 'GRANDE', 'CARLA GISELLE', '19/05/1991', 'ARG', '36076827', '31360768244', 'JORGE NEWBERY ', '2075', '0', 6700, 'LUJAN', 'BS AS', 'ARG', NULL, '111540912829', NULL, 'CARLAGRANDE25@GMAIL.COM', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'INSTRUMENTADORA QUIRÚRGICA', 'No', NULL, NULL, 'HOSPITAL DE LUJAN', NULL, NULL, NULL, 'NO', 'No', 'SI', 'CURSA', '31/12/1899', 'SI', NULL, '19/02/2018', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (126, 126, 'Pilar', 'BATLLE', 'SILVINA PAULA', '08/03/1979', 'ARG', '27203270', '27272032705', 'PUJOL', '1435', '14', 1416, 'CABA', 'BS AS', 'ARG', NULL, '1540974810', NULL, 'SILVANABATLLE@HOTMAIL.COM', 'A-', NULL, 'SI', NULL, NULL, NULL, 'ABOGACIA', NULL, NULL, 'ABOGADA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'NO SE', '31/12/1899', 'SI', NULL, '01/07/2016', 'Profesorado de Yoga');
 INSERT INTO temp_personas VALUES (138, 138, 'LUJAN', 'Perez', 'Graciela  ', '08/09/1961', 'ARG', '14847940', NULL, 'Dr Muñiz 965 Luján', NULL, NULL, NULL, NULL, NULL, NULL, '422192', '111551412259', NULL, 'gracecarino2004@yahoo.com.ar', NULL, 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (139, 139, 'LUJAN', 'Carino', 'Rene Marcelo ', '29/04/1962', 'ARG', '14965437', NULL, 'Dr Muñiz 965 Luján', NULL, NULL, 6700, 'LUJAN', 'BS AS', 'ARG', '2323422192', '0', NULL, 'MARCELOCARINO@YAHOO.COM.AR', '0+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (140, 140, 'PALERMO', 'Lopez Bravo', 'Sofia Dulce', '07/01/2001', 'ARG', '42960701', '27429607014', 'HIPLITO YRIGOYEN', '2516', '6', 1646, 'MARTINEZ', 'BS AS', 'ARG', NULL, '1121923199', NULL, 'sofylb01@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'NUEVA', NULL, NULL, '2018-ene', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (141, 141, 'PALERMO', 'Lacruz Correa', 'Laura Valeria', '24/02/1981', 'URUGUAYA', '92652838', '27926528381', '33 Orientales n° 2065 dto 4 (1257) CABA', NULL, NULL, 1257, 'CABA ', 'BSAS', NULL, NULL, '0111561349518', NULL, 'valexbrian@hotmail.com', NULL, 'AMEPBA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'PEDICURA', NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'NUEVA', NULL, NULL, '2016-sep', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (142, 142, 'PALERMO', 'Silva Werbach ', 'Maria Florencia', '17/10/1989', 'ARG', '34600389', '27346003893', 'Ciudad de la Paz3755 (1429) CABA', NULL, NULL, NULL, NULL, 'BS AS', 'ARG', NULL, '0111521761568', NULL, 'mariaflorencia.sw@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (143, 143, 'PALERMO', 'Maccione', 'Maria Fernanda ', '21/05/1984', 'ARG', '30980718', '27309807184', 'Av Las Heras 3451 14 D CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111530462871', NULL, 'f3rchulina@hotmail.com', 'B+', 'CEMIC', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'KINESIOLOGA', NULL, NULL, NULL, NULL, 'SI', 'SI', ' SI', 'SI', 'CURSA', NULL, NULL, '2017-feb', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (144, 144, 'PALERMO', 'Posadas', 'Daniela Alejandra ', '9/18/1970', 'ARG', '21981066', '27219810666', 'Hidalgo 1039 1°D CABA', NULL, NULL, NULL, NULL, NULL, NULL, '39710008', '0111567157491', NULL, 'daniposadas.70@gmail.com', 'A+', 'OBSBA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'MUSICOTERAPEUTA', NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2016-dic', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (143, 143, 'PALERMO', 'Maccione', 'Maria Fernanda ', '21/05/1984', 'ARG', '30980718', '27309807184', 'Av Las Heras 3451 14 D CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111530462871', NULL, 'f3rchulina@hotmail.com', 'B+', 'CEMIC', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'KINESIOLOGA', NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-feb', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (145, 145, 'PALERMO', 'Iametti', 'Yamila Andrea ', '20/07/1988', 'ARG', '33597906', '27335979066', 'E. de Vedia 1825 PB dto 4 CABA', NULL, NULL, NULL, NULL, NULL, NULL, '46397499', '0111554225859', NULL, 'yami.iametti@gmail.com', 'O+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'SECRETARIA', NULL, NULL, NULL, NULL, 'Si', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (146, 146, 'PALERMO', 'Rivero', 'Maria Florencia ', '25/01/1989', 'ARG', '34321943', '27343219437', 'Giribone 883 6°A CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111533300617', NULL, 'riveroflorencia@gmail.com', '0+', 'OSMECON', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'AGENTE DE VIAJES', 'GARBARINO VIAJES', NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-jul', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (147, 147, 'PALERMO', 'Machado', 'Melisa Laura ', '12/11/1984', 'ARG', '3146742', '23310464724', 'Roseti 1073 PB CABA', NULL, NULL, NULL, NULL, NULL, NULL, '45533692', '0111550537739', NULL, 'm_mlm03@yahoo.com.ar', '0+', 'OSPEDYC', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'LOCUTORA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'EGRESÓ', NULL, NULL, '2017-nov', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (148, 148, 'PALERMO', 'Paz', 'Maria Belen ', '03/03/1992', 'ARG', '36790210', '27367902103', 'Beauchef 476 piso 2 CABA', NULL, NULL, NULL, NULL, NULL, NULL, '49030618', '0111569307265', NULL, 'mbelenpaz@yahoo.com.ar', 'A+', 'ACCORD', 'SI', 'COLESTEROL TIROIDES', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'EMPLEADA ADMINISTRATIVA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'EGRESÓ', NULL, 'S', NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (149, 149, 'PALERMO', 'Segal Sabó', 'Maia', '07/08/1992', 'ESPAÑOLA', '94494878', '27944948789', 'Acevedo 888 p4 CABA', NULL, NULL, NULL, NULL, NULL, NULL, '47751945', '0111569120439', NULL, 'segalmaia@gmail.com', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'COREOGRAFO', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'EGRESÓ', NULL, NULL, '2016-nov', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (150, 150, 'PALERMO', 'Fernandez', 'Belen  ', '28/06/1988', 'ARG', '33813676', '27338136760', 'Argerich 342 8B CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111541780236', NULL, 'belenfernandez2477@gmail.com', 'B+', NULL, 'S', NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'ACTRIS', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'EGRESÓ', NULL, NULL, '2017-mar', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (151, 151, 'CASTELAR', 'Berra', 'Monica Patricia ', '22/04/1965', 'ARG', '176608686', NULL, 'Campichuelo 3395 Castelar ', NULL, NULL, NULL, NULL, NULL, NULL, '20618419', '0111522527214', NULL, 'mberraeventos@hotmail.com', '0+', 'GALENO', 'S', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (152, 152, 'CASTELAR', 'Fernandez', 'Amelia  ', '06/03/1956', 'ARG', '12021400', NULL, 'Avellaneda 988 6°B (1217) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111567120203', NULL, 'ameliafer2000@hotmail.com', '+', NULL, NULL, NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (153, 153, 'CASTELAR', 'Fernandez', 'Maria Teresa ', '26/03/1984', 'ARG', '30823863', '27308238631', 'Los Incas 2559 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46288293', '0111523415773', NULL, 'mt_fernandez@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'PROFESORA DE INGLES', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-oct', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (154, 154, 'CASTELAR', 'Vitton', 'Andrea Cecilia ', '10/06/1957', 'ARG', '33115837', '27331158378', 'Azul 1483 Moron', NULL, NULL, NULL, NULL, NULL, NULL, '21169341', '0111526968204', NULL, 'vittonandrea@hotmail.com', '0+', 'OSDE', 'S', 'ESCOLIOSIS', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'EMPLEADA ADMINISTRATIVA', NULL, NULL, NULL, NULL, 'S', 'N', 'S', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (155, 155, 'CASTELAR', 'Carracedo Bosch', 'Adriana Laura', '01/02/1959', 'ARG', '12975926', '27129759262', 'Salcedo 2131 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '44833412', '0111551768609', NULL, 'lauritacarr10@gmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'TERAPEUTA FLORAL', NULL, NULL, NULL, NULL, 'S', 'S', 'N', 'SI', 'CURSA', NULL, NULL, '2017-ago', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (156, 156, 'CASTELAR', 'Olivera', 'Florencia Sofia ', '25/11/1978', 'ARG', '26942890', '27269428908', 'Las Heras 1495 (1714)', NULL, NULL, NULL, NULL, NULL, NULL, '46241009', '0111541996564', NULL, 'floroli78@yahoo.com.ar', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO DANZAS', NULL, 'PILATES', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'ABANDONÓ', NULL, NULL, '2017-ago', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (157, 157, 'CASTELAR', 'Berdun', 'Jacqueline Elizabeth ', '15/11/1976', 'ARG', '25595920', '27256959203', 'Dean Funes 2099 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '54354086', '0111554998654', NULL, 'jackie_berdun@hotmail.com', 'A+', 'IOMA', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (158, 158, 'CASTELAR', 'Clausi', 'Susana Noemi ', '08/12/1957', 'ARG', '13724019', '27137240195', 'Bahía Blanca 333 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '1146283957', '0111565400515', NULL, 'suclausi@gmail.com', '0-', 'OMINT', NULL, 'SINDROME METABOLICO- HIPERTENSION - COLESTEROL - DIABETES', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'MASOTERAPEUTA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (159, 159, 'CASTELAR', 'Paz', 'Cecilia Gabriela ', '30/12/1973', 'ARG', '23572893', '2723572893', 'Espora 42 3°C Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '6542956', '0111564035025', NULL, 'ceciliagabrielapaz@gmail.com', '0+', 'IOMA', 'S', 'VARICES', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'N', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (160, 160, 'CASTELAR', 'Romeo', 'Carla  ', '18/08/1972', 'ARG', '22913351', NULL, 'El Rancho 474 Hurlingham', NULL, NULL, NULL, NULL, NULL, NULL, '44595610', '0111530002912', NULL, 'carlaromeo10@hotmail.com', '0+', 'OSDE', 'S', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'TERAPEUTA COMPLEMENTARIA', NULL, NULL, NULL, NULL, 's', 's', 's', 'SI', 'ABANDONÓ', NULL, NULL, '2017-jul', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (161, 161, 'CASTELAR', 'D''Onofrio', 'Micaela  ', '27/03/1992', 'ARG', '36822184', '27368221843', 'M de Salcedo 1538 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '20951149', '0111534512424', NULL, 'micaela_donofrio@hotmail.com', 'B+', 'OMINT', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'LICENCIADA EN TURISMO', 'ALMUNDO.COM', NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-feb', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (162, 162, 'CASTELAR', 'Galerti', 'Sofia Moira ', '13/03/1996', 'ARG', '41581965', NULL, 'Tebicuay 2050 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46236405', '0111537841534', NULL, 'galerti@hotmail.com.ar', 'A+', 'AUI SALUD', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (163, 163, 'CASTELAR', 'Seijo', 'Paula Valeria ', '25/03/1982', 'ARG', '29438033', '27294380332', 'Rosales 418 1°C Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '46588348', '0111536936682', '1558121831', 'paula_seijo@yahoo.com.ar', 'A+', 'OSDE', 'SI', 'PINZAMIENTO LUMBAR', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'INGENIERA INFORMATICA', 'SANTANDER', NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (164, 164, 'CASTELAR', 'Sogni', 'Fernanda  ', '06/06/1975', 'ARG', '24690580', '27246905806', 'Berutti 408 Moron', NULL, NULL, NULL, NULL, NULL, NULL, '46242572', '0111540940071', NULL, 'fernandasog@hotmail.com.ar', 'A+', 'OSDE', 'S', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'MAESTRA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (165, 165, 'CASTELAR', 'Cobos', 'Julieta Elizabeth ', '16/03/1973', 'ARG', '23328837', '27233288379', 'Cura Bronchero 1778 Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '46239777', '0111556652515', NULL, 'julieta29cobos@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'N', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (166, 167, 'CASTELAR', 'Brown', 'Claudia Noemi ', '06/11/1967', 'ARG', '18.492.476', '27184924760', 'El Pampero 5652 González Catán ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111556194820', NULL, 'claudia_brown@hotmail.com', 'A+', 'OSPEP', 'A', NULL, NULL, NULL, NULL, 'Gestora', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, 'EGRESÓ', NULL, 'VERDADERO', '2017-jun', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (167, 168, 'CASTELAR', 'Teodori', 'Maria Paula ', '20/11/1968', 'ARG', '20477364', '27204773640', 'Pehuajo 819 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111558095887', NULL, 'paulateo@speedy.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'FONOAUDIOLOGA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (168, 169, 'CASTELAR', 'Iannini', 'Laura Vanesa ', '01/02/1972', 'ARG', '26475163', '27264751638', 'Tebicuary 2339 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111554695158', NULL, 'lauraiannini@hotmail.com', 'B+', 'ACCORD SALUD', 'S', 'OPERADA DE TIROIDES', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'RECONTADORA', 'PERSONAL CIVIL DE LA NACION - CASA DE MONEDA', NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'EGRESÓ', NULL, NULL, '2017-jul', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (169, 170, 'CASTELAR', 'Asteriti', 'Agustina  ', '25/08/1989', 'ARG', '34380845', '27343808459', 'Ayacucho 233 San Antonio de Padua', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111557046222', NULL, 'agustina.asteriti@gmail.com', 'B+', 'ACCORD SALUD', 'S', 'FIBROMIALGIA', NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'INTERPRETE DE DANZA CONTEMPORANEA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-ene', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (170, 171, 'CASTELAR', 'Ludueña Favot ', 'Perla Rosina', '07/01/1987', 'ARG', '32808791', '27328087915', 'Av Pte Perón 2432 2°A Haedo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111531283828', NULL, 'favotperla@hotmail.com', 'B+', 'SWISS MEDICAL', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO INCOMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (171, 172, 'CASTELAR', 'Aragon', 'Fernanda Lorena ', '10/08/1985', 'ARG', '32017935', '27320179357', 'Pasaje Bayardi 2552 1D Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111568832938', NULL, 'fernanda.lorena.aragon@gmail.com', NULL, 'OSDE', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'INGENIERA INFORMATICA', 'TGV', NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (172, 173, 'CASTELAR', 'Fernandez', 'Noelia Carolina ', '06/01/1988', 'ARG', '33304998', NULL, 'Heine 620 1° y 2° Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46289894', NULL, NULL, 'noli.cfernandez61@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'PROFESORA DE EDUCACION FISICA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (173, 174, 'CASTELAR', 'Diaz', 'Sabrina Alejandra ', '10/09/1984', 'ARG', '30963528', '27309635286', 'Lacarra 1236 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46233398', '0111568215833', NULL, 'sadz30@hotmail.com', '0+', 'OSECAC', 'S', 'CISTITIS INTERSTICIAL', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (174, 175, 'CASTELAR', 'Kobzistyj', 'Elizabet Viviana ', '11/06/1980', 'ARG', '28191076', '27281910766', 'Oribe 324 Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '46232190', '0111567149381', NULL, NULL, 'A+', 'OSDE', NULL, 'TIROIDES', NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2016-ago', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (175, 176, 'CASTELAR', 'Godoy', 'Analia Vanesa ', '20/07/1978', 'ARG', '26725576', '27267255763', 'Ranchos 1888 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '44892649', '0111560334337', NULL, 'analiagodoy31@gmail.com', NULL, 'OSDE', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'PILATES', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'EGRESÓ', NULL, NULL, '2016-nov', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (176, 177, 'CASTELAR', 'Marin', 'Espinola Clara ', '25/11/1976', 'ARG', '25675510', NULL, 'Castelli 1063 Ciudadela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111569270028', NULL, NULL, 'B+', 'OSDE', NULL, 'CANCER DE OVARIOS HACE 26 AÑOS, VACIARION, NO QUIMIO', NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'GRAFOANALISTA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (177, 178, 'Pilar', 'SALVI', 'MARIA JULIETA', '07/11/1975', 'ARG', '25021309', '27250213099', 'GASPAR CAMPOS', '2263', NULL, 1661, 'MUÑIZ', 'BS AS', 'ARG', '46674516', '1551107428', NULL, 'JULIETASALVIECOYOGA@GMAIL.COM', 'A+', NULL, 'S', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'N', 'N', 'NO', 'CURSA', NULL, NULL, NULL, NULL);
-INSERT INTO temp_personas VALUES (178, 179, 'PILAR', 'LANZA', 'LAURA', '05/12/1974', 'ARG', NULL, '2724190375', 'MOUNE', '1976', NULL, 1661, 'BELLA VISTA', 'BS AS ', 'ARG', '46661451', '1551239120', NULL, 'URNAESTUDIO@OUTLOOK.COM', 'A+', 'OSDE', 'S', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'S', 'N', 'N', 'CURSA', NULL, NULL, NULL, NULL);
-INSERT INTO temp_personas VALUES (179, 180, 'PILAR', 'Ramos', 'Andres Horacio ', '09/03/1972', 'Arg', '22.653.674', '20226536745', 'Manuel Ugarte 2261 7C (1428) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4782 1895', NULL, ' andres_ramos88@yahoo.com', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Analista de Sistemas', NULL, 'Consultor', 'Telefónica', NULL, '43323854', 'andres.ramos@telefonica.com', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, 'CURSA', NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (180, 181, 'PILAR', 'Hernandez', 'Marta Silvina ', '27/05/1971', 'Arg', '22.152.331', '27221523313', 'Ramón Franco 4062 (1826) Rem. de Escalada Bs As.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15  5707 3087', NULL, 'silvinamhernandez16@gmail.com', 'A+', 'Emersur', NULL, NULL, NULL, NULL, NULL, 'Cursando en Universidad', NULL, 'Contador Publico', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (146, 146, 'PALERMO', 'Rivero', 'Maria Florencia ', '25/01/1989', 'ARG', '34321943', '27343219437', 'Giribone 883 6°A CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111533300617', NULL, 'riveroflorencia@gmail.com', '0+', 'OSMECON', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'AGENTE DE VIAJES', 'GARBARINO VIAJES', NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-jul', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (147, 147, 'PALERMO', 'Machado', 'Melisa Laura ', '12/11/1984', 'ARG', '3146742', '23310464724', 'Roseti 1073 PB CABA', NULL, NULL, NULL, NULL, NULL, NULL, '45533692', '0111550537739', NULL, 'm_mlm03@yahoo.com.ar', '0+', 'OSPEDYC', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'LOCUTORA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'EGRESÓ', NULL, NULL, '2017-nov', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (148, 148, 'PALERMO', 'Paz', 'Maria Belen ', '03/03/1992', 'ARG', '36790210', '27367902103', 'Beauchef 476 piso 2 CABA', NULL, NULL, NULL, NULL, NULL, NULL, '49030618', '0111569307265', NULL, 'mbelenpaz@yahoo.com.ar', 'A+', 'ACCORD', 'SI', 'COLESTEROL TIROIDES', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'EMPLEADA ADMINISTRATIVA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'EGRESÓ', NULL, 'S', NULL, 'PROF YOGA');
+INSERT INTO temp_personas VALUES (149, 149, 'PALERMO', 'Segal Sabó', 'Maia', '07/08/1992', 'ESPAÑOLA', '94494878', '27944948789', 'Acevedo 888 p4 CABA', NULL, NULL, NULL, NULL, NULL, NULL, '47751945', '0111569120439', NULL, 'segalmaia@gmail.com', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'COREOGRAFO', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'EGRESÓ', NULL, NULL, '2016-nov', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (150, 150, 'PALERMO', 'Fernandez', 'Belen  ', '28/06/1988', 'ARG', '33813676', '27338136760', 'Argerich 342 8B CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111541780236', NULL, 'belenfernandez2477@gmail.com', 'B+', NULL, 'SI', NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'ACTRIS', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'EGRESÓ', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (151, 151, 'CASTELAR', 'Berra', 'Monica Patricia ', '22/04/1965', 'ARG', '176608686', NULL, 'Campichuelo 3395 Castelar ', NULL, NULL, NULL, NULL, NULL, NULL, '20618419', '0111522527214', NULL, 'mberraeventos@hotmail.com', '0+', 'GALENO', 'SI', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (154, 154, 'CASTELAR', 'Vitton', 'Andrea Cecilia ', '10/06/1957', 'ARG', '33115837', '27331158378', 'Azul 1483 Moron', NULL, NULL, NULL, NULL, NULL, NULL, '21169341', '0111526968204', NULL, 'vittonandrea@hotmail.com', '0+', 'OSDE', 'SI', 'ESCOLIOSIS', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'EMPLEADA ADMINISTRATIVA', NULL, NULL, NULL, NULL, 'S', 'N', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (157, 157, 'CASTELAR', 'Berdun', 'Jacqueline Elizabeth ', '15/11/1976', 'ARG', '25595920', '27256959203', 'Dean Funes 2099 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '54354086', '0111554998654', NULL, 'jackie_berdun@hotmail.com', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
+INSERT INTO temp_personas VALUES (160, 160, 'CASTELAR', 'Romeo', 'Carla  ', '18/08/1972', 'ARG', '22913351', NULL, 'El Rancho 474 Hurlingham', NULL, NULL, NULL, NULL, NULL, NULL, '44595610', '0111530002912', NULL, 'carlaromeo10@hotmail.com', '0+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'TERAPEUTA COMPLEMENTARIA', NULL, NULL, NULL, NULL, 's', 's', 'SI', 'SI', 'ABANDONÓ', NULL, NULL, '2017-jul', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (161, 161, 'CASTELAR', 'D''Onofrio', 'Micaela  ', '27/03/1992', 'ARG', '36822184', '27368221843', 'M de Salcedo 1538 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '20951149', '0111534512424', NULL, 'micaela_donofrio@hotmail.com', 'B+', 'OMINT', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'LICENCIADA EN TURISMO', 'ALMUNDO.COM', NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-feb', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (162, 162, 'CASTELAR', 'Galerti', 'Sofia Moira ', '13/03/1996', 'ARG', '41581965', NULL, 'Tebicuay 2050 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46236405', '0111537841534', NULL, 'galerti@hotmail.com.ar', 'A+', 'AUI SALUD', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (163, 163, 'CASTELAR', 'Seijo', 'Paula Valeria ', '25/03/1982', 'ARG', '29438033', '27294380332', 'Rosales 418 1°C Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '46588348', '0111536936682', '1558121831', 'paula_seijo@yahoo.com.ar', 'A+', 'OSDE', 'SI', 'PINZAMIENTO LUMBAR', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'INGENIERA INFORMATICA', 'SANTANDER', NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (164, 164, 'CASTELAR', 'Sogni', 'Fernanda  ', '06/06/1975', 'ARG', '24690580', '27246905806', 'Berutti 408 Moron', NULL, NULL, NULL, NULL, NULL, NULL, '46242572', '0111540940071', NULL, 'fernandasog@hotmail.com.ar', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'MAESTRA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (168, 169, 'CASTELAR', 'Iannini', 'Laura Vanesa ', '01/02/1972', 'ARG', '26475163', '27264751638', 'Tebicuary 2339 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111554695158', NULL, 'lauraiannini@hotmail.com', 'B+', 'ACCORD SALUD', 'SI', 'OPERADA DE TIROIDES', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'RECONTADORA', 'PERSONAL CIVIL DE LA NACION - CASA DE MONEDA', NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'EGRESÓ', NULL, NULL, '2017-jul', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (169, 170, 'CASTELAR', 'Asteriti', 'Agustina  ', '25/08/1989', 'ARG', '34380845', '27343808459', 'Ayacucho 233 San Antonio de Padua', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111557046222', NULL, 'agustina.asteriti@gmail.com', 'B+', 'ACCORD SALUD', 'SI', 'FIBROMIALGIA', NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'INTERPRETE DE DANZA CONTEMPORANEA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-ene', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (173, 174, 'CASTELAR', 'Diaz', 'Sabrina Alejandra ', '10/09/1984', 'ARG', '30963528', '27309635286', 'Lacarra 1236 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46233398', '0111568215833', NULL, 'sadz30@hotmail.com', '0+', 'OSECAC', 'SI', 'CISTITIS INTERSTICIAL', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (242, NULL, 'PILAR', 'Lucero', 'Vanesa Cecilia ', NULL, NULL, '24312463', NULL, 'El Recuerdo 65 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (175, 176, 'CASTELAR', 'Godoy', 'Analia Vanesa ', '20/07/1978', 'ARG', '26725576', '27267255763', 'Ranchos 1888 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '44892649', '0111560334337', NULL, 'analiagodoy31@gmail.com', NULL, 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'PILATES', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'EGRESÓ', NULL, NULL, '2016-nov', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (182, 183, 'PILAR', 'Schnorr', 'Maria Alejandra ', '15/05/1983', 'arg', '30326610', '27303266106', 'Niceto Vega 5841 4°A (1414) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-6202-5446', NULL, 'maschnorr@gmail.com', NULL, NULL, 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'LIC EN COMUNICACIÓN SOCIAL', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'S', 'CURSA', NULL, NULL, NULL, 'FORMACION');
+INSERT INTO temp_personas VALUES (16, 16, 'Pilar', 'ROBLES', 'VIVIANA DORA', '1967-03-12', 'ARG', '18302354', NULL, 'C. COLON', '1784', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '1121169345', '230154574075', NULL, 'sofiadepo@gmail.com', 'A+', 'OSMATA', 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, NULL, NULL, 'EMPLEADA', 'DECORADORA', NULL, NULL, NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-05', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (17, 17, 'Pilar', 'CUSTIRIANO', 'NORMA BEATRIZ', '1972-06-22', 'ARG', '229259197', NULL, 'OLIDEN', '7085', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '1558464183', '0111558464183', NULL, 'norcust@hotmail.com', NULL, 'OSECAP', 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-12', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (26, 26, 'Pilar', 'MANSILLA', 'GISELA VANINA ELIZABETH', '1976-10-16', 'ARG', '25445123', '27254451237', 'POLONIA', '5768', NULL, 1169, 'DEL VISO', 'BUENOS AIRES', 'ARG', NULL, '111568762009', '111568762009', 'GMANSILL@EDENOR.COM', '0+', NULL, 'SI', 'ENDOMETROSIS EPILEPSIA FOCAL', 'COMPLETO', 'COMPLETO', NULL, 'No', NULL, 'EMPLEADA', 'EDENOR', 'CHACABUCO 450 PILAR', '2304439399', 'GMANSILLA@EDENOR.COM', 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-09', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (28, 28, 'Pilar', 'KEXEL', 'BARBARA MARIA LAURA', '1990-01-31', 'ARG', '34917140', '27349171401', 'H YRIGOYEN', '1754', NULL, 1667, 'PILAR', 'BS AS', 'ARG', '2320479479', '111523495576', '111523495576', 'BARBARA.KEXEL@GMAIL.COM', 'B-', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'USAL LIC PSICOLOGIA', 'No', NULL, 'PSICOLOGA CLINICA', 'CENTRO MOEBIUS Y PARTICULAR', 'LAS HERAS 850, ESCOBAR', NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (5, 5, 'Pilar', 'LIPKA', 'MARIA DELFINA', '1986-09-23', 'ARG', '32592749', '27325927491', 'LOS ALERCES', '1212', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111557878084', '1157878084', 'delpilipka@hotmail.com', 'A+', 'OSDE', 'SI', 'CIFOSIS DORSAL Y LORDOSIS LUMBAR', 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'MEDICA RESIDENTE', 'HOSPITAL FEDERICO FALCON', 'POLONIA Y ARATA', '2320423795', NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (10, 10, 'Pilar', 'VERA', 'EVELIN GISELE', '1993-11-20', 'ARG', '37845556', '27378455567', 'SAN JUAN', '1281', NULL, 2812, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', '2323492854', '111530983008', '11153093008', 'EVELINGGALARZA@HOTMAIL.COM', 'B+', 'IOMA', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'EN CURSO', 'SI', 'ISTITUTO SUPERIOR FEDERICO CHOPIN ', NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-08', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (23, 23, 'Pilar', 'SANGIACOMO', 'GRACIELA ALEJANDRA', '1963-02-19', 'ARG', '16285935', NULL, 'SANTIAGO DEL ESTERO', '349', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304427132', '1136067682', '1136067682', 'alesangiacomo@hotmail.com', '0-', 'AUSTRAL SALUD', 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, 'SI', NULL, 'PEDICURA AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-03', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (37, 37, 'Pilar', 'BORDISO', 'SONIA VIVIANA', '1965-05-28', 'ARG', '17234258', '27172342588', 'NECOCHEA', '1085', NULL, 2804, 'CAMPANA', 'BS AS', 'ARG', '3489427018', '348915548153', '3489548153', 'SONIA_BORDISO@HOTMAIL.COM', 'A-', 'SWISS MEDICAL', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'GIMNASIA INTEGRAL', 'No', NULL, 'PROF ACQUA GIM', 'HIDROKIN', 'NECOCHEA 1085', '3489427018', NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-09-14', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (22, 22, 'Pilar', 'CUBELLI', 'MARIA INES', '1971-06-08', 'ARG', '22269055', NULL, 'KENEDY', '2490', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '11550496694', '1150496694', 'INESCUBELLI@YAHOO.COM.AR', '0+', 'OSECAC', 'SI', 'HERNIAS DE DISCO', 'COMPLETO', 'COMPLETO', 'INCOMPLETO', 'No', NULL, 'ADMINISTRATIVA', 'TIZADO', 'RUTA 25 Y CAMAÑO', '2304458000', 'ICUBELLI@TIZADO.COM', 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-03', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (6, 6, 'Pilar', 'MOYANO', 'PATRICIA', '1961-04-18', 'ARG', '14563021', NULL, 'AV CHAMPAGNAT BARRIO LAS MERCEDES', '0', NULL, 1620, 'PILAR', 'BS AS', 'ARG', NULL, '1144367588', NULL, 'PAT.MOYANO@GMAIL.COM', NULL, 'SWISS MEDICAL', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'CONSULTORA PSICOLOGICA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (57, 57, 'Pilar', 'TARABURELLI', 'MELINA', '1980-05-08', 'ARG', '28342341', '27283423412', 'ASBORNO', '157', '3', 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '348915514271', NULL, 'MELINATARABURELLI@OUTLOOK.COM', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-11', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (97, 97, 'Pilar', 'NUÑEZ', 'CLAUDIA', '5/3/1980', 'ARG', '28045695', '27280456956', 'ALVAREZ THOMAS', '536', NULL, 1631, 'PILAR', 'BS AS', 'ARG', NULL, '1536934438', NULL, 'clauditadvr@hotmail.com', 'A-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ESTILISTA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '5/5/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (8, 8, 'Pilar', 'BENI', 'MARIANA', '1966-11-07', 'ARG', '18074383', NULL, 'CAMARANO 915 (BARRIO LA PRADERA)', '915', '1057', 1631, 'PILAR', 'BS AS', 'ARG', '2304458288', '3413080444', NULL, 'MARIANA.BENI@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'TRADUCTORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (9, 9, 'Pilar', 'SUAREZ', 'MARIA SOLEDA', '1975-09-30', 'ARG', '24565398', '27245653986', 'LOS LAZARISTAS', '462', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '345154568408', '348154568408', 'MASOLESU@GMAIL.COM', 'RH-', 'OSDE', 'SI', 'OPERADA DE LOS PIES', 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'LIC EN ADMINSTRACION', 'AFIP', 'RTA PANAMERICANA KM 54.500 PILAR', '23224423385', 'MASOLESUAREZ@AFIP.GOV.AR', 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-10', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (114, 114, 'Otros', 'LOZONDO', 'MARIA INÉS', '06/10/1966', 'ARG', '18213893', NULL, 'VERGARA', '1851', '6', 1828, 'BANFIELD', 'BS AS', 'ARG', '20702681', '1564340185', NULL, 'MLIZONDO@TELECENTRO.COM.AR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', 'EGRESÓ', '31/12/1899', 'SI', NULL, '20/02/2016', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (105, 105, 'Pilar', 'FERNANDEZ', 'ELENA', '21/1/1975', 'ARG', '24182792', '27241827920', 'CARABOBO', '3230', NULL, 1665, 'JOSE C PAZ', 'BS AS', 'ARG', NULL, '1121739926', NULL, 'ELENA.FRNDZ@GMAIL.COM', '0+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'CURSA', '1/1/1900', 'SI', '3/11/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (159, 159, 'CASTELAR', 'Paz', 'Cecilia Gabriela ', '30/12/1973', 'ARG', '23572893', '2723572893', 'Espora 42 3°C Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '6542956', '0111564035025', NULL, 'ceciliagabrielapaz@gmail.com', '0+', 'IOMA', 'SI', 'VARICES', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'NO', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
+INSERT INTO temp_personas VALUES (196, NULL, 'LUJAN', 'Cicala', 'Leonela  ', NULL, NULL, '34641467', NULL, 'Aristobulo del Valle 2267- Moreno', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111568875091', NULL, 'cicala.leonela@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (18, 18, 'Pilar', 'PICON', 'MIRAM ELIZABETH', '1969-01-08', 'ARG', '20434220', '27204342208', 'BALBASTRO', '1609', NULL, 1611, 'DONTORCUATO', 'BS AS', 'ARG', NULL, '1541499682', NULL, 'miriampicon669@hotmail.com', 'A+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'ARTESANA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (41, 41, 'Pilar', 'NUÑEZ', 'LAURA', '1982-04-02', 'ARG', '29380822', NULL, 'GREGORIA MATORRAS', '2714', NULL, 1613, 'MALVINAS ARGENTINAS', 'BS AS', 'ARG', NULL, '1534655693', NULL, 'CECILIAN84@YAHOO.COM', NULL, 'OSDE', 'SI', 'TUMORES EN RIÑONES', 'COMPLETO', 'COMPLETO', 'INGLES', 'SI', 'INST SUP CULTURAL BRITANICO', 'SECRETARIA', 'CLINICA DE OJOS DR NANO', 'BLAS PARERA 4201', '47174000', 'CECILIAN@CLINICANANO.COM.AR', 'Si', 'Si', 'SI', 'Si', 'SI', '2017-01-01', 'SI', '2017-10-07', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (35, 35, 'Pilar', 'MARUCCI', 'JOHANA SOLEDAD', '1988-05-23', 'ARG', '33896056', '2733890560', 'ROQUE S PEÑA', '3987', NULL, 1665, 'JOSE C PAZ', 'BS AS', 'ARG', '2320436476', '1136495104', '1136495104', 'SOLE.JOHA@HOTMAIL.COM', NULL, 'IOMA', 'SI', 'ESCOLIOSIS', 'COMPLETO', 'COMPLETO', 'COMPLETO', 'SI', 'LICENCIATURA LENGUA INGLESA UNSAM', 'DOCENTE', 'DGCYE', NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '2017-01-01', 'SI', '2017-09-07', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (144, 144, 'PALERMO', 'Posadas', 'Daniela Alejandra ', '1970/09/18', 'ARG', '21981066', '27219810666', 'Hidalgo 1039 1°D CABA', NULL, NULL, NULL, NULL, NULL, NULL, '39710008', '0111567157491', NULL, 'daniposadas.70@gmail.com', 'A+', 'OBSBA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'MUSICOTERAPEUTA', NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2016-dic', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (68, 68, 'Pilar', 'FELIX', 'GABRIELA', '1972-06-21', 'ARG', '22150935', '27221509353', 'MATEO CASCO', '1009', NULL, 2812, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', '2323491865', '11155958714', NULL, 'GABY_IDERLA@HOTMAIL.COM', 'A+', 'OSDIPP', 'SI', 'NO TIENE COMPROMISO FIRMADO', NULL, NULL, 'DOCENTE', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (69, 69, 'Pilar', 'BONETTO', 'SILVANA ANDREA', '1978-07-08', 'ARG', '2414347', '27240143475', 'CASTELLI', '6387', NULL, 1606, 'VICENTE LOPEZ', 'BS AS', 'ARG', '20712273', '1140609977', NULL, 'SILVANA.BONETTO@GMAIL.COM', '0+', 'CEMIC', 'SI', 'HERNIA DISCO LUMBAR L4-L5 - RECTIFICACION CERVICAL -HIPOTIROIDISMO (NO TIENE COMPROMISO FIRMADO)', NULL, NULL, 'LIC PSICOLOGIAUBA', 'No', NULL, 'ORIENTADORA SOCIAL', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-10', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (72, 72, 'Pilar', 'CHRISTIANI', 'ALICIA ESTHER', '2018-12-15', 'ARG', '16714442', '27167144425', 'ECHEVERRIA', '17', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304671482', '1130544541', NULL, 'ALICIACHRISTIANI@HOTMAIL.COM.AR', '0+', NULL, 'SI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-02-18', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (74, 74, 'Pilar', 'LEGUIZAMON', 'MARIA DEL ROSARIO', '1988-08-20', 'ARG', '36072980', '27360729805', 'MENDOZA', '1224', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111557171863', NULL, 'RO.LEGUIZAMON@HOTMAIL.COM', '0+', 'MEDIFE', 'SI', 'NO TIENE COMPROMISO FIRMADO', NULL, NULL, 'LIC EN RR PP', NULL, NULL, 'SECRETARIA EN CLUB ESTANCIAS', 'ESTANCIAS DEL RIO SSA', NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-21', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (65, 65, 'Pilar', 'ROMERO', 'NATALIA SOLEDAD', '1979-01-02', 'ARG', '26979621', '27269796214', 'ITUZAINGO 346', '346', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1565695152', '31212588', 'ROMERONASO@HOTMAIL.COM', 'A+', 'MEDIFE', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, 'DECORADORA DE INTERIORES', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-08', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (66, 66, 'Pilar', 'VALLEJOS', 'SUSANA VILMA', '25/8/1970', 'ARG', '21636317', NULL, 'LEVENE', '599', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '2304568931', '230154568931', 'SUSANAVVALLEJOS@HOTMAIL.COM', 'A+', 'MEDIFE', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, 'ESTETISISTA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'SI', 'NO', '1900-01-01', 'No', '1/3/2018', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (71, 71, 'Pilar', 'ZALAZAR', 'ROSALIA', '1979-09-28', 'ARG', '25578845', '27275788452', 'C COSTA', '375', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1140840076', NULL, 'ROSALIAZALAZAR@HOTMAIL.COM', '0+', 'SWISS MEDICAL', 'SI', 'NO TIENE COMPROMISO FIRMADO', NULL, 'COMPLETO', NULL, NULL, NULL, 'ATENCIONAL PUBLICO', 'CORREO ARGENTINO', NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-15', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (54, 54, 'Pilar', 'AQUINO', 'JUANA BEATRIZ', '1989-04-10', 'ARG', '34479696', NULL, 'SARAVI', '1084', NULL, 1629, 'LA LONJA PILAR', 'BS AS', 'ARG', NULL, '111551396368', NULL, 'JUANIAQUINO@HOTMAIL.COM', NULL, 'GALENO', 'SI', NULL, NULL, NULL, 'COMPLETO', 'No', NULL, NULL, 'AMERICAN BROKER SA', 'PANAMERICANA KM 42.5', NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-04', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (155, 155, 'CASTELAR', 'Carracedo Bosch', 'Adriana Laura', '01/02/1959', 'ARG', '12975926', '27129759262', 'Salcedo 2131 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '44833412', '0111551768609', NULL, 'lauritacarr10@gmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, 'TERAPEUTA FLORAL', NULL, NULL, NULL, NULL, 'S', 'S', 'NO', 'SI', 'CURSA', NULL, NULL, '2017-ago', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (104, 104, 'Pilar', 'MÜLLER', 'GLADYS ESTHER', '23/1/1968', 'ARG', '20019430', '27200194301', 'CAMAÑO ', '3000', '90', 1631, 'VILLA ROSA', 'BS AS', 'ARG', '2304471845', '111538700507', NULL, 'BYGLA@HOTMAIL.COM', 'A-', 'OSDE 210', 'SI', 'HERNIA DISCAL Y PINZAMIENTO', NULL, 'INCOMPLETO', NULL, NULL, NULL, 'DECORADODRA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '19/4/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (116, 116, 'Pilar', 'AGUSTIN', 'YANINA BEATRIZ', '26/04/1982', 'ARG', '290380883', NULL, 'CABAPIDEN', '8100', NULL, 1669, 'DEL VISO', 'BA AS', 'ARG', NULL, '111554906830', NULL, 'MELODYSAX_06@HOTMAIL.COM', NULL, NULL, 'SI', 'ASMA', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (124, 124, 'Pilar', 'BARCIA', 'CRISTIAN DANIEL', '16/04/1990', 'ARG', '35143390', NULL, 'QUINTANA', '1445', NULL, 1611, 'DON TORCUATO', 'BS AS', 'ARG', NULL, '1150411985', NULL, 'CRISTIAN.BARCIA@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
 INSERT INTO temp_personas VALUES (181, 182, 'PILAR', 'Perez', 'Elizabet Natalia ', '20/12/1981', 'ARG', '29183232', '27291832321', 'Entre Ríos 1755 (1623) I. Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, '3484444775', '15 5969 7731', NULL, 'elibetper@yahoo.com.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'FORMACION');
-INSERT INTO temp_personas VALUES (182, 183, 'PILAR', 'Schnorr', 'Maria Alejandra ', '15/05/1983', 'arg', '30326610', '27303266106', 'Niceto Vega 5841 4°A (1414) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-6202-5446', NULL, 'maschnorr@gmail.com', NULL, NULL, 's', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'LIC EN COMUNICACIÓN SOCIAL', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'S', 'CURSA', NULL, NULL, NULL, 'FORMACION');
-INSERT INTO temp_personas VALUES (183, 184, 'PILAR', 'Naveira', 'Marcela Alejandra ', '27/12/1964', 'Arg', '17.332.083', '27173320839', 'Malvinas Arg N°22 3°B (1619) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '02320-497823', '11 34232445', NULL, 'marce.64@hotmail.com', NULL, 'OSECAC', 'S', 'HERNIA DE DISCO', NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Acompañante terapéutica', 'transporte escolar', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (184, 185, 'PILAR', 'Orieta', 'Alejandra Mariela ', '16/05/1975', 'Arg', '24.350.972', '27243509721', 'Mitre 710 Barrio la Cuesta 110 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 5853 1205', NULL, 'orietaalejandra@hotmail.com', 'A-', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'terapeuta holistica', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (185, 186, 'PILAR', 'Pieruccioni', 'Rosana Beatriz Maria', '12/07/1960', 'Arg', '14.338.323', '27143383232', 'Mitre s/n (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '03492- 15 581318', NULL, 'rosanaromera14@gmail.com', '0+', 'AMUR', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas VALUES (186, 187, 'PILAR', 'Cordero', 'Mirta Susana ', '22/05/1968', 'Arg', '20055033', '27200550337', 'Las Malvinas 1020 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4426327', '0348-154533915', NULL, 'mirtasusanacordero@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'FORMACION');
-INSERT INTO temp_personas VALUES (187, 188, 'PILAR', 'Pires', 'Da Silva Silvana', '08/03/1976', 'Brasileña', '94.080.283', '27940802836', 'Pj Lomas de Zamora 2412 (1417) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-51645033', '46628119', 'silpires77@hotmail.com', '0+', 'Churuca', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'autonomo', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (188, 189, 'PILAR', 'Rivero', 'Gisela Vanesa ', '18/01/1982', 'Arg', '29.117.199', '27291171996', 'Belgrano 960 2°6° (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3047 3030', NULL, 'vanegise82@hotmail.com', NULL, 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Administrativa', 'Sidus SA Parque Ind Pilar', NULL, '0230-496957 int 2274', 'gisela.rivero@sidus.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (189, 190, 'Pilar', 'Isaac Modestin', 'Jermaine Xavier ', '10/12/1980', 'arg', '94.153.598', '20941535985', 'Rawson 181 Piso 2 (1182) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '2057-4819', '11 6838 9097', NULL, 'jermainsito@gmail.com', 'B-', NULL, NULL, NULL, NULL, NULL, NULL, 'ULACIT', NULL, 'Yogaterapeuta - Adm de Empresa', 'Jermaine´s Yogatherapystudio', NULL, '1165389097', 'ganapatiomyoga@gmail.com', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
 INSERT INTO temp_personas VALUES (240, NULL, 'PILAR', 'Largo', 'Susana Alejandra ', NULL, NULL, '17702432', NULL, 'Maipu 1584 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111567996450', NULL, 'susanalargo15@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-nov', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (241, NULL, 'PILAR', 'Lopez', 'Julia Alcira ', NULL, NULL, '6245667', NULL, 'Cervantes 320 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'juliaalciralopez@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-jul', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (190, 191, 'pilar', 'Chilabert', 'Maria Valeria ', '03/06/1977', 'Arg', '25.612.935', '27256129359', 'Eva Duarte de P. 437 (1629) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4519449', '011 15 30795703', NULL, 'valeria_chilabert@hotmail.com', '0-', 'Austral Salud', NULL, NULL, NULL, NULL, NULL, 'Adm. De Empresas incompleto. Secretariado terciario completo', NULL, 'Administrativa', 'Escuela de Yoga Hari Om SRL', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (191, 192, 'PILAR', 'De Luca', 'Juana Maria', '10/05/1971', 'Arg', '22.225.202', '23222252024', 'F. Fader 2959 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-46444912', '011 57711545', NULL, 'profeshakti@hotmail.com', 'A+', 'Accord 310', NULL, NULL, NULL, NULL, NULL, 'Relaciones Internacionales', NULL, 'Administración Pública', 'Ministerio de Justicia y DDHH', NULL, '1153004000 int 76013', 'deluca@jus.gov.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (192, 193, 'PILAR', 'Curuli', 'Silvia Monica ', '13/01/1968', 'Arg', '20.010.572', '27200105724', 'Santa Eulalia 2352 (1629) M Alberti', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 40700256', NULL, 'baltet@hotmail.com', '0+', 'Ioma', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Directora y Vicedirectora', 'Jardin 907 - Jardin 917', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (193, 194, 'PILAR', 'Rosalez', 'Maria Rosa ', '23/07/1977', 'ARG', '26104928', NULL, 'Bataglia 252 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230 456 3318', NULL, 'padma@outlook.com', 'A+', NULL, 'S', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'P.S. YOGA DINAMICO');
+INSERT INTO temp_personas VALUES (165, 165, 'CASTELAR', 'Cobos', 'Julieta Elizabeth ', '16/03/1973', 'ARG', '23328837', '27233288379', 'Cura Bronchero 1778 Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '46239777', '0111556652515', NULL, 'julieta29cobos@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'NO', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (184, 185, 'PILAR', 'Orieta', 'Alejandra Mariela ', '16/05/1975', 'Arg', '24350972', '27243509721', 'Mitre 710 Barrio la Cuesta 110 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 5853 1205', NULL, 'orietaalejandra@hotmail.com', 'A-', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'terapeuta holistica', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (185, 186, 'PILAR', 'Pieruccioni', 'Rosana Beatriz Maria', '12/07/1960', 'Arg', '14338323', '27143383232', 'Mitre s/n (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '03492- 15 581318', NULL, 'rosanaromera14@gmail.com', '0+', 'AMUR', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (405, NULL, NULL, 'Figliolo', 'Yanina Vanesa ', NULL, NULL, '32850482', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1569043395', NULL, 'yaninafigliolo@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (187, 188, 'PILAR', 'Pires', 'Da Silva Silvana', '08/03/1976', 'Brasileña', '94080283', '27940802836', 'Pj Lomas de Zamora 2412 (1417) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-51645033', '46628119', 'silpires77@hotmail.com', '0+', 'Churuca', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'autonomo', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (188, 189, 'PILAR', 'Rivero', 'Gisela Vanesa ', '18/01/1982', 'Arg', '29117199', '27291171996', 'Belgrano 960 2°6° (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3047 3030', NULL, 'vanegise82@hotmail.com', NULL, 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Administrativa', 'Sidus SA Parque Ind Pilar', NULL, '0230-496957 int 2274', 'gisela.rivero@sidus.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (189, 190, 'Pilar', 'Isaac Modestin', 'Jermaine Xavier ', '10/12/1980', 'arg', '94153598', '20941535985', 'Rawson 181 Piso 2 (1182) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '2057-4819', '11 6838 9097', NULL, 'jermainsito@gmail.com', 'B-', NULL, NULL, NULL, NULL, NULL, NULL, 'ULACIT', NULL, 'Yogaterapeuta - Adm de Empresa', 'Jermaine´s Yogatherapystudio', NULL, '1165389097', 'ganapatiomyoga@gmail.com', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
 INSERT INTO temp_personas VALUES (194, NULL, 'ADROGUE', 'Ortega', 'Enzo Ariel ', NULL, NULL, '39913612', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ortegaenzoariel@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (195, NULL, 'ADROGUE', 'Toledo', 'Maria del Carmen', NULL, NULL, '21875562', NULL, 'Bouchard 1265 Dto 2 CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111538689334', NULL, 'maria.toledo.1971@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (196, NULL, 'LUJAN', 'Cicala', 'Leonela  ', NULL, NULL, '34641467', NULL, 'Aristobulo del Valle 2267- Moreno', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111568875091', NULL, 'cicala.leonela@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (197, NULL, 'LUJAN', 'Musso', 'Marina Graciela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111569751814', NULL, 'mussomari@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-mar', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (198, NULL, 'PALERMO', 'Biset', 'Cynthia Yanina ', NULL, NULL, '37247316', NULL, 'Saavedra 694 piso 3 (1224) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111564920383', NULL, 'bisetcynthia@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas VALUES (199, NULL, 'PALERMO', 'Campbell', 'Maria Gwendoline ', NULL, NULL, '33314907', NULL, 'Gorritti 3552 (1172) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111559609400', NULL, 'gwecam62@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-oct', 'PROF YOGA');
@@ -26166,7 +29044,6 @@ INSERT INTO temp_personas VALUES (210, NULL, 'PILAR', 'Aguirre', '  ', NULL, NUL
 INSERT INTO temp_personas VALUES (211, NULL, 'PILAR', 'Altabelo', 'Johanna Elizabeth ', NULL, NULL, '36413448', NULL, 'Peirano 2564 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, '2016-nov', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (212, NULL, 'PILAR', 'Ampuero', 'Maria del Rocio', NULL, NULL, '32879794', NULL, 'Ramos Mejia 2850 La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-jun', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (213, NULL, 'PILAR', 'Arce', 'Axel Gabriel ', NULL, NULL, '39625811', NULL, 'Portesuelo 49 Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-jul', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (214, NULL, 'PILAR', 'Arias', 'Lorena Gabriela ', NULL, NULL, '26096639', '27260966397', 'Polonia 3545 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'praa1212@outlook.es', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Comerciante', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, 'ABANDONÓ', NULL, 'VERDADERO', NULL, 'MASOTERAPIA');
 INSERT INTO temp_personas VALUES (215, NULL, 'PILAR', 'Arnaudo', 'Marisa  ', NULL, NULL, '13694728', NULL, 'B° La Pradera Lote 95 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas VALUES (216, NULL, 'PILAR', 'Baguear', 'Barbara Marcela ', NULL, NULL, '17332534', NULL, 'Isla Victoria 1219 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111567283144', NULL, 'barbara64mb@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-oct', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (217, NULL, 'PILAR', 'Barello', 'Nancy Graciela ', NULL, NULL, '17839862', NULL, 'Alsina 2737 Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111559540747', NULL, 'nancybarello@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-oct', 'PROF YOGA');
@@ -26183,15 +29060,13 @@ INSERT INTO temp_personas VALUES (227, NULL, 'PILAR', 'Di Maria ', 'Natalia ', N
 INSERT INTO temp_personas VALUES (228, NULL, 'PILAR', 'Dobler', 'Claudio Cesar ', NULL, NULL, NULL, '20254960951', 'Cervantes 1326 (1748) Gral Rodriguez', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas VALUES (229, NULL, 'PILAR', 'Dries', 'Agostina  ', NULL, NULL, '40998005', NULL, 'Canel y Neuquén (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (230, NULL, 'PILAR', 'Fabbri', 'Laura Veronica ', NULL, NULL, '23774701', NULL, 'Serrano 2711 4°C (1663) San Miguel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111569738173', NULL, 'fabbrilaura4@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-nov', 'PROF YOGA');
-INSERT INTO temp_personas VALUES (231, NULL, 'PILAR', 'Fernandez', 'Nadia Paola ', NULL, NULL, '29633432', NULL, 'Cafayate 324 (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111569806444', NULL, 'nadiafernandez@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-nov', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (232, NULL, 'PILAR', 'Flamenco', 'Ruth Noemi ', NULL, NULL, '33342933', NULL, 'Hindu Club 2842 (1667) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (233, NULL, 'PILAR', 'Freile', 'Natalia  ', NULL, NULL, '25600002', NULL, 'Guiraldes 3973 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6252 -1734', NULL, 'natifreile@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DEBE RECUPERAR', NULL, NULL, NULL, 'E. MATRO YOGA');
 INSERT INTO temp_personas VALUES (234, NULL, 'PILAR', 'Furlan', 'Angeles  ', NULL, NULL, '39916351', NULL, 'Ayres del Pilar km 43,5 - Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas VALUES (235, NULL, 'PILAR', 'Galan', 'Adrian Ezequiel ', NULL, NULL, '34587534', NULL, '25 de Mayo 714 (2804) Campana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (236, NULL, 'PILAR', 'Iñiguez Figueroa', 'Cintia Susana ', NULL, NULL, '35352146', NULL, 'Bo Cuyo calle 4 nro 31 (1619) Garin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111565937679', NULL, 'figueroa.cintia@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-ago', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (237, NULL, 'PILAR', 'Kuzmik', 'Carola Marina ', NULL, NULL, '22702289', NULL, 'Miero 1969 (1744) Moreno Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-67133205', NULL, 'carola.kuzmik@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, NULL, 'E. YOGA P/NIÑOS');
-INSERT INTO temp_personas VALUES (243, NULL, 'PILAR', 'Ludueña', 'Sabrina Valeria ', NULL, NULL, '27121697', NULL, 'B° La Campiña Lote 66 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EGRESÓ', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (244, NULL, 'PILAR', 'Lujan', 'Gabriela Andrea ', NULL, NULL, NULL, '27253557279', 'Castelli 735 (2804) Campana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-jun', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (192, 193, 'PILAR', 'Curuli', 'Silvia Monica ', '13/01/1968', 'Arg', '20010572', '27200105724', 'Santa Eulalia 2352 (1629) M Alberti', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 40700256', NULL, 'baltet@hotmail.com', '0+', 'Ioma', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Directora y Vicedirectora', 'Jardin 907 - Jardin 917', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas VALUES (245, NULL, 'PILAR', 'Luna', 'Maira Carina ', NULL, NULL, '35392358', NULL, 'Marcelo Fitte 4354 (1612) Adolfo Sordeaux', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111561081718', NULL, 'mairalunarrhh@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-nov', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (246, NULL, 'PILAR', 'Madeo', 'Milena  ', NULL, NULL, NULL, '27379523507', 'Saavedra 2710 pb Dto1 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-jun', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (247, NULL, 'PILAR', 'Marchesan', 'Solana Victoria ', NULL, NULL, '35094578', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 61776606', NULL, 'sol_marchesan@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
@@ -26223,390 +29098,450 @@ INSERT INTO temp_personas VALUES (272, NULL, 'PILAR', 'Van', 'Rafelghem Natalia 
 INSERT INTO temp_personas VALUES (273, NULL, 'PILAR', 'Van', 'Rafelghem Valeria Maria', NULL, NULL, '92346462', NULL, 'Guiraldes 196 (2760) S. A de Areco', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas VALUES (274, NULL, 'PILAR', 'Villasboa', 'Hilda Olga ', NULL, NULL, '20859745', NULL, 'Emilio Mitre 1454 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
 INSERT INTO temp_personas VALUES (275, NULL, 'PILAR', 'Zunino', 'Maria Cristina ', NULL, NULL, NULL, '27110362949', 'Los Sauces 2065 (1669) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas VALUES (276, NULL, NULL, 'Abalos', 'Nestor Ariel ', '06/03/1987', 'Arg', '28.772.648', '20287726482', 'M. Miguens 5879 Fdo (1682) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '4844-4843', '11-40449012', NULL, 'ness-pop@outlook.com', '0+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Auxiliar A Textil', NULL, NULL, NULL, 'nabalos@penguinargentina.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (277, NULL, NULL, 'Abate', 'Hernan Andres ', '04/12/1978', 'Arg', '26.865.518', NULL, 'Charlone 602 P12 (1663) San Miguel', NULL, NULL, NULL, NULL, NULL, NULL, '4664-4995', '15 31691936', '15 31691936', 'abatehernan@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Acompañante terapeutico', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (278, NULL, NULL, 'Abeijon', 'Soledad  ', NULL, NULL, '25.492.690', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (279, NULL, NULL, 'Accardo', 'Cecilia Veronica ', '15/05/1980', 'Arg', '28.108.458', NULL, 'Misiones 11 piso 1° (1663) Bella Vista Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-3119 3586', NULL, 'ceci_accardo@gmail.com', '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Textil Bally', NULL, '4666-9791', NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (280, NULL, NULL, 'Acevedo', 'Mercedes Viviana  ', '19/07/1975', 'Arg', '24.814.112', '27248141129', 'Lisboa 712 (1765) V. Luzuriaga', NULL, NULL, NULL, NULL, NULL, NULL, '4485-0948', '1564650426', NULL, 'merce_acevedo@outlook.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terciario: IFD N°45', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (281, NULL, NULL, 'Acosta', 'Karina  ', '06/01/1975', 'Arg', '24.142.582', NULL, 'Av Mitre 1000 (1633) Fatima - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304441569', '011158254042', NULL, 'acokarina@gmail.com', 'A+', 'Medife', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (282, NULL, NULL, 'Agüera', 'Judith Fabiana ', '23/05/1972', 'Arg', '22.822.769', '27228227698', 'Bancalari 3902 piso 627 (1617) Pacheco', NULL, NULL, NULL, NULL, NULL, NULL, '41013627', '15 6150 9975', '15 6150 9975', 'judithaguera@gmail.com', 'A+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Lic en Marketing', NULL, 'Comercial', 'El Dorado Bambú', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (283, NULL, NULL, 'Aguirre', 'Luciana Valeria ', '07/12/1978', 'Argentina', '27.039.558', '27270395584', 'Haiti 4143 (1407) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1163051004', NULL, 'aguirreluciana@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Productora de TV', NULL, 'Productora de TV', 'Fox', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (284, NULL, NULL, 'Agustin', 'Yanina Beatriz ', '26/04/1982', 'Arg', '29.380.883', NULL, 'Cabarden 8100 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-  1554906830', '02320-474336', 'melodysax_06@hotmail.com', 'A+', '-', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Artesana - Prof de Musica', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (285, NULL, NULL, 'Alberti', 'Jesica Daniela ', '26/09/1984', 'Arg', '31.251.311', '27312513116', 'Av. Mosconi 3115 11°B (1419) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5422 1307', NULL, 'albertijesica@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Comunicación - UBA', NULL, 'Marketing - Asociada de Producto', 'B-MS', NULL, '5198-8204', 'jesica.alberti@bms.com', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (286, NULL, NULL, 'Alberto', 'Pablo Martin ', '08/03/1967', 'Arg', '18.209.591', '20182095916', 'E. de Israel 4717 10°B (1185) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4856-5043', '15 5821 6111', NULL, 'saruman@hotmail.com', NULL, 'Swiss', NULL, NULL, NULL, NULL, NULL, 'Analista de Sistemas', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (287, NULL, NULL, 'Alippi', 'Victoria Daniela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'vicky_a5@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (320, NULL, NULL, 'Buonasena', 'Florencia  ', '19/02/1992', 'Arg', '36.728.750', NULL, 'Saravi s/n Los Fresnos (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1131814403', NULL, NULL, '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'UCES', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (288, NULL, NULL, 'Alvarez', 'Emilio Sergio ', '03/11/1971', 'Arg', '22.241.670', NULL, 'Sarmiento 4347 Dto 10 Almagro CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1538630570', NULL, 'emilio_alvarez@hotmail.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'gastronomico', 'INEBA', NULL, NULL, 'ealvarez@ineba.net', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (289, NULL, NULL, 'Amaya', 'Natalia Soledad ', '19/03/1984', 'Arg', '30.732.970', '27307329706', 'Juan M. Rosas 750 (1629) Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3080 3241', '15 3080 3241', 'modeultra@hotmail.com', NULL, 'Medife', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Administrativas', 'My3 Inversiones', NULL, '02304300125', 'namaya@my3.com.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (290, NULL, NULL, 'Ametller', 'Andrea Fabiana ', '23/02/1972', 'Arg', '22.444.059', '27224440591', '9 de Julio 450 (2740) Arrecifes', NULL, NULL, NULL, NULL, NULL, NULL, '0248-450781', '02478 15 407713', NULL, 'andreaametller@hotmail.com', 'A+', 'OSAM', NULL, NULL, NULL, NULL, NULL, 'Profesora', NULL, 'Profesora', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (291, NULL, NULL, 'Aneiros', 'Soledad  ', '12/07/1981', 'Arg', '28.929.604', NULL, 'Falucho 1518 (1623) Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'caradchimba@gmail.com', NULL, 'Accord Salud', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Comerciante / Artesana', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (292, NULL, NULL, 'Anitori', 'Romina Gisela ', '25/02/1977', 'Arg', '25.802.704', '27258027049', 'Pte Peron 1137 (1631) Villa Rosa, Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6161 4275', '15 6161 4275', 'rominaanitori@gmail.com', NULL, 'SMG-Docthos', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Hospital Austral', NULL, '0230-4482069', NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (293, NULL, NULL, 'Antognazza', 'Patricia Fermina ', '01/01/1956', 'Arg', '12.079.301', '27120793018', 'Av del Libertador 108 1°A (1001) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '432200310', '15 4445 0718', '15 4445 0718', 'pantogna@gmail.com', 'A+', 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Empresaria', 'Servicare SRL', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (294, NULL, NULL, 'Arias', 'Silvina Antonella ', NULL, NULL, '36.696.786', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (295, NULL, NULL, 'Aveiro', 'Barbara Regina ', '28/01/1985', 'Arg', '31.464.887', '27314648876', 'San Blas 3175 (1416) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6589 0374', NULL, 'barbaraaveiro@gmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (296, NULL, NULL, 'Baez', 'Pabla  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (297, NULL, NULL, 'Baiocchini', 'Ernesto Julio ', '12/09/1963', 'Arg', '16.809.803', NULL, 'Champagnat 1600 Lote 13 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '023044663913', '1557721973', NULL, 'juliobaio@hotmail.com.ar', 'A+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (298, NULL, NULL, 'Balduzzi', 'Graciela Beatriz ', '31/01/1968', 'Arg', '20.019.878', '27200198781', 'Ruta 9 km 86 UF 36 (2800) Zarate', NULL, NULL, NULL, NULL, NULL, NULL, '03487-570740', '011-15-5151-8643', NULL, 'gbalduzzi@toyota.com.ar', '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Contador Público', NULL, 'Adm en Toyota', 'Toyota', NULL, NULL, 'gbalduzzi@toyota.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (299, NULL, NULL, 'Barbieri', 'Paula Andrea ', '07/05/1979', 'Arg', '27.333.276', '27273332761', 'Australia 2409 (1614) El Talar - Tigre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 2300 9601', '15 2300 9601', 'paula.barbieri.2@volvo.com', 'A+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Psicologa social en curso', NULL, 'Recepcionista', 'Volvo Trucks y Buses Arg', NULL, '03327-415667', 'paula.barbieri.2@volvo.com', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (300, NULL, NULL, 'Barcia', 'Cristian Daniel ', NULL, NULL, '35.143.390', NULL, 'Quintanilla 1445 (1611) Don Torcuato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'cristian.barcia@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', NULL, NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (301, NULL, NULL, 'Baretto', 'Constanza  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (302, NULL, NULL, 'Barrios', 'Silvina  ', '22/02/1978', 'Arg', '26.567.272', NULL, 'Vivaldi 4145 (1629) Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4385125', '1558254044', NULL, 'silvibarrios@live.com.ar', NULL, 'Medife', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada', 'Grasatto Pilar', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (303, NULL, NULL, 'Bartoletti', 'Lucia  ', '20/01/1981', 'Arg', '28.643.224', '27286432242', 'French 30441 (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4805-2998', '1567664491', NULL, 'luciabartoletti@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Fotografía Creativa Esc. A. Goldstein', NULL, 'Secretaria - Fotografa', 'Instituto Psicosomático', NULL, NULL, 'psicosomatica.ipba@gmail.com', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (304, NULL, NULL, 'Bartoli', 'Tomas  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (305, NULL, NULL, 'Basabe', 'Jesica  ', '26/01/1988', 'Arg', '33.633.774', NULL, 'Sabogal 1680 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320407673', '0111564888136', NULL, 'yesi_b21@hotmail.com', 'A+', 'Swiss Med/Docthos', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (306, NULL, NULL, 'Bassano', 'Alicia Matilde ', '08/08/1966', 'Arg', '17.951.713', '27179517138', '20 de Septiembre 2835 PB (1824) Lanus Oeste', NULL, NULL, NULL, NULL, NULL, NULL, '2056-4615', '155 4986552', NULL, 'aliciabassano@yahoo.com.ar', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Univ. UNLA', NULL, 'Docente', 'D.G.C y ED/Sect Ed CABA', NULL, '4247-2916', NULL, 'FALSO', 'FALSO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (307, NULL, NULL, 'Bassetto', 'Luz Maria ', '27/04/1971', 'Arg', '22.001.266', '27220012668', 'Golfers GC 2950 UF D6 (1667) M. Alberti Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4639192', '011-15-50149987', NULL, 'luz.bassetto@gmail.com', 'A+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Prof y Traductora Ingles', NULL, 'Traductora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (308, NULL, NULL, 'Belli', 'Norberto  ', '01/05/1961', 'Arg', '14.338.485', NULL, 'Ayacucho 4036 (7600) Mar del Plata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0223 15520611', '0223 15520611', 'norbelli@hotmail.com', 'A-', NULL, NULL, NULL, NULL, NULL, NULL, 'Instructor de Pilates', NULL, 'Instructor de Pilates', 'Pilates Urbano', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (309, NULL, NULL, 'Berardi', 'Daniel Salvador ', '19/12/1969', 'Arg', '20.736.931', '20207369315', 'Yerbal 2357 piso 3 (1408) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6752 2072', NULL, 'danielberardi@yahoo.com', '0+', 'Hospital Aleman', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Profesor de yoga', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (310, NULL, NULL, 'Bernard Mazzucchi', 'Natalia Agustina', '27/08/1984', 'Arg', '31.206.410', '27312064109', 'Palliere 800 - Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6244-8320', NULL, 'natibernard@hotmail.com', 'A+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Veterinaria', NULL, 'Veterinaria', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (311, NULL, NULL, 'Bertagna', 'Constanza  ', '22/04/1982', 'Arg', '29.431.332', '27294313325', 'Eucaliptus 1716 - Exaltación de la Cruz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-56549006', NULL, NULL, NULL, 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Universitario', NULL, 'Ingeniera', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (312, NULL, NULL, 'Bertolini', 'Leandro Martin ', '23/04/1985', 'Arg', '31.649.964', NULL, 'Av Tucumán 867 6°B (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 59986338', NULL, 'leandrobertolini@gmail.com', 'AB+', NULL, NULL, NULL, NULL, NULL, NULL, 'Tecnico en Sonido', NULL, 'Camarografo y Editor', 'Municipalidad de Pilar', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (313, NULL, NULL, 'Bidonde', 'Felicitas  ', '29/07/1988', 'Arg', '33.980.878', '27339808789', 'Rio Hondo 500 (1629) Manzanares, Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4441051', '15 4475 6913', '15 4475 6913', 'felibidonde@hotmail.com', NULL, 'Medife Plata', NULL, NULL, NULL, NULL, NULL, 'Univ: Lic en Administración', NULL, 'Asistente Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (314, NULL, NULL, 'Blanco', 'Mirta Elena ', NULL, NULL, NULL, '27144621900', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3619 5825', NULL, 'bmirtaelena@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (315, NULL, NULL, 'Boskovich', 'Silvia Estela ', '24/12/1960', 'Arg', '13.731.517', NULL, 'Carlos Calvo 1802 (1629) La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4473059', '11-57697200', NULL, 'silviaboskovich@gmail.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (316, NULL, NULL, 'Bozzari', 'Omar  ', '18/02/1949', 'Arg', ' 6.151.574', NULL, 'Colihue 29 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6299-8432', NULL, 'obozzari@gmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (317, NULL, NULL, 'Brandolini Morales', 'Analia Viviana Ines', '16/06/1974', 'Arg', '23.995.677', '27239956772', 'Meisner 1259 (1635) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02304483849', '15 3274 9801', '15 3274 9801', 'ana_vibm@yahoo.com.ar', '+', 'Ctro Med Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Adm de Empresas hasta 3° año', NULL, 'Administrativa', 'Centro Med Pueyrredon', NULL, '08009993556', NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (318, NULL, NULL, 'Brizuela', 'Luisa Edith ', '07/06/1982', 'Arg', '29.490.796', '27294907969', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brz.luisa@gmail.com', '+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Lic en Tecnología de los Alimentos', NULL, 'Codirectora Técnica Lab Ambiental', 'Lab de Análisis Ambientales', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (319, NULL, NULL, 'Buchanan', 'Clara  ', '13/12/1983', 'Arg', '30.653.149', NULL, 'Chile 1900 Bo Las Araucarias (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1563359141', NULL, 'calubuchanan@hotmail.com', 'A-', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (321, NULL, NULL, 'Buraglia', 'Alejandro Martin ', '17/12/1971', 'Arg', '22.402.394', NULL, 'Moreno 1831 (3202) Concordia - Entre Ríos', NULL, NULL, NULL, NULL, NULL, NULL, '0345-431-0144', '0345-154053075', NULL, 'martinburaglia@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Contador Público', NULL, 'Contador Público', NULL, NULL, '0345-431-0144', NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (322, NULL, NULL, 'Buratti', 'Gisela Lorena ', '30/11/1979', 'Arg', '27.768.821', '27277688218', 'Esteban Bonorino 1750 (1406) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4631-8640', '15 3219 0124', NULL, 'giselalburatti@hotmail.es', 'A+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Tecnica Optica - Contactologa', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (323, NULL, NULL, 'Burgos', 'Celeste Agustina ', '17/08/1992', 'Arg', '37.346.744', '27373467443', 'Urcelay 1005 (2812) Exaltación de la Cruz', NULL, NULL, NULL, NULL, NULL, NULL, '02304585512', NULL, NULL, 'celes_teb@hotmail.com', 'A+', '-', NULL, NULL, NULL, NULL, NULL, 'Prof Educación Física', NULL, 'Independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (324, NULL, NULL, 'Bustamante', 'Angeles  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (325, NULL, NULL, 'Buzeta', 'Noelia Florencia ', '01/07/1990', 'Arg', '35.255.430', '27352554303', 'Portela 2921 (1437) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '49199431', '15 6487 2323', NULL, ' noelia.buzeta@gmail.com', '0+', 'OSOCNA (Com Navales)', NULL, NULL, NULL, NULL, NULL, 'Lic en Trabajo Social en curso', NULL, NULL, 'SEDRONAR (Presidencia de la Nación)', NULL, '4320-1200 int 1113', 'nbuzeta@sedronar.gov.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (326, NULL, NULL, 'Cabaleiro', 'Julieta  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'julieta_caballeroo@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (327, NULL, NULL, 'Cabaleiro', 'Maricel  ', '27/11/1978', 'Arg', '27.215.355', NULL, 'Ruta 8 km 56,5 Estancias del Rio lote3 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304404563', NULL, NULL, 'cabaleiromaricel@gmail.com', '0-', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (328, NULL, NULL, 'Callaey', 'Maria Del Carmen', '27/04/1962', 'Arg', '14.902.880', '27149028809', 'Beiro 3324 1C (1419) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '45046375', '15 6416 9178', NULL, 'mcallaey@hotmail.com', 'B+', 'Galeno Oro', NULL, NULL, NULL, NULL, NULL, 'Religiones comparadas en curso', NULL, 'Dermatocosmiatra', NULL, NULL, NULL, 'andrealuna.consultorio@gmail.com', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (329, NULL, NULL, 'Callealta', 'Paola  ', NULL, NULL, '20.619.227', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1565390909', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (330, NULL, NULL, 'Campora', 'Valeria Noely ', '07/02/1982', 'Arg', '29.117.273', '27291172739', 'Las Gardeñas 1534 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-475315', '15 5468 3862', '15 5468 3862', 'valcampora@gmail.com', NULL, 'Osde', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Supervisora', 'Sheraton Pilar', NULL, '02304385080', 'vcampora@pilar.sheraton.com.ar', 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (331, NULL, NULL, 'Campos', 'Jaqueline  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'camposje@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (332, NULL, NULL, 'Candela', 'Marcela  ', '20/06/1985', 'Arg', '32.037.222', '23320372224', 'Alejandro Korn 304 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4432217', '011-15-31203255', NULL, 'marcecandela@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (333, NULL, NULL, 'Canellada De Luca', 'Manuela', '10/08/1980', 'Arg', '28.381.684', '27283816848', 'Mitre S/N Lote I 15 (1624) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4499060', '15 3772 1297', NULL, 'manuelacdl@hotmail.com', NULL, 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Diseño Ind Textil', 'independiente', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (334, NULL, NULL, 'Capurro', 'Eliana Alejandra ', '30/07/1976', 'Arg', '23.705.979', NULL, 'Amapolas 1000 PB D1 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1166946915', NULL, 'alejandracapurro@hotmail.com', 'B+', 'Visitar Salud', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Arquitecta', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (335, NULL, NULL, 'Carbone', 'Alejandra  ', '17/01/1957', 'Arg', '13.120.013', NULL, 'Saravi s/n Los Fresnos (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1131814402', NULL, 'lundi40@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Museologa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (336, NULL, NULL, 'Carlucci', 'Ana  ', '15/07/1960', 'Arg', '14.198.999', '27141989990', 'Los Lagartos n°6 piso 17/18 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1561801317', NULL, 'carlucciana@gmail.com', 'A+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (337, NULL, NULL, 'Carrada', 'Ferreira M Daniela', '18/04/1963', 'Arg', '16.245.928', '27162459282', 'Camino de Los Angeles 204 Pilar C Campo Grande', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4638174', '0111562203220', NULL, 'daniela.carrara@hotmail.com', NULL, 'Docthos Premium', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (338, NULL, NULL, 'Carro', 'Marcela Debora ', '11/06/1966', 'Arg', '18.153.425', '27181534252', 'B° La Casualidad UF 23 - Derqui', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4480466', '011-15-5820-0790', NULL, 'marcela.d.carro@gmail.com', 'A+', 'OSDE 450', NULL, NULL, NULL, NULL, NULL, 'Psicologa', NULL, 'Psicologa', 'Particular', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (339, NULL, NULL, 'Castelló', 'Romero Beatriz ', '27/08/1967', 'Arg - Española', '18.459.056', '27184590560', 'Chubut 610 Casa 15 Bo Pilar Village(1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5929 7980', NULL, 'beacastello@telviso.com.ar', 'A+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada Penalista', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (340, NULL, NULL, 'Castro', 'Maria Agustina ', NULL, NULL, '35.216.068', '27352160682', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, 'EGRESÓ', NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (341, NULL, NULL, 'Caviglia', 'Marilu  ', '26/07/1945', 'Arg', ' 5.263.503', NULL, 'Chile s/n HD Bo Molino 199 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '4472217', '0111541906771', NULL, 'marilucaviglia@yahoo.com.ar', '0+', 'Poder Judicial', NULL, NULL, NULL, NULL, NULL, 'Univ', NULL, 'Jubilada', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (342, NULL, NULL, 'Cerezo', 'Amelia Cristina ', '12/06/1953', 'Arg', '10.861.960', '27108619606', 'Perón 174 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-492181', '011-15-68786943', NULL, 'amecerezo@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Martillero Público', NULL, NULL, 'Cerezo Propiedades', NULL, '02320-494879', 'info@cerezopropiedades.com.ar', 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (343, NULL, NULL, 'Cesarini', 'Elisa  ', '22/07/1969', NULL, '20.820.976', NULL, 'Barrio La Campiña Lote 70 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4431291', '011-15577098633', NULL, 'cesarini69@yahoo.com.ar', 'A+', 'Qualitas', NULL, NULL, NULL, NULL, NULL, 'Lic Nutricion / Diseño Humano / Biodescodificación', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (344, NULL, NULL, 'Cheuquepil', 'Barrios Daniel Alejandro', '06/10/1990', 'Arg', '35.944.252', '20359442522', 'Uruguay 1635 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-37619833', NULL, 'cheuque_90@hotmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Analista de calidad', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (345, NULL, NULL, 'Chicou', 'Sebastián  ', '27/10/1973', 'Arg', '23.511.334', '20235113342', 'Av. Patricios 3593 Lote 41 B. La Montura (1667) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '03484-639792', '15-4071-6133', NULL, 'sebaschicou@hotmail.com', NULL, 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (346, NULL, NULL, 'Chinchilla', 'Juana Magali ', '18/09/1975', 'Arg', '24.581.671', '27245816710', 'Bo del Mirador 530 5 D10 14 Nordelta - Tigre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6966 3817', NULL, 'juana.magali@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (347, NULL, NULL, 'Chodie', 'Jorge  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (348, NULL, NULL, 'Ciarfaglia', 'Daniela  ', '18/08/1975', 'Arg', '24.734.395', NULL, 'Maroni y Alte Brown s/n (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1562376723', NULL, 'daniciar@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (349, NULL, NULL, 'Cillo', 'Gastón  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'cillogaston@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (350, NULL, NULL, 'Cinconegui', 'Juan Manuel Franco', '16/06/1977', 'Arg', NULL, NULL, 'Miralla 2687 (1778) Tablada Matanza', NULL, NULL, NULL, NULL, NULL, NULL, '46997759', '1551199580', NULL, 'juanmanuelcinconegui@gmail.com', 'A+', 'OSPOSE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'guardavidas - T. Cardiologo', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (351, NULL, NULL, 'Cisterna', 'Belén  ', '03/06/1994', 'Arg', '38.294.353', '27382943533', 'San José 931 (1631) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '02304498671', '011-6587-7748', NULL, 'becisterna@gmail.com', 'B+', NULL, NULL, NULL, NULL, NULL, NULL, 'en curso USAL Lic en RRHH', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (352, NULL, NULL, 'Coca', 'Sofía Belén ', NULL, NULL, '37.102.479', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (353, NULL, NULL, 'Colicigno', 'Veronica Cecilia ', '19/10/1988', 'Arg', '33.827.718', '27338277186', '14 esq 31 y 33 N° 786 (6600) Mercedes', NULL, NULL, NULL, NULL, NULL, NULL, '02324-427716', '15645001', NULL, 'gabriel2425@hotmail.com', 'A+', '-', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Asistente de Peluquería', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (354, NULL, NULL, 'Coman', 'Milton Cesar ', NULL, NULL, NULL, NULL, 'Cordoba 945 1B Ing. Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-6115-7899', NULL, 'wakemilton@yahoo.com.ar', '0+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Tecnico de Laboratorio', NULL, 'Analista de control de calidad', 'Biogenesis Bagó', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (355, NULL, NULL, 'Correa', 'Claudia Alejandra ', '26/07/1981', 'Arg', '28.756.463', NULL, 'Sarmiento 1075 (1667) M Alberti Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5669 1147', NULL, 'clauchis_05@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (356, NULL, NULL, 'Cortes Ripoll', 'Antonio Jose Manuel', '15/03/1989', 'Arg', '34.472.124', '20344721247', 'Pedro Cabral 1281 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5177 1811', '15 5177 1811', 'antoniojmcr@hotmail.com', '0-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Operador', 'CCU Arg', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (357, NULL, NULL, 'Costa', 'Leandro Nicolas ', '19/10/1978', 'Arg', '26.953.185', '20269531852', 'Sanabria 1616 4 D (1407) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6650 9309', NULL, 'nicolascosta78@hotmail.com', NULL, 'UP', NULL, NULL, NULL, NULL, NULL, 'Terc/Univ en curso', NULL, 'Empleado', 'INTA', NULL, NULL, 'costaleandro@inta.gov.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (358, NULL, NULL, 'Costoya', 'Amelia  ', NULL, NULL, '13.285.972', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 4644-6670', '15-3094-6670', NULL, 'mahatma.luis@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (359, NULL, NULL, 'Courtis', 'Maria Victoria ', '06/07/1977', 'Arg', '25.966.109', NULL, 'Humaita 4705 Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3401 4248', NULL, 'vickycourtis@hotmail.com', 'A+', 'Staff Medico', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Poster', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (360, NULL, NULL, 'Crottollini', 'Patricia Elizabeht ', '15/04/1959', 'Arg', '12.929.258', '27129292585', 'Necochea 1493 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4433567', '0230-15-4556016', NULL, 'pachipatri15@gmail.com', 'B+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Prof Educación Especial', NULL, 'Terapeuta Floral', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (361, NULL, NULL, 'D´Amico', 'Sergio Gastón ', '30/07/1985', 'Arg', '31.775.754', NULL, 'Dardo Rocha Ruta 25 km 7 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1162920014', NULL, 'gastonsergio28@gmail.com', '+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (362, NULL, NULL, 'Danti', 'Brenda  ', '05/03/1988', 'Arg', '33.597.533', NULL, 'Los Fresnos 359 Campo Chico (1627) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1139387765', NULL, 'bren.danti@outlook.com', 'A+', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'USAL', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (363, NULL, NULL, 'David', 'Solange Maricel ', '10/02/1990', 'Arg', '35.098.532', '27350985323', 'Estomba 2135 3D Buenos Aires', NULL, NULL, NULL, NULL, NULL, NULL, '4746-3340', '011-15-6996-2510', NULL, 'solangemdavid@gmail.com', NULL, 'Luis Pasteur', NULL, NULL, NULL, NULL, NULL, 'Universidad en curso', NULL, 'Analista de control de calidad', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (364, NULL, NULL, 'De Luca', 'Maria Florencia', '27/04/1985', 'Arg', '31.554.314', '27315543148', 'Mansilla 1501 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-31202462', NULL, 'mflor_deluca@hotmail.com', 'A+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (365, NULL, NULL, 'De Matteis', 'Andrea Karina', '15/06/1971', 'Arg', '22.196.829', NULL, 'Sanguinetti 256 2ºA (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5009-0671', NULL, 'kdematte@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (366, NULL, NULL, 'De Souza Frade', 'Elena Maria', '25/05/1967', 'Arg', '18.564.734', NULL, 'Florida s/n Lote 26 Bo Los Pilares - Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '03484-638726', '011-15-5939-7300', NULL, 'edesouza_frade@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (367, NULL, NULL, 'Decker', 'Mario Agustin ', '31/10/1977', 'Arg', '26.382.605', NULL, 'Chile 1068 (1696) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-3109-7892', NULL, 'mario.a.decker@live.com.ar', '0-', 'HOPE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (368, NULL, NULL, 'Del Brutto', ' David Gaston', '26/11/1980', 'Arg', '28.452.889', NULL, 'Av. Mitre s/n (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-6273-5001', NULL, 'ddelbrutto@hotmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (369, NULL, NULL, 'Delgado', 'Leylen  ', NULL, NULL, '27.320.705', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (370, NULL, NULL, 'Dellepiane', 'Rawson Alejandra ', '09/05/1964', 'Arg', '17.109.396', NULL, 'Mayling Club de Campo (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4464049', '15-4188-0324', NULL, 'adr964@hotmail.com', 'A+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Traductorado', NULL, 'Empleada Administrativa', 'Embajada de Italia', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (371, NULL, NULL, 'Di Diego ', 'Flavia ', '03/09/1966', 'Arg', '18.118.207', NULL, 'C.C. Pueyrredon 146 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304667146', '15-5951-2293', NULL, 'soy.fla@hotmail.com', 'A+', 'C.Med Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Locutora', NULL, 'Administración', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (372, NULL, NULL, 'Didolich', 'Silvana Yanina ', '17/05/1983', 'Arg', '30.611.232', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5610-3289', NULL, 'yanina.didolich@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (373, NULL, NULL, 'Diez', 'Cristina  ', '14/11/1973', 'Arg', '23.500.808', NULL, 'San Martin 375 (2814) Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230-15-4560640', NULL, 'crisdiez1973@gmail.com', '0+', 'Medifé', NULL, NULL, NULL, NULL, NULL, 'Lic Administración', NULL, 'Administración/Contaduría', 'Materiales CyG SRL (corralón)', NULL, NULL, 'corralondiez@bbt.net.ar', 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (374, NULL, NULL, 'Dinger', 'Alejandra  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (375, NULL, NULL, 'Dinger', 'Jessica Beatriz ', '27/11/1993', 'Arg', '37.993.348', NULL, 'Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1553361382', NULL, 'jessie.dinger@hotmail.com', '0+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'U. San Andres - Economía', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (376, NULL, NULL, 'Dinger', 'Ricardo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (377, NULL, NULL, 'Diorio', 'Maria Victoria ', '21/02/1982', 'Arg', '29.331.531', '27293315316', 'Peron 2505 B Springdale Lote 48 BsAs', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6926 4714', '15 6926 4714', 'victoriadiorio82@gmail.com', 'A-', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Maestra', 'Colegio Santa María', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (378, NULL, NULL, 'Dodino', 'Claudia Alejandra ', '26/08/1967', 'Arg', '18.076.989', '27180769892', 'Calle 117 N° 353 (1862) Guernica Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '02224-15521393', '02224-471116', 'etnias-1967_@hotmail.com', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Docente', NULL, NULL, '02224-470590/470769', NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (379, NULL, NULL, 'Dollinger', 'Mauro  ', '06/04/1988', 'Arg', '33.605.229', NULL, 'La Rocha 504 4°C (1708) Morón', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11 6803 3615', NULL, 'dollingermauro@gmail.com', 'A+', 'Banco Provincia', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (380, NULL, NULL, 'Dominguez', 'Iris Perla ', '03/03/1964', 'Arg', '16.849.430', NULL, 'Pcia de Bs as N°235 - Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-497924', '011 65691165', NULL, 'irisperla.domiguez@outlook.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario completo', NULL, 'Peluquera', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (381, NULL, NULL, 'Donadío', 'Valeria  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (382, NULL, NULL, 'Dozo', 'Moreno Constanza ', '13/12/1968', 'Arg', '20.540.067', '27205400678', 'Bo el Molino 123 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4473570', '15 5 467 9754', NULL, 'cdmoreno@fibertel.com.ar', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Artista Plastica', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (383, NULL, NULL, 'Dubois', 'Sol  ', '24/04/1983', 'Arg', '30.220.314', '27302203143', 'Gainza 505 PB (1405) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4988-9658', '011 15 4417 8478', NULL, 'soldubois@hotmail.com', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Ejecutiva de Cuentas ART', 'Net Broker', NULL, NULL, 'sol.dubois@netbroker.com.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (384, NULL, NULL, 'Dure', 'Carlos Miguel ', '14/02/1972', 'Paraguaya', '92.416.270', '20924162709', 'Saravi 1896 (1629) La Lonja Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '20441327', '15-60932739', NULL, 'carlodure@hotmail.com', NULL, 'Accord', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Maestro Mayor de Obra', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (385, NULL, NULL, 'Echeberz', 'German Jorge ', '16/05/1984', 'Arg', '30.553.231', '20305532313', 'Hipólito Yrigoyen 181 (6530) Carlos Casares', NULL, NULL, NULL, NULL, NULL, NULL, '02395-406996', NULL, NULL, 'vascoecheberz@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Profesor de Historia', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (386, NULL, NULL, 'Enriquez', 'Aurora  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (387, NULL, NULL, 'Escobar', 'Carlos  ', '06/05/1967', 'Arg', '18.278.618', NULL, 'Mayling cc UF 28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1550641474', NULL, 'cescobar@iae.edu.ar', 'A+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (388, NULL, NULL, 'Escudero', 'Silvia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0351-155555555', NULL, 'silviescuderoaol@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (389, NULL, NULL, 'España', 'Agustina  ', '26/03/1991', 'Arg', '35.657.497', '27356574970', 'Chubut 415 (1631) Villa Rosa - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1560524429', NULL, 'agustina.espana@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (390, NULL, NULL, 'Faces', 'Antonela Laura ', '18/02/1988', 'Arg', '33.489.875', NULL, 'Champagnat 740 Las Calandrias 11C - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1544184927', '1561691025', 'antonela.faces@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U.N. Quilmes', NULL, 'Lic en Comercio Exterior', 'Mahle Arg (Garin)', NULL, NULL, 'antonela.faces@ar.mahle.com', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (391, NULL, NULL, 'Fafian', 'Florencia Paula ', '20/11/1976', 'Arg', '25.578.127', NULL, 'Zebruno 910 - Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3258 4494', '15 3258 4494', 'florenciafafian@gmail.com', NULL, 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Diseño de Interiores', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (392, NULL, NULL, 'Favano', 'Natalia  ', '15/11/1977', 'Arg', '26.169.887', '27261698876', 'Castroman 2292 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4627-2136', '1557007917', NULL, 'nataliafavano@gmail.com', 'B-', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'Maquilladora Profesional', 'Independiente', NULL, NULL, 'nataliafavanomakeup@gmail.com', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (393, NULL, NULL, 'Favier', 'Dubois Eduardo Mario', '18/04/1952', 'Arg', '10.373.256', NULL, 'Parana 1243 11B (1018) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4382-0973', '1544936977', NULL, 'emfavierdubois@favierdubois *', 'A+', 'Poder Judicial', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (394, NULL, NULL, 'Favier', 'Sofia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (395, NULL, NULL, 'Fedyszyn', 'Alicia Cristina ', '17/05/1956', 'Arg', '12.021.592', '27120215928', 'Cadiz 2996 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4623-0893', '1565181372', NULL, 'aliciafedyszyn@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (396, NULL, NULL, 'Fente', 'Silvia Monica ', '09/12/1967', 'Arg', '18.585.093', '27185850930', 'Los Jazmines 3264 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5937 9831', NULL, 'quantica2004@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Docente de Media', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (397, NULL, NULL, 'Fernandez', 'Alejandra Cristina ', '30/04/1970', 'Arg', '21.552.791', NULL, 'Dardo Rocha 1150 (1718) San Antonio de Padua', NULL, NULL, NULL, NULL, NULL, NULL, '0220-4855758', '1566253437', NULL, 'alejandra@mcailuminacion.com.ar', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (398, NULL, NULL, 'Fernandez', 'Edit Carina ', '13/04/1974', 'Arg', '23.585.987', '23235859874', 'Los Fresnos y Congreve Bo El Aromo Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-66351454', NULL, 'serpientegalactica1974@yahoo.com.ar', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (399, NULL, NULL, 'Fernandez', 'Magdalena Paola ', '30/03/1987', 'Arg', '32.997.105', '27329971053', 'Anatole France 1325 (1824) Lanus', NULL, NULL, NULL, NULL, NULL, NULL, '4240-6784', '15-5484-4080', NULL, 'magdalena.p.fernandez@gmail.com', '0+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Terciario completo', NULL, 'Gua de Turismo', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (400, NULL, NULL, 'Fernandez', 'Maria Belen ', '28/06/1988', 'Arg', '33.813.676', '27338136760', 'Argerich 342 8B CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-4178-0236', NULL, 'belenfernandez477@gmail.com', 'B+', 'Hosp Alvarez', NULL, NULL, NULL, NULL, NULL, 'Terciario inc', NULL, 'Actriz, Comerciante', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (401, NULL, NULL, 'Fernandez', 'Maria Belen2 ', '03/02/1985', 'Arg', '31.453.172', '27314531723', 'Suipacha 209 2°D (1706) Haedo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-56583374', NULL, 'mbfa85@hotmail.com', 'A-', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Lic en Arte Dramático, Prof de Inglés', NULL, 'Actriz, Animadora en Eventos, Docente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (402, NULL, NULL, 'Fernandez', 'Moreno Emiliane ', '27/04/1994', 'Mex', '94.056.296', '27940562967', 'Blanco Encalada 3155 Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320556845', '0111538515641', NULL, 'emichiqui@hotmail.com', '+', 'Ctro Med Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (403, NULL, NULL, 'Ferrari', 'Cecilia Elena ', '24/10/1975', 'Arg', '24.886.203', '27248862039', 'Av. La Plata 3241 7°A (1184) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4903-8267', '15 5637 7175', NULL, 'ceferrari@fibertel.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Universitario', NULL, 'Abogada', 'Tribunal Sup de Justicia CABA', NULL, '4370-8500 int 1305', 'cferrari@tsjbaires.gov.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (404, NULL, NULL, 'Ferreyra', 'Marcela Ulma Carolina', '08/01/1982', 'Arg', '29.299.205', '27292992055', 'Av. Patricias Argentinas 2009 Lote 125 (1619) Garin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5745-0330', NULL, 'ferreyra.mar@gmail.com', '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Psicologa Clínica', NULL, 'OSDE', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (405, NULL, NULL, 'Figliolo', 'Yanina Vanesa ', NULL, NULL, '32.850.482', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1569043395', NULL, 'yaninafigliolo@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (406, NULL, NULL, 'Figueroa', 'Rocio Yasmin ', '26/01/1995', 'Arg', '38.822.701', '27388227015', 'Fragata Hercules 1430 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11  1565999666', NULL, 'yo_22_yas@hotmail.com', NULL, 'Principal Plan', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Mc Donals', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (407, NULL, NULL, 'Fontana', 'Karina  ', '10/06/1977', 'Arg', '25.778.703', NULL, 'Champagnat 1500 BC La Candela UF 94 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4375101', '15-4973-4728', NULL, 'fontanakarina@yahoo.com.ar', 'A+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (408, NULL, NULL, 'Fookes', 'Leticia Carla ', '07/10/1978', 'Arg', '26.807.849', '27268078490', 'Chile 1820 La Herradura', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-3829-4749', NULL, 'leticelu@gmail.com', '0-', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Ama de casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (409, NULL, NULL, 'Forchieri', 'Maria Veronica ', '03/06/1965', 'Arg', '17.765.730', '27177657307', 'Los Pinos 2153 (1614) Villa de Mayo Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '4660-3105', '01115-69452101', NULL, 'mforchie@cas.austral.edu.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (410, NULL, NULL, 'Frattani', 'Evangelina del Valle', '23/01/1970', 'Arg', '21.319.568', NULL, 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304434837', '0111540753693', NULL, 'evangelina_del_valle@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (411, NULL, NULL, 'Frattani', 'Veronica Fernanda ', '27/06/1978', 'Arg', '26.603.473', '27266034739', 'Jose Ingenieros 640 - Exaltacion de la Cruz', NULL, NULL, NULL, NULL, NULL, NULL, '02323-470709', '15 2237 8539', '15 2237 8539', 'veronica_frattani@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario incompleto', NULL, 'Comerciante', 'Herbalife', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (412, NULL, NULL, 'Freile', 'Natalia  ', '27/09/1976', 'Argentina', '25.600.002', '23256000024', 'Guiraldes 3973 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, '46218694', '15-6252 -1734', NULL, 'natifreile@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Trabajadora Social', 'Minist. De Justicia y Derechos Humanos', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (413, NULL, NULL, 'Freschi', 'Nora Gabriela ', '28/10/1965', 'Arg', '17.749.169', NULL, 'Calle 104 n° 1133 (1625) Escobar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4494110', '011-15-39144976', NULL, 'nora_ga03@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Docente de Italiano', NULL, NULL, 'Manuli SA', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (414, NULL, NULL, 'Gabusi', 'Andrea Laura ', '20/10/1965', 'Arg', '17.715.402', NULL, 'Tucumán 194 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-622255', '011-15-61432413', NULL, 'andreagabusi@yahoo.com.ar', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', 'Dirección Gral de Escuelas Pcia BsAs', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (415, NULL, NULL, 'Gaitan', 'Cintia Mariana ', '17/03/1981', 'Arg', '28.725.391', '27287253910', 'Cnel Vilela 2826 (1618) Gral Pacheco', NULL, NULL, NULL, NULL, NULL, NULL, '03327-457660', '15 3226 1671', '15 3226 1671', 'cintia_gaitan@hotmail.com', '0-', 'OSMECON', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Camarera', 'Sushi Club', NULL, '0348-4629590', NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (416, NULL, NULL, 'Gaitan', 'Karina Alejandra ', '12/06/1979', 'Arg', '27.313.346', NULL, 'Dr Trani 1921 (1625) B de Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348154556490', NULL, 'karinaa_gaitan@hotmail.com', 'A+', 'Galeno Azul', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Operaria', 'Yazaki', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (417, NULL, NULL, 'Galicia', 'Martinez Laura Vanessa', '20/11/1980', 'Mexicana', '95.455.400', '27954554002', 'Fincas de Maschwitz Manz 8 Lote 16, Mw, Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '0348 4405136', '1121612259', NULL, 'vane.galicia.martinez@gmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingenieria', NULL, 'Comerciante', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (418, NULL, NULL, 'Garcia', 'Julieta Romina ', '20/02/1973', 'Arg', '23.229.705', NULL, 'Carlos Calvo 590 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11 15 5690 8617', NULL, 'juliroga@hotmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (519, NULL, NULL, 'Mosquera', 'Andrea  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '27249576897', '02326 409184', NULL, 'andreamosqueradominguez@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (419, NULL, NULL, 'Gavilán', 'Cecilia Ana Inés', '01/10/2015', 'Arg', '36.529.275', '27365292758', 'Las Margaritas 678 PB2 (1669)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5924 7112', '15 5924 7112', 'ceecil.g@gmail.com', '0+', 'Sancor Salud', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Encargada de Local', 'Third Time SA', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (420, NULL, NULL, 'Gianello', 'Perez Maria Gabriela', '04/04/1978', 'Española', '92.703.893', '27927038930', 'Arredondo 2686 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4623-1193', '15 6716 8555', NULL, 'mariagianello@hotmail.com', 'A-', 'Andar', NULL, NULL, NULL, NULL, NULL, 'Terciario/Universidad', NULL, 'Independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (421, NULL, NULL, 'Gil', 'Marcelo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (422, NULL, NULL, 'Gilio', 'Florencia Valeria ', '02/08/1989', 'Arg', '34.671.245', '27346712452', 'Frias 7503 (1655) JLSuarez Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6786 9001', '15 6786 9001', 'flor.gilio@gmail.com', '0+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (423, NULL, NULL, 'Gimenez', 'Lilian Edith ', '08/02/1959', 'Arg', '13.124.549', '27131245497', 'Paunero 4470 (1665) Jose C Paz Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-6700-9765', NULL, 'liliangimenez2012@gmail.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (424, NULL, NULL, 'Giosa', 'Analia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'analiagiosa@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (425, NULL, NULL, 'Giusti', 'Cristina  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (426, NULL, NULL, 'Gobbi', 'Lorena Elisabeth ', NULL, NULL, '29.651.936', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2323 533458', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (427, NULL, NULL, 'Godoy', 'Adrian Emanuel ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'solcris46@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (428, NULL, NULL, 'Godoy', 'Violeta Guadalupe ', '01/08/1988', 'Arg', '33.862.727', '27338627276', 'Suipacha 578 (2814) Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4462100', '15 44019287', '15 44019287', 'violnik@hotmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'La Segunda', NULL, '0230-4492302', 'rhrodriguez@lasegunda.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (429, NULL, NULL, 'Gomez', 'Gonzalo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (430, NULL, NULL, 'Gomez', 'Susana  ', '10/04/1950', 'Arg', NULL, NULL, 'Dolores 15 Cañada de Pilar L75 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4533087', '15-5259-8567', NULL, NULL, 'A+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Kinesiologa', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (431, NULL, NULL, 'Gonzalez', 'Alicia Ester ', NULL, NULL, '13.400.499', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'viajeradelalma@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (432, NULL, NULL, 'Gonzalez', 'Jenny  ', '07/10/1974', 'Venezolana', '94.180.534', '27941805340', 'Champagnat 1600 (1630) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1563500659', NULL, 'gonzalez1503@gmail.com', '0-', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Ingeniera', NULL, 'Ingeniera', 'Sinopec', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (433, NULL, NULL, 'Gonzalez', 'Patricia Clase Práctica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (434, NULL, NULL, 'Gonzalez', 'Teran Daniela ', '08/06/1990', 'Arg', '35.405.222', '27354052224', 'O´Connor (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230-44384111', '0230-44384111', 'dagonzalez@megatlon.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, 'Megatlon', NULL, '0230-44384111', NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (435, NULL, NULL, 'Gonzalez', 'Teran MARIELA ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (436, NULL, NULL, 'Gorocito', 'Belen  ', '20/09/1996', NULL, '43.870.380', NULL, 'Musladini 1773 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4663067', '15-68032096', NULL, 'rocbel_2096@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (437, NULL, NULL, 'Graciano', 'Laura Edith ', '20/07/1965', 'Arg', '17.302.382', '27173023826', 'Tupac Amaru 1096 (1836) Llavallol', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1133133416', NULL, 'sukhabhavantu@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (438, NULL, NULL, 'Granero', 'Maria Ines ', '13/06/1977', 'Arg', '25.026.535', '27250265358', 'Moreno 860 (2760) San Antonio de Areco', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6596 6565', '15 6596 6565', 'inesitagranero30@hotmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Tecnica en Laboratorio', NULL, 'Tecnica en Laboratorio', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (439, NULL, NULL, 'Grassi', 'Gonzalo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (440, NULL, NULL, 'Grossi', 'Maximiliano  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (441, NULL, NULL, 'Guastavino', 'Mariana del Valle', '05/03/1980', 'Arg', '28.030.994', NULL, 'Matienzo 5451 (1744) Moreno', NULL, NULL, NULL, NULL, NULL, NULL, '02320-451431', '11-5639-0479', NULL, 'marianguastavino@gmail.com', NULL, 'Galeno Blanco', NULL, NULL, NULL, NULL, NULL, 'Profesora de Biología', NULL, 'Vendedora', 'Jumbo Retail', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (442, NULL, NULL, 'Guazzaroni', 'Maria Emilia ', '23/11/1989', 'Arg', '34.834.404', '27348344043', '26 de Abril 3666 (1714) Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '4481-1078', '15 5060 4311', NULL, 'maria_emilia232@hotmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Analista Quimico Univ', NULL, 'Analista Quimico Univ', 'Rapsa SA', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (443, NULL, NULL, 'Guiñazu', 'Mirta  ', '27/07/1943', 'Arg', ' 4.666.429', NULL, 'Carlos Calvo 02 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '01169792576', NULL, 'mguiniazu@yahoo.com.ar', NULL, 'PAMI', NULL, NULL, NULL, NULL, NULL, 'Obstetricia', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (444, NULL, NULL, 'Gussoni', 'Lucía  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (445, NULL, NULL, 'Gussoni', 'Maria Victoria ', '19/01/1989', 'Arg', '34.372.047', NULL, 'Tucuman 867 3°Dto D (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1126578735', '1126578735', 'vic.gussoni@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (446, NULL, NULL, 'Gustavino', 'Maria del Valle', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mariagustavino@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (447, NULL, NULL, 'Gutierrez', 'Andrea  ', '28/01/1967', 'Arg', '18.165.446', '27181654460', 'Las Madreselvas 3026 (1667) Alberti', NULL, NULL, NULL, NULL, NULL, NULL, '02320-478657', '1533237173', NULL, 'andrea.gutierrez@laboratoriohidalgo.com', '0+', 'Swiss Medical Nubial', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Tecnica en Laboratorio', 'Laboratorio Hidalgo', NULL, '01148985300', 'andrea.gutierrez@laboratoriohidalgo.com', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (448, NULL, NULL, 'Gutierrez', 'Ivana  ', '09/10/1976', 'Arg', NULL, NULL, 'Pizzarro 1254 (1669) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Austral Salud', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Estilista', 'IvanaStaff', NULL, '0230479399', NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (449, NULL, NULL, 'Guzman', 'Claudia Beatriz ', '31/12/1970', 'Arg', '21.981.782', NULL, 'Echeverria 616 (1137) Don Torcuato', NULL, NULL, NULL, NULL, NULL, NULL, '27219817822', '15 6280 5946', NULL, 'claudia_guzman70@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario Compl; Ter/Univ incompl', NULL, 'Administrativa', NULL, NULL, '49194547', 'kitoc@hotmail.com', 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (450, NULL, NULL, 'Hamm', 'Clara Noemi ', '17/08/1954', 'Arg', '11.016.986', NULL, 'San Martín 1477 (1629) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4495915', '0121-15-5501-1607', NULL, 'noemiham@hotmail.com', 'A+', 'Plaza Salud dEscobar', NULL, NULL, NULL, NULL, NULL, 'Primario', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (451, NULL, NULL, 'Hernando', 'Luciana  ', NULL, NULL, '27.616.552', NULL, 'Rosario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (452, NULL, NULL, 'Herrera', 'Claudia Alejandra ', '10/03/1967', 'Arg', '18.375.352', '27183753520', 'Libertador 14539 (1640) Acassuso Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '47921044', '1561493363', NULL, 'clau10.03@hotmail.com', NULL, 'Union Personal', NULL, NULL, NULL, NULL, NULL, 'Estetica Corporal', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (453, NULL, NULL, 'Hicoff Marina', '  ', '09/12/1971', 'Arg', '22.539.664', NULL, 'Bolivar 446 - 3 dto 7 II cuerpo (1704) Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '4469-1377', '11-6522-1634', NULL, 'marinhicoff@yahoo.com.ar', 'A+', 'DASUTEN', NULL, NULL, NULL, NULL, NULL, 'Prof de Gimnasia, Meditación', NULL, 'independiente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (454, NULL, NULL, 'Hortal', 'Sueldo Mariana ', '30/10/1968', 'Arg', '20.404.511', NULL, 'Rio de Janeiro N°2 Lote 26 (1629) Bo Cerrado Las Orquideas', NULL, NULL, NULL, NULL, NULL, NULL, '02304535018', '1567160660', NULL, 'mhortalsueldo@yahoo.com', '0+', 'Docthos / Swiss Med.', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (455, NULL, NULL, 'Iannini', 'Laura Vanesa ', NULL, NULL, '26.475.163', NULL, 'FALTA FICHA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (520, NULL, NULL, 'Muiños', 'Maria Consuelo ', '25/12/1948', 'Arg', ' 5.738.349', NULL, 'San Cayetano 1194 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-57349479', NULL, NULL, NULL, 'PAMI', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (456, NULL, NULL, 'Ibañez', 'Ana Lorena ', '28/10/1972', 'Arg', '23.046.967', '27230469674', 'M. Alberti 889 (1714) Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '4624-2329', '15 4974 2466', NULL, 'ana-fiore@hotmail.com', 'A+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Administrativa', 'Ruedas Hofer', NULL, '4443-1462', 'ana@ruedashofer.com.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (457, NULL, NULL, 'Ibarra', 'Claudia Marcela ', '21/03/1971', 'Arg', '22.083.518', '27220835184', 'Rosario Golf Club 2193 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '0230-657560', '15 6682 6187', '15 6682 6187', 'claumariba@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'ama de casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (458, NULL, NULL, 'Insaurralde', 'Lorena Esther ', '22/01/1975', 'Arg', '24.366.814', NULL, 'Asuncion 1204 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230 15 4350678', NULL, 'lorena_insaurralde75@hotmail.com', '0+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Cursando Psicología', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (459, NULL, NULL, 'Itxassa', 'Paola Edith ', '10/10/1974', 'Arg', '23.709.758', '27237097586', 'Davabe 2830 Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5581-2078', NULL, 'paolaitxassa@gmail.com', NULL, 'APSOT', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (460, NULL, NULL, 'Ivan', 'Elisabet Rosalia ', '22/06/1982', 'Arg', '29.489.606', '27294896061', 'Almafuerte 803 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5431 0350', '15-5431 0350', 'elyk.sabet@gmail.com', '0+', 'ASIMRRA', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (461, NULL, NULL, 'Kamerer', 'Jara Gabriel ', '05/09/1988', 'Paraguaya', '94.610.016', '20946100162', 'Finochietto 4846 (1663) José C Paz', NULL, NULL, NULL, NULL, NULL, NULL, '02320-441613', '15 5042 7563', NULL, 'gabrieljc869@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (462, NULL, NULL, 'Kierniki', 'Paula  ', '08/03/1991', 'Arg', '35.970.015', '27359700151', 'Los Crisantemos 475 E110 (1657) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3097 9058', '15 3097 9058', 'paukier@hotmail.com', '0+', 'Austral Salud', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (463, NULL, NULL, 'Kiverling', 'Gabriela  ', '26/07/1962', 'Arg', '16.126.381', NULL, 'La Rioja 1551 UF n°23 Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1550442005', NULL, 'gabykiv@gmail.com', NULL, 'Docthos', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'independiente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (464, NULL, NULL, 'Kucich', 'Lombardi Andrea Cristina', '11/09/1977', 'Arg', '26.081.114', '27260811148', 'Agüero 1909 piso 8°24 (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4826-3855', '15-5120-5982', NULL, 'andreakucich@live.com.ar', 'B+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Terapeuta de Sonido y Color - Rel Laborales', NULL, 'Secretaria, Terapeuta de Sonido y Color', 'Estudio Swiecicki Arq', NULL, NULL, 'kucich@esarq.com.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (465, NULL, NULL, 'Kuzmik', 'Carola Marina ', '01/05/1972', 'Arg', '22.702.289', '27227022898', 'Miero 1969 (1744) Moreno Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-67133205', NULL, 'carola.kuzmik@gmail.com', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Instructora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (466, NULL, NULL, 'Lago', 'Alfredo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (467, NULL, NULL, 'Larraza', 'Mariana Alejandra ', '19/08/1972', 'Arg', '22.913.394', '27229133948', 'Gregorio Pomar 3680 PB1 (1437) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6154 3487', NULL, 'mariaalejandralarraza@hotmail.com', 'A+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Tecnica en Turismo', NULL, 'Administrativa', 'Edesur', NULL, '4370-3861', 'malarraza@edesur.com.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (468, NULL, NULL, 'Ledezma', 'Irene  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (469, NULL, NULL, 'Leiguarda', 'Candelaria  ', NULL, NULL, '34.098.203', '27340982032', 'Tortugas c.c. Lte 368 (1667)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4438 2232', '15 4438 2232', 'candileiguarda@hotmail.com', 'B-', 'Osde Plan210', NULL, NULL, NULL, NULL, NULL, 'Biologa', NULL, 'Becaria Investigadora del Conicet', 'Austral - Conicet', NULL, NULL, 'candelarialeiguarda@gmail.com', 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (470, NULL, NULL, 'Leo', 'Graciela María ', '14/08/1957', 'Arg', '13.739.255', NULL, 'Carlos Gardel 218 PB (1824) Lanus', NULL, NULL, NULL, NULL, NULL, NULL, '4240-4644', '1136878017', NULL, 'gracielamarialeo@yahoo.com.ar', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Profesora de Educ Plastica', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (471, NULL, NULL, 'Linares', 'Luis Hector ', NULL, NULL, '11.876.386', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 4644-6670', '15-5517-4972', NULL, 'mahatma.luis@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (472, NULL, NULL, 'Lizondo', 'María Inés ', '06/10/1966', 'Arg', '18.213.893', '27182138938', 'Vergara 1851 PB6 (1828) Banfield', NULL, NULL, NULL, NULL, NULL, NULL, '20702681', '1564340185', NULL, 'milizondo@telecentro.com.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Admin/Reflexologa Podal', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (473, NULL, NULL, 'Lopez', 'Lorena  ', NULL, NULL, '27.712.928', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (474, NULL, NULL, 'Lopez', 'Marina Edith ', '13/04/1976', 'Arg', '25.103.813', '27251038134', 'Revori 1069 (1852) Alte Brown Burzaco', NULL, NULL, NULL, NULL, NULL, NULL, '4299-7284', '15 5865 0080', NULL, 'vandermaru@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompl', NULL, 'Empleada Pública / Personal Trainer', 'Arba', NULL, NULL, 'melopez@arba.gov.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (475, NULL, NULL, 'Lopez', 'Veronica Lorena ', '14/03/1972', 'Arg', '22.577.676', NULL, 'manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15- 40747482', NULL, 'veritolopezm@hotmail.com', 'Rh+', 'Omint Plan I', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Directora en Centro de Apoyo Escolar', 'Centro de Apoyo Escolar en Pilar', NULL, '02304420571', NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (476, NULL, NULL, 'Ludovico', 'Micaela Ivana ', '11/07/1985', 'Arg', '31.775.061', NULL, 'Jorge Newbery 380 (6700) Lujan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3648 5521', NULL, 'mica_ludovico@hotmail.com', '0+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Ingeniera en Alimentos', NULL, 'Calidad y Aseguramiento en AFB', 'AFB International', NULL, NULL, 'mludovico@afbinternational.com.ar', 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (477, NULL, NULL, 'Luis', 'Maria Eugenia ', '28/05/1980', 'Arg', '27.623.133', '27276231338', 'Saravi 1684 Piso 1 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2332-404418', NULL, 'eugenialuis2003@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (478, NULL, NULL, 'Maciel', 'Maria Angelica ', '30/06/1968', 'Arg', '24.890.981', '27248909817', 'Costa Rica 228 (1874) Guernica - Partido Pte Perón', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-6665-2854', NULL, 'esmeralma@yahoo.com.ar', NULL, '-', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Niñera', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (479, NULL, NULL, 'Maggio', 'Maria Marcela ', NULL, NULL, NULL, NULL, 'Dolores 15 Cañada de Pilar L98 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-3503-1999', NULL, 'mmmaggio@hotmail.com', NULL, 'Accord', NULL, NULL, NULL, NULL, NULL, 'Psicologa', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (480, NULL, NULL, 'Maidana', 'Gladys Beatriz ', '29/07/1974', 'Arg', '23.799.052', '20237990529', 'Santa Ana 2572 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-400529', '011-15-6572-1989', NULL, 'maidanagb@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada Administrativa', 'Estudio Prado', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (481, NULL, NULL, 'Maione', 'Claudio Omar ', '24/06/1977', 'Arg', '25.797.659', '23257976599', 'Ing Bergallo 1190 2H (1642) San Isidro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4157 5422', '15 4157 5422', 'claudiomaione@hotmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Personal Trainer', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (482, NULL, NULL, 'Maiterth', 'Gerardo Martin ', '26/01/1986', 'Arg', '32.091.680', '20320916802', 'Sgo del Estero 5624 (1605) Vicente Lopez', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6786 9003', '15 6786 9003', 'gerardo.maiterth@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (483, NULL, NULL, 'Makk', 'Sonia Marisa ', '04/11/1970', 'Arg', '21.749.364', '27217493647', 'Champagnat 740 - El Zorzal 9C (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5163 4021', '15 5163 4021', 'maru.laru4@gmail.com', NULL, 'Medife', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Polisajista', 'Il Giardino Di Maru', NULL, NULL, 'maru@ilgiardinodimaru.com.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (484, NULL, NULL, 'Malimowcka', 'Ailin Johana ', '03/10/1990', NULL, '35.363.624', '27353636249', 'Av Juan B. Alberdi 250 7° piso (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4924-1537', '15-30913234', NULL, 'ai.lo@hotmail.com', '+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Abogacía', NULL, 'Profesora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (485, NULL, NULL, 'Mancuso', 'Berta Andrea ', '28/06/1975', 'Arg', '24.694.469', '27246944690', 'Chubut 2400 Vfi 154 - Villa Rosa (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4315408', '15-2645 9443', NULL, 'bertamancuso@hotmail.com', 'A+', 'Osde 410', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Decoradora de Interiore', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (486, NULL, NULL, 'Mango', 'Cinthia Carla Mariel', '18/03/1964', 'Arg', '16.895.975', '27168959759', 'JB Alberdi 250 piso 7 (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4924-1537', '11-5452-7075', NULL, 'cinthiamango@gmail.com', '+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Terciario: Yoga - Teatro - Inglés', NULL, 'Profesora de Gimnasia', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (487, NULL, NULL, 'Manso', 'Laura Soledad ', '08/05/1986', 'Arg', '32.250.603', '27322506037', 'Santa Rosa Esq Magallanes S/N (1919) Garín', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4029 6395', NULL, 'manso_laura@yahoo.com.ar', NULL, 'W. Hope', NULL, NULL, NULL, NULL, NULL, 'Lic en Adm de Empresas', NULL, 'Lic en Adm de Empresas', '3M', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (488, NULL, NULL, 'Marchesan', 'Solana Victoria ', NULL, NULL, '35.094.578', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 61776606', NULL, 'sol_marchesan@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (489, NULL, NULL, 'Marchetti', 'Myriam Beatriz ', '28/12/1964', 'Arg', '17.424.402', '27174244028', 'Juan F. Segui 3926 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-625753', '0113473-1464', NULL, 'mymimarchetti@hotmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (490, NULL, NULL, 'Marianacci', 'Mariela Beatriz ', '14/03/1972', 'Arg', '22.689.097', '27226890977', 'Juan Jose Paso 940 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4427-314', '011-15-64606774', NULL, 'mariela.marianacci7@gmail.com', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada administrativa', 'Hospital Austral', NULL, '4482165', 'mmariana@cas.austral.edu.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (491, NULL, NULL, 'Mariani', 'Maria Laura ', '30/07/1975', 'Arg', '24.800.241', '27248002412', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1505248 1648', '1505248 1648', 'ambar.luz@live.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terciario: Diseño de Indumentaria', NULL, 'Encargada de Local de Indumentaria', 'Maria Cher', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (492, NULL, NULL, 'Marin', 'Joselina Carol ', '16/04/1974', 'Arg', '23.775.580', '23237755804', 'Alte Brown 1139 (6700) Lujan', NULL, NULL, NULL, NULL, NULL, NULL, '2323-438173', '011-15-69751815', NULL, 'marinjoselina@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Instr. En Salud, Alim y Ed Física/Prof Yoga', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (493, NULL, NULL, 'Marsico', 'Nelida Beatriz ', '31/03/1966', 'Arg', '17.674.270', NULL, 'Johann Strauss 2822 Bo Parque El Cazador (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '03484489451', '011-15-552913165', NULL, 'nelymarsico@yahoo.com.ar', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente nivel Primario', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (494, NULL, NULL, 'Martinez', 'Ballicillos María Macarena', '10/01/1989', 'Arg', '34.154.591', NULL, 'Capitan Martinez 1149 (1665) José C Paz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1136101361', NULL, 'mballicillos@hotmail.com', 'A-', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (495, NULL, NULL, 'Martinez', 'Erica  ', '23/03/1981', 'Arg', '29.056.252', '27290562525', 'Estrada 122 PB (1625) B. de Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348 15 4632907', '0348 15 4632907', 'martieru@hotmail.com', 'AB-', 'IOMA y Luis Pasteur', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada', NULL, NULL, '0328-4420478', NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (496, NULL, NULL, 'Martinez', 'Yolanda Lorena ', '15/06/1987', 'Arg', '33.219.099', NULL, 'Tucuman 1964 (1635) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-3138-5799', NULL, 'lorenamartinez1587@hotmail.com', NULL, 'Docthos-Swiss Med', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Lic. Enfermeria', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (497, NULL, NULL, 'Martitegui', 'Maria Jose ', '03/02/1983', 'Argentina', '30.378.467', '27303784670', 'Tandil 1083 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4421269', '15-5044-7556', NULL, 'mj_martitegui@hotmail.com', 'Rh+', 'Accord Salud', NULL, NULL, NULL, NULL, NULL, 'Univ de Morón', NULL, 'Comercial / Ventas', 'Arcor - Vendedora Comercial', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (498, NULL, NULL, 'Mascaros', 'Lucila  ', '18/03/1973', 'Arg', '23.292.644', '27232926444', 'Club Univ Bs As 3150 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '03484-457-486', '011 15 4 0822199', NULL, 'lucilamascaros@gmail.com', NULL, 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Instr. De Yoga / Diseñadora de Tejidos Manuales', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (499, NULL, NULL, 'Matas', 'Evangelina  ', '10/04/1949', 'Arg', ' 6.199.370', NULL, 'Haras del Pilar - La Pradera Lote 2125 Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4458349', '15-6202-4612', NULL, 'familia08@live.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (500, NULL, NULL, 'Mc Cormack', ' Silvina ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '27244966662', '15 5375 5347', NULL, 'silmccormack@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (501, NULL, NULL, 'Medina', 'Maria Jimena ', '15/02/1979', 'Arg', '27.108.496', '27271084965', 'Ayacucho 3566 (1665) José C. Paz', NULL, NULL, NULL, NULL, NULL, NULL, '02320-454954', '15-5920-2803', NULL, 'mjimena_ffhotmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (502, NULL, NULL, 'Mehle', 'Dana Julia ', '01/07/1989', 'Arg', '34.738.669', '27347386699', 'Almafuerte 2534 (1754) La Matanza', NULL, NULL, NULL, NULL, NULL, NULL, '4482-5424', NULL, NULL, 'danajuliamehle@gmail.com', 'AB+', NULL, NULL, NULL, NULL, NULL, NULL, 'V. Médico, Fotografa, T Social', NULL, 'Administrativa Empresarial', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (503, NULL, NULL, 'Mena', 'Edith Nancy ', '16/10/1972', 'Arg', '22.927.804', NULL, 'Salto 913 (1629)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nancy.mena72@gmail.com', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario completo', NULL, 'Docente - Prof de Plástica', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (504, NULL, NULL, 'Menghini', 'Maria Laura ', '14/06/1981', 'Arg', '28.549.829', NULL, 'Calle 28 N° 647 (6660) 25 de Mayo Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '02345 15562893', NULL, 'laumenghini@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Veterinaria', NULL, 'Veterinaria', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (505, NULL, NULL, 'Merlo', 'Patricia Susana ', '17/10/1953', 'Arg', '10.889.023', '27108890237', 'Mar del Plata Golf Club n°3351 UF63 (1667) Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4475179', '1558472166', NULL, 'pato_nel@yahoo.com.ar', NULL, 'Docthos/Swiss Med', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (506, NULL, NULL, 'Micheletti', 'Veronica Andrea ', NULL, 'Arg', '23.124.577', NULL, 'Necochea 1487 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-444897', '15-65272334', NULL, 'veromiche77@hotmail.com', '0+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Psicologa Holística', NULL, 'Independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (507, NULL, NULL, 'Milacher', 'Romina  ', NULL, NULL, '30.265.437', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (508, NULL, NULL, 'Minetto', 'Monica Liliana ', '24/12/1958', 'Arg', '13.645.195', '27136451958', 'Olivos Golf Club Km 32 Panamericana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4169 6652', '45871131', 'minetto_monica@yahoo.com.ar', NULL, 'Hospital Británico', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (509, NULL, NULL, 'Miramontes', 'Ailen  ', '17/07/1991', 'Arg', '36.397.195', NULL, 'Florida S/N Bo Los Pilares Lote 26 (16312) Villa Rosa - Pila', NULL, NULL, NULL, NULL, NULL, NULL, '03484-638726', '011-15-36124729', NULL, 'ailen.miramontes@gmail.com', 'A+', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Univ en curso', NULL, 'Diseño de indumentaria', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (510, NULL, NULL, 'Miranda', 'Lorena Jorgelina ', '25/04/1975', 'Arg', '24.463.321', '27244633213', 'Alberdi 1222 (1617) Pacheco', NULL, NULL, NULL, NULL, NULL, NULL, '011-2077-2737', '011-15-3305-8574', NULL, 'lorenamiranda29@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, '-', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (511, NULL, NULL, 'Molina', 'Carla  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (512, NULL, NULL, 'Molina', 'Maria Florencia ', '10/03/1982', 'Arg', '29.382.206', '27293822064', 'Pio XII 2652 (1742) Paso del Rey', NULL, NULL, NULL, NULL, NULL, NULL, '02374636483', NULL, NULL, 'florenciamolina.r9@gmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Bibliotecaria', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (513, NULL, NULL, 'Molina', 'Rosa Nancy ', '17/04/1976', 'Peruana', '93.920.564', '27939205646', 'Bariloche 2233 (1643) Beccar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '47371273', '15 4079 2133', NULL, 'nancymolina259@gmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (514, NULL, NULL, 'Molinari', 'Carla  ', '30/08/1972', 'Arg', '22.849.437', '27228494378', 'Barrio La Pradera 1134 Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02304458695', '15 4076 1533', NULL, 'carla_molinari@hotmail.com', 'A+', 'Luis Pasteur', NULL, NULL, NULL, NULL, NULL, 'Fonoaudiologa', NULL, 'Fonoaudiologa', 'independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (515, NULL, NULL, 'Mondino', 'Jesica  ', NULL, NULL, '32.735.315', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (516, NULL, NULL, 'Montesanti', 'Lorena  ', '20/05/1976', 'Arg', '25.358.725', '27253587259', 'Sgo del Estero 2909 (1824) Lanus Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1541688790', NULL, 'lolimontez@hotmail.com', NULL, 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Vendedora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (517, NULL, NULL, 'Montigel', 'Maggio Alejandra ', '03/04/1987', 'Arg', '33.024.886', '27330248861', 'Dolores 15 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4533028', '11 15 3488 4400', '11 15 3488 4400', 'mmaggioalejandra@gmail.com', '0+', 'Union Personal', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (518, NULL, NULL, 'Moreno', 'María  ', '01/12/1962', 'Arg', '16.054.418', NULL, 'Chubut 610 Lote 31 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304693037', '0111534311709', NULL, 'arqmariamoreno@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UBA Arquitecta', NULL, 'Arquitecta', 'independiente', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (521, NULL, NULL, 'Muñoz', 'Maria Natalia ', '21/11/1980', 'Arg', '28.479.033', '27284790338', 'Av Congreso 4891 1°P (1431) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4542-1266', '15-3380-4661', NULL, 'mnatalia.mnz@gmail.com', '0+', 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Dalde Blindajes', NULL, '4544-4763', 'nmunoz@dalde.com.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (522, NULL, NULL, 'Muñoz', 'Maria Soledad ', '30/04/1978', 'Arg', '26.939.222', '27269392229', 'Sargento Palma 1049 1°A (1682) Villa Bosch', NULL, NULL, NULL, NULL, NULL, NULL, '2195-3929', '1538910691', NULL, 'militernura@hotmail.com', 'o+', 'Asi', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'terapeuta e instructora', 'propia', NULL, NULL, 'centroholisticvolveralaesencia@gmail.com', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (523, NULL, NULL, 'Muñoz', 'Nerina Iris ', '21/12/1979', 'Arg', '27.704.136', '27277041362', 'Milan 1802 (1706) Haedo Buenos Aires', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1158740440', NULL, 'irisnerina@yahoo.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Profesora Educ Física', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (524, NULL, NULL, 'Muotri', 'Maria Cristina ', '29/03/1970', 'Arg', '21.569.543', NULL, 'Sourgnes 1736 (1684) El Palomar', NULL, NULL, NULL, NULL, NULL, NULL, '54332897', '1539152199', '46503405', 'cristinamuotri29@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (525, NULL, NULL, 'Napoli', 'Frattani Mayra Yanina', '31/05/1978', 'Arg', '33.189.872', '23331898724', 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4414 1975', '15 4414 1975', 'maynapoli@yahoo.com.ar', '0+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'Administrativa', 'Granja Tres Arroyos', NULL, '0230-4471282', 'mnapoli@gta.com.ar', 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (526, NULL, NULL, 'Neironi', 'Mauricio Manuel ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (527, NULL, NULL, 'Nelson', 'Mariana Lorena ', '05/09/1980', 'Arg', '28.307.854', '27283078545', 'Chile y Jose Verdi s/n uf 19 La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0204300457', '15 4538 4438', '15 4538 4438', 'marianitanel@yahoo.com.ar', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Escenografa', NULL, 'Escenografa', NULL, NULL, NULL, 'info@mariananelson.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (528, NULL, NULL, 'Nicolosi', 'Fabiana Alejandra ', '17/03/1975', 'Arg', '24.434.635', NULL, 'Chubut 1353 UF 18 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4494364', '15- 5455 5047', NULL, 'fabiananicolosi@hotmail.com', '0+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Magisterio Doc Inicial', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (529, NULL, NULL, 'Noejovich', 'Yanina Leandra ', '24/06/1978', 'Arg', '27.085.845', NULL, 'Av. Mitre s/n Lote j1 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1151488111', NULL, 'yaninaleandra@hotmail.com', 'A-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Ter/ Univ', NULL, 'Profesora de Teatro', 'Top3', NULL, NULL, 'top3pilar@gmail.com', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (530, NULL, NULL, 'Nuttini', 'Daniela  ', '12/01/1965', 'Arg', '17.226.965', '27172269651', 'Labardere 4069 (1667) Tortuguitas Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6798 1705', '15 5618 7642', 'danielanuttini@hotmail.com', '0+', 'Maestranza', NULL, NULL, NULL, NULL, NULL, 'Diplomada en Cs Humanas', NULL, 'Ejecutiva de Cuentas', 'MA Servicios SA', NULL, '011-47113600/33', 'dnuttini@maserviciossa.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (531, NULL, NULL, 'Occhiuzzi', 'Natalia  ', '24/12/1973', 'Arg', '23.567.868', NULL, 'Jujuy 232 (1631) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5934-5986', NULL, 'nativo@hotmail.com', NULL, 'Osde', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Traductora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (532, NULL, NULL, 'Oliverio', 'Andrea Alicia ', '04/04/1975', 'Arg', '24.307.871', '20243078712', 'Carrion 480 (1627) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0348-449-1015', '011-15-6039-9017', NULL, 'aoliverio@imagenes.com.ar', '+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Prof Educación Física', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (533, NULL, NULL, 'Orieta', 'Mariana  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'marianaorieta@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (534, NULL, NULL, 'Ossia', 'Maria de los Angeles  ', '18/07/1978', 'Arg', '26.688.315', '27266883159', 'Agüero 2843 PB dto 1 (1678) Caseros CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4734-8546', '15 53796166', NULL, 'maossia@yahoo.com.ar', '0+', 'Accord Salud Plan310', NULL, NULL, NULL, NULL, NULL, 'Abogacia incompleto', NULL, 'Carpetista', 'Escribania Mihura', NULL, '4393-0024/1549', 'angeles@escribaniamihura.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (535, NULL, NULL, 'Oyharzabal', 'Castro Candelaria ', '20/08/1992', 'Arg', '30.721.245', NULL, 'C.C. Pueyrredon L99 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4667244', '15-67901777', NULL, NULL, '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Profesorado Sup "Sarah C. Eccleston"', NULL, 'Docente', 'Brick Towers College', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (536, NULL, NULL, 'Oyharzabal', 'Castro Catalina ', '09/02/1999', 'Arg', '41.710.447', NULL, 'C. de C. Pueyrredon L99 (1628) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4667244', '1530900902', NULL, 'cataoyharzabal@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Estudiando en el Inst. Independencia de Pilar (nivel secundario)', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (537, NULL, NULL, 'Oyharzabal', 'Milagros  ', '29/05/2000', 'Arg', '42.660.375', NULL, 'Km 49 Club de Campo Pueyrredon (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304667244', NULL, NULL, 'milagrosoyharzabal@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (538, NULL, NULL, 'Paez', 'Santiago Hernan ', '29/07/1973', 'Arg', '23.278.495', NULL, 'Valparaiso390 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4663881', '15 5827 5634', NULL, 'santiagohernanpaez@hotmail.com', 'A+', 'Centro Med Pueyrredo', NULL, NULL, NULL, NULL, NULL, 'Bachiller', NULL, 'Operario Quimico', 'Ferroclor SA - Parque Ind Pilar', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (539, NULL, NULL, 'Paiber', 'Miriam Noemi ', NULL, 'Arg', '16.638.800', NULL, 'Los Nardos 1331 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-477811', '0111554964256', NULL, 'm311063@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Docente', 'Esc. Secundaria n°15', NULL, '02320-479077', 'sec_15pilar_@hotmail.com.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (540, NULL, NULL, 'Palavecino', 'Claudio Alberto Braian', '16/08/1989', 'Arg', '34.459.228', '2034459228', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brian.bit@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Acompañante Terapéutico', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (541, NULL, NULL, 'Pallero', 'Maria Eugenia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'agujuangdv@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (542, NULL, NULL, 'Palmeiro', 'Daniela  ', '31/01/1979', 'Arg', '27.144.116', '27271441164', 'Mexico 668 3ºB CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6893-7233', NULL, 'daniela_palmeiro@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Terapista Ocupacional', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (543, NULL, NULL, 'Panza', 'Mirta Beatriz ', NULL, NULL, ' 5.475.445', '27054754456', 'Luis M Campos 1119 Bernal Oeste', NULL, NULL, NULL, NULL, NULL, NULL, '4259-3610', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (544, NULL, NULL, 'Paredes', 'Michelle Clases Prácticas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (545, NULL, NULL, 'Patera', 'Ana Beatriz ', '07/03/1967', 'Arg', '18.151.921', '27181519210', 'Bordabehere 2894 (1417) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '39782378', '15 6351 1307', NULL, 'anapatera@hotmail.com', '0+', 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Psicopedagoga', NULL, 'Psicopedagoga', 'Escuela Infantil', NULL, NULL, 'ana.patera@yahoo.com.ar', 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (546, NULL, NULL, 'Patiño', 'Gongora Santiago ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (547, NULL, NULL, 'Pavon', 'Leticia Ines ', '16/04/1963', 'Arg', NULL, NULL, 'Pehuen 501 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348 4426370', NULL, NULL, 'B+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Enfermeria Profesional', NULL, 'Prof Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (548, NULL, NULL, 'Pellegrino', 'Fiorella  ', '08/02/1993', 'Arg', '37.249.037', NULL, 'Pueyrredn 2123 (1664) José C. Paz', NULL, NULL, NULL, NULL, NULL, NULL, '02320-423701', '112636-6907', NULL, 'fiore.pellegrino@hotmail.com', 'A+', 'Swiff Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Masajista - Niñera', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (549, NULL, NULL, 'Peña', 'Edith Marisa ', '02/04/1967', NULL, '18.204.656', NULL, 'Ceretti 2815 7° Diagonal (1431) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4752-1107', '1568772123', NULL, 'edithmarisapenia@yahoo.com.ar', 'B+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Abogada', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (550, NULL, NULL, 'Peña', 'Marisa  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (551, NULL, NULL, 'Pereyra', 'Nadia Soledad ', '07/12/1984', 'Arg', '31.381.095', '27313810955', 'Catrilo 1587 (1667) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6808 6361', '15 6808 6361', 'pereyrasnadia@gmail.com', NULL, 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada', 'Norfoods SA', NULL, '02320620880', NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (552, NULL, NULL, 'Pereyra', 'Norma Susana ', '23/06/1959', 'Arg', '13.450.215', '27134502155', 'Sanguinetti 475 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4429055', '111558490044', NULL, 'normapereyra1959@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Extramedica', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (553, NULL, NULL, 'Perez', 'Elizabet Natalia ', '20/12/1981', 'Arg', '29.183.232', '27291832321', 'Entre Ríos 1755 (1623) I. Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4444775', '15 5969 7731', '15 5969 7731', 'elibetper@yahoo.com.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Univ en curso', NULL, 'Niñera / Vendedora', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (554, NULL, NULL, 'Perez', 'Victoria  ', '12/04/1981', 'Arg', '28.810.789', '27288107896', 'Calle Santa Rosa Condominio Tortugas2 Piso 202 (1619) Garin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1566230481', NULL, 'vicoperez@gmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Universidad Psicología de Palermo', NULL, 'Psicologa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (555, NULL, NULL, 'Perotti', 'Ines  ', '29/03/1951', 'Arg', ' 6.711.601', NULL, 'Vedia 2435 (1429) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4464125', '011-15-5015-5541', NULL, 'inesale2008@yahoo.com', '0+', 'Poder Judicial', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (556, NULL, NULL, 'Pesce', 'Flavia Lorena ', '09/06/1975', 'Arg', '24.529.723', '27245297233', 'San José de Calasanz 838 1°D (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4921-3609', '15- 55829152', NULL, 'flaviapesce@yahoo.com.ar', 'B-', 'OSDE 410', NULL, NULL, NULL, NULL, NULL, 'Lic en Cs Políticas', NULL, 'Empleada', 'OSDE', NULL, NULL, 'flavia.pesce@osde.com.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (557, NULL, NULL, 'Petrina', 'Sol  ', '05/08/1992', 'Arg', '36.948.212', '27369482122', 'Tordillo - Highland Park CC 600 (1669) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5576-7586', NULL, 'sol.petrina@hotmail.com', 'A+', 'Medicul', NULL, NULL, NULL, NULL, NULL, 'Estudiando en USAL', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (558, NULL, NULL, 'Peverelli', 'Alpor María ', '05/01/1989', 'Arg', '34.372.007', NULL, 'Tucuman 914 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-67951681', NULL, 'ladelosojosabiertos@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (559, NULL, NULL, 'Peyron', 'Elina Marcela ', '05/03/1963', 'Arg', '16.834.452', '27168344525', 'Calle 111 n° 754 E/10 y 10 bis (6605) Navarro Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02227420028', '02227 15 418323', NULL, 'marpey333@hotmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'RRPP, Coord Rel Publ y Cerem.y Protocolo, Ter: Instrum.Quirurgica', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (560, NULL, NULL, 'Piendibene', 'Luis  ', '30/05/1954', 'Arg', '10.965.444', NULL, 'Chubut 600 Lote 412 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-5014-1700', NULL, 'luis@piendibene.com.ar', '0+', 'Staff Medico', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (561, NULL, NULL, 'Piñero', 'Maria Sol ', NULL, NULL, NULL, ' 27344545117', 'Viel 1125 Pb A (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mariasol.piniero@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (562, NULL, NULL, 'Pogrebaj', 'Miriam Ines ', '15/01/1966', 'Arg', '18.003.362', '27180033624', 'Saravi 1896 (1629) La Lonja Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '20441327', '15-60932739', NULL, 'mpogrebaj@yahoo.com.ar', '0+', 'Accord', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Trabajadora Social', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (563, NULL, NULL, 'Polastrelli', 'Marina  ', '25/10/1963', 'Arg', '16.354.093', '27163540938', 'Serrano 1637 4°C (1663) San Miguel', NULL, NULL, NULL, NULL, NULL, NULL, '011-4667-2262', '15 5641 9559', NULL, 'polastrellimarina@yahoo.com.ar', '0-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Prof de Psic.y Cs de la educación', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (564, NULL, NULL, 'Pomar', 'Laura  ', '03/10/1991', 'Arg', '36.411.434', '27364114341', 'Anchorena 1754 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-57357186', NULL, 'laupomar@gmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Terciario: IGI - Pastelera', NULL, 'Pastelera', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (565, NULL, NULL, 'Ponce', 'Carla Josefina ', '25/08/1966', 'Arg', '17.962.340', NULL, 'Panamericana Km 48,500 (1629)', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4470706', NULL, NULL, 'carlajosefinaponce@hotmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Secretaria EE 501', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (566, NULL, NULL, 'Portillo', 'Monica Elsa ', '11/08/1958', 'Arg', '12.844.312', '27128443121', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 2256 6963', '15 2256 6963', 'moni-1108@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario completo', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (567, NULL, NULL, 'Primolano', 'Joana Natalia ', NULL, NULL, '35.643.737', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (568, NULL, NULL, 'Proietto', 'Guillermo  ', '11/12/1970', 'Arg', '21.919.007', NULL, 'Bo La Retama L38 (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4499706', '011-15-4447-5225', NULL, 'gproietto1970@gmail.com', 'A+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (569, NULL, NULL, 'Puente', 'Camila Noelia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'camilapuente6@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (570, NULL, NULL, 'Pungitore', 'Mariana Veronica ', '25/03/1974', NULL, '23.771.839', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1567016916', NULL, 'ismymvp@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (571, NULL, NULL, 'Quarchioni', 'Nadia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '23337775144', NULL, NULL, 'nquarchioni@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (572, NULL, NULL, 'Quiroga', 'Silvia  ', NULL, 'Arg', '16.040.259', '27160402593', 'Lomada Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1544075975', NULL, 'silviaquiroga_1@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Lic Administracion de Empresas', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (573, NULL, NULL, 'Ramirez', 'Sandra  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (574, NULL, NULL, 'Razquin', 'Valeria  ', '14/12/1972', 'Arg', '22.861.993', '27228619936', 'Los Lirios 2491 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348 15 4348519', '0348 15 4348519', 'vale_1972@hotmail.com', 'B+', 'IOMA / OSSEG', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Empl. Administrativa / Instr. Fitness', 'Municipalidad de Escobar', NULL, '0348-4430496', NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (575, NULL, NULL, 'Redoni', 'Marcos  ', NULL, NULL, '16.742.274', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (576, NULL, NULL, 'Reyes', 'Lucila  ', '23/12/1981', 'Arg', '29.093.104', '27290931040', 'Bolivar 2790 ( 1686) Hurlingam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1562741637', NULL, 'lucilareyes81@hotmail.com', 'A+', 'GALENO', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (577, NULL, NULL, 'Riestra', 'Ana Noelia ', NULL, NULL, '33.021.235', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (578, NULL, NULL, 'Rivas', 'Carina Maria ', '15/01/1972', 'Arg', '18.721.654', '27187216546', 'Mendoza 1825 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4495437', '0111553793215', NULL, NULL, NULL, 'Maestranza', NULL, NULL, NULL, NULL, NULL, 'Primario', NULL, 'Empleada domestica', 'Mayling', NULL, '0230-4464033', NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (579, NULL, NULL, 'Rizzo', 'Verónica  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'chosh07@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (580, NULL, NULL, 'Robacio', 'Elena Haydee ', '18/08/1961', 'Arg', '16.145.179', NULL, 'Ruta 25 km 75 Country San Diego Mza16 Lote03 - Moreno Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1526558948', '1526558952', 'elenarobacio@hotmail.com', '0-', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Ter/ Univ', NULL, 'Paisajista', NULL, NULL, NULL, 'paisajeverdearq@hotmail.com', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (581, NULL, NULL, 'Rodriguez', 'Evangelina Maria Noel', '21/06/1981', 'Arg', '28.911.029', '27289110297', 'Av Independencia 4261 1°C (1226) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4981-4876', '15 4171 9834', NULL, 'evangelina_rodriguez@hotmail.com', '0-', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Lic en Turismo y Hoteleria', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (582, NULL, NULL, 'Rodriguez', 'Micaela Alejandrina ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mica_ale812@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (583, NULL, NULL, 'Rodriguez', 'Pablo  ', '03/08/1964', 'Arg', '17.030.696', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1531805228', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (584, NULL, NULL, 'Rodriguez', 'Rey Juan Manuel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brosards@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (585, NULL, NULL, 'Rodriguez', 'Sofia Paz ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sofiapazrodriguez@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (586, NULL, NULL, 'Rodriguez', 'Yamila Ines ', '05/04/1984', 'Arg', '30.927.303', '27309273031', 'Zamudio 4680 3°A CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-53853396', NULL, 'yamilairodriguez@gmail.com', 'A-', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Terciario inc: Teatro / Danzas', NULL, 'Actriz', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (587, NULL, NULL, 'Roidzaid', 'Silvana Judith ', '11/07/1973', 'Arg', '23.297.198', '27232971989', 'Vedia 1650 11° (1429) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-6335 2610', NULL, 'artefusion2014@gmail.com', 'A+', 'Medife', NULL, NULL, NULL, NULL, NULL, 'Terapeuta Artística / Artísta Plástica', NULL, 'Terapeuta', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (588, NULL, NULL, 'Rojas', 'Mirian Adriana ', '01/04/1979', 'Arg', '27.357.349', NULL, 'Juan F Seguí 3935 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-493757', '011 39451744', NULL, 'abril_01@hotmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (589, NULL, NULL, 'Romera', 'Carina  ', '17/09/1984', 'Arg', '31.200.025', '27312000259', 'Necochea 526 (2300) Rafaela Santa Fe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0341 15 5141288', '0341 15 5141288', 'kariromera@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (590, NULL, NULL, 'Rosa', 'Maria Cecilia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 1556298482', NULL, 'mariaceciliarosa@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (591, NULL, NULL, 'Rosalez', 'Maria Rosa ', '23/07/1977', 'Arg', '26.104.928', '27261049282', 'Bataglia 252 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4563318', '0230 456 3318', NULL, 'padma@outlook.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario: Diego U. Broel (Tucumán)', NULL, 'Profesora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (592, NULL, NULL, 'Roselli', 'María Clara ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (593, NULL, NULL, 'Rosso', 'Remon Fedra ', '26/10/1983', 'Española', '93.518.319', NULL, 'Viamonte 1874 (1669) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02320-658118', '01115-56901481', NULL, 'fedra_r@yahoo.com.ar', '0+', 'Accord Salud 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (594, NULL, NULL, 'Rotondo', 'Aida Andrea ', '22/06/1973', 'Arg', '23.469.278', '27234692785', 'Mario Bravo 1165 (1186) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3689 7440', NULL, 'fitandrearotondo@gmail.com', 'A', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Licenciatura en Publicidad', NULL, 'Instr. Pilates', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (595, NULL, NULL, 'Ruiz', 'Sofia Belen ', '01/01/1987', NULL, '32.743.092', NULL, 'Marquez de Loreto 1861 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5146-9197', NULL, 'ruiz.sofia@hotmail.com', 'B+', 'UAI Salud', NULL, NULL, NULL, NULL, NULL, 'ISEC', NULL, 'Administración', 'Big Ben', NULL, NULL, 'info@bigbendesarrollos.com', 'FALSO', 'FALSO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (596, NULL, NULL, 'Rusiñol', 'Silvina Andrea ', '23/09/1966', 'Arg', '18.098.378', '27180983789', 'Acc Oeste Km 50,5 Country Las Lajas UF185 (1748) GralRodrigu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-5836-5745', NULL, 'silvinarusinol@hotmail.com', 'A+', 'Accord Salud', NULL, NULL, NULL, NULL, NULL, 'Instrumentacion Quirurgica', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (597, NULL, NULL, 'Saglietti', 'Valeria  ', '08/07/1988', 'Arg', '33.448.406', '27334484063', 'Salta 928 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6427 3098', '15 6427 3098', 'valeria.saglietti@hotmail.com', NULL, 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (598, NULL, NULL, 'Salandria', 'Luciana Noemi ', '02/11/1985', 'Arg', '31.934.413', '27319344131', 'Paraguay 5500 4ºC (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'lusalandria@gmail.com', NULL, 'OSMATA', NULL, NULL, NULL, NULL, NULL, 'Secundario EGEOR', NULL, 'Administrativo', 'Chevrolet', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (599, NULL, NULL, 'Salotti', 'Mirna Vanesa ', '06/04/1971', 'Arg', '22.147.301', '27221473014', 'H. Yrigoyen 2147 1°D (1089) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '49529520', '15 6541 2457', NULL, 'mirsalotti@yahoo.com.ar', '0+', 'OSPOCE', NULL, NULL, NULL, NULL, NULL, 'Profesora de Educación Especial', NULL, 'Orient. Gabinete Psicoped./ Resp integrac escolar', 'Instituto Don Orirone', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (600, NULL, NULL, 'Salvador', 'Valeria  ', '16/06/1983', 'Arg', '30.065.686', '27300656868', 'San Isidro 1011 Villa Rosa - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4426746', '15 2450 0061', '15 2450 0061', 'valeryasalvador@yahoo.com.ar', '+', 'Accord Salud 310', NULL, NULL, NULL, NULL, NULL, 'Univ: Comercio Exterior', NULL, 'Administración', 'Pilar Cargo', NULL, '0230-4490800', 'vsalvador@pilarcargo.com.ar', 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (601, NULL, NULL, 'Sanchez', 'Camila  ', '05/03/1986', 'Arg', '32.191.615', '27321916150', 'Conde Zeppelin 6515 (1684) Palomar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 23203054', NULL, 'sanchez_camila@hotmail.com', '0+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Abogada', 'Defensoría Penal Poder Judicial', NULL, '4629-1331 int 104', 'casanchez@mpba.gov.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (602, NULL, NULL, 'Sanchez', 'Paula Valeria ', NULL, NULL, '30.158.407', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'paulavaleriasanchez@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (603, NULL, NULL, 'Sanchez', 'Zulema Noemí ', '27/01/1959', 'Arg', '12.928.002', NULL, 'Champagnat 1600 Lote 13 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304663913', '0111557721973', NULL, 'zulema-59@hotmail.com', 'A+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (604, NULL, NULL, 'Santagada', 'Marta Elena ', '07/09/1979', 'Arg', '27.464.354', '23274643544', 'Formosa 283 3° 6 (1424)', NULL, NULL, NULL, NULL, NULL, NULL, '49034409', '15 3933 9876', NULL, ' martasantagada@gmail.com', 'A+', 'Accord 210', NULL, NULL, NULL, NULL, NULL, 'Hoteleria', NULL, 'Reservations', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (605, NULL, NULL, 'Santiago', 'Silvia Andrea ', '21/11/1980', 'Arg', '28.451.113', NULL, 'Curapaligüe 441 18 H (1406) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '27284511137', '297-4012733', NULL, 'yukonsanti@Yahoo.com.ar', 'A+', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Administrativa - Cdor Publ.', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (606, NULL, NULL, 'Saqueta', 'Melo Monica Beatriz', '08/12/1974', 'Arg', '24.037.667', '27240376674', 'Sara Maqueda 6788 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1166215888', NULL, 'monicasaquetamelo@gmail.com', 'A+', 'Centro Med. Pueyrred', NULL, NULL, NULL, NULL, NULL, 'UBA', NULL, 'Medica Pediatra', 'Munic Malvinas Argentinas / OSPIT', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (607, NULL, NULL, 'Sardo', 'Amelia Margarita ', '14/03/1948', 'Arg', ' 5.765.157', NULL, 'Paso de los Andes 3687 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-556218', '15-64114020', NULL, 'amelia.sardo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (608, NULL, NULL, 'Saucedo', 'Carmen Itati ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '27177178271', '11 3386 2822', NULL, 'roalvarez_90@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (609, NULL, NULL, 'Scachi', 'Cinthya Verónica ', NULL, NULL, '20.392.030', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (610, NULL, NULL, 'Schiratti', 'Maria Cristina ', NULL, NULL, '16.852.626', '27168526267', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0341-156372089', NULL, 'mcschiratti@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (611, NULL, NULL, 'Schnorr', 'Maria Alejandra ', '15/05/1983', 'Arg', '30.326.610', '27303266106', 'Niceto Vega 5841 4°A (1414) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-6202-5446', NULL, 'maschnorr@gmail.com', 'A+', 'OSDEPYM', NULL, NULL, NULL, NULL, NULL, 'Lic Cs. De la Comunicación Social', NULL, 'Prof de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (612, NULL, NULL, 'Schupak', 'Irene Rocío ', '24/03/1985', 'Arg', '31.375.017', '27313750170', 'San Miguel 1335 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-407380', '011-15-65225549', NULL, 'ireschupak@gmail.com', NULL, 'Union Personal', NULL, NULL, NULL, NULL, NULL, 'Profesora de Ed Física', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (613, NULL, NULL, 'Scifo', 'Silvana Lucia ', '09/10/1981', 'Arg', '28.873.354', NULL, 'De la Visitación 671 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4430316', '011 15 54773068', NULL, 'silusci-17@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Técnica Radiologa', 'Imágenes Concord', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (614, NULL, NULL, 'Seguer', 'María Cecilia ', NULL, NULL, '34.933.878', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (615, NULL, NULL, 'Senn', 'Daniela Clases Viviana', '11/04/1991', 'Arg', '36.236.940', '27362369407', 'Chiclana 7157 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-653370', '1550555379', NULL, 'darqui_89@hotmail.com', '+', 'OSPE A604', NULL, NULL, NULL, NULL, NULL, 'Asistente de RRHH', NULL, 'Recepcionista', 'Dieser San Miguel', NULL, NULL, 'lamercedpilar@lamercedpilar.com', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (616, NULL, NULL, 'Serna', 'Sanchez Ingrid Rocío', '03/10/1968', 'Colombiana', '94.704.220', NULL, 'E. Mitre 1163 (1824) Lanus', NULL, NULL, NULL, NULL, NULL, NULL, '42473566', '1133925235', NULL, 'martinezines841@yahoo.com.ar', 'A+', 'Cobermed', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (617, NULL, NULL, 'Silbergleit', 'Daniela  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (618, NULL, NULL, 'Silva', 'Franco Diana Lucia', NULL, NULL, '94.641.707', '27946417071', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dianasilvafranco@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (619, NULL, NULL, 'Smolares', 'Carmen  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (620, NULL, NULL, 'Soengas', 'Muñiz Candela ', '17/08/1995', 'Arg', '39.095.447', '27390954471', 'Ruta 4 km4 Country C Los Cardales n° 430 (2314) Campana', NULL, NULL, NULL, NULL, NULL, NULL, '02304525383', '15 5049 0797', '15 5049 0797', 'candesoengas@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'USAL (cursando)', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (621, NULL, NULL, 'Sosa', 'María Ines ', '26/02/1979', 'Arg', '27.086.944', NULL, 'Schubert 5888 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-472361', '15-59428411', NULL, 'mariainsosa@gmail.com', 'A+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Lic en Gestión de RRHH', NULL, 'Analista Sr de RRHH', NULL, NULL, NULL, 'misosa@klabin.com.ar', 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (622, NULL, NULL, 'Soto', 'María del Carmen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (623, NULL, NULL, 'Steckler', 'Karina Vanessa ', '25/12/1977', 'Arg', '26.663.425', '27266634256', 'Ruta 4 km 5,5 Los Robles L101 - Village Cardales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-6465-1977', NULL, 'karynasteckler@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (624, NULL, NULL, 'Stelluto', 'Maria Florencia ', '09/01/1991', 'Arg', '35.532.450', '27355324503', 'Trole 1108 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, '4623-2034', '15-3810-0559', NULL, 'mf.stelluto@gmail.com', 'A+', 'Osecac', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (625, NULL, NULL, 'Stuart', 'Ignacio Sabas ', NULL, NULL, '28.735.358', '20287353589', 'Buen Viaje 460 (1708) Moron', NULL, NULL, NULL, NULL, NULL, NULL, '11-4629-9213', NULL, NULL, 'stuartignacio@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'VERDADERO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (626, NULL, NULL, 'Suares', 'Maria Laura ', '19/03/1965', 'Arg', '17.603.127', NULL, 'Brasil 123 loft 28 1º piso (1063) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-50498241', NULL, 'laurasuares@gmail.com', NULL, 'Hospital Aleman', NULL, NULL, NULL, NULL, NULL, 'Arquitecta UBA', NULL, 'Profesora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (627, NULL, NULL, 'Sulle', 'Veronica Evangelina ', '13/08/1973', NULL, '23.529.823', '27235298231', 'Barrio El Jagüel - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6132-8822', NULL, 'veronicasulle4@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Terapeuta', 'Independiente', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (628, NULL, NULL, 'Taboada Pintos', 'Carmen Noelia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'carmentaboada093@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (629, NULL, NULL, 'Tejeda', 'Claudia Noemi ', '07/06/1983', 'Arg', '31.329.068', '27313290684', 'Uruguay 3877 1° (1849) Claypole Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '42366172', '1557174443', NULL, 'claudiatejeda@gmail.com', 'B+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Atencion al cliente', 'Cablevision', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (630, NULL, NULL, 'Tezza', 'Fabiana  ', '26/11/1964', 'Arg', '17.203.522', NULL, 'Francia 96 (1635) Derqui - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1541925747', NULL, 'fabitezza@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (631, NULL, NULL, 'Torre', 'Alicia  ', NULL, NULL, '14.335.974', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (632, NULL, NULL, 'Torres', 'Marcelo Eduardo ', '17/12/1977', 'Arg', '26.331.913', '20263319134', 'Ecuador 4745 (1669) Del Viso Bo Solares del Norte', NULL, NULL, NULL, NULL, NULL, NULL, '02320-659871', '11 55743358', NULL, 'ferrostar-mym@hotmail.com', 'Rh+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Comerciante', 'Ferrostar', NULL, '1135427638', NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (633, NULL, NULL, 'Toscani', 'Natalia Raquel ', '05/12/1973', 'Arg', '23.572.807', '27235728074', 'M. Orientales 716 (1714) Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '4661-5036', '15 5416 3656', NULL, 'nataliatoscani@hotmailcom', 'B+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Arquitecta', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (634, NULL, NULL, 'Valente', 'Romina  ', NULL, NULL, '27.086.642', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (635, NULL, NULL, 'Vanelli', 'Ana Maria ', '12/12/1958', 'Arg', '12.714.253', NULL, 'Barrio Los Jasmines lote 190 - Pilar del Este (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-4445-7681', NULL, 'anamariavanelli@yahoo.com.ar', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (636, NULL, NULL, 'Varas', 'Carolina  ', '03/03/1982', 'Arg.', '29.091.587', '27290915878', 'Italia 2173 2°A Avellaneda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1541610320', NULL, 'varascarolina@hotmail.com', 'A+', 'OSDE Binario', NULL, NULL, NULL, NULL, NULL, 'Univ: Medicina UBA', NULL, 'Emp. Administrativa', 'Itra', NULL, '4775-7992', 'info@institutoarticular.com', 'FALSO', 'FALSO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (637, NULL, NULL, 'Vazquez', 'Daniela  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (638, NULL, NULL, 'Veloso', 'Saravia Mariana ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (639, NULL, NULL, 'Verminetti', 'Marcela Fabiana ', '05/09/1976', 'Arg', '25.525.027', '27255250278', 'Avellaneda 1043 (6720) San Andres de Giles', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0232515687959', '0232515685646', 'marchevermi@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Docente', 'DGCyE', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (640, NULL, NULL, 'Vezzuci', 'Maria Alejandra ', '26/10/1960', 'Arg', '14.188.644', NULL, 'Necochea 3464 (1667) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '03484639212', '11 49496208', NULL, 'trama_co@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Maestra', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (641, NULL, NULL, 'Vignati', 'Maria Victoria ', '09/08/1963', 'Arg', '16.520.648', '27165206482', '2° Rivadavia 19375 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4629-5196', '1538126429', NULL, 'victovi36@gmail.com', '0+', 'OCECAC', NULL, NULL, NULL, NULL, NULL, 'Diseñadora', NULL, 'Enseñanza Artística', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (642, NULL, NULL, 'Vilar', 'Veronica Vivian ', '05/02/1961', 'Arg', '17.606.196', '27176061966', 'Valentin Gomez 775 Derqui', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-61313817', NULL, 'veronicapilates@hotmail.com', NULL, 'MEDICUS', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Instructora Técnicas de Gimnasia', 'Sport Club Megatlon', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (643, NULL, NULL, 'Villadangos', 'Cintia  ', '28/03/1979', 'Arg', '27.271.584', '27272715845', 'O´Connor 1175 Derqui', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3690 4346', '15 3690 4346', 'c.villadangos1979@gmail.com', '0+', 'UTGRA', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Masajista', 'Sheraton Hotel', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (644, NULL, NULL, 'Villalba', 'Lopez Emilia ', '22/05/1965', 'Paraguaya', '92.659.529', NULL, 'Suipacha 156 (1620) M Sabio Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11 5248 0162', NULL, 'mililopez123123@gmail.com', 'Rh+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (645, NULL, NULL, 'Villar', 'Magdalena  ', '19/01/1997', 'Arg', '40.133.963', NULL, 'Saravi 2951 B. PilarJoven, La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0230--474060', NULL, NULL, 'magdalenavillars@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (646, NULL, NULL, 'Viscosa', 'María Laura ', NULL, NULL, '24.747.891', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (647, NULL, NULL, 'Voigt', 'Perez Debora Anabella', '02/07/1987', 'Arg', '32.861.498', NULL, 'Lago Lacar 156 (1629) Manzanares - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304499161', '15-34684098', NULL, 'legolascay@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Prof de Educación Inicial', NULL, 'Prof de Educación Inicial', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (648, NULL, NULL, 'Wagner', 'Maria Lujan ', '22/09/1975', 'Arg', '24.786.271', '23247862714', 'Valparaiso 390 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4663881', '15 63073548', NULL, 'mlujanw@outlook.com', 'A+', 'C. Médico Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Lic en Psicologia incompleto', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (649, NULL, NULL, 'White', 'Benjamin  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'benjaminwhite89@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (650, NULL, NULL, 'Woschnagg', 'Rosemarie  ', '01/03/1942', 'Arg', ' 4.453.111', NULL, 'Chile 1891 casa 10 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '01167058596', '2304644903', 'algaro@usa.com', '-', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Maestra Jardinera', NULL, 'Jubilada - Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (651, NULL, NULL, 'Zabala', 'Romina Silvana ', '09/03/1977', 'Arg', '25.879.152', NULL, 'Tortugas Golf C. 1953 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-476335', '15-38050600', NULL, 'romipdl@hotmail.com', 'A+', 'Banco  Provincia', NULL, NULL, NULL, NULL, NULL, 'Adm. Emp en curso / Psicología en curso', NULL, 'Ama de casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (652, NULL, NULL, 'Zanni', 'Marta Esther ', '25/01/1963', 'Arg', '16.146.640', '27161466407', 'Calle 505 entre 524 y 526 (6608) Mercedes', NULL, NULL, NULL, NULL, NULL, NULL, '02324-430166', '02324-15-474967', NULL, 'gabriel2425@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas VALUES (653, NULL, NULL, 'Zeballos', 'Jesica  ', '03/10/1988', 'Arg', '34.136.040', '23341360404', 'Ruben Dario 786 PB (2813) Pavon Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02304482379', '0111562818582', NULL, 'jesicazeballos@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
-INSERT INTO temp_personas VALUES (654, NULL, NULL, 'Zekas', 'Silvana  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'FALTA FICHA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (276, NULL, NULL, 'Abalos', 'Nestor Ariel ', '06/03/1987', 'Arg', '28772648', '20287726482', 'M. Miguens 5879 Fdo (1682) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '4844-4843', '11-40449012', NULL, 'ness-pop@outlook.com', '0+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Auxiliar A Textil', NULL, NULL, NULL, 'nabalos@penguinargentina.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (278, NULL, NULL, 'Abeijon', 'Soledad  ', NULL, NULL, '25492690', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (300, NULL, NULL, 'Barcia', 'Cristian Daniel ', NULL, NULL, '35143390', NULL, 'Quintanilla 1445 (1611) Don Torcuato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'cristian.barcia@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', NULL, NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (290, NULL, NULL, 'Ametller', 'Andrea Fabiana ', '23/02/1972', 'Arg', '22444059', '27224440591', '9 de Julio 450 (2740) Arrecifes', NULL, NULL, NULL, NULL, NULL, NULL, '0248-450781', '02478 15 407713', NULL, 'andreaametller@hotmail.com', 'A+', 'OSAM', NULL, NULL, NULL, NULL, NULL, 'Profesora', NULL, 'Profesora', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (291, NULL, NULL, 'Aneiros', 'Soledad  ', '12/07/1981', 'Arg', '28929604', NULL, 'Falucho 1518 (1623) Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'caradchimba@gmail.com', NULL, 'Accord Salud', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Comerciante / Artesana', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (294, NULL, NULL, 'Arias', 'Silvina Antonella ', NULL, NULL, '36696786', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (296, NULL, NULL, 'Baez', 'Pabla  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (297, NULL, NULL, 'Baiocchini', 'Ernesto Julio ', '12/09/1963', 'Arg', '16809803', NULL, 'Champagnat 1600 Lote 13 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '023044663913', '1557721973', NULL, 'juliobaio@hotmail.com.ar', 'A+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (298, NULL, NULL, 'Balduzzi', 'Graciela Beatriz ', '31/01/1968', 'Arg', '20019878', '27200198781', 'Ruta 9 km 86 UF 36 (2800) Zarate', NULL, NULL, NULL, NULL, NULL, NULL, '03487-570740', '011-15-5151-8643', NULL, 'gbalduzzi@toyota.com.ar', '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Contador Público', NULL, 'Adm en Toyota', 'Toyota', NULL, NULL, 'gbalduzzi@toyota.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (301, NULL, NULL, 'Baretto', 'Constanza  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (302, NULL, NULL, 'Barrios', 'Silvina  ', '22/02/1978', 'Arg', '26567272', NULL, 'Vivaldi 4145 (1629) Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4385125', '1558254044', NULL, 'silvibarrios@live.com.ar', NULL, 'Medife', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada', 'Grasatto Pilar', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (304, NULL, NULL, 'Bartoli', 'Tomas  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (305, NULL, NULL, 'Basabe', 'Jesica  ', '26/01/1988', 'Arg', '33633774', NULL, 'Sabogal 1680 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320407673', '0111564888136', NULL, 'yesi_b21@hotmail.com', 'A+', 'Swiss Med/Docthos', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (307, NULL, NULL, 'Bassetto', 'Luz Maria ', '27/04/1971', 'Arg', '22001266', '27220012668', 'Golfers GC 2950 UF D6 (1667) M. Alberti Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4639192', '011-15-50149987', NULL, 'luz.bassetto@gmail.com', 'A+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Prof y Traductora Ingles', NULL, 'Traductora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (314, NULL, NULL, 'Blanco', 'Mirta Elena ', NULL, NULL, NULL, '27144621900', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3619 5825', NULL, 'bmirtaelena@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (321, NULL, NULL, 'Buraglia', 'Alejandro Martin ', '17/12/1971', 'Arg', '22402394', NULL, 'Moreno 1831 (3202) Concordia - Entre Ríos', NULL, NULL, NULL, NULL, NULL, NULL, '0345-431-0144', '0345-154053075', NULL, 'martinburaglia@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Contador Público', NULL, 'Contador Público', NULL, NULL, '0345-431-0144', NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (323, NULL, NULL, 'Burgos', 'Celeste Agustina ', '17/08/1992', 'Arg', '37346744', '27373467443', 'Urcelay 1005 (2812) Exaltación de la Cruz', NULL, NULL, NULL, NULL, NULL, NULL, '02304585512', NULL, NULL, 'celes_teb@hotmail.com', 'A+', '-', NULL, NULL, NULL, NULL, NULL, 'Prof Educación Física', NULL, 'Independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (324, NULL, NULL, 'Bustamante', 'Angeles  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (326, NULL, NULL, 'Cabaleiro', 'Julieta  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'julieta_caballeroo@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (327, NULL, NULL, 'Cabaleiro', 'Maricel  ', '27/11/1978', 'Arg', '27215355', NULL, 'Ruta 8 km 56,5 Estancias del Rio lote3 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304404563', NULL, NULL, 'cabaleiromaricel@gmail.com', '0-', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (329, NULL, NULL, 'Callealta', 'Paola  ', NULL, NULL, '20619227', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1565390909', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (331, NULL, NULL, 'Campos', 'Jaqueline  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'camposje@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (347, NULL, NULL, 'Chodie', 'Jorge  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (354, NULL, NULL, 'Coman', 'Milton Cesar ', NULL, NULL, NULL, NULL, 'Cordoba 945 1B Ing. Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-6115-7899', NULL, 'wakemilton@yahoo.com.ar', '0+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Tecnico de Laboratorio', NULL, 'Analista de control de calidad', 'Biogenesis Bagó', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (355, NULL, NULL, 'Correa', 'Claudia Alejandra ', '26/07/1981', 'Arg', '28756463', NULL, 'Sarmiento 1075 (1667) M Alberti Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5669 1147', NULL, 'clauchis_05@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (451, NULL, NULL, 'Hernando', 'Luciana  ', NULL, NULL, '27616552', NULL, 'Rosario', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (356, NULL, NULL, 'Cortes Ripoll', 'Antonio Jose Manuel', '15/03/1989', 'Arg', '34472124', '20344721247', 'Pedro Cabral 1281 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5177 1811', '15 5177 1811', 'antoniojmcr@hotmail.com', '0-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Operador', 'CCU Arg', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (389, NULL, NULL, 'España', 'Agustina  ', '26/03/1991', 'Arg', '35657497', '27356574970', 'Chubut 415 (1631) Villa Rosa - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1560524429', NULL, 'agustina.espana@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (390, NULL, NULL, 'Faces', 'Antonela Laura ', '18/02/1988', 'Arg', '33489875', NULL, 'Champagnat 740 Las Calandrias 11C - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1544184927', '1561691025', 'antonela.faces@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'U.N. Quilmes', NULL, 'Lic en Comercio Exterior', 'Mahle Arg (Garin)', NULL, NULL, 'antonela.faces@ar.mahle.com', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (391, NULL, NULL, 'Fafian', 'Florencia Paula ', '20/11/1976', 'Arg', '25578127', NULL, 'Zebruno 910 - Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3258 4494', '15 3258 4494', 'florenciafafian@gmail.com', NULL, 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Diseño de Interiores', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (393, NULL, NULL, 'Favier', 'Dubois Eduardo Mario', '18/04/1952', 'Arg', '10373256', NULL, 'Parana 1243 11B (1018) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4382-0973', '1544936977', NULL, 'emfavierdubois@favierdubois *', 'A+', 'Poder Judicial', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (394, NULL, NULL, 'Favier', 'Sofia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (419, NULL, NULL, 'Gavilán', 'Cecilia Ana Inés', '01/10/2015', 'Arg', '36529275', '27365292758', 'Las Margaritas 678 PB2 (1669)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5924 7112', '15 5924 7112', 'ceecil.g@gmail.com', '0+', 'Sancor Salud', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Encargada de Local', 'Third Time SA', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (421, NULL, NULL, 'Gil', 'Marcelo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (422, NULL, NULL, 'Gilio', 'Florencia Valeria ', '02/08/1989', 'Arg', '34671245', '27346712452', 'Frias 7503 (1655) JLSuarez Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6786 9001', '15 6786 9001', 'flor.gilio@gmail.com', '0+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (423, NULL, NULL, 'Gimenez', 'Lilian Edith ', '08/02/1959', 'Arg', '13124549', '27131245497', 'Paunero 4470 (1665) Jose C Paz Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-6700-9765', NULL, 'liliangimenez2012@gmail.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (424, NULL, NULL, 'Giosa', 'Analia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'analiagiosa@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (425, NULL, NULL, 'Giusti', 'Cristina  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (456, NULL, NULL, 'Ibañez', 'Ana Lorena ', '28/10/1972', 'Arg', '23046967', '27230469674', 'M. Alberti 889 (1714) Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '4624-2329', '15 4974 2466', NULL, 'ana-fiore@hotmail.com', 'A+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Administrativa', 'Ruedas Hofer', NULL, '4443-1462', 'ana@ruedashofer.com.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (458, NULL, NULL, 'Insaurralde', 'Lorena Esther ', '22/01/1975', 'Arg', '24366814', NULL, 'Asuncion 1204 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230 15 4350678', NULL, 'lorena_insaurralde75@hotmail.com', '0+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Cursando Psicología', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (459, NULL, NULL, 'Itxassa', 'Paola Edith ', '10/10/1974', 'Arg', '23709758', '27237097586', 'Davabe 2830 Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5581-2078', NULL, 'paolaitxassa@gmail.com', NULL, 'APSOT', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (461, NULL, NULL, 'Kamerer', 'Jara Gabriel ', '05/09/1988', 'Paraguaya', '94610016', '20946100162', 'Finochietto 4846 (1663) José C Paz', NULL, NULL, NULL, NULL, NULL, NULL, '02320-441613', '15 5042 7563', NULL, 'gabrieljc869@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (462, NULL, NULL, 'Kierniki', 'Paula  ', '08/03/1991', 'Arg', '35970015', '27359700151', 'Los Crisantemos 475 E110 (1657) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3097 9058', '15 3097 9058', 'paukier@hotmail.com', '0+', 'Austral Salud', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (463, NULL, NULL, 'Kiverling', 'Gabriela  ', '26/07/1962', 'Arg', '16126381', NULL, 'La Rioja 1551 UF n°23 Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1550442005', NULL, 'gabykiv@gmail.com', NULL, 'Docthos', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'independiente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (465, NULL, NULL, 'Kuzmik', 'Carola Marina ', '01/05/1972', 'Arg', '22702289', '27227022898', 'Miero 1969 (1744) Moreno Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-67133205', NULL, 'carola.kuzmik@gmail.com', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Instructora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (466, NULL, NULL, 'Lago', 'Alfredo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (468, NULL, NULL, 'Ledezma', 'Irene  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (487, NULL, NULL, 'Manso', 'Laura Soledad ', '08/05/1986', 'Arg', '32250603', '27322506037', 'Santa Rosa Esq Magallanes S/N (1919) Garín', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4029 6395', NULL, 'manso_laura@yahoo.com.ar', NULL, 'W. Hope', NULL, NULL, NULL, NULL, NULL, 'Lic en Adm de Empresas', NULL, 'Lic en Adm de Empresas', '3M', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (488, NULL, NULL, 'Marchesan', 'Solana Victoria ', NULL, NULL, '35094578', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 61776606', NULL, 'sol_marchesan@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (489, NULL, NULL, 'Marchetti', 'Myriam Beatriz ', '28/12/1964', 'Arg', '17424402', '27174244028', 'Juan F. Segui 3926 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-625753', '0113473-1464', NULL, 'mymimarchetti@hotmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (500, NULL, NULL, 'Mc Cormack', ' Silvina ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '27244966662', '15 5375 5347', NULL, 'silmccormack@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (19, 19, 'Pilar', 'MALINOVSKI', 'VIVIANA PATRICIA', '1973-08-31', 'ARG', '23414771', '23234147714', 'EL MAROTE', '1948', NULL, 6703, 'PARADA ROBLES', 'BS AS', 'ARG', '232347115', '111568471020', '111568471020', 'VIVIMILLO@GMAIL.COM', 'A+', 'SWISS MEDICAL', 'SI', 'FIBROMIALGIA', 'COMPLETO', 'COMPLETO', 'DERECHO LABORAL UBA', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '1900-01-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (24, 24, 'Pilar', 'BOVE', 'Lucrecia Amada ', '1970-06-14', 'ARG', '21681489', NULL, 'BARRIO CERRADO LA DELFINA', '115', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '0111562417070', '4480003', 'lucrepenayo@gmail.com', '0+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, 'SI', 'ASOCIACION INTALIANA', 'AMA DE CASA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'CURSA', '1900-01-01', 'SI', '2017-08-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (176, 177, 'CASTELAR', 'Marin', 'Espinola Clara ', '25/11/1976', 'ARG', '25675510', NULL, 'Castelli 1063 Ciudadela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111569270028', NULL, NULL, 'B+', 'OSDE', NULL, 'CANCER DE OVARIOS HACE 26 AÑOS, VACIARION, NO QUIMIO', NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'GRAFOANALISTA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (179, 180, 'PILAR', 'Ramos', 'Andres Horacio ', '09/03/1972', 'Arg', '22653674', '20226536745', 'Manuel Ugarte 2261 7C (1428) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4782 1895', NULL, ' andres_ramos88@yahoo.com', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Analista de Sistemas', NULL, 'Consultor', 'Telefónica', NULL, '43323854', 'andres.ramos@telefonica.com', 'VERDADERO', 'VERDADERO', 'SI', NULL, 'CURSA', NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (180, 181, 'PILAR', 'Hernandez', 'Marta Silvina ', '27/05/1971', 'Arg', '22152331', '27221523313', 'Ramón Franco 4062 (1826) Rem. de Escalada Bs As.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15  5707 3087', NULL, 'silvinamhernandez16@gmail.com', 'A+', 'Emersur', NULL, NULL, NULL, NULL, NULL, 'Cursando en Universidad', NULL, 'Contador Publico', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (283, NULL, NULL, 'Aguirre', 'Luciana Valeria ', '07/12/1978', 'Argentina', '27039558', '27270395584', 'Haiti 4143 (1407) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1163051004', NULL, 'aguirreluciana@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Productora de TV', NULL, 'Productora de TV', 'Fox', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (288, NULL, NULL, 'Alvarez', 'Emilio Sergio ', '03/11/1971', 'Arg', '22241670', NULL, 'Sarmiento 4347 Dto 10 Almagro CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1538630570', NULL, 'emilio_alvarez@hotmail.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'gastronomico', 'INEBA', NULL, NULL, 'ealvarez@ineba.net', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (289, NULL, NULL, 'Amaya', 'Natalia Soledad ', '19/03/1984', 'Arg', '30732970', '27307329706', 'Juan M. Rosas 750 (1629) Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3080 3241', '15 3080 3241', 'modeultra@hotmail.com', NULL, 'Medife', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Administrativas', 'My3 Inversiones', NULL, '02304300125', 'namaya@my3.com.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (608, NULL, NULL, 'Saucedo', 'Carmen Itati ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '27177178271', '11 3386 2822', NULL, 'roalvarez_90@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (292, NULL, NULL, 'Anitori', 'Romina Gisela ', '25/02/1977', 'Arg', '25802704', '27258027049', 'Pte Peron 1137 (1631) Villa Rosa, Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6161 4275', '15 6161 4275', 'rominaanitori@gmail.com', NULL, 'SMG-Docthos', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Hospital Austral', NULL, '0230-4482069', NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (293, NULL, NULL, 'Antognazza', 'Patricia Fermina ', '01/01/1956', 'Arg', '12079301', '27120793018', 'Av del Libertador 108 1°A (1001) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '432200310', '15 4445 0718', '15 4445 0718', 'pantogna@gmail.com', 'A+', 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Empresaria', 'Servicare SRL', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (295, NULL, NULL, 'Aveiro', 'Barbara Regina ', '28/01/1985', 'Arg', '31464887', '27314648876', 'San Blas 3175 (1416) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6589 0374', NULL, 'barbaraaveiro@gmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (299, NULL, NULL, 'Barbieri', 'Paula Andrea ', '07/05/1979', 'Arg', '27333276', '27273332761', 'Australia 2409 (1614) El Talar - Tigre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 2300 9601', '15 2300 9601', 'paula.barbieri.2@volvo.com', 'A+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Psicologa social en curso', NULL, 'Recepcionista', 'Volvo Trucks y Buses Arg', NULL, '03327-415667', 'paula.barbieri.2@volvo.com', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (303, NULL, NULL, 'Bartoletti', 'Lucia  ', '20/01/1981', 'Arg', '28643224', '27286432242', 'French 30441 (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4805-2998', '1567664491', NULL, 'luciabartoletti@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Fotografía Creativa Esc. A. Goldstein', NULL, 'Secretaria - Fotografa', 'Instituto Psicosomático', NULL, NULL, 'psicosomatica.ipba@gmail.com', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (521, NULL, NULL, 'Muñoz', 'Maria Natalia ', '21/11/1980', 'Arg', '28479033', '27284790338', 'Av Congreso 4891 1°P (1431) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4542-1266', '15-3380-4661', NULL, 'mnatalia.mnz@gmail.com', '0+', 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Dalde Blindajes', NULL, '4544-4763', 'nmunoz@dalde.com.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (523, NULL, NULL, 'Muñoz', 'Nerina Iris ', '21/12/1979', 'Arg', '27704136', '27277041362', 'Milan 1802 (1706) Haedo Buenos Aires', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1158740440', NULL, 'irisnerina@yahoo.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Profesora Educ Física', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (524, NULL, NULL, 'Muotri', 'Maria Cristina ', '29/03/1970', 'Arg', '21569543', NULL, 'Sourgnes 1736 (1684) El Palomar', NULL, NULL, NULL, NULL, NULL, NULL, '54332897', '1539152199', '46503405', 'cristinamuotri29@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (526, NULL, NULL, 'Neironi', 'Mauricio Manuel ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (527, NULL, NULL, 'Nelson', 'Mariana Lorena ', '05/09/1980', 'Arg', '28307854', '27283078545', 'Chile y Jose Verdi s/n uf 19 La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0204300457', '15 4538 4438', '15 4538 4438', 'marianitanel@yahoo.com.ar', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Escenografa', NULL, 'Escenografa', NULL, NULL, NULL, 'info@mariananelson.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (528, NULL, NULL, 'Nicolosi', 'Fabiana Alejandra ', '17/03/1975', 'Arg', '24434635', NULL, 'Chubut 1353 UF 18 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4494364', '15- 5455 5047', NULL, 'fabiananicolosi@hotmail.com', '0+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Magisterio Doc Inicial', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (529, NULL, NULL, 'Noejovich', 'Yanina Leandra ', '24/06/1978', 'Arg', '27085845', NULL, 'Av. Mitre s/n Lote j1 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1151488111', NULL, 'yaninaleandra@hotmail.com', 'A-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Ter/ Univ', NULL, 'Profesora de Teatro', 'Top3', NULL, NULL, 'top3pilar@gmail.com', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (530, NULL, NULL, 'Nuttini', 'Daniela  ', '12/01/1965', 'Arg', '17226965', '27172269651', 'Labardere 4069 (1667) Tortuguitas Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6798 1705', '15 5618 7642', 'danielanuttini@hotmail.com', '0+', 'Maestranza', NULL, NULL, NULL, NULL, NULL, 'Diplomada en Cs Humanas', NULL, 'Ejecutiva de Cuentas', 'MA Servicios SA', NULL, '011-47113600/33', 'dnuttini@maserviciossa.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (306, NULL, NULL, 'Bassano', 'Alicia Matilde ', '08/08/1966', 'Arg', '17951713', '27179517138', '20 de Septiembre 2835 PB (1824) Lanus Oeste', NULL, NULL, NULL, NULL, NULL, NULL, '2056-4615', '155 4986552', NULL, 'aliciabassano@yahoo.com.ar', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Univ. UNLA', NULL, 'Docente', 'D.G.C y ED/Sect Ed CABA', NULL, '4247-2916', NULL, 'FALSO', 'FALSO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (322, NULL, NULL, 'Buratti', 'Gisela Lorena ', '30/11/1979', 'Arg', '27768821', '27277688218', 'Esteban Bonorino 1750 (1406) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4631-8640', '15 3219 0124', NULL, 'giselalburatti@hotmail.es', 'A+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Tecnica Optica - Contactologa', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (325, NULL, NULL, 'Buzeta', 'Noelia Florencia ', '01/07/1990', 'Arg', '35255430', '27352554303', 'Portela 2921 (1437) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '49199431', '15 6487 2323', NULL, ' noelia.buzeta@gmail.com', '0+', 'OSOCNA (Com Navales)', NULL, NULL, NULL, NULL, NULL, 'Lic en Trabajo Social en curso', NULL, NULL, 'SEDRONAR (Presidencia de la Nación)', NULL, '4320-1200 int 1113', 'nbuzeta@sedronar.gov.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (328, NULL, NULL, 'Callaey', 'Maria Del Carmen', '27/04/1962', 'Arg', '14902880', '27149028809', 'Beiro 3324 1C (1419) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '45046375', '15 6416 9178', NULL, 'mcallaey@hotmail.com', 'B+', 'Galeno Oro', NULL, NULL, NULL, NULL, NULL, 'Religiones comparadas en curso', NULL, 'Dermatocosmiatra', NULL, NULL, NULL, 'andrealuna.consultorio@gmail.com', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (337, NULL, NULL, 'Carrada', 'Ferreira M Daniela', '18/04/1963', 'Arg', '16245928', '27162459282', 'Camino de Los Angeles 204 Pilar C Campo Grande', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4638174', '0111562203220', NULL, 'daniela.carrara@hotmail.com', NULL, 'Docthos Premium', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (351, NULL, NULL, 'Cisterna', 'Belén  ', '03/06/1994', 'Arg', '38294353', '27382943533', 'San José 931 (1631) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '02304498671', '011-6587-7748', NULL, 'becisterna@gmail.com', 'B+', NULL, NULL, NULL, NULL, NULL, NULL, 'en curso USAL Lic en RRHH', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (357, NULL, NULL, 'Costa', 'Leandro Nicolas ', '19/10/1978', 'Arg', '26953185', '20269531852', 'Sanabria 1616 4 D (1407) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6650 9309', NULL, 'nicolascosta78@hotmail.com', NULL, 'UP', NULL, NULL, NULL, NULL, NULL, 'Terc/Univ en curso', NULL, 'Empleado', 'INTA', NULL, NULL, 'costaleandro@inta.gov.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (360, NULL, NULL, 'Crottollini', 'Patricia Elizabeht ', '15/04/1959', 'Arg', '12929258', '27129292585', 'Necochea 1493 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4433567', '0230-15-4556016', NULL, 'pachipatri15@gmail.com', 'B+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Prof Educación Especial', NULL, 'Terapeuta Floral', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (377, NULL, NULL, 'Diorio', 'Maria Victoria ', '21/02/1982', 'Arg', '29331531', '27293315316', 'Peron 2505 B Springdale Lote 48 BsAs', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6926 4714', '15 6926 4714', 'victoriadiorio82@gmail.com', 'A-', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Maestra', 'Colegio Santa María', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (392, NULL, NULL, 'Favano', 'Natalia  ', '15/11/1977', 'Arg', '26169887', '27261698876', 'Castroman 2292 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4627-2136', '1557007917', NULL, 'nataliafavano@gmail.com', 'B-', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'Maquilladora Profesional', 'Independiente', NULL, NULL, 'nataliafavanomakeup@gmail.com', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (395, NULL, NULL, 'Fedyszyn', 'Alicia Cristina ', '17/05/1956', 'Arg', '12021592', '27120215928', 'Cadiz 2996 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4623-0893', '1565181372', NULL, 'aliciafedyszyn@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (396, NULL, NULL, 'Fente', 'Silvia Monica ', '09/12/1967', 'Arg', '18585093', '27185850930', 'Los Jazmines 3264 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5937 9831', NULL, 'quantica2004@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Docente de Media', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (398, NULL, NULL, 'Fernandez', 'Edit Carina ', '13/04/1974', 'Arg', '23585987', '23235859874', 'Los Fresnos y Congreve Bo El Aromo Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-66351454', NULL, 'serpientegalactica1974@yahoo.com.ar', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (402, NULL, NULL, 'Fernandez', 'Moreno Emiliane ', '27/04/1994', 'Mex', '94056296', '27940562967', 'Blanco Encalada 3155 Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320556845', '0111538515641', NULL, 'emichiqui@hotmail.com', '+', 'Ctro Med Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (554, NULL, NULL, 'Perez', 'Victoria  ', '12/04/1981', 'Arg', '28810789', '27288107896', 'Calle Santa Rosa Condominio Tortugas2 Piso 202 (1619) Garin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1566230481', NULL, 'vicoperez@gmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Universidad Psicología de Palermo', NULL, 'Psicologa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (555, NULL, NULL, 'Perotti', 'Ines  ', '29/03/1951', 'Arg', ' 6711601', NULL, 'Vedia 2435 (1429) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4464125', '011-15-5015-5541', NULL, 'inesale2008@yahoo.com', '0+', 'Poder Judicial', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (609, NULL, NULL, 'Scachi', 'Cinthya Verónica ', NULL, NULL, '20392030', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (556, NULL, NULL, 'Pesce', 'Flavia Lorena ', '09/06/1975', 'Arg', '24529723', '27245297233', 'San José de Calasanz 838 1°D (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4921-3609', '15- 55829152', NULL, 'flaviapesce@yahoo.com.ar', 'B-', 'OSDE 410', NULL, NULL, NULL, NULL, NULL, 'Lic en Cs Políticas', NULL, 'Empleada', 'OSDE', NULL, NULL, 'flavia.pesce@osde.com.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (557, NULL, NULL, 'Petrina', 'Sol  ', '05/08/1992', 'Arg', '36948212', '27369482122', 'Tordillo - Highland Park CC 600 (1669) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5576-7586', NULL, 'sol.petrina@hotmail.com', 'A+', 'Medicul', NULL, NULL, NULL, NULL, NULL, 'Estudiando en USAL', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (558, NULL, NULL, 'Peverelli', 'Alpor María ', '05/01/1989', 'Arg', '34372007', NULL, 'Tucuman 914 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-67951681', NULL, 'ladelosojosabiertos@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (560, NULL, NULL, 'Piendibene', 'Luis  ', '30/05/1954', 'Arg', '10965444', NULL, 'Chubut 600 Lote 412 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-5014-1700', NULL, 'luis@piendibene.com.ar', '0+', 'Staff Medico', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (565, NULL, NULL, 'Ponce', 'Carla Josefina ', '25/08/1966', 'Arg', '17962340', NULL, 'Panamericana Km 48,500 (1629)', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4470706', NULL, NULL, 'carlajosefinaponce@hotmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Secretaria EE 501', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (420, NULL, NULL, 'Gianello', 'Perez Maria Gabriela', '04/04/1978', 'Española', '92703893', '27927038930', 'Arredondo 2686 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4623-1193', '15 6716 8555', NULL, 'mariagianello@hotmail.com', 'A-', 'Andar', NULL, NULL, NULL, NULL, NULL, 'Terciario/Universidad', NULL, 'Independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (438, NULL, NULL, 'Granero', 'Maria Ines ', '13/06/1977', 'Arg', '25026535', '27250265358', 'Moreno 860 (2760) San Antonio de Areco', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6596 6565', '15 6596 6565', 'inesitagranero30@hotmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Tecnica en Laboratorio', NULL, 'Tecnica en Laboratorio', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (449, NULL, NULL, 'Guzman', 'Claudia Beatriz ', '31/12/1970', 'Arg', '21981782', NULL, 'Echeverria 616 (1137) Don Torcuato', NULL, NULL, NULL, NULL, NULL, NULL, '27219817822', '15 6280 5946', NULL, 'claudia_guzman70@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario Compl; Ter/Univ incompl', NULL, 'Administrativa', NULL, NULL, '49194547', 'kitoc@hotmail.com', 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (452, NULL, NULL, 'Herrera', 'Claudia Alejandra ', '10/03/1967', 'Arg', '18375352', '27183753520', 'Libertador 14539 (1640) Acassuso Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '47921044', '1561493363', NULL, 'clau10.03@hotmail.com', NULL, 'Union Personal', NULL, NULL, NULL, NULL, NULL, 'Estetica Corporal', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (455, NULL, NULL, 'Iannini', 'Laura Vanesa ', NULL, NULL, '26475163', NULL, 'FALTA FICHA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (457, NULL, NULL, 'Ibarra', 'Claudia Marcela ', '21/03/1971', 'Arg', '22083518', '27220835184', 'Rosario Golf Club 2193 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '0230-657560', '15 6682 6187', '15 6682 6187', 'claumariba@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'ama de casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (460, NULL, NULL, 'Ivan', 'Elisabet Rosalia ', '22/06/1982', 'Arg', '29489606', '27294896061', 'Almafuerte 803 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5431 0350', '15-5431 0350', 'elyk.sabet@gmail.com', '0+', 'ASIMRRA', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (464, NULL, NULL, 'Kucich', 'Lombardi Andrea Cristina', '11/09/1977', 'Arg', '26081114', '27260811148', 'Agüero 1909 piso 8°24 (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4826-3855', '15-5120-5982', NULL, 'andreakucich@live.com.ar', 'B+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Terapeuta de Sonido y Color - Rel Laborales', NULL, 'Secretaria, Terapeuta de Sonido y Color', 'Estudio Swiecicki Arq', NULL, NULL, 'kucich@esarq.com.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (467, NULL, NULL, 'Larraza', 'Mariana Alejandra ', '19/08/1972', 'Arg', '22913394', '27229133948', 'Gregorio Pomar 3680 PB1 (1437) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6154 3487', NULL, 'mariaalejandralarraza@hotmail.com', 'A+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Tecnica en Turismo', NULL, 'Administrativa', 'Edesur', NULL, '4370-3861', 'malarraza@edesur.com.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (472, NULL, NULL, 'Lizondo', 'María Inés ', '06/10/1966', 'Arg', '18213893', '27182138938', 'Vergara 1851 PB6 (1828) Banfield', NULL, NULL, NULL, NULL, NULL, NULL, '20702681', '1564340185', NULL, 'milizondo@telecentro.com.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Admin/Reflexologa Podal', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (474, NULL, NULL, 'Lopez', 'Marina Edith ', '13/04/1976', 'Arg', '25103813', '27251038134', 'Revori 1069 (1852) Alte Brown Burzaco', NULL, NULL, NULL, NULL, NULL, NULL, '4299-7284', '15 5865 0080', NULL, 'vandermaru@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompl', NULL, 'Empleada Pública / Personal Trainer', 'Arba', NULL, NULL, 'melopez@arba.gov.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (481, NULL, NULL, 'Maione', 'Claudio Omar ', '24/06/1977', 'Arg', '25797659', '23257976599', 'Ing Bergallo 1190 2H (1642) San Isidro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4157 5422', '15 4157 5422', 'claudiomaione@hotmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Personal Trainer', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (491, NULL, NULL, 'Mariani', 'Maria Laura ', '30/07/1975', 'Arg', '24800241', '27248002412', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1505248 1648', '1505248 1648', 'ambar.luz@live.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terciario: Diseño de Indumentaria', NULL, 'Encargada de Local de Indumentaria', 'Maria Cher', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (496, NULL, NULL, 'Martinez', 'Yolanda Lorena ', '15/06/1987', 'Arg', '33219099', NULL, 'Tucuman 1964 (1635) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-3138-5799', NULL, 'lorenamartinez1587@hotmail.com', NULL, 'Docthos-Swiss Med', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Lic. Enfermeria', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (516, NULL, NULL, 'Montesanti', 'Lorena  ', '20/05/1976', 'Arg', '25358725', '27253587259', 'Sgo del Estero 2909 (1824) Lanus Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1541688790', NULL, 'lolimontez@hotmail.com', NULL, 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Vendedora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (525, NULL, NULL, 'Napoli', 'Frattani Mayra Yanina', '31/05/1978', 'Arg', '33189872', '23331898724', 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4414 1975', '15 4414 1975', 'maynapoli@yahoo.com.ar', '0+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'Administrativa', 'Granja Tres Arroyos', NULL, '0230-4471282', 'mnapoli@gta.com.ar', 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (532, NULL, NULL, 'Oliverio', 'Andrea Alicia ', '04/04/1975', 'Arg', '24307871', '20243078712', 'Carrion 480 (1627) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0348-449-1015', '011-15-6039-9017', NULL, 'aoliverio@imagenes.com.ar', '+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Prof Educación Física', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (590, NULL, NULL, 'Rosa', 'Maria Cecilia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 1556298482', NULL, 'mariaceciliarosa@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (591, NULL, NULL, 'Rosalez', 'Maria Rosa ', '23/07/1977', 'Arg', '26104928', '27261049282', 'Bataglia 252 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4563318', '0230 456 3318', NULL, 'padma@outlook.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario: Diego U. Broel (Tucumán)', NULL, 'Profesora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (592, NULL, NULL, 'Roselli', 'María Clara ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (593, NULL, NULL, 'Rosso', 'Remon Fedra ', '26/10/1983', 'Española', '93518319', NULL, 'Viamonte 1874 (1669) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02320-658118', '01115-56901481', NULL, 'fedra_r@yahoo.com.ar', '0+', 'Accord Salud 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (594, NULL, NULL, 'Rotondo', 'Aida Andrea ', '22/06/1973', 'Arg', '23469278', '27234692785', 'Mario Bravo 1165 (1186) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3689 7440', NULL, 'fitandrearotondo@gmail.com', 'A', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Licenciatura en Publicidad', NULL, 'Instr. Pilates', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (596, NULL, NULL, 'Rusiñol', 'Silvina Andrea ', '23/09/1966', 'Arg', '18098378', '27180983789', 'Acc Oeste Km 50,5 Country Las Lajas UF185 (1748) GralRodrigu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-5836-5745', NULL, 'silvinarusinol@hotmail.com', 'A+', 'Accord Salud', NULL, NULL, NULL, NULL, NULL, 'Instrumentacion Quirurgica', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (597, NULL, NULL, 'Saglietti', 'Valeria  ', '08/07/1988', 'Arg', '33448406', '27334484063', 'Salta 928 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6427 3098', '15 6427 3098', 'valeria.saglietti@hotmail.com', NULL, 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (598, NULL, NULL, 'Salandria', 'Luciana Noemi ', '02/11/1985', 'Arg', '31934413', '27319344131', 'Paraguay 5500 4ºC (1425) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'lusalandria@gmail.com', NULL, 'OSMATA', NULL, NULL, NULL, NULL, NULL, 'Secundario EGEOR', NULL, 'Administrativo', 'Chevrolet', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (545, NULL, NULL, 'Patera', 'Ana Beatriz ', '07/03/1967', 'Arg', '18151921', '27181519210', 'Bordabehere 2894 (1417) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '39782378', '15 6351 1307', NULL, 'anapatera@hotmail.com', '0+', 'Hospital Italiano', NULL, NULL, NULL, NULL, NULL, 'Psicopedagoga', NULL, 'Psicopedagoga', 'Escuela Infantil', NULL, NULL, 'ana.patera@yahoo.com.ar', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (610, NULL, NULL, 'Schiratti', 'Maria Cristina ', NULL, NULL, '16852626', '27168526267', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0341-156372089', NULL, 'mcschiratti@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (548, NULL, NULL, 'Pellegrino', 'Fiorella  ', '08/02/1993', 'Arg', '37249037', NULL, 'Pueyrredn 2123 (1664) José C. Paz', NULL, NULL, NULL, NULL, NULL, NULL, '02320-423701', '112636-6907', NULL, 'fiore.pellegrino@hotmail.com', 'A+', 'Swiff Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Masajista - Niñera', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (553, NULL, NULL, 'Perez', 'Elizabet Natalia ', '20/12/1981', 'Arg', '29183232', '27291832321', 'Entre Ríos 1755 (1623) I. Maschwitz', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4444775', '15 5969 7731', '15 5969 7731', 'elibetper@yahoo.com.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Univ en curso', NULL, 'Niñera / Vendedora', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (559, NULL, NULL, 'Peyron', 'Elina Marcela ', '05/03/1963', 'Arg', '16834452', '27168344525', 'Calle 111 n° 754 E/10 y 10 bis (6605) Navarro Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02227420028', '02227 15 418323', NULL, 'marpey333@hotmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'RRPP, Coord Rel Publ y Cerem.y Protocolo, Ter: Instrum.Quirurgica', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (561, NULL, NULL, 'Piñero', 'Maria Sol ', NULL, NULL, NULL, ' 27344545117', 'Viel 1125 Pb A (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mariasol.piniero@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (569, NULL, NULL, 'Puente', 'Camila Noelia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'camilapuente6@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (574, NULL, NULL, 'Razquin', 'Valeria  ', '14/12/1972', 'Arg', '22861993', '27228619936', 'Los Lirios 2491 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348 15 4348519', '0348 15 4348519', 'vale_1972@hotmail.com', 'B+', 'IOMA / OSSEG', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Empl. Administrativa / Instr. Fitness', 'Municipalidad de Escobar', NULL, '0348-4430496', NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (581, NULL, NULL, 'Rodriguez', 'Evangelina Maria Noel', '21/06/1981', 'Arg', '28911029', '27289110297', 'Av Independencia 4261 1°C (1226) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4981-4876', '15 4171 9834', NULL, 'evangelina_rodriguez@hotmail.com', '0-', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Lic en Turismo y Hoteleria', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (582, NULL, NULL, 'Rodriguez', 'Micaela Alejandrina ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mica_ale812@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (585, NULL, NULL, 'Rodriguez', 'Sofia Paz ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sofiapazrodriguez@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (595, NULL, NULL, 'Ruiz', 'Sofia Belen ', '01/01/1987', NULL, '32743092', NULL, 'Marquez de Loreto 1861 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5146-9197', NULL, 'ruiz.sofia@hotmail.com', 'B+', 'UAI Salud', NULL, NULL, NULL, NULL, NULL, 'ISEC', NULL, 'Administración', 'Big Ben', NULL, NULL, 'info@bigbendesarrollos.com', 'FALSO', 'FALSO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (546, NULL, NULL, 'Patiño', 'Gongora Santiago ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (281, NULL, NULL, 'Acosta', 'Karina  ', '06/01/1975', 'Arg', '24142582', NULL, 'Av Mitre 1000 (1633) Fatima - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304441569', '011158254042', NULL, 'acokarina@gmail.com', 'A+', 'Medife', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (282, NULL, NULL, 'Agüera', 'Judith Fabiana ', '23/05/1972', 'Arg', '22822769', '27228227698', 'Bancalari 3902 piso 627 (1617) Pacheco', NULL, NULL, NULL, NULL, NULL, NULL, '41013627', '15 6150 9975', '15 6150 9975', 'judithaguera@gmail.com', 'A+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Lic en Marketing', NULL, 'Comercial', 'El Dorado Bambú', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (284, NULL, NULL, 'Agustin', 'Yanina Beatriz ', '26/04/1982', 'Arg', '29380883', NULL, 'Cabarden 8100 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-  1554906830', '02320-474336', 'melodysax_06@hotmail.com', 'A+', '-', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Artesana - Prof de Musica', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (285, NULL, NULL, 'Alberti', 'Jesica Daniela ', '26/09/1984', 'Arg', '31251311', '27312513116', 'Av. Mosconi 3115 11°B (1419) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5422 1307', NULL, 'albertijesica@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Comunicación - UBA', NULL, 'Marketing - Asociada de Producto', 'B-MS', NULL, '5198-8204', 'jesica.alberti@bms.com', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (286, NULL, NULL, 'Alberto', 'Pablo Martin ', '08/03/1967', 'Arg', '18209591', '20182095916', 'E. de Israel 4717 10°B (1185) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4856-5043', '15 5821 6111', NULL, 'saruman@hotmail.com', NULL, 'Swiss', NULL, NULL, NULL, NULL, NULL, 'Analista de Sistemas', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (170, 171, 'CASTELAR', 'Ludueña Favot ', 'Perla Rosina', '07/01/1987', 'ARG', '32808791', '27328087915', 'Av Pte Perón 2432 2°A Haedo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111531283828', NULL, 'favotperla@hotmail.com', 'B+', 'SWISS MEDICAL', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO INCOMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (171, 172, 'CASTELAR', 'Aragon', 'Fernanda Lorena ', '10/08/1985', 'ARG', '32017935', '27320179357', 'Pasaje Bayardi 2552 1D Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111568832938', NULL, 'fernanda.lorena.aragon@gmail.com', NULL, 'OSDE', 'SI', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'INGENIERA INFORMATICA', 'TGV', NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (628, NULL, NULL, 'Taboada Pintos', 'Carmen Noelia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'carmentaboada093@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (629, NULL, NULL, 'Tejeda', 'Claudia Noemi ', '07/06/1983', 'Arg', '31329068', '27313290684', 'Uruguay 3877 1° (1849) Claypole Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '42366172', '1557174443', NULL, 'claudiatejeda@gmail.com', 'B+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Atencion al cliente', 'Cablevision', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (630, NULL, NULL, 'Tezza', 'Fabiana  ', '26/11/1964', 'Arg', '17203522', NULL, 'Francia 96 (1635) Derqui - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1541925747', NULL, 'fabitezza@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (631, NULL, NULL, 'Torre', 'Alicia  ', NULL, NULL, '14335974', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (632, NULL, NULL, 'Torres', 'Marcelo Eduardo ', '17/12/1977', 'Arg', '26331913', '20263319134', 'Ecuador 4745 (1669) Del Viso Bo Solares del Norte', NULL, NULL, NULL, NULL, NULL, NULL, '02320-659871', '11 55743358', NULL, 'ferrostar-mym@hotmail.com', 'Rh+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Comerciante', 'Ferrostar', NULL, '1135427638', NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (634, NULL, NULL, 'Valente', 'Romina  ', NULL, NULL, '27086642', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (635, NULL, NULL, 'Vanelli', 'Ana Maria ', '12/12/1958', 'Arg', '12714253', NULL, 'Barrio Los Jasmines lote 190 - Pilar del Este (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-4445-7681', NULL, 'anamariavanelli@yahoo.com.ar', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (637, NULL, NULL, 'Vazquez', 'Daniela  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (638, NULL, NULL, 'Veloso', 'Saravia Mariana ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (639, NULL, NULL, 'Verminetti', 'Marcela Fabiana ', '05/09/1976', 'Arg', '25525027', '27255250278', 'Avellaneda 1043 (6720) San Andres de Giles', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0232515687959', '0232515685646', 'marchevermi@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Docente', 'DGCyE', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (646, NULL, NULL, 'Viscosa', 'María Laura ', NULL, NULL, '24747891', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (287, NULL, NULL, 'Alippi', 'Victoria Daniela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'vicky_a5@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (320, NULL, NULL, 'Buonasena', 'Florencia  ', '19/02/1992', 'Arg', '36728750', NULL, 'Saravi s/n Los Fresnos (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1131814403', NULL, NULL, '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'UCES', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (308, NULL, NULL, 'Belli', 'Norberto  ', '01/05/1961', 'Arg', '14338485', NULL, 'Ayacucho 4036 (7600) Mar del Plata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0223 15520611', '0223 15520611', 'norbelli@hotmail.com', 'A-', NULL, NULL, NULL, NULL, NULL, NULL, 'Instructor de Pilates', NULL, 'Instructor de Pilates', 'Pilates Urbano', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (309, NULL, NULL, 'Berardi', 'Daniel Salvador ', '19/12/1969', 'Arg', '20736931', '20207369315', 'Yerbal 2357 piso 3 (1408) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6752 2072', NULL, 'danielberardi@yahoo.com', '0+', 'Hospital Aleman', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Profesor de yoga', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (310, NULL, NULL, 'Bernard Mazzucchi', 'Natalia Agustina', '27/08/1984', 'Arg', '31206410', '27312064109', 'Palliere 800 - Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6244-8320', NULL, 'natibernard@hotmail.com', 'A+', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Veterinaria', NULL, 'Veterinaria', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (311, NULL, NULL, 'Bertagna', 'Constanza  ', '22/04/1982', 'Arg', '29431332', '27294313325', 'Eucaliptus 1716 - Exaltación de la Cruz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-56549006', NULL, NULL, NULL, 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Universitario', NULL, 'Ingeniera', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (312, NULL, NULL, 'Bertolini', 'Leandro Martin ', '23/04/1985', 'Arg', '31649964', NULL, 'Av Tucumán 867 6°B (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 59986338', NULL, 'leandrobertolini@gmail.com', 'AB+', NULL, NULL, NULL, NULL, NULL, NULL, 'Tecnico en Sonido', NULL, 'Camarografo y Editor', 'Municipalidad de Pilar', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (313, NULL, NULL, 'Bidonde', 'Felicitas  ', '29/07/1988', 'Arg', '33980878', '27339808789', 'Rio Hondo 500 (1629) Manzanares, Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4441051', '15 4475 6913', '15 4475 6913', 'felibidonde@hotmail.com', NULL, 'Medife Plata', NULL, NULL, NULL, NULL, NULL, 'Univ: Lic en Administración', NULL, 'Asistente Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (315, NULL, NULL, 'Boskovich', 'Silvia Estela ', '24/12/1960', 'Arg', '13731517', NULL, 'Carlos Calvo 1802 (1629) La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4473059', '11-57697200', NULL, 'silviaboskovich@gmail.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (50, 50, 'Pilar', 'CORIA', 'EDITH GABRIELA', '1968-04-12', 'ARG', '20056920', NULL, 'SANTA FE', '1804', NULL, 1619, 'GARIN', 'BS AS', 'ARG', NULL, '111540616399', NULL, 'EDITHCORIA@HOTMAIL.COM', 'A+', 'OSECAC', 'SI', 'NO TIENE COMPROMISO FIRMADO', 'COMPLETO', NULL, NULL, NULL, NULL, 'MASOTERAPEUTA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-09', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (316, NULL, NULL, 'Bozzari', 'Omar  ', '18/02/1949', 'Arg', ' 6151574', NULL, 'Colihue 29 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6299-8432', NULL, 'obozzari@gmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (317, NULL, NULL, 'Brandolini Morales', 'Analia Viviana Ines', '16/06/1974', 'Arg', '23995677', '27239956772', 'Meisner 1259 (1635) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02304483849', '15 3274 9801', '15 3274 9801', 'ana_vibm@yahoo.com.ar', '+', 'Ctro Med Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Adm de Empresas hasta 3° año', NULL, 'Administrativa', 'Centro Med Pueyrredon', NULL, '08009993556', NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (318, NULL, NULL, 'Brizuela', 'Luisa Edith ', '07/06/1982', 'Arg', '29490796', '27294907969', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brz.luisa@gmail.com', '+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Lic en Tecnología de los Alimentos', NULL, 'Codirectora Técnica Lab Ambiental', 'Lab de Análisis Ambientales', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (319, NULL, NULL, 'Buchanan', 'Clara  ', '13/12/1983', 'Arg', '30653149', NULL, 'Chile 1900 Bo Las Araucarias (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1563359141', NULL, 'calubuchanan@hotmail.com', 'A-', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (330, NULL, NULL, 'Campora', 'Valeria Noely ', '07/02/1982', 'Arg', '29117273', '27291172739', 'Las Gardeñas 1534 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-475315', '15 5468 3862', '15 5468 3862', 'valcampora@gmail.com', NULL, 'Osde', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Supervisora', 'Sheraton Pilar', NULL, '02304385080', 'vcampora@pilar.sheraton.com.ar', 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (332, NULL, NULL, 'Candela', 'Marcela  ', '20/06/1985', 'Arg', '32037222', '23320372224', 'Alejandro Korn 304 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4432217', '011-15-31203255', NULL, 'marcecandela@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (333, NULL, NULL, 'Canellada De Luca', 'Manuela', '10/08/1980', 'Arg', '28381684', '27283816848', 'Mitre S/N Lote I 15 (1624) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4499060', '15 3772 1297', NULL, 'manuelacdl@hotmail.com', NULL, 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Diseño Ind Textil', 'independiente', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (334, NULL, NULL, 'Capurro', 'Eliana Alejandra ', '30/07/1976', 'Arg', '23705979', NULL, 'Amapolas 1000 PB D1 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1166946915', NULL, 'alejandracapurro@hotmail.com', 'B+', 'Visitar Salud', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Arquitecta', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (335, NULL, NULL, 'Carbone', 'Alejandra  ', '17/01/1957', 'Arg', '13120013', NULL, 'Saravi s/n Los Fresnos (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1131814402', NULL, 'lundi40@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Museologa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (336, NULL, NULL, 'Carlucci', 'Ana  ', '15/07/1960', 'Arg', '14198999', '27141989990', 'Los Lagartos n°6 piso 17/18 Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1561801317', NULL, 'carlucciana@gmail.com', 'A+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (338, NULL, NULL, 'Carro', 'Marcela Debora ', '11/06/1966', 'Arg', '18153425', '27181534252', 'B° La Casualidad UF 23 - Derqui', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4480466', '011-15-5820-0790', NULL, 'marcela.d.carro@gmail.com', 'A+', 'OSDE 450', NULL, NULL, NULL, NULL, NULL, 'Psicologa', NULL, 'Psicologa', 'Particular', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (339, NULL, NULL, 'Castelló', 'Romero Beatriz ', '27/08/1967', 'Arg - Española', '18459056', '27184590560', 'Chubut 610 Casa 15 Bo Pilar Village(1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5929 7980', NULL, 'beacastello@telviso.com.ar', 'A+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada Penalista', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (340, NULL, NULL, 'Castro', 'Maria Agustina ', NULL, NULL, '35216068', '27352160682', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, 'EGRESÓ', NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (341, NULL, NULL, 'Caviglia', 'Marilu  ', '26/07/1945', 'Arg', ' 5263503', NULL, 'Chile s/n HD Bo Molino 199 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '4472217', '0111541906771', NULL, 'marilucaviglia@yahoo.com.ar', '0+', 'Poder Judicial', NULL, NULL, NULL, NULL, NULL, 'Univ', NULL, 'Jubilada', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (342, NULL, NULL, 'Cerezo', 'Amelia Cristina ', '12/06/1953', 'Arg', '10861960', '27108619606', 'Perón 174 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-492181', '011-15-68786943', NULL, 'amecerezo@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Martillero Público', NULL, NULL, 'Cerezo Propiedades', NULL, '02320-494879', 'info@cerezopropiedades.com.ar', 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (343, NULL, NULL, 'Cesarini', 'Elisa  ', '22/07/1969', NULL, '20820976', NULL, 'Barrio La Campiña Lote 70 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4431291', '011-15577098633', NULL, 'cesarini69@yahoo.com.ar', 'A+', 'Qualitas', NULL, NULL, NULL, NULL, NULL, 'Lic Nutricion / Diseño Humano / Biodescodificación', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (344, NULL, NULL, 'Cheuquepil', 'Barrios Daniel Alejandro', '06/10/1990', 'Arg', '35944252', '20359442522', 'Uruguay 1635 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-37619833', NULL, 'cheuque_90@hotmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Analista de calidad', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (547, NULL, NULL, 'Pavon', 'Leticia Ines ', '16/04/1963', 'Arg', NULL, NULL, 'Pehuen 501 (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348 4426370', NULL, NULL, 'B+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Enfermeria Profesional', NULL, 'Prof Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (345, NULL, NULL, 'Chicou', 'Sebastián  ', '27/10/1973', 'Arg', '23511334', '20235113342', 'Av. Patricios 3593 Lote 41 B. La Montura (1667) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '03484-639792', '15-4071-6133', NULL, 'sebaschicou@hotmail.com', NULL, 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (346, NULL, NULL, 'Chinchilla', 'Juana Magali ', '18/09/1975', 'Arg', '24581671', '27245816710', 'Bo del Mirador 530 5 D10 14 Nordelta - Tigre', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6966 3817', NULL, 'juana.magali@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (348, NULL, NULL, 'Ciarfaglia', 'Daniela  ', '18/08/1975', 'Arg', '24734395', NULL, 'Maroni y Alte Brown s/n (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1562376723', NULL, 'daniciar@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (349, NULL, NULL, 'Cillo', 'Gastón  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'cillogaston@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (350, NULL, NULL, 'Cinconegui', 'Juan Manuel Franco', '16/06/1977', 'Arg', NULL, NULL, 'Miralla 2687 (1778) Tablada Matanza', NULL, NULL, NULL, NULL, NULL, NULL, '46997759', '1551199580', NULL, 'juanmanuelcinconegui@gmail.com', 'A+', 'OSPOSE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'guardavidas - T. Cardiologo', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (352, NULL, NULL, 'Coca', 'Sofía Belén ', NULL, NULL, '37102479', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (353, NULL, NULL, 'Colicigno', 'Veronica Cecilia ', '19/10/1988', 'Arg', '33827718', '27338277186', '14 esq 31 y 33 N° 786 (6600) Mercedes', NULL, NULL, NULL, NULL, NULL, NULL, '02324-427716', '15645001', NULL, 'gabriel2425@hotmail.com', 'A+', '-', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Asistente de Peluquería', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (358, NULL, NULL, 'Costoya', 'Amelia  ', NULL, NULL, '13285972', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 4644-6670', '15-3094-6670', NULL, 'mahatma.luis@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (359, NULL, NULL, 'Courtis', 'Maria Victoria ', '06/07/1977', 'Arg', '25966109', NULL, 'Humaita 4705 Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3401 4248', NULL, 'vickycourtis@hotmail.com', 'A+', 'Staff Medico', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Poster', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (361, NULL, NULL, 'D´Amico', 'Sergio Gastón ', '30/07/1985', 'Arg', '31775754', NULL, 'Dardo Rocha Ruta 25 km 7 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1162920014', NULL, 'gastonsergio28@gmail.com', '+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (362, NULL, NULL, 'Danti', 'Brenda  ', '05/03/1988', 'Arg', '33597533', NULL, 'Los Fresnos 359 Campo Chico (1627) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1139387765', NULL, 'bren.danti@outlook.com', 'A+', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'USAL', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (53, 53, 'Pilar', 'LEDERHOS', 'CARINA LORENA', '1975-01-23', 'ARG', '24352013', '23243520134', 'COMBATE DE ITUZAINGO', '274', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '2320402047', '1157644022', NULL, 'CARINALEDERHOS@GMAIL.COM', NULL, 'TV-SALUD', 'SI', NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-12-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (75, 75, 'Pilar', 'SOCA', 'ALEJANDRA', '1977-06-17', 'ARG', '25865473', NULL, 'TORRA', '1851', NULL, 1631, 'VILLA ROSA', 'BS AS', 'ARG', NULL, '111551105361', NULL, 'NALESOCA@GMAIL.COM', 'B+', 'GALENO', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, 'VENDEDORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'No', '2018-04-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (96, 96, 'Pilar', 'SARLINGA', 'GISELA', '18/3/1986', 'ARG', '31789087', '27317890872', 'TAPIA DE CRUZ', '313', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '3484681046', '1165853775', NULL, 'NATURADIVINA@HOTMAIL.COM', '0+', 'OSECAC', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'SI', NULL, 'NO SE', '1/1/1900', 'SI', '5/6/2017', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (108, 108, 'Pilar', 'MENDOZA', 'STEPHANIE AYELEN', '12/11/1996', 'ARG', '39986452', '27399864521', 'WHASHINGTON', '3471', NULL, 1665, 'JOSE C PAZ', 'BS AS', 'ARG', '2320627580', NULL, '1164797404', 'STEPHI_MENDOZA@YAHOO.ES', NULL, NULL, 'SI', 'ALERGIA ACAROS', NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'No', 'NO', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (127, 127, 'Castelar', 'BOGANI', 'JEZABEL VANINA', '03/01/1982', 'ARG', '29238880', '27292388808', 'ESTANISLAO LOPEZ', '928', '6', 1712, 'CASTELAR', 'BS AS', 'ARG', NULL, '1560212055', NULL, 'JEZABELBOGANI@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (129, 129, 'Pilar', 'BUSCALIA', 'PAULA', '09/11/1970', 'ARG', '21960529', NULL, 'SOLER', '1382', NULL, 2800, 'ZARATE', 'BS AS', 'ARG', '3487430628', '348715662424', '3487430628', 'APBUSCALIA@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'No', 'NO', 'NO SE', '31/12/1899', 'SI', NULL, '07/05/2014', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (112, 112, 'Pilar', 'KELLY', 'YANEL', '31/12/1899', 'ARG', '26254270', NULL, 'LOS LIRIOS', '825', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304429756', '111554900374', NULL, 'SHANTIACCESORIOS@HOTMAIL.COM', 'B+', 'MEDIFE', NULL, NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'EGRESÓ', '31/12/1899', 'SI', NULL, '27/05/2014', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (363, NULL, NULL, 'David', 'Solange Maricel ', '10/02/1990', 'Arg', '35098532', '27350985323', 'Estomba 2135 3D Buenos Aires', NULL, NULL, NULL, NULL, NULL, NULL, '4746-3340', '011-15-6996-2510', NULL, 'solangemdavid@gmail.com', NULL, 'Luis Pasteur', NULL, NULL, NULL, NULL, NULL, 'Universidad en curso', NULL, 'Analista de control de calidad', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (364, NULL, NULL, 'De Luca', 'Maria Florencia', '27/04/1985', 'Arg', '31554314', '27315543148', 'Mansilla 1501 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-31202462', NULL, 'mflor_deluca@hotmail.com', 'A+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (365, NULL, NULL, 'De Matteis', 'Andrea Karina', '15/06/1971', 'Arg', '22196829', NULL, 'Sanguinetti 256 2ºA (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5009-0671', NULL, 'kdematte@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (366, NULL, NULL, 'De Souza Frade', 'Elena Maria', '25/05/1967', 'Arg', '18564734', NULL, 'Florida s/n Lote 26 Bo Los Pilares - Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '03484-638726', '011-15-5939-7300', NULL, 'edesouza_frade@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (367, NULL, NULL, 'Decker', 'Mario Agustin ', '31/10/1977', 'Arg', '26382605', NULL, 'Chile 1068 (1696) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-3109-7892', NULL, 'mario.a.decker@live.com.ar', '0-', 'HOPE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (368, NULL, NULL, 'Del Brutto', ' David Gaston', '26/11/1980', 'Arg', '28452889', NULL, 'Av. Mitre s/n (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-6273-5001', NULL, 'ddelbrutto@hotmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (369, NULL, NULL, 'Delgado', 'Leylen  ', NULL, NULL, '27320705', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (370, NULL, NULL, 'Dellepiane', 'Rawson Alejandra ', '09/05/1964', 'Arg', '17109396', NULL, 'Mayling Club de Campo (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4464049', '15-4188-0324', NULL, 'adr964@hotmail.com', 'A+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Traductorado', NULL, 'Empleada Administrativa', 'Embajada de Italia', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (371, NULL, NULL, 'Di Diego ', 'Flavia ', '03/09/1966', 'Arg', '18118207', NULL, 'C.C. Pueyrredon 146 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304667146', '15-5951-2293', NULL, 'soy.fla@hotmail.com', 'A+', 'C.Med Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Locutora', NULL, 'Administración', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (372, NULL, NULL, 'Didolich', 'Silvana Yanina ', '17/05/1983', 'Arg', '30611232', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-5610-3289', NULL, 'yanina.didolich@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (373, NULL, NULL, 'Diez', 'Cristina  ', '14/11/1973', 'Arg', '23500808', NULL, 'San Martin 375 (2814) Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230-15-4560640', NULL, 'crisdiez1973@gmail.com', '0+', 'Medifé', NULL, NULL, NULL, NULL, NULL, 'Lic Administración', NULL, 'Administración/Contaduría', 'Materiales CyG SRL (corralón)', NULL, NULL, 'corralondiez@bbt.net.ar', 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (15, 15, 'Pilar', 'MORONI', 'LETICIA', '1983-01-25', 'ARG', '30081866', '27300818663', 'DOLORES', '15', '18', 1629, 'PILAR', 'BS AS ', 'ARG', NULL, '1531170321', NULL, 'LETICIA_MORONI@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'DISEÑADORA TEXTIL', 'No', NULL, 'SOCIA GERENTE', 'CAR SRL', NULL, NULL, 'INFO_CARSRL@GMAIL.COM', 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (30, 30, 'Pilar', 'Iñħiguez', 'Cintia Susana', '1990-08-18', 'ARG', '35352146', NULL, 'BARRIO CUYO', '4 - 31', NULL, 1619, 'GARIN', 'BS AS', 'ARG', NULL, '1165937679', '1165937679', 'FIGUEROA.CINTIA@HOTMAIL.COM', NULL, 'SWISS MEDICAL', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'TECNICO EN TURISMO', 'No', NULL, 'DIVULGADOR RECREATIVO', 'TEMAIKEN', NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (31, 31, 'Pilar', 'HUYGENS', 'DOMINIQUE', '1986-05-20', 'ARG', '32320882', '23323208824', 'MINERAL', '1', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '1115533063472', '111533063472', 'DOMINIQUEH@OUTLOOK.COM.AR', '0+', NULL, 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, 'No', NULL, 'ACOMPAÑANTE TERAPEUTICO', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (7, 7, 'Pilar', 'DOMENIGHETTI', 'VANINA LILIAN', '1981-02-09', 'ARG', '28714604', '20287146049', 'NAZCA', '948', '3', 1872, 'CABA', 'BS AS', 'ARG', '1146134504', '232615424422', '2326154422', 'NO ESTA CLARO', '0+', 'OSECAC', 'SI', 'TIROIDES T4', 'COMPLETO', 'COMPLETO', NULL, 'No', NULL, 'COMERCIANTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (11, 11, 'Pilar', 'KRYSIAK', 'PATRICIA', '1964-10-11', 'ARG', '18026099', NULL, 'PASTEUR', '807', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111533352319', NULL, 'PATRICIA.KRYSIAK@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'UNIVERSIDAD NAC DE LUJAN', 'No', NULL, 'DOCENTE', 'DGCYE', NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-06-15', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (12, 12, 'Pilar', 'MONTAÑO', 'NATACHA', '1966-07-24', 'VENEZOLANA', '95663581', NULL, 'VILLA MARIA GOLF CLUB', '2461', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '3484639057', NULL, 'NATACHAMONTANO@GMAIL.COM', '0+', NULL, 'SI', NULL, 'COMPLETO', 'COMPLETO', 'UNIVERSIDAD SANTA MARIA', 'No', NULL, 'CONTADOR PUBLICO', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-06', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (13, 13, 'Pilar', 'GARCIA', 'MARIA SOLEDA', '1978-05-28', 'ARG', '26520808', '27565208083', 'RUTA 226 Y LOS OLMOS  (BARRIO PRIVADO LA CELINA))', '1', NULL, 1623, 'ESCOBAR', 'BS AS', 'ARG', NULL, '1568463653', NULL, 'SOLEGARCIA@GMAIL.COM', 'A+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'USAL', 'No', NULL, 'COSMETOLOGIA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (32, 32, 'Pilar', 'VIGLINO', 'ALBERTO', '1959-03-02', 'ARG', '11635825', '20116358256', 'GELLY', '3434', '2', 1425, 'CABA', 'BS AS', 'ARG', '48019677', '1162602396', NULL, 'ALBERTOIGLINO@GMAIL.COM', '0+', 'GALENO', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'INGENIERO UBA', 'No', NULL, 'INGENIERO', 'IVICON SA', 'CUCHA CUCHA 770', '1148889498', 'ALBERTOIGLINO@GMAIL.COM', 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (33, 33, 'Pilar', 'ANGRIGIANI', 'CECILIA GRACIELA', '1956-07-31', 'ARG', '12447789', '27124477897', 'FLORIDA S/N Y ARROYO PINAZO ', '165', NULL, 1628, 'DEL VISO', 'BS AS', 'ARG', '666962', '114474560', NULL, 'CANGRIANI@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'ABOGADA UBA', 'No', NULL, 'ABOGADA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-08-12', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (34, 34, 'Pilar', 'SINIGAGLIA', 'MARIA DE LOS ANGELES', '1971-12-21', 'ARG', '22501604', NULL, 'BARRIO LAS ESTANCIAS DEL PILAR', '56', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111630698579', '111530698579', 'sinimadelos@yahoo.com.ar', '0-', 'IOMA', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'PROFESORA DE EDUCACION FISICA', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-09-07', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (47, 47, 'Pilar', 'QUIROZ', 'MARIA ROSA', '1966-10-31', 'PARAGUAYA', '15097515', NULL, 'VILEGRA', '1164', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304426949', '1522722282', NULL, 'JORGE.A.REQUENA@GMAIL.COM', '0+', 'OSDE', 'SI', 'NO TIENE COMPROMISO FIRMADO', 'COMPLETO', 'COMPLETO', NULL, 'No', NULL, 'MASAJES', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-08', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (36, 36, 'Pilar', 'SERVERA', 'MARIA SOLEDAD', '2017-03-07', 'ARG', '22592727', '27225927273', 'EL PERICON', '251', NULL, 0, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', '111554168246', '111554168246', '3487430022', 'SOLESERVERA@GMAIL.COM', NULL, 'SWISS MEDICAL', 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, NULL, NULL, 'COMERCIANTE', 'TRANSIP SRL', 'ACCESO PARQUE INDUSTRIAL KM 4.5 ZARATE', NULL, 'VENTASTRANSIP@GMAIL.COM', 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-09-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (42, 42, 'Pilar', 'COLLOCA', 'SUSANA ELIDA', '1959-03-06', 'ARG', '12968299', NULL, 'SAN FERNANDO', '1850', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '2320478063', '1130184483', NULL, 'SUSYCOLLOCA@GMAIL.COM', '0+', NULL, 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, NULL, NULL, 'AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-09', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (43, 43, 'Pilar', 'MOLINA', 'LAURA MARCELA', '1970-04-17', 'ARG', '21587765', '27215877650', 'BELGICA', '1716', NULL, 1426, 'DERQUI', 'BS AS', 'ARG', NULL, '1564194392', NULL, 'lmarcelamolina@yahoo.com.ar', NULL, 'DOSUBA', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'ABOGADA', 'No', NULL, 'ABOGADA', 'DOSUBA', 'URIBURU 860', '52875807', NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-09', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (48, 48, 'Pilar', 'TARASIDO', 'DELFINA', '1982-08-14', 'ARG', '29697833', NULL, 'CHILE (BARRIO AYRES PLAZA)', '879', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1565590526', NULL, 'LASPIRULAS@HOTMAIL.COM', '0+', 'OSDE', 'SI', 'NO TIENE EL COMPROMISO FIRMADO', 'COMPLETO', 'COMPLETO', NULL, 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-11-13', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (55, 55, 'Pilar', 'AVALOS', 'YANEL FLAVIA PATRICIA', '1986-05-30', 'ARG', '32419552', '27324195527', 'LAS HERAS', '1640', NULL, 1625, 'ESCOBAR', 'BS AS', 'ARG', '3484425909', '0348154395782', '0348154395782', 'YANELAVALOS@HOTMAIL.COM', 'A+', 'OSDE', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'EN CURSO UNLU', NULL, NULL, 'EMPLEADA ADMI', 'AMERICAN BROKER SA', NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (4, 4, 'Pilar', 'LEICHNER', 'JUDITH EVANGELINA', '1979-12-06', 'ARG', '27777117', NULL, 'LORENZO LOPEZ', '1081', '15', 1629, 'PILAR', 'BS AS', 'ARG', '2320400877', '1169913644', NULL, 'LEICHNERJUDITH@HOTMAIL.COM', 'A+', 'NO', 'SI', NULL, 'COMPLETO', 'COMPLETO', 'INCOMPLETO', 'No', NULL, 'COMERCIANTE', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-05-04', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (98, 98, 'Pilar', 'AAL', 'VIVIANE APARECIDA', '7/12/1966', 'BR', '95635277', NULL, 'ENRIQUE LARREA', '1248', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '1168710474', NULL, 'VIVIANETRAMUJAS@YAHOO.COM.BR', 'A-', 'OSDEPYM', 'SI', NULL, NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'NO SE', '1/1/1900', 'SI', '2017-abr', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (52, 52, 'Pilar', 'MARTINEZ', 'MARIANA', '1975-06-04', 'ARG', '24804051', NULL, 'EL HORNERO', '101', '43', 1629, 'PILAR', 'BS AS', 'ARG', '2304421466', '1566472927', NULL, 'espiritucreativo@gmail.com', NULL, 'PREMEDIC', 'SI', NULL, 'COMPLETO', 'COMPLETO', NULL, 'SI', 'CEREMONIAL', 'PROFESORA DE PINTURA DECORATIVA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-12-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (374, NULL, NULL, 'Dinger', 'Alejandra  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (571, NULL, NULL, 'Quarchioni', 'Nadia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '23337775144', NULL, NULL, 'nquarchioni@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (20, 20, 'Pilar', 'ANTON', 'YANINA ALEJANDRA BEATRIZ', '1989-08-10', 'ARG', '34716381', '27347163819', 'JUAN GARCIA', '1628', NULL, 1669, 'PILAR', 'BUENOS AIRES', 'ARG', NULL, '1115352288', NULL, 'YANTON@OUTLOOK.ES', NULL, NULL, 'SI', NULL, 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, 'DOCENTE', 'PROFESORA DE TEATRO', NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-07-06', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (58, 58, 'Pilar', 'REVAH', 'EMA SILVANA', '1955-05-20', 'ARG', '11755502', '27117555025', 'RUTA 8 KM 84 EL MALAKATE LOTE', '135', NULL, 2812, 'CAPILLA DEL SEÑOR', 'BS AS', 'ARG', NULL, '1155822941', NULL, 'ESREVAH@GMAIL.COM', '0+', 'OSDE', 'SI', 'HIPERTENSION ARTERIAL', NULL, NULL, 'COMPLETO', NULL, NULL, 'LIC EN TRABAJO SOCIAL', 'UNIVERSIDAD DE LA MATANZA', 'F VARELA 1912 SAN JUSTO', '44808959', NULL, 'NO', 'Si', 'SI', 'Si', 'SI', '1900-01-01', 'SI', '2018-01-13', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (81, 81, 'Pilar', 'MOSCHENI', 'ELIZABETH ALEJANDRA', '10/5/1982', 'ARG', '29467732', '27294677327', 'ALEXANDER FLEMING', '1848', NULL, 1631, 'PILAR', 'BS AS', 'ARG', NULL, '111568213314', NULL, 'LIZENVEGA@GMAIL.COM', NULL, NULL, 'SI', NULL, NULL, 'COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'ABANDONÓ', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (84, 84, 'Pilar', 'IBARRA', 'CLAUDIA MARCELA', '21/3/1971', 'ARG', '22083518', '27220835184', 'ROSARIO GOLF CLUB', '2149', NULL, 1669, 'DEL VISO', 'BS AS', 'ARH', '2320657560', '111566826187', NULL, 'CLAUMARIBA@HOTMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, 'COMPLETO', NULL, 'No', NULL, 'AMA DE CASA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'EGRESÓ', '1/1/1900', 'No', '4/5/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (88, 88, 'Pilar', 'VAZQUEZ', 'VERONICA LAURA', '25/4/1970', 'ARG', '21499814', '27214998144', 'COMODORO PASSIO', '447', NULL, 1748, 'GRAL RODRIGUEZ', 'BS AS', 'ARG', '2374842893', '111530105540', NULL, 'VERONICA.VAZQUEZ48@YAHOO.COM.AR', 'B+', 'IOMA', 'SI', 'HIPOTIROIDISMO', NULL, NULL, 'PROFESORA DE EDUCACION INICIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'NO SE', '1/1/1900', 'SI', '9/12/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (115, 115, 'Pilar', 'LOPEZ', 'NORA ANALIA', '07/02/1976', 'ARG', '25179635', '27251796357', 'CORDOBA', '834', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '111537878907', NULL, 'NORILOPEZ2005@HOTMAIL.COM', NULL, NULL, NULL, NULL, NULL, NULL, 'DISEÑADORA MULTIMEDIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', 'EGRESÓ', '31/12/1899', 'SI', NULL, '31/12/1899', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (90, 90, 'Pilar', 'LOOSE', 'NANCY CARINA', '26/8/1972', 'ARG', '22690682', '27226906823', 'ASCASUBI', '114', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304420824', '111556554447', NULL, 'LOO.NAN.72@HOTMAIL.COM', NULL, 'OSPE', 'SI', 'PIE PLANO- HIPOTIROIDISMO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'NO SE', '1/1/1900', 'SI', '6/5/2015', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (99, 99, 'Pilar', 'ALVAREZ', 'LAURA MARIA', '24/12/1975', 'ARG', '24552241', NULL, 'BRASIL', '1048', '2', 1617, 'EL TALAR', 'BS AS', 'ARG', '47263566', '1558263907', NULL, 'motisengchi@icloud.com', 'B+', 'IOMA', 'SI', NULL, NULL, NULL, 'PROFESORA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'SI', NULL, 'CURSA', '1/1/1900', 'SI', '13/8/2016', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (375, NULL, NULL, 'Dinger', 'Jessica Beatriz ', '27/11/1993', 'Arg', '37993348', NULL, 'Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1553361382', NULL, 'jessie.dinger@hotmail.com', '0+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'U. San Andres - Economía', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (376, NULL, NULL, 'Dinger', 'Ricardo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (378, NULL, NULL, 'Dodino', 'Claudia Alejandra ', '26/08/1967', 'Arg', '18076989', '27180769892', 'Calle 117 N° 353 (1862) Guernica Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '02224-15521393', '02224-471116', 'etnias-1967_@hotmail.com', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Docente', NULL, NULL, '02224-470590/470769', NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (379, NULL, NULL, 'Dollinger', 'Mauro  ', '06/04/1988', 'Arg', '33605229', NULL, 'La Rocha 504 4°C (1708) Morón', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11 6803 3615', NULL, 'dollingermauro@gmail.com', 'A+', 'Banco Provincia', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (380, NULL, NULL, 'Dominguez', 'Iris Perla ', '03/03/1964', 'Arg', '16849430', NULL, 'Pcia de Bs as N°235 - Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-497924', '011 65691165', NULL, 'irisperla.domiguez@outlook.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario completo', NULL, 'Peluquera', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (381, NULL, NULL, 'Donadío', 'Valeria  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (382, NULL, NULL, 'Dozo', 'Moreno Constanza ', '13/12/1968', 'Arg', '20540067', '27205400678', 'Bo el Molino 123 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4473570', '15 5 467 9754', NULL, 'cdmoreno@fibertel.com.ar', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Artista Plastica', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (383, NULL, NULL, 'Dubois', 'Sol  ', '24/04/1983', 'Arg', '30220314', '27302203143', 'Gainza 505 PB (1405) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4988-9658', '011 15 4417 8478', NULL, 'soldubois@hotmail.com', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'Ejecutiva de Cuentas ART', 'Net Broker', NULL, NULL, 'sol.dubois@netbroker.com.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (384, NULL, NULL, 'Dure', 'Carlos Miguel ', '14/02/1972', 'Paraguaya', '92416270', '20924162709', 'Saravi 1896 (1629) La Lonja Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '20441327', '15-60932739', NULL, 'carlodure@hotmail.com', NULL, 'Accord', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Maestro Mayor de Obra', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (385, NULL, NULL, 'Echeberz', 'German Jorge ', '16/05/1984', 'Arg', '30553231', '20305532313', 'Hipólito Yrigoyen 181 (6530) Carlos Casares', NULL, NULL, NULL, NULL, NULL, NULL, '02395-406996', NULL, NULL, 'vascoecheberz@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Profesor de Historia', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (386, NULL, NULL, 'Enriquez', 'Aurora  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (387, NULL, NULL, 'Escobar', 'Carlos  ', '06/05/1967', 'Arg', '18278618', NULL, 'Mayling cc UF 28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1550641474', NULL, 'cescobar@iae.edu.ar', 'A+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (388, NULL, NULL, 'Escudero', 'Silvia  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0351-155555555', NULL, 'silviescuderoaol@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (397, NULL, NULL, 'Fernandez', 'Alejandra Cristina ', '30/04/1970', 'Arg', '21552791', NULL, 'Dardo Rocha 1150 (1718) San Antonio de Padua', NULL, NULL, NULL, NULL, NULL, NULL, '0220-4855758', '1566253437', NULL, 'alejandra@mcailuminacion.com.ar', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (111, 111, 'Pilar', 'ONTIVEROS', 'LORENA PAOLA', '31/12/1899', 'ARG', '30079095', '27300790955', 'MAIPU', '74', NULL, 1620, 'MAQUINISTA SAVIO', 'BS AS', 'ARG', NULL, '111522855876', NULL, 'LORENAONTIVEROS@HOTMAIL.COM', 'A+', 'IOMA', NULL, NULL, NULL, NULL, 'COMPLETO', NULL, NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'No', 'SI', 'NO SE', '31/12/1899', 'SI', NULL, '01/04/2016', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (140, 140, 'PALERMO', 'Lopez Bravo', 'Sofia Dulce', '07/01/2001', 'ARG', '42960701', '27429607014', 'HIPLITO YRIGOYEN', '2516', '6', 1646, 'MARTINEZ', 'BS AS', 'ARG', NULL, '1121923199', NULL, 'sofylb01@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'NUEVA', NULL, NULL, '2018-ene', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (142, 142, 'PALERMO', 'Silva Werbach ', 'Maria Florencia', '17/10/1989', 'ARG', '34600389', '27346003893', 'Ciudad de la Paz3755 (1429) CABA', NULL, NULL, NULL, NULL, 'BS AS', 'ARG', NULL, '0111521761568', NULL, 'mariaflorencia.sw@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'SI', 'SI', 'SI', 'SI', 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (152, 152, 'CASTELAR', 'Fernandez', 'Amelia  ', '06/03/1956', 'ARG', '12021400', NULL, 'Avellaneda 988 6°B (1217) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111567120203', NULL, 'ameliafer2000@hotmail.com', '+', NULL, NULL, NULL, NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (153, 153, 'CASTELAR', 'Fernandez', 'Maria Teresa ', '26/03/1984', 'ARG', '30823863', '27308238631', 'Los Incas 2559 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46288293', '0111523415773', NULL, 'mt_fernandez@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'PROFESORA DE INGLES', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-oct', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (156, 156, 'CASTELAR', 'Olivera', 'Florencia Sofia ', '25/11/1978', 'ARG', '26942890', '27269428908', 'Las Heras 1495 (1714)', NULL, NULL, NULL, NULL, NULL, NULL, '46241009', '0111541996564', NULL, 'floroli78@yahoo.com.ar', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO DANZAS', NULL, 'PILATES', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'ABANDONÓ', NULL, NULL, '2017-ago', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (158, 158, 'CASTELAR', 'Clausi', 'Susana Noemi ', '08/12/1957', 'ARG', '13724019', '27137240195', 'Bahía Blanca 333 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '1146283957', '0111565400515', NULL, 'suclausi@gmail.com', '0-', 'OMINT', NULL, 'SINDROME METABOLICO- HIPERTENSION - COLESTEROL - DIABETES', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'MASOTERAPEUTA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (167, 168, 'CASTELAR', 'Teodori', 'Maria Paula ', '20/11/1968', 'ARG', '20477364', '27204773640', 'Pehuajo 819 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111558095887', NULL, 'paulateo@speedy.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'FONOAUDIOLOGA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
+INSERT INTO temp_personas VALUES (172, 173, 'CASTELAR', 'Fernandez', 'Noelia Carolina ', '06/01/1988', 'ARG', '33304998', NULL, 'Heine 620 1° y 2° Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46289894', NULL, NULL, 'noli.cfernandez61@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'PROFESORA DE EDUCACION FISICA', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (174, 175, 'CASTELAR', 'Kobzistyj', 'Elizabet Viviana ', '11/06/1980', 'ARG', '28191076', '27281910766', 'Oribe 324 Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '46232190', '0111567149381', NULL, NULL, 'A+', 'OSDE', NULL, 'TIROIDES', NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'SI', 'SI', 'CURSA', NULL, NULL, '2016-ago', 'PROF YOGA');
+INSERT INTO temp_personas VALUES (280, NULL, NULL, 'Acevedo', 'Mercedes Viviana  ', '19/07/1975', 'Arg', '24814112', '27248141129', 'Lisboa 712 (1765) V. Luzuriaga', NULL, NULL, NULL, NULL, NULL, NULL, '4485-0948', '1564650426', NULL, 'merce_acevedo@outlook.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terciario: IFD N°45', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (599, NULL, NULL, 'Salotti', 'Mirna Vanesa ', '06/04/1971', 'Arg', '22147301', '27221473014', 'H. Yrigoyen 2147 1°D (1089) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '49529520', '15 6541 2457', NULL, 'mirsalotti@yahoo.com.ar', '0+', 'OSPOCE', NULL, NULL, NULL, NULL, NULL, 'Profesora de Educación Especial', NULL, 'Orient. Gabinete Psicoped./ Resp integrac escolar', 'Instituto Don Orirone', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (604, NULL, NULL, 'Santagada', 'Marta Elena ', '07/09/1979', 'Arg', '27464354', '23274643544', 'Formosa 283 3° 6 (1424)', NULL, NULL, NULL, NULL, NULL, NULL, '49034409', '15 3933 9876', NULL, ' martasantagada@gmail.com', 'A+', 'Accord 210', NULL, NULL, NULL, NULL, NULL, 'Hoteleria', NULL, 'Reservations', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (605, NULL, NULL, 'Santiago', 'Silvia Andrea ', '21/11/1980', 'Arg', '28451113', NULL, 'Curapaligüe 441 18 H (1406) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '27284511137', '297-4012733', NULL, 'yukonsanti@Yahoo.com.ar', 'A+', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Administrativa - Cdor Publ.', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (606, NULL, NULL, 'Saqueta', 'Melo Monica Beatriz', '08/12/1974', 'Arg', '24037667', '27240376674', 'Sara Maqueda 6788 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1166215888', NULL, 'monicasaquetamelo@gmail.com', 'A+', 'Centro Med. Pueyrred', NULL, NULL, NULL, NULL, NULL, 'UBA', NULL, 'Medica Pediatra', 'Munic Malvinas Argentinas / OSPIT', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (607, NULL, NULL, 'Sardo', 'Amelia Margarita ', '14/03/1948', 'Arg', ' 5765157', NULL, 'Paso de los Andes 3687 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-556218', '15-64114020', NULL, 'amelia.sardo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (611, NULL, NULL, 'Schnorr', 'Maria Alejandra ', '15/05/1983', 'Arg', '30326610', '27303266106', 'Niceto Vega 5841 4°A (1414) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-6202-5446', NULL, 'maschnorr@gmail.com', 'A+', 'OSDEPYM', NULL, NULL, NULL, NULL, NULL, 'Lic Cs. De la Comunicación Social', NULL, 'Prof de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (624, NULL, NULL, 'Stelluto', 'Maria Florencia ', '09/01/1991', 'Arg', '35532450', '27355324503', 'Trole 1108 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, '4623-2034', '15-3810-0559', NULL, 'mf.stelluto@gmail.com', 'A+', 'Osecac', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (625, NULL, NULL, 'Stuart', 'Ignacio Sabas ', NULL, NULL, '28735358', '20287353589', 'Buen Viaje 460 (1708) Moron', NULL, NULL, NULL, NULL, NULL, NULL, '11-4629-9213', NULL, NULL, 'stuartignacio@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (626, NULL, NULL, 'Suares', 'Maria Laura ', '19/03/1965', 'Arg', '17603127', NULL, 'Brasil 123 loft 28 1º piso (1063) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-50498241', NULL, 'laurasuares@gmail.com', NULL, 'Hospital Aleman', NULL, NULL, NULL, NULL, NULL, 'Arquitecta UBA', NULL, 'Profesora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (627, NULL, NULL, 'Sulle', 'Veronica Evangelina ', '13/08/1973', NULL, '23529823', '27235298231', 'Barrio El Jagüel - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6132-8822', NULL, 'veronicasulle4@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Terapeuta', 'Independiente', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (633, NULL, NULL, 'Toscani', 'Natalia Raquel ', '05/12/1973', 'Arg', '23572807', '27235728074', 'M. Orientales 716 (1714) Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '4661-5036', '15 5416 3656', NULL, 'nataliatoscani@hotmailcom', 'B+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Arquitecta', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (636, NULL, NULL, 'Varas', 'Carolina  ', '03/03/1982', 'Arg.', '29091587', '27290915878', 'Italia 2173 2°A Avellaneda', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1541610320', NULL, 'varascarolina@hotmail.com', 'A+', 'OSDE Binario', NULL, NULL, NULL, NULL, NULL, 'Univ: Medicina UBA', NULL, 'Emp. Administrativa', 'Itra', NULL, '4775-7992', 'info@institutoarticular.com', 'FALSO', 'FALSO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (652, NULL, NULL, 'Zanni', 'Marta Esther ', '25/01/1963', 'Arg', '16146640', '27161466407', 'Calle 505 entre 524 y 526 (6608) Mercedes', NULL, NULL, NULL, NULL, NULL, NULL, '02324-430166', '02324-15-474967', NULL, 'gabriel2425@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (522, NULL, NULL, 'Muñoz', 'Maria Soledad ', '30/04/1978', 'Arg', '26939222', '27269392229', 'Sargento Palma 1049 1°A (1682) Villa Bosch', NULL, NULL, NULL, NULL, NULL, NULL, '2195-3929', '1538910691', NULL, 'militernura@hotmail.com', 'O+', 'Asi', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'terapeuta e instructora', 'propia', NULL, NULL, 'centroholisticvolveralaesencia@gmail.com', 'VERDADERO', 'VERDADERO', 'SI', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (70, 70, 'Pilar', 'GARCIA', 'CANDELA MARIA BELEN', '1990-05-14', 'ARG', '35101129', NULL, '15 E 30 Y 32', '0', NULL, 6600, 'MERCEDES', 'BS AS ', 'ARG', NULL, NULL, NULL, 'CANDELACHICHA@GMAIL.COM', NULL, NULL, NULL, NULL, NULL, NULL, 'PROFESORA EDUC PRIMARIA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-10', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (73, 73, 'Pilar', 'CARDOSO', 'LORENA ELIZABETH', '1977-11-30', 'ARG', '26248092', '27262480920', 'ALFREDO NOBEL', '6020', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', '2320409614', '111569345326', '111569345326', 'LORELI_CARDOSO@HOTMAIL.COM', 'B+', 'MEDICUS', NULL, NULL, NULL, NULL, 'LIC FONOAUDIOLOGIA UBA', NULL, NULL, 'FONOAUDIOLOGA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2018-03-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (59, 59, 'Pilar', 'SANTAMARINA', 'CLAUDIA INES', '1962-11-16', 'ARG', '14952434', NULL, 'RUTA 8 KM 56.5 LA PAZ', '141', NULL, 1629, 'PILAR', 'BS AS', 'ARG', '2304404854', '111558714724', NULL, 'CLAUDIA.CRISANTA@GMAIL.COM', NULL, NULL, NULL, 'GLAUCOMA (NO ESTA CORRECTO EL EMAIL)', NULL, NULL, 'PSICOLOGIA', 'SI', 'FAVALORO', 'PSICOLOGA', NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2018-02-08', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (103, 103, 'Pilar', 'URRUTIBEHETY', 'STELLA MARIS', '12/9/1967', 'ARG', '18572735', '27185727357', 'CASTRO BARROS', '1742', NULL, 1686, 'HURLINGAM', 'BS AS', 'ARG', NULL, '1522432016', NULL, 'ESTRELLADELUZ@GMAIL.COM', 'A+', 'OSECAC', NULL, NULL, NULL, NULL, NULL, 'SI', 'COACHING ESPIRITUAL ESCUELA DHARMA YOEL', NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', NULL, 'CURSA', '1/1/1900', 'No', '1/1/2018', 'Profesorado Superior de Yogaterapia');
+INSERT INTO temp_personas VALUES (190, 191, 'pilar', 'Chilabert', 'Maria Valeria ', '03/06/1977', 'Arg', '25612935', '27256129359', 'Eva Duarte de P. 437 (1629) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4519449', '011 15 30795703', NULL, 'valeria_chilabert@hotmail.com', '0-', 'Austral Salud', NULL, NULL, NULL, NULL, NULL, 'Adm. De Empresas incompleto. Secretariado terciario completo', NULL, 'Administrativa', 'Escuela de Yoga Hari Om SRL', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (191, 192, 'PILAR', 'De Luca', 'Juana Maria', '10/05/1971', 'Arg', '22225202', '23222252024', 'F. Fader 2959 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-46444912', '011 57711545', NULL, 'profeshakti@hotmail.com', 'A+', 'Accord 310', NULL, NULL, NULL, NULL, NULL, 'Relaciones Internacionales', NULL, 'Administración Pública', 'Ministerio de Justicia y DDHH', NULL, '1153004000 int 76013', 'deluca@jus.gov.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (214, NULL, 'PILAR', 'Arias', 'Lorena Gabriela ', NULL, NULL, '26096639', '27260966397', 'Polonia 3545 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'praa1212@outlook.es', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Comerciante', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, 'ABANDONÓ', NULL, 'VERDADERO', NULL, 'MASOTERAPIA');
+INSERT INTO temp_personas VALUES (277, NULL, NULL, 'Abate', 'Hernan Andres ', '04/12/1978', 'Arg', '26865518', NULL, 'Charlone 602 P12 (1663) San Miguel', NULL, NULL, NULL, NULL, NULL, NULL, '4664-4995', '15 31691936', '15 31691936', 'abatehernan@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Acompañante terapeutico', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (279, NULL, NULL, 'Accardo', 'Cecilia Veronica ', '15/05/1980', 'Arg', '28108458', NULL, 'Misiones 11 piso 1° (1663) Bella Vista Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-3119 3586', NULL, 'ceci_accardo@gmail.com', '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Textil Bally', NULL, '4666-9791', NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (443, NULL, NULL, 'Guiñazu', 'Mirta  ', '27/07/1943', 'Arg', ' 4666429', NULL, 'Carlos Calvo 02 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '01169792576', NULL, 'mguiniazu@yahoo.com.ar', NULL, 'PAMI', NULL, NULL, NULL, NULL, NULL, 'Obstetricia', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (399, NULL, NULL, 'Fernandez', 'Magdalena Paola ', '30/03/1987', 'Arg', '32997105', '27329971053', 'Anatole France 1325 (1824) Lanus', NULL, NULL, NULL, NULL, NULL, NULL, '4240-6784', '15-5484-4080', NULL, 'magdalena.p.fernandez@gmail.com', '0+', 'OMINT', NULL, NULL, NULL, NULL, NULL, 'Terciario completo', NULL, 'Gua de Turismo', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (400, NULL, NULL, 'Fernandez', 'Maria Belen ', '28/06/1988', 'Arg', '33813676', '27338136760', 'Argerich 342 8B CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-4178-0236', NULL, 'belenfernandez477@gmail.com', 'B+', 'Hosp Alvarez', NULL, NULL, NULL, NULL, NULL, 'Terciario inc', NULL, 'Actriz, Comerciante', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (401, NULL, NULL, 'Fernandez', 'Maria Belen2 ', '03/02/1985', 'Arg', '31453172', '27314531723', 'Suipacha 209 2°D (1706) Haedo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11-56583374', NULL, 'mbfa85@hotmail.com', 'A-', 'Osde', NULL, NULL, NULL, NULL, NULL, 'Lic en Arte Dramático, Prof de Inglés', NULL, 'Actriz, Animadora en Eventos, Docente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (403, NULL, NULL, 'Ferrari', 'Cecilia Elena ', '24/10/1975', 'Arg', '24886203', '27248862039', 'Av. La Plata 3241 7°A (1184) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4903-8267', '15 5637 7175', NULL, 'ceferrari@fibertel.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Universitario', NULL, 'Abogada', 'Tribunal Sup de Justicia CABA', NULL, '4370-8500 int 1305', 'cferrari@tsjbaires.gov.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (404, NULL, NULL, 'Ferreyra', 'Marcela Ulma Carolina', '08/01/1982', 'Arg', '29299205', '27292992055', 'Av. Patricias Argentinas 2009 Lote 125 (1619) Garin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5745-0330', NULL, 'ferreyra.mar@gmail.com', '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Psicologa Clínica', NULL, 'OSDE', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (616, NULL, NULL, 'Serna', 'Sanchez Ingrid Rocío', '03/10/1968', 'Colombiana', '94704220', NULL, 'E. Mitre 1163 (1824) Lanus', NULL, NULL, NULL, NULL, NULL, NULL, '42473566', '1133925235', NULL, 'martinezines841@yahoo.com.ar', 'A+', 'Cobermed', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (617, NULL, NULL, 'Silbergleit', 'Daniela  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (618, NULL, NULL, 'Silva', 'Franco Diana Lucia', NULL, NULL, '94641707', '27946417071', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dianasilvafranco@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (619, NULL, NULL, 'Smolares', 'Carmen  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (620, NULL, NULL, 'Soengas', 'Muñiz Candela ', '17/08/1995', 'Arg', '39095447', '27390954471', 'Ruta 4 km4 Country C Los Cardales n° 430 (2314) Campana', NULL, NULL, NULL, NULL, NULL, NULL, '02304525383', '15 5049 0797', '15 5049 0797', 'candesoengas@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'USAL (cursando)', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (406, NULL, NULL, 'Figueroa', 'Rocio Yasmin ', '26/01/1995', 'Arg', '38822701', '27388227015', 'Fragata Hercules 1430 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11  1565999666', NULL, 'yo_22_yas@hotmail.com', NULL, 'Principal Plan', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Mc Donals', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (407, NULL, NULL, 'Fontana', 'Karina  ', '10/06/1977', 'Arg', '25778703', NULL, 'Champagnat 1500 BC La Candela UF 94 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4375101', '15-4973-4728', NULL, 'fontanakarina@yahoo.com.ar', 'A+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (408, NULL, NULL, 'Fookes', 'Leticia Carla ', '07/10/1978', 'Arg', '26807849', '27268078490', 'Chile 1820 La Herradura', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-3829-4749', NULL, 'leticelu@gmail.com', '0-', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Ama de casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (409, NULL, NULL, 'Forchieri', 'Maria Veronica ', '03/06/1965', 'Arg', '17765730', '27177657307', 'Los Pinos 2153 (1614) Villa de Mayo Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '4660-3105', '01115-69452101', NULL, 'mforchie@cas.austral.edu.ar', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (410, NULL, NULL, 'Frattani', 'Evangelina del Valle', '23/01/1970', 'Arg', '21319568', NULL, 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304434837', '0111540753693', NULL, 'evangelina_del_valle@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (411, NULL, NULL, 'Frattani', 'Veronica Fernanda ', '27/06/1978', 'Arg', '26603473', '27266034739', 'Jose Ingenieros 640 - Exaltacion de la Cruz', NULL, NULL, NULL, NULL, NULL, NULL, '02323-470709', '15 2237 8539', '15 2237 8539', 'veronica_frattani@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario incompleto', NULL, 'Comerciante', 'Herbalife', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (412, NULL, NULL, 'Freile', 'Natalia  ', '27/09/1976', 'Argentina', '25600002', '23256000024', 'Guiraldes 3973 (1714) Ituzaingo', NULL, NULL, NULL, NULL, NULL, NULL, '46218694', '15-6252 -1734', NULL, 'natifreile@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Trabajadora Social', 'Minist. De Justicia y Derechos Humanos', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (413, NULL, NULL, 'Freschi', 'Nora Gabriela ', '28/10/1965', 'Arg', '17749169', NULL, 'Calle 104 n° 1133 (1625) Escobar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4494110', '011-15-39144976', NULL, 'nora_ga03@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Docente de Italiano', NULL, NULL, 'Manuli SA', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (414, NULL, NULL, 'Gabusi', 'Andrea Laura ', '20/10/1965', 'Arg', '17715402', NULL, 'Tucumán 194 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-622255', '011-15-61432413', NULL, 'andreagabusi@yahoo.com.ar', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', 'Dirección Gral de Escuelas Pcia BsAs', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (415, NULL, NULL, 'Gaitan', 'Cintia Mariana ', '17/03/1981', 'Arg', '28725391', '27287253910', 'Cnel Vilela 2826 (1618) Gral Pacheco', NULL, NULL, NULL, NULL, NULL, NULL, '03327-457660', '15 3226 1671', '15 3226 1671', 'cintia_gaitan@hotmail.com', '0-', 'OSMECON', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Camarera', 'Sushi Club', NULL, '0348-4629590', NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (416, NULL, NULL, 'Gaitan', 'Karina Alejandra ', '12/06/1979', 'Arg', '27313346', NULL, 'Dr Trani 1921 (1625) B de Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348154556490', NULL, 'karinaa_gaitan@hotmail.com', 'A+', 'Galeno Azul', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Operaria', 'Yazaki', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (417, NULL, NULL, 'Galicia', 'Martinez Laura Vanessa', '20/11/1980', 'Mexicana', '95455400', '27954554002', 'Fincas de Maschwitz Manz 8 Lote 16, Mw, Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '0348 4405136', '1121612259', NULL, 'vane.galicia.martinez@gmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingenieria', NULL, 'Comerciante', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (418, NULL, NULL, 'Garcia', 'Julieta Romina ', '20/02/1973', 'Arg', '23229705', NULL, 'Carlos Calvo 590 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11 15 5690 8617', NULL, 'juliroga@hotmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (519, NULL, NULL, 'Mosquera', 'Andrea  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '27249576897', '02326 409184', NULL, 'andreamosqueradominguez@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (426, NULL, NULL, 'Gobbi', 'Lorena Elisabeth ', NULL, NULL, '29651936', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2323 533458', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (427, NULL, NULL, 'Godoy', 'Adrian Emanuel ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'solcris46@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (428, NULL, NULL, 'Godoy', 'Violeta Guadalupe ', '01/08/1988', 'Arg', '33862727', '27338627276', 'Suipacha 578 (2814) Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4462100', '15 44019287', '15 44019287', 'violnik@hotmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'La Segunda', NULL, '0230-4492302', 'rhrodriguez@lasegunda.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (429, NULL, NULL, 'Gomez', 'Gonzalo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (430, NULL, NULL, 'Gomez', 'Susana  ', '10/04/1950', 'Arg', NULL, NULL, 'Dolores 15 Cañada de Pilar L75 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4533087', '15-5259-8567', NULL, NULL, 'A+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Kinesiologa', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (431, NULL, NULL, 'Gonzalez', 'Alicia Ester ', NULL, NULL, '13400499', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'viajeradelalma@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (432, NULL, NULL, 'Gonzalez', 'Jenny  ', '07/10/1974', 'Venezolana', '94180534', '27941805340', 'Champagnat 1600 (1630) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1563500659', NULL, 'gonzalez1503@gmail.com', '0-', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Ingeniera', NULL, 'Ingeniera', 'Sinopec', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (433, NULL, NULL, 'Gonzalez', 'Patricia Clase Práctica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (434, NULL, NULL, 'Gonzalez', 'Teran Daniela ', '08/06/1990', 'Arg', '35405222', '27354052224', 'O´Connor (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230-44384111', '0230-44384111', 'dagonzalez@megatlon.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, 'Megatlon', NULL, '0230-44384111', NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (435, NULL, NULL, 'Gonzalez', 'Teran MARIELA ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (436, NULL, NULL, 'Gorocito', 'Belen  ', '20/09/1996', NULL, '43870380', NULL, 'Musladini 1773 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4663067', '15-68032096', NULL, 'rocbel_2096@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (437, NULL, NULL, 'Graciano', 'Laura Edith ', '20/07/1965', 'Arg', '17302382', '27173023826', 'Tupac Amaru 1096 (1836) Llavallol', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1133133416', NULL, 'sukhabhavantu@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (439, NULL, NULL, 'Grassi', 'Gonzalo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (440, NULL, NULL, 'Grossi', 'Maximiliano  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (441, NULL, NULL, 'Guastavino', 'Mariana del Valle', '05/03/1980', 'Arg', '28030994', NULL, 'Matienzo 5451 (1744) Moreno', NULL, NULL, NULL, NULL, NULL, NULL, '02320-451431', '11-5639-0479', NULL, 'marianguastavino@gmail.com', NULL, 'Galeno Blanco', NULL, NULL, NULL, NULL, NULL, 'Profesora de Biología', NULL, 'Vendedora', 'Jumbo Retail', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (442, NULL, NULL, 'Guazzaroni', 'Maria Emilia ', '23/11/1989', 'Arg', '34834404', '27348344043', '26 de Abril 3666 (1714) Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '4481-1078', '15 5060 4311', NULL, 'maria_emilia232@hotmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Analista Quimico Univ', NULL, 'Analista Quimico Univ', 'Rapsa SA', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (444, NULL, NULL, 'Gussoni', 'Lucía  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (445, NULL, NULL, 'Gussoni', 'Maria Victoria ', '19/01/1989', 'Arg', '34372047', NULL, 'Tucuman 867 3°Dto D (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1126578735', '1126578735', 'vic.gussoni@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (446, NULL, NULL, 'Gustavino', 'Maria del Valle', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mariagustavino@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (447, NULL, NULL, 'Gutierrez', 'Andrea  ', '28/01/1967', 'Arg', '18165446', '27181654460', 'Las Madreselvas 3026 (1667) Alberti', NULL, NULL, NULL, NULL, NULL, NULL, '02320-478657', '1533237173', NULL, 'andrea.gutierrez@laboratoriohidalgo.com', '0+', 'Swiss Medical Nubial', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Tecnica en Laboratorio', 'Laboratorio Hidalgo', NULL, '01148985300', 'andrea.gutierrez@laboratoriohidalgo.com', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (448, NULL, NULL, 'Gutierrez', 'Ivana  ', '09/10/1976', 'Arg', NULL, NULL, 'Pizzarro 1254 (1669) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Austral Salud', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Estilista', 'IvanaStaff', NULL, '0230479399', NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (450, NULL, NULL, 'Hamm', 'Clara Noemi ', '17/08/1954', 'Arg', '11016986', NULL, 'San Martín 1477 (1629) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4495915', '0121-15-5501-1607', NULL, 'noemiham@hotmail.com', 'A+', 'Plaza Salud dEscobar', NULL, NULL, NULL, NULL, NULL, 'Primario', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (453, NULL, NULL, 'Hicoff Marina', '  ', '09/12/1971', 'Arg', '22539664', NULL, 'Bolivar 446 - 3 dto 7 II cuerpo (1704) Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '4469-1377', '11-6522-1634', NULL, 'marinhicoff@yahoo.com.ar', 'A+', 'DASUTEN', NULL, NULL, NULL, NULL, NULL, 'Prof de Gimnasia, Meditación', NULL, 'independiente', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (454, NULL, NULL, 'Hortal', 'Sueldo Mariana ', '30/10/1968', 'Arg', '20404511', NULL, 'Rio de Janeiro N°2 Lote 26 (1629) Bo Cerrado Las Orquideas', NULL, NULL, NULL, NULL, NULL, NULL, '02304535018', '1567160660', NULL, 'mhortalsueldo@yahoo.com', '0+', 'Docthos / Swiss Med.', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (520, NULL, NULL, 'Muiños', 'Maria Consuelo ', '25/12/1948', 'Arg', ' 5738349', NULL, 'San Cayetano 1194 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-57349479', NULL, NULL, NULL, 'PAMI', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (469, NULL, NULL, 'Leiguarda', 'Candelaria  ', NULL, NULL, '34098203', '27340982032', 'Tortugas c.c. Lte 368 (1667)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4438 2232', '15 4438 2232', 'candileiguarda@hotmail.com', 'B-', 'Osde Plan210', NULL, NULL, NULL, NULL, NULL, 'Biologa', NULL, 'Becaria Investigadora del Conicet', 'Austral - Conicet', NULL, NULL, 'candelarialeiguarda@gmail.com', 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (470, NULL, NULL, 'Leo', 'Graciela María ', '14/08/1957', 'Arg', '13739255', NULL, 'Carlos Gardel 218 PB (1824) Lanus', NULL, NULL, NULL, NULL, NULL, NULL, '4240-4644', '1136878017', NULL, 'gracielamarialeo@yahoo.com.ar', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Profesora de Educ Plastica', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (471, NULL, NULL, 'Linares', 'Luis Hector ', NULL, NULL, '11876386', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 4644-6670', '15-5517-4972', NULL, 'mahatma.luis@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (473, NULL, NULL, 'Lopez', 'Lorena  ', NULL, NULL, '27712928', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (475, NULL, NULL, 'Lopez', 'Veronica Lorena ', '14/03/1972', 'Arg', '22577676', NULL, 'manzanares', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15- 40747482', NULL, 'veritolopezm@hotmail.com', 'Rh+', 'Omint Plan I', NULL, NULL, NULL, NULL, NULL, 'Docente', NULL, 'Directora en Centro de Apoyo Escolar', 'Centro de Apoyo Escolar en Pilar', NULL, '02304420571', NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (476, NULL, NULL, 'Ludovico', 'Micaela Ivana ', '11/07/1985', 'Arg', '31775061', NULL, 'Jorge Newbery 380 (6700) Lujan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3648 5521', NULL, 'mica_ludovico@hotmail.com', '0+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Ingeniera en Alimentos', NULL, 'Calidad y Aseguramiento en AFB', 'AFB International', NULL, NULL, 'mludovico@afbinternational.com.ar', 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (477, NULL, NULL, 'Luis', 'Maria Eugenia ', '28/05/1980', 'Arg', '27623133', '27276231338', 'Saravi 1684 Piso 1 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2332-404418', NULL, 'eugenialuis2003@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (478, NULL, NULL, 'Maciel', 'Maria Angelica ', '30/06/1968', 'Arg', '24890981', '27248909817', 'Costa Rica 228 (1874) Guernica - Partido Pte Perón', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-6665-2854', NULL, 'esmeralma@yahoo.com.ar', NULL, '-', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Niñera', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (479, NULL, NULL, 'Maggio', 'Maria Marcela ', NULL, NULL, NULL, NULL, 'Dolores 15 Cañada de Pilar L98 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-3503-1999', NULL, 'mmmaggio@hotmail.com', NULL, 'Accord', NULL, NULL, NULL, NULL, NULL, 'Psicologa', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (480, NULL, NULL, 'Maidana', 'Gladys Beatriz ', '29/07/1974', 'Arg', '23799052', '20237990529', 'Santa Ana 2572 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-400529', '011-15-6572-1989', NULL, 'maidanagb@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada Administrativa', 'Estudio Prado', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (482, NULL, NULL, 'Maiterth', 'Gerardo Martin ', '26/01/1986', 'Arg', '32091680', '20320916802', 'Sgo del Estero 5624 (1605) Vicente Lopez', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6786 9003', '15 6786 9003', 'gerardo.maiterth@gmail.com', 'A+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Docente', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (483, NULL, NULL, 'Makk', 'Sonia Marisa ', '04/11/1970', 'Arg', '21749364', '27217493647', 'Champagnat 740 - El Zorzal 9C (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 5163 4021', '15 5163 4021', 'maru.laru4@gmail.com', NULL, 'Medife', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Polisajista', 'Il Giardino Di Maru', NULL, NULL, 'maru@ilgiardinodimaru.com.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (484, NULL, NULL, 'Malimowcka', 'Ailin Johana ', '03/10/1990', NULL, '35363624', '27353636249', 'Av Juan B. Alberdi 250 7° piso (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4924-1537', '15-30913234', NULL, 'ai.lo@hotmail.com', '+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Abogacía', NULL, 'Profesora de Yoga', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (485, NULL, NULL, 'Mancuso', 'Berta Andrea ', '28/06/1975', 'Arg', '24694469', '27246944690', 'Chubut 2400 Vfi 154 - Villa Rosa (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4315408', '15-2645 9443', NULL, 'bertamancuso@hotmail.com', 'A+', 'Osde 410', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Decoradora de Interiore', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (486, NULL, NULL, 'Mango', 'Cinthia Carla Mariel', '18/03/1964', 'Arg', '16895975', '27168959759', 'JB Alberdi 250 piso 7 (1424) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4924-1537', '11-5452-7075', NULL, 'cinthiamango@gmail.com', '+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Terciario: Yoga - Teatro - Inglés', NULL, 'Profesora de Gimnasia', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (490, NULL, NULL, 'Marianacci', 'Mariela Beatriz ', '14/03/1972', 'Arg', '22689097', '27226890977', 'Juan Jose Paso 940 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4427-314', '011-15-64606774', NULL, 'mariela.marianacci7@gmail.com', NULL, 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada administrativa', 'Hospital Austral', NULL, '4482165', 'mmariana@cas.austral.edu.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (492, NULL, NULL, 'Marin', 'Joselina Carol ', '16/04/1974', 'Arg', '23775580', '23237755804', 'Alte Brown 1139 (6700) Lujan', NULL, NULL, NULL, NULL, NULL, NULL, '2323-438173', '011-15-69751815', NULL, 'marinjoselina@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Instr. En Salud, Alim y Ed Física/Prof Yoga', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (493, NULL, NULL, 'Marsico', 'Nelida Beatriz ', '31/03/1966', 'Arg', '17674270', NULL, 'Johann Strauss 2822 Bo Parque El Cazador (1625) Escobar', NULL, NULL, NULL, NULL, NULL, NULL, '03484489451', '011-15-552913165', NULL, 'nelymarsico@yahoo.com.ar', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Docente nivel Primario', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (494, NULL, NULL, 'Martinez', 'Ballicillos María Macarena', '10/01/1989', 'Arg', '34154591', NULL, 'Capitan Martinez 1149 (1665) José C Paz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1136101361', NULL, 'mballicillos@hotmail.com', 'A-', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (495, NULL, NULL, 'Martinez', 'Erica  ', '23/03/1981', 'Arg', '29056252', '27290562525', 'Estrada 122 PB (1625) B. de Escobar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0348 15 4632907', '0348 15 4632907', 'martieru@hotmail.com', 'AB-', 'IOMA y Luis Pasteur', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada', NULL, NULL, '0328-4420478', NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (497, NULL, NULL, 'Martitegui', 'Maria Jose ', '03/02/1983', 'Argentina', '30378467', '27303784670', 'Tandil 1083 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4421269', '15-5044-7556', NULL, 'mj_martitegui@hotmail.com', 'Rh+', 'Accord Salud', NULL, NULL, NULL, NULL, NULL, 'Univ de Morón', NULL, 'Comercial / Ventas', 'Arcor - Vendedora Comercial', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (498, NULL, NULL, 'Mascaros', 'Lucila  ', '18/03/1973', 'Arg', '23292644', '27232926444', 'Club Univ Bs As 3150 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '03484-457-486', '011 15 4 0822199', NULL, 'lucilamascaros@gmail.com', NULL, 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Instr. De Yoga / Diseñadora de Tejidos Manuales', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (499, NULL, NULL, 'Matas', 'Evangelina  ', '10/04/1949', 'Arg', ' 6199370', NULL, 'Haras del Pilar - La Pradera Lote 2125 Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4458349', '15-6202-4612', NULL, 'familia08@live.com', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (501, NULL, NULL, 'Medina', 'Maria Jimena ', '15/02/1979', 'Arg', '27108496', '27271084965', 'Ayacucho 3566 (1665) José C. Paz', NULL, NULL, NULL, NULL, NULL, NULL, '02320-454954', '15-5920-2803', NULL, 'mjimena_ffhotmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (502, NULL, NULL, 'Mehle', 'Dana Julia ', '01/07/1989', 'Arg', '34738669', '27347386699', 'Almafuerte 2534 (1754) La Matanza', NULL, NULL, NULL, NULL, NULL, NULL, '4482-5424', NULL, NULL, 'danajuliamehle@gmail.com', 'AB+', NULL, NULL, NULL, NULL, NULL, NULL, 'V. Médico, Fotografa, T Social', NULL, 'Administrativa Empresarial', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (503, NULL, NULL, 'Mena', 'Edith Nancy ', '16/10/1972', 'Arg', '22927804', NULL, 'Salto 913 (1629)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nancy.mena72@gmail.com', '0+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario completo', NULL, 'Docente - Prof de Plástica', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (504, NULL, NULL, 'Menghini', 'Maria Laura ', '14/06/1981', 'Arg', '28549829', NULL, 'Calle 28 N° 647 (6660) 25 de Mayo Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '02345 15562893', NULL, 'laumenghini@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Veterinaria', NULL, 'Veterinaria', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (505, NULL, NULL, 'Merlo', 'Patricia Susana ', '17/10/1953', 'Arg', '10889023', '27108890237', 'Mar del Plata Golf Club n°3351 UF63 (1667) Pilar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '0348-4475179', '1558472166', NULL, 'pato_nel@yahoo.com.ar', NULL, 'Docthos/Swiss Med', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (506, NULL, NULL, 'Micheletti', 'Veronica Andrea ', NULL, 'Arg', '23124577', NULL, 'Necochea 1487 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-444897', '15-65272334', NULL, 'veromiche77@hotmail.com', '0+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Psicologa Holística', NULL, 'Independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (507, NULL, NULL, 'Milacher', 'Romina  ', NULL, NULL, '30265437', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (508, NULL, NULL, 'Minetto', 'Monica Liliana ', '24/12/1958', 'Arg', '13645195', '27136451958', 'Olivos Golf Club Km 32 Panamericana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4169 6652', '45871131', 'minetto_monica@yahoo.com.ar', NULL, 'Hospital Británico', NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, 'Abogada', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (509, NULL, NULL, 'Miramontes', 'Ailen  ', '17/07/1991', 'Arg', '36397195', NULL, 'Florida S/N Bo Los Pilares Lote 26 (16312) Villa Rosa - Pila', NULL, NULL, NULL, NULL, NULL, NULL, '03484-638726', '011-15-36124729', NULL, 'ailen.miramontes@gmail.com', 'A+', 'Osde 310', NULL, NULL, NULL, NULL, NULL, 'Univ en curso', NULL, 'Diseño de indumentaria', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (510, NULL, NULL, 'Miranda', 'Lorena Jorgelina ', '25/04/1975', 'Arg', '24463321', '27244633213', 'Alberdi 1222 (1617) Pacheco', NULL, NULL, NULL, NULL, NULL, NULL, '011-2077-2737', '011-15-3305-8574', NULL, 'lorenamiranda29@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, '-', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (511, NULL, NULL, 'Molina', 'Carla  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (512, NULL, NULL, 'Molina', 'Maria Florencia ', '10/03/1982', 'Arg', '29382206', '27293822064', 'Pio XII 2652 (1742) Paso del Rey', NULL, NULL, NULL, NULL, NULL, NULL, '02374636483', NULL, NULL, 'florenciamolina.r9@gmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Bibliotecaria', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (513, NULL, NULL, 'Molina', 'Rosa Nancy ', '17/04/1976', 'Peruana', '93920564', '27939205646', 'Bariloche 2233 (1643) Beccar Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '47371273', '15 4079 2133', NULL, 'nancymolina259@gmail.com', NULL, 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Secundario Completo', NULL, 'independiente', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (514, NULL, NULL, 'Molinari', 'Carla  ', '30/08/1972', 'Arg', '22849437', '27228494378', 'Barrio La Pradera 1134 Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02304458695', '15 4076 1533', NULL, 'carla_molinari@hotmail.com', 'A+', 'Luis Pasteur', NULL, NULL, NULL, NULL, NULL, 'Fonoaudiologa', NULL, 'Fonoaudiologa', 'independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (515, NULL, NULL, 'Mondino', 'Jesica  ', NULL, NULL, '32735315', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (517, NULL, NULL, 'Montigel', 'Maggio Alejandra ', '03/04/1987', 'Arg', '33024886', '27330248861', 'Dolores 15 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4533028', '11 15 3488 4400', '11 15 3488 4400', 'mmaggioalejandra@gmail.com', '0+', 'Union Personal', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (518, NULL, NULL, 'Moreno', 'María  ', '01/12/1962', 'Arg', '16054418', NULL, 'Chubut 610 Lote 31 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304693037', '0111534311709', NULL, 'arqmariamoreno@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UBA Arquitecta', NULL, 'Arquitecta', 'independiente', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (531, NULL, NULL, 'Occhiuzzi', 'Natalia  ', '24/12/1973', 'Arg', '23567868', NULL, 'Jujuy 232 (1631) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5934-5986', NULL, 'nativo@hotmail.com', NULL, 'Osde', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Traductora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (533, NULL, NULL, 'Orieta', 'Mariana  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'marianaorieta@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (534, NULL, NULL, 'Ossia', 'Maria de los Angeles  ', '18/07/1978', 'Arg', '26688315', '27266883159', 'Agüero 2843 PB dto 1 (1678) Caseros CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4734-8546', '15 53796166', NULL, 'maossia@yahoo.com.ar', '0+', 'Accord Salud Plan310', NULL, NULL, NULL, NULL, NULL, 'Abogacia incompleto', NULL, 'Carpetista', 'Escribania Mihura', NULL, '4393-0024/1549', 'angeles@escribaniamihura.com.ar', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (535, NULL, NULL, 'Oyharzabal', 'Castro Candelaria ', '20/08/1992', 'Arg', '30721245', NULL, 'C.C. Pueyrredon L99 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4667244', '15-67901777', NULL, NULL, '0-', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Profesorado Sup "Sarah C. Eccleston"', NULL, 'Docente', 'Brick Towers College', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (536, NULL, NULL, 'Oyharzabal', 'Castro Catalina ', '09/02/1999', 'Arg', '41710447', NULL, 'C. de C. Pueyrredon L99 (1628) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4667244', '1530900902', NULL, 'cataoyharzabal@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Estudiando en el Inst. Independencia de Pilar (nivel secundario)', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (537, NULL, NULL, 'Oyharzabal', 'Milagros  ', '29/05/2000', 'Arg', '42660375', NULL, 'Km 49 Club de Campo Pueyrredon (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304667244', NULL, NULL, 'milagrosoyharzabal@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (538, NULL, NULL, 'Paez', 'Santiago Hernan ', '29/07/1973', 'Arg', '23278495', NULL, 'Valparaiso390 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4663881', '15 5827 5634', NULL, 'santiagohernanpaez@hotmail.com', 'A+', 'Centro Med Pueyrredo', NULL, NULL, NULL, NULL, NULL, 'Bachiller', NULL, 'Operario Quimico', 'Ferroclor SA - Parque Ind Pilar', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (539, NULL, NULL, 'Paiber', 'Miriam Noemi ', NULL, 'Arg', '16638800', NULL, 'Los Nardos 1331 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-477811', '0111554964256', NULL, 'm311063@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario', NULL, 'Docente', 'Esc. Secundaria n°15', NULL, '02320-479077', 'sec_15pilar_@hotmail.com.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (540, NULL, NULL, 'Palavecino', 'Claudio Alberto Braian', '16/08/1989', 'Arg', '34459228', '2034459228', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brian.bit@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Acompañante Terapéutico', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (541, NULL, NULL, 'Pallero', 'Maria Eugenia ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'agujuangdv@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (542, NULL, NULL, 'Palmeiro', 'Daniela  ', '31/01/1979', 'Arg', '27144116', '27271441164', 'Mexico 668 3ºB CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-6893-7233', NULL, 'daniela_palmeiro@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Terapista Ocupacional', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (543, NULL, NULL, 'Panza', 'Mirta Beatriz ', NULL, NULL, ' 5475445', '27054754456', 'Luis M Campos 1119 Bernal Oeste', NULL, NULL, NULL, NULL, NULL, NULL, '4259-3610', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (544, NULL, NULL, 'Paredes', 'Michelle Clases Prácticas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (549, NULL, NULL, 'Peña', 'Edith Marisa ', '02/04/1967', NULL, '18204656', NULL, 'Ceretti 2815 7° Diagonal (1431) CABA', NULL, NULL, NULL, NULL, NULL, NULL, '4752-1107', '1568772123', NULL, 'edithmarisapenia@yahoo.com.ar', 'B+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Abogada', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (550, NULL, NULL, 'Peña', 'Marisa  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (551, NULL, NULL, 'Pereyra', 'Nadia Soledad ', '07/12/1984', 'Arg', '31381095', '27313810955', 'Catrilo 1587 (1667) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6808 6361', '15 6808 6361', 'pereyrasnadia@gmail.com', NULL, 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada', 'Norfoods SA', NULL, '02320620880', NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (552, NULL, NULL, 'Pereyra', 'Norma Susana ', '23/06/1959', 'Arg', '13450215', '27134502155', 'Sanguinetti 475 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4429055', '111558490044', NULL, 'normapereyra1959@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'Extramedica', NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (562, NULL, NULL, 'Pogrebaj', 'Miriam Ines ', '15/01/1966', 'Arg', '18003362', '27180033624', 'Saravi 1896 (1629) La Lonja Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '20441327', '15-60932739', NULL, 'mpogrebaj@yahoo.com.ar', '0+', 'Accord', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Trabajadora Social', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (563, NULL, NULL, 'Polastrelli', 'Marina  ', '25/10/1963', 'Arg', '16354093', '27163540938', 'Serrano 1637 4°C (1663) San Miguel', NULL, NULL, NULL, NULL, NULL, NULL, '011-4667-2262', '15 5641 9559', NULL, 'polastrellimarina@yahoo.com.ar', '0-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Prof de Psic.y Cs de la educación', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (564, NULL, NULL, 'Pomar', 'Laura  ', '03/10/1991', 'Arg', '36411434', '27364114341', 'Anchorena 1754 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-57357186', NULL, 'laupomar@gmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Terciario: IGI - Pastelera', NULL, 'Pastelera', 'Independiente', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (566, NULL, NULL, 'Portillo', 'Monica Elsa ', '11/08/1958', 'Arg', '12844312', '27128443121', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 2256 6963', '15 2256 6963', 'moni-1108@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Terciario completo', NULL, 'Docente', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (567, NULL, NULL, 'Primolano', 'Joana Natalia ', NULL, NULL, '35643737', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (568, NULL, NULL, 'Proietto', 'Guillermo  ', '11/12/1970', 'Arg', '21919007', NULL, 'Bo La Retama L38 (1629) Manzanares', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4499706', '011-15-4447-5225', NULL, 'gproietto1970@gmail.com', 'A+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (570, NULL, NULL, 'Pungitore', 'Mariana Veronica ', '25/03/1974', NULL, '23771839', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1567016916', NULL, 'ismymvp@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (572, NULL, NULL, 'Quiroga', 'Silvia  ', NULL, 'Arg', '16040259', '27160402593', 'Lomada Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1544075975', NULL, 'silviaquiroga_1@hotmail.com', NULL, 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Lic Administracion de Empresas', NULL, 'Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (573, NULL, NULL, 'Ramirez', 'Sandra  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (575, NULL, NULL, 'Redoni', 'Marcos  ', NULL, NULL, '16742274', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (576, NULL, NULL, 'Reyes', 'Lucila  ', '23/12/1981', 'Arg', '29093104', '27290931040', 'Bolivar 2790 ( 1686) Hurlingam', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1562741637', NULL, 'lucilareyes81@hotmail.com', 'A+', 'GALENO', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (577, NULL, NULL, 'Riestra', 'Ana Noelia ', NULL, NULL, '33021235', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (578, NULL, NULL, 'Rivas', 'Carina Maria ', '15/01/1972', 'Arg', '18721654', '27187216546', 'Mendoza 1825 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4495437', '0111553793215', NULL, NULL, NULL, 'Maestranza', NULL, NULL, NULL, NULL, NULL, 'Primario', NULL, 'Empleada domestica', 'Mayling', NULL, '0230-4464033', NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (579, NULL, NULL, 'Rizzo', 'Verónica  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'chosh07@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (580, NULL, NULL, 'Robacio', 'Elena Haydee ', '18/08/1961', 'Arg', '16145179', NULL, 'Ruta 25 km 75 Country San Diego Mza16 Lote03 - Moreno Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1526558948', '1526558952', 'elenarobacio@hotmail.com', '0-', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Ter/ Univ', NULL, 'Paisajista', NULL, NULL, NULL, 'paisajeverdearq@hotmail.com', 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (583, NULL, NULL, 'Rodriguez', 'Pablo  ', '03/08/1964', 'Arg', '17030696', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1531805228', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (584, NULL, NULL, 'Rodriguez', 'Rey Juan Manuel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'brosards@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (586, NULL, NULL, 'Rodriguez', 'Yamila Ines ', '05/04/1984', 'Arg', '30927303', '27309273031', 'Zamudio 4680 3°A CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-53853396', NULL, 'yamilairodriguez@gmail.com', 'A-', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Terciario inc: Teatro / Danzas', NULL, 'Actriz', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (587, NULL, NULL, 'Roidzaid', 'Silvana Judith ', '11/07/1973', 'Arg', '23297198', '27232971989', 'Vedia 1650 11° (1429) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-6335 2610', NULL, 'artefusion2014@gmail.com', 'A+', 'Medife', NULL, NULL, NULL, NULL, NULL, 'Terapeuta Artística / Artísta Plástica', NULL, 'Terapeuta', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (588, NULL, NULL, 'Rojas', 'Mirian Adriana ', '01/04/1979', 'Arg', '27357349', NULL, 'Juan F Seguí 3935 (1667) Tortuguitas', NULL, NULL, NULL, NULL, NULL, NULL, '02320-493757', '011 39451744', NULL, 'abril_01@hotmail.com', '0+', NULL, NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (589, NULL, NULL, 'Romera', 'Carina  ', '17/09/1984', 'Arg', '31200025', '27312000259', 'Necochea 526 (2300) Rafaela Santa Fe', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0341 15 5141288', '0341 15 5141288', 'kariromera@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (600, NULL, NULL, 'Salvador', 'Valeria  ', '16/06/1983', 'Arg', '30065686', '27300656868', 'San Isidro 1011 Villa Rosa - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4426746', '15 2450 0061', '15 2450 0061', 'valeryasalvador@yahoo.com.ar', '+', 'Accord Salud 310', NULL, NULL, NULL, NULL, NULL, 'Univ: Comercio Exterior', NULL, 'Administración', 'Pilar Cargo', NULL, '0230-4490800', 'vsalvador@pilarcargo.com.ar', 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (601, NULL, NULL, 'Sanchez', 'Camila  ', '05/03/1986', 'Arg', '32191615', '27321916150', 'Conde Zeppelin 6515 (1684) Palomar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 23203054', NULL, 'sanchez_camila@hotmail.com', '0+', 'OSDE 210', NULL, NULL, NULL, NULL, NULL, 'Universidad', NULL, 'Abogada', 'Defensoría Penal Poder Judicial', NULL, '4629-1331 int 104', 'casanchez@mpba.gov.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (602, NULL, NULL, 'Sanchez', 'Paula Valeria ', NULL, NULL, '30158407', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'paulavaleriasanchez@yahoo.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (603, NULL, NULL, 'Sanchez', 'Zulema Noemí ', '27/01/1959', 'Arg', '12928002', NULL, 'Champagnat 1600 Lote 13 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304663913', '0111557721973', NULL, 'zulema-59@hotmail.com', 'A+', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (612, NULL, NULL, 'Schupak', 'Irene Rocío ', '24/03/1985', 'Arg', '31375017', '27313750170', 'San Miguel 1335 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-407380', '011-15-65225549', NULL, 'ireschupak@gmail.com', NULL, 'Union Personal', NULL, NULL, NULL, NULL, NULL, 'Profesora de Ed Física', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (613, NULL, NULL, 'Scifo', 'Silvana Lucia ', '09/10/1981', 'Arg', '28873354', NULL, 'De la Visitación 671 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4430316', '011 15 54773068', NULL, 'silusci-17@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Técnica Radiologa', 'Imágenes Concord', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (614, NULL, NULL, 'Seguer', 'María Cecilia ', NULL, NULL, '34933878', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (615, NULL, NULL, 'Senn', 'Daniela Clases Viviana', '11/04/1991', 'Arg', '36236940', '27362369407', 'Chiclana 7157 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-653370', '1550555379', NULL, 'darqui_89@hotmail.com', '+', 'OSPE A604', NULL, NULL, NULL, NULL, NULL, 'Asistente de RRHH', NULL, 'Recepcionista', 'Dieser San Miguel', NULL, NULL, 'lamercedpilar@lamercedpilar.com', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (621, NULL, NULL, 'Sosa', 'María Ines ', '26/02/1979', 'Arg', '27086944', NULL, 'Schubert 5888 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-472361', '15-59428411', NULL, 'mariainsosa@gmail.com', 'A+', 'OSDE 310', NULL, NULL, NULL, NULL, NULL, 'Lic en Gestión de RRHH', NULL, 'Analista Sr de RRHH', NULL, NULL, NULL, 'misosa@klabin.com.ar', 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (622, NULL, NULL, 'Soto', 'María del Carmen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (623, NULL, NULL, 'Steckler', 'Karina Vanessa ', '25/12/1977', 'Arg', '26663425', '27266634256', 'Ruta 4 km 5,5 Los Robles L101 - Village Cardales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-15-6465-1977', NULL, 'karynasteckler@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Abogada', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (640, NULL, NULL, 'Vezzuci', 'Maria Alejandra ', '26/10/1960', 'Arg', '14188644', NULL, 'Necochea 3464 (1667) Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '03484639212', '11 49496208', NULL, 'trama_co@hotmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Maestra', NULL, NULL, NULL, NULL, 'VERDADERO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (641, NULL, NULL, 'Vignati', 'Maria Victoria ', '09/08/1963', 'Arg', '16520648', '27165206482', '2° Rivadavia 19375 (1712) Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '4629-5196', '1538126429', NULL, 'victovi36@gmail.com', '0+', 'OCECAC', NULL, NULL, NULL, NULL, NULL, 'Diseñadora', NULL, 'Enseñanza Artística', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (642, NULL, NULL, 'Vilar', 'Veronica Vivian ', '05/02/1961', 'Arg', '17606196', '27176061966', 'Valentin Gomez 775 Derqui', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011-61313817', NULL, 'veronicapilates@hotmail.com', NULL, 'MEDICUS', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, 'Instructora Técnicas de Gimnasia', 'Sport Club Megatlon', NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (643, NULL, NULL, 'Villadangos', 'Cintia  ', '28/03/1979', 'Arg', '27271584', '27272715845', 'O´Connor 1175 Derqui', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 3690 4346', '15 3690 4346', 'c.villadangos1979@gmail.com', '0+', 'UTGRA', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Masajista', 'Sheraton Hotel', NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (644, NULL, NULL, 'Villalba', 'Lopez Emilia ', '22/05/1965', 'Paraguaya', '92659529', NULL, 'Suipacha 156 (1620) M Sabio Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11 5248 0162', NULL, 'mililopez123123@gmail.com', 'Rh+', NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (645, NULL, NULL, 'Villar', 'Magdalena  ', '19/01/1997', 'Arg', '40133963', NULL, 'Saravi 2951 B. PilarJoven, La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0230--474060', NULL, NULL, 'magdalenavillars@gmail.com', '0+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (647, NULL, NULL, 'Voigt', 'Perez Debora Anabella', '02/07/1987', 'Arg', '32861498', NULL, 'Lago Lacar 156 (1629) Manzanares - Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '02304499161', '15-34684098', NULL, 'legolascay@hotmail.com', 'A+', 'IOMA', NULL, NULL, NULL, NULL, NULL, 'Prof de Educación Inicial', NULL, 'Prof de Educación Inicial', NULL, NULL, NULL, NULL, 'FALSO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (648, NULL, NULL, 'Wagner', 'Maria Lujan ', '22/09/1975', 'Arg', '24786271', '23247862714', 'Valparaiso 390 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4663881', '15 63073548', NULL, 'mlujanw@outlook.com', 'A+', 'C. Médico Pueyrredon', NULL, NULL, NULL, NULL, NULL, 'Lic en Psicologia incompleto', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (650, NULL, NULL, 'Woschnagg', 'Rosemarie  ', '01/03/1942', 'Arg', ' 4453111', NULL, 'Chile 1891 casa 10 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '01167058596', '2304644903', 'algaro@usa.com', '-', 'Osde 210', NULL, NULL, NULL, NULL, NULL, 'Maestra Jardinera', NULL, 'Jubilada - Ama de Casa', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (651, NULL, NULL, 'Zabala', 'Romina Silvana ', '09/03/1977', 'Arg', '25879152', NULL, 'Tortugas Golf C. 1953 (1669) Del Viso', NULL, NULL, NULL, NULL, NULL, NULL, '02320-476335', '15-38050600', NULL, 'romipdl@hotmail.com', 'A+', 'Banco  Provincia', NULL, NULL, NULL, NULL, NULL, 'Adm. Emp en curso / Psicología en curso', NULL, 'Ama de casa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'NO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
+INSERT INTO temp_personas VALUES (653, NULL, NULL, 'Zeballos', 'Jesica  ', '03/10/1988', 'Arg', '34136040', '23341360404', 'Ruben Dario 786 PB (2813) Pavon Bs As', NULL, NULL, NULL, NULL, NULL, NULL, '02304482379', '0111562818582', NULL, 'jesicazeballos@gmail.com', 'A+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (654, NULL, NULL, 'Zekas', 'Silvana  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'FALTA FICHA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'NO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas VALUES (39, 39, 'Pilar', 'BAQUEAR', 'BARBARA', '1964-11-29', 'ARG', '17332534', NULL, 'ISLA VICTORIA', '1219', NULL, 1669, 'DEL VISO', 'BS AS', 'ARG', NULL, '111567283144', NULL, 'BARBARA64MB@GMAIL.COM', '0-', 'AUSTRAL SALUD', 'SI', 'NO TIENE EL COMPROMISO FIRMADO', 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-11', 'SI', '2017-10-05', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (40, 40, 'Pilar', 'DAMIANO', 'MARIELA', '1978-12-22', 'ARG', '27088023', NULL, 'CARLOS PELLEGRINI', '157', '121', 1625, 'ESCOBAR', 'BS AS', 'ARG', NULL, '1140382222', NULL, 'MARIELADAMIANI@HOTMAIL.COM', 'A+', 'AUSTRAL ', 'SI', 'NO TIENE COMPROMISO FIRMADO', 'COMPLETO', 'COMPLETO', 'COMPLETO', 'No', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'SI', '2017-10-01', 'Profesorado de Yoga');
+INSERT INTO temp_personas VALUES (49, 49, 'Pilar', 'SENOSIAIN', 'MARIA ISABEL', '1984-03-15', 'ARG', '30923290', NULL, 'PARQUE MAPUCHE', '26', NULL, 1625, 'LA LONJA PILAR', 'BS AS', 'ARG', '2304470586', '111523608198', NULL, 'ISABELSENOSIAIN@GMAIL.COM', NULL, 'HOSPITAL ALEMAN', 'SI', 'NO TIENE EL COMPROMISO FIRMADO', 'COMPLETO', 'COMPLETO', 'COMPLETO', NULL, NULL, 'ANALISTA EN SERVICIOS GASTRONOMICOS', 'SELVATICA PILAR', NULL, NULL, NULL, 'NO', 'Si', 'NO', 'Si', 'SI', '1900-01-01', 'No', '2017-12-01', 'Profesorado de Yoga');
 
 
 --
--- TOC entry 2662 (class 0 OID 976379)
--- Dependencies: 269
+-- TOC entry 2701 (class 0 OID 976646)
+-- Dependencies: 249
 -- Data for Name: temp_personas2; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -26687,6 +29622,7 @@ INSERT INTO temp_personas2 VALUES (74, 'Pilar', 'LEGUIZAMON', 'MARIA DEL ROSARIO
 INSERT INTO temp_personas2 VALUES (75, 'Pilar', 'SOCA', 'ALEJANDRA', '1977-06-17', 'ARG', '25865473', NULL, 'TORRA', '1851', NULL, 1631, 'VILLA ROSA', 'BS AS', 'ARG', NULL, '111551105361', NULL, 'NALESOCA@GMAIL.COM', 'B+', 'GALENO', 'SI', NULL, NULL, 'COMP', NULL, NULL, NULL, 'VENDEDORA', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'Si', 'SI', '1900-01-01', 'No', '2018-04-01', 'Profesorado de Yoga');
 INSERT INTO temp_personas2 VALUES (76, 'Pilar', 'LOPEZ', 'NOELIA', '14/5/1982', 'ARG', '29405389', '27294053897', 'VIAMONTE', '412', NULL, 1635, 'DERQUI', 'BS AS', 'ARG', NULL, '111523369104', NULL, 'MIIAPROFARTE@HOTMAIL.COM', 'A+', 'IOMA', 'SI', NULL, NULL, NULL, 'SI', 'No', NULL, 'DOCENTE', 'ESCUELA PUBLICA', NULL, NULL, NULL, 'Si', 'Si', 'Si', 'SI', '1/1/1900', 'SI', 'No', '7/9/2017', 'Profesorado de Yoga');
 INSERT INTO temp_personas2 VALUES (77, 'Pilar', 'ESPINOZA', 'CARMEN MABEL', '20/4/1970', 'ARG', '21496429', NULL, 'ENTRE RIOS', '1302', NULL, 1635, 'DERQUI', 'BS AS', 'ARG', NULL, '111562542296', NULL, 'CARMABELES@HOTMAIL.COM', '0+', 'IOMA', 'SI', NULL, NULL, NULL, 'DOCENTE', 'No', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'Si', 'Si', 'Si', 'SI', '1/1/1900', 'SI', 'No', '3/8/2017', 'Profesorado de Yoga');
+INSERT INTO temp_personas2 VALUES (NULL, 'ADROGUE', 'Toledo', 'Maria del Carmen', NULL, NULL, '21875562', NULL, 'Bouchard 1265 Dto 2 CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111538689334', NULL, 'maria.toledo.1971@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (78, 'Pilar', 'FIGUEROA', 'CRISTIAN TOMAS', '18/10/1977', 'ARG', '26083669', NULL, 'Corbeta Beifast', '1737', NULL, 1629, 'PILAR', 'BS AS', 'ARG', NULL, '1130570606', NULL, 'CF7573169@GMAIL.COM', '+', NULL, 'SI', NULL, NULL, NULL, 'PSICOLOGIA SOCIAL', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'Si', 'No', NULL, 'CURSA', '1/1/1900', 'SI', '1/1/1900', 'Profesorado Superior de Yogaterapia');
 INSERT INTO temp_personas2 VALUES (79, 'Pilar', 'RODRIGUEZ', 'GABRIELA', '7/5/1969', 'ARG', '20954064', '27209540644', 'BARRIO EL LAUQUEN RUTA 58 KM 10', '17', '9', 0, 'CANNING', 'BS AS', 'ARG', '20505679', '1130714630', '42417065', 'RODRIGUEZGABRIELA34@GMAIL.COM', '0+', 'OSDE', 'SI', NULL, NULL, NULL, 'DISEÑADORA DE INDUMENTARIA', 'No', NULL, 'DISEÑADORA DE INDUMENTARIA', 'CHUCHOMANUCHO', 'JOAQUIN V GONZALEZ 1451', '42417065', 'GABRIELA.RODRIGUEZ@CHUCHOMANUCHO.COM.AR', 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '4/11/2017', 'Profesorado Superior de Yogaterapia');
 INSERT INTO temp_personas2 VALUES (80, 'Pilar', 'FIFIAN', 'FLORENCIA PAULA', '1/1/1900', 'ARG', '25578127', NULL, 'ZEBRUNO', '910', NULL, 0, 'DEL VISO', 'BS AS', 'ARG', NULL, '1132584494', NULL, 'FLORENCIAFAFIAN@GMAIL.COM', NULL, 'HOSP ITALIANO', 'SI', NULL, NULL, NULL, NULL, NULL, NULL, 'DISEÑO DE INTERIORES', NULL, NULL, NULL, NULL, 'NO', 'Si', 'No', NULL, 'NO SE', '1/1/1900', 'SI', '11/4/2015', 'Profesorado Superior de Yogaterapia');
@@ -26743,6 +29679,7 @@ INSERT INTO temp_personas2 VALUES (130, 'Castelar', 'CALANDRONI', 'ROSANA ADRIAN
 INSERT INTO temp_personas2 VALUES (131, 'Castelar', 'CAMARGO', 'GABRIELA FERNANDA', '15/09/1978', 'ARG', '26826206', '27268262062', '25 DE MAYO', '748', NULL, 1824, 'LANUS', 'BS AS', 'ARG', '39649529', '1162708760', '1162708460', 'CAMARGOGABY@HOTMAIL.COM', 'B+', 'UNION PERSONAL', 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Empleada Administrativa Local de Decoración', NULL, NULL, NULL, NULL, 'Si', 'No', 'No', 'NO SE', '31/12/1899', 'SI', NULL, '16/04/2016', 'Profesorado de Yoga');
 INSERT INTO temp_personas2 VALUES (132, 'ADROGUE', 'Valiño', 'Luiz Oscar ', '24/02/1968', 'Arg', '20009800', '24200098001', 'Ramon Franco', '4062', NULL, 1826, 'Remedios de Escalada', 'Bs As', 'Arg', '42924479', '1569269012', NULL, 'luisoscar40@gmail.com', 'A+', 'PUEYREDON', 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (133, 'ADROGUE', 'Enriquez', 'Belen Alejandra ', '17/10/1977', 'Arg', '26299687', NULL, 'POLONIA', '2470', NULL, 1846, 'ADROGUE', NULL, NULL, NULL, '1524317471', NULL, 'belenenriquez802@gmail.com', '+', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
+INSERT INTO temp_personas2 VALUES (NULL, 'LUJAN', 'Musso', 'Marina Graciela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111569751814', NULL, 'mussomari@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-mar', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (134, 'ADROGUE', 'Durand', 'Andrea Agostina ', '06/01/1995', 'ARG', '38681512', '27386815122', '34', '968', NULL, 1862, 'GUERNICA', 'BS AS', 'ARG', '2224472755', '1157374729', NULL, 'ANDREA.DURAND@LIVE.COM', NULL, NULL, 'SI', 'RINITIS ALERGICA - LUMBALGIA', NULL, NULL, NULL, 'SECUNDARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (135, 'ADROGUE', 'Curci', 'Maria Jose ', '03/01/1984', 'ARG', '30663091', '27306630917', 'CATAMARCA', '905', NULL, 1832, 'BS AS', 'BS AS', 'ARG', NULL, '1549275202', NULL, 'mariacurci32@gmail.com', NULL, NULL, 'SI', NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'GUARDAVIDAS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (136, 'ADROGUE', 'Durand', 'Florencia  ', '26/06/1993', 'ARG', '37022305', NULL, '34', '968', NULL, 1862, 'GUERNICA', 'BS AS', 'ARG', '2224472755', '1166833376', NULL, 'FLORDURAND@LIVE.COM', '0-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
@@ -26774,6 +29711,7 @@ INSERT INTO temp_personas2 VALUES (161, 'CASTELAR', 'D''Onofrio', 'Micaela  ', '
 INSERT INTO temp_personas2 VALUES (162, 'CASTELAR', 'Galerti', 'Sofia Moira ', '13/03/1996', 'ARG', '41581965', NULL, 'Tebicuay 2050 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, '46236405', '0111537841534', NULL, 'galerti@hotmail.com.ar', 'A+', 'AUI SALUD', 'S', NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, NULL, NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (163, 'CASTELAR', 'Seijo', 'Paula Valeria ', '25/03/1982', 'ARG', '29438033', '27294380332', 'Rosales 418 1°C Ramos Mejía', NULL, NULL, NULL, NULL, NULL, NULL, '46588348', '0111536936682', '1558121831', 'paula_seijo@yahoo.com.ar', 'A+', 'OSDE', 'SI', 'PINZAMIENTO LUMBAR', NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'INGENIERA INFORMATICA', 'SANTANDER', NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-may', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (164, 'CASTELAR', 'Sogni', 'Fernanda  ', '06/06/1975', 'ARG', '24690580', '27246905806', 'Berutti 408 Moron', NULL, NULL, NULL, NULL, NULL, NULL, '46242572', '0111540940071', NULL, 'fernandasog@hotmail.com.ar', 'A+', 'OSDE', 'S', NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'MAESTRA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, '2017-mar', 'PROF YOGA');
+INSERT INTO temp_personas2 VALUES (NULL, 'LUJAN', 'Cicala', 'Leonela  ', NULL, NULL, '34641467', NULL, 'Aristobulo del Valle 2267- Moreno', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111568875091', NULL, 'cicala.leonela@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (165, 'CASTELAR', 'Cobos', 'Julieta Elizabeth ', '16/03/1973', 'ARG', '23328837', '27233288379', 'Cura Bronchero 1778 Ituzaingó', NULL, NULL, NULL, NULL, NULL, NULL, '46239777', '0111556652515', NULL, 'julieta29cobos@hotmail.com', NULL, 'IOMA', NULL, NULL, NULL, NULL, NULL, 'TERCIARIO COMPLETO', NULL, 'DOCENTE', NULL, NULL, NULL, NULL, 'S', 'S', 'N', 'SI', 'CURSA', NULL, NULL, '2017-abr', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (167, 'CASTELAR', 'Brown', 'Claudia Noemi ', '06/11/1967', 'ARG', '18.492.476', '27184924760', 'El Pampero 5652 González Catán ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111556194820', NULL, 'claudia_brown@hotmail.com', 'A+', 'OSPEP', 'A', NULL, NULL, NULL, NULL, 'Gestora', NULL, 'Administrativa', NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, 'EGRESÓ', NULL, 'VERDADERO', '2017-jun', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (168, 'CASTELAR', 'Teodori', 'Maria Paula ', '20/11/1968', 'ARG', '20477364', '27204773640', 'Pehuajo 819 Castelar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111558095887', NULL, 'paulateo@speedy.com.ar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNIVERSITARIO COMPLETO', NULL, 'FONOAUDIOLOGA', NULL, NULL, NULL, NULL, 'S', 'S', 'S', 'SI', 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
@@ -26804,9 +29742,6 @@ INSERT INTO temp_personas2 VALUES (192, 'PILAR', 'De Luca', 'Juana Maria', '10/0
 INSERT INTO temp_personas2 VALUES (193, 'PILAR', 'Curuli', 'Silvia Monica ', '13/01/1968', 'Arg', '20.010.572', '27200105724', 'Santa Eulalia 2352 (1629) M Alberti', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '011 15 40700256', NULL, 'baltet@hotmail.com', '0+', 'Ioma', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ completo', NULL, 'Directora y Vicedirectora', 'Jardin 907 - Jardin 917', NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (194, 'PILAR', 'Rosalez', 'Maria Rosa ', '23/07/1977', 'ARG', '26104928', NULL, 'Bataglia 252 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0230 456 3318', NULL, 'padma@outlook.com', 'A+', NULL, 'S', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'P.S. YOGA DINAMICO');
 INSERT INTO temp_personas2 VALUES (NULL, 'ADROGUE', 'Ortega', 'Enzo Ariel ', NULL, NULL, '39913612', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ortegaenzoariel@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2017-dic', 'PROF YOGA');
-INSERT INTO temp_personas2 VALUES (NULL, 'ADROGUE', 'Toledo', 'Maria del Carmen', NULL, NULL, '21875562', NULL, 'Bouchard 1265 Dto 2 CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111538689334', NULL, 'maria.toledo.1971@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
-INSERT INTO temp_personas2 VALUES (NULL, 'LUJAN', 'Cicala', 'Leonela  ', NULL, NULL, '34641467', NULL, 'Aristobulo del Valle 2267- Moreno', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111568875091', NULL, 'cicala.leonela@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, '2018-ene', 'PROF YOGA');
-INSERT INTO temp_personas2 VALUES (NULL, 'LUJAN', 'Musso', 'Marina Graciela ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111569751814', NULL, 'mussomari@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-mar', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (NULL, 'PALERMO', 'Biset', 'Cynthia Yanina ', NULL, NULL, '37247316', NULL, 'Saavedra 694 piso 3 (1224) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111564920383', NULL, 'bisetcynthia@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CURSA', NULL, NULL, NULL, 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (NULL, 'PALERMO', 'Campbell', 'Maria Gwendoline ', NULL, NULL, '33314907', NULL, 'Gorritti 3552 (1172) CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111559609400', NULL, 'gwecam62@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-oct', 'PROF YOGA');
 INSERT INTO temp_personas2 VALUES (NULL, 'PALERMO', 'Castillo', 'Hernan Alberto ', NULL, NULL, NULL, '20181223694', 'Bogotá 1678 3J CABA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0111567194808', NULL, 'hercastillo67@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ABANDONÓ', NULL, NULL, '2017-sep', 'PROF YOGA');
@@ -27037,6 +29972,7 @@ INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Giosa', 'Analia  ', NULL, NULL, 
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Giusti', 'Cristina  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Gobbi', 'Lorena Elisabeth ', NULL, NULL, '29.651.936', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2323 533458', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Godoy', 'Adrian Emanuel ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'solcris46@hotmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
+INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Nicolosi', 'Fabiana Alejandra ', '17/03/1975', 'Arg', '24.434.635', NULL, 'Chubut 1353 UF 18 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4494364', '15- 5455 5047', NULL, 'fabiananicolosi@hotmail.com', '0+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Magisterio Doc Inicial', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Godoy', 'Violeta Guadalupe ', '01/08/1988', 'Arg', '33.862.727', '27338627276', 'Suipacha 578 (2814) Los Cardales', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4462100', '15 44019287', '15 44019287', 'violnik@hotmail.com', 'B+', 'OSDE', NULL, NULL, NULL, NULL, NULL, 'Secundario completo', NULL, 'Administrativa', 'La Segunda', NULL, '0230-4492302', 'rhrodriguez@lasegunda.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Gomez', 'Gonzalo  ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Gomez', 'Susana  ', '10/04/1950', 'Arg', NULL, NULL, 'Dolores 15 Cañada de Pilar L75 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4533087', '15-5259-8567', NULL, NULL, 'A+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Kinesiologa', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
@@ -27137,7 +30073,6 @@ INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Muotri', 'Maria Cristina ', '29/
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Napoli', 'Frattani Mayra Yanina', '31/05/1978', 'Arg', '33.189.872', '23331898724', 'Uruguay 1637 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 4414 1975', '15 4414 1975', 'maynapoli@yahoo.com.ar', '0+', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ incompleto', NULL, 'Administrativa', 'Granja Tres Arroyos', NULL, '0230-4471282', 'mnapoli@gta.com.ar', 'FALSO', 'VERDADERO', 'VERDADERO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Neironi', 'Mauricio Manuel ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Primario; Secundario; Terciario; Universidad', NULL, NULL, NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Nelson', 'Mariana Lorena ', '05/09/1980', 'Arg', '28.307.854', '27283078545', 'Chile y Jose Verdi s/n uf 19 La Lonja', NULL, NULL, NULL, NULL, NULL, NULL, '0204300457', '15 4538 4438', '15 4538 4438', 'marianitanel@yahoo.com.ar', '0+', 'Swiss Medical', NULL, NULL, NULL, NULL, NULL, 'Escenografa', NULL, 'Escenografa', NULL, NULL, NULL, 'info@mariananelson.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
-INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Nicolosi', 'Fabiana Alejandra ', '17/03/1975', 'Arg', '24.434.635', NULL, 'Chubut 1353 UF 18 (1631) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, '0230-4494364', '15- 5455 5047', NULL, 'fabiananicolosi@hotmail.com', '0+', 'Medicus', NULL, NULL, NULL, NULL, NULL, 'Magisterio Doc Inicial', NULL, NULL, NULL, NULL, NULL, NULL, 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Noejovich', 'Yanina Leandra ', '24/06/1978', 'Arg', '27.085.845', NULL, 'Av. Mitre s/n Lote j1 (1629) Pilar', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1151488111', NULL, 'yaninaleandra@hotmail.com', 'A-', 'Galeno', NULL, NULL, NULL, NULL, NULL, 'Ter/ Univ', NULL, 'Profesora de Teatro', 'Top3', NULL, NULL, 'top3pilar@gmail.com', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Nuttini', 'Daniela  ', '12/01/1965', 'Arg', '17.226.965', '27172269651', 'Labardere 4069 (1667) Tortuguitas Bs As', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15 6798 1705', '15 5618 7642', 'danielanuttini@hotmail.com', '0+', 'Maestranza', NULL, NULL, NULL, NULL, NULL, 'Diplomada en Cs Humanas', NULL, 'Ejecutiva de Cuentas', 'MA Servicios SA', NULL, '011-47113600/33', 'dnuttini@maserviciossa.com.ar', 'VERDADERO', 'VERDADERO', 'FALSO', NULL, NULL, NULL, 'VERDADERO', NULL, NULL);
 INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Occhiuzzi', 'Natalia  ', '24/12/1973', 'Arg', '23.567.868', NULL, 'Jujuy 232 (1631) Villa Rosa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15-5934-5986', NULL, 'nativo@hotmail.com', NULL, 'Osde', NULL, NULL, NULL, NULL, NULL, 'Ter/Univ', NULL, 'Traductora', NULL, NULL, NULL, NULL, 'FALSO', 'FALSO', 'FALSO', NULL, NULL, NULL, 'FALSO', NULL, NULL);
@@ -27267,8 +30202,8 @@ INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Zekas', 'Silvana  ', NULL, NULL,
 
 
 --
--- TOC entry 2648 (class 0 OID 968350)
--- Dependencies: 243
+-- TOC entry 2703 (class 0 OID 976654)
+-- Dependencies: 251
 -- Data for Name: tipo_clase; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -27279,8 +30214,8 @@ INSERT INTO tipo_clase VALUES (3, 'TEORICA/PRACTICA');
 
 
 --
--- TOC entry 2650 (class 0 OID 968355)
--- Dependencies: 245
+-- TOC entry 2705 (class 0 OID 976659)
+-- Dependencies: 253
 -- Data for Name: tipo_pago; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -27291,8 +30226,8 @@ INSERT INTO tipo_pago VALUES (4, 'TRANSFERENCIA');
 
 
 --
--- TOC entry 2652 (class 0 OID 968360)
--- Dependencies: 247
+-- TOC entry 2707 (class 0 OID 976664)
+-- Dependencies: 255
 -- Data for Name: tipo_pago_sede; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -27301,8 +30236,8 @@ INSERT INTO tipo_pago_sede VALUES (2, 'SEMANAL');
 
 
 --
--- TOC entry 2654 (class 0 OID 968365)
--- Dependencies: 249
+-- TOC entry 2709 (class 0 OID 976669)
+-- Dependencies: 257
 -- Data for Name: tipo_persona; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -27312,8 +30247,8 @@ INSERT INTO tipo_persona VALUES (3, 'PRACTICANTE');
 
 
 --
--- TOC entry 2656 (class 0 OID 968370)
--- Dependencies: 251
+-- TOC entry 2711 (class 0 OID 976674)
+-- Dependencies: 259
 -- Data for Name: tipo_persona_perfiles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -27321,8 +30256,8 @@ INSERT INTO tipo_persona_perfiles VALUES (1, 1, 'alumno');
 
 
 --
--- TOC entry 2658 (class 0 OID 968375)
--- Dependencies: 253
+-- TOC entry 2713 (class 0 OID 976679)
+-- Dependencies: 261
 -- Data for Name: tipo_profesor; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -27332,15 +30267,34 @@ INSERT INTO tipo_profesor VALUES (3, 'PROFESOR FORMADOR');
 
 
 --
--- TOC entry 2660 (class 0 OID 968380)
--- Dependencies: 255
+-- TOC entry 2715 (class 0 OID 976684)
+-- Dependencies: 263
+-- Data for Name: tipo_titulo; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO tipo_titulo VALUES (1, 'DIPLOMA');
+INSERT INTO tipo_titulo VALUES (2, 'CERTIFICADO');
+
+
+--
+-- TOC entry 2717 (class 0 OID 976689)
+-- Dependencies: 265
+-- Data for Name: titulos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO titulos VALUES (1, 'DIPLOMA INTERNACIONAL DE LA YAI', 'DIPLOMA INTERNACIONAL DE LA YAI(Yoga Allliance International)', 1);
+
+
+--
+-- TOC entry 2719 (class 0 OID 976697)
+-- Dependencies: 267
 -- Data for Name: usuario_persona; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 2721 (class 0 OID 0)
+-- TOC entry 2777 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: alquiler_sede_cabecera_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27349,7 +30303,7 @@ SELECT pg_catalog.setval('alquiler_sede_cabecera_id_seq', 2, true);
 
 
 --
--- TOC entry 2722 (class 0 OID 0)
+-- TOC entry 2778 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: alquiler_sede_detalle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27358,7 +30312,7 @@ SELECT pg_catalog.setval('alquiler_sede_detalle_id_seq', 3, true);
 
 
 --
--- TOC entry 2723 (class 0 OID 0)
+-- TOC entry 2779 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: alquiler_sede_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27367,7 +30321,7 @@ SELECT pg_catalog.setval('alquiler_sede_id_seq', 8, true);
 
 
 --
--- TOC entry 2724 (class 0 OID 0)
+-- TOC entry 2780 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27376,7 +30330,7 @@ SELECT pg_catalog.setval('alumnos_id_seq', 9, true);
 
 
 --
--- TOC entry 2725 (class 0 OID 0)
+-- TOC entry 2781 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: alumnos_legajo_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27385,7 +30339,7 @@ SELECT pg_catalog.setval('alumnos_legajo_seq', 6, true);
 
 
 --
--- TOC entry 2726 (class 0 OID 0)
+-- TOC entry 2782 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: aulas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27394,7 +30348,7 @@ SELECT pg_catalog.setval('aulas_id_seq', 4, true);
 
 
 --
--- TOC entry 2727 (class 0 OID 0)
+-- TOC entry 2783 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: ciudades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27403,16 +30357,16 @@ SELECT pg_catalog.setval('ciudades_id_seq', 1, false);
 
 
 --
--- TOC entry 2728 (class 0 OID 0)
+-- TOC entry 2784 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: clases_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('clases_id_seq', 3, true);
+SELECT pg_catalog.setval('clases_id_seq', 7, true);
 
 
 --
--- TOC entry 2729 (class 0 OID 0)
+-- TOC entry 2785 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: clases_profesores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27421,7 +30375,7 @@ SELECT pg_catalog.setval('clases_profesores_id_seq', 1, false);
 
 
 --
--- TOC entry 2730 (class 0 OID 0)
+-- TOC entry 2786 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: condiciones_alumno_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27430,16 +30384,16 @@ SELECT pg_catalog.setval('condiciones_alumno_id_seq', 3, true);
 
 
 --
--- TOC entry 2731 (class 0 OID 0)
+-- TOC entry 2787 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: cursadas_alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('cursadas_alumnos_id_seq', 14, true);
+SELECT pg_catalog.setval('cursadas_alumnos_id_seq', 16, true);
 
 
 --
--- TOC entry 2732 (class 0 OID 0)
+-- TOC entry 2788 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: cursadas_cuotas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27448,7 +30402,7 @@ SELECT pg_catalog.setval('cursadas_cuotas_id_seq', 1, false);
 
 
 --
--- TOC entry 2733 (class 0 OID 0)
+-- TOC entry 2789 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: cursadas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27457,16 +30411,16 @@ SELECT pg_catalog.setval('cursadas_id_seq', 12, true);
 
 
 --
--- TOC entry 2734 (class 0 OID 0)
+-- TOC entry 2790 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: cursadas_modulos_alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('cursadas_modulos_alumnos_id_seq', 40, true);
+SELECT pg_catalog.setval('cursadas_modulos_alumnos_id_seq', 60, true);
 
 
 --
--- TOC entry 2735 (class 0 OID 0)
+-- TOC entry 2791 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: cursadas_modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27475,7 +30429,7 @@ SELECT pg_catalog.setval('cursadas_modulos_id_seq', 72, true);
 
 
 --
--- TOC entry 2736 (class 0 OID 0)
+-- TOC entry 2792 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: cursadas_profesores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27484,7 +30438,7 @@ SELECT pg_catalog.setval('cursadas_profesores_id_seq', 3, true);
 
 
 --
--- TOC entry 2737 (class 0 OID 0)
+-- TOC entry 2793 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: cursos_correlatividad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27493,7 +30447,7 @@ SELECT pg_catalog.setval('cursos_correlatividad_id_seq', 3, true);
 
 
 --
--- TOC entry 2738 (class 0 OID 0)
+-- TOC entry 2794 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: cursos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27502,7 +30456,7 @@ SELECT pg_catalog.setval('cursos_id_seq', 2, true);
 
 
 --
--- TOC entry 2739 (class 0 OID 0)
+-- TOC entry 2795 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: cursos_modulos_alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27511,7 +30465,7 @@ SELECT pg_catalog.setval('cursos_modulos_alumnos_id_seq', 13, true);
 
 
 --
--- TOC entry 2740 (class 0 OID 0)
+-- TOC entry 2796 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: cursos_modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -27520,44 +30474,53 @@ SELECT pg_catalog.setval('cursos_modulos_id_seq', 10, true);
 
 
 --
--- TOC entry 2741 (class 0 OID 0)
--- Dependencies: 215
+-- TOC entry 2797 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: cursos_titulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('cursos_titulos_id_seq', 1, true);
+
+
+--
+-- TOC entry 2798 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: datos_academicos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('datos_academicos_id_seq', 3, true);
+SELECT pg_catalog.setval('datos_academicos_id_seq', 538, true);
 
 
 --
--- TOC entry 2742 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 2799 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: datos_actuales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('datos_actuales_id_seq', 5, true);
+SELECT pg_catalog.setval('datos_actuales_id_seq', 4570, true);
 
 
 --
--- TOC entry 2743 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 2800 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: datos_laborales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('datos_laborales_id_seq', 3, true);
+SELECT pg_catalog.setval('datos_laborales_id_seq', 2216, true);
 
 
 --
--- TOC entry 2744 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 2801 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: datos_salud_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('datos_salud_id_seq', 4, true);
+SELECT pg_catalog.setval('datos_salud_id_seq', 539, true);
 
 
 --
--- TOC entry 2745 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 2802 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: estados_pago_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27565,17 +30528,17 @@ SELECT pg_catalog.setval('estados_pago_id_seq', 1, false);
 
 
 --
--- TOC entry 2746 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 2803 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: grupos_sanguineos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('grupos_sanguineos_id_seq', 1, false);
+SELECT pg_catalog.setval('grupos_sanguineos_id_seq', 16, true);
 
 
 --
--- TOC entry 2747 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 2804 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: inscripciones_modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27583,8 +30546,8 @@ SELECT pg_catalog.setval('inscripciones_modulos_id_seq', 1, false);
 
 
 --
--- TOC entry 2748 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 2805 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27592,8 +30555,8 @@ SELECT pg_catalog.setval('modulos_id_seq', 1, false);
 
 
 --
--- TOC entry 2749 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 2806 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: niveles_estudios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27601,8 +30564,8 @@ SELECT pg_catalog.setval('niveles_estudios_id_seq', 1, false);
 
 
 --
--- TOC entry 2750 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 2807 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: paises_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27610,8 +30573,8 @@ SELECT pg_catalog.setval('paises_id_seq', 1, false);
 
 
 --
--- TOC entry 2751 (class 0 OID 0)
--- Dependencies: 236
+-- TOC entry 2808 (class 0 OID 0)
+-- Dependencies: 239
 -- Name: profesiones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27619,8 +30582,8 @@ SELECT pg_catalog.setval('profesiones_id_seq', 1, false);
 
 
 --
--- TOC entry 2752 (class 0 OID 0)
--- Dependencies: 238
+-- TOC entry 2809 (class 0 OID 0)
+-- Dependencies: 241
 -- Name: provincias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27628,8 +30591,8 @@ SELECT pg_catalog.setval('provincias_id_seq', 1, false);
 
 
 --
--- TOC entry 2753 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 2810 (class 0 OID 0)
+-- Dependencies: 244
 -- Name: sedes_formadores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27637,8 +30600,8 @@ SELECT pg_catalog.setval('sedes_formadores_id_seq', 5, true);
 
 
 --
--- TOC entry 2754 (class 0 OID 0)
--- Dependencies: 242
+-- TOC entry 2811 (class 0 OID 0)
+-- Dependencies: 245
 -- Name: sedes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27646,8 +30609,8 @@ SELECT pg_catalog.setval('sedes_id_seq', 8, true);
 
 
 --
--- TOC entry 2755 (class 0 OID 0)
--- Dependencies: 272
+-- TOC entry 2812 (class 0 OID 0)
+-- Dependencies: 247
 -- Name: temp_ciudades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27655,8 +30618,8 @@ SELECT pg_catalog.setval('temp_ciudades_id_seq', 43, true);
 
 
 --
--- TOC entry 2756 (class 0 OID 0)
--- Dependencies: 270
+-- TOC entry 2813 (class 0 OID 0)
+-- Dependencies: 250
 -- Name: temp_personas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27664,8 +30627,8 @@ SELECT pg_catalog.setval('temp_personas_id_seq', 654, true);
 
 
 --
--- TOC entry 2757 (class 0 OID 0)
--- Dependencies: 244
+-- TOC entry 2814 (class 0 OID 0)
+-- Dependencies: 252
 -- Name: tipo_clase_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27673,17 +30636,17 @@ SELECT pg_catalog.setval('tipo_clase_id_seq', 3, true);
 
 
 --
--- TOC entry 2758 (class 0 OID 0)
--- Dependencies: 246
+-- TOC entry 2815 (class 0 OID 0)
+-- Dependencies: 254
 -- Name: tipo_pago_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('tipo_pago_id_seq', 4, true);
+SELECT pg_catalog.setval('tipo_pago_id_seq', 5, true);
 
 
 --
--- TOC entry 2759 (class 0 OID 0)
--- Dependencies: 248
+-- TOC entry 2816 (class 0 OID 0)
+-- Dependencies: 256
 -- Name: tipo_pago_sede_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27691,8 +30654,8 @@ SELECT pg_catalog.setval('tipo_pago_sede_id_seq', 2, true);
 
 
 --
--- TOC entry 2760 (class 0 OID 0)
--- Dependencies: 250
+-- TOC entry 2817 (class 0 OID 0)
+-- Dependencies: 258
 -- Name: tipo_persona_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27700,8 +30663,8 @@ SELECT pg_catalog.setval('tipo_persona_id_seq', 1, false);
 
 
 --
--- TOC entry 2761 (class 0 OID 0)
--- Dependencies: 252
+-- TOC entry 2818 (class 0 OID 0)
+-- Dependencies: 260
 -- Name: tipo_persona_perfiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27709,8 +30672,8 @@ SELECT pg_catalog.setval('tipo_persona_perfiles_id_seq', 1, true);
 
 
 --
--- TOC entry 2762 (class 0 OID 0)
--- Dependencies: 254
+-- TOC entry 2819 (class 0 OID 0)
+-- Dependencies: 262
 -- Name: tipo_profesor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27718,8 +30681,26 @@ SELECT pg_catalog.setval('tipo_profesor_id_seq', 3, true);
 
 
 --
--- TOC entry 2763 (class 0 OID 0)
--- Dependencies: 256
+-- TOC entry 2820 (class 0 OID 0)
+-- Dependencies: 264
+-- Name: tipo_titulo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('tipo_titulo_id_seq', 2, true);
+
+
+--
+-- TOC entry 2821 (class 0 OID 0)
+-- Dependencies: 266
+-- Name: titulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('titulos_id_seq', 1, true);
+
+
+--
+-- TOC entry 2822 (class 0 OID 0)
+-- Dependencies: 268
 -- Name: usuario_persona_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -27727,7 +30708,7 @@ SELECT pg_catalog.setval('usuario_persona_id_seq', 1, false);
 
 
 --
--- TOC entry 2378 (class 2606 OID 968479)
+-- TOC entry 2417 (class 2606 OID 976810)
 -- Name: niveles_estudios niveles_estudios_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27736,7 +30717,7 @@ ALTER TABLE ONLY niveles_estudios
 
 
 --
--- TOC entry 2308 (class 2606 OID 968481)
+-- TOC entry 2343 (class 2606 OID 976812)
 -- Name: alquiler_sede pk_alquiler_sede; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27745,7 +30726,7 @@ ALTER TABLE ONLY alquiler_sede
 
 
 --
--- TOC entry 2310 (class 2606 OID 968483)
+-- TOC entry 2345 (class 2606 OID 976814)
 -- Name: alquiler_sede_cabecera pk_alquiler_sede_cabecera; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27754,7 +30735,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera
 
 
 --
--- TOC entry 2312 (class 2606 OID 968485)
+-- TOC entry 2347 (class 2606 OID 976816)
 -- Name: alquiler_sede_detalle pk_alquiler_sede_detalle; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27763,7 +30744,7 @@ ALTER TABLE ONLY alquiler_sede_detalle
 
 
 --
--- TOC entry 2314 (class 2606 OID 968487)
+-- TOC entry 2349 (class 2606 OID 976818)
 -- Name: personas pk_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27772,7 +30753,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2320 (class 2606 OID 968489)
+-- TOC entry 2355 (class 2606 OID 976820)
 -- Name: aulas pk_aulas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27781,7 +30762,7 @@ ALTER TABLE ONLY aulas
 
 
 --
--- TOC entry 2322 (class 2606 OID 968491)
+-- TOC entry 2357 (class 2606 OID 976822)
 -- Name: ciudades pk_ciudad; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27790,7 +30771,7 @@ ALTER TABLE ONLY ciudades
 
 
 --
--- TOC entry 2324 (class 2606 OID 968493)
+-- TOC entry 2359 (class 2606 OID 976824)
 -- Name: clases pk_clases; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27799,7 +30780,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2326 (class 2606 OID 968495)
+-- TOC entry 2361 (class 2606 OID 976826)
 -- Name: clases_asistencia pk_clases_asistencia; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27808,7 +30789,7 @@ ALTER TABLE ONLY clases_asistencia
 
 
 --
--- TOC entry 2328 (class 2606 OID 968497)
+-- TOC entry 2363 (class 2606 OID 976828)
 -- Name: clases_profesores pk_clases_profesores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27817,7 +30798,7 @@ ALTER TABLE ONLY clases_profesores
 
 
 --
--- TOC entry 2330 (class 2606 OID 968499)
+-- TOC entry 2365 (class 2606 OID 976830)
 -- Name: condiciones_alumno pk_condiciones_alumno; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27826,7 +30807,7 @@ ALTER TABLE ONLY condiciones_alumno
 
 
 --
--- TOC entry 2332 (class 2606 OID 968501)
+-- TOC entry 2367 (class 2606 OID 976832)
 -- Name: cursadas pk_cursadas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27835,7 +30816,7 @@ ALTER TABLE ONLY cursadas
 
 
 --
--- TOC entry 2334 (class 2606 OID 968503)
+-- TOC entry 2369 (class 2606 OID 976834)
 -- Name: cursadas_alumnos pk_cursadas_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27844,7 +30825,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2338 (class 2606 OID 968505)
+-- TOC entry 2373 (class 2606 OID 976836)
 -- Name: cursadas_cuotas pk_cursadas_cuotas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27853,7 +30834,7 @@ ALTER TABLE ONLY cursadas_cuotas
 
 
 --
--- TOC entry 2340 (class 2606 OID 968507)
+-- TOC entry 2375 (class 2606 OID 976838)
 -- Name: cursadas_modulos pk_cursadas_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27862,7 +30843,7 @@ ALTER TABLE ONLY cursadas_modulos
 
 
 --
--- TOC entry 2344 (class 2606 OID 968509)
+-- TOC entry 2379 (class 2606 OID 976840)
 -- Name: cursadas_modulos_alumnos pk_cursadas_modulos_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27871,7 +30852,7 @@ ALTER TABLE ONLY cursadas_modulos_alumnos
 
 
 --
--- TOC entry 2346 (class 2606 OID 968511)
+-- TOC entry 2381 (class 2606 OID 976842)
 -- Name: cursadas_profesores pk_cursadas_profesores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27880,7 +30861,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2348 (class 2606 OID 968513)
+-- TOC entry 2383 (class 2606 OID 976844)
 -- Name: cursos pk_cursos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27889,7 +30870,7 @@ ALTER TABLE ONLY cursos
 
 
 --
--- TOC entry 2350 (class 2606 OID 968515)
+-- TOC entry 2385 (class 2606 OID 976846)
 -- Name: cursos_correlatividad pk_cursos_correlatividad; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27898,7 +30879,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2354 (class 2606 OID 968517)
+-- TOC entry 2389 (class 2606 OID 976848)
 -- Name: cursos_modulos pk_cursos_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27907,7 +30888,7 @@ ALTER TABLE ONLY cursos_modulos
 
 
 --
--- TOC entry 2358 (class 2606 OID 968519)
+-- TOC entry 2393 (class 2606 OID 976850)
 -- Name: cursos_modulos_alumnos pk_cursos_modulos_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27916,7 +30897,16 @@ ALTER TABLE ONLY cursos_modulos_alumnos
 
 
 --
--- TOC entry 2360 (class 2606 OID 968521)
+-- TOC entry 2395 (class 2606 OID 976852)
+-- Name: cursos_titulos pk_cursos_titulos; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cursos_titulos
+    ADD CONSTRAINT pk_cursos_titulos PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2399 (class 2606 OID 976854)
 -- Name: databasechangeloglock pk_databasechangeloglock; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27925,7 +30915,7 @@ ALTER TABLE ONLY databasechangeloglock
 
 
 --
--- TOC entry 2362 (class 2606 OID 968523)
+-- TOC entry 2401 (class 2606 OID 976856)
 -- Name: datos_academicos pk_datos_academicos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27934,7 +30924,7 @@ ALTER TABLE ONLY datos_academicos
 
 
 --
--- TOC entry 2364 (class 2606 OID 968525)
+-- TOC entry 2403 (class 2606 OID 976858)
 -- Name: datos_actuales pk_datos_actuales; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27943,7 +30933,7 @@ ALTER TABLE ONLY datos_actuales
 
 
 --
--- TOC entry 2366 (class 2606 OID 968527)
+-- TOC entry 2405 (class 2606 OID 976860)
 -- Name: datos_laborales pk_datos_laborales; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27952,7 +30942,7 @@ ALTER TABLE ONLY datos_laborales
 
 
 --
--- TOC entry 2368 (class 2606 OID 968529)
+-- TOC entry 2407 (class 2606 OID 976862)
 -- Name: datos_salud pk_datos_salud; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27961,7 +30951,7 @@ ALTER TABLE ONLY datos_salud
 
 
 --
--- TOC entry 2370 (class 2606 OID 968531)
+-- TOC entry 2409 (class 2606 OID 976864)
 -- Name: estados_pago pk_estados_pago; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27970,7 +30960,7 @@ ALTER TABLE ONLY estados_pago
 
 
 --
--- TOC entry 2372 (class 2606 OID 968533)
+-- TOC entry 2411 (class 2606 OID 976866)
 -- Name: grupos_sanguineos pk_grupos_sanguineos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27979,7 +30969,7 @@ ALTER TABLE ONLY grupos_sanguineos
 
 
 --
--- TOC entry 2374 (class 2606 OID 968535)
+-- TOC entry 2413 (class 2606 OID 976868)
 -- Name: inscripciones_modulos pk_inscripciones_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27988,7 +30978,7 @@ ALTER TABLE ONLY inscripciones_modulos
 
 
 --
--- TOC entry 2376 (class 2606 OID 968537)
+-- TOC entry 2415 (class 2606 OID 976870)
 -- Name: modulos pk_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -27997,7 +30987,7 @@ ALTER TABLE ONLY modulos
 
 
 --
--- TOC entry 2380 (class 2606 OID 968539)
+-- TOC entry 2419 (class 2606 OID 976872)
 -- Name: paises pk_paises; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28006,7 +30996,7 @@ ALTER TABLE ONLY paises
 
 
 --
--- TOC entry 2382 (class 2606 OID 968541)
+-- TOC entry 2421 (class 2606 OID 976874)
 -- Name: perfiles pk_perfil; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28015,7 +31005,7 @@ ALTER TABLE ONLY perfiles
 
 
 --
--- TOC entry 2384 (class 2606 OID 968543)
+-- TOC entry 2423 (class 2606 OID 976876)
 -- Name: profesiones pk_profesiones; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28024,7 +31014,7 @@ ALTER TABLE ONLY profesiones
 
 
 --
--- TOC entry 2386 (class 2606 OID 968545)
+-- TOC entry 2425 (class 2606 OID 976878)
 -- Name: provincias pk_provincias; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28033,7 +31023,7 @@ ALTER TABLE ONLY provincias
 
 
 --
--- TOC entry 2388 (class 2606 OID 968547)
+-- TOC entry 2427 (class 2606 OID 976880)
 -- Name: sedes pk_sedes; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28042,7 +31032,7 @@ ALTER TABLE ONLY sedes
 
 
 --
--- TOC entry 2390 (class 2606 OID 968549)
+-- TOC entry 2429 (class 2606 OID 976882)
 -- Name: sedes_formadores pk_sedes_formadores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28051,7 +31041,7 @@ ALTER TABLE ONLY sedes_formadores
 
 
 --
--- TOC entry 2412 (class 2606 OID 976413)
+-- TOC entry 2433 (class 2606 OID 976884)
 -- Name: temp_ciudades pk_temp_ciudades; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28060,7 +31050,7 @@ ALTER TABLE ONLY temp_ciudades
 
 
 --
--- TOC entry 2410 (class 2606 OID 976395)
+-- TOC entry 2435 (class 2606 OID 976886)
 -- Name: temp_personas pk_temp_personas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28069,7 +31059,7 @@ ALTER TABLE ONLY temp_personas
 
 
 --
--- TOC entry 2394 (class 2606 OID 968551)
+-- TOC entry 2437 (class 2606 OID 976888)
 -- Name: tipo_clase pk_tipo_clase; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28078,7 +31068,7 @@ ALTER TABLE ONLY tipo_clase
 
 
 --
--- TOC entry 2396 (class 2606 OID 968553)
+-- TOC entry 2439 (class 2606 OID 976890)
 -- Name: tipo_pago pk_tipo_pago; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28087,7 +31077,7 @@ ALTER TABLE ONLY tipo_pago
 
 
 --
--- TOC entry 2400 (class 2606 OID 968555)
+-- TOC entry 2443 (class 2606 OID 976892)
 -- Name: tipo_pago_sede pk_tipo_pago_sede; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28096,7 +31086,7 @@ ALTER TABLE ONLY tipo_pago_sede
 
 
 --
--- TOC entry 2402 (class 2606 OID 968557)
+-- TOC entry 2445 (class 2606 OID 976894)
 -- Name: tipo_persona pk_tipo_persona; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28105,7 +31095,7 @@ ALTER TABLE ONLY tipo_persona
 
 
 --
--- TOC entry 2404 (class 2606 OID 968559)
+-- TOC entry 2447 (class 2606 OID 976896)
 -- Name: tipo_persona_perfiles pk_tipo_persona_perfiles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28114,7 +31104,7 @@ ALTER TABLE ONLY tipo_persona_perfiles
 
 
 --
--- TOC entry 2406 (class 2606 OID 968561)
+-- TOC entry 2449 (class 2606 OID 976898)
 -- Name: tipo_profesor pk_tipo_profesores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28123,7 +31113,25 @@ ALTER TABLE ONLY tipo_profesor
 
 
 --
--- TOC entry 2408 (class 2606 OID 968563)
+-- TOC entry 2451 (class 2606 OID 976900)
+-- Name: tipo_titulo pk_tipo_titulo; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tipo_titulo
+    ADD CONSTRAINT pk_tipo_titulo PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2453 (class 2606 OID 976902)
+-- Name: titulos pk_titulos; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY titulos
+    ADD CONSTRAINT pk_titulos PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2455 (class 2606 OID 976904)
 -- Name: usuario_persona pk_usuario_persona; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28132,7 +31140,7 @@ ALTER TABLE ONLY usuario_persona
 
 
 --
--- TOC entry 2316 (class 2606 OID 968565)
+-- TOC entry 2351 (class 2606 OID 976906)
 -- Name: personas uk_alumnos_dni; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28141,7 +31149,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2318 (class 2606 OID 968567)
+-- TOC entry 2353 (class 2606 OID 976908)
 -- Name: personas uk_alumnos_legajo; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28150,7 +31158,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2336 (class 2606 OID 968569)
+-- TOC entry 2371 (class 2606 OID 976910)
 -- Name: cursadas_alumnos uk_cursadas_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28159,7 +31167,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2342 (class 2606 OID 968571)
+-- TOC entry 2377 (class 2606 OID 976912)
 -- Name: cursadas_modulos uk_cursadas_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28168,7 +31176,7 @@ ALTER TABLE ONLY cursadas_modulos
 
 
 --
--- TOC entry 2352 (class 2606 OID 968573)
+-- TOC entry 2387 (class 2606 OID 976914)
 -- Name: cursos_correlatividad uk_cursos_correlatividad; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28177,7 +31185,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2356 (class 2606 OID 968575)
+-- TOC entry 2391 (class 2606 OID 976916)
 -- Name: cursos_modulos uk_cursos_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28186,7 +31194,16 @@ ALTER TABLE ONLY cursos_modulos
 
 
 --
--- TOC entry 2392 (class 2606 OID 968577)
+-- TOC entry 2397 (class 2606 OID 976918)
+-- Name: cursos_titulos uk_cursos_titulos; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cursos_titulos
+    ADD CONSTRAINT uk_cursos_titulos UNIQUE (id_curso, id_titulo);
+
+
+--
+-- TOC entry 2431 (class 2606 OID 976920)
 -- Name: sedes_formadores uk_sedes_formadores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28195,7 +31212,7 @@ ALTER TABLE ONLY sedes_formadores
 
 
 --
--- TOC entry 2398 (class 2606 OID 968579)
+-- TOC entry 2441 (class 2606 OID 976922)
 -- Name: tipo_pago uk_tipo_pago; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28204,7 +31221,7 @@ ALTER TABLE ONLY tipo_pago
 
 
 --
--- TOC entry 2455 (class 2620 OID 968580)
+-- TOC entry 2500 (class 2620 OID 976923)
 -- Name: cursadas trg_ai_cursadas; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -28212,7 +31229,7 @@ CREATE TRIGGER trg_ai_cursadas AFTER INSERT ON cursadas FOR EACH ROW EXECUTE PRO
 
 
 --
--- TOC entry 2456 (class 2620 OID 968581)
+-- TOC entry 2501 (class 2620 OID 976924)
 -- Name: cursadas_alumnos trg_ai_cursadas_alumnos; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -28222,7 +31239,7 @@ ALTER TABLE cursadas_alumnos DISABLE TRIGGER trg_ai_cursadas_alumnos;
 
 
 --
--- TOC entry 2413 (class 2606 OID 968582)
+-- TOC entry 2456 (class 2606 OID 976925)
 -- Name: alquiler_sede_cabecera fk_alquiler_sede_cabecera; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28231,7 +31248,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera
 
 
 --
--- TOC entry 2414 (class 2606 OID 968587)
+-- TOC entry 2457 (class 2606 OID 976930)
 -- Name: alquiler_sede_cabecera fk_alquiler_sede_cabecera__sede; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28240,7 +31257,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera
 
 
 --
--- TOC entry 2415 (class 2606 OID 968592)
+-- TOC entry 2458 (class 2606 OID 976935)
 -- Name: alquiler_sede_detalle fk_alquiler_sede_detalle__aula; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28249,7 +31266,7 @@ ALTER TABLE ONLY alquiler_sede_detalle
 
 
 --
--- TOC entry 2416 (class 2606 OID 968597)
+-- TOC entry 2459 (class 2606 OID 976940)
 -- Name: alquiler_sede_detalle fk_alquiler_sede_detalle__cabecera; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28258,7 +31275,7 @@ ALTER TABLE ONLY alquiler_sede_detalle
 
 
 --
--- TOC entry 2418 (class 2606 OID 968602)
+-- TOC entry 2461 (class 2606 OID 976945)
 -- Name: aulas fk_aulas_sede; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28267,7 +31284,7 @@ ALTER TABLE ONLY aulas
 
 
 --
--- TOC entry 2419 (class 2606 OID 968607)
+-- TOC entry 2462 (class 2606 OID 976950)
 -- Name: ciudades fk_ciudad_provincia; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28276,7 +31293,7 @@ ALTER TABLE ONLY ciudades
 
 
 --
--- TOC entry 2424 (class 2606 OID 968612)
+-- TOC entry 2467 (class 2606 OID 976955)
 -- Name: clases_asistencia fk_clases_asistencia__persona; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28285,7 +31302,7 @@ ALTER TABLE ONLY clases_asistencia
 
 
 --
--- TOC entry 2425 (class 2606 OID 968617)
+-- TOC entry 2468 (class 2606 OID 976960)
 -- Name: clases_asistencia fk_clases_asistencia_clase; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28294,7 +31311,7 @@ ALTER TABLE ONLY clases_asistencia
 
 
 --
--- TOC entry 2420 (class 2606 OID 968622)
+-- TOC entry 2463 (class 2606 OID 976965)
 -- Name: clases fk_clases_aula; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28303,7 +31320,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2421 (class 2606 OID 968627)
+-- TOC entry 2464 (class 2606 OID 976970)
 -- Name: clases fk_clases_cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28312,7 +31329,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2422 (class 2606 OID 968632)
+-- TOC entry 2465 (class 2606 OID 976975)
 -- Name: clases fk_clases_modulo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28321,7 +31338,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2426 (class 2606 OID 968637)
+-- TOC entry 2469 (class 2606 OID 976980)
 -- Name: clases_profesores fk_clases_profesores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28330,7 +31347,7 @@ ALTER TABLE ONLY clases_profesores
 
 
 --
--- TOC entry 2427 (class 2606 OID 968642)
+-- TOC entry 2470 (class 2606 OID 976985)
 -- Name: clases_profesores fk_clases_profesores__clases; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28339,7 +31356,7 @@ ALTER TABLE ONLY clases_profesores
 
 
 --
--- TOC entry 2423 (class 2606 OID 968647)
+-- TOC entry 2466 (class 2606 OID 976990)
 -- Name: clases fk_clases_tipo_clase; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28348,7 +31365,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2428 (class 2606 OID 968652)
+-- TOC entry 2471 (class 2606 OID 976995)
 -- Name: cursadas fk_cursadas__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28357,7 +31374,7 @@ ALTER TABLE ONLY cursadas
 
 
 --
--- TOC entry 2429 (class 2606 OID 968657)
+-- TOC entry 2472 (class 2606 OID 977000)
 -- Name: cursadas_alumnos fk_cursadas_alumnos__condicion_alumno; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28366,7 +31383,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2430 (class 2606 OID 968662)
+-- TOC entry 2473 (class 2606 OID 977005)
 -- Name: cursadas_alumnos fk_cursadas_alumnos__cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28375,7 +31392,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2431 (class 2606 OID 968667)
+-- TOC entry 2474 (class 2606 OID 977010)
 -- Name: cursadas_alumnos fk_cursadas_alumnos__personas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28384,7 +31401,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2432 (class 2606 OID 968672)
+-- TOC entry 2475 (class 2606 OID 977015)
 -- Name: cursadas_cuotas fk_cursadas_cuotas__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28393,7 +31410,7 @@ ALTER TABLE ONLY cursadas_cuotas
 
 
 --
--- TOC entry 2433 (class 2606 OID 968677)
+-- TOC entry 2476 (class 2606 OID 977020)
 -- Name: cursadas_cuotas fk_cursadas_cuotas__modulos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28402,7 +31419,7 @@ ALTER TABLE ONLY cursadas_cuotas
 
 
 --
--- TOC entry 2435 (class 2606 OID 968682)
+-- TOC entry 2478 (class 2606 OID 977025)
 -- Name: cursadas_profesores fk_cursadas_profesores__cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28411,7 +31428,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2436 (class 2606 OID 968687)
+-- TOC entry 2479 (class 2606 OID 977030)
 -- Name: cursadas_profesores fk_cursadas_profesores__profesores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28420,7 +31437,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2437 (class 2606 OID 968692)
+-- TOC entry 2480 (class 2606 OID 977035)
 -- Name: cursadas_profesores fk_cursadas_profesores__tipo_profesor; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28429,7 +31446,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2438 (class 2606 OID 968697)
+-- TOC entry 2481 (class 2606 OID 977040)
 -- Name: cursos_correlatividad fk_cursos_correlatividad__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28438,7 +31455,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2439 (class 2606 OID 968702)
+-- TOC entry 2482 (class 2606 OID 977045)
 -- Name: cursos_correlatividad fk_cursos_correlatividad__cursos_previos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28447,7 +31464,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2434 (class 2606 OID 968707)
+-- TOC entry 2477 (class 2606 OID 977050)
 -- Name: cursadas_modulos fk_cursos_modulos__cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28456,7 +31473,7 @@ ALTER TABLE ONLY cursadas_modulos
 
 
 --
--- TOC entry 2440 (class 2606 OID 968712)
+-- TOC entry 2483 (class 2606 OID 977055)
 -- Name: cursos_modulos fk_cursos_modulos__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28465,7 +31482,25 @@ ALTER TABLE ONLY cursos_modulos
 
 
 --
--- TOC entry 2441 (class 2606 OID 968717)
+-- TOC entry 2484 (class 2606 OID 977060)
+-- Name: cursos_titulos fk_cursos_titulos__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cursos_titulos
+    ADD CONSTRAINT fk_cursos_titulos__cursos FOREIGN KEY (id_curso) REFERENCES cursos(id);
+
+
+--
+-- TOC entry 2485 (class 2606 OID 977065)
+-- Name: cursos_titulos fk_cursos_titulos__titulos; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY cursos_titulos
+    ADD CONSTRAINT fk_cursos_titulos__titulos FOREIGN KEY (id_titulo) REFERENCES titulos(id);
+
+
+--
+-- TOC entry 2486 (class 2606 OID 977070)
 -- Name: datos_academicos fk_datos_academicos__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28474,7 +31509,7 @@ ALTER TABLE ONLY datos_academicos
 
 
 --
--- TOC entry 2442 (class 2606 OID 968722)
+-- TOC entry 2487 (class 2606 OID 977075)
 -- Name: datos_academicos fk_datos_academicos__niveles_estudios; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28483,7 +31518,7 @@ ALTER TABLE ONLY datos_academicos
 
 
 --
--- TOC entry 2443 (class 2606 OID 968727)
+-- TOC entry 2488 (class 2606 OID 977080)
 -- Name: datos_actuales fk_datos_actuales__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28492,7 +31527,7 @@ ALTER TABLE ONLY datos_actuales
 
 
 --
--- TOC entry 2444 (class 2606 OID 968732)
+-- TOC entry 2489 (class 2606 OID 977085)
 -- Name: datos_actuales fk_datos_actuales_ciudades; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28501,7 +31536,7 @@ ALTER TABLE ONLY datos_actuales
 
 
 --
--- TOC entry 2445 (class 2606 OID 968737)
+-- TOC entry 2490 (class 2606 OID 977090)
 -- Name: datos_laborales fk_datos_laborales__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28510,7 +31545,7 @@ ALTER TABLE ONLY datos_laborales
 
 
 --
--- TOC entry 2446 (class 2606 OID 968742)
+-- TOC entry 2491 (class 2606 OID 977095)
 -- Name: datos_laborales fk_datos_laborales__profesiones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28519,7 +31554,7 @@ ALTER TABLE ONLY datos_laborales
 
 
 --
--- TOC entry 2447 (class 2606 OID 968747)
+-- TOC entry 2492 (class 2606 OID 977100)
 -- Name: datos_salud fk_datos_salud__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28528,7 +31563,7 @@ ALTER TABLE ONLY datos_salud
 
 
 --
--- TOC entry 2448 (class 2606 OID 968752)
+-- TOC entry 2493 (class 2606 OID 977105)
 -- Name: datos_salud fk_datos_salud__grupos_sanguineos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28537,7 +31572,7 @@ ALTER TABLE ONLY datos_salud
 
 
 --
--- TOC entry 2449 (class 2606 OID 968757)
+-- TOC entry 2494 (class 2606 OID 977110)
 -- Name: modulos fk_modulos_cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28546,7 +31581,7 @@ ALTER TABLE ONLY modulos
 
 
 --
--- TOC entry 2417 (class 2606 OID 968762)
+-- TOC entry 2460 (class 2606 OID 977115)
 -- Name: personas fk_personas_tipo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28555,7 +31590,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2450 (class 2606 OID 968767)
+-- TOC entry 2495 (class 2606 OID 977120)
 -- Name: provincias fk_provincias_pais; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28564,7 +31599,7 @@ ALTER TABLE ONLY provincias
 
 
 --
--- TOC entry 2451 (class 2606 OID 968772)
+-- TOC entry 2496 (class 2606 OID 977125)
 -- Name: sedes_formadores fk_sedes_formadores__sedes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28573,7 +31608,7 @@ ALTER TABLE ONLY sedes_formadores
 
 
 --
--- TOC entry 2452 (class 2606 OID 968777)
+-- TOC entry 2497 (class 2606 OID 977130)
 -- Name: tipo_persona_perfiles fk_tipo_persona_perfiles__perfil; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28582,7 +31617,7 @@ ALTER TABLE ONLY tipo_persona_perfiles
 
 
 --
--- TOC entry 2453 (class 2606 OID 968782)
+-- TOC entry 2498 (class 2606 OID 977135)
 -- Name: tipo_persona_perfiles fk_tipo_persona_perfiles__tipo_persona; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28591,7 +31626,7 @@ ALTER TABLE ONLY tipo_persona_perfiles
 
 
 --
--- TOC entry 2454 (class 2606 OID 968787)
+-- TOC entry 2499 (class 2606 OID 977140)
 -- Name: usuario_persona fk_usuario_persona__persona; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -28599,19 +31634,7 @@ ALTER TABLE ONLY usuario_persona
     ADD CONSTRAINT fk_usuario_persona__persona FOREIGN KEY (id_persona) REFERENCES personas(id);
 
 
---
--- TOC entry 2673 (class 0 OID 0)
--- Dependencies: 7
--- Name: public; Type: ACL; Schema: -; Owner: -
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
--- Completed on 2018-07-13 14:51:44 ART
+-- Completed on 2018-07-18 15:25:12 ART
 
 --
 -- PostgreSQL database dump complete
