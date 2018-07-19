@@ -48,8 +48,9 @@ class zona_curso extends toba_zona
 		return (isset($this->editable_id) && ($this->editable_id != ''));
 	}
 
-	function get_cursadas(){
-		$where = "id_curso=".$this->get_editable_id();
+	function get_cursadas($where=null){		
+		$where1 = "id_curso=".$this->get_editable_id();
+		$where = (isset($where)) ? "$where1 AND $where " : $where1;
 		return toba::consulta_php('cursos')->get_cursadas($where,'fecha_inicio DESC');
 	}
 	function get_clases($where=null, $order_by=null){

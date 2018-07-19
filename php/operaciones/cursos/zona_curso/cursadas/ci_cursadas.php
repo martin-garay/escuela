@@ -49,7 +49,8 @@ class ci_cursadas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
-		return toba::zona()->get_cursadas();
+		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
+		return toba::zona()->get_cursadas($where);
 	}
 	function evt__cuadro__seleccion($seleccion)
 	{

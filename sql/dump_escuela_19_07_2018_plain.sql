@@ -5,7 +5,7 @@
 -- Dumped from database version 9.4.9
 -- Dumped by pg_dump version 10.1
 
--- Started on 2018-07-18 15:25:12 ART
+-- Started on 2018-07-19 15:25:04 ART
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -25,7 +25,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2727 (class 0 OID 0)
+-- TOC entry 2890 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
@@ -36,7 +36,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 295 (class 1255 OID 976415)
+-- TOC entry 321 (class 1255 OID 976415)
 -- Name: sp_trg_ai_cursadas(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -54,7 +54,7 @@ $$;
 
 
 --
--- TOC entry 296 (class 1255 OID 976416)
+-- TOC entry 322 (class 1255 OID 976416)
 -- Name: sp_trg_ai_cursadas_alumnos(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -144,7 +144,7 @@ CREATE SEQUENCE alquiler_sede_cabecera_id_seq
 
 
 --
--- TOC entry 2728 (class 0 OID 0)
+-- TOC entry 2891 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: alquiler_sede_cabecera_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -184,7 +184,7 @@ CREATE SEQUENCE alquiler_sede_detalle_id_seq
 
 
 --
--- TOC entry 2729 (class 0 OID 0)
+-- TOC entry 2892 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: alquiler_sede_detalle_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -206,7 +206,7 @@ CREATE SEQUENCE alquiler_sede_id_seq
 
 
 --
--- TOC entry 2730 (class 0 OID 0)
+-- TOC entry 2893 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: alquiler_sede_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -246,7 +246,7 @@ CREATE SEQUENCE alumnos_id_seq
 
 
 --
--- TOC entry 2731 (class 0 OID 0)
+-- TOC entry 2894 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -268,7 +268,7 @@ CREATE SEQUENCE alumnos_legajo_seq
 
 
 --
--- TOC entry 2732 (class 0 OID 0)
+-- TOC entry 2895 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: alumnos_legajo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -304,12 +304,410 @@ CREATE SEQUENCE aulas_id_seq
 
 
 --
--- TOC entry 2733 (class 0 OID 0)
+-- TOC entry 2896 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: aulas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE aulas_id_seq OWNED BY aulas.id;
+
+
+--
+-- TOC entry 286 (class 1259 OID 977207)
+-- Name: caja_comprobantes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_comprobantes (
+    id integer NOT NULL,
+    descripcion character varying(30) NOT NULL,
+    id_tipo_comprobante integer,
+    activo boolean DEFAULT true,
+    dias_vencimiento integer DEFAULT 0,
+    es_cancelatorio boolean DEFAULT false NOT NULL,
+    orden integer
+);
+
+
+--
+-- TOC entry 285 (class 1259 OID 977205)
+-- Name: caja_comprobantes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_comprobantes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2897 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: caja_comprobantes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_comprobantes_id_seq OWNED BY caja_comprobantes.id;
+
+
+--
+-- TOC entry 298 (class 1259 OID 977274)
+-- Name: caja_cuentas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_cuentas (
+    id integer NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    activo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 297 (class 1259 OID 977272)
+-- Name: caja_cuentas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_cuentas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2898 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: caja_cuentas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_cuentas_id_seq OWNED BY caja_cuentas.id;
+
+
+--
+-- TOC entry 290 (class 1259 OID 977230)
+-- Name: caja_medios_pagos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_medios_pagos (
+    id integer NOT NULL,
+    descripcion character varying(30) NOT NULL
+);
+
+
+--
+-- TOC entry 289 (class 1259 OID 977228)
+-- Name: caja_mediospagos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_mediospagos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2899 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: caja_mediospagos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_mediospagos_id_seq OWNED BY caja_medios_pagos.id;
+
+
+--
+-- TOC entry 296 (class 1259 OID 977261)
+-- Name: caja_movimientos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_movimientos (
+    id integer NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    id_operacion integer NOT NULL,
+    activo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 295 (class 1259 OID 977259)
+-- Name: caja_movimientos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_movimientos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2900 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: caja_movimientos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_movimientos_id_seq OWNED BY caja_movimientos.id;
+
+
+--
+-- TOC entry 294 (class 1259 OID 977248)
+-- Name: caja_operaciones; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_operaciones (
+    id integer NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    id_tipo_operacion integer NOT NULL,
+    activo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 302 (class 1259 OID 977297)
+-- Name: caja_operaciones_diarias; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_operaciones_diarias (
+    id integer NOT NULL,
+    fecha date NOT NULL,
+    id_movimiento integer NOT NULL,
+    id_comprobante integer,
+    id_sede integer,
+    id_medio_pago integer,
+    id_cuenta integer NOT NULL,
+    id_subcuenta integer NOT NULL,
+    id_tipo_titular integer NOT NULL,
+    id_titular integer NOT NULL,
+    importe numeric(12,2) NOT NULL,
+    usuario character varying(60) NOT NULL,
+    signo integer NOT NULL,
+    fecha_operacion timestamp with time zone DEFAULT now()
+);
+
+
+--
+-- TOC entry 301 (class 1259 OID 977295)
+-- Name: caja_operaciones_diarias_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_operaciones_diarias_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2901 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: caja_operaciones_diarias_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_operaciones_diarias_id_seq OWNED BY caja_operaciones_diarias.id;
+
+
+--
+-- TOC entry 293 (class 1259 OID 977246)
+-- Name: caja_operaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_operaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2902 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: caja_operaciones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_operaciones_id_seq OWNED BY caja_operaciones.id;
+
+
+--
+-- TOC entry 308 (class 1259 OID 977363)
+-- Name: caja_parametrizacion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_parametrizacion (
+    id integer NOT NULL,
+    id_comprobante integer NOT NULL,
+    id_mediopago integer NOT NULL,
+    id_movimiento integer NOT NULL,
+    id_cuenta integer NOT NULL,
+    id_subcuenta integer NOT NULL,
+    id_tipotitular integer NOT NULL,
+    signo integer NOT NULL,
+    impacta_original boolean,
+    envia_sub_cta boolean DEFAULT false
+);
+
+
+--
+-- TOC entry 307 (class 1259 OID 977361)
+-- Name: caja_parametrizacion_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_parametrizacion_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2903 (class 0 OID 0)
+-- Dependencies: 307
+-- Name: caja_parametrizacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_parametrizacion_id_seq OWNED BY caja_parametrizacion.id;
+
+
+--
+-- TOC entry 300 (class 1259 OID 977284)
+-- Name: caja_subcuentas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_subcuentas (
+    id integer NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    id_cuenta integer NOT NULL,
+    activo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 299 (class 1259 OID 977282)
+-- Name: caja_subcuentas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_subcuentas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2904 (class 0 OID 0)
+-- Dependencies: 299
+-- Name: caja_subcuentas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_subcuentas_id_seq OWNED BY caja_subcuentas.id;
+
+
+--
+-- TOC entry 284 (class 1259 OID 977199)
+-- Name: caja_tipo_comprobantes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_tipo_comprobantes (
+    id integer NOT NULL,
+    descripcion character varying(30) NOT NULL
+);
+
+
+--
+-- TOC entry 283 (class 1259 OID 977197)
+-- Name: caja_tipo_comprobantes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_tipo_comprobantes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2905 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: caja_tipo_comprobantes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_tipo_comprobantes_id_seq OWNED BY caja_tipo_comprobantes.id;
+
+
+--
+-- TOC entry 292 (class 1259 OID 977238)
+-- Name: caja_tipo_operaciones; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_tipo_operaciones (
+    id integer NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    activo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 291 (class 1259 OID 977236)
+-- Name: caja_tipo_operaciones_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_tipo_operaciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2906 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: caja_tipo_operaciones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_tipo_operaciones_id_seq OWNED BY caja_tipo_operaciones.id;
+
+
+--
+-- TOC entry 288 (class 1259 OID 977222)
+-- Name: caja_tipo_titulares; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE caja_tipo_titulares (
+    id integer NOT NULL,
+    descripcion character varying(100) NOT NULL,
+    campo character varying(20),
+    activo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 287 (class 1259 OID 977220)
+-- Name: caja_tipo_titulares_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE caja_tipo_titulares_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2907 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: caja_tipo_titulares_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE caja_tipo_titulares_id_seq OWNED BY caja_tipo_titulares.id;
 
 
 --
@@ -339,7 +737,7 @@ CREATE SEQUENCE ciudades_id_seq
 
 
 --
--- TOC entry 2734 (class 0 OID 0)
+-- TOC entry 2908 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: ciudades_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -391,7 +789,7 @@ CREATE SEQUENCE clases_id_seq
 
 
 --
--- TOC entry 2735 (class 0 OID 0)
+-- TOC entry 2909 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: clases_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -425,7 +823,7 @@ CREATE SEQUENCE clases_profesores_id_seq
 
 
 --
--- TOC entry 2736 (class 0 OID 0)
+-- TOC entry 2910 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: clases_profesores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -458,7 +856,7 @@ CREATE SEQUENCE condiciones_alumno_id_seq
 
 
 --
--- TOC entry 2737 (class 0 OID 0)
+-- TOC entry 2911 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: condiciones_alumno_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -513,7 +911,7 @@ CREATE SEQUENCE cursadas_alumnos_id_seq
 
 
 --
--- TOC entry 2738 (class 0 OID 0)
+-- TOC entry 2912 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: cursadas_alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -549,7 +947,7 @@ CREATE SEQUENCE cursadas_cuotas_id_seq
 
 
 --
--- TOC entry 2739 (class 0 OID 0)
+-- TOC entry 2913 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: cursadas_cuotas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -571,7 +969,7 @@ CREATE SEQUENCE cursadas_id_seq
 
 
 --
--- TOC entry 2740 (class 0 OID 0)
+-- TOC entry 2914 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: cursadas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -626,7 +1024,7 @@ CREATE SEQUENCE cursadas_modulos_alumnos_id_seq
 
 
 --
--- TOC entry 2741 (class 0 OID 0)
+-- TOC entry 2915 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: cursadas_modulos_alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -648,7 +1046,7 @@ CREATE SEQUENCE cursadas_modulos_id_seq
 
 
 --
--- TOC entry 2742 (class 0 OID 0)
+-- TOC entry 2916 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: cursadas_modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -683,7 +1081,7 @@ CREATE SEQUENCE cursadas_profesores_id_seq
 
 
 --
--- TOC entry 2743 (class 0 OID 0)
+-- TOC entry 2917 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: cursadas_profesores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -717,7 +1115,7 @@ CREATE TABLE cursos (
 
 
 --
--- TOC entry 2744 (class 0 OID 0)
+-- TOC entry 2918 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: COLUMN cursos.porcentaje_correlativa; Type: COMMENT; Schema: public; Owner: -
 --
@@ -726,7 +1124,7 @@ COMMENT ON COLUMN cursos.porcentaje_correlativa IS 'porcentaje necesario para po
 
 
 --
--- TOC entry 2745 (class 0 OID 0)
+-- TOC entry 2919 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: COLUMN cursos.certificado_incluido; Type: COMMENT; Schema: public; Owner: -
 --
@@ -760,7 +1158,7 @@ CREATE SEQUENCE cursos_correlatividad_id_seq
 
 
 --
--- TOC entry 2746 (class 0 OID 0)
+-- TOC entry 2920 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: cursos_correlatividad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -782,7 +1180,7 @@ CREATE SEQUENCE cursos_id_seq
 
 
 --
--- TOC entry 2747 (class 0 OID 0)
+-- TOC entry 2921 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: cursos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -837,7 +1235,7 @@ CREATE SEQUENCE cursos_modulos_alumnos_id_seq
 
 
 --
--- TOC entry 2748 (class 0 OID 0)
+-- TOC entry 2922 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: cursos_modulos_alumnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -859,7 +1257,7 @@ CREATE SEQUENCE cursos_modulos_id_seq
 
 
 --
--- TOC entry 2749 (class 0 OID 0)
+-- TOC entry 2923 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: cursos_modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -893,7 +1291,7 @@ CREATE SEQUENCE cursos_titulos_id_seq
 
 
 --
--- TOC entry 2750 (class 0 OID 0)
+-- TOC entry 2924 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: cursos_titulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -946,7 +1344,7 @@ CREATE SEQUENCE datos_academicos_id_seq
 
 
 --
--- TOC entry 2751 (class 0 OID 0)
+-- TOC entry 2925 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: datos_academicos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -988,7 +1386,7 @@ CREATE SEQUENCE datos_actuales_id_seq
 
 
 --
--- TOC entry 2752 (class 0 OID 0)
+-- TOC entry 2926 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: datos_actuales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1027,7 +1425,7 @@ CREATE SEQUENCE datos_laborales_id_seq
 
 
 --
--- TOC entry 2753 (class 0 OID 0)
+-- TOC entry 2927 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: datos_laborales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1065,7 +1463,7 @@ CREATE SEQUENCE datos_salud_id_seq
 
 
 --
--- TOC entry 2754 (class 0 OID 0)
+-- TOC entry 2928 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: datos_salud_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1098,7 +1496,7 @@ CREATE SEQUENCE estados_pago_id_seq
 
 
 --
--- TOC entry 2755 (class 0 OID 0)
+-- TOC entry 2929 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: estados_pago_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1131,7 +1529,7 @@ CREATE SEQUENCE grupos_sanguineos_id_seq
 
 
 --
--- TOC entry 2756 (class 0 OID 0)
+-- TOC entry 2930 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: grupos_sanguineos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1177,7 +1575,7 @@ CREATE SEQUENCE inscripciones_modulos_id_seq
 
 
 --
--- TOC entry 2757 (class 0 OID 0)
+-- TOC entry 2931 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: inscripciones_modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1213,7 +1611,7 @@ CREATE SEQUENCE modulos_id_seq
 
 
 --
--- TOC entry 2758 (class 0 OID 0)
+-- TOC entry 2932 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: modulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1246,7 +1644,7 @@ CREATE SEQUENCE niveles_estudios_id_seq
 
 
 --
--- TOC entry 2759 (class 0 OID 0)
+-- TOC entry 2933 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: niveles_estudios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1280,7 +1678,7 @@ CREATE SEQUENCE paises_id_seq
 
 
 --
--- TOC entry 2760 (class 0 OID 0)
+-- TOC entry 2934 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: paises_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1323,7 +1721,7 @@ CREATE SEQUENCE profesiones_id_seq
 
 
 --
--- TOC entry 2761 (class 0 OID 0)
+-- TOC entry 2935 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: profesiones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1357,7 +1755,7 @@ CREATE SEQUENCE provincias_id_seq
 
 
 --
--- TOC entry 2762 (class 0 OID 0)
+-- TOC entry 2936 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: provincias_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1414,7 +1812,7 @@ CREATE SEQUENCE sedes_formadores_id_seq
 
 
 --
--- TOC entry 2763 (class 0 OID 0)
+-- TOC entry 2937 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: sedes_formadores_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1436,7 +1834,7 @@ CREATE SEQUENCE sedes_id_seq
 
 
 --
--- TOC entry 2764 (class 0 OID 0)
+-- TOC entry 2938 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: sedes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1470,7 +1868,7 @@ CREATE SEQUENCE temp_ciudades_id_seq
 
 
 --
--- TOC entry 2765 (class 0 OID 0)
+-- TOC entry 2939 (class 0 OID 0)
 -- Dependencies: 247
 -- Name: temp_ciudades_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1595,7 +1993,7 @@ CREATE SEQUENCE temp_personas_id_seq
 
 
 --
--- TOC entry 2766 (class 0 OID 0)
+-- TOC entry 2940 (class 0 OID 0)
 -- Dependencies: 250
 -- Name: temp_personas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1628,7 +2026,7 @@ CREATE SEQUENCE tipo_clase_id_seq
 
 
 --
--- TOC entry 2767 (class 0 OID 0)
+-- TOC entry 2941 (class 0 OID 0)
 -- Dependencies: 252
 -- Name: tipo_clase_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1661,7 +2059,7 @@ CREATE SEQUENCE tipo_pago_id_seq
 
 
 --
--- TOC entry 2768 (class 0 OID 0)
+-- TOC entry 2942 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: tipo_pago_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1694,7 +2092,7 @@ CREATE SEQUENCE tipo_pago_sede_id_seq
 
 
 --
--- TOC entry 2769 (class 0 OID 0)
+-- TOC entry 2943 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: tipo_pago_sede_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1727,7 +2125,7 @@ CREATE SEQUENCE tipo_persona_id_seq
 
 
 --
--- TOC entry 2770 (class 0 OID 0)
+-- TOC entry 2944 (class 0 OID 0)
 -- Dependencies: 258
 -- Name: tipo_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1748,7 +2146,7 @@ CREATE TABLE tipo_persona_perfiles (
 
 
 --
--- TOC entry 2771 (class 0 OID 0)
+-- TOC entry 2945 (class 0 OID 0)
 -- Dependencies: 259
 -- Name: TABLE tipo_persona_perfiles; Type: COMMENT; Schema: public; Owner: -
 --
@@ -1770,7 +2168,7 @@ CREATE SEQUENCE tipo_persona_perfiles_id_seq
 
 
 --
--- TOC entry 2772 (class 0 OID 0)
+-- TOC entry 2946 (class 0 OID 0)
 -- Dependencies: 260
 -- Name: tipo_persona_perfiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1803,7 +2201,7 @@ CREATE SEQUENCE tipo_profesor_id_seq
 
 
 --
--- TOC entry 2773 (class 0 OID 0)
+-- TOC entry 2947 (class 0 OID 0)
 -- Dependencies: 262
 -- Name: tipo_profesor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1836,7 +2234,7 @@ CREATE SEQUENCE tipo_titulo_id_seq
 
 
 --
--- TOC entry 2774 (class 0 OID 0)
+-- TOC entry 2948 (class 0 OID 0)
 -- Dependencies: 264
 -- Name: tipo_titulo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1871,7 +2269,7 @@ CREATE SEQUENCE titulos_id_seq
 
 
 --
--- TOC entry 2775 (class 0 OID 0)
+-- TOC entry 2949 (class 0 OID 0)
 -- Dependencies: 266
 -- Name: titulos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1905,7 +2303,7 @@ CREATE SEQUENCE usuario_persona_id_seq
 
 
 --
--- TOC entry 2776 (class 0 OID 0)
+-- TOC entry 2950 (class 0 OID 0)
 -- Dependencies: 268
 -- Name: usuario_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -1998,6 +2396,101 @@ CREATE VIEW v_aulas AS
 
 
 --
+-- TOC entry 303 (class 1259 OID 977334)
+-- Name: v_caja_comprobantes; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_caja_comprobantes AS
+ SELECT c.id,
+    c.descripcion,
+    c.id_tipo_comprobante,
+    c.activo,
+    c.dias_vencimiento,
+    c.es_cancelatorio,
+    c.orden,
+    ctc.descripcion AS tipo_comprobante
+   FROM (caja_comprobantes c
+     LEFT JOIN caja_tipo_comprobantes ctc ON ((ctc.id = c.id_tipo_comprobante)));
+
+
+--
+-- TOC entry 304 (class 1259 OID 977339)
+-- Name: v_caja_operaciones; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_caja_operaciones AS
+ SELECT o.id,
+    o.descripcion,
+    o.id_tipo_operacion,
+    o.activo,
+    cto.descripcion AS tipo_operacion,
+    cto.activo AS tipo_operacion_activo
+   FROM (caja_operaciones o
+     LEFT JOIN caja_tipo_operaciones cto ON ((cto.id = o.id_tipo_operacion)));
+
+
+--
+-- TOC entry 305 (class 1259 OID 977343)
+-- Name: v_caja_movimientos; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_caja_movimientos AS
+ SELECT m.id,
+    m.descripcion,
+    m.id_operacion,
+    m.activo,
+    o.descripcion AS operacion,
+    o.id_tipo_operacion,
+    o.tipo_operacion,
+    o.activo AS operacion_activo,
+    o.tipo_operacion_activo
+   FROM (caja_movimientos m
+     LEFT JOIN v_caja_operaciones o ON ((o.id = m.id_operacion)));
+
+
+--
+-- TOC entry 306 (class 1259 OID 977347)
+-- Name: v_caja_operaciones_diarias; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW v_caja_operaciones_diarias AS
+ SELECT cod.id,
+    cod.fecha,
+    cod.id_movimiento,
+    cod.id_comprobante,
+    cod.id_sede,
+    cod.id_medio_pago,
+    cod.id_cuenta,
+    cod.id_subcuenta,
+    cod.id_tipo_titular,
+    cod.id_titular,
+    cod.importe,
+    cod.usuario,
+    cod.signo,
+    cod.fecha_operacion,
+    m.descripcion AS movimiento,
+    m.id_operacion,
+    m.activo AS movimiento_activo,
+    m.id_tipo_operacion,
+    m.tipo_operacion,
+    m.operacion_activo,
+    m.tipo_operacion_activo,
+    s.nombre AS sede,
+    s.id_ciudad AS id_ciudad_sede,
+    mp.descripcion AS medio_pago,
+    c.descripcion AS cuenta,
+    sc.descripcion AS subcuenta,
+    tt.descripcion AS tipo_titular
+   FROM ((((((caja_operaciones_diarias cod
+     LEFT JOIN v_caja_movimientos m ON ((m.id = cod.id_movimiento)))
+     LEFT JOIN sedes s ON ((s.id = cod.id_sede)))
+     LEFT JOIN caja_medios_pagos mp ON ((mp.id = cod.id_medio_pago)))
+     LEFT JOIN caja_cuentas c ON ((c.id = cod.id_cuenta)))
+     LEFT JOIN caja_subcuentas sc ON ((sc.id = cod.id_subcuenta)))
+     LEFT JOIN caja_tipo_titulares tt ON ((tt.id = cod.id_tipo_titular)));
+
+
+--
 -- TOC entry 272 (class 1259 OID 976717)
 -- Name: v_ciudades; Type: VIEW; Schema: public; Owner: -
 --
@@ -2083,7 +2576,8 @@ CREATE VIEW v_cursadas AS
     c.activo,
     cu.id_sede,
     s.nombre AS sede,
-    s.sede_descripcion
+    s.sede_descripcion,
+    cu.anio
    FROM ((cursadas cu
      JOIN cursos c ON ((c.id = cu.id_curso)))
      JOIN v_sedes s ON ((s.id = cu.id_sede)));
@@ -2351,7 +2845,7 @@ CREATE VIEW v_titulos AS
 
 
 --
--- TOC entry 2284 (class 2604 OID 976763)
+-- TOC entry 2366 (class 2604 OID 976763)
 -- Name: alquiler_sede id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2359,7 +2853,7 @@ ALTER TABLE ONLY alquiler_sede ALTER COLUMN id SET DEFAULT nextval('alquiler_sed
 
 
 --
--- TOC entry 2287 (class 2604 OID 976764)
+-- TOC entry 2369 (class 2604 OID 976764)
 -- Name: alquiler_sede_cabecera id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2367,7 +2861,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera ALTER COLUMN id SET DEFAULT nextval('alq
 
 
 --
--- TOC entry 2289 (class 2604 OID 976765)
+-- TOC entry 2371 (class 2604 OID 976765)
 -- Name: alquiler_sede_detalle id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2375,7 +2869,7 @@ ALTER TABLE ONLY alquiler_sede_detalle ALTER COLUMN id SET DEFAULT nextval('alqu
 
 
 --
--- TOC entry 2293 (class 2604 OID 976766)
+-- TOC entry 2375 (class 2604 OID 976766)
 -- Name: aulas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2383,7 +2877,95 @@ ALTER TABLE ONLY aulas ALTER COLUMN id SET DEFAULT nextval('aulas_id_seq'::regcl
 
 
 --
--- TOC entry 2294 (class 2604 OID 976767)
+-- TOC entry 2425 (class 2604 OID 977210)
+-- Name: caja_comprobantes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_comprobantes ALTER COLUMN id SET DEFAULT nextval('caja_comprobantes_id_seq'::regclass);
+
+
+--
+-- TOC entry 2434 (class 2604 OID 977277)
+-- Name: caja_cuentas id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_cuentas ALTER COLUMN id SET DEFAULT nextval('caja_cuentas_id_seq'::regclass);
+
+
+--
+-- TOC entry 2430 (class 2604 OID 977233)
+-- Name: caja_medios_pagos id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_medios_pagos ALTER COLUMN id SET DEFAULT nextval('caja_mediospagos_id_seq'::regclass);
+
+
+--
+-- TOC entry 2433 (class 2604 OID 977264)
+-- Name: caja_movimientos id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_movimientos ALTER COLUMN id SET DEFAULT nextval('caja_movimientos_id_seq'::regclass);
+
+
+--
+-- TOC entry 2432 (class 2604 OID 977251)
+-- Name: caja_operaciones id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones ALTER COLUMN id SET DEFAULT nextval('caja_operaciones_id_seq'::regclass);
+
+
+--
+-- TOC entry 2436 (class 2604 OID 977300)
+-- Name: caja_operaciones_diarias id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias ALTER COLUMN id SET DEFAULT nextval('caja_operaciones_diarias_id_seq'::regclass);
+
+
+--
+-- TOC entry 2438 (class 2604 OID 977366)
+-- Name: caja_parametrizacion id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion ALTER COLUMN id SET DEFAULT nextval('caja_parametrizacion_id_seq'::regclass);
+
+
+--
+-- TOC entry 2435 (class 2604 OID 977287)
+-- Name: caja_subcuentas id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_subcuentas ALTER COLUMN id SET DEFAULT nextval('caja_subcuentas_id_seq'::regclass);
+
+
+--
+-- TOC entry 2424 (class 2604 OID 977202)
+-- Name: caja_tipo_comprobantes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_tipo_comprobantes ALTER COLUMN id SET DEFAULT nextval('caja_tipo_comprobantes_id_seq'::regclass);
+
+
+--
+-- TOC entry 2431 (class 2604 OID 977241)
+-- Name: caja_tipo_operaciones id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_tipo_operaciones ALTER COLUMN id SET DEFAULT nextval('caja_tipo_operaciones_id_seq'::regclass);
+
+
+--
+-- TOC entry 2429 (class 2604 OID 977225)
+-- Name: caja_tipo_titulares id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_tipo_titulares ALTER COLUMN id SET DEFAULT nextval('caja_tipo_titulares_id_seq'::regclass);
+
+
+--
+-- TOC entry 2376 (class 2604 OID 976767)
 -- Name: ciudades id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2391,7 +2973,7 @@ ALTER TABLE ONLY ciudades ALTER COLUMN id SET DEFAULT nextval('ciudades_id_seq':
 
 
 --
--- TOC entry 2295 (class 2604 OID 976768)
+-- TOC entry 2377 (class 2604 OID 976768)
 -- Name: clases id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2399,7 +2981,7 @@ ALTER TABLE ONLY clases ALTER COLUMN id SET DEFAULT nextval('clases_id_seq'::reg
 
 
 --
--- TOC entry 2296 (class 2604 OID 976769)
+-- TOC entry 2378 (class 2604 OID 976769)
 -- Name: clases_profesores id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2407,7 +2989,7 @@ ALTER TABLE ONLY clases_profesores ALTER COLUMN id SET DEFAULT nextval('clases_p
 
 
 --
--- TOC entry 2297 (class 2604 OID 976770)
+-- TOC entry 2379 (class 2604 OID 976770)
 -- Name: condiciones_alumno id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2415,7 +2997,7 @@ ALTER TABLE ONLY condiciones_alumno ALTER COLUMN id SET DEFAULT nextval('condici
 
 
 --
--- TOC entry 2298 (class 2604 OID 976771)
+-- TOC entry 2380 (class 2604 OID 976771)
 -- Name: cursadas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2423,7 +3005,7 @@ ALTER TABLE ONLY cursadas ALTER COLUMN id SET DEFAULT nextval('cursadas_id_seq':
 
 
 --
--- TOC entry 2302 (class 2604 OID 976772)
+-- TOC entry 2384 (class 2604 OID 976772)
 -- Name: cursadas_alumnos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2431,7 +3013,7 @@ ALTER TABLE ONLY cursadas_alumnos ALTER COLUMN id SET DEFAULT nextval('cursadas_
 
 
 --
--- TOC entry 2304 (class 2604 OID 976773)
+-- TOC entry 2386 (class 2604 OID 976773)
 -- Name: cursadas_cuotas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2439,7 +3021,7 @@ ALTER TABLE ONLY cursadas_cuotas ALTER COLUMN id SET DEFAULT nextval('cursadas_c
 
 
 --
--- TOC entry 2305 (class 2604 OID 976774)
+-- TOC entry 2387 (class 2604 OID 976774)
 -- Name: cursadas_modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2447,7 +3029,7 @@ ALTER TABLE ONLY cursadas_modulos ALTER COLUMN id SET DEFAULT nextval('cursadas_
 
 
 --
--- TOC entry 2306 (class 2604 OID 976775)
+-- TOC entry 2388 (class 2604 OID 976775)
 -- Name: cursadas_modulos_alumnos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2455,7 +3037,7 @@ ALTER TABLE ONLY cursadas_modulos_alumnos ALTER COLUMN id SET DEFAULT nextval('c
 
 
 --
--- TOC entry 2307 (class 2604 OID 976776)
+-- TOC entry 2389 (class 2604 OID 976776)
 -- Name: cursadas_profesores id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2463,7 +3045,7 @@ ALTER TABLE ONLY cursadas_profesores ALTER COLUMN id SET DEFAULT nextval('cursad
 
 
 --
--- TOC entry 2310 (class 2604 OID 976777)
+-- TOC entry 2392 (class 2604 OID 976777)
 -- Name: cursos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2471,7 +3053,7 @@ ALTER TABLE ONLY cursos ALTER COLUMN id SET DEFAULT nextval('cursos_id_seq'::reg
 
 
 --
--- TOC entry 2311 (class 2604 OID 976778)
+-- TOC entry 2393 (class 2604 OID 976778)
 -- Name: cursos_correlatividad id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2479,7 +3061,7 @@ ALTER TABLE ONLY cursos_correlatividad ALTER COLUMN id SET DEFAULT nextval('curs
 
 
 --
--- TOC entry 2312 (class 2604 OID 976779)
+-- TOC entry 2394 (class 2604 OID 976779)
 -- Name: cursos_modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2487,7 +3069,7 @@ ALTER TABLE ONLY cursos_modulos ALTER COLUMN id SET DEFAULT nextval('cursos_modu
 
 
 --
--- TOC entry 2313 (class 2604 OID 976780)
+-- TOC entry 2395 (class 2604 OID 976780)
 -- Name: cursos_modulos_alumnos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2495,7 +3077,7 @@ ALTER TABLE ONLY cursos_modulos_alumnos ALTER COLUMN id SET DEFAULT nextval('cur
 
 
 --
--- TOC entry 2314 (class 2604 OID 976781)
+-- TOC entry 2396 (class 2604 OID 976781)
 -- Name: cursos_titulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2503,7 +3085,7 @@ ALTER TABLE ONLY cursos_titulos ALTER COLUMN id SET DEFAULT nextval('cursos_titu
 
 
 --
--- TOC entry 2315 (class 2604 OID 976782)
+-- TOC entry 2397 (class 2604 OID 976782)
 -- Name: datos_academicos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2511,7 +3093,7 @@ ALTER TABLE ONLY datos_academicos ALTER COLUMN id SET DEFAULT nextval('datos_aca
 
 
 --
--- TOC entry 2316 (class 2604 OID 976783)
+-- TOC entry 2398 (class 2604 OID 976783)
 -- Name: datos_actuales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2519,7 +3101,7 @@ ALTER TABLE ONLY datos_actuales ALTER COLUMN id SET DEFAULT nextval('datos_actua
 
 
 --
--- TOC entry 2317 (class 2604 OID 976784)
+-- TOC entry 2399 (class 2604 OID 976784)
 -- Name: datos_laborales id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2527,7 +3109,7 @@ ALTER TABLE ONLY datos_laborales ALTER COLUMN id SET DEFAULT nextval('datos_labo
 
 
 --
--- TOC entry 2318 (class 2604 OID 976785)
+-- TOC entry 2400 (class 2604 OID 976785)
 -- Name: datos_salud id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2535,7 +3117,7 @@ ALTER TABLE ONLY datos_salud ALTER COLUMN id SET DEFAULT nextval('datos_salud_id
 
 
 --
--- TOC entry 2319 (class 2604 OID 976786)
+-- TOC entry 2401 (class 2604 OID 976786)
 -- Name: estados_pago id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2543,7 +3125,7 @@ ALTER TABLE ONLY estados_pago ALTER COLUMN id SET DEFAULT nextval('estados_pago_
 
 
 --
--- TOC entry 2320 (class 2604 OID 976787)
+-- TOC entry 2402 (class 2604 OID 976787)
 -- Name: grupos_sanguineos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2551,7 +3133,7 @@ ALTER TABLE ONLY grupos_sanguineos ALTER COLUMN id SET DEFAULT nextval('grupos_s
 
 
 --
--- TOC entry 2321 (class 2604 OID 976788)
+-- TOC entry 2403 (class 2604 OID 976788)
 -- Name: inscripciones_modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2559,7 +3141,7 @@ ALTER TABLE ONLY inscripciones_modulos ALTER COLUMN id SET DEFAULT nextval('insc
 
 
 --
--- TOC entry 2323 (class 2604 OID 976789)
+-- TOC entry 2405 (class 2604 OID 976789)
 -- Name: modulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2567,7 +3149,7 @@ ALTER TABLE ONLY modulos ALTER COLUMN id SET DEFAULT nextval('modulos_id_seq'::r
 
 
 --
--- TOC entry 2324 (class 2604 OID 976790)
+-- TOC entry 2406 (class 2604 OID 976790)
 -- Name: niveles_estudios id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2575,7 +3157,7 @@ ALTER TABLE ONLY niveles_estudios ALTER COLUMN id SET DEFAULT nextval('niveles_e
 
 
 --
--- TOC entry 2325 (class 2604 OID 976791)
+-- TOC entry 2407 (class 2604 OID 976791)
 -- Name: paises id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2583,7 +3165,7 @@ ALTER TABLE ONLY paises ALTER COLUMN id SET DEFAULT nextval('paises_id_seq'::reg
 
 
 --
--- TOC entry 2291 (class 2604 OID 976792)
+-- TOC entry 2373 (class 2604 OID 976792)
 -- Name: personas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2591,7 +3173,7 @@ ALTER TABLE ONLY personas ALTER COLUMN id SET DEFAULT nextval('alumnos_id_seq'::
 
 
 --
--- TOC entry 2292 (class 2604 OID 976793)
+-- TOC entry 2374 (class 2604 OID 976793)
 -- Name: personas legajo; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2599,7 +3181,7 @@ ALTER TABLE ONLY personas ALTER COLUMN legajo SET DEFAULT nextval('alumnos_legaj
 
 
 --
--- TOC entry 2326 (class 2604 OID 976794)
+-- TOC entry 2408 (class 2604 OID 976794)
 -- Name: profesiones id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2607,7 +3189,7 @@ ALTER TABLE ONLY profesiones ALTER COLUMN id SET DEFAULT nextval('profesiones_id
 
 
 --
--- TOC entry 2327 (class 2604 OID 976795)
+-- TOC entry 2409 (class 2604 OID 976795)
 -- Name: provincias id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2615,7 +3197,7 @@ ALTER TABLE ONLY provincias ALTER COLUMN id SET DEFAULT nextval('provincias_id_s
 
 
 --
--- TOC entry 2329 (class 2604 OID 976796)
+-- TOC entry 2411 (class 2604 OID 976796)
 -- Name: sedes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2623,7 +3205,7 @@ ALTER TABLE ONLY sedes ALTER COLUMN id SET DEFAULT nextval('sedes_id_seq'::regcl
 
 
 --
--- TOC entry 2330 (class 2604 OID 976797)
+-- TOC entry 2412 (class 2604 OID 976797)
 -- Name: sedes_formadores id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2631,7 +3213,7 @@ ALTER TABLE ONLY sedes_formadores ALTER COLUMN id SET DEFAULT nextval('sedes_for
 
 
 --
--- TOC entry 2331 (class 2604 OID 976798)
+-- TOC entry 2413 (class 2604 OID 976798)
 -- Name: temp_ciudades id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2639,7 +3221,7 @@ ALTER TABLE ONLY temp_ciudades ALTER COLUMN id SET DEFAULT nextval('temp_ciudade
 
 
 --
--- TOC entry 2332 (class 2604 OID 976799)
+-- TOC entry 2414 (class 2604 OID 976799)
 -- Name: temp_personas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2647,7 +3229,7 @@ ALTER TABLE ONLY temp_personas ALTER COLUMN id SET DEFAULT nextval('temp_persona
 
 
 --
--- TOC entry 2333 (class 2604 OID 976800)
+-- TOC entry 2415 (class 2604 OID 976800)
 -- Name: tipo_clase id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2655,7 +3237,7 @@ ALTER TABLE ONLY tipo_clase ALTER COLUMN id SET DEFAULT nextval('tipo_clase_id_s
 
 
 --
--- TOC entry 2334 (class 2604 OID 976801)
+-- TOC entry 2416 (class 2604 OID 976801)
 -- Name: tipo_pago id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2663,7 +3245,7 @@ ALTER TABLE ONLY tipo_pago ALTER COLUMN id SET DEFAULT nextval('tipo_pago_id_seq
 
 
 --
--- TOC entry 2335 (class 2604 OID 976802)
+-- TOC entry 2417 (class 2604 OID 976802)
 -- Name: tipo_pago_sede id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2671,7 +3253,7 @@ ALTER TABLE ONLY tipo_pago_sede ALTER COLUMN id SET DEFAULT nextval('tipo_pago_s
 
 
 --
--- TOC entry 2336 (class 2604 OID 976803)
+-- TOC entry 2418 (class 2604 OID 976803)
 -- Name: tipo_persona id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2679,7 +3261,7 @@ ALTER TABLE ONLY tipo_persona ALTER COLUMN id SET DEFAULT nextval('tipo_persona_
 
 
 --
--- TOC entry 2337 (class 2604 OID 976804)
+-- TOC entry 2419 (class 2604 OID 976804)
 -- Name: tipo_persona_perfiles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2687,7 +3269,7 @@ ALTER TABLE ONLY tipo_persona_perfiles ALTER COLUMN id SET DEFAULT nextval('tipo
 
 
 --
--- TOC entry 2338 (class 2604 OID 976805)
+-- TOC entry 2420 (class 2604 OID 976805)
 -- Name: tipo_profesor id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2695,7 +3277,7 @@ ALTER TABLE ONLY tipo_profesor ALTER COLUMN id SET DEFAULT nextval('tipo_profeso
 
 
 --
--- TOC entry 2339 (class 2604 OID 976806)
+-- TOC entry 2421 (class 2604 OID 976806)
 -- Name: tipo_titulo id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2703,7 +3285,7 @@ ALTER TABLE ONLY tipo_titulo ALTER COLUMN id SET DEFAULT nextval('tipo_titulo_id
 
 
 --
--- TOC entry 2340 (class 2604 OID 976807)
+-- TOC entry 2422 (class 2604 OID 976807)
 -- Name: titulos id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2711,7 +3293,7 @@ ALTER TABLE ONLY titulos ALTER COLUMN id SET DEFAULT nextval('titulos_id_seq'::r
 
 
 --
--- TOC entry 2341 (class 2604 OID 976808)
+-- TOC entry 2423 (class 2604 OID 976808)
 -- Name: usuario_persona id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2719,7 +3301,7 @@ ALTER TABLE ONLY usuario_persona ALTER COLUMN id SET DEFAULT nextval('usuario_pe
 
 
 --
--- TOC entry 2625 (class 0 OID 976417)
+-- TOC entry 2766 (class 0 OID 976417)
 -- Dependencies: 173
 -- Data for Name: alquiler_sede; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2728,7 +3310,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2626 (class 0 OID 976421)
+-- TOC entry 2767 (class 0 OID 976421)
 -- Dependencies: 174
 -- Data for Name: alquiler_sede_cabecera; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2736,7 +3318,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2628 (class 0 OID 976428)
+-- TOC entry 2769 (class 0 OID 976428)
 -- Dependencies: 176
 -- Data for Name: alquiler_sede_detalle; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2744,7 +3326,7 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2634 (class 0 OID 976444)
+-- TOC entry 2775 (class 0 OID 976444)
 -- Dependencies: 182
 -- Data for Name: aulas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -2752,7 +3334,137 @@ INSERT INTO alquiler_sede VALUES (8, 5, '2018-06-15', 200.00, '2018-06-15 00:57:
 
 
 --
--- TOC entry 2636 (class 0 OID 976449)
+-- TOC entry 2865 (class 0 OID 977207)
+-- Dependencies: 286
+-- Data for Name: caja_comprobantes; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO caja_comprobantes VALUES (2, 'CUOTA CURSO', 1, true, 0, false, NULL);
+INSERT INTO caja_comprobantes VALUES (3, 'COBRANZA DE CUOTA CURSO', 2, true, 0, true, NULL);
+INSERT INTO caja_comprobantes VALUES (4, 'COBRANZA DE MATRICULA', 2, true, 0, true, NULL);
+INSERT INTO caja_comprobantes VALUES (5, 'AJ. CTA.CTE. ALUMNO', 6, true, 0, false, NULL);
+
+
+--
+-- TOC entry 2877 (class 0 OID 977274)
+-- Dependencies: 298
+-- Data for Name: caja_cuentas; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- TOC entry 2869 (class 0 OID 977230)
+-- Dependencies: 290
+-- Data for Name: caja_medios_pagos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO caja_medios_pagos VALUES (1, 'SIN CARGO');
+INSERT INTO caja_medios_pagos VALUES (2, 'EFECTIVO');
+INSERT INTO caja_medios_pagos VALUES (3, 'INTERDEPOSITO');
+INSERT INTO caja_medios_pagos VALUES (4, 'CHEQUE');
+INSERT INTO caja_medios_pagos VALUES (5, 'CUENTA CORRIENTE');
+INSERT INTO caja_medios_pagos VALUES (6, 'TRANSFERENCIA');
+INSERT INTO caja_medios_pagos VALUES (7, 'CTA.CTE.');
+
+
+--
+-- TOC entry 2875 (class 0 OID 977261)
+-- Dependencies: 296
+-- Data for Name: caja_movimientos; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- TOC entry 2873 (class 0 OID 977248)
+-- Dependencies: 294
+-- Data for Name: caja_operaciones; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO caja_operaciones VALUES (1, 'INGRESOS EXTRAORDINARIOS', 6, true);
+INSERT INTO caja_operaciones VALUES (2, 'OTROS INGRESOS', 6, true);
+INSERT INTO caja_operaciones VALUES (3, 'DEPOSITOS', 3, true);
+INSERT INTO caja_operaciones VALUES (4, 'OTROS EGRESOS', 3, true);
+INSERT INTO caja_operaciones VALUES (5, 'REINTEGROS', 3, true);
+INSERT INTO caja_operaciones VALUES (6, 'PAGOS', 3, true);
+INSERT INTO caja_operaciones VALUES (7, 'AJUSTES', 5, true);
+INSERT INTO caja_operaciones VALUES (8, 'MOVIMIENTOS BANCARIOS', 9, true);
+
+
+--
+-- TOC entry 2881 (class 0 OID 977297)
+-- Dependencies: 302
+-- Data for Name: caja_operaciones_diarias; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- TOC entry 2883 (class 0 OID 977363)
+-- Dependencies: 308
+-- Data for Name: caja_parametrizacion; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- TOC entry 2879 (class 0 OID 977284)
+-- Dependencies: 300
+-- Data for Name: caja_subcuentas; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- TOC entry 2863 (class 0 OID 977199)
+-- Dependencies: 284
+-- Data for Name: caja_tipo_comprobantes; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO caja_tipo_comprobantes VALUES (1, 'CUOTAS');
+INSERT INTO caja_tipo_comprobantes VALUES (2, 'COMPROBANTES DE PAGO');
+INSERT INTO caja_tipo_comprobantes VALUES (3, 'REINTEGROS');
+INSERT INTO caja_tipo_comprobantes VALUES (4, 'DEPOSITOS');
+INSERT INTO caja_tipo_comprobantes VALUES (5, 'COMPROBANTES DE COBRO');
+INSERT INTO caja_tipo_comprobantes VALUES (6, 'AJUSTE');
+INSERT INTO caja_tipo_comprobantes VALUES (7, 'TRANSFERENCIA');
+INSERT INTO caja_tipo_comprobantes VALUES (8, 'MATRICULAS');
+
+
+--
+-- TOC entry 2871 (class 0 OID 977238)
+-- Dependencies: 292
+-- Data for Name: caja_tipo_operaciones; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO caja_tipo_operaciones VALUES (1, 'SALDO INICIAL', true);
+INSERT INTO caja_tipo_operaciones VALUES (2, 'SALDO FINAL', true);
+INSERT INTO caja_tipo_operaciones VALUES (3, 'EGRESOS', true);
+INSERT INTO caja_tipo_operaciones VALUES (4, 'ANULACIONES', true);
+INSERT INTO caja_tipo_operaciones VALUES (5, 'AJUSTES', true);
+INSERT INTO caja_tipo_operaciones VALUES (6, 'INGRESOS', true);
+INSERT INTO caja_tipo_operaciones VALUES (7, 'DERECHOS A COBRAR', true);
+INSERT INTO caja_tipo_operaciones VALUES (8, 'OBLIGACIONES A PAGAR', true);
+INSERT INTO caja_tipo_operaciones VALUES (9, 'BANCARIAS', true);
+
+
+--
+-- TOC entry 2867 (class 0 OID 977222)
+-- Dependencies: 288
+-- Data for Name: caja_tipo_titulares; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO caja_tipo_titulares VALUES (1, 'ALUMNO', NULL, true);
+INSERT INTO caja_tipo_titulares VALUES (2, 'SEDE', NULL, true);
+INSERT INTO caja_tipo_titulares VALUES (3, 'ESCUELA', NULL, true);
+INSERT INTO caja_tipo_titulares VALUES (4, 'PROVEEDOR', NULL, true);
+INSERT INTO caja_tipo_titulares VALUES (5, 'CAJA', NULL, true);
+INSERT INTO caja_tipo_titulares VALUES (6, 'PROFESOR', NULL, true);
+
+
+--
+-- TOC entry 2777 (class 0 OID 976449)
 -- Dependencies: 184
 -- Data for Name: ciudades; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25723,7 +26435,7 @@ INSERT INTO ciudades VALUES (27857, 'LAS VEGAS', 5549, 13);
 
 
 --
--- TOC entry 2638 (class 0 OID 976454)
+-- TOC entry 2779 (class 0 OID 976454)
 -- Dependencies: 186
 -- Data for Name: clases; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25735,7 +26447,7 @@ INSERT INTO clases VALUES (7, 'Primer clase del modulo 1 en la cursada 2019', 12
 
 
 --
--- TOC entry 2639 (class 0 OID 976460)
+-- TOC entry 2780 (class 0 OID 976460)
 -- Dependencies: 187
 -- Data for Name: clases_asistencia; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25743,7 +26455,7 @@ INSERT INTO clases VALUES (7, 'Primer clase del modulo 1 en la cursada 2019', 12
 
 
 --
--- TOC entry 2641 (class 0 OID 976465)
+-- TOC entry 2782 (class 0 OID 976465)
 -- Dependencies: 189
 -- Data for Name: clases_profesores; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25751,7 +26463,7 @@ INSERT INTO clases VALUES (7, 'Primer clase del modulo 1 en la cursada 2019', 12
 
 
 --
--- TOC entry 2643 (class 0 OID 976470)
+-- TOC entry 2784 (class 0 OID 976470)
 -- Dependencies: 191
 -- Data for Name: condiciones_alumno; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25761,7 +26473,7 @@ INSERT INTO condiciones_alumno VALUES (2, 'REGULAR');
 
 
 --
--- TOC entry 2645 (class 0 OID 976475)
+-- TOC entry 2786 (class 0 OID 976475)
 -- Dependencies: 193
 -- Data for Name: cursadas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25774,7 +26486,7 @@ INSERT INTO cursadas VALUES (12, 'Cursada 2019', '2019-01-01', '2019-02-10', 2, 
 
 
 --
--- TOC entry 2646 (class 0 OID 976478)
+-- TOC entry 2787 (class 0 OID 976478)
 -- Dependencies: 194
 -- Data for Name: cursadas_alumnos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25783,7 +26495,7 @@ INSERT INTO cursadas_alumnos VALUES (16, 11, 254, 2, 60, false, '2018-07-17', 2)
 
 
 --
--- TOC entry 2648 (class 0 OID 976486)
+-- TOC entry 2789 (class 0 OID 976486)
 -- Dependencies: 196
 -- Data for Name: cursadas_cuotas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25791,7 +26503,7 @@ INSERT INTO cursadas_alumnos VALUES (16, 11, 254, 2, 60, false, '2018-07-17', 2)
 
 
 --
--- TOC entry 2651 (class 0 OID 976494)
+-- TOC entry 2792 (class 0 OID 976494)
 -- Dependencies: 199
 -- Data for Name: cursadas_modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25841,7 +26553,7 @@ INSERT INTO cursadas_modulos VALUES (62, 'Modulo 10', 10, NULL, 'Modulo 10', 11,
 
 
 --
--- TOC entry 2652 (class 0 OID 976500)
+-- TOC entry 2793 (class 0 OID 976500)
 -- Dependencies: 200
 -- Data for Name: cursadas_modulos_alumnos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25859,7 +26571,7 @@ INSERT INTO cursadas_modulos_alumnos VALUES (60, 69, 16, 10);
 
 
 --
--- TOC entry 2655 (class 0 OID 976507)
+-- TOC entry 2796 (class 0 OID 976507)
 -- Dependencies: 203
 -- Data for Name: cursadas_profesores; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25867,7 +26579,7 @@ INSERT INTO cursadas_modulos_alumnos VALUES (60, 69, 16, 10);
 
 
 --
--- TOC entry 2657 (class 0 OID 976512)
+-- TOC entry 2798 (class 0 OID 976512)
 -- Dependencies: 205
 -- Data for Name: cursos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25876,7 +26588,7 @@ INSERT INTO cursos VALUES (2, 'PROF YOGA', 'PROF YOGA', 10, 100.00, 10, 10, 10, 
 
 
 --
--- TOC entry 2658 (class 0 OID 976517)
+-- TOC entry 2799 (class 0 OID 976517)
 -- Dependencies: 206
 -- Data for Name: cursos_correlatividad; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25885,7 +26597,7 @@ INSERT INTO cursos_correlatividad VALUES (2, 2, 2);
 
 
 --
--- TOC entry 2661 (class 0 OID 976524)
+-- TOC entry 2802 (class 0 OID 976524)
 -- Dependencies: 209
 -- Data for Name: cursos_modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25903,7 +26615,7 @@ INSERT INTO cursos_modulos VALUES (10, 'Modulo 10', 10, NULL, 'Modulo 10', 2, 10
 
 
 --
--- TOC entry 2662 (class 0 OID 976530)
+-- TOC entry 2803 (class 0 OID 976530)
 -- Dependencies: 210
 -- Data for Name: cursos_modulos_alumnos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25923,7 +26635,7 @@ INSERT INTO cursos_modulos_alumnos VALUES (13, 2, 6, 9, 2019, 10, 1);
 
 
 --
--- TOC entry 2665 (class 0 OID 976537)
+-- TOC entry 2806 (class 0 OID 976537)
 -- Dependencies: 213
 -- Data for Name: cursos_titulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25932,7 +26644,7 @@ INSERT INTO cursos_titulos VALUES (1, 1, 2);
 
 
 --
--- TOC entry 2667 (class 0 OID 976542)
+-- TOC entry 2808 (class 0 OID 976542)
 -- Dependencies: 215
 -- Data for Name: databasechangeloglock; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -25941,7 +26653,7 @@ INSERT INTO databasechangeloglock VALUES (1, false, NULL, NULL);
 
 
 --
--- TOC entry 2668 (class 0 OID 976545)
+-- TOC entry 2809 (class 0 OID 976545)
 -- Dependencies: 216
 -- Data for Name: datos_academicos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -26484,7 +27196,7 @@ INSERT INTO datos_academicos VALUES (538, NULL, false, NULL, NULL, NULL, 613, ''
 
 
 --
--- TOC entry 2670 (class 0 OID 976550)
+-- TOC entry 2811 (class 0 OID 976550)
 -- Dependencies: 218
 -- Data for Name: datos_actuales; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -27027,7 +27739,7 @@ INSERT INTO datos_actuales VALUES (3988, 'PARQUE MAPUCHE', NULL, NULL, 3231, '23
 
 
 --
--- TOC entry 2672 (class 0 OID 976558)
+-- TOC entry 2813 (class 0 OID 976558)
 -- Dependencies: 220
 -- Data for Name: datos_laborales; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -27570,7 +28282,7 @@ INSERT INTO datos_laborales VALUES (2166, NULL, 'SELVATICA PILAR', NULL, NULL, N
 
 
 --
--- TOC entry 2674 (class 0 OID 976566)
+-- TOC entry 2815 (class 0 OID 976566)
 -- Dependencies: 222
 -- Data for Name: datos_salud; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28113,7 +28825,7 @@ INSERT INTO datos_salud VALUES (539, 'OSDE', NULL, NULL, NULL, 613, 11);
 
 
 --
--- TOC entry 2676 (class 0 OID 976571)
+-- TOC entry 2817 (class 0 OID 976571)
 -- Dependencies: 224
 -- Data for Name: estados_pago; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28123,7 +28835,7 @@ INSERT INTO estados_pago VALUES (2, 'PAGO');
 
 
 --
--- TOC entry 2678 (class 0 OID 976576)
+-- TOC entry 2819 (class 0 OID 976576)
 -- Dependencies: 226
 -- Data for Name: grupos_sanguineos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28146,7 +28858,7 @@ INSERT INTO grupos_sanguineos VALUES (16, 'A+');
 
 
 --
--- TOC entry 2680 (class 0 OID 976581)
+-- TOC entry 2821 (class 0 OID 976581)
 -- Dependencies: 228
 -- Data for Name: ids; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28179,7 +28891,7 @@ INSERT INTO ids VALUES (236);
 
 
 --
--- TOC entry 2681 (class 0 OID 976584)
+-- TOC entry 2822 (class 0 OID 976584)
 -- Dependencies: 229
 -- Data for Name: inscripciones_modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28187,7 +28899,7 @@ INSERT INTO ids VALUES (236);
 
 
 --
--- TOC entry 2683 (class 0 OID 976589)
+-- TOC entry 2824 (class 0 OID 976589)
 -- Dependencies: 231
 -- Data for Name: modulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28195,7 +28907,7 @@ INSERT INTO ids VALUES (236);
 
 
 --
--- TOC entry 2685 (class 0 OID 976595)
+-- TOC entry 2826 (class 0 OID 976595)
 -- Dependencies: 233
 -- Data for Name: niveles_estudios; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28207,7 +28919,7 @@ INSERT INTO niveles_estudios VALUES (4, 'UNIVERSITARIO');
 
 
 --
--- TOC entry 2687 (class 0 OID 976600)
+-- TOC entry 2828 (class 0 OID 976600)
 -- Dependencies: 235
 -- Data for Name: paises; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28216,7 +28928,7 @@ INSERT INTO paises VALUES (1, 'Argentina', 'Argentino');
 
 
 --
--- TOC entry 2689 (class 0 OID 976605)
+-- TOC entry 2830 (class 0 OID 976605)
 -- Dependencies: 237
 -- Data for Name: perfiles; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28225,7 +28937,7 @@ INSERT INTO perfiles VALUES ('alumno');
 
 
 --
--- TOC entry 2631 (class 0 OID 976436)
+-- TOC entry 2772 (class 0 OID 976436)
 -- Dependencies: 179
 -- Data for Name: personas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28768,7 +29480,7 @@ INSERT INTO personas VALUES (49, 'MARIA ISABEL', 'SENOSIAIN', '1984-03-15', 3092
 
 
 --
--- TOC entry 2690 (class 0 OID 976608)
+-- TOC entry 2831 (class 0 OID 976608)
 -- Dependencies: 238
 -- Data for Name: profesiones; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28776,7 +29488,7 @@ INSERT INTO personas VALUES (49, 'MARIA ISABEL', 'SENOSIAIN', '1984-03-15', 3092
 
 
 --
--- TOC entry 2692 (class 0 OID 976613)
+-- TOC entry 2833 (class 0 OID 976613)
 -- Dependencies: 240
 -- Data for Name: provincias; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28808,7 +29520,7 @@ INSERT INTO provincias VALUES (24, 'Tucumán', 1);
 
 
 --
--- TOC entry 2694 (class 0 OID 976621)
+-- TOC entry 2835 (class 0 OID 976621)
 -- Dependencies: 242
 -- Data for Name: sedes; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28820,7 +29532,7 @@ INSERT INTO sedes VALUES (12, 'Congreso', 'Estudio Atenea', 'Veronica', '0', '11
 
 
 --
--- TOC entry 2695 (class 0 OID 976628)
+-- TOC entry 2836 (class 0 OID 976628)
 -- Dependencies: 243
 -- Data for Name: sedes_formadores; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28828,7 +29540,7 @@ INSERT INTO sedes VALUES (12, 'Congreso', 'Estudio Atenea', 'Veronica', '0', '11
 
 
 --
--- TOC entry 2698 (class 0 OID 976635)
+-- TOC entry 2839 (class 0 OID 976635)
 -- Dependencies: 246
 -- Data for Name: temp_ciudades; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -28879,7 +29591,7 @@ INSERT INTO temp_ciudades VALUES (1, 'MALVINAS ARGENTINAS', 26311);
 
 
 --
--- TOC entry 2700 (class 0 OID 976640)
+-- TOC entry 2841 (class 0 OID 976640)
 -- Dependencies: 248
 -- Data for Name: temp_personas; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -29540,7 +30252,7 @@ INSERT INTO temp_personas VALUES (49, 49, 'Pilar', 'SENOSIAIN', 'MARIA ISABEL', 
 
 
 --
--- TOC entry 2701 (class 0 OID 976646)
+-- TOC entry 2842 (class 0 OID 976646)
 -- Dependencies: 249
 -- Data for Name: temp_personas2; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30202,7 +30914,7 @@ INSERT INTO temp_personas2 VALUES (NULL, NULL, 'Zekas', 'Silvana  ', NULL, NULL,
 
 
 --
--- TOC entry 2703 (class 0 OID 976654)
+-- TOC entry 2844 (class 0 OID 976654)
 -- Dependencies: 251
 -- Data for Name: tipo_clase; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30214,7 +30926,7 @@ INSERT INTO tipo_clase VALUES (3, 'TEORICA/PRACTICA');
 
 
 --
--- TOC entry 2705 (class 0 OID 976659)
+-- TOC entry 2846 (class 0 OID 976659)
 -- Dependencies: 253
 -- Data for Name: tipo_pago; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30226,7 +30938,7 @@ INSERT INTO tipo_pago VALUES (4, 'TRANSFERENCIA');
 
 
 --
--- TOC entry 2707 (class 0 OID 976664)
+-- TOC entry 2848 (class 0 OID 976664)
 -- Dependencies: 255
 -- Data for Name: tipo_pago_sede; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30236,7 +30948,7 @@ INSERT INTO tipo_pago_sede VALUES (2, 'SEMANAL');
 
 
 --
--- TOC entry 2709 (class 0 OID 976669)
+-- TOC entry 2850 (class 0 OID 976669)
 -- Dependencies: 257
 -- Data for Name: tipo_persona; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30247,7 +30959,7 @@ INSERT INTO tipo_persona VALUES (3, 'PRACTICANTE');
 
 
 --
--- TOC entry 2711 (class 0 OID 976674)
+-- TOC entry 2852 (class 0 OID 976674)
 -- Dependencies: 259
 -- Data for Name: tipo_persona_perfiles; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30256,7 +30968,7 @@ INSERT INTO tipo_persona_perfiles VALUES (1, 1, 'alumno');
 
 
 --
--- TOC entry 2713 (class 0 OID 976679)
+-- TOC entry 2854 (class 0 OID 976679)
 -- Dependencies: 261
 -- Data for Name: tipo_profesor; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30267,7 +30979,7 @@ INSERT INTO tipo_profesor VALUES (3, 'PROFESOR FORMADOR');
 
 
 --
--- TOC entry 2715 (class 0 OID 976684)
+-- TOC entry 2856 (class 0 OID 976684)
 -- Dependencies: 263
 -- Data for Name: tipo_titulo; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30277,7 +30989,7 @@ INSERT INTO tipo_titulo VALUES (2, 'CERTIFICADO');
 
 
 --
--- TOC entry 2717 (class 0 OID 976689)
+-- TOC entry 2858 (class 0 OID 976689)
 -- Dependencies: 265
 -- Data for Name: titulos; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30286,7 +30998,7 @@ INSERT INTO titulos VALUES (1, 'DIPLOMA INTERNACIONAL DE LA YAI', 'DIPLOMA INTER
 
 
 --
--- TOC entry 2719 (class 0 OID 976697)
+-- TOC entry 2860 (class 0 OID 976697)
 -- Dependencies: 267
 -- Data for Name: usuario_persona; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -30294,7 +31006,7 @@ INSERT INTO titulos VALUES (1, 'DIPLOMA INTERNACIONAL DE LA YAI', 'DIPLOMA INTER
 
 
 --
--- TOC entry 2777 (class 0 OID 0)
+-- TOC entry 2951 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: alquiler_sede_cabecera_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30303,7 +31015,7 @@ SELECT pg_catalog.setval('alquiler_sede_cabecera_id_seq', 2, true);
 
 
 --
--- TOC entry 2778 (class 0 OID 0)
+-- TOC entry 2952 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: alquiler_sede_detalle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30312,7 +31024,7 @@ SELECT pg_catalog.setval('alquiler_sede_detalle_id_seq', 3, true);
 
 
 --
--- TOC entry 2779 (class 0 OID 0)
+-- TOC entry 2953 (class 0 OID 0)
 -- Dependencies: 178
 -- Name: alquiler_sede_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30321,7 +31033,7 @@ SELECT pg_catalog.setval('alquiler_sede_id_seq', 8, true);
 
 
 --
--- TOC entry 2780 (class 0 OID 0)
+-- TOC entry 2954 (class 0 OID 0)
 -- Dependencies: 180
 -- Name: alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30330,7 +31042,7 @@ SELECT pg_catalog.setval('alumnos_id_seq', 9, true);
 
 
 --
--- TOC entry 2781 (class 0 OID 0)
+-- TOC entry 2955 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: alumnos_legajo_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30339,7 +31051,7 @@ SELECT pg_catalog.setval('alumnos_legajo_seq', 6, true);
 
 
 --
--- TOC entry 2782 (class 0 OID 0)
+-- TOC entry 2956 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: aulas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30348,7 +31060,106 @@ SELECT pg_catalog.setval('aulas_id_seq', 4, true);
 
 
 --
--- TOC entry 2783 (class 0 OID 0)
+-- TOC entry 2957 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: caja_comprobantes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_comprobantes_id_seq', 6, true);
+
+
+--
+-- TOC entry 2958 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: caja_cuentas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_cuentas_id_seq', 1, false);
+
+
+--
+-- TOC entry 2959 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: caja_mediospagos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_mediospagos_id_seq', 7, true);
+
+
+--
+-- TOC entry 2960 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: caja_movimientos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_movimientos_id_seq', 1, false);
+
+
+--
+-- TOC entry 2961 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: caja_operaciones_diarias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_operaciones_diarias_id_seq', 1, false);
+
+
+--
+-- TOC entry 2962 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: caja_operaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_operaciones_id_seq', 8, true);
+
+
+--
+-- TOC entry 2963 (class 0 OID 0)
+-- Dependencies: 307
+-- Name: caja_parametrizacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_parametrizacion_id_seq', 1, false);
+
+
+--
+-- TOC entry 2964 (class 0 OID 0)
+-- Dependencies: 299
+-- Name: caja_subcuentas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_subcuentas_id_seq', 1, false);
+
+
+--
+-- TOC entry 2965 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: caja_tipo_comprobantes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_tipo_comprobantes_id_seq', 8, true);
+
+
+--
+-- TOC entry 2966 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: caja_tipo_operaciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_tipo_operaciones_id_seq', 9, true);
+
+
+--
+-- TOC entry 2967 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: caja_tipo_titulares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('caja_tipo_titulares_id_seq', 6, true);
+
+
+--
+-- TOC entry 2968 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: ciudades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30357,7 +31168,7 @@ SELECT pg_catalog.setval('ciudades_id_seq', 1, false);
 
 
 --
--- TOC entry 2784 (class 0 OID 0)
+-- TOC entry 2969 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: clases_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30366,7 +31177,7 @@ SELECT pg_catalog.setval('clases_id_seq', 7, true);
 
 
 --
--- TOC entry 2785 (class 0 OID 0)
+-- TOC entry 2970 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: clases_profesores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30375,7 +31186,7 @@ SELECT pg_catalog.setval('clases_profesores_id_seq', 1, false);
 
 
 --
--- TOC entry 2786 (class 0 OID 0)
+-- TOC entry 2971 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: condiciones_alumno_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30384,7 +31195,7 @@ SELECT pg_catalog.setval('condiciones_alumno_id_seq', 3, true);
 
 
 --
--- TOC entry 2787 (class 0 OID 0)
+-- TOC entry 2972 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: cursadas_alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30393,7 +31204,7 @@ SELECT pg_catalog.setval('cursadas_alumnos_id_seq', 16, true);
 
 
 --
--- TOC entry 2788 (class 0 OID 0)
+-- TOC entry 2973 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: cursadas_cuotas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30402,7 +31213,7 @@ SELECT pg_catalog.setval('cursadas_cuotas_id_seq', 1, false);
 
 
 --
--- TOC entry 2789 (class 0 OID 0)
+-- TOC entry 2974 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: cursadas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30411,7 +31222,7 @@ SELECT pg_catalog.setval('cursadas_id_seq', 12, true);
 
 
 --
--- TOC entry 2790 (class 0 OID 0)
+-- TOC entry 2975 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: cursadas_modulos_alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30420,7 +31231,7 @@ SELECT pg_catalog.setval('cursadas_modulos_alumnos_id_seq', 60, true);
 
 
 --
--- TOC entry 2791 (class 0 OID 0)
+-- TOC entry 2976 (class 0 OID 0)
 -- Dependencies: 202
 -- Name: cursadas_modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30429,7 +31240,7 @@ SELECT pg_catalog.setval('cursadas_modulos_id_seq', 72, true);
 
 
 --
--- TOC entry 2792 (class 0 OID 0)
+-- TOC entry 2977 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: cursadas_profesores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30438,7 +31249,7 @@ SELECT pg_catalog.setval('cursadas_profesores_id_seq', 3, true);
 
 
 --
--- TOC entry 2793 (class 0 OID 0)
+-- TOC entry 2978 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: cursos_correlatividad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30447,7 +31258,7 @@ SELECT pg_catalog.setval('cursos_correlatividad_id_seq', 3, true);
 
 
 --
--- TOC entry 2794 (class 0 OID 0)
+-- TOC entry 2979 (class 0 OID 0)
 -- Dependencies: 208
 -- Name: cursos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30456,7 +31267,7 @@ SELECT pg_catalog.setval('cursos_id_seq', 2, true);
 
 
 --
--- TOC entry 2795 (class 0 OID 0)
+-- TOC entry 2980 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: cursos_modulos_alumnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30465,7 +31276,7 @@ SELECT pg_catalog.setval('cursos_modulos_alumnos_id_seq', 13, true);
 
 
 --
--- TOC entry 2796 (class 0 OID 0)
+-- TOC entry 2981 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: cursos_modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30474,7 +31285,7 @@ SELECT pg_catalog.setval('cursos_modulos_id_seq', 10, true);
 
 
 --
--- TOC entry 2797 (class 0 OID 0)
+-- TOC entry 2982 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: cursos_titulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30483,7 +31294,7 @@ SELECT pg_catalog.setval('cursos_titulos_id_seq', 1, true);
 
 
 --
--- TOC entry 2798 (class 0 OID 0)
+-- TOC entry 2983 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: datos_academicos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30492,7 +31303,7 @@ SELECT pg_catalog.setval('datos_academicos_id_seq', 538, true);
 
 
 --
--- TOC entry 2799 (class 0 OID 0)
+-- TOC entry 2984 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: datos_actuales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30501,7 +31312,7 @@ SELECT pg_catalog.setval('datos_actuales_id_seq', 4570, true);
 
 
 --
--- TOC entry 2800 (class 0 OID 0)
+-- TOC entry 2985 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: datos_laborales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30510,7 +31321,7 @@ SELECT pg_catalog.setval('datos_laborales_id_seq', 2216, true);
 
 
 --
--- TOC entry 2801 (class 0 OID 0)
+-- TOC entry 2986 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: datos_salud_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30519,7 +31330,7 @@ SELECT pg_catalog.setval('datos_salud_id_seq', 539, true);
 
 
 --
--- TOC entry 2802 (class 0 OID 0)
+-- TOC entry 2987 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: estados_pago_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30528,7 +31339,7 @@ SELECT pg_catalog.setval('estados_pago_id_seq', 1, false);
 
 
 --
--- TOC entry 2803 (class 0 OID 0)
+-- TOC entry 2988 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: grupos_sanguineos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30537,7 +31348,7 @@ SELECT pg_catalog.setval('grupos_sanguineos_id_seq', 16, true);
 
 
 --
--- TOC entry 2804 (class 0 OID 0)
+-- TOC entry 2989 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: inscripciones_modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30546,7 +31357,7 @@ SELECT pg_catalog.setval('inscripciones_modulos_id_seq', 1, false);
 
 
 --
--- TOC entry 2805 (class 0 OID 0)
+-- TOC entry 2990 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: modulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30555,7 +31366,7 @@ SELECT pg_catalog.setval('modulos_id_seq', 1, false);
 
 
 --
--- TOC entry 2806 (class 0 OID 0)
+-- TOC entry 2991 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: niveles_estudios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30564,7 +31375,7 @@ SELECT pg_catalog.setval('niveles_estudios_id_seq', 1, false);
 
 
 --
--- TOC entry 2807 (class 0 OID 0)
+-- TOC entry 2992 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: paises_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30573,7 +31384,7 @@ SELECT pg_catalog.setval('paises_id_seq', 1, false);
 
 
 --
--- TOC entry 2808 (class 0 OID 0)
+-- TOC entry 2993 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: profesiones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30582,7 +31393,7 @@ SELECT pg_catalog.setval('profesiones_id_seq', 1, false);
 
 
 --
--- TOC entry 2809 (class 0 OID 0)
+-- TOC entry 2994 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: provincias_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30591,7 +31402,7 @@ SELECT pg_catalog.setval('provincias_id_seq', 1, false);
 
 
 --
--- TOC entry 2810 (class 0 OID 0)
+-- TOC entry 2995 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: sedes_formadores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30600,7 +31411,7 @@ SELECT pg_catalog.setval('sedes_formadores_id_seq', 5, true);
 
 
 --
--- TOC entry 2811 (class 0 OID 0)
+-- TOC entry 2996 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: sedes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30609,7 +31420,7 @@ SELECT pg_catalog.setval('sedes_id_seq', 8, true);
 
 
 --
--- TOC entry 2812 (class 0 OID 0)
+-- TOC entry 2997 (class 0 OID 0)
 -- Dependencies: 247
 -- Name: temp_ciudades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30618,7 +31429,7 @@ SELECT pg_catalog.setval('temp_ciudades_id_seq', 43, true);
 
 
 --
--- TOC entry 2813 (class 0 OID 0)
+-- TOC entry 2998 (class 0 OID 0)
 -- Dependencies: 250
 -- Name: temp_personas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30627,7 +31438,7 @@ SELECT pg_catalog.setval('temp_personas_id_seq', 654, true);
 
 
 --
--- TOC entry 2814 (class 0 OID 0)
+-- TOC entry 2999 (class 0 OID 0)
 -- Dependencies: 252
 -- Name: tipo_clase_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30636,7 +31447,7 @@ SELECT pg_catalog.setval('tipo_clase_id_seq', 3, true);
 
 
 --
--- TOC entry 2815 (class 0 OID 0)
+-- TOC entry 3000 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: tipo_pago_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30645,7 +31456,7 @@ SELECT pg_catalog.setval('tipo_pago_id_seq', 5, true);
 
 
 --
--- TOC entry 2816 (class 0 OID 0)
+-- TOC entry 3001 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: tipo_pago_sede_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30654,7 +31465,7 @@ SELECT pg_catalog.setval('tipo_pago_sede_id_seq', 2, true);
 
 
 --
--- TOC entry 2817 (class 0 OID 0)
+-- TOC entry 3002 (class 0 OID 0)
 -- Dependencies: 258
 -- Name: tipo_persona_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30663,7 +31474,7 @@ SELECT pg_catalog.setval('tipo_persona_id_seq', 1, false);
 
 
 --
--- TOC entry 2818 (class 0 OID 0)
+-- TOC entry 3003 (class 0 OID 0)
 -- Dependencies: 260
 -- Name: tipo_persona_perfiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30672,7 +31483,7 @@ SELECT pg_catalog.setval('tipo_persona_perfiles_id_seq', 1, true);
 
 
 --
--- TOC entry 2819 (class 0 OID 0)
+-- TOC entry 3004 (class 0 OID 0)
 -- Dependencies: 262
 -- Name: tipo_profesor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30681,7 +31492,7 @@ SELECT pg_catalog.setval('tipo_profesor_id_seq', 3, true);
 
 
 --
--- TOC entry 2820 (class 0 OID 0)
+-- TOC entry 3005 (class 0 OID 0)
 -- Dependencies: 264
 -- Name: tipo_titulo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30690,7 +31501,7 @@ SELECT pg_catalog.setval('tipo_titulo_id_seq', 2, true);
 
 
 --
--- TOC entry 2821 (class 0 OID 0)
+-- TOC entry 3006 (class 0 OID 0)
 -- Dependencies: 266
 -- Name: titulos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30699,7 +31510,7 @@ SELECT pg_catalog.setval('titulos_id_seq', 1, true);
 
 
 --
--- TOC entry 2822 (class 0 OID 0)
+-- TOC entry 3007 (class 0 OID 0)
 -- Dependencies: 268
 -- Name: usuario_persona_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -30708,7 +31519,7 @@ SELECT pg_catalog.setval('usuario_persona_id_seq', 1, false);
 
 
 --
--- TOC entry 2417 (class 2606 OID 976810)
+-- TOC entry 2515 (class 2606 OID 976810)
 -- Name: niveles_estudios niveles_estudios_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30717,7 +31528,7 @@ ALTER TABLE ONLY niveles_estudios
 
 
 --
--- TOC entry 2343 (class 2606 OID 976812)
+-- TOC entry 2441 (class 2606 OID 976812)
 -- Name: alquiler_sede pk_alquiler_sede; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30726,7 +31537,7 @@ ALTER TABLE ONLY alquiler_sede
 
 
 --
--- TOC entry 2345 (class 2606 OID 976814)
+-- TOC entry 2443 (class 2606 OID 976814)
 -- Name: alquiler_sede_cabecera pk_alquiler_sede_cabecera; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30735,7 +31546,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera
 
 
 --
--- TOC entry 2347 (class 2606 OID 976816)
+-- TOC entry 2445 (class 2606 OID 976816)
 -- Name: alquiler_sede_detalle pk_alquiler_sede_detalle; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30744,7 +31555,7 @@ ALTER TABLE ONLY alquiler_sede_detalle
 
 
 --
--- TOC entry 2349 (class 2606 OID 976818)
+-- TOC entry 2447 (class 2606 OID 976818)
 -- Name: personas pk_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30753,7 +31564,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2355 (class 2606 OID 976820)
+-- TOC entry 2453 (class 2606 OID 976820)
 -- Name: aulas pk_aulas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30762,7 +31573,106 @@ ALTER TABLE ONLY aulas
 
 
 --
--- TOC entry 2357 (class 2606 OID 976822)
+-- TOC entry 2557 (class 2606 OID 977214)
+-- Name: caja_comprobantes pk_caja_comprobantes; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_comprobantes
+    ADD CONSTRAINT pk_caja_comprobantes PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2569 (class 2606 OID 977279)
+-- Name: caja_cuentas pk_caja_cuentas; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_cuentas
+    ADD CONSTRAINT pk_caja_cuentas PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2561 (class 2606 OID 977235)
+-- Name: caja_medios_pagos pk_caja_mediospagos; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_medios_pagos
+    ADD CONSTRAINT pk_caja_mediospagos PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2567 (class 2606 OID 977266)
+-- Name: caja_movimientos pk_caja_movimientos; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_movimientos
+    ADD CONSTRAINT pk_caja_movimientos PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2565 (class 2606 OID 977253)
+-- Name: caja_operaciones pk_caja_operaciones; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones
+    ADD CONSTRAINT pk_caja_operaciones PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2575 (class 2606 OID 977303)
+-- Name: caja_operaciones_diarias pk_caja_operaciones_diarias; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias
+    ADD CONSTRAINT pk_caja_operaciones_diarias PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2577 (class 2606 OID 977369)
+-- Name: caja_parametrizacion pk_caja_parametrizacion; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT pk_caja_parametrizacion PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2573 (class 2606 OID 977289)
+-- Name: caja_subcuentas pk_caja_subcuentas; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_subcuentas
+    ADD CONSTRAINT pk_caja_subcuentas PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2555 (class 2606 OID 977204)
+-- Name: caja_tipo_comprobantes pk_caja_tipo_comprobantes; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_tipo_comprobantes
+    ADD CONSTRAINT pk_caja_tipo_comprobantes PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2563 (class 2606 OID 977243)
+-- Name: caja_tipo_operaciones pk_caja_tipo_operaciones; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_tipo_operaciones
+    ADD CONSTRAINT pk_caja_tipo_operaciones PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2559 (class 2606 OID 977227)
+-- Name: caja_tipo_titulares pk_caja_tipo_titulares; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_tipo_titulares
+    ADD CONSTRAINT pk_caja_tipo_titulares PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2455 (class 2606 OID 976822)
 -- Name: ciudades pk_ciudad; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30771,7 +31681,7 @@ ALTER TABLE ONLY ciudades
 
 
 --
--- TOC entry 2359 (class 2606 OID 976824)
+-- TOC entry 2457 (class 2606 OID 976824)
 -- Name: clases pk_clases; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30780,7 +31690,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2361 (class 2606 OID 976826)
+-- TOC entry 2459 (class 2606 OID 976826)
 -- Name: clases_asistencia pk_clases_asistencia; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30789,7 +31699,7 @@ ALTER TABLE ONLY clases_asistencia
 
 
 --
--- TOC entry 2363 (class 2606 OID 976828)
+-- TOC entry 2461 (class 2606 OID 976828)
 -- Name: clases_profesores pk_clases_profesores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30798,7 +31708,7 @@ ALTER TABLE ONLY clases_profesores
 
 
 --
--- TOC entry 2365 (class 2606 OID 976830)
+-- TOC entry 2463 (class 2606 OID 976830)
 -- Name: condiciones_alumno pk_condiciones_alumno; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30807,7 +31717,7 @@ ALTER TABLE ONLY condiciones_alumno
 
 
 --
--- TOC entry 2367 (class 2606 OID 976832)
+-- TOC entry 2465 (class 2606 OID 976832)
 -- Name: cursadas pk_cursadas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30816,7 +31726,7 @@ ALTER TABLE ONLY cursadas
 
 
 --
--- TOC entry 2369 (class 2606 OID 976834)
+-- TOC entry 2467 (class 2606 OID 976834)
 -- Name: cursadas_alumnos pk_cursadas_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30825,7 +31735,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2373 (class 2606 OID 976836)
+-- TOC entry 2471 (class 2606 OID 976836)
 -- Name: cursadas_cuotas pk_cursadas_cuotas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30834,7 +31744,7 @@ ALTER TABLE ONLY cursadas_cuotas
 
 
 --
--- TOC entry 2375 (class 2606 OID 976838)
+-- TOC entry 2473 (class 2606 OID 976838)
 -- Name: cursadas_modulos pk_cursadas_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30843,7 +31753,7 @@ ALTER TABLE ONLY cursadas_modulos
 
 
 --
--- TOC entry 2379 (class 2606 OID 976840)
+-- TOC entry 2477 (class 2606 OID 976840)
 -- Name: cursadas_modulos_alumnos pk_cursadas_modulos_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30852,7 +31762,7 @@ ALTER TABLE ONLY cursadas_modulos_alumnos
 
 
 --
--- TOC entry 2381 (class 2606 OID 976842)
+-- TOC entry 2479 (class 2606 OID 976842)
 -- Name: cursadas_profesores pk_cursadas_profesores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30861,7 +31771,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2383 (class 2606 OID 976844)
+-- TOC entry 2481 (class 2606 OID 976844)
 -- Name: cursos pk_cursos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30870,7 +31780,7 @@ ALTER TABLE ONLY cursos
 
 
 --
--- TOC entry 2385 (class 2606 OID 976846)
+-- TOC entry 2483 (class 2606 OID 976846)
 -- Name: cursos_correlatividad pk_cursos_correlatividad; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30879,7 +31789,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2389 (class 2606 OID 976848)
+-- TOC entry 2487 (class 2606 OID 976848)
 -- Name: cursos_modulos pk_cursos_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30888,7 +31798,7 @@ ALTER TABLE ONLY cursos_modulos
 
 
 --
--- TOC entry 2393 (class 2606 OID 976850)
+-- TOC entry 2491 (class 2606 OID 976850)
 -- Name: cursos_modulos_alumnos pk_cursos_modulos_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30897,7 +31807,7 @@ ALTER TABLE ONLY cursos_modulos_alumnos
 
 
 --
--- TOC entry 2395 (class 2606 OID 976852)
+-- TOC entry 2493 (class 2606 OID 976852)
 -- Name: cursos_titulos pk_cursos_titulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30906,7 +31816,7 @@ ALTER TABLE ONLY cursos_titulos
 
 
 --
--- TOC entry 2399 (class 2606 OID 976854)
+-- TOC entry 2497 (class 2606 OID 976854)
 -- Name: databasechangeloglock pk_databasechangeloglock; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30915,7 +31825,7 @@ ALTER TABLE ONLY databasechangeloglock
 
 
 --
--- TOC entry 2401 (class 2606 OID 976856)
+-- TOC entry 2499 (class 2606 OID 976856)
 -- Name: datos_academicos pk_datos_academicos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30924,7 +31834,7 @@ ALTER TABLE ONLY datos_academicos
 
 
 --
--- TOC entry 2403 (class 2606 OID 976858)
+-- TOC entry 2501 (class 2606 OID 976858)
 -- Name: datos_actuales pk_datos_actuales; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30933,7 +31843,7 @@ ALTER TABLE ONLY datos_actuales
 
 
 --
--- TOC entry 2405 (class 2606 OID 976860)
+-- TOC entry 2503 (class 2606 OID 976860)
 -- Name: datos_laborales pk_datos_laborales; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30942,7 +31852,7 @@ ALTER TABLE ONLY datos_laborales
 
 
 --
--- TOC entry 2407 (class 2606 OID 976862)
+-- TOC entry 2505 (class 2606 OID 976862)
 -- Name: datos_salud pk_datos_salud; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30951,7 +31861,7 @@ ALTER TABLE ONLY datos_salud
 
 
 --
--- TOC entry 2409 (class 2606 OID 976864)
+-- TOC entry 2507 (class 2606 OID 976864)
 -- Name: estados_pago pk_estados_pago; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30960,7 +31870,7 @@ ALTER TABLE ONLY estados_pago
 
 
 --
--- TOC entry 2411 (class 2606 OID 976866)
+-- TOC entry 2509 (class 2606 OID 976866)
 -- Name: grupos_sanguineos pk_grupos_sanguineos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30969,7 +31879,7 @@ ALTER TABLE ONLY grupos_sanguineos
 
 
 --
--- TOC entry 2413 (class 2606 OID 976868)
+-- TOC entry 2511 (class 2606 OID 976868)
 -- Name: inscripciones_modulos pk_inscripciones_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30978,7 +31888,7 @@ ALTER TABLE ONLY inscripciones_modulos
 
 
 --
--- TOC entry 2415 (class 2606 OID 976870)
+-- TOC entry 2513 (class 2606 OID 976870)
 -- Name: modulos pk_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30987,7 +31897,7 @@ ALTER TABLE ONLY modulos
 
 
 --
--- TOC entry 2419 (class 2606 OID 976872)
+-- TOC entry 2517 (class 2606 OID 976872)
 -- Name: paises pk_paises; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -30996,7 +31906,7 @@ ALTER TABLE ONLY paises
 
 
 --
--- TOC entry 2421 (class 2606 OID 976874)
+-- TOC entry 2519 (class 2606 OID 976874)
 -- Name: perfiles pk_perfil; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31005,7 +31915,7 @@ ALTER TABLE ONLY perfiles
 
 
 --
--- TOC entry 2423 (class 2606 OID 976876)
+-- TOC entry 2521 (class 2606 OID 976876)
 -- Name: profesiones pk_profesiones; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31014,7 +31924,7 @@ ALTER TABLE ONLY profesiones
 
 
 --
--- TOC entry 2425 (class 2606 OID 976878)
+-- TOC entry 2523 (class 2606 OID 976878)
 -- Name: provincias pk_provincias; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31023,7 +31933,7 @@ ALTER TABLE ONLY provincias
 
 
 --
--- TOC entry 2427 (class 2606 OID 976880)
+-- TOC entry 2525 (class 2606 OID 976880)
 -- Name: sedes pk_sedes; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31032,7 +31942,7 @@ ALTER TABLE ONLY sedes
 
 
 --
--- TOC entry 2429 (class 2606 OID 976882)
+-- TOC entry 2527 (class 2606 OID 976882)
 -- Name: sedes_formadores pk_sedes_formadores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31041,7 +31951,7 @@ ALTER TABLE ONLY sedes_formadores
 
 
 --
--- TOC entry 2433 (class 2606 OID 976884)
+-- TOC entry 2531 (class 2606 OID 976884)
 -- Name: temp_ciudades pk_temp_ciudades; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31050,7 +31960,7 @@ ALTER TABLE ONLY temp_ciudades
 
 
 --
--- TOC entry 2435 (class 2606 OID 976886)
+-- TOC entry 2533 (class 2606 OID 976886)
 -- Name: temp_personas pk_temp_personas; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31059,7 +31969,7 @@ ALTER TABLE ONLY temp_personas
 
 
 --
--- TOC entry 2437 (class 2606 OID 976888)
+-- TOC entry 2535 (class 2606 OID 976888)
 -- Name: tipo_clase pk_tipo_clase; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31068,7 +31978,7 @@ ALTER TABLE ONLY tipo_clase
 
 
 --
--- TOC entry 2439 (class 2606 OID 976890)
+-- TOC entry 2537 (class 2606 OID 976890)
 -- Name: tipo_pago pk_tipo_pago; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31077,7 +31987,7 @@ ALTER TABLE ONLY tipo_pago
 
 
 --
--- TOC entry 2443 (class 2606 OID 976892)
+-- TOC entry 2541 (class 2606 OID 976892)
 -- Name: tipo_pago_sede pk_tipo_pago_sede; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31086,7 +31996,7 @@ ALTER TABLE ONLY tipo_pago_sede
 
 
 --
--- TOC entry 2445 (class 2606 OID 976894)
+-- TOC entry 2543 (class 2606 OID 976894)
 -- Name: tipo_persona pk_tipo_persona; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31095,7 +32005,7 @@ ALTER TABLE ONLY tipo_persona
 
 
 --
--- TOC entry 2447 (class 2606 OID 976896)
+-- TOC entry 2545 (class 2606 OID 976896)
 -- Name: tipo_persona_perfiles pk_tipo_persona_perfiles; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31104,7 +32014,7 @@ ALTER TABLE ONLY tipo_persona_perfiles
 
 
 --
--- TOC entry 2449 (class 2606 OID 976898)
+-- TOC entry 2547 (class 2606 OID 976898)
 -- Name: tipo_profesor pk_tipo_profesores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31113,7 +32023,7 @@ ALTER TABLE ONLY tipo_profesor
 
 
 --
--- TOC entry 2451 (class 2606 OID 976900)
+-- TOC entry 2549 (class 2606 OID 976900)
 -- Name: tipo_titulo pk_tipo_titulo; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31122,7 +32032,7 @@ ALTER TABLE ONLY tipo_titulo
 
 
 --
--- TOC entry 2453 (class 2606 OID 976902)
+-- TOC entry 2551 (class 2606 OID 976902)
 -- Name: titulos pk_titulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31131,7 +32041,7 @@ ALTER TABLE ONLY titulos
 
 
 --
--- TOC entry 2455 (class 2606 OID 976904)
+-- TOC entry 2553 (class 2606 OID 976904)
 -- Name: usuario_persona pk_usuario_persona; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31140,7 +32050,7 @@ ALTER TABLE ONLY usuario_persona
 
 
 --
--- TOC entry 2351 (class 2606 OID 976906)
+-- TOC entry 2449 (class 2606 OID 976906)
 -- Name: personas uk_alumnos_dni; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31149,7 +32059,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2353 (class 2606 OID 976908)
+-- TOC entry 2451 (class 2606 OID 976908)
 -- Name: personas uk_alumnos_legajo; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31158,7 +32068,16 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2371 (class 2606 OID 976910)
+-- TOC entry 2571 (class 2606 OID 977281)
+-- Name: caja_cuentas uk_caja_cuentas__descripcion; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_cuentas
+    ADD CONSTRAINT uk_caja_cuentas__descripcion UNIQUE (descripcion);
+
+
+--
+-- TOC entry 2469 (class 2606 OID 976910)
 -- Name: cursadas_alumnos uk_cursadas_alumnos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31167,7 +32086,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2377 (class 2606 OID 976912)
+-- TOC entry 2475 (class 2606 OID 976912)
 -- Name: cursadas_modulos uk_cursadas_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31176,7 +32095,7 @@ ALTER TABLE ONLY cursadas_modulos
 
 
 --
--- TOC entry 2387 (class 2606 OID 976914)
+-- TOC entry 2485 (class 2606 OID 976914)
 -- Name: cursos_correlatividad uk_cursos_correlatividad; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31185,7 +32104,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2391 (class 2606 OID 976916)
+-- TOC entry 2489 (class 2606 OID 976916)
 -- Name: cursos_modulos uk_cursos_modulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31194,7 +32113,7 @@ ALTER TABLE ONLY cursos_modulos
 
 
 --
--- TOC entry 2397 (class 2606 OID 976918)
+-- TOC entry 2495 (class 2606 OID 976918)
 -- Name: cursos_titulos uk_cursos_titulos; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31203,7 +32122,7 @@ ALTER TABLE ONLY cursos_titulos
 
 
 --
--- TOC entry 2431 (class 2606 OID 976920)
+-- TOC entry 2529 (class 2606 OID 976920)
 -- Name: sedes_formadores uk_sedes_formadores; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31212,7 +32131,7 @@ ALTER TABLE ONLY sedes_formadores
 
 
 --
--- TOC entry 2441 (class 2606 OID 976922)
+-- TOC entry 2539 (class 2606 OID 976922)
 -- Name: tipo_pago uk_tipo_pago; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31221,7 +32140,7 @@ ALTER TABLE ONLY tipo_pago
 
 
 --
--- TOC entry 2500 (class 2620 OID 976923)
+-- TOC entry 2637 (class 2620 OID 976923)
 -- Name: cursadas trg_ai_cursadas; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -31229,7 +32148,7 @@ CREATE TRIGGER trg_ai_cursadas AFTER INSERT ON cursadas FOR EACH ROW EXECUTE PRO
 
 
 --
--- TOC entry 2501 (class 2620 OID 976924)
+-- TOC entry 2638 (class 2620 OID 976924)
 -- Name: cursadas_alumnos trg_ai_cursadas_alumnos; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -31239,7 +32158,7 @@ ALTER TABLE cursadas_alumnos DISABLE TRIGGER trg_ai_cursadas_alumnos;
 
 
 --
--- TOC entry 2456 (class 2606 OID 976925)
+-- TOC entry 2578 (class 2606 OID 976925)
 -- Name: alquiler_sede_cabecera fk_alquiler_sede_cabecera; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31248,7 +32167,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera
 
 
 --
--- TOC entry 2457 (class 2606 OID 976930)
+-- TOC entry 2579 (class 2606 OID 976930)
 -- Name: alquiler_sede_cabecera fk_alquiler_sede_cabecera__sede; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31257,7 +32176,7 @@ ALTER TABLE ONLY alquiler_sede_cabecera
 
 
 --
--- TOC entry 2458 (class 2606 OID 976935)
+-- TOC entry 2580 (class 2606 OID 976935)
 -- Name: alquiler_sede_detalle fk_alquiler_sede_detalle__aula; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31266,7 +32185,7 @@ ALTER TABLE ONLY alquiler_sede_detalle
 
 
 --
--- TOC entry 2459 (class 2606 OID 976940)
+-- TOC entry 2581 (class 2606 OID 976940)
 -- Name: alquiler_sede_detalle fk_alquiler_sede_detalle__cabecera; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31275,7 +32194,7 @@ ALTER TABLE ONLY alquiler_sede_detalle
 
 
 --
--- TOC entry 2461 (class 2606 OID 976945)
+-- TOC entry 2583 (class 2606 OID 976945)
 -- Name: aulas fk_aulas_sede; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31284,7 +32203,142 @@ ALTER TABLE ONLY aulas
 
 
 --
--- TOC entry 2462 (class 2606 OID 976950)
+-- TOC entry 2622 (class 2606 OID 977215)
+-- Name: caja_comprobantes fk_caja_comprobantes__tipo; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_comprobantes
+    ADD CONSTRAINT fk_caja_comprobantes__tipo FOREIGN KEY (id_tipo_comprobante) REFERENCES caja_tipo_comprobantes(id);
+
+
+--
+-- TOC entry 2624 (class 2606 OID 977267)
+-- Name: caja_movimientos fk_caja_movimientos__operacion; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_movimientos
+    ADD CONSTRAINT fk_caja_movimientos__operacion FOREIGN KEY (id_operacion) REFERENCES caja_operaciones(id);
+
+
+--
+-- TOC entry 2623 (class 2606 OID 977254)
+-- Name: caja_operaciones fk_caja_operaciones__tipo; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones
+    ADD CONSTRAINT fk_caja_operaciones__tipo FOREIGN KEY (id_tipo_operacion) REFERENCES caja_tipo_operaciones(id);
+
+
+--
+-- TOC entry 2627 (class 2606 OID 977309)
+-- Name: caja_operaciones_diarias fk_caja_operaciones_diarias__cuenta; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias
+    ADD CONSTRAINT fk_caja_operaciones_diarias__cuenta FOREIGN KEY (id_cuenta) REFERENCES caja_cuentas(id);
+
+
+--
+-- TOC entry 2628 (class 2606 OID 977314)
+-- Name: caja_operaciones_diarias fk_caja_operaciones_diarias__medio_pago; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias
+    ADD CONSTRAINT fk_caja_operaciones_diarias__medio_pago FOREIGN KEY (id_medio_pago) REFERENCES caja_medios_pagos(id);
+
+
+--
+-- TOC entry 2626 (class 2606 OID 977304)
+-- Name: caja_operaciones_diarias fk_caja_operaciones_diarias__movimientos; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias
+    ADD CONSTRAINT fk_caja_operaciones_diarias__movimientos FOREIGN KEY (id_movimiento) REFERENCES caja_movimientos(id);
+
+
+--
+-- TOC entry 2629 (class 2606 OID 977319)
+-- Name: caja_operaciones_diarias fk_caja_operaciones_diarias__subcuenta; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias
+    ADD CONSTRAINT fk_caja_operaciones_diarias__subcuenta FOREIGN KEY (id_subcuenta) REFERENCES caja_subcuentas(id);
+
+
+--
+-- TOC entry 2630 (class 2606 OID 977324)
+-- Name: caja_operaciones_diarias fk_caja_operaciones_diarias__tipo_titular; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_operaciones_diarias
+    ADD CONSTRAINT fk_caja_operaciones_diarias__tipo_titular FOREIGN KEY (id_tipo_titular) REFERENCES caja_tipo_titulares(id);
+
+
+--
+-- TOC entry 2631 (class 2606 OID 977370)
+-- Name: caja_parametrizacion fk_caja_parametrizacion__comprobante; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT fk_caja_parametrizacion__comprobante FOREIGN KEY (id_comprobante) REFERENCES caja_comprobantes(id);
+
+
+--
+-- TOC entry 2634 (class 2606 OID 977385)
+-- Name: caja_parametrizacion fk_caja_parametrizacion__cuentas; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT fk_caja_parametrizacion__cuentas FOREIGN KEY (id_cuenta) REFERENCES caja_cuentas(id);
+
+
+--
+-- TOC entry 2632 (class 2606 OID 977375)
+-- Name: caja_parametrizacion fk_caja_parametrizacion__medio_pago; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT fk_caja_parametrizacion__medio_pago FOREIGN KEY (id_mediopago) REFERENCES caja_medios_pagos(id);
+
+
+--
+-- TOC entry 2633 (class 2606 OID 977380)
+-- Name: caja_parametrizacion fk_caja_parametrizacion__movimientos; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT fk_caja_parametrizacion__movimientos FOREIGN KEY (id_movimiento) REFERENCES caja_movimientos(id);
+
+
+--
+-- TOC entry 2635 (class 2606 OID 977390)
+-- Name: caja_parametrizacion fk_caja_parametrizacion__subcuenta; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT fk_caja_parametrizacion__subcuenta FOREIGN KEY (id_subcuenta) REFERENCES caja_subcuentas(id);
+
+
+--
+-- TOC entry 2636 (class 2606 OID 977395)
+-- Name: caja_parametrizacion fk_caja_parametrizacion__tipo_titular; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_parametrizacion
+    ADD CONSTRAINT fk_caja_parametrizacion__tipo_titular FOREIGN KEY (id_tipotitular) REFERENCES caja_tipo_titulares(id);
+
+
+--
+-- TOC entry 2625 (class 2606 OID 977290)
+-- Name: caja_subcuentas fk_caja_subcuentas__cuenta; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY caja_subcuentas
+    ADD CONSTRAINT fk_caja_subcuentas__cuenta FOREIGN KEY (id_cuenta) REFERENCES caja_cuentas(id);
+
+
+--
+-- TOC entry 2584 (class 2606 OID 976950)
 -- Name: ciudades fk_ciudad_provincia; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31293,7 +32347,7 @@ ALTER TABLE ONLY ciudades
 
 
 --
--- TOC entry 2467 (class 2606 OID 976955)
+-- TOC entry 2589 (class 2606 OID 976955)
 -- Name: clases_asistencia fk_clases_asistencia__persona; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31302,7 +32356,7 @@ ALTER TABLE ONLY clases_asistencia
 
 
 --
--- TOC entry 2468 (class 2606 OID 976960)
+-- TOC entry 2590 (class 2606 OID 976960)
 -- Name: clases_asistencia fk_clases_asistencia_clase; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31311,7 +32365,7 @@ ALTER TABLE ONLY clases_asistencia
 
 
 --
--- TOC entry 2463 (class 2606 OID 976965)
+-- TOC entry 2585 (class 2606 OID 976965)
 -- Name: clases fk_clases_aula; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31320,7 +32374,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2464 (class 2606 OID 976970)
+-- TOC entry 2586 (class 2606 OID 976970)
 -- Name: clases fk_clases_cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31329,7 +32383,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2465 (class 2606 OID 976975)
+-- TOC entry 2587 (class 2606 OID 976975)
 -- Name: clases fk_clases_modulo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31338,7 +32392,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2469 (class 2606 OID 976980)
+-- TOC entry 2591 (class 2606 OID 976980)
 -- Name: clases_profesores fk_clases_profesores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31347,7 +32401,7 @@ ALTER TABLE ONLY clases_profesores
 
 
 --
--- TOC entry 2470 (class 2606 OID 976985)
+-- TOC entry 2592 (class 2606 OID 976985)
 -- Name: clases_profesores fk_clases_profesores__clases; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31356,7 +32410,7 @@ ALTER TABLE ONLY clases_profesores
 
 
 --
--- TOC entry 2466 (class 2606 OID 976990)
+-- TOC entry 2588 (class 2606 OID 976990)
 -- Name: clases fk_clases_tipo_clase; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31365,7 +32419,7 @@ ALTER TABLE ONLY clases
 
 
 --
--- TOC entry 2471 (class 2606 OID 976995)
+-- TOC entry 2593 (class 2606 OID 976995)
 -- Name: cursadas fk_cursadas__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31374,7 +32428,7 @@ ALTER TABLE ONLY cursadas
 
 
 --
--- TOC entry 2472 (class 2606 OID 977000)
+-- TOC entry 2594 (class 2606 OID 977000)
 -- Name: cursadas_alumnos fk_cursadas_alumnos__condicion_alumno; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31383,7 +32437,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2473 (class 2606 OID 977005)
+-- TOC entry 2595 (class 2606 OID 977005)
 -- Name: cursadas_alumnos fk_cursadas_alumnos__cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31392,7 +32446,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2474 (class 2606 OID 977010)
+-- TOC entry 2596 (class 2606 OID 977010)
 -- Name: cursadas_alumnos fk_cursadas_alumnos__personas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31401,7 +32455,7 @@ ALTER TABLE ONLY cursadas_alumnos
 
 
 --
--- TOC entry 2475 (class 2606 OID 977015)
+-- TOC entry 2597 (class 2606 OID 977015)
 -- Name: cursadas_cuotas fk_cursadas_cuotas__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31410,7 +32464,7 @@ ALTER TABLE ONLY cursadas_cuotas
 
 
 --
--- TOC entry 2476 (class 2606 OID 977020)
+-- TOC entry 2598 (class 2606 OID 977020)
 -- Name: cursadas_cuotas fk_cursadas_cuotas__modulos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31419,7 +32473,7 @@ ALTER TABLE ONLY cursadas_cuotas
 
 
 --
--- TOC entry 2478 (class 2606 OID 977025)
+-- TOC entry 2600 (class 2606 OID 977025)
 -- Name: cursadas_profesores fk_cursadas_profesores__cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31428,7 +32482,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2479 (class 2606 OID 977030)
+-- TOC entry 2601 (class 2606 OID 977030)
 -- Name: cursadas_profesores fk_cursadas_profesores__profesores; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31437,7 +32491,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2480 (class 2606 OID 977035)
+-- TOC entry 2602 (class 2606 OID 977035)
 -- Name: cursadas_profesores fk_cursadas_profesores__tipo_profesor; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31446,7 +32500,7 @@ ALTER TABLE ONLY cursadas_profesores
 
 
 --
--- TOC entry 2481 (class 2606 OID 977040)
+-- TOC entry 2603 (class 2606 OID 977040)
 -- Name: cursos_correlatividad fk_cursos_correlatividad__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31455,7 +32509,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2482 (class 2606 OID 977045)
+-- TOC entry 2604 (class 2606 OID 977045)
 -- Name: cursos_correlatividad fk_cursos_correlatividad__cursos_previos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31464,7 +32518,7 @@ ALTER TABLE ONLY cursos_correlatividad
 
 
 --
--- TOC entry 2477 (class 2606 OID 977050)
+-- TOC entry 2599 (class 2606 OID 977050)
 -- Name: cursadas_modulos fk_cursos_modulos__cursadas; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31473,7 +32527,7 @@ ALTER TABLE ONLY cursadas_modulos
 
 
 --
--- TOC entry 2483 (class 2606 OID 977055)
+-- TOC entry 2605 (class 2606 OID 977055)
 -- Name: cursos_modulos fk_cursos_modulos__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31482,7 +32536,7 @@ ALTER TABLE ONLY cursos_modulos
 
 
 --
--- TOC entry 2484 (class 2606 OID 977060)
+-- TOC entry 2606 (class 2606 OID 977060)
 -- Name: cursos_titulos fk_cursos_titulos__cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31491,7 +32545,7 @@ ALTER TABLE ONLY cursos_titulos
 
 
 --
--- TOC entry 2485 (class 2606 OID 977065)
+-- TOC entry 2607 (class 2606 OID 977065)
 -- Name: cursos_titulos fk_cursos_titulos__titulos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31500,7 +32554,7 @@ ALTER TABLE ONLY cursos_titulos
 
 
 --
--- TOC entry 2486 (class 2606 OID 977070)
+-- TOC entry 2608 (class 2606 OID 977070)
 -- Name: datos_academicos fk_datos_academicos__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31509,7 +32563,7 @@ ALTER TABLE ONLY datos_academicos
 
 
 --
--- TOC entry 2487 (class 2606 OID 977075)
+-- TOC entry 2609 (class 2606 OID 977075)
 -- Name: datos_academicos fk_datos_academicos__niveles_estudios; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31518,7 +32572,7 @@ ALTER TABLE ONLY datos_academicos
 
 
 --
--- TOC entry 2488 (class 2606 OID 977080)
+-- TOC entry 2610 (class 2606 OID 977080)
 -- Name: datos_actuales fk_datos_actuales__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31527,7 +32581,7 @@ ALTER TABLE ONLY datos_actuales
 
 
 --
--- TOC entry 2489 (class 2606 OID 977085)
+-- TOC entry 2611 (class 2606 OID 977085)
 -- Name: datos_actuales fk_datos_actuales_ciudades; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31536,7 +32590,7 @@ ALTER TABLE ONLY datos_actuales
 
 
 --
--- TOC entry 2490 (class 2606 OID 977090)
+-- TOC entry 2612 (class 2606 OID 977090)
 -- Name: datos_laborales fk_datos_laborales__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31545,7 +32599,7 @@ ALTER TABLE ONLY datos_laborales
 
 
 --
--- TOC entry 2491 (class 2606 OID 977095)
+-- TOC entry 2613 (class 2606 OID 977095)
 -- Name: datos_laborales fk_datos_laborales__profesiones; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31554,7 +32608,7 @@ ALTER TABLE ONLY datos_laborales
 
 
 --
--- TOC entry 2492 (class 2606 OID 977100)
+-- TOC entry 2614 (class 2606 OID 977100)
 -- Name: datos_salud fk_datos_salud__alumnos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31563,7 +32617,7 @@ ALTER TABLE ONLY datos_salud
 
 
 --
--- TOC entry 2493 (class 2606 OID 977105)
+-- TOC entry 2615 (class 2606 OID 977105)
 -- Name: datos_salud fk_datos_salud__grupos_sanguineos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31572,7 +32626,7 @@ ALTER TABLE ONLY datos_salud
 
 
 --
--- TOC entry 2494 (class 2606 OID 977110)
+-- TOC entry 2616 (class 2606 OID 977110)
 -- Name: modulos fk_modulos_cursos; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31581,7 +32635,7 @@ ALTER TABLE ONLY modulos
 
 
 --
--- TOC entry 2460 (class 2606 OID 977115)
+-- TOC entry 2582 (class 2606 OID 977115)
 -- Name: personas fk_personas_tipo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31590,7 +32644,7 @@ ALTER TABLE ONLY personas
 
 
 --
--- TOC entry 2495 (class 2606 OID 977120)
+-- TOC entry 2617 (class 2606 OID 977120)
 -- Name: provincias fk_provincias_pais; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31599,7 +32653,7 @@ ALTER TABLE ONLY provincias
 
 
 --
--- TOC entry 2496 (class 2606 OID 977125)
+-- TOC entry 2618 (class 2606 OID 977125)
 -- Name: sedes_formadores fk_sedes_formadores__sedes; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31608,7 +32662,7 @@ ALTER TABLE ONLY sedes_formadores
 
 
 --
--- TOC entry 2497 (class 2606 OID 977130)
+-- TOC entry 2619 (class 2606 OID 977130)
 -- Name: tipo_persona_perfiles fk_tipo_persona_perfiles__perfil; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31617,7 +32671,7 @@ ALTER TABLE ONLY tipo_persona_perfiles
 
 
 --
--- TOC entry 2498 (class 2606 OID 977135)
+-- TOC entry 2620 (class 2606 OID 977135)
 -- Name: tipo_persona_perfiles fk_tipo_persona_perfiles__tipo_persona; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31626,7 +32680,7 @@ ALTER TABLE ONLY tipo_persona_perfiles
 
 
 --
--- TOC entry 2499 (class 2606 OID 977140)
+-- TOC entry 2621 (class 2606 OID 977140)
 -- Name: usuario_persona fk_usuario_persona__persona; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -31634,7 +32688,7 @@ ALTER TABLE ONLY usuario_persona
     ADD CONSTRAINT fk_usuario_persona__persona FOREIGN KEY (id_persona) REFERENCES personas(id);
 
 
--- Completed on 2018-07-18 15:25:12 ART
+-- Completed on 2018-07-19 15:25:05 ART
 
 --
 -- PostgreSQL database dump complete

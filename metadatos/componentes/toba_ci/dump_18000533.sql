@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[18000507]--  Material de Estudio 
+--[18000533]--  ABM Medios Pagos 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,19 +9,19 @@
 --- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'escuela', --proyecto
-	'18000507', --objeto
+	'18000533', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'15', --punto_montaje
-	'ci_materia_estudio', --subclase
-	'operaciones/alumnos/zona_alumno/ci_materia_estudio.php', --subclase_archivo
+	'ci_generico_una_pantalla', --subclase
+	'operaciones/ci_generico_una_pantalla.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'Material de Estudio', --nombre
-	NULL, --titulo
+	'ABM Medios Pagos', --nombre
+	'Tipos Comprobantes', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	NULL, --fuente_datos_proyecto
@@ -29,14 +29,14 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --solicitud_registrar
 	NULL, --solicitud_obj_obs_tipo
 	NULL, --solicitud_obj_observacion
-	NULL, --parametro_a
-	NULL, --parametro_b
+	'caja_medios_pagos', --parametro_a
+	'descripcion', --parametro_b
 	NULL, --parametro_c
 	NULL, --parametro_d
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2018-07-18 13:57:37', --creacion
+	'2018-06-24 13:29:28', --creacion
 	'abajo'  --posicion_botonera
 );
 --- FIN Grupo de desarrollo 18
@@ -46,7 +46,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 ------------------------------------------------------------
 INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_etiq, ev_cancelar_etiq, ancho, alto, posicion_botonera, tipo_navegacion, botonera_barra_item, con_toc, incremental, debug_eventos, activacion_procesar, activacion_cancelar, ev_procesar, ev_cancelar, objetos, post_procesar, metodo_despachador, metodo_opciones) VALUES (
 	'escuela', --objeto_mt_me_proyecto
-	'18000507', --objeto_mt_me
+	'18000533', --objeto_mt_me
 	NULL, --ev_procesar_etiq
 	NULL, --ev_cancelar_etiq
 	NULL, --ancho
@@ -74,10 +74,46 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'18000536', --dep_id
-	'18000507', --objeto_consumidor
-	'18000506', --objeto_proveedor
+	'18000552', --dep_id
+	'18000533', --objeto_consumidor
+	'18000530', --objeto_proveedor
 	'cuadro', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
+	'18000553', --dep_id
+	'18000533', --objeto_consumidor
+	'18000519', --objeto_proveedor
+	'datos', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
+	'18000554', --dep_id
+	'18000533', --objeto_consumidor
+	'18000531', --objeto_proveedor
+	'filtro', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
+	'18000555', --dep_id
+	'18000533', --objeto_consumidor
+	'18000532', --objeto_proveedor
+	'form', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -93,14 +129,14 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
 	'escuela', --objeto_ci_proyecto
-	'18000507', --objeto_ci
-	'18000184', --pantalla
+	'18000533', --objeto_ci
+	'18000188', --pantalla
 	'pant_inicial', --identificador
-	'1', --orden
+	NULL, --orden
 	'Pantalla Inicial', --etiqueta
 	NULL, --descripcion
 	NULL, --tip
-	'apex', --imagen_recurso_origen
+	NULL, --imagen_recurso_origen
 	NULL, --imagen
 	NULL, --objetos
 	NULL, --eventos
@@ -117,8 +153,22 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 ------------------------------------------------------------
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'escuela', --proyecto
-	'18000184', --pantalla
-	'18000507', --objeto_ci
+	'18000188', --pantalla
+	'18000533', --objeto_ci
+	'1', --orden
+	'18000552'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'escuela', --proyecto
+	'18000188', --pantalla
+	'18000533', --objeto_ci
 	'0', --orden
-	'18000536'  --dep_id
+	'18000554'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'escuela', --proyecto
+	'18000188', --pantalla
+	'18000533', --objeto_ci
+	'2', --orden
+	'18000555'  --dep_id
 );
