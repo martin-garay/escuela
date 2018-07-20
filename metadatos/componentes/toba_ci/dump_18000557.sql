@@ -29,9 +29,9 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --solicitud_registrar
 	NULL, --solicitud_obj_obs_tipo
 	NULL, --solicitud_obj_observacion
-	'caja_operaciones_diarias', --parametro_a
+	'caja_parametrizacion', --parametro_a
 	NULL, --parametro_b
-	'v_operaciones_diarias', --parametro_c
+	'v_caja_parametrizacion', --parametro_c
 	NULL, --parametro_d
 	NULL, --parametro_e
 	NULL, --parametro_f
@@ -86,9 +86,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'18000581', --dep_id
+	'18000584', --dep_id
 	'18000557', --objeto_consumidor
-	'18000512', --objeto_proveedor
+	'18000558', --objeto_proveedor
 	'datos', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b

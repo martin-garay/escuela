@@ -395,9 +395,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'18000548', --objeto_ei_formulario
 	'escuela', --objeto_ei_formulario_proyecto
 	'campo', --identificador
-	'ef_combo_editable', --elemento_formulario
+	'ef_editable', --elemento_formulario
 	'campo', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'2', --orden
 	'campo', --etiqueta

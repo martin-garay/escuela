@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'ABM Movimientos', --nombre
-	'Tipos Comprobantes', --titulo
+	'Movimientos Caja', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	NULL, --fuente_datos_proyecto
@@ -31,7 +31,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --solicitud_obj_observacion
 	'caja_movimientos', --parametro_a
 	'descripcion', --parametro_b
-	NULL, --parametro_c
+	'v_caja_movimientos', --parametro_c
 	NULL, --parametro_d
 	NULL, --parametro_e
 	NULL, --parametro_f
