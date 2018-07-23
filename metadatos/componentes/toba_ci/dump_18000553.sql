@@ -31,7 +31,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --solicitud_obj_observacion
 	'caja_subcuentas', --parametro_a
 	'descripcion', --parametro_b
-	NULL, --parametro_c
+	'v_caja_subcuentas', --parametro_c
 	NULL, --parametro_d
 	NULL, --parametro_e
 	NULL, --parametro_f
@@ -84,11 +84,14 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --inicializar
 	NULL  --orden
 );
+--- FIN Grupo de desarrollo 18
+
+--- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'18000576', --dep_id
+	'1544', --dep_id
 	'18000553', --objeto_consumidor
-	'18000512', --objeto_proveedor
+	'18000518', --objeto_proveedor
 	'datos', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -96,6 +99,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --inicializar
 	NULL  --orden
 );
+--- FIN Grupo de desarrollo 0
+
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
 	'18000577', --dep_id
