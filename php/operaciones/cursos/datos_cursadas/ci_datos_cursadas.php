@@ -6,6 +6,14 @@ class ci_datos_cursadas extends escuela_ci
 	function set_curso($id_curso){
 		$this->id_curso = $id_curso;
 	}
+	function conf(){
+		if(!$this->relacion()->esta_cargada()){
+			$this->pantalla()->tab('pant_alumnos')->ocultar();
+			$this->pantalla()->tab('pant_modulos')->ocultar();
+		}
+
+	}
+
 	function conf__form_cursada(escuela_ei_formulario $form)
 	{        		
 		$form->set_datos($this->tabla('cursadas')->get());
