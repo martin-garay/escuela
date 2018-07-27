@@ -3,7 +3,7 @@ class ci_inscripcion extends escuela_ci
 {
 	protected $s__datos_filtro;
 	protected $id_cursada;
-	protected $id_curso;
+	protected $id_curso;	
 	protected $modulo_inicio;
 
 	function tabla($nombre){
@@ -11,6 +11,11 @@ class ci_inscripcion extends escuela_ci
 	}
 	function relacion(){
 		return $this->dep('relacion');
+	}
+	function limpiar_variables(){
+		unset($id_cursada);
+		unset($id_curso);
+		unset($modulo_inicio);		
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -124,6 +129,7 @@ class ci_inscripcion extends escuela_ci
 	}
 
 	function evt__nuevo(){
+		$this->limpiar_variables();
 		$this->set_pantalla('pant_edicion');
 	}
 	function evt__procesar(){
@@ -169,6 +175,6 @@ class ci_inscripcion extends escuela_ci
 				)  as s 
 				order by orden1,orden $limit";		
 		return toba::db()->consultar($sql);
-	}
+	}	
 }
 ?>

@@ -21,7 +21,7 @@ class ci_datos_cursadas extends escuela_ci
 
 	function conf__form_ml_profesores(escuela_ei_formulario_ml $form)
 	{        
-		if($this->tabla('cursadas_profesores')->esta_cargada())
+		//if($this->tabla('cursadas_profesores')->esta_cargada())
 			return $this->tabla('cursadas_profesores')->get_filas();
 	}
 	function evt__form_ml_profesores__modificacion($datos){

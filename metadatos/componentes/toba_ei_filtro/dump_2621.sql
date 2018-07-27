@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'datos_cursadas - filtro', --nombre
-	'Filtro', --titulo
+	'Filtro Cursadas', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	'escuela', --fuente_datos_proyecto
@@ -138,7 +138,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'Fecha Inicio', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
-	'1', --inicial
+	'0', --inicial
 	'3', --orden
 	NULL, --estado_defecto
 	'0', --opciones_es_multiple

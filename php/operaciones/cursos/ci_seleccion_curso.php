@@ -18,9 +18,11 @@ class ci_seleccion_curso extends escuela_ci
 	}
 
 	function get_cursos(){
-		if( toba::consulta_php('comunes')->tiene_perfil('alumno') ){
+		if( toba::consulta_php('comunes')->tiene_perfil('profesor') ){
 			$usuario = toba::usuario()->get_id();
-			return toba::consulta_php('comunes')->get_generico("v_cursos_alumno",'curso');	
+			$id_profesor = toba::consulta_php('personas')->get_id(toba::usuario()->get_id());
+			$where = "id IN (select get_cursos_profesor($id_profesor))";
+			return toba::consulta_php('cursos')->get_cursos($where);
 		}
 		return toba::consulta_php('cursos')->get_cursos();
 	}

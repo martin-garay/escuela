@@ -20,9 +20,9 @@ class ci_seleccion_alumno extends escuela_ci
 	function get_alumnos(){
 		if( toba::consulta_php('comunes')->tiene_perfil('alumno') ){
 			$usuario = toba::usuario()->get_id();
-			return toba::consulta_php('personas')->get_personas("id_tipo_persona=1 AND dni=$usuario",'apellido,nombre');	
+			return toba::consulta_php('personas')->get_personas("es_alumno(id) AND dni=$usuario",'apellido,nombre');	
 		}
-		return toba::consulta_php('personas')->get_personas('id_tipo_persona=1','apellido,nombre');
+		return toba::consulta_php('personas')->get_personas('es_alumno(id)','apellido,nombre');
 	}
 		
     //-----------------------------------------------------------------------------------

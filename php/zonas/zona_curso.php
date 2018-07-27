@@ -53,6 +53,12 @@ class zona_curso extends toba_zona
 		$where = (isset($where)) ? "$where1 AND $where " : $where1;
 		return toba::consulta_php('cursos')->get_cursadas($where,'fecha_inicio DESC');
 	}
+	function get_cursadas_profesor($where=null){
+		$id_profesor = toba::consulta_php('personas')->get_id(toba::usuario()->get_id());
+		$where1 = "id_curso=".$this->get_editable_id(). " AND id IN (SELECT id_cursada FROM cursadas_profesores WHERE id_profesor=$id_profesor)";
+		$where = (isset($where)) ? "$where1 AND $where " : $where1;
+		return toba::consulta_php('cursos')->get_cursadas($where,'fecha_inicio DESC');
+	}
 	function get_clases($where=null, $order_by=null){
 		$where = (isset($where)) ? "$where AND id_curso=".$this->get_editable_id() : "id_curso=".$this->get_editable_id();
 		return toba::consulta_php('cursos')->get_clases($where,$order_by);

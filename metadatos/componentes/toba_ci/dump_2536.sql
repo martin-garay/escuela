@@ -183,6 +183,18 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
+	'1545', --dep_id
+	'2536', --objeto_consumidor
+	'2670', --objeto_proveedor
+	'form_ml_tipo_persona', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'escuela', --proyecto
 	'1406', --dep_id
 	'2536', --objeto_consumidor
 	'2537', --objeto_proveedor
@@ -330,6 +342,13 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'2536', --objeto_ci
 	'0', --orden
 	'1406'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'escuela', --proyecto
+	'1263', --pantalla
+	'2536', --objeto_ci
+	'1', --orden
+	'1545'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'escuela', --proyecto

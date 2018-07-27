@@ -168,3 +168,62 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'cursadas'  --tabla
 );
 --- FIN Grupo de desarrollo 0
+
+------------------------------------------------------------
+-- apex_objeto_db_registros_ext
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 0
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'escuela', --objeto_proyecto
+	'2624', --objeto
+	'13', --externa_id
+	'dao', --tipo
+	'1', --sincro_continua
+	'get_descripciones', --metodo
+	NULL, --clase
+	NULL, --include
+	'15', --punto_montaje
+	NULL, --sql
+	'0', --dato_estricto
+	'18000465', --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'escuela', --objeto_proyecto
+	'2624', --objeto
+	'14', --externa_id
+	'dao', --tipo
+	'1', --sincro_continua
+	'get_descripciones', --metodo
+	NULL, --clase
+	NULL, --include
+	'15', --punto_montaje
+	NULL, --sql
+	'0', --dato_estricto
+	'2554', --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+--- FIN Grupo de desarrollo 0
+
+------------------------------------------------------------
+-- apex_objeto_db_registros_ext_col
+------------------------------------------------------------
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'escuela', --objeto_proyecto
+	'2624', --objeto
+	'13', --externa_id
+	'1206', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'escuela', --objeto_proyecto
+	'2624', --objeto
+	'14', --externa_id
+	'1234', --col_id
+	'0'  --es_resultado
+);

@@ -22,6 +22,21 @@ class ci_datos_persona extends escuela_ci
 	}
 
 	//-----------------------------------------------------------------------------------
+	//---- form_ml_tipo_persona ---------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_ml_tipo_persona(escuela_ei_formulario_ml $form_ml)
+	{	
+		return $this->relacion()->tabla("personas_tipo")->get_filas();
+	}
+
+	function evt__form_ml_tipo_persona__modificacion($datos)
+	{
+		$this->relacion()->tabla("personas_tipo")->procesar_filas($datos);
+	}
+
+
+	//-----------------------------------------------------------------------------------
 	//---- form_laboral -----------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
@@ -131,5 +146,4 @@ class ci_datos_persona extends escuela_ci
 	/* ------------------------------- FIN API --------------------------------- */
 
 }
-
 ?>

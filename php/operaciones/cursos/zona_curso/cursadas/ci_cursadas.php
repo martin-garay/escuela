@@ -15,6 +15,7 @@ class ci_cursadas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function evt__procesar(){		
 		$this->dep('datos_cursada')->guardar();
+		$this->set_pantalla('pant_inicial');
 	}
 
 	function evt__cancelar()
@@ -22,7 +23,7 @@ class ci_cursadas extends escuela_ci
 		$this->dep('datos_cursada')->resetear();		//deshago las modificaciones y vuevo a cargar	
 		$this->set_pantalla('pant_inicial');
 	}
-	function evt__nuevo(){
+	function evt__nuevo(){		
 		$this->dep('datos_cursada')->set_curso(toba::zona()->get_editable_id()); //le paso el id del curso al ci hijo
 		$this->set_pantalla('pant_edicion');
 	}
@@ -49,8 +50,14 @@ class ci_cursadas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
+		//si es un profesor traigo solamente las cursadas de este, sino muestro todas las cursadas
 		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
-		return toba::zona()->get_cursadas($where);
+		if(toba::consulta_php('comunes')->tiene_perfil('profesor')){						
+			$datos = toba::zona()->get_cursadas_profesor($where);
+		}else{			
+			$datos = toba::zona()->get_cursadas($where);
+		}
+		$cuadro->set_datos($datos);		
 	}
 	function evt__cuadro__seleccion($seleccion)
 	{

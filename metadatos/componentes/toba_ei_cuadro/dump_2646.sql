@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'Clases - cuadro_clases', --nombre
-	NULL, --titulo
+	'Clases', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	NULL, --fuente_datos_proyecto
@@ -168,7 +168,7 @@ INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto
 	'Modulo', --descripcion
 	'3', --orden
 	'id_modulo', --columnas_id
-	'mes_modulo,nombre_modulo', --columnas_descripcion
+	'nombre_modulo', --columnas_descripcion
 	'0', --pie_contar_filas
 	'0', --pie_mostrar_titular
 	'0', --pie_mostrar_titulos

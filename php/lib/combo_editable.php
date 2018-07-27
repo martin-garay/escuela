@@ -5,7 +5,7 @@ class combo_editable extends comunes
 {
 	function get_alumnos($filtro){
 		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
-				FROM v_personas WHERE id_tipo_persona=1 AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
+				FROM v_personas WHERE es_alumno(id) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
 		return toba::db()->consultar($sql);
 	}
 	function get_alumnos_descripcion($id){
@@ -25,7 +25,7 @@ class combo_editable extends comunes
 	}
 	function get_profesores($filtro){
         $sql = "SELECT id, apellido||' '||nombre||' - '||dni as descripcion 
-        		FROM v_personas WHERE id_tipo_persona=2 AND apellido||' '||nombre||' - '||dni ILIKE '%$filtro%'";
+        		FROM v_personas WHERE es_profesor(id) AND apellido||' '||nombre||' - '||dni ILIKE '%$filtro%'";
         return toba::db()->consultar($sql);        
 	}
 	function get_profesores_descripcion($id_persona){
