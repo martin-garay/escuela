@@ -42,5 +42,8 @@ class cursos extends comunes
 		$sql = "SELECT distinct(id_sede) as id,sede as descripcion from v_cursadas where id_curso = $id_curso";
 		return toba::db()->consultar($sql);
 	}
+	function get_tipo_cursadas($where=null, $order_by=null){
+		return $this->get_generico('tipo_cursada', $where, $order_by);
+	}
 }
 ?>

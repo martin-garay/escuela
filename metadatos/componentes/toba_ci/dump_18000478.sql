@@ -101,9 +101,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'1519', --dep_id
+	'1563', --dep_id
 	'18000478', --objeto_consumidor
-	'2633', --objeto_proveedor
+	'2681', --objeto_proveedor
 	'form_ml_modulos', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -234,7 +234,7 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'1298', --pantalla
 	'18000478', --objeto_ci
 	'0', --orden
-	'1519'  --dep_id
+	'1563'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'escuela', --proyecto
