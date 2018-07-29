@@ -192,7 +192,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'escuela', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
 	'id_tipo_persona', --nombre
-	'id_tipo_persona', --expresion
+	'(select id_tipo_persona from personas_tipo where id_persona=v_personas.id)', --expresion
 	'Tipo', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
