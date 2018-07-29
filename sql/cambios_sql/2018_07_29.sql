@@ -1,3 +1,13 @@
+create table tipo_alerta(
+	id serial not null,
+	descripcion character varying(255) not null,
+	constraint pk_tipo_alerta primary key(id)
+);
+create table nivel_alerta(
+	id serial not null,
+	descripcion character varying(255) not null,
+	constraint pk_tipo_nivel_alerta primary key(id)	
+);
 create table alertas(
 	id serial not null,
 	titulo character varying(60),
@@ -9,16 +19,6 @@ create table alertas(
 	fecha date not null default now(),
 	constraint pk_alertas primary key(id),
 	constraint fk_alertas__tipo_alerta foreign key(id_tipo_alerta) references tipo_alerta(id)
-);
-create table tipo_alerta(
-	id serial not null,
-	descripcion character varying(255) not null,
-	constraint pk_tipo_alerta primary key(id)
-);
-create table nivel_alerta(
-	id serial not null,
-	descripcion character varying(255) not null,
-	constraint pk_tipo_nivel_alerta primary key(id)	
 );
 create table alertas_niveles(
 	id serial not null,

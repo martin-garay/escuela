@@ -1,6 +1,12 @@
 <?php
 class zona_alumno extends toba_zona
 {
+	const ALERTAS = '3556';
+
+	function conf(){		
+		if( count($this->get_alertas())==0 ) //si no hay alertas elimino la operacion
+			$this->desactivar_item(self::ALERTAS);
+	}
 	function generar_html_barra_nombre() {
 		echo "<script>
 				$(document).ready(function(){
@@ -8,7 +14,7 @@ class zona_alumno extends toba_zona
 					$('.item-barra').css('margin-top','35px');
 					$('.cuerpo').css('padding-top','40px');					
 				});
-			</script>";
+			</script>";		
 		parent::generar_html_barra_nombre();
 	}
 
@@ -57,6 +63,10 @@ class zona_alumno extends toba_zona
 	}
 	function get_clases(){
 		return toba::consulta_php('alumnos')->get_clases("id_alumno=".$this->get_editable_id(),"fecha_clase,hora_inicio_clase");
-	}		
+	}
+	function get_alertas(){
+		return toba::consulta_php('alertas')->get_alertas_persona($this->get_editable_id());
+	}
+
 }
 ?>

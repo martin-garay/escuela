@@ -15,6 +15,7 @@ class ci_cursadas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function evt__procesar(){		
 		$this->dep('datos_cursada')->guardar();
+		$this->dep('datos_cursada')->resetear();
 		$this->set_pantalla('pant_inicial');
 	}
 
