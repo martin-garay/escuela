@@ -172,7 +172,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'2650', --objeto_cuadro
 	'1096', --objeto_cuadro_col
 	'nombre_alumno', --clave
-	'1', --orden
+	'2', --orden
 	'Nombre', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -265,7 +265,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'2650', --objeto_cuadro
 	'1099', --objeto_cuadro_col
 	'apellido_alumno', --clave
-	'2', --orden
+	'3', --orden
 	'Apellido', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -296,7 +296,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'2650', --objeto_cuadro
 	'1100', --objeto_cuadro_col
 	'dni', --clave
-	'3', --orden
+	'1', --orden
 	'DNI', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo

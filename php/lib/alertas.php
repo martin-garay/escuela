@@ -30,7 +30,7 @@ class alertas extends comunes
 	}
 	function get_alertas_persona($id_persona){
 		$alertas_persona = array();
-		$alertas = $this->get_alertas("activo");
+		$alertas = $this->get_alertas("activo and now()::date between fecha_desde and fecha_hasta","fecha_desde");
 		foreach ($alertas as $key => $alerta) {
 
 			//recorro los niveles donde se muestra la alerta
