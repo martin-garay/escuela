@@ -20,7 +20,8 @@ class ci_generacion_cuotas extends escuela_ci
 
 	function evt__generar()
 	{
-		$this->set_pantalla('pant_inicial');
+
+		$this->set_pantalla('pant_inicial');		
 	}
 
 	function evt__nuevo()
@@ -40,7 +41,7 @@ class ci_generacion_cuotas extends escuela_ci
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
 		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
-		$datos = toba::consulta_php('cuotas')->get_cuotas_generadas($where,'periodo');
+		$datos = toba::consulta_php('cuotas')->get_cuotas_generadas($where,'fecha');
 		$cuadro->set_datos($datos);
 	}
 
@@ -125,6 +126,13 @@ class ci_generacion_cuotas extends escuela_ci
 		$this->dep('datos')->set($datos);
 	}
 
+	function get_importe_modulo($id_modulo){
+		$modulo = toba::consulta_php('cursos')->get_modulos_cursadas("id=$id_modulo");
+		return $modulo[0]['importe_cuota'];
+	}	
+	function get_modulos_cursada($anio_modulo, $mes_modulo, $id_cursada){		
+		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada AND anio=$anio_modulo AND mes=$mes_modulo AND paga_cuota");		
+	}	
 }
 
 ?>

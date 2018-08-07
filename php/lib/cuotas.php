@@ -4,7 +4,7 @@ include_once 'comunes.php';
 class cuotas extends comunes
 {
 	function get_cuotas_generadas($where=null, $order_by=null){
-
+		return $this->get_generico('v_cuotas',$where,$order_by);
 	}
 	function get_alumnos_cuota_generada($where=null, $order_by=null){
 
