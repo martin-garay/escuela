@@ -181,6 +181,34 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'0', --externa
 	'cursadas_modulos'  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'escuela', --objeto_proyecto
+	'2635', --objeto
+	'1332', --col_id
+	'importe_cuota', --columna
+	'N', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'1', --no_nulo_db
+	'0', --externa
+	'cursadas_modulos'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'escuela', --objeto_proyecto
+	'2635', --objeto
+	'1333', --col_id
+	'paga_cuota', --columna
+	'L', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'1', --no_nulo_db
+	'0', --externa
+	'cursadas_modulos'  --tabla
+);
 --- FIN Grupo de desarrollo 0
 
 --- INICIO Grupo de desarrollo 18

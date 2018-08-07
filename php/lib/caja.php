@@ -31,4 +31,21 @@ class caja extends comunes
 		$where = (isset($where)) ? "activo AND $where" : "activo";
 		return $this->get_tipos_titulares($where, $order_by);
 	}
+	function get_parametrizacion($id_comprobante, $id_tipo_pago, $id_movimiento){
+		$where = "id_comprobante=$id_comprobante and $id_tipo_pago=$id_tipo_pago and id_movimiento=$id_movimiento";
+		return $this->get_generico('caja_parametrizacion', $where);
+	}
+	function get_numero_nueva_operacion(){
+		$operacion = $this->get_generico('caja_operacion_diarias', null, 'numero_operacion DESC LIMIT 1');
+		return ($operacion[0]['numero_operacion'] +1);
+	}
+	function get_comprobante($identificador){
+		$identificador = trim($identificador);
+		$comprobante = $this->get_generico('caja_comprobantes',"identificador='$identificador'");
+		return $comprobante[0];
+	}
+	function get_id_comprobante($identificador){
+		$comprobante = $this->get_comprobante($identificador);
+		return $comprobante['id'];
+	}
 }
