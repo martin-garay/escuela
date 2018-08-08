@@ -20,7 +20,6 @@ class ci_generacion_cuotas extends escuela_ci
 
 	function evt__generar()
 	{
-
 		$this->set_pantalla('pant_inicial');		
 	}
 
@@ -37,7 +36,6 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- cuadro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
 		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
@@ -59,7 +57,6 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- cuadro_alumnos ---------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-
 	function conf__cuadro_alumnos(escuela_ei_cuadro $cuadro)
 	{
 		//Edicion
@@ -93,7 +90,6 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- filtro -----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-
 	function conf__filtro(escuela_ei_filtro $filtro)
 	{
 		if(isset($this->s__filtro))
@@ -113,7 +109,6 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-
 	function conf__form(escuela_ei_formulario $form)
 	{
 		if($this->dep('datos')->esta_cargada()){
