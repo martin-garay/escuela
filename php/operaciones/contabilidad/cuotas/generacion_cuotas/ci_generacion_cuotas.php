@@ -5,6 +5,13 @@ class ci_generacion_cuotas extends escuela_ci
 	protected $s__seleccion_cuota;
 	protected $s__seleccion_alumnos;
 
+	function relacion(){
+		$this->dep('relacion');
+	}
+	function tabla($nombre){
+		$this->relacion()->tabla($nombre);
+	}
+
 	//-----------------------------------------------------------------------------------
 	//---- Eventos ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -57,35 +64,35 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- cuadro_alumnos ---------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-	function conf__cuadro_alumnos(escuela_ei_cuadro $cuadro)
-	{
-		//Edicion
-		if(isset($this->s__seleccion_cuota)){
-			$where = 'id='.$this->s__seleccion_cuota['id'];
-			$datos = toba::consulta_php('cuotas')->get_alumnos_cuota_generada($where,'apellido,nombre');
-			$cuadro->set_datos($datos);
-		}else{
-		//Alta
-			if($this->dep('datos')->esta_cargada()){
-				$cuota = $this->dep('datos')->get();
-				$datos = toba::consulta_php('cuotas')->get_alumnos_modulo_sin_cuota($cuota['id_modulo']);
-				$cuadro->set_datos($datos);	
-			}			
-		}		
-	}
+	// function conf__cuadro_alumnos(escuela_ei_cuadro $cuadro)
+	// {
+	// 	//Edicion
+	// 	if(isset($this->s__seleccion_cuota)){
+	// 		$where = 'id='.$this->s__seleccion_cuota['id'];
+	// 		$datos = toba::consulta_php('cuotas')->get_alumnos_cuota_generada($where,'apellido,nombre');
+	// 		$cuadro->set_datos($datos);
+	// 	}else{
+	// 	//Alta
+	// 		if($this->dep('datos')->esta_cargada()){
+	// 			$cuota = $this->dep('datos')->get();
+	// 			$datos = toba::consulta_php('cuotas')->get_alumnos_modulo_sin_cuota($cuota['id_modulo']);
+	// 			$cuadro->set_datos($datos);	
+	// 		}			
+	// 	}		
+	// }
 
-	function evt__cuadro_alumnos__seleccion($datos)
-	{
-		$this->s__seleccion_alumnos = $datos;
-	}
+	// function evt__cuadro_alumnos__seleccion($datos)
+	// {
+	// 	$this->s__seleccion_alumnos = $datos;
+	// }
 
-	function conf_evt__cuadro_alumnos__seleccion(toba_evento_usuario $evento, $fila)
-	{
-		//Edicion
-		if(!$this->dep('datos')->esta_cargada()){
-			$evento->anular();
-		}
-	}
+	// function conf_evt__cuadro_alumnos__seleccion(toba_evento_usuario $evento, $fila)
+	// {
+	// 	//Edicion
+	// 	if(!$this->dep('datos')->esta_cargada()){
+	// 		$evento->anular();
+	// 	}
+	// }
 
 	//-----------------------------------------------------------------------------------
 	//---- filtro -----------------------------------------------------------------------
@@ -121,13 +128,28 @@ class ci_generacion_cuotas extends escuela_ci
 		$this->dep('datos')->set($datos);
 	}
 
+	//-----------------------------------------------------------------------------------
+	//---- form_ml ----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+	function conf__form_ml(escuela_ei_formulario_ml $form_ml)
+	{
+		if($this->relacion()->tabla('cuotas_detalle')->esta_cargada()){
+			$form_ml->set_datos( $this->relacion()->tabla('cuotas_detalle')->get_filas() );
+		}		
+	}
+
+	function evt__form_ml__modificacion($datos)
+	{
+		$this->relacion()->tabla('cuotas_detalle')->procesar_filas($datos);
+	}
+
 	function get_importe_modulo($id_modulo){
 		$modulo = toba::consulta_php('cursos')->get_modulos_cursadas("id=$id_modulo");
 		return $modulo[0]['importe_cuota'];
 	}	
 	function get_modulos_cursada($anio_modulo, $mes_modulo, $id_cursada){		
 		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada AND anio=$anio_modulo AND mes=$mes_modulo AND paga_cuota");		
-	}	
-}
+	}		
 
+}
 ?>

@@ -10,7 +10,12 @@ class cuotas extends comunes
 
 	}
 	function get_alumnos_modulo_sin_cuota($where=null, $order_by=null){
-
+		$sql = "SELECT id_alumno, 'A' as apex_ei_analisis_fila
+				FROM cursadas_modulos_alumnos cma
+				LEFT JOIN cursadas_alumnos ca ON cma.id_cursadas_alumnos=ca.id
+				LEFT JOIN cursadas_modulos cm ON cm.id=cma.id_modulo
+				LEFT JOIN personas p ON p.id=ca.id_alumno";
+		return toba::db()->consultar($sql);
 	}
 	function generar_cuota_curso($anio,$mes,$id_curso,$id_cursada,$id_sede,$id_modulo,$importe_cuota,$fecha_operacion,$observaciones){
 
