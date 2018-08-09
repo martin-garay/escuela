@@ -104,7 +104,6 @@ class ci_datos_persona extends escuela_ci
 	}
 	function guardar(){
 		try {
-			$this->crearUsuario();
 			$this->relacion()->sincronizar();
 			//$this->crearUsuario();
 		} catch (toba_error_db $e) {
