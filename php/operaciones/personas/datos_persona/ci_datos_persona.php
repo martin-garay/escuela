@@ -89,6 +89,7 @@ class ci_datos_persona extends escuela_ci
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */
 /* --------------------------------------------------------------------------- */
+/*
 	private function crearUsuario(){
 		$persona = $this->tabla('personas')->get();
 		
@@ -102,6 +103,7 @@ class ci_datos_persona extends escuela_ci
 		$crear_usuario = new CrearUsuario();                
 		$crear_usuario->crear($persona['dni'], $persona['nombre'].' '.$persona['apellido'], $persona['dni'], $atributos, $perfiles);
 	}
+*/
 	function guardar(){
 		try {
 			$this->relacion()->sincronizar();
