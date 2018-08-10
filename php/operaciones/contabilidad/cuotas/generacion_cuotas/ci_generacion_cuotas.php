@@ -6,10 +6,10 @@ class ci_generacion_cuotas extends escuela_ci
 	protected $s__seleccion_alumnos;
 
 	function relacion(){
-		$this->dep('relacion');
+		return $this->dep('relacion');
 	}
 	function tabla($nombre){
-		$this->relacion()->tabla($nombre);
+		return $this->relacion()->tabla($nombre);
 	}
 
 	//-----------------------------------------------------------------------------------
@@ -118,8 +118,8 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__form(escuela_ei_formulario $form)
 	{
-		if($this->dep('datos')->esta_cargada()){
-			$form->set_datos($this->dep('datos')->get());
+		if($this->tabla('cuotas')->esta_cargada()){
+			$form->set_datos($this->tabla('cuotas')->get());
 		}
 	}
 
@@ -133,8 +133,8 @@ class ci_generacion_cuotas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__form_ml(escuela_ei_formulario_ml $form_ml)
 	{
-		if($this->relacion()->tabla('cuotas_detalle')->esta_cargada()){
-			$form_ml->set_datos( $this->relacion()->tabla('cuotas_detalle')->get_filas() );
+		if($this->tabla('cuotas_detalle')->esta_cargada()){
+			$form_ml->set_datos( $this->tabla('cuotas_detalle')->get_filas() );
 		}		
 	}
 
