@@ -215,20 +215,6 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
 	'18000517', --objeto
-	'18000595', --col_id
-	'id_mediopago', --columna
-	'E', --tipo
-	'0', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'0', --no_nulo_db
-	'0', --externa
-	'caja_operaciones_diarias'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'escuela', --objeto_proyecto
-	'18000517', --objeto
 	'18000596', --col_id
 	'id_cuenta', --columna
 	'E', --tipo
@@ -245,20 +231,6 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'18000517', --objeto
 	'18000597', --col_id
 	'id_subcuenta', --columna
-	'E', --tipo
-	'0', --pk
-	'', --secuencia
-	NULL, --largo
-	NULL, --no_nulo
-	'1', --no_nulo_db
-	'0', --externa
-	'caja_operaciones_diarias'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'escuela', --objeto_proyecto
-	'18000517', --objeto
-	'18000598', --col_id
-	'id_tipotitular', --columna
 	'E', --tipo
 	'0', --pk
 	'', --secuencia

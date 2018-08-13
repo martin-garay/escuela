@@ -28,6 +28,9 @@ class cursos extends comunes
 	function get_cascada_cursadas_curso_sede($id_curso,$id_sede){
 		return $this->get_cursadas("id_curso=$id_curso");
 	}
+	function get_cascada_cursadas_sede_curso($id_sede,$id_curso){ //por que en toba_editor no puedo poner orden a los parametros
+		return $this->get_cursadas("id_curso=$id_curso AND id_sede=$id_sede");
+	}
 	function get_cascada_modulos_cursada($id_cursada){
 		return $this->get_modulos_cursadas("id_cursada=$id_cursada");
 	}
@@ -44,6 +47,16 @@ class cursos extends comunes
 	}
 	function get_tipo_cursadas($where=null, $order_by=null){
 		return $this->get_generico('tipo_cursada', $where, $order_by);
+	}
+	function get_cascada_cursos_sede($id_sede){
+		$sql = "SELECT distinct(id_curso) as id, curso as descripcion 
+				FROM v_cursadas c
+				WHERE id_sede=$id_sede
+				ORDER BY curso";
+		return toba::db()->consultar($sql);
+	}
+	function existe_clase($modulo, $fecha, $hora_inicio, $hora_fin){
+		$sql = "SELECT * FROM v_clases WHERE id_modulo=$id_modulo AND fecha=$fecha AND hora_inicio=$hora_inicio AND hora_fin=$hora_fin";
 	}
 }
 ?>

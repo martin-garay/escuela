@@ -108,3 +108,5 @@ FROM cursadas_modulos cm
 JOIN v_cursadas c ON c.id = cm.id_cursada;
 
 ALTER TABLE public.caja_comprobantes ADD COLUMN identificador character varying(100);
+
+ALTER TABLE public.personas DROP CONSTRAINT uk_alumnos_legajo;

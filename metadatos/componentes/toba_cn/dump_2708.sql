@@ -11,7 +11,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'escuela', --proyecto
 	'2708', --objeto
 	NULL, --anterior
-	NULL, --identificador
+	'cn_cuotas', --identificador
 	NULL, --reflexivo
 	'toba', --clase_proyecto
 	'toba_cn', --clase
@@ -48,10 +48,10 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 0
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'escuela', --proyecto
-	'1587', --dep_id
+	'1597', --dep_id
 	'2708', --objeto_consumidor
-	'2707', --objeto_proveedor
-	'cuotas', --identificador
+	'2713', --objeto_proveedor
+	'relacion', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c

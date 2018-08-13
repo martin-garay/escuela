@@ -11,7 +11,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'escuela', --proyecto
 	'2709', --objeto
 	NULL, --anterior
-	NULL, --identificador
+	'cn_operaciones_diarias', --identificador
 	NULL, --reflexivo
 	'toba', --clase_proyecto
 	'toba_cn', --clase
@@ -57,5 +57,23 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	NULL, --parametros_c
 	NULL, --inicializar
 	NULL  --orden
+);
+--- FIN Grupo de desarrollo 0
+
+------------------------------------------------------------
+-- apex_objeto_dep_consumo
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 0
+INSERT INTO apex_objeto_dep_consumo (proyecto, consumo_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar) VALUES (
+	'escuela', --proyecto
+	'2', --consumo_id
+	'2709', --objeto_consumidor
+	'2708', --objeto_proveedor
+	'cn_operaciones_diarias', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL  --inicializar
 );
 --- FIN Grupo de desarrollo 0
