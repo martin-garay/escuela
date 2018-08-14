@@ -555,7 +555,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'2712', --objeto_ei_formulario
 	'escuela', --objeto_ei_formulario_proyecto
 	'hora_inicio', --identificador
-	'ef_editable', --elemento_formulario
+	'ef_editable_hora', --elemento_formulario
 	'hora_inicio', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
@@ -635,7 +635,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'2712', --objeto_ei_formulario
 	'escuela', --objeto_ei_formulario_proyecto
 	'hora_fin', --identificador
-	'ef_editable', --elemento_formulario
+	'ef_editable_hora', --elemento_formulario
 	'hora_fin', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio

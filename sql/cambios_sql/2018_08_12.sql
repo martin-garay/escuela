@@ -104,3 +104,5 @@ CREATE OR REPLACE VIEW public.v_cursadas_modulos AS
     cm.importe_cuota, c.id_tipo_cursada,c.tipo_cursada
    FROM cursadas_modulos cm
      JOIN v_cursadas c ON c.id = cm.id_cursada;
+
+ALTER TABLE public.cursadas_modulos_alumnos ADD COLUMN id_alumno integer;
