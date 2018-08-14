@@ -87,8 +87,25 @@ class abm_clases_basico extends escuela_ci
 	{
 		$datos['id_cursada'] = $this->s__id_cursada;
 		$this->dep('dt_clases')->set($datos);
-		$this->dep('dt_clases')->sincronizar();
-		$this->dep('dt_clases')->resetear();
+		try{
+			$this->dep('dt_clases')->sincronizar();
+			$this->dep('dt_clases')->resetear();			
+		} catch(toba_error_db $e){
+			toba::db()->abortar_transaccion();
+            if($e->get_sqlstate()=="db_23505"){
+                /* Clave Duplicada */
+                $mensaje ="Ya existe la clase que desea Grabar";
+                toba::notificacion()->error($mensaje);
+            }else{
+                $mensaje_usuario='ERROR al guardar. Los cambios NO fueron registrados.';
+                $mensaje.='<br><br>Información Adicional: ';
+                $mensaje.='<br><strong>Error Nº </strong>'.$e->get_sqlstate();
+                $mensaje.='<br><br><strong> Mensaje: </strong>'.$e->get_mensaje_motor();
+                throw new toba_error($mensaje_usuario,$mensaje);
+            }      
+		}
+
+
 	}
 	function evt__form_clase__baja()
 	{

@@ -26,7 +26,7 @@ class cursos extends comunes
 		return $this->get_cursadas("id_curso=$id_curso");
 	}
 	function get_cascada_cursadas_curso_sede($id_curso,$id_sede){
-		return $this->get_cursadas("id_curso=$id_curso");
+		return $this->get_cursadas("id_curso=$id_curso AND id_sede=$id_sede");
 	}
 	function get_cascada_cursadas_sede_curso($id_sede,$id_curso){ //por que en toba_editor no puedo poner orden a los parametros
 		return $this->get_cursadas("id_curso=$id_curso AND id_sede=$id_sede");
