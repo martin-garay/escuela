@@ -44,7 +44,7 @@ class ci_datos_asistencia extends escuela_ci
 		if($this->tabla('clases_asistencia')->get_cantidad_filas()>0){
 			$datos = $this->tabla('clases_asistencia')->get_filas();
 		}else{
-			$datos = $this->get_alumnos_cursada();
+			$datos = $this->get_alumnos_clase();
 		}
 		$form_ml->set_datos($datos);
 	}
@@ -82,6 +82,12 @@ class ci_datos_asistencia extends escuela_ci
 		$this->relacion()->resetear();
 	}
 
+	function get_alumnos_clase(){			
+		$clase = $this->tabla('clases')->get();
+		ei_arbol($clase);
+		return toba::consulta_php('cursos')->get_alumnos_modulos("id_modulo=".$clase['id_modulo'],"apellido_alumno,nombre_alumno");
+		
+	}
 
 
 

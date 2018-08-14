@@ -58,5 +58,8 @@ class cursos extends comunes
 	function existe_clase($modulo, $fecha, $hora_inicio, $hora_fin){
 		$sql = "SELECT * FROM v_clases WHERE id_modulo=$id_modulo AND fecha=$fecha AND hora_inicio=$hora_inicio AND hora_fin=$hora_fin";
 	}
+	function get_alumnos_modulos($where=null, $order_by=null){
+		return $this->get_generico('v_cursadas_modulos_alumnos',$where,$order_by);
+	}
 }
 ?>
