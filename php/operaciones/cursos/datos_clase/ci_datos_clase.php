@@ -83,6 +83,13 @@ class ci_datos_clase extends escuela_ci
 			}
 		}
 		$this->relacion()->resetear();
+	}
+
+	function ajax__validar_fecha_modulo($parametros, toba_ajax_respuesta $respuesta){
+		$id_modulo = $parametros[0];
+		$fecha = $parametros[1];
+		$resultado['ok'] = toba::consulta_php('cursos')->validar_fecha_clase_en_modulo($id_modulo,$fecha);
+		$respuesta->set($resultado);
 	}	
 }
 ?>

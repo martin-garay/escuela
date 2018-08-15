@@ -61,5 +61,11 @@ class cursos extends comunes
 	function get_alumnos_modulos($where=null, $order_by=null){
 		return $this->get_generico('v_cursadas_modulos_alumnos',$where,$order_by);
 	}
+	//valida que la fecha este en el rango de fechas del modulo
+	function validar_fecha_clase_en_modulo($id_modulo, $fecha){		
+		$sql = "SELECT '$fecha' BETWEEN fecha_inicio AND fecha_fin as existe_fecha FROM v_cursadas_modulos WHERE id=$id_modulo";
+		$datos = toba::db()->consultar($sql);
+		return $datos[0]['existe_fecha'];		
+	}
 }
 ?>
