@@ -5,22 +5,29 @@ class ci_asistencia extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	//---- Eventos ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
-	function ini(){
-		if( toba::memoria()->existe_dato('id_editable_zona') ){
-			$id_zona = toba::memoria()->get_dato('id_editable_zona');
-			toba::zona()->cargar($id_zona); 
+//	function ini(){
+//		if( toba::memoria()->existe_dato('id_editable_zona') ){
+//			$id_zona = toba::memoria()->get_dato('id_editable_zona');
+//			toba::zona()->cargar($id_zona); 
+//		}
+//	}
+	function ini()
+	{
+		toba::consulta_php('comunes')->chequeo_zona_cursos();
+		if(toba::zona()->cargada()){
+			$curso = array('id'=>toba::zona()->get_editable_id());
 		}
 	}
 
-	function ini__operacion() {
-		//si el id de la zona esta cargada en memoria uso este por que el de la zona se pierde en los ajax
-		if(toba::memoria()->existe_dato('id_editable_zona')){
-			$editable = toba::memoria()->get_dato('id_editable_zona');
-		}else{
-			$editable = toba::zona()->get_editable();	
-			toba::memoria()->set_dato('id_editable_zona',$editable);
-		}
-	}
+//	function ini__operacion() {
+//		//si el id de la zona esta cargada en memoria uso este por que el de la zona se pierde en los ajax
+//		if(toba::memoria()->existe_dato('id_editable_zona')){
+//			$editable = toba::memoria()->get_dato('id_editable_zona');
+//		}else{
+//			$editable = toba::zona()->get_editable();	
+//			toba::memoria()->set_dato('id_editable_zona',$editable);
+//		}
+//	}
 
 
 	function evt__cancelar()

@@ -137,7 +137,7 @@ class abm_clases_basico extends escuela_ci
 	function conf__pant_clases(toba_ei_pantalla $pantalla)
 	{
 		$cursada = toba::consulta_php('cursos')->get_cursadas('id='.$this->s__id_cursada);
-		$pantalla->set_descripcion($cursada[0]['curso']. ' - ' . $cursada[0]['descripcion']);
+		$pantalla->set_descripcion($cursada[0]['curso']. ' ('.$cursada[0]['sede'].') - ' . $cursada[0]['descripcion']);
 	}
 
 	function ajax__validar_fecha_modulo($parametros, toba_ajax_respuesta $respuesta){

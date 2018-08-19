@@ -2,13 +2,18 @@
 class ci_datos_asistencia extends escuela_ci
 {
 	protected $s__id_cursada;
+	protected $id_curso;
 
-	function ini(){
-		if( toba::memoria()->existe_dato('id_editable_zona') ){
-			$id_zona = toba::memoria()->get_dato('id_editable_zona');
-			toba::zona()->cargar($id_zona); 
-		}
+
+	function set_curso($id_curso){
+		$this->id_curso = $id_curso;
 	}
+//	function ini(){
+//		if( toba::memoria()->existe_dato('id_editable_zona') ){
+//			$id_zona = toba::memoria()->get_dato('id_editable_zona');
+//			toba::zona()->cargar($id_zona); 
+//		}
+//	}
 
 	function relacion(){
 		return $this->dep('relacion');
@@ -84,7 +89,7 @@ class ci_datos_asistencia extends escuela_ci
 
 	function get_alumnos_clase(){			
 		$clase = $this->tabla('clases')->get();
-		ei_arbol($clase);
+		//ei_arbol($clase);
 		return toba::consulta_php('cursos')->get_alumnos_modulos("id_modulo=".$clase['id_modulo'],"apellido_alumno,nombre_alumno");
 		
 	}
