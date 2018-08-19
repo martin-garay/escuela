@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'datos_clase - form_ml_profesores', --nombre
-	NULL, --titulo
+	'Profesores que dictaron la clase', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	'escuela', --fuente_datos_proyecto
