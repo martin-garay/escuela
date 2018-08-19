@@ -129,6 +129,9 @@ class ci_generacion_cuotas extends escuela_ci
 		$sql = "SELECT id, descripcion||'('||anio||'-'||mes||')' as descripcion FROM v_cursadas_modulos WHERE id_cursada=$id_cursada ORDER BY anio,mes";
 		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada");		
 	}		
-
+	function get_importe_cuota_curso($id_curso){
+		$datos = toba::consulta_php('cursos')->get_cursos("id=$id_curso");
+		return $datos[0]['importe_cuota'];
+	}
 }
 ?> 

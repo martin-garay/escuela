@@ -79,9 +79,9 @@ class abm_clases_basico extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__form_clase(escuela_ei_formulario $form)
 	{
-		if($this->dep('dt_clases')->esta_cargada()){
+		//if($this->dep('dt_clases')->esta_cargada()){
 			$form->set_datos($this->dep('dt_clases')->get());
-		}
+		//}
 	}
 	function evt__form_clase__alta($datos)
 	{
@@ -130,5 +130,15 @@ class abm_clases_basico extends escuela_ci
 	function get_modulos_cursada(){
 		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=".$this->s__id_cursada);
 	}
+	//-----------------------------------------------------------------------------------
+	//---- Configuraciones --------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__pant_clases(toba_ei_pantalla $pantalla)
+	{
+		$cursada = toba::consulta_php('cursos')->get_cursadas('id='.$this->s__id_cursada);
+		$pantalla->set_descripcion($cursada[0]['curso']. ' - ' . $cursada[0]['descripcion']);
+	}
+
 }
 ?>

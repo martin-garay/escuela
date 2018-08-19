@@ -81,6 +81,7 @@ class ci_inscripcion extends escuela_ci
 	{		
 		if( $this->tabla('cursadas_alumnos')->get_cantidad_filas()>0 ){		//esta_cargada no andaba ni pa atras
 			$form->set_datos($this->tabla('cursadas_alumnos')->get());
+			//ei_arbol($this->tabla('cursadas_alumnos')->get());
 		}
 		if($form->ef('id_cursada')->tiene_estado())
 				$this->id_cursada = $form->ef('id_cursada')->get_estado();
@@ -142,12 +143,13 @@ class ci_inscripcion extends escuela_ci
 		$this->set_pantalla("pant_inicial");
 	}
 	function get_modulos_vigentes_de_cursada($id_cursada){
-		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada and modulo_vigente");
+		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada /*and modulo_vigente*/"); //comento "and modulo_vigente" para la carga inicial
 	}
+	//comento "and modulo_vigente" para la carga inicial
 	function get_modulos_vigentes(){
 		
 		if(isset($this->id_curso)){
-			$datos = toba::consulta_php('cursos')->get_modulos_cursadas("id_curso={$this->id_curso} and modulo_vigente", "id_cursada,periodo asc");
+			$datos = toba::consulta_php('cursos')->get_modulos_cursadas("id_curso={$this->id_curso} /*and modulo_vigente*/", "id_cursada,periodo asc");
 			foreach ($datos as $key => $fila) {
 				$datos[$key]['descripcion2'] = $fila['nombre'] . ' (' .$fila['cursada'] . ')';
 			}	
@@ -157,6 +159,7 @@ class ci_inscripcion extends escuela_ci
 		}
 		
 	}
+	//DESCOMENTAR /*modulo_vigente and*/
 	function get_modulos_alta_inscripcion($id_cursada, $nro_modulo_inicio, $id_alumno){
 		$datos_cursada = toba::consulta_php('cursos')->get_cursadas("id=$id_cursada");
 		$id_curso = $datos_cursada[0]['id_curso'];
@@ -165,13 +168,13 @@ class ci_inscripcion extends escuela_ci
 		$limit = (isset($datos_cursada[0]['cant_modulos'])) ? ' LIMIT '.$datos_cursada[0]['cant_modulos'] : '';
 		
 		$sql = "SELECT $id_alumno as id_alumno,
-				case when modulo_vigente then id else null end as id_modulo,
+				case when modulo_vigente then id else id end as id_modulo,/*case when modulo_vigente then id else null end as id_modulo,*/
 				'A' as apex_ei_analisis_fila
-				FROM (	select 1 as orden1,* from v_cursadas_modulos where modulo_vigente and id_cursada=$id_cursada and nro_modulo>=$nro_modulo_inicio
+				FROM (	select 1 as orden1,* from v_cursadas_modulos where /*modulo_vigente and*/ id_cursada=$id_cursada and nro_modulo>=$nro_modulo_inicio
 					UNION
 					/* modulos vigentes de otras cursadas del mismo curso y en la misma sede */	
 					select 2 as orden1,* from v_cursadas_modulos cm 
-					where modulo_vigente and id_cursada<>$id_cursada and id_curso=$id_curso and id_sede=$id_sede and id_tipo_cursada=$id_tipo_cursada
+					where /*modulo_vigente and*/ id_cursada<>$id_cursada and id_curso=$id_curso and id_sede=$id_sede and id_tipo_cursada=$id_tipo_cursada
 				)  as s 
 				order by orden1,orden $limit";
 		return toba::db()->consultar($sql);
