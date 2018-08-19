@@ -56,6 +56,7 @@ class ci_datos_asistencia extends escuela_ci
 
 	function evt__form_ml_asistencia__modificacion($datos)
 	{		
+		ei_arbol($datos);
 		$this->tabla('clases_asistencia')->procesar_filas($datos);
 	}
 
@@ -89,8 +90,11 @@ class ci_datos_asistencia extends escuela_ci
 
 	function get_alumnos_clase(){			
 		$clase = $this->tabla('clases')->get();
-		//ei_arbol($clase);
-		return toba::consulta_php('cursos')->get_alumnos_modulos("id_modulo=".$clase['id_modulo'],"apellido_alumno,nombre_alumno");
+		$datos = toba::consulta_php('cursos')->get_alumnos_modulos("id_modulo=".$clase['id_modulo'],"apellido_alumno,nombre_alumno");
+		foreach ($datos as $key => $value) {
+		 	$datos[$key]['apex_ei_analisis_fila'] = 'A';
+		 } 
+		return $datos;
 		
 	}
 
