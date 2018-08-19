@@ -56,7 +56,6 @@ class ci_datos_asistencia extends escuela_ci
 
 	function evt__form_ml_asistencia__modificacion($datos)
 	{		
-		ei_arbol($datos);
 		$this->tabla('clases_asistencia')->procesar_filas($datos);
 	}
 
