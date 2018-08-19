@@ -21,7 +21,11 @@ class ci_datos_asistencia extends escuela_ci
 	function tabla($nombre){
 		return $this->relacion()->tabla($nombre);
 	}
-
+	function conf__pant_asistencia(toba_ei_pantalla $pantalla)
+	{
+		$cursada = toba::consulta_php('cursos')->get_cursadas('id='.$this->s__id_cursada);
+		$pantalla->set_descripcion($cursada[0]['curso']. ' ('.$cursada[0]['sede'].') - ' . $cursada[0]['descripcion']);
+	}
 	//-----------------------------------------------------------------------------------
 	//---- cuadro_clases ----------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
