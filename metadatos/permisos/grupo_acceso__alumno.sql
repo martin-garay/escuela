@@ -74,3 +74,12 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'18000089'  --item
 );
 --- FIN Grupo de desarrollo 18
+
+------------------------------------------------------------
+-- apex_grupo_acc_restriccion_funcional
+------------------------------------------------------------
+INSERT INTO apex_grupo_acc_restriccion_funcional (proyecto, usuario_grupo_acc, restriccion_funcional) VALUES (
+	'escuela', --proyecto
+	'alumno', --usuario_grupo_acc
+	'16'  --restriccion_funcional
+);

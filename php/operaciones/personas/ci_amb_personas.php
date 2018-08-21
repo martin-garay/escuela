@@ -24,9 +24,21 @@ class ci_amb_personas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
-		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
+		//$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
+		$where = null;
+		if(isset($this->s__filtro)){
+			$clausulas = $this->dep('filtro')->get_sql_clausulas();
+			if(isset($clausulas['id_tipo_persona'])){
+				$tipo_personas = implode(',',$this->s__filtro['id_tipo_persona']['valor']);
+				$where_tipo_persona = "exists(select id_tipo_persona from personas_tipo where id_persona=v_personas.id and id_tipo_persona IN ($tipo_personas))";
+				unset($clausulas['id_tipo_persona']);
+				$where = $this->dep('filtro')->get_sql_where('AND',$clausulas);
+				$where = ($where) ? "$where AND $where_tipo_persona " : $where_tipo_persona; 
+			}				
+		}
 		$datos = toba::consulta_php('personas')->get_personas($where, 'apellido, nombre');
 		$cuadro->set_datos($datos);
+		
 	}
 	function evt__cuadro__seleccion($seleccion)
 	{

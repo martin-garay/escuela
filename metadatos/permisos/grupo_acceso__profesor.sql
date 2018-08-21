@@ -32,6 +32,12 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'escuela', --proyecto
 	'profesor', --usuario_grupo_acc
 	NULL, --item_id
+	'2'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'escuela', --proyecto
+	'profesor', --usuario_grupo_acc
+	NULL, --item_id
 	'3537'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
@@ -86,3 +92,12 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'18000087'  --item
 );
 --- FIN Grupo de desarrollo 18
+
+------------------------------------------------------------
+-- apex_grupo_acc_restriccion_funcional
+------------------------------------------------------------
+INSERT INTO apex_grupo_acc_restriccion_funcional (proyecto, usuario_grupo_acc, restriccion_funcional) VALUES (
+	'escuela', --proyecto
+	'profesor', --usuario_grupo_acc
+	'17'  --restriccion_funcional
+);

@@ -22,7 +22,10 @@ class personas extends comunes
 		$this->get_personas("usuario=".toba::usuario()->get_id());
 	}
 	function get_tipo_persona_perfiles($where=null, $order_by=null){
-		return $this->get_generico('tipo_persona_perfiles',$where, $order_by);
+		//return $this->get_generico('tipo_persona_perfiles',$where, $order_by);
+		$sql = "SELECT distinct perfil as perfil FROM tipo_persona_perfiles";
+		return $this->get_generico_sql($sql,$where,$order_by);
+
 	}
 	function get_id($usuario){
 		$sql = "SELECT get_id_persona('$usuario')";

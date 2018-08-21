@@ -89,25 +89,27 @@ class ci_datos_persona extends escuela_ci
 /* --------------------------------------------------------------------------- */
 /* --------------------------- API para Consumidores -------------------------- */
 /* --------------------------------------------------------------------------- */
-/*
+
 	private function crearUsuario(){
 		$persona = $this->tabla('personas')->get();
+		$tipos_persona = $this->tabla('personas_tipo')->get_filas();
+		$tipos_persona_str = implode(',',array_column($tipos_persona, 'id_tipo_persona'));
 		
 		//perfiles que le tengo que asignar
-		$perfiles_persona = toba::consulta_php('personas')->get_tipo_persona_perfiles("id_tipo_persona=".$persona['id_tipo_persona']); 
+		$perfiles_persona = toba::consulta_php('personas')->get_tipo_persona_perfiles("id_tipo_persona IN ($tipos_persona_str)"); 
 		$perfiles = array_column($perfiles_persona,'perfil');
-		
+
 		$datos_actuales = $this->tabla('datos_actuales')->get();
 		$atributos = (isset($datos_actuales['email'])) ? array('email'=>$datos_actuales['email']) : array();
-		
+
 		$crear_usuario = new CrearUsuario();                
 		$crear_usuario->crear($persona['dni'], $persona['nombre'].' '.$persona['apellido'], $persona['dni'], $atributos, $perfiles);
 	}
-*/
+
 	function guardar(){
 		try {
 			$this->relacion()->sincronizar();
-			//$this->crearUsuario();
+			$this->crearUsuario();
 		} catch (toba_error_db $e) {
 			toba::notificacion()->error("Error. No se pueden guardar los datos");
 		}
