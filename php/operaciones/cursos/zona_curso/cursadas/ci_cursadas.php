@@ -51,14 +51,16 @@ class ci_cursadas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
 	{
-		//si es un profesor traigo solamente las cursadas de este, sino muestro todas las cursadas
-		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
-		if(toba::consulta_php('comunes')->tiene_perfil('profesor')){						
-			$datos = toba::zona()->get_cursadas_profesor($where);
-		}else{			
-			$datos = toba::zona()->get_cursadas($where);
-		}
-		$cuadro->set_datos($datos);		
+		if(isset($this->s__filtro)){
+			//si es un profesor traigo solamente las cursadas de este, sino muestro todas las cursadas
+			$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
+			if(toba::consulta_php('comunes')->tiene_perfil('profesor')){						
+				$datos = toba::zona()->get_cursadas_profesor($where);
+			}else{			
+				$datos = toba::zona()->get_cursadas($where);
+			}
+			$cuadro->set_datos($datos);	
+		}				
 	}
 	function evt__cuadro__seleccion($seleccion)
 	{
@@ -68,6 +70,9 @@ class ci_cursadas extends escuela_ci
 	function evt__cuadro__eliminar($seleccion)
 	{
 		$this->dep('datos_cursada')->borrar($seleccion);
+	}
+	function get_cursadas_de_sede($id_sede){
+		return toba::zona()->get_cursadas("id_sede=$id_sede");
 	}
 }
 ?>

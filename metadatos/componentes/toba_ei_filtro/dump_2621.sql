@@ -187,34 +187,34 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL  --placeholder
 );
 INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, objeto_ei_filtro_proyecto, tipo, nombre, expresion, etiqueta, descripcion, obligatorio, inicial, orden, estado_defecto, opciones_es_multiple, opciones_ef, carga_metodo, carga_clase, carga_include, carga_dt, carga_consulta_php, carga_sql, carga_fuente, carga_lista, carga_col_clave, carga_col_desc, carga_permite_no_seteado, carga_no_seteado, carga_no_seteado_ocultar, carga_maestros, edit_tamano, edit_maximo, edit_mascara, edit_unidad, edit_rango, edit_expreg, estilo, popup_item, popup_proyecto, popup_editable, popup_ventana, popup_carga_desc_metodo, popup_carga_desc_clase, popup_carga_desc_include, popup_puede_borrar_estado, punto_montaje, check_valor_si, check_valor_no, check_desc_si, check_desc_no, selec_cant_minima, selec_cant_maxima, selec_utilidades, selec_tamano, selec_ancho, selec_serializar, selec_cant_columnas, placeholder) VALUES (
-	'108', --objeto_ei_filtro_col
+	'114', --objeto_ei_filtro_col
 	'2621', --objeto_ei_filtro
 	'escuela', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
-	'id_curso', --nombre
-	'id_curso', --expresion
-	'Curso', --etiqueta
+	'id_cursada', --nombre
+	'id', --expresion
+	'Cursada', --etiqueta
 	NULL, --descripcion
-	'0', --obligatorio
+	'1', --obligatorio
 	'1', --inicial
-	'1', --orden
+	'2', --orden
 	NULL, --estado_defecto
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
-	'get_cursos', --carga_metodo
+	'get_cursadas_de_sede', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'18000015', --carga_consulta_php
+	NULL, --carga_consulta_php
 	NULL, --carga_sql
 	'escuela', --carga_fuente
 	NULL, --carga_lista
 	'id', --carga_col_clave
-	'nombre', --carga_col_desc
+	'descripcion', --carga_col_desc
 	'1', --carga_permite_no_seteado
 	'-- Seleccione --', --carga_no_seteado
 	'0', --carga_no_seteado_ocultar
-	NULL, --carga_maestros
+	'id_sede', --carga_maestros
 	NULL, --edit_tamano
 	NULL, --edit_maximo
 	NULL, --edit_mascara
@@ -256,9 +256,9 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'id_sede', --expresion
 	'Sede', --etiqueta
 	NULL, --descripcion
-	'0', --obligatorio
+	'1', --obligatorio
 	'1', --inicial
-	'2', --orden
+	'1', --orden
 	NULL, --estado_defecto
 	'0', --opciones_es_multiple
 	'ef_combo', --opciones_ef
@@ -272,8 +272,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --carga_lista
 	'id', --carga_col_clave
 	'nombre', --carga_col_desc
-	'0', --carga_permite_no_seteado
-	NULL, --carga_no_seteado
+	'1', --carga_permite_no_seteado
+	'-- Seleccione --', --carga_no_seteado
 	'0', --carga_no_seteado_ocultar
 	NULL, --carga_maestros
 	NULL, --edit_tamano

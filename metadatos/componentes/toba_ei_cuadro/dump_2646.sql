@@ -151,14 +151,14 @@ INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto
 	'54', --objeto_cuadro_cc
 	'corte_cursada', --identificador
 	'Cursada', --descripcion
-	'2', --orden
+	'3', --orden
 	'id_cursada', --columnas_id
 	'cursada_descripcion', --columnas_descripcion
 	'0', --pie_contar_filas
 	'0', --pie_mostrar_titular
 	'0', --pie_mostrar_titulos
 	NULL, --imp_paginar
-	'0'  --modo_inicio_colapsado
+	'1'  --modo_inicio_colapsado
 );
 INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_cc, identificador, descripcion, orden, columnas_id, columnas_descripcion, pie_contar_filas, pie_mostrar_titular, pie_mostrar_titulos, imp_paginar, modo_inicio_colapsado) VALUES (
 	'escuela', --objeto_cuadro_proyecto
@@ -166,7 +166,7 @@ INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto
 	'55', --objeto_cuadro_cc
 	'corte_modulo', --identificador
 	'Modulo', --descripcion
-	'3', --orden
+	'4', --orden
 	'id_modulo', --columnas_id
 	'nombre_modulo', --columnas_descripcion
 	'0', --pie_contar_filas
@@ -174,6 +174,21 @@ INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto
 	'0', --pie_mostrar_titulos
 	NULL, --imp_paginar
 	'1'  --modo_inicio_colapsado
+);
+INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_cc, identificador, descripcion, orden, columnas_id, columnas_descripcion, pie_contar_filas, pie_mostrar_titular, pie_mostrar_titulos, imp_paginar, modo_inicio_colapsado) VALUES (
+	'escuela', --objeto_cuadro_proyecto
+	'2646', --objeto_cuadro
+	'65', --objeto_cuadro_cc
+	'corte_sede', --identificador
+	'Sede', --descripcion
+	'2', --orden
+	'id_sede', --columnas_id
+	'sede', --columnas_descripcion
+	'0', --pie_contar_filas
+	'0', --pie_mostrar_titular
+	'0', --pie_mostrar_titulos
+	NULL, --imp_paginar
+	'0'  --modo_inicio_colapsado
 );
 --- FIN Grupo de desarrollo 0
 

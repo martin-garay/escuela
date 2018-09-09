@@ -1,6 +1,7 @@
 <?php
 class ci_datos_clase extends escuela_ci
 {
+
 	protected $id_curso;
 
 	function set_curso($id_curso){
@@ -14,6 +15,11 @@ class ci_datos_clase extends escuela_ci
 	}
 	function get_modulos($id_cursada){
 		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada");
+	}
+
+	//oculto la pantalla de asistencia por que ahora se hace desde otra opcion
+	function conf(){
+		$this->pantalla()->eliminar_tab('pant_asistencia');
 	}
 	function conf__form_clase(escuela_ei_formulario $form)
 	{        

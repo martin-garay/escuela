@@ -53,14 +53,21 @@ class ci_clases extends escuela_ci
 
 	function conf__cuadro_clases(escuela_ei_cuadro $cuadro)
 	{
-		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
-		return toba::zona()->get_clases($where,'fecha ASC');
+		if(isset($this->s__filtro)){
+			$where = $this->dep('filtro')->get_sql_where();
+			return toba::zona()->get_clases($where,'fecha ASC');	
+		}
+		
 	}
 
 	function evt__cuadro_clases__seleccion($seleccion)
 	{
 		$this->dep('datos_clase')->cargar($seleccion);
 		$this->set_pantalla('pant_edicion');
+	}
+
+	function get_cursadas_de_sede($id_sede){
+		return toba::zona()->get_cursadas("id_sede=$id_sede");
 	}
 
 }
