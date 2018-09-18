@@ -146,5 +146,8 @@ class abm_clases_basico extends escuela_ci
 		$resultado['ok'] = toba::consulta_php('cursos')->validar_fecha_clase_en_modulo($id_modulo,$fecha);
 		$respuesta->set($resultado);
 	}
+	function get_cursadas_de_sede($id_sede){
+		return toba::consulta_php('cursos')->get_cursadas("id_sede=$id_sede");
+	}
 }
 ?>

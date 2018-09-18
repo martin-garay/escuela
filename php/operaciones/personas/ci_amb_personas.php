@@ -34,6 +34,8 @@ class ci_amb_personas extends escuela_ci
 				unset($clausulas['id_tipo_persona']);
 				$where = $this->dep('filtro')->get_sql_where('AND',$clausulas);
 				$where = ($where) ? "$where AND $where_tipo_persona " : $where_tipo_persona; 
+			}else{
+				$where = $this->dep('filtro')->get_sql_where();
 			}				
 		}
 		$datos = toba::consulta_php('personas')->get_personas($where, 'apellido, nombre');
