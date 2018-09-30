@@ -67,5 +67,34 @@ class cursos extends comunes
 		$datos = toba::db()->consultar($sql);
 		return $datos[0]['existe_fecha'];		
 	}
+
+	/*clases practicas*/
+	function get_tipos_clases_practicas($where=null, $order_by=null){
+		return $this->get_generico('tipos_clases_practicas', $where, $order_by);	
+	}
+	function get_dias($where=null, $order_by=null){
+		return $this->get_generico('dias', $where, $order_by);	
+	}
+	function get_rangos_horarios($where=null, $order_by=null){
+		return $this->get_generico('v_rango_horario', $where, $order_by);	
+	}
+	function get_tipos_alumnos($where=null, $order_by=null){
+		return $this->get_generico('tipos_alumnos', $where, $order_by);	
+	}
+	function get_calendario_semanal($id_sede, $html){
+		$sql = "SELECT (select extract( hour from hora_desde)|| ' a '|| extract( hour from hora_hasta)) as rango_horario,
+				lunes,martes,miercoles,jueves,viernes,sabado
+				from 
+				(SELECT *
+				FROM  crosstab(
+				   'select r.id,d.descripcion as dia,generar_string_clase_practica(d.id,r.id,$id_sede,$html)
+				    from dias d cross join rango_horario r' 
+				   ) AS ct (\"id_rango_horario\" integer, \"lunes\" text, \"martes\" text, \"miercoles\" text, \"jueves\" text, \"viernes\" text, \"sabado\" text)
+				) as s
+				inner join rango_horario rh ON rh.id=s.id_rango_horario
+				order by id_rango_horario";
+			return toba::db()->consultar($sql);
+	}
+
 }
 ?>
