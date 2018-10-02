@@ -95,6 +95,9 @@ class cursos extends comunes
 				order by id_rango_horario";
 			return toba::db()->consultar($sql);
 	}
+	function get_calendario_clases_practicas($where=null, $order_by=null){
+		return $this->get_generico('v_calendario_clases_practicas', $where, $order_by);	
+	}
 
 }
 ?>

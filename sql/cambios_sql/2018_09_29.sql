@@ -23,22 +23,31 @@ create table tipos_clases_practicas(
 	constraint pk_tipos_clases_practicas primary key (id)
 );
 
-create table clases_practicas(
-	id serial not null,
-	id_dia integer not null,
-	id_rango_horario integer not null,
-	hora_inicio time without time zone NOT NULL,
-	hora_fin time without time zone NOT NULL,
-	id_tipo_clase integer not null,
-	descripcion character varying (60),
-	id_tipo_alumno integer,
-	id_sede integer not null,
-	constraint pk_clases_practicas primary key (id),
-	constraint fk_clases_practicas__dias foreign key (id_dia) references dias(id),
-	constraint fk_clases_practicas__rango_horario foreign key (id_rango_horario) references rango_horario(id),
-	constraint fk_clases_practicas__tipos_alumnos foreign key (id_tipo_alumno) references tipos_alumnos(id)
+CREATE TABLE calendario_clases_practicas
+(
+  id serial NOT NULL,
+  id_dia integer NOT NULL,
+  id_rango_horario integer NOT NULL,
+  hora_inicio time without time zone NOT NULL,
+  hora_fin time without time zone NOT NULL,
+  id_tipo_clase integer NOT NULL,
+  descripcion character varying(60),
+  id_tipo_alumno integer,
+  id_sede integer NOT NULL,
+  CONSTRAINT pk_clases_practicas PRIMARY KEY (id),
+  CONSTRAINT fk_clases_practicas__dias FOREIGN KEY (id_dia)
+      REFERENCES dias (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_clases_practicas__rango_horario FOREIGN KEY (id_rango_horario)
+      REFERENCES rango_horario (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_clases_practicas__tipos_alumnos FOREIGN KEY (id_tipo_alumno)
+      REFERENCES tipos_alumnos (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
 );
-
 insert into dias (id, descripcion) values (1,'LUNES');
 insert into dias (id, descripcion) values (2,'MARTES');
 insert into dias (id, descripcion) values (3,'MIERCOLES');
@@ -78,91 +87,73 @@ insert into tipos_clases_practicas(id,descripcion) values (14,'Pranayamas y Swar
 
 
 ----8 a 9
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (4, 1, '8:00', '9:00', 1, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (6, 1, '8:00', '9:00', 2, '1° y 2° sabado del mes', null,9);
 --9 a 10
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (1, 2, '9:00', '10:00', 3, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (2, 2, '9:00', '10:00', 1, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (3, 2, '9:00', '10:00', 1, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (5, 2, '9:00', '10:00', 4, null, null,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (5, 2, '9:00', '10:00', 2, null, null,9);
 --10 a 11
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (1, 3, '10:00', '11:00', 5, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (2, 3, '9:00', '10:00', 14, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (3, 3, '10:00', '11:00', 7, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (5, 3, '10:00', '11:00', 8, null, null,9);
 --11 a 12
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (1, 4, '11:00', '12:00', 1, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (4, 4, '11:00', '12:00', 9, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (5, 4, '11:00', '12:00', 10, null, 2,9);
 --15 a 16
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (2, 5, '15:00', '16:00', 4, 'Con elementos', null,9);
 --16 a 17
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (2, 6, '16:00', '17:00', 8, null, null,9);
 --18 a 19
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (1, 7, '18:00', '19:00', 11, null, null,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (2, 7, '18:00', '19:00', 12, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (3, 7, '18:00', '19:00', 1, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (4, 7, '18:00', '19:00', 1, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (4, 7, '18:00', '19:00', 13, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (5, 7, '18:00', '19:00', 3, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (6, 7, '18:00', '19:00', 1, null, 1,9);
 --19 a 20
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (1, 8, '19:00', '20:00', 5, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (2, 8, '19:00', '20:00', 10, null, 2,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (3, 8, '19:00', '20:00', 5, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (5, 8, '19:00', '20:00', 11, null, null,9);
 --20 a 21
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (1, 9, '20:00', '21:00', 7, null, 1,9);
-INSERT INTO public.clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
+INSERT INTO public.calendario_clases_practicas(id_dia, id_rango_horario, hora_inicio, hora_fin, id_tipo_clase, descripcion, id_tipo_alumno,id_sede)
 VALUES (3, 8, '20:00', '21:00', 3, null, 2,9);
 
-
-CREATE OR REPLACE VIEW public.v_clases_practicas AS 
- SELECT cp.id,
-    cp.id_dia,
-    cp.id_rango_horario,
-    cp.hora_inicio,
-    cp.hora_fin,
-    cp.id_tipo_clase,
-    cp.descripcion,
-    cp.id_tipo_alumno,
-    d.descripcion AS dia,
-    tcp.descripcion AS tipo_clase,
-    ta.descripcion AS tipo_alumno,
-    cp.id_sede
-   FROM clases_practicas cp
-     JOIN dias d ON d.id = cp.id_dia
-     JOIN tipos_clases_practicas tcp ON tcp.id = cp.id_tipo_clase
-     LEFT JOIN tipos_alumnos ta ON ta.id = cp.id_tipo_alumno;
 
 --drop function generar_html_clase_practica(integer,integer)
 CREATE OR REPLACE FUNCTION public.generar_string_clase_practica(

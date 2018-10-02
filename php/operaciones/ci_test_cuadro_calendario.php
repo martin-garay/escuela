@@ -24,7 +24,7 @@ class ci_test_cuadro_calendario extends escuela_ci
 		$this->s__form = $datos;
 
 		if(isset($datos['id_clase'])){
-			$this->dep('clases_practicas')->cargar(array('id'=>$datos['id_clase']));
+			$this->dep('calendario')->cargar(array('id'=>$datos['id_clase']));
 		}
 	}
 
@@ -46,34 +46,38 @@ class ci_test_cuadro_calendario extends escuela_ci
 
 	function conf__form_abm(escuela_ei_formulario $form)
 	{
-		if($this->dep('clases_practicas')->esta_cargada())
-			return $this->dep('clases_practicas')->get();
+		if($this->dep('calendario')->esta_cargada())
+			return $this->dep('calendario')->get();
 	}
 
 	function evt__form_abm__alta($datos)
 	{
-		$this->dep('clases_practicas')->set($datos);
-		$this->dep('clases_practicas')->sincronizar();
-		$this->dep('clases_practicas')->resetear();
+		$this->dep('calendario')->set($datos);
+		$this->dep('calendario')->sincronizar();
+		$this->dep('calendario')->resetear();
 	}
 
 	function evt__form_abm__baja()
 	{
-		$this->dep('clases_practicas')->eliminar_todo();
-		$this->dep('clases_practicas')->sincronizar();
-		$this->dep('clases_practicas')->resetear();
+		$this->dep('calendario')->eliminar_todo();
+		$this->dep('calendario')->sincronizar();
+		$this->dep('calendario')->resetear();
 	}
 
 	function evt__form_abm__modificacion($datos)
 	{
-		$this->dep('clases_practicas')->set($datos);
-		$this->dep('clases_practicas')->sincronizar();
-		$this->dep('clases_practicas')->resetear();	
+		$this->dep('calendario')->set($datos);
+		$this->dep('calendario')->sincronizar();
+		$this->dep('calendario')->resetear();	
 	}
 
 	function evt__form_abm__cancelar()
 	{
-		$this->dep('clases_practicas')->resetear();
+		$this->dep('calendario')->resetear();
+	}
+	function evt__form_abm__generar_clase(){
+		$this->dep('generacion_clase')->set_calendario($id_calendario);
+		$this->set_pantalla('pant_edicion');
 	}
 
 	function vista_excel_asdasd(toba_vista_excel $salida){
