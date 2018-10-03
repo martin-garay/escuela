@@ -34,14 +34,14 @@ CREATE TABLE calendario_clases_practicas
   descripcion character varying(60),
   id_tipo_alumno integer,
   id_sede integer NOT NULL,
-  CONSTRAINT pk_clases_practicas PRIMARY KEY (id),
-  CONSTRAINT fk_clases_practicas__dias FOREIGN KEY (id_dia)
+  CONSTRAINT pk_calendario_clases_practicas PRIMARY KEY (id),
+  CONSTRAINT fk_calendario_clases_practicas__dias FOREIGN KEY (id_dia)
       REFERENCES dias (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT fk_clases_practicas__rango_horario FOREIGN KEY (id_rango_horario)
+  CONSTRAINT fk_calendario_clases_practicas__rango_horario FOREIGN KEY (id_rango_horario)
       REFERENCES rango_horario (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT fk_clases_practicas__tipos_alumnos FOREIGN KEY (id_tipo_alumno)
+  CONSTRAINT fk_calendario_clases_practicas__tipos_alumnos FOREIGN KEY (id_tipo_alumno)
       REFERENCES tipos_alumnos (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )

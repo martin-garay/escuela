@@ -17,19 +17,25 @@ class ci_generacion_clases_practicas extends escuela_ci
 	function tabla($nombre){
 		return $this->relacion()->tabla($nombre);
 	}
-
+	function resetear(){
+		$this->relacion()->resetear();
+	}
+	function validar(){
+		if( ($this->tabla('profesores')->get_cantidad_filas()>0) && ($this->tabla('alumnos')->get_cantidad_filas()>0) )
+			return true;
+		return false;
+	}
 	function guardar(){
 		try {
-			$this->relacion()->sincronizar();
+			if($this->validar())
+				$this->relacion()->sincronizar();
+			else
+				throw new toba_error_usuario("Existen errores");				
 		} catch (toba_error_db $e) {
 			toba::notificacion()->error('Error al guardar');
 		}
 	}
-
-	function resetear(){
-		$this->relacion()->resetear();
-	}
-
+	
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -81,6 +87,31 @@ class ci_generacion_clases_practicas extends escuela_ci
 	function evt__form_ml_profesores__modificacion($datos)
 	{
 		$this->tabla('profesores')->procesar_filas($datos);
+	}
+
+	function extender_objeto_js(){
+		echo "
+
+		{$this->objeto_js}.validar = function(){
+			var cant_profesores = {$this->dep('form_ml_profesores')->objeto_js}.filas().length;
+			var cant_alumnos = {$this->dep('form_ml_alumnos')->objeto_js}.filas().length;
+			console.log(cant_profesores);
+			if(cant_profesores>0 && cant_alumnos>0 ){
+				return true;
+			}else{
+				if(cant_profesores==0){
+					notificacion.agregar('Debe agregar al menos un profesor');	
+				}
+				if(cant_alumnos==0){
+					notificacion.agregar('Debe agregar al menos un alumno');	
+				}
+				notificacion.mostrar();
+				notificacion.limpiar();
+				return false;
+			}
+		}
+
+		";
 	}
 
 

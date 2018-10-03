@@ -87,7 +87,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'escuela', --objeto_proyecto
 	'2730', --objeto
 	'18000682', --col_id
-	'id_clase', --columna
+	'id_tipo_clase', --columna
 	'E', --tipo
 	'0', --pk
 	'', --secuencia

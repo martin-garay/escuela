@@ -4,11 +4,36 @@ class ci_test_cuadro_calendario extends escuela_ci
 	protected $s__form;
 
 	function conf(){
-		if( !isset($this->s__form['id_sede']) ){
+		if( !$this->selecciono_sede() ){
 			$this->evento('exportar_excel')->ocultar();
-			$this->evento('exportar_pdf')->ocultar();
+			$this->evento('exportar_pdf')->ocultar();			
+		}
+		if( !$this->selecciono_clase() ){
+			$this->evento('generar_clase')->ocultar();
 		}
 	}
+	function selecciono_sede(){
+		return isset($this->s__form['id_sede']);
+	}
+	function selecciono_clase(){
+		return $this->dep('calendario')->esta_cargada();
+	}
+
+	function evt__generar_clase(){
+		$calendario = $this->dep('calendario')->get();
+		$this->dep('generacion_clase')->set_calendario($calendario['id']);
+		$this->set_pantalla('pant_edicion');
+	}
+	function evt__guardar(){
+		$this->dep('generacion_clase')->guardar();
+		toba::notificacion()->info("Se genero la clase");
+		$this->set_pantalla('pant_inicial');
+	}
+	function evt__volver(){
+		$this->dep('generacion_clase')->resetear();
+		$this->set_pantalla('pant_inicial');
+	}
+
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -22,9 +47,12 @@ class ci_test_cuadro_calendario extends escuela_ci
 	function evt__form__modificacion($datos)
 	{
 		$this->s__form = $datos;
-
 		if(isset($datos['id_clase'])){
 			$this->dep('calendario')->cargar(array('id'=>$datos['id_clase']));
+		}else{
+			if($this->dep('calendario')->esta_cargada()){
+				$this->dep('calendario')->resetear();
+			}
 		}
 	}
 
@@ -75,29 +103,7 @@ class ci_test_cuadro_calendario extends escuela_ci
 	{
 		$this->dep('calendario')->resetear();
 	}
-	function evt__form_abm__generar_clase(){
-		$this->dep('generacion_clase')->set_calendario($id_calendario);
-		$this->set_pantalla('pant_edicion');
-	}
 
-	function vista_excel_asdasd(toba_vista_excel $salida){
-        ob_clean();
-        $id_sede = $this->s__form['id_sede'];
-
-        $sede = toba::consulta_php('sedes')->get_sedes("id=$id_sede");
-        $salida->titulo("HARI OM INTERNACIONAL ESCUELA DE YOGA Y AYURVEDA",7);
-        $salida->texto("Clases Practicas y Meditaciones - Sede ".$sede[0]['nombre'],7);
-
-        //copio el cuadro para usar su vista_excel para sacar la exportacion sin el thml
-        $cuadro_aux = clone($this->dep('cuadro'));
-        $calendario = toba::consulta_php('cursos')->get_calendario_semanal($id_sede, 'false'); //no tiene html
-        $cuadro_aux->set_datos($calendario);
-        $cuadro_aux->vista_excel($salida);
-        unset($cuadro_aux);	
-
-        $salida->set_hoja_nombre('Calendario');
-        $salida->set_nombre_archivo('calendario.xls');        
-    }
 	function vista_excel(toba_vista_excel $salida){
         ob_clean();
         $id_sede = $this->s__form['id_sede'];
@@ -141,24 +147,59 @@ class ci_test_cuadro_calendario extends escuela_ci
 
 
 	function extender_objeto_js(){
-		echo "
-		$(document).ready(function(){
+		if($this->get_id_pantalla()=='pant_inicial'){
+			if( $this->selecciono_sede() ){
+				echo "{$this->dep('form_abm')->objeto_js}.mostrar();";
+			}else{
+				echo "{$this->dep('form_abm')->objeto_js}.ocultar();";
+			}
 
-			//Eventos
-			$('.clase_practica').click(function(){
-				{$this->dep('form')->objeto_js}.ef('id_clase').set_estado($(this).attr('id'));
-				{$this->dep('form')->objeto_js}.set_evento(new evento_ei('modificacion',true,''));
+			if( $this->selecciono_clase() ){
+				//echo "document.getElementById('cuerpo_js_form_2731_form_abm').scrollIntoView();";
+				echo "$('html, body').animate({
+					        scrollTop: $('#cuerpo_js_form_2731_form_abm').offset().top
+					  }, 1500);";
+			}
+
+			echo "
+			$(document).ready(function(){
+
+				//Eventos
+				$('.clase_practica').click(function(){
+					{$this->dep('form')->objeto_js}.ef('id_clase').set_estado($(this).attr('id'));
+					{$this->dep('form')->objeto_js}.set_evento(new evento_ei('modificacion',true,''));
+				});
+
+				//CSS
+				$('.clase_practica').css({'cursor':'pointer'});
+				$('.clase_practica').hover( function(){ $(this).css('color','red');} , function(){ $(this).css('color','black');});
+				$('#cuerpo_js_form_2731_form_abm').css('background-color','rgb(194, 194, 194)');
 			});
 
-			//CSS
-			$('.clase_practica').css({'cursor':'pointer'});
-			$('.clase_practica').hover( function(){ $(this).css('color','red');} , function(){ $(this).css('color','black');});
-
-		});
-
-		";
+			";	
+		}
+		
 	}
 
+	/*
+	function vista_excel_asdasd(toba_vista_excel $salida){
+        ob_clean();
+        $id_sede = $this->s__form['id_sede'];
 
+        $sede = toba::consulta_php('sedes')->get_sedes("id=$id_sede");
+        $salida->titulo("HARI OM INTERNACIONAL ESCUELA DE YOGA Y AYURVEDA",7);
+        $salida->texto("Clases Practicas y Meditaciones - Sede ".$sede[0]['nombre'],7);
+
+        //copio el cuadro para usar su vista_excel para sacar la exportacion sin el thml
+        $cuadro_aux = clone($this->dep('cuadro'));
+        $calendario = toba::consulta_php('cursos')->get_calendario_semanal($id_sede, 'false'); //no tiene html
+        $cuadro_aux->set_datos($calendario);
+        $cuadro_aux->vista_excel($salida);
+        unset($cuadro_aux);	
+
+        $salida->set_hoja_nombre('Calendario');
+        $salida->set_nombre_archivo('calendario.xls');        
+    }
+    */
 }
 ?>

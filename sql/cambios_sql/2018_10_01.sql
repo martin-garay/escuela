@@ -78,3 +78,36 @@ create table clases_practicas_alumnos(
 );
 
 alter table clases_practicas add column horas integer not null default 1; --las horas que debe sumar por la clase
+
+CREATE OR REPLACE FUNCTION public.generar_string_clase_practica(
+    _id_dia integer,
+    _id_rango_horario integer,
+    _id_sede integer,
+    _html boolean)
+  RETURNS text AS
+$BODY$
+DECLARE 	
+	r record;
+	salida_html text;
+BEGIN   
+	salida_html = '';
+	for r in SELECT * FROM v_calendario_clases_practicas v WHERE v.id_rango_horario=_id_rango_horario and id_dia=_id_dia and id_sede=_id_sede ORDER  BY 1,id_dia
+	loop
+		IF _html THEN      
+			salida_html = salida_html || '<table class="tabla_clase_practica"><tr><td><span class="clase_practica" id="'||r.id||'">';
+			salida_html = salida_html || r.hora_inicio || ' ' || r.tipo_clase || COALESCE( '('||r.tipo_alumno||')', '')||COALESCE( ' '||r.descripcion, '');
+			salida_html = salida_html || '</span></td></tr></table>' ;
+		ELSE
+			salida_html = salida_html || r.hora_inicio || ' ' || r.tipo_clase || COALESCE( '('||r.tipo_alumno||')', '')||COALESCE( ' '||r.descripcion, '')||' |';
+		END IF;
+	end loop;
+	IF not _html THEN
+		salida_html = substr(salida_html, 0, length(salida_html)); --le saco el ultimo separador si no es html la salida
+	END IF;
+	return salida_html;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+
+  alter table clases_practicas RENAME COLUMN id_clase to id_tipo_clase;
