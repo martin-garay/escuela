@@ -20,15 +20,13 @@ class cn_operaciones_diarias extends escuela_cn
 		foreach ($parametrizaciones as $key => $parametrizacion) {
 
 			$cod['numero_operacion'] = $numero_operacion;
-
-			//$cod['fecha'] = $datos['fecha'];
 			$cod['id_sede'] = $datos['id_sede'];
 			$cod['id_titular'] = $datos['id_titular'];
 			$cod['importe'] = $datos['importe'];
 			$cod['usuario'] = $datos['usuario'];
 			$cod['fecha_operacion'] = $datos['fecha_operacion'];			
 			$cod['id_inscripcion'] = $datos['id_inscripcion'];
-			//$cod['id_periodo'] = $datos['id_periodo'];
+			$cod['id_bloque'] = $datos['id_bloque'];				//para asociar todo un proceso con un id
 
 			$cod['id_movimiento'] = $parametrizacion['id_movimiento'];
 			$cod['id_comprobante'] = $parametrizacion['id_comprobante'];			
@@ -50,10 +48,21 @@ class cn_operaciones_diarias extends escuela_cn
 		if(count($datos)>0)
 			return $datos[0]['numero_operacion'];
 		else
-			return 1;
+			return 0;
 	}
 	function get_nuevo_numero_operacion(){
 		return $this->get_ultimo_numero_operacion()+1;		
+	}
+	function get_ultimo_numero_bloque(){
+		$sql = "SELECT max(id_bloque) as id_bloque FROM caja_operaciones_diarias";
+		$datos = toba::db()->consultar($sql);
+		if(count($datos)>0)
+			return $datos[0]['id_bloque'];
+		else
+			return 0;
+	}
+	function get_nuevo_numero_bloque(){
+		return $this->get_ultimo_numero_bloque()+1;		
 	}
 }
 

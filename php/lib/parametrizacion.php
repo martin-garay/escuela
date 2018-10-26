@@ -8,7 +8,7 @@ class parametrizacion extends comunes
 	}
 	function get_anios(){
 		for ($i=0; $i < 20; $i++) { 
-			$datos[$i]['anio'] = $i+2018;
+			$datos[$i]['anio'] = $i+2017;
 		}
 		return $datos;
 	}

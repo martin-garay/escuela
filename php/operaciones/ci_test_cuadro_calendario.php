@@ -27,6 +27,7 @@ class ci_test_cuadro_calendario extends escuela_ci
 	function evt__guardar(){
 		$this->dep('generacion_clase')->guardar();
 		toba::notificacion()->info("Se genero la clase");
+		$this->dep('generacion_clase')->resetear();
 		$this->set_pantalla('pant_inicial');
 	}
 	function evt__volver(){

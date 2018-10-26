@@ -85,6 +85,15 @@ INSERT INTO apex_consulta_php (proyecto, consulta_php, clase, archivo_clase, arc
 	NULL, --descripcion
 	'15'  --punto_montaje
 );
+INSERT INTO apex_consulta_php (proyecto, consulta_php, clase, archivo_clase, archivo, descripcion, punto_montaje) VALUES (
+	'escuela', --proyecto
+	'24', --consulta_php
+	'liquidaciones', --clase
+	'liquidaciones', --archivo_clase
+	'lib/liquidaciones.php', --archivo
+	NULL, --descripcion
+	'15'  --punto_montaje
+);
 --- FIN Grupo de desarrollo 0
 
 --- INICIO Grupo de desarrollo 18
