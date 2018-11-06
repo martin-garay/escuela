@@ -1,4 +1,4 @@
-begin transaction;
+
 create table tipos_liquidaciones(
 	id serial not null,
 	descripcion character varying (100) not null,
@@ -42,3 +42,4 @@ $BODY$
   COST 100;
 
   alter table caja_operaciones_diarias add column id_bloque integer; --para asociar todo un proceso con un id
+  alter table con_liquidaciones add column id_bloque integer not null;
