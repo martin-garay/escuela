@@ -1,18 +1,20 @@
 <?php
 class comunes
 {
-	function get_generico($tabla,$where=null,$order=null){
+	function get_generico($tabla,$where=null,$order=null, $usar_perfil_datos=true){
 		$where = ($where) ? ' WHERE '.$where : '';
 		$order = ($order) ? ' ORDER BY '.$order : '';
 		$sql = "SELECT * FROM $tabla $where $order";
+		$sql = ($usar_perfil_datos) ? toba::perfil_de_datos()->filtrar($sql) : $sql;
 		FB::info($sql);		
 		return toba::db()->consultar($sql);
 	}
 
-	function get_generico_sql($sql,$where=null,$order=null){
+	function get_generico_sql($sql,$where=null,$order=null,$usar_perfil_datos=false){
 		$where = ($where) ? ' WHERE '.$where : '';
 		$order = ($order) ? ' ORDER BY '.$order : '';
 		$sql = "$sql $where $order";
+		$sql = ($usar_perfil_datos) ? toba::perfil_de_datos()->filtrar($sql) : $sql;
 		return toba::db()->consultar($sql);
 	}
 
