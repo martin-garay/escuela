@@ -27,7 +27,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --descripcion
 	'15', --punto_montaje
 	NULL, --actividad_accion
-	'1', --menu
+	'0', --menu
 	NULL, --orden
 	'0', --solicitud_registrar
 	NULL, --solicitud_obs_tipo_proyecto
@@ -38,7 +38,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'escuela', --zona_proyecto
 	'zona_curso', --zona
 	'5', --zona_orden
-	'1', --zona_listar
+	'0', --zona_listar
 	'proyecto', --imagen_recurso_origen
 	'book.png', --imagen
 	NULL, --parametro_a

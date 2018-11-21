@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[3559]--  ABM Clases Basico 
+--[3559]--  ABM Clases Teoricas Basico 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -13,7 +13,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'3559', --item
 	NULL, --padre_id
 	'escuela', --padre_proyecto
-	'18000079', --padre
+	'3565', --padre
 	'0', --carpeta
 	'0', --nivel_acceso
 	'web', --solicitud_tipo
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'ABM Clases Basico', --nombre
+	'ABM Clases Teoricas Basico', --nombre
 	NULL, --descripcion
 	'15', --punto_montaje
 	NULL, --actividad_accion
