@@ -5,8 +5,7 @@ class comunes
 		$where = ($where) ? ' WHERE '.$where : '';
 		$order = ($order) ? ' ORDER BY '.$order : '';
 		$sql = "SELECT * FROM $tabla $where $order";
-		$sql = ($usar_perfil_datos) ? toba::perfil_de_datos()->filtrar($sql) : $sql;
-		FB::info($sql);		
+		$sql = ($usar_perfil_datos) ? toba::perfil_de_datos()->filtrar($sql) : $sql;		
 		return toba::db()->consultar($sql);
 	}
 

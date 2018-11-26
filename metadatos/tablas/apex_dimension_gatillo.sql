@@ -68,7 +68,7 @@ INSERT INTO apex_dimension_gatillo (proyecto, dimension, gatillo, tipo, orden, t
 	'18000001', --gatillo
 	'directo', --tipo
 	'1', --orden
-	'sedes', --tabla_rel_dim
+	'v_sedes', --tabla_rel_dim
 	'id', --columnas_rel_dim
 	NULL, --tabla_gatillo
 	NULL  --ruta_tabla_rel_dim

@@ -8,7 +8,7 @@ class ci_cursadas extends escuela_ci
 		toba::consulta_php('comunes')->chequeo_zona_cursos();
 		if(toba::zona()->cargada()){
 			$curso = array('id'=>toba::zona()->get_editable_id());
-		}
+		}		
 	}
 	//-----------------------------------------------------------------------------------
 	//---- eventos ----------------------------------------------------------------------

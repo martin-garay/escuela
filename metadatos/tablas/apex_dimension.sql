@@ -43,7 +43,7 @@ INSERT INTO apex_dimension (proyecto, dimension, nombre, descripcion, schema, ta
 	'sedes', --nombre
 	NULL, --descripcion
 	NULL, --schema
-	'sedes', --tabla
+	'v_sedes', --tabla
 	'id', --col_id
 	'nombre', --col_desc
 	NULL, --col_desc_separador
