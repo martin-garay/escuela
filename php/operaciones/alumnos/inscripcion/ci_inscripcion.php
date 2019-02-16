@@ -12,6 +12,10 @@ class ci_inscripcion extends escuela_ci
 	function relacion(){
 		return $this->dep('relacion');
 	}
+	function es_edicion(){
+		return $this->relacion()->esta_cargada();
+	}
+
 	function limpiar_variables(){
 		unset($id_cursada);
 		unset($id_curso);
@@ -177,6 +181,18 @@ class ci_inscripcion extends escuela_ci
 					where /*modulo_vigente and*/ id_cursada<>$id_cursada and id_curso=$id_curso and id_sede=$id_sede and id_tipo_cursada=$id_tipo_cursada
 				)  as s 
 				order by orden1,orden $limit";
+		return toba::db()->consultar($sql);
+	}
+
+
+	//para llenar el combo con las sedes. 
+	function get_cascada_sedes_dictan_curso($id_curso){
+		if( $this->es_edicion() ){
+			$id_sede = $this->tabla('cursadas_alumnos')->get_columna('id_sede');
+			$sql = "SELECT id ,nombre as descripcion from sedes";
+		}else{		//Trae las sedes donde se dicta el curso
+			$sql = "SELECT distinct(id_sede) as id,sede as descripcion from v_cursadas where id_curso = $id_curso";
+		}		
 		return toba::db()->consultar($sql);
 	}	
 }

@@ -98,6 +98,9 @@ class cursos extends comunes
 	function get_calendario_clases_practicas($where=null, $order_by=null){
 		return $this->get_generico('v_calendario_clases_practicas', $where, $order_by);	
 	}
+	function get_clases_practicas($where=null, $order_by=null){
+		return $this->get_generico('v_clases_practicas', $where, $order_by);		
+	}
 
 }
 ?>
