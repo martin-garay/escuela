@@ -323,7 +323,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'escuela', --carga_fuente
 	NULL, --carga_lista
 	'id', --carga_col_clave
-	'nombre', --carga_col_desc
+	'nombre_mes', --carga_col_desc
 	'id_cursada', --carga_maestros
 	'0', --carga_cascada_relaj
 	'0', --cascada_mantiene_estado

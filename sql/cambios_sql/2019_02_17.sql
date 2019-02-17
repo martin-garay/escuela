@@ -1,0 +1,28 @@
+CREATE OR REPLACE VIEW public.v_cursadas_modulos AS 
+ SELECT cm.id,
+    cm.descripcion,
+    cm.mes,
+    cm.observaciones,
+    cm.nombre,
+    cm.id_cursada,
+    cm.anio,
+    (((cm.anio || '-'::text) || cm.mes) || '-01'::text)::date AS periodo,
+    ((((cm.anio || '-'::text) || cm.mes) || '-01'::text)::date) >= (((((date_part('year'::text, now()) || '-'::text) || date_part('month'::text, now())) || '-'::text) || date_part('day'::text, now()))::date) AS modulo_vigente,
+    c.descripcion AS cursada,
+    c.id_curso,
+    c.curso,
+    c.descripcion_curso,
+    c.duracion_curso,
+    cm.orden,
+    c.id_sede,
+    c.sede,
+    cm.nro_modulo,
+    cm.fecha_inicio,
+    cm.fecha_fin,
+    cm.paga_cuota,
+    cm.importe_cuota,
+    c.id_tipo_cursada,
+    c.tipo_cursada,
+    cm.nombre || ' - ' || upper(to_char(to_timestamp (mes::text, 'MM'), 'TMmon')) as nombre_mes
+   FROM cursadas_modulos cm
+     JOIN v_cursadas c ON c.id = cm.id_cursada;
