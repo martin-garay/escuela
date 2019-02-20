@@ -181,6 +181,14 @@ class ci_inscripcion extends escuela_ci
 					where /*modulo_vigente and*/ id_cursada<>$id_cursada and id_curso=$id_curso and id_sede=$id_sede and id_tipo_cursada=$id_tipo_cursada
 				)  as s 
 				order by orden1,orden $limit";
+
+
+		$modulo_inicio = toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada AND nro_modulo=$nro_modulo_inicio")[0];
+		$sql = "SELECT $id_alumno as id_alumno,id as id_modulo,'A' as apex_ei_analisis_fila
+				from v_cursadas_modulos 
+				where periodo>='$modulo_inicio[periodo]' and id_curso=$id_curso and id_sede=$id_sede and id_tipo_cursada=$id_tipo_cursada
+				ORDER BY periodo ASC
+				$limit";
 		return toba::db()->consultar($sql);
 	}
 
