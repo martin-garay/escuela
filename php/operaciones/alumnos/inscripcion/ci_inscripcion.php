@@ -155,7 +155,9 @@ class ci_inscripcion extends escuela_ci
 		if(isset($this->id_curso)){
 			$datos = toba::consulta_php('cursos')->get_modulos_cursadas("id_curso={$this->id_curso} /*and modulo_vigente*/", "id_cursada,periodo asc");
 			foreach ($datos as $key => $fila) {
-				$datos[$key]['descripcion2'] = $fila['nombre_mes'] . ' (' .$fila['cursada'] . ' - '.$fila['sede'].')';
+				$periodo = ($fila['mes']<10) ? "0$fila[mes]-$fila[anio]" : "$fila[mes]-$fila[anio]";
+				//$datos[$key]['descripcion2'] = $fila['nombre_mes'] . ' (' .$fila['cursada'] . ' - '.$fila['sede'].')';
+				$datos[$key]['descripcion2'] = $periodo .' - '.$fila['nombre'] . " (Cursada " .$fila['cursada'] . ' - '.$fila['sede'].')';
 			}	
 			return $datos;
 		}else{
