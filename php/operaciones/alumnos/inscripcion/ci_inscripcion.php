@@ -63,10 +63,10 @@ class ci_inscripcion extends escuela_ci
 
 	function evt__cuadro__eliminar($seleccion)
 	{
-		$this->dep('datos')->cargar($seleccion);
+		$this->relacion()->cargar($seleccion);
 		try{
-            $this->dep('datos')->eliminar_todo();
-            $this->dep('datos')->sincronizar();
+            $this->relacion()->eliminar_todo();
+            $this->relacion()->sincronizar();
 		}catch(toba_error_db $e){
 			if($e->get_sqlstate()=="db_23503"){
 				toba::notificacion()->agregar('ATENCION! El registro esta siendo utilizado');
@@ -74,7 +74,7 @@ class ci_inscripcion extends escuela_ci
 				toba::notificacion()->agregar('ERROR! El registro No puede eliminarse');
             }
 		}
-        $this->dep('datos')->resetear();
+        $this->relacion()->resetear();
 	}
 
 	//-----------------------------------------------------------------------------------
