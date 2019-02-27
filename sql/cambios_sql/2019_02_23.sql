@@ -19,7 +19,7 @@ CREATE OR REPLACE VIEW public.v_cursadas AS
     now()::date >= cu.fecha_inicio AND now()::date <= cu.fecha_fin AS cursada_vigente,
     cu.id_tipo_cursada,
     tc.descripcion AS tipo_cursada,
-    cu.descripcion ||' ('|| TO_CHAR(fecha_inicio, 'YYYY/MM/DD')||' - '|| TO_CHAR(fecha_fin, 'YYYY/MM/DD')||')' descripcion_con_fecha
+    cu.descripcion ||' ('|| TO_CHAR(fecha_inicio, 'DD/MM/YYYY')||' - '|| TO_CHAR(fecha_fin, 'DD/MM/YYYY')||')' descripcion_con_fecha
    FROM cursadas cu
      JOIN cursos c ON c.id = cu.id_curso
      JOIN v_sedes s ON s.id = cu.id_sede

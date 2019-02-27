@@ -272,7 +272,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --carga_lista
 	'id', --carga_col_clave
 	'nombre', --carga_col_desc
-	'0', --carga_permite_no_seteado
+	'1', --carga_permite_no_seteado
 	'-- Seleccione --', --carga_no_seteado
 	'0', --carga_no_seteado_ocultar
 	NULL, --carga_maestros
