@@ -128,7 +128,7 @@ class abm_clases_basico extends escuela_ci
 		$this->dep('dt_clases')->resetear();
 	}
 	function get_modulos_cursada(){
-		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=".$this->s__id_cursada);
+		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=".$this->s__id_cursada,"periodo ASC");
 	}
 	//-----------------------------------------------------------------------------------
 	//---- Configuraciones --------------------------------------------------------------
