@@ -98,7 +98,7 @@ class ci_datos_clase extends escuela_ci
 		$respuesta->set($resultado);
 	}
 	function get_tipos_clase(){
-		return array('id'=>1, 'descripcion'=>'TEORICA'); //solo va a usar el tipo teorica
+		return array(array('id'=>1, 'descripcion'=>'TEORICA')); //solo va a usar el tipo teorica
 	}	
 }
 ?>
