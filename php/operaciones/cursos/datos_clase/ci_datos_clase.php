@@ -96,6 +96,9 @@ class ci_datos_clase extends escuela_ci
 		$fecha = $parametros[1];
 		$resultado['ok'] = toba::consulta_php('cursos')->validar_fecha_clase_en_modulo($id_modulo,$fecha);
 		$respuesta->set($resultado);
+	}
+	function get_tipos_clase(){
+		return array('id'=>1, 'descripcion'=>'TEORICA'); //solo va a usar el tipo teorica
 	}	
 }
 ?>
