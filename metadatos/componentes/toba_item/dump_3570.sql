@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[3570]--  ABM Profesores 
+--[3570]--  ABM Tipo Profesor 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'ABM Profesores', --nombre
+	'ABM Tipo Profesor', --nombre
 	NULL, --descripcion
 	'15', --punto_montaje
 	NULL, --actividad_accion
