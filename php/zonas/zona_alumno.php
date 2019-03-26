@@ -66,7 +66,9 @@ class zona_alumno extends toba_zona
 	}
 	function get_alertas(){
 		return toba::consulta_php('alertas')->get_alertas_persona($this->get_editable_id());
-	}
-
+	}	
+	function get_cursadas(){
+		return toba::consulta_php('cursos')->get_cursadas_alumnos("id_alumno=".$this->editable_id,"fecha_inscripcion desc");
+	}	
 }
 ?>

@@ -135,13 +135,13 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'5901', --objeto_ei_formulario_fila
 	'2674', --objeto_ei_formulario
 	'escuela', --objeto_ei_formulario_proyecto
-	'id_alumno', --identificador
+	'id_cursada_alumno', --identificador
 	'ef_combo_editable', --elemento_formulario
-	'id_alumno', --columnas
+	'id_cursada_alumno', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'2', --orden
-	'Alumno', --etiqueta
+	'Alumno Cursada', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
@@ -154,11 +154,11 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --estado_defecto
 	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
-	'get_alumnos', --carga_metodo
+	'get_inscripciones', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	'14', --carga_consulta_php
+	NULL, --carga_consulta_php
 	NULL, --carga_sql
 	'escuela', --carga_fuente
 	NULL, --carga_lista
@@ -186,9 +186,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --popup_proyecto
 	NULL, --popup_editable
 	NULL, --popup_ventana
-	'get_alumnos_descripcion', --popup_carga_desc_metodo
-	'combo_editable', --popup_carga_desc_clase
-	'lib/combo_editable.php', --popup_carga_desc_include
+	'get_inscripciones_descripcion', --popup_carga_desc_metodo
+	'ci_datos_asistencia', --popup_carga_desc_clase
+	'operaciones/cursos/datos_asistencia/ci_datos_asistencia.php', --popup_carga_desc_include
 	NULL, --popup_puede_borrar_estado
 	NULL, --fieldset_fin
 	NULL, --check_valor_si
@@ -304,15 +304,15 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
-	NULL, --colapsado
-	NULL, --desactivado
+	'0', --colapsado
+	'0', --desactivado
 	NULL, --estilo
-	NULL, --total
+	'0', --total
 	NULL, --inicializacion
-	NULL, --permitir_html
-	NULL, --deshabilitar_rest_func
+	'0', --permitir_html
+	'0', --deshabilitar_rest_func
 	NULL, --estado_defecto
-	NULL, --solo_lectura
+	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
 	NULL, --carga_metodo
 	NULL, --carga_clase

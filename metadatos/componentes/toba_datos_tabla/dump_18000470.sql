@@ -72,9 +72,9 @@ INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, mi
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
 	'18000470', --objeto
-	'1287', --col_id
-	'id_alumno', --columna
-	'E', --tipo
+	'1288', --col_id
+	'presente', --columna
+	'L', --tipo
 	'0', --pk
 	'', --secuencia
 	NULL, --largo
@@ -86,9 +86,9 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'escuela', --objeto_proyecto
 	'18000470', --objeto
-	'1288', --col_id
-	'presente', --columna
-	'L', --tipo
+	'1376', --col_id
+	'id_cursada_alumno', --columna
+	'E', --tipo
 	'0', --pk
 	'', --secuencia
 	NULL, --largo

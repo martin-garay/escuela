@@ -71,9 +71,26 @@ class ci_datos_asistencia extends escuela_ci
 	function get_alumnos_del_modulo(){
 		$clase = $this->tabla('clases')->get();
 		$id_modulo = $clase['id_modulo'];		 
-		$sql = "SELECT $id_clase as id_clase,id_alumno, 'A' as apex_ei_analisis_fila 
+		$sql = "SELECT $id_clase as id_clase,id_cursadas_alumnos as id_cursada_alumno, 'A' as apex_ei_analisis_fila 
 				FROM v_cursadas_modulos_alumnos WHERE id_modulo=$id_modulo ORDER BY apellido_alumno,nombre_alumno";
 		return toba::db()->consultar($sql);
+	}
+
+	function get_inscripciones($filtro){
+		$id_curso = toba::zona()->get_editable_id();
+		//$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
+		//		FROM v_personas WHERE es_alumno(id) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' AND
+		//			EXISTS(SELECT 1 FROM cursadas_alumnos ca 
+		//					WHERE ca.id_alumno=v_personas.id AND ca.id_curso=$id_curso /*AND id_condicion_alumno=2*/)";
+		$sql = "SELECT id, dni||' '||apellido_alumno||' '||nombre_alumno as descripcion 
+				FROM v_cursadas_alumnos WHERE id_curso=$id_curso";
+		return toba::db()->consultar($sql);
+	}
+	function get_inscripciones_descripcion($id_cursada_alumno){
+		$sql = "SELECT dni||' '||apellido_alumno||' '||nombre_alumno as descripcion 
+				FROM v_cursadas_alumnos WHERE id=$id_cursada_alumno";
+        $datos = toba::db()->consultar($sql);
+        return $datos[0]['descripcion'];
 	}
 
 	/* --------------------------------------------------------------------------- */
@@ -101,6 +118,7 @@ class ci_datos_asistencia extends escuela_ci
 		$datos = toba::consulta_php('cursos')->get_alumnos_modulos("id_modulo=".$clase['id_modulo'],"apellido_alumno,nombre_alumno");
 		foreach ($datos as $key => $value) {
 		 	$datos[$key]['apex_ei_analisis_fila'] = 'A';
+		 	$datos[$key]['id_cursada_alumno'] = $datos[$key]['id_cursadas_alumnos'];
 		 } 
 		return $datos;
 		

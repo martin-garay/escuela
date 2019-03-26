@@ -101,6 +101,12 @@ class cursos extends comunes
 	function get_clases_practicas($where=null, $order_by=null){
 		return $this->get_generico('v_clases_practicas', $where, $order_by);		
 	}
+	function get_cursadas_alumnos($where=null, $order_by=null){
+		return $this->get_generico('v_cursadas_alumnos', $where, $order_by);		
+	}
+	function get_asistencia_clases_teoricas($where=null, $order_by=null){
+		return $this->get_generico('v_asistencia_clases_teoricas', $where, $order_by);		
+	}
 
 }
 ?>
