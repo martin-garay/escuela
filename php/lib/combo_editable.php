@@ -38,5 +38,15 @@ class combo_editable extends comunes
 				FROM v_personas WHERE ( es_alumno(id) OR es_practicante(id) ) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
 		return toba::db()->consultar($sql);
 	}
+	function get_personas($filtro){
+		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
+				FROM v_personas WHERE dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
+		return toba::db()->consultar($sql);
+	}
+	function get_personas_descripcion($id){
+		$sql = "SELECT dni||' '||apellido||' '||nombre as descripcion FROM v_personas WHERE id=$id";
+        $datos = toba::db()->consultar($sql);
+        return $datos[0]['descripcion'];
+	}
 }
 ?>
