@@ -152,3 +152,12 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'18000471', --hijo_objeto
 	'18000533'  --hijo_clave
 );
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'escuela', --proyecto
+	'2642', --objeto
+	'80', --asoc_id
+	'18000469', --padre_objeto
+	'18000519', --padre_clave
+	'18000470', --hijo_objeto
+	'1381'  --hijo_clave
+);
