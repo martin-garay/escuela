@@ -3,7 +3,7 @@ include_once 'comunes.php';
 
 class sedes extends comunes
 {
-	function get_sedes($where=null, $order_by=null){
+	function get_sedes($where=null, $order_by='nombre'){
 		return $this->get_generico('v_sedes',$where,$order_by);
 	}	
 	function get_alquiler_sede_detallado($where=null, $order_by=null){		
