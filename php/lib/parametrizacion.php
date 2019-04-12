@@ -36,7 +36,7 @@ class parametrizacion extends comunes
 	function get_tipos_clase($where=null, $order_by=null){
 		return $this->get_generico('tipo_clase',$where,$order_by);
 	}
-	function get_tipo_clase_practica($where=null, $order_by=null){
+	function get_tipo_clase_practica($where=null, $order_by='descripcion'){
 		return $this->get_generico('tipos_clases_practicas',$where,$order_by);
 	}
 	function get_perfiles($where=null, $order_by=null){

@@ -5,7 +5,8 @@ class combo_editable extends comunes
 {
 	function get_alumnos($filtro){
 		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
-				FROM v_personas WHERE es_alumno(id) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
+				FROM v_personas WHERE es_alumno(id) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' 
+				ORDER BY apellido,nombre";
 		return toba::db()->consultar($sql);
 	}
 	function get_alumnos_descripcion($id){
@@ -25,7 +26,8 @@ class combo_editable extends comunes
 	}
 	function get_profesores($filtro){
         $sql = "SELECT id, apellido||' '||nombre||' - '||dni as descripcion 
-        		FROM v_personas WHERE es_profesor(id) AND apellido||' '||nombre||' - '||dni ILIKE '%$filtro%'";
+        		FROM v_personas WHERE es_profesor(id) AND apellido||' '||nombre||' - '||dni ILIKE '%$filtro%'
+        		ORDER BY apellido,nombre";
         return toba::db()->consultar($sql);        
 	}
 	function get_profesores_descripcion($id_persona){
@@ -35,12 +37,14 @@ class combo_editable extends comunes
 	}
 	function get_alumnos_y_practicantes($filtro){
 		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
-				FROM v_personas WHERE ( es_alumno(id) OR es_practicante(id) ) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
+				FROM v_personas WHERE ( es_alumno(id) OR es_practicante(id) ) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' 
+				ORDER BY apellido,nombre";
 		return toba::db()->consultar($sql);
 	}
 	function get_personas($filtro){
 		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
-				FROM v_personas WHERE dni||' '||apellido||' '||nombre ILIKE '%$filtro%' ";
+				FROM v_personas WHERE dni||' '||apellido||' '||nombre ILIKE '%$filtro%' 
+				ORDER BY apellido,nombre";
 		return toba::db()->consultar($sql);
 	}
 	function get_personas_descripcion($id){
