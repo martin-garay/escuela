@@ -20,10 +20,27 @@ class ci_generacion_clases_practicas extends escuela_ci
 	function resetear(){
 		$this->relacion()->resetear();
 	}
-	function validar(){
-		if( ($this->tabla('profesores')->get_cantidad_filas()>0) && ($this->tabla('alumnos')->get_cantidad_filas()>0) )
-			return true;
-		return false;
+	function validar(){		
+		//cantidad de profesores y alumnos
+		if( ($this->tabla('profesores')->get_cantidad_filas()==0) || ($this->tabla('alumnos')->get_cantidad_filas()==0) ){						
+			toba::notificacion()->error('Se debe cargar al menos un profesor y un alumno');
+			return false;
+		}		
+		
+		//superposicion de clases de un profesor
+		$profesores = $this->tabla('profesores')->get_filas();
+		$clase = $this->tabla('clase')->get();
+		if( $this->solapa_profesor($profesores[0]['id_profesor'], $clase['fecha'], $clase['hora_inicio'], $clase['hora_fin']) ){
+			toba::notificacion()->error('Existe solapamiento de horario en la clase para el profesor');
+			return false;
+		}
+		return true;		
+	}
+	function solapa_profesor($id_profesor, $fecha, $hora_inicio, $hora_fin){
+		//si es esdicion no comparo contra si mismo		
+		$where_id_clase = ($this->relacion()->esta_cargada()) ? "and id_clase_practica<>".$this->tabla('clase')->get_columna('id') : "";
+		$datos = toba::consulta_php('comunes')->get_generico('v_clases_practicas_profesores',"id_profesor=$id_profesor and fecha='$fecha' and hora_inicio<'$hora_fin' AND hora_fin>'$hora_inicio' $where_id_clase");
+		return (count($datos)>0);
 	}
 	function guardar(){
 		try {
