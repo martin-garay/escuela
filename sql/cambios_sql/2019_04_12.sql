@@ -101,3 +101,27 @@ CREATE OR REPLACE VIEW public.v_cursadas_alumnos AS
      JOIN v_personas p ON p.id = ca.id_alumno
      JOIN condiciones_alumno cond ON cond.id = ca.id_condicion_alumno
      JOIN cursadas_modulos cm ON cm.id = ca.modulo_inicio;
+
+ALTER TABLE public.clases_practicas_alumnos
+  ADD CONSTRAINT uk__clases_practicas_alumnos UNIQUE(id_alumno, id_clase_practica);
+
+
+CREATE OR REPLACE FUNCTION public.sp_trg_bd_clases_practicas_profesores()
+  RETURNS trigger AS
+$BODY$
+DECLARE    
+BEGIN
+  IF OLD.liquidada THEN
+    RAISE EXCEPTION 'NO SE PUEDE ELIMINAR UNA CLASE LIQUIDADA';
+  END IF;
+  RETURN OLD;
+  END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.sp_trg_bd_clases_practicas_profesores()
+  OWNER TO postgres;
+
+
+ALTER TABLE clases_practicas 
+ADD CONSTRAINT ck_clases_practicas_hora_inicio_hora_fin CHECK (hora_inicio < hora_fin);

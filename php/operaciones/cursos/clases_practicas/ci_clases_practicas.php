@@ -50,9 +50,23 @@ class ci_clases_practicas extends escuela_ci
 	//-----------------------------------------------------------------------------------
 
 	function conf__cuadro(escuela_ei_cuadro $cuadro)
-	{
-		$where = (isset($this->s__filtro)) ? $this->dep('filtro')->get_sql_where() : null;
-		return toba::consulta_php('cursos')->get_clases_practicas($where, 'fecha');
+	{		
+		$where = null;
+		if(isset($this->s__filtro)){
+			$clausulas = $this->dep('filtro')->get_sql_clausulas();
+			if(isset($clausulas['id_profesor'])){
+				$id_profesor = $this->s__filtro['id_profesor']['valor'];
+				$where_profesor = "exists(select 1 from clases_practicas_profesores where id_profesor=$id_profesor 
+									and id_clase_practica=v_clases_practicas.id)";
+				unset($clausulas['id_profesor']);
+				$where = $this->dep('filtro')->get_sql_where('AND',$clausulas);
+				$where = ($where) ? "$where AND $where_profesor " : $where_profesor; 
+			}else{
+				$where = $this->dep('filtro')->get_sql_where();
+			}				
+		}
+		$datos = toba::consulta_php('cursos')->get_clases_practicas($where, 'fecha');
+		$cuadro->set_datos($datos);
 	}
 
 	function evt__cuadro__seleccion($seleccion)
