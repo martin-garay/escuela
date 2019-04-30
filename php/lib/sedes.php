@@ -5,7 +5,12 @@ class sedes extends comunes
 {
 	function get_sedes($where=null, $order_by='nombre'){
 		return $this->get_generico('v_sedes',$where,$order_by);
-	}	
+	}
+	function get_sedes_usuario($where=null, $order_by='nombre'){
+		$usuario = toba::usuario()->get_id();		
+		$where = (isset($where)) ? " $where AND id IN (SELECT get_sedes_usuario('$usuario'))" : "id IN (SELECT get_sedes_usuario('$usuario'))";
+		return $this->get_generico('v_sedes',$where,$order_by);
+	}
 	function get_alquiler_sede_detallado($where=null, $order_by=null){		
 		return $this->get_generico('v_alquiler_cabecera', $where, $order_by);
 	}

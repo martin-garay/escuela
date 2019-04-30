@@ -40,7 +40,7 @@ class ci_asistencia_clases_practicas extends escuela_ci
 				$where_tipo_persona = " AND id_alumno IN (SELECT id_persona FROM personas_tipo WHERE id_tipo_persona=$id_tipo_persona)";
 			}
 			$where =  $this->dep('filtro')->get_sql_where("AND",$clausulas) . $where_tipo_persona;
-			return toba::consulta_php('cursos')->get_clases_practicas_alumnos($where,"anio_clase,mes_clase DESC");
+			return toba::consulta_php('cursos')->get_clases_practicas_alumnos($where,"anio_clase DESC,mes_clase DESC");
 		}		
 	}
 

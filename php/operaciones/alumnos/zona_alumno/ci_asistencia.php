@@ -55,5 +55,14 @@ class ci_asistencia extends escuela_ci
 		return toba::consulta_php('cursos')->get_asistencia_clases_practicas("id_cursada_alumno=".$this->s__id_cursada_alumno);	
 	}
 
+	function extender_objeto_js(){
+		if($this->get_id_pantalla()=='pant_asistencia')
+			echo "		
+				$('.ei-cuadro-total').each(function(){
+					var cant_horas = '<strong>' + $(this).first().text() + ' hs</strong>';
+					$(this).first().html(cant_horas);
+				});
+			";
+	}
 }
 ?>

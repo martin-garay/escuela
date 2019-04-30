@@ -99,7 +99,7 @@ INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto
 	'1', --orden
 	'periodo_clase', --columnas_id
 	'periodo_clase', --columnas_descripcion
-	'1', --pie_contar_filas
+	'0', --pie_contar_filas
 	'0', --pie_mostrar_titular
 	'0', --pie_mostrar_titulos
 	NULL, --imp_paginar
@@ -330,3 +330,14 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL  --evento_asociado
 );
 --- FIN Grupo de desarrollo 0
+
+------------------------------------------------------------
+-- apex_objeto_cuadro_col_cc
+------------------------------------------------------------
+INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
+	'74', --objeto_cuadro_cc
+	'escuela', --objeto_cuadro_proyecto
+	'2748', --objeto_cuadro
+	'1216', --objeto_cuadro_col
+	'1'  --total
+);
