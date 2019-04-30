@@ -46,6 +46,7 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	NULL, --item_id
 	'3540'  --item
 );
+<<<<<<< HEAD
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'escuela', --proyecto
 	'profesor', --usuario_grupo_acc
@@ -61,6 +62,17 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 --- FIN Grupo de desarrollo 0
 
 --- INICIO Grupo de desarrollo 18
+=======
+>>>>>>> 59496b8b765e66e6c05a5835edcc9ef1042211f0
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'escuela', --proyecto
+	'profesor', --usuario_grupo_acc
+	NULL, --item_id
+	'3544'  --item
+);
+--- FIN Grupo de desarrollo 0
+
+--- INICIO Grupo de desarrollo 18
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'escuela', --proyecto
 	'profesor', --usuario_grupo_acc
@@ -72,12 +84,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'profesor', --usuario_grupo_acc
 	NULL, --item_id
 	'18000080'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'escuela', --proyecto
-	'profesor', --usuario_grupo_acc
-	NULL, --item_id
-	'18000081'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'escuela', --proyecto
