@@ -18,5 +18,31 @@ class alumnos extends comunes
 		$datos = $this->get_generico('cursadas_alumnos',"id_alumno=$id_alumno AND id_cursada=$id_cursada and id_condicion_alumno=$condicion_alumno");
 		return $datos[0]['id'];
 	}
+
+	function get_nro_registro($id_alumno){
+		$sql = "SELECT * FROM registro_alumnos WHERE id_alumno=$id_alumno";
+		$datos = toba::db()->consultar($sql);
+		return $datos[0]['nro_registro'];
+	}
+	function get_anio_registro($id_alumno){
+		$sql = "SELECT * FROM registro_alumnos WHERE id_alumno=$id_alumno";
+		$datos = toba::db()->consultar($sql);
+		return $datos[0]['anio_registro'];
+	}
+	function get_registro($id_alumno){
+		$sql = "SELECT * FROM registro_alumnos WHERE id_alumno=$id_alumno";
+		$datos = $this->generico('registro_alumnos');		
+		return (isset($datos)) ? $datos[0] : null;
+	}
+	function tiene_nro_registro($id_alumno){
+		$sql = "SELECT * FROM registro_alumnos WHERE id_alumno=$id_alumno";
+		$datos = toba::db()->consultar($sql);
+		return (count($datos)>0);
+	}
+	function get_ultimo_nro_registro(){
+		$sql = "SELECT nro_registro from ultimo_nro_registro";
+		$datos = toba::db()->consultar($sql);
+		return $datos[0]['nro_registro'];
+	}
 }
 ?>

@@ -137,13 +137,13 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'id_sede', --expresion
 	'Sede', --etiqueta
 	NULL, --descripcion
-	'0', --obligatorio
+	'1', --obligatorio
 	'1', --inicial
 	'1', --orden
 	NULL, --estado_defecto
-	'0', --opciones_es_multiple
-	'ef_combo', --opciones_ef
-	'get_sedes', --carga_metodo
+	'1', --opciones_es_multiple
+	'ef_multi_seleccion_doble', --opciones_ef
+	'get_sedes_usuario', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
@@ -153,8 +153,8 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --carga_lista
 	'id', --carga_col_clave
 	'nombre', --carga_col_desc
-	'1', --carga_permite_no_seteado
-	'-- Seleccione --', --carga_no_seteado
+	'0', --carga_permite_no_seteado
+	NULL, --carga_no_seteado
 	'0', --carga_no_seteado_ocultar
 	NULL, --carga_maestros
 	NULL, --edit_tamano
@@ -177,12 +177,12 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --check_valor_no
 	NULL, --check_desc_si
 	NULL, --check_desc_no
-	NULL, --selec_cant_minima
+	'1', --selec_cant_minima
 	NULL, --selec_cant_maxima
-	NULL, --selec_utilidades
+	'1', --selec_utilidades
 	NULL, --selec_tamano
 	NULL, --selec_ancho
-	NULL, --selec_serializar
+	'0', --selec_serializar
 	NULL, --selec_cant_columnas
 	NULL  --placeholder
 );
@@ -254,7 +254,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'Clase', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
-	'1', --inicial
+	'0', --inicial
 	'3', --orden
 	NULL, --estado_defecto
 	'0', --opciones_es_multiple
@@ -312,7 +312,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'Fecha', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
-	'1', --inicial
+	'0', --inicial
 	'4', --orden
 	NULL, --estado_defecto
 	'0', --opciones_es_multiple

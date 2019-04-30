@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'Generacion Clase Practica - form_ml_alumnos', --nombre
-	'Alumnos', --titulo
+	'Alumnos<div id="botonera_alumno"></div>', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	'escuela', --fuente_datos_proyecto
@@ -37,7 +37,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_f
 	NULL, --usuario
 	'2018-10-01 13:03:38', --creacion
-	'abajo'  --posicion_botonera
+	'ambos'  --posicion_botonera
 );
 --- FIN Grupo de desarrollo 18
 
@@ -105,7 +105,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	NULL, --ancho_etiqueta
 	NULL, --expandir_descripcion
 	NULL, --campo_bl
-	'0', --scroll
+	'1', --scroll
 	NULL, --filas
 	'1', --filas_agregar
 	'1', --filas_agregar_online
@@ -116,9 +116,9 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	'0', --filas_ordenar
 	'0', --filas_ordenar_en_linea
 	'', --columna_orden
-	'0', --filas_numerar
+	'1', --filas_numerar
 	NULL, --ev_seleccion
-	NULL, --alto
+	'300px', --alto
 	'LINEA', --analisis_cambios
 	NULL, --no_imprimir_efs_sin_estado
 	NULL, --resaltar_efs_con_estado
