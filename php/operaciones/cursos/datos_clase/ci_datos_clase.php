@@ -7,11 +7,14 @@ class ci_datos_clase extends escuela_ci
 	function set_curso($id_curso){
 		$this->id_curso = $id_curso;
 	}
-	function get_cursadas(){
-		if(isset($this->id_curso))
-			return toba::consulta_php('cursos')->get_cursadas("id_curso={$this->id_curso}", 'fecha_inicio DESC');
-		else
-			return toba::consulta_php('cursos')->get_cursadas(null, 'fecha_inicio DESC');
+//	function get_cursadas($id_sede){
+//		if(isset($this->id_curso))
+//			return toba::consulta_php('cursos')->get_cursadas("id_curso={$this->id_curso} AND id_sede=$id_sede", 'fecha_inicio DESC');
+//		else
+//			return toba::consulta_php('cursos')->get_cursadas("id_sede=$id_sede", 'fecha_inicio DESC');
+//	}
+	function get_cursadas_de_sede($id_sede){		
+		return $this->controlador()->get_cursadas_de_sede($id_sede);
 	}
 	function get_modulos($id_cursada){
 		return toba::consulta_php('cursos')->get_modulos_cursadas("id_cursada=$id_cursada");
@@ -24,9 +27,11 @@ class ci_datos_clase extends escuela_ci
 	function conf__form_clase(escuela_ei_formulario $form)
 	{        
 		//if($this->tabla('clases')->esta_cargada())
-			$form->set_datos($this->tabla('clases')->get());
-		if(isset($this->id_curso))
+		$form->set_datos($this->tabla('clases')->get());
+		if(isset($this->id_curso)){
 			$form->ef('id_curso')->set_estado($this->id_curso);
+			$form->ef('id_curso')->set_solo_lectura();
+		}
 	}
 	function evt__form_clase__modificacion($datos)
 	{     
@@ -68,7 +73,8 @@ class ci_datos_clase extends escuela_ci
 	}
 	function guardar(){
 		try {			
-			$this->relacion()->sincronizar();			
+			$this->relacion()->sincronizar();
+			toba::notificacion()->info('Se guardo la clase');
 		} catch (toba_error_db $e) {
 			toba::notificacion()->error("Error. No se pueden guardar los datos");
 		}
@@ -100,5 +106,12 @@ class ci_datos_clase extends escuela_ci
 	function get_tipos_clase(){
 		return array(array('id'=>1, 'descripcion'=>'TEORICA')); //solo va a usar el tipo teorica
 	}	
+
+	function extender_objeto_js(){
+
+		//si el curso esta seteado lo oculto asi no lo modifica
+		//if(isset($this->id_curso))
+		//	echo "{$this->dep('form_clase')->objeto_js}.ef('id_curso').ocultar();";
+	}
 }
 ?>
