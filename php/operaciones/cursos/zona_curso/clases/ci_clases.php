@@ -14,7 +14,7 @@ class ci_clases extends escuela_ci
 	//---- eventos ----------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 	function evt__procesar(){		
-		$this->dep('datos_clase')->guardar();
+		$this->dep('datos_clase')->guardar();		
 		$this->dep('datos_clase')->resetear();
 		$this->set_pantalla('pant_inicial');
 	}

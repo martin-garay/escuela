@@ -37,11 +37,11 @@ class ci_horas_profesores extends escuela_ci
 			//ei_arbol($this->s__datos_filtro);
 			$where = " WHERE ".$this->dep('filtro')->get_sql_where();
 			$sql = "SELECT *,apellido||' '||nombre as apellido_nombre FROM 
-					(SELECT 'PRACTICA' as tipo_clase,id_sede,sede,id_profesor,nombre,apellido,dni,count(horas) as horas
+					(SELECT 'PRACTICA' as tipo_clase,id_sede,sede,id_profesor,nombre,apellido,dni,sum(horas) as horas
 					from v_clases_practicas_profesores 
 					$where GROUP BY id_sede,sede,id_profesor,nombre,apellido,dni
 					UNION
-					SELECT 'TEORICA' as tipo_clase,id_sede,sede,id_profesor,nombre,apellido,dni,count(horas) as horas 
+					SELECT 'TEORICA' as tipo_clase,id_sede,sede,id_profesor,nombre,apellido,dni,sum(horas) as horas 
 					from v_clases_teoricas_profesores 
 					$where GROUP BY id_sede,sede,id_profesor,nombre,apellido,dni) as s";
 			$datos = toba::consulta_php('comunes')->get_generico_sql($sql,null,"sede,apellido,nombre,tipo_clase");

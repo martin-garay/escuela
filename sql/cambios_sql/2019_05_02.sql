@@ -1,0 +1,1 @@
+alter table clases add column id_sede integer;
