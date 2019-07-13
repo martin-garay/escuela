@@ -1,0 +1,1 @@
+alter table titulos_alumnos alter column observaciones drop not null;

@@ -36,7 +36,7 @@ class caja extends comunes
 	}
 	function get_parametrizacion($id_comprobante, $id_medio_pago, $id_movimiento){
 		$where = "id_comprobante=$id_comprobante and id_medio_pago=$id_medio_pago and id_movimiento=$id_movimiento";
-		return $this->get_generico('caja_parametrizacion', $where);
+		return $this->get_generico('v_caja_parametrizacion', $where);
 	}
 	function get_numero_nueva_operacion(){
 		$operacion = $this->get_generico('caja_operaciones_diarias', null, 'numero_operacion DESC LIMIT 1');
