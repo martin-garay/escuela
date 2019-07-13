@@ -22,4 +22,10 @@ INSERT INTO apex_restriccion_funcional (proyecto, restriccion_funcional, descrip
 	'formador', --descripcion
 	'0'  --permite_edicion
 );
+INSERT INTO apex_restriccion_funcional (proyecto, restriccion_funcional, descripcion, permite_edicion) VALUES (
+	'escuela', --proyecto
+	'19', --restriccion_funcional
+	'personas_datos_personales', --descripcion
+	'1'  --permite_edicion
+);
 --- FIN Grupo de desarrollo 0

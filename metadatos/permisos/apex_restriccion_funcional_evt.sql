@@ -23,3 +23,10 @@ INSERT INTO apex_restriccion_funcional_evt (proyecto, restriccion_funcional, ite
 	'1669', --evento_id
 	'1'  --no_visible
 );
+INSERT INTO apex_restriccion_funcional_evt (proyecto, restriccion_funcional, item, evento_id, no_visible) VALUES (
+	'escuela', --proyecto
+	'19', --restriccion_funcional
+	'3520', --item
+	'1434', --evento_id
+	'1'  --no_visible
+);
