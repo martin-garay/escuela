@@ -49,6 +49,13 @@ class ci_titulos_alumnos extends escuela_ci
 	function evt__cuadro__seleccion($seleccion)
 	{
 		$this->dep('titulos_alumnos')->cargar($seleccion);
+		$id_alumno = $this->dep('titulos_alumnos')->get_columna('id_alumno');		
+
+		//si tiene numero de registro cargo el dt para que lo pueda modificar
+		if( toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){			
+			$registro = toba::consulta_php('alumnos')->get_registro($id_alumno);
+			$this->dep('registro_alumnos')->cargar( array('id'=>$registro['id']) );
+		}
 		$this->set_pantalla("pant_edicion");
 	}
 
@@ -91,6 +98,8 @@ class ci_titulos_alumnos extends escuela_ci
 	}
 
 	function evt__nuevo(){
+		$this->dep('titulos_alumnos')->resetear();
+		$this->dep('registro_alumnos')->resetear();
 		$this->set_pantalla('pant_edicion');
 	}
 	function evt__procesar(){
@@ -103,11 +112,11 @@ class ci_titulos_alumnos extends escuela_ci
 			
 			//si el tipo de 		
 			//si el alumno tiene numero de registro uso el que tiene asignado
-			if( !toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){
+			//if( !toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){
 				$id_titulo = $this->dep('titulos_alumnos')->get_columna('id');
 				$this->dep('registro_alumnos')->set_columna_valor('id_titulo',$id_titulo);
 				$this->dep('registro_alumnos')->sincronizar();
-			}
+			//}
 			$this->dep('registro_alumnos')->resetear();
 			$this->dep('titulos_alumnos')->resetear();
 			$this->set_pantalla("pant_inicial");	

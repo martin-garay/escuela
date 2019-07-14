@@ -30,8 +30,8 @@ class alumnos extends comunes
 		return $datos[0]['anio_registro'];
 	}
 	function get_registro($id_alumno){
-		$sql = "SELECT * FROM registro_alumnos WHERE id_alumno=$id_alumno";
-		$datos = $this->generico('registro_alumnos');		
+		//$sql = "SELECT * FROM registro_alumnos WHERE id_alumno=$id_alumno";
+		$datos = $this->get_generico('registro_alumnos',"id_alumno=$id_alumno");
 		return (isset($datos)) ? $datos[0] : null;
 	}
 	function tiene_nro_registro($id_alumno){
