@@ -30,7 +30,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --solicitud_obj_obs_tipo
 	NULL, --solicitud_obj_observacion
 	'titulos_alumnos', --parametro_a
-	'descripcion_titulo,apellido_alumno,nombre_alumno', --parametro_b
+	'nro_registro,anio_registro,nombre_alumno,apellido_alumno,descripcion_titulo,fecha,sede', --parametro_b
 	'v_titulos_alumnos', --parametro_c
 	NULL, --parametro_d
 	NULL, --parametro_e

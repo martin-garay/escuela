@@ -100,7 +100,8 @@ class ci_titulos_alumnos extends escuela_ci
 		toba::db()->abrir_transaccion();
 		try {			
 			$this->dep('titulos_alumnos')->sincronizar();
-					
+			
+			//si el tipo de 		
 			//si el alumno tiene numero de registro uso el que tiene asignado
 			if( !toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){
 				$id_titulo = $this->dep('titulos_alumnos')->get_columna('id');
@@ -118,7 +119,7 @@ class ci_titulos_alumnos extends escuela_ci
 		
 		//$this->dep('alumno')->set_columna_valor('nro_registro',);
 	}
-	function get_nro_registro($id_alumno){
+	function get_nro_registro($id_alumno){		
 		if( toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){
 			return toba::consulta_php('alumnos')->get_nro_registro($id_alumno);
 		}else{
@@ -134,14 +135,18 @@ class ci_titulos_alumnos extends escuela_ci
 		}
 	}
 
+	function get_titulos($id_tipo_titulo){
+		return toba::consulta_php('cursos')->get_titulos("id_tipo_titulo=$id_tipo_titulo");
+	}
+
 	function extender_objeto_js(){
 		if($this->get_id_pantalla()=='pant_edicion'){
 			echo "
-				$('#cont_ef_form_2679_formnro_registro').append(' - ');
-				$('#cont_ef_form_2679_formnro_registro').append($('#ef_form_2679_formanio_registro'));
-				$('#nodo_ef_form_2679_formanio_registro').hide();
+				//$('#cont_ef_form_2679_formnro_registro').append(' - ');
+				//$('#cont_ef_form_2679_formnro_registro').append($('#ef_form_2679_formanio_registro'));
+				//$('#nodo_ef_form_2679_formanio_registro').hide();
 			";
 		}
-	}
+	}	
 }
 ?>

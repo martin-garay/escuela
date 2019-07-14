@@ -425,6 +425,8 @@ alter table personas add column jubilado boolean default false;
 	     JOIN personas p ON p.id = cpp.id_profesor;
 
 
+--cambio el campo en la auditoria
+alter table public_auditoria.logs_personas alter column dni TYPE CHARACTER VARYING(15);
 
 --rollback
 --commit
