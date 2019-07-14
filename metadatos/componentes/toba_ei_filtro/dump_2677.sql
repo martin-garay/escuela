@@ -470,7 +470,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	NULL, --selec_cant_minima
 	NULL, --selec_cant_maxima
 	'0', --selec_utilidades
-	NULL, --selec_tamano
+	'10', --selec_tamano
 	NULL, --selec_ancho
 	'0', --selec_serializar
 	NULL, --selec_cant_columnas
