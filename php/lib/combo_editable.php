@@ -4,13 +4,13 @@ include_once 'comunes.php';
 class combo_editable extends comunes
 {
 	function get_alumnos($filtro){
-		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
+		$sql = "SELECT id, dni||' '||apellido||' '||nombre||COALESCE(' - '||sede,'') as descripcion
 				FROM v_personas WHERE es_alumno(id) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' 
 				ORDER BY apellido,nombre";
 		return toba::db()->consultar($sql);
 	}
 	function get_alumnos_descripcion($id){
-		$sql = "SELECT dni||' '||apellido||' '||nombre as descripcion FROM v_personas WHERE id=$id";
+		$sql = "SELECT dni||' '||apellido||' '||nombre||COALESCE(' - '||sede,'') as descripcion FROM v_personas WHERE id=$id";
         $datos = toba::db()->consultar($sql);
         return $datos[0]['descripcion'];
 	}
@@ -25,30 +25,30 @@ class combo_editable extends comunes
         return $datos[0]['descripcion'];
 	}
 	function get_profesores($filtro){
-        $sql = "SELECT id, apellido||' '||nombre||' - '||dni as descripcion 
+        $sql = "SELECT id, apellido||' '||nombre||' - '||dni||COALESCE(' - '||sede,'') as descripcion 
         		FROM v_personas WHERE es_profesor(id) AND apellido||' '||nombre||' - '||dni ILIKE '%$filtro%'
         		ORDER BY apellido,nombre";
         return toba::db()->consultar($sql);        
 	}
 	function get_profesores_descripcion($id_persona){
-		$sql = "SELECT apellido||' '||nombre||' - '||dni as descripcion FROM v_personas WHERE id=$id_persona";
+		$sql = "SELECT apellido||' '||nombre||' - '||dni||COALESCE(' - '||sede,'') as descripcion FROM v_personas WHERE id=$id_persona";
         $datos = toba::db()->consultar($sql);
         return $datos[0]['descripcion'];
 	}
 	function get_alumnos_y_practicantes($filtro){
-		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
+		$sql = "SELECT id, dni||' '||apellido||' '||nombre||COALESCE(' - '||sede,'') as descripcion
 				FROM v_personas WHERE ( es_alumno(id) OR es_practicante(id) ) AND dni||' '||apellido||' '||nombre ILIKE '%$filtro%' 
 				ORDER BY apellido,nombre";
 		return toba::db()->consultar($sql);
 	}
 	function get_personas($filtro){
-		$sql = "SELECT id, dni||' '||apellido||' '||nombre as descripcion
+		$sql = "SELECT id, dni||' '||apellido||' '||nombre||COALESCE(' - '||sede,'') as descripcion
 				FROM v_personas WHERE dni||' '||apellido||' '||nombre ILIKE '%$filtro%' 
 				ORDER BY apellido,nombre";
 		return toba::db()->consultar($sql);
 	}
 	function get_personas_descripcion($id){
-		$sql = "SELECT dni||' '||apellido||' '||nombre as descripcion FROM v_personas WHERE id=$id";
+		$sql = "SELECT dni||' '||apellido||' '||nombre||COALESCE(' - '||sede,'') as descripcion FROM v_personas WHERE id=$id";
         $datos = toba::db()->consultar($sql);
         return $datos[0]['descripcion'];
 	}
