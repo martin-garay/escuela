@@ -186,7 +186,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'2730', --objeto
 	'18000689', --col_id
 	'horas', --columna
-	'E', --tipo
+	'N', --tipo
 	'0', --pk
 	'', --secuencia
 	NULL, --largo
