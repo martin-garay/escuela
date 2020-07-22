@@ -114,11 +114,11 @@ class ci_titulos_alumnos extends escuela_ci
 			$id_tipo_titulo = $this->dep('registro_alumnos')->get_columna('id_tipo_titulo');
 			if($id_tipo_titulo==1){
 				//si el alumno tiene numero de registro uso el que tiene asignado
-				//if( !toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){
-				$id_titulo = $this->dep('titulos_alumnos')->get_columna('id');
-				$this->dep('registro_alumnos')->set_columna_valor('id_titulo',$id_titulo);
-				$this->dep('registro_alumnos')->sincronizar();
-				//}	
+				if( !toba::consulta_php('alumnos')->tiene_nro_registro($id_alumno) ){
+					$id_titulo = $this->dep('titulos_alumnos')->get_columna('id');
+					$this->dep('registro_alumnos')->set_columna_valor('id_titulo',$id_titulo);
+					$this->dep('registro_alumnos')->sincronizar();
+				}	
 			}		
 			
 			$this->dep('registro_alumnos')->resetear();
