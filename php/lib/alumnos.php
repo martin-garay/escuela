@@ -44,5 +44,12 @@ class alumnos extends comunes
 		$datos = toba::db()->consultar($sql);
 		return $datos[0]['nro_registro'];
 	}
+	function get_numeros_registros($where=null, $order_by=null){
+		$sql = "SELECT r.*,
+					p.nombre,p.apellido,p.dni,sede 
+				FROM registro_alumnos r
+				JOIN v_personas p ON r.id_alumno=p.id";
+		return $this->get_generico_sql($sql, $where, $order_by);
+	}
 }
 ?>

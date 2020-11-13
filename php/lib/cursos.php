@@ -117,5 +117,12 @@ class cursos extends comunes
 		return $this->get_generico('v_clases_practicas_alumnos', $where, $order_by);		
 	}
 
+	function get_titulos_alumnos($where=null, $order_by=null){
+		$sql = "SELECT *, 
+					   to_char(fecha, 'DD/MM/YYYY') ||' - ' || nombre_titulo || ' ' ||tipo_titulo as descripcion_combo 
+				FROM v_titulos_alumnos";
+		return $this->get_generico_sql($sql, $where, $order_by);		
+	}
+
 }
 ?>
